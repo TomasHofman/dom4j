@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.70 2004/06/06 07:59:06 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.71 2004/06/08 06:47:26 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -66,7 +66,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.70 $
+  * @version $Revision: 1.71 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     
@@ -600,7 +600,7 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     }
 
     public void characters(char[] ch, int start, int length) throws SAXException {
-        if (ch == null || ch.length == 0) {
+        if (ch == null || ch.length == 0 || length <= 0) {
             return;
         }
         
@@ -1584,5 +1584,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.70 2004/06/06 07:59:06 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.71 2004/06/08 06:47:26 maartenc Exp $
  */
