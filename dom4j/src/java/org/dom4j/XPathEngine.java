@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathEngine.java,v 1.4 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: XPathEngine.java,v 1.5 2001/01/26 16:53:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -15,7 +15,7 @@ import java.util.List;
   * creating XPath objects and navigation using a DOM4J Document model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public interface XPathEngine {
 
@@ -37,39 +37,6 @@ public interface XPathEngine {
       * @return a new <code>NodeFilter</code> instance
       */
     public NodeFilter createXPathFilter(String xpathFilterExpression);
-    
-    /** <p><code>selectNodes</code> evaluates an XPath expression
-      * on the current node and returns the result as a <code>List</code> of 
-      * <code>Node</code> instances.</p>
-      *
-      * @param contextNode is the context node on which to 
-      *     process the XPath expression
-      * @param xpath is the XPath expression to evaluate
-      * @return a list of <code>Node</code> instances 
-      */
-    public List selectNodes(Node contextNode, XPath xpath);
-    
-    /** <p><code>selectSingleNode</code> evaluates an XPath expression
-      * on the current node and returns the result as a single
-      * <code>Node</code> instance.</p>
-      *
-      * @param contextNode is the context node on which to 
-      *     process the XPath expression
-      * @param xpath is the XPath expression to evaluate
-      * @return a single matching <code>Node</code> instance
-      */
-    public Node selectSingleNode(Node contextNode, XPath xpath);
-    
-    /** <p><code>valueOf</code> evaluates an XPath expression
-      * and returns the textual representation of the results using the 
-      * XPath string() function.</p>
-      *
-      * @param contextNode is the context node on which to 
-      *     process the XPath expression
-      * @param xpath is the XPath expression to be evaluated
-      * @return the string representation of the results of the XPath expression
-      */
-    public String valueOf(Node contextNode, XPath xpath);
     
 }
 
@@ -118,5 +85,5 @@ public interface XPathEngine {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathEngine.java,v 1.4 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: XPathEngine.java,v 1.5 2001/01/26 16:53:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBoolean.java,v 1.2 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: TestBoolean.java,v 1.3 2001/01/26 16:53:14 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -23,7 +23,7 @@ import org.dom4j.XPathHelper;
 /** Test harness for the boolean expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestBoolean extends AbstractTestCase {
 
@@ -78,7 +78,7 @@ public class TestBoolean extends AbstractTestCase {
     }
         
     protected void testXPath(Node node, XPath xpath) {
-        List list = node.selectNodes(xpath);
+        List list = xpath.selectNodes( node );
         
         log( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
         
@@ -133,5 +133,5 @@ public class TestBoolean extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBoolean.java,v 1.2 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: TestBoolean.java,v 1.3 2001/01/26 16:53:14 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.2 2001/01/17 15:53:31 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.3 2001/01/26 16:53:14 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the namespace axis 
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -63,7 +63,7 @@ public class TestNamespace extends AbstractTestCase {
     
     protected void testXPath(String xpathText) {
         XPath xpath = XPathHelper.createXPath(xpathText);
-        List list = document.selectNodes(xpath);
+        List list = xpath.selectNodes( document );
         
         log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
         
@@ -137,5 +137,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.2 2001/01/17 15:53:31 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.3 2001/01/26 16:53:14 jstrachan Exp $
  */

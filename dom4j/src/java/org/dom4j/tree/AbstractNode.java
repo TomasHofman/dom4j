@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.8 2001/01/26 11:21:54 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.9 2001/01/26 16:53:13 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -26,7 +26,7 @@ import org.dom4j.XPathHelper;
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
@@ -105,6 +105,25 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
 
     // XPath methods
     
+    public List selectNodes(String xpathExpression) {
+        XPath xpath = createXPath(xpathExpression);
+        return xpath.selectNodes(this);
+    }
+    
+    public Node selectSingleNode(String xpathExpression) {
+        XPath xpath = createXPath(xpathExpression);
+        return xpath.selectSingleNode(this);
+    }
+    
+    public String valueOf(String xpathExpression) {
+        XPath xpath = createXPath(xpathExpression);
+        return xpath.valueOf(this);
+    }
+    
+    public XPath createXPath(String xpathExpression) {
+        return getXPathEngine().createXPath(xpathExpression);
+    }
+    
     public XPathEngine getXPathEngine() {
         XPathEngine answer = null;
         Document document = getDocument();
@@ -115,36 +134,6 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
             answer = XPathHelper.getInstance();
         }
         return answer;
-    }
-    
-    public List selectNodes(XPath xpath) {
-        return getXPathEngine().selectNodes(this, xpath);
-    }
-    
-    public List selectNodes(String xpathExpression) {
-        XPathEngine engine = getXPathEngine();
-        XPath xpath = engine.createXPath(xpathExpression);
-        return engine.selectNodes(this, xpath);
-    }
-    
-    public Node selectSingleNode(XPath xpath) {
-        return getXPathEngine().selectSingleNode(this, xpath);
-    }
-    
-    public Node selectSingleNode(String xpathExpression) {
-        XPathEngine engine = getXPathEngine();
-        XPath xpath = engine.createXPath(xpathExpression);
-        return engine.selectSingleNode(this, xpath);
-    }
-    
-    public String valueOf(XPath xpath) {
-        return getXPathEngine().valueOf(this, xpath);
-    }
-    
-    public String valueOf(String xpathExpression) {
-        XPathEngine engine = getXPathEngine();
-        XPath xpath = engine.createXPath(xpathExpression);
-        return engine.valueOf(this, xpath);
     }
     
     public Node asXPathNode(Element parent) {
@@ -205,5 +194,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.8 2001/01/26 11:21:54 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.9 2001/01/26 16:53:13 jstrachan Exp $
  */

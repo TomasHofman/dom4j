@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathValueOf.java,v 1.1 2001/01/26 11:21:54 jstrachan Exp $
+ * $Id: XPathValueOf.java,v 1.2 2001/01/26 16:53:13 jstrachan Exp $
  */
 
 
@@ -23,7 +23,7 @@ import org.dom4j.io.SAXReader;
   * command on Unix but uses XPath valueOf for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class XPathValueOf extends AbstractDemo {
     
@@ -68,8 +68,7 @@ public class XPathValueOf extends AbstractDemo {
         SAXReader reader = new SAXReader();
         Document document = reader.read( url );
         
-        // perform XPath
-        String value = document.valueOf( xpath );
+        String value = xpath.valueOf( document );
         
         println( value );
     }
@@ -135,5 +134,5 @@ public class XPathValueOf extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathValueOf.java,v 1.1 2001/01/26 11:21:54 jstrachan Exp $
+ * $Id: XPathValueOf.java,v 1.2 2001/01/26 16:53:13 jstrachan Exp $
  */
