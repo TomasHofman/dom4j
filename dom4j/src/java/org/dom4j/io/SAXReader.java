@@ -32,7 +32,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 /** <p><code>SAXReader</code> creates a DOM4J tree from SAX parsing events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class SAXReader extends TreeReader {
 
@@ -347,19 +347,17 @@ public class SAXReader extends TreeReader {
     
     protected void configureReader(XMLReader reader, DefaultHandler contentHandler) throws TreeException {                
         // configure lexical handling
-        boolean lexicalReporting = setParserProperty(
+        setParserProperty(
             reader,
             "http://xml.org/sax/handlers/LexicalHandler", 
             contentHandler
         );
-        if ( ! lexicalReporting ) {
-            // try alternate property            
-            setParserProperty(
-                reader,
-                "http://xml.org/sax/properties/lexical-handler", 
-                contentHandler
-            );
-        }
+        // try alternate property just in case
+        setParserProperty(
+            reader,
+            "http://xml.org/sax/properties/lexical-handler", 
+            contentHandler
+        );
         
         try {
             // configure namespace support
