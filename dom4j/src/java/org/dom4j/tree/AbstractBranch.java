@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.9 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.10 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -29,6 +29,7 @@ import org.dom4j.Entity;
 import org.dom4j.IllegalAddNodeException;
 import org.dom4j.Node;
 import org.dom4j.Namespace;
+import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
 import org.dom4j.io.XMLWriter;
@@ -37,7 +38,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -142,6 +143,12 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     public Element addElement(String name) {
         Element node = getContentFactory().createElement( name );
+        add( node );
+        return node;
+    }
+    
+    public Element addElement(QName qname) {
+        Element node = getContentFactory().createElement( qname );
         add( node );
         return node;
     }
@@ -271,5 +278,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.9 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.10 2001/01/16 18:52:16 jstrachan Exp $
  */

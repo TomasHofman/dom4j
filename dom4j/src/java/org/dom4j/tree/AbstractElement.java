@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.11 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.12 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -37,7 +37,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -135,30 +135,28 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
 
     
-    // NameModel methods
+    // QName methods
     
     public Namespace getNamespace() {
-        return getNameModel().getNamespace();
+        return getQName().getNamespace();
     }
     
     public String getName() {
-        return getNameModel().getName();
+        return getQName().getName();
     }
     
     public String getNamespacePrefix() {
-        return getNameModel().getNamespacePrefix();
+        return getQName().getNamespacePrefix();
     }
 
     public String getNamespaceURI() {
-        return getNameModel().getNamespaceURI();
+        return getQName().getNamespaceURI();
     }
 
     public String getQualifiedName() {
-        return getNameModel().getQualifiedName();
+        return getQName().getQualifiedName();
     }
 
-    /** Allows derived classes to override how the element is named */
-    protected abstract NameModel getNameModel();
     
     
     
@@ -512,5 +510,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.11 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.12 2001/01/16 18:52:16 jstrachan Exp $
  */

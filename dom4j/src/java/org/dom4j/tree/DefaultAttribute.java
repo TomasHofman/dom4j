@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultAttribute.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultAttribute.java,v 1.5 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -12,6 +12,7 @@ package org.dom4j.tree;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.Namespace;
+import org.dom4j.QName;
 
 /** <p><code>DefaultAttribute</code> is the DOM4J default implementation
   * of a singly linked, read-only XML attribute.</p>
@@ -19,27 +20,23 @@ import org.dom4j.Namespace;
   * <p>It implements a singly linked attribute.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DefaultAttribute extends AbstractAttribute {
 
-    /** The <code>NameModel</code> for this element */
-    private NameModel nameModel;
+    /** The <code>QName</code> for this element */
+    private QName qname;
     
     /** The value of the <code>Attribute</code> */
     protected String value;
 
     
-    public DefaultAttribute() { 
-        this.nameModel = NameModel.EMPTY_NAME;
+    public DefaultAttribute(QName qname) {
+        this.qname = qname;
     }
 
-    public DefaultAttribute(NameModel nameModel) {
-        this.nameModel = nameModel;
-    }
-
-    public DefaultAttribute(NameModel nameModel, String value) { 
-        this.nameModel = nameModel;
+    public DefaultAttribute(QName qname, String value) { 
+        this.qname = qname;
         this.value = value;
     }
     
@@ -50,7 +47,7 @@ public class DefaultAttribute extends AbstractAttribute {
       * @param value is the value of the attribute
       */
     public DefaultAttribute(String name, String value) {
-        this.nameModel = NameModel.get(name);
+        this.qname = QName.get(name);
         this.value = value;
     }
 
@@ -62,7 +59,7 @@ public class DefaultAttribute extends AbstractAttribute {
       * @param namespace is the namespace of the attribute
       */
     public DefaultAttribute(String name, String value, Namespace namespace) {
-        this.nameModel = NameModel.get(name, namespace);
+        this.qname = QName.get(name, namespace);
         this.value = value;
     }
     
@@ -70,15 +67,9 @@ public class DefaultAttribute extends AbstractAttribute {
         return value;
     }
     
-    protected NameModel getNameModel() {
-        return nameModel;
+    public QName getQName() {
+        return qname;
     }
-    
-    /** Allow derived classes to change the name model */
-    protected void setNameModel(NameModel nameModel) {
-        this.nameModel = nameModel;
-    }
-    
 }
 
 
@@ -126,5 +117,5 @@ public class DefaultAttribute extends AbstractAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultAttribute.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultAttribute.java,v 1.5 2001/01/16 18:52:16 jstrachan Exp $
  */

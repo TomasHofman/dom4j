@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Attribute.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Attribute.java,v 1.3 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,9 +13,16 @@ package org.dom4j;
   * An attribute may have a name, an optional namespace and a value.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface Attribute extends Node {
+    
+    /** <p>Returns the <code>QName</code> of this attribute which represents 
+      * the local name, the qualified name and the <code>Namespace</code>.</p>
+      *
+      * @return the <code>QName</code> associated with this attribute
+      */
+    public QName getQName();    
     
     /** <p>Returns the <code>Namespace</code> of this element if one exists 
       * otherwise null is returned returned.</p>
@@ -124,5 +131,5 @@ public interface Attribute extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Attribute.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Attribute.java,v 1.3 2001/01/16 18:52:16 jstrachan Exp $
  */

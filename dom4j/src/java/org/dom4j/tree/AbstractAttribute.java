@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttribute.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.5 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -19,7 +19,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
@@ -53,35 +53,34 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
         visitor.visit(this);
     }
     
-    // NameModel methods
+    // QName methods
     
     public Namespace getNamespace() {
-        return getNameModel().getNamespace();
+        return getQName().getNamespace();
     }
     
     public String getName() {
-        return getNameModel().getName();
+        return getQName().getName();
     }
     
     public String getNamespacePrefix() {
-        return getNameModel().getNamespacePrefix();
+        return getQName().getNamespacePrefix();
     }
 
     public String getNamespaceURI() {
-        return getNameModel().getNamespaceURI();
+        return getQName().getNamespaceURI();
     }
 
     public String getQualifiedName() {
-        return getNameModel().getQualifiedName();
+        return getQName().getQualifiedName();
     }
     
     protected Node createXPathNode(Element parent) {
-        return new XPathAttribute(parent, getNameModel(), getValue());
+        return new XPathAttribute(parent, getQName(), getValue());
     }
-    
-    /** Allows derived classes to override how the attribute is named */
-    protected abstract NameModel getNameModel();
 }
+    
+ 
 
 
 
@@ -128,5 +127,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.5 2001/01/16 18:52:16 jstrachan Exp $
  */

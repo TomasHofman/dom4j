@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.6 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.7 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -30,6 +30,7 @@ import org.dom4j.Entity;
 import org.dom4j.IllegalAddNodeException;
 import org.dom4j.Node;
 import org.dom4j.Namespace;
+import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
 
@@ -37,7 +38,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -50,8 +51,8 @@ public class DefaultElement extends AbstractElement {
     /** The document of this node */
     private Document document;
 
-    /** The <code>NameModel</code> for this element */
-    private NameModel nameModel;
+    /** The <code>QName</code> for this element */
+    private QName qname;
     
     /** Store the contents of the element as a lazily created <code>List</code> */
     private List contents;
@@ -65,30 +66,18 @@ public class DefaultElement extends AbstractElement {
 
     
     
-    public DefaultElement() { 
-        this.nameModel = NameModel.EMPTY_NAME;
-    }
-
     public DefaultElement(String name) { 
-        this.nameModel = NameModel.get(name);
+        this.qname = QName.get(name);
     }
 
-    public DefaultElement(NameModel nameModel) { 
-        this.nameModel = nameModel;
+    public DefaultElement(QName qname) { 
+        this.qname = qname;
     }
 
     public DefaultElement(String name, Namespace namespace) { 
-        this.nameModel = NameModel.get(name, namespace);
+        this.qname = QName.get(name, namespace);
     }
 
-    public void setNamespace(Namespace namespace) {
-        this.nameModel = NameModel.get(getName(), namespace);
-    }
-    
-    public void setName(String name) {
-        this.nameModel = NameModel.get(name, getNamespace());
-    }
-    
     public Element getParent() {
         return parent;
     }
@@ -115,13 +104,8 @@ public class DefaultElement extends AbstractElement {
         return true;
     }
 
-    protected NameModel getNameModel() {
-        return nameModel;
-    }
-    
-    /** Allow derived classes to change the name model */
-    protected void setNameModel(NameModel nameModel) {
-        this.nameModel = nameModel;
+    public QName getQName() {
+        return qname;
     }
     
     
@@ -749,5 +733,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.6 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.7 2001/01/16 18:52:16 jstrachan Exp $
  */

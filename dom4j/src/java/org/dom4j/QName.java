@@ -4,99 +4,124 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameModel.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: QName.java,v 1.1 2001/01/16 18:52:16 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j;
 
-import java.util.Map;
+import org.dom4j.tree.QNameCache;
 
-import org.dom4j.Attribute;
-import org.dom4j.Element;
-import org.dom4j.Namespace;
-
-/** <p><code>NameModel</code> is used to model the name of an XML element or
-  * attribute. 
-  * It is an immutable bean containing the local, qualified and namespace .</p>
+/** <p><code>QName</code> represents a qualified name value of an XML element 
+  * or attribute. It consists of a local name and a {@link Namespace} 
+  * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class NameModel {
+public class QName {
 
-    public static final NameModel EMPTY_NAME = new NameModel("");
+    protected static QNameCache cache = new QNameCache();
     
-    /** Cache of name instances */
-    protected static NameModelCache cache = new NameModelCache();
     
-    /** The name of the element */
+    /** The local name of the element or attribute */
     private String name;
-
-    /** The qualified name of the element */
-    private String qualifiedName;
-
-    /** The <code>Namespace</code> for this elemenet */
-    private Namespace namespace;
-
     
-    public static NameModel get(String name) {
+    /** The qualified name of the element or attribute */
+    private String qualifiedName;
+    
+    /** The Namespace of this element or attribute */
+    private Namespace namespace;
+    
+    /** A cached version of the hashcode for efficiency */
+    private int hashCode;
+    
+
+    public static synchronized QName get(String name) {
         return cache.get(name);
     }
     
-    public static NameModel get(String name, Namespace namespace) {
+    public static synchronized QName get(String name, Namespace namespace) {
         return cache.get(name, namespace);
     }
     
-    
-    public NameModel(String name) { 
-        this.name = name;
-        this.namespace = Namespace.NO_NAMESPACE;
+    public QName(String name) {
+        this( name, Namespace.NO_NAMESPACE );
     }
-
-    public NameModel(String name, Namespace namespace) { 
+    
+    public QName(String name, Namespace namespace) {
         this.name = name;
         this.namespace = namespace;
     }
 
-    public NameModel(String name, String qualifiedName, Namespace namespace) { 
-        this.name = name;
-        this.qualifiedName = qualifiedName;
-        this.namespace = namespace;
-    }
-
-    public Namespace getNamespace() {
-        return namespace;
-    }
     
+    /** @return the local name
+      */
     public String getName() {
         return name;
     }
     
-    public String getNamespacePrefix() {
-        return (namespace != null) ? namespace.getPrefix() : "";
-    }
-
-    public String getNamespaceURI() {
-        return (namespace != null) ? namespace.getURI() : "";
-    }
-
+    /** @return the qualified name in the format <code>prefix:localName</code>
+      */
     public String getQualifiedName() {
         if ( qualifiedName == null ) {
-            qualifiedName = createQualifiedName();
+            String prefix = getNamespacePrefix();
+            if ( prefix != null && prefix.length() > 0 ) {
+                qualifiedName = prefix + ":" + name;
+            }
+            else {
+                qualifiedName = name;
+            }
         }
         return qualifiedName;
     }
     
-    protected String createQualifiedName() {
-        if (namespace != null ) {
-            String prefix = namespace.getPrefix();
-            if (prefix != null && prefix.length() > 0) {
-                return prefix + ":" + getName();
+    /** @return the namespace of this QName 
+      */
+    public Namespace getNamespace() {
+        return namespace;
+    }
+        
+    /** @return the namespace URI of this QName
+      */
+    public String getNamespacePrefix() {
+        return namespace.getPrefix();
+    }
+        
+    /** @return the namespace URI of this QName
+      */
+    public String getNamespaceURI() {
+        return namespace.getURI();
+    }
+        
+    
+    /** @return the hash code based on the qualified name and the URI of the 
+      * namespace.
+      */
+    public int hashCode() {
+        if ( hashCode == 0 ) {
+            hashCode = getQualifiedName().hashCode() 
+                ^ getNamespaceURI().hashCode();
+            if ( hashCode == 0 ) {
+                hashCode = 0xbabe;
             }
         }
-        return getName();
+        return hashCode;
     }
-
+  
+    public boolean equals(Object object) {
+        if ( this == object ) {
+            return true;
+        }
+        else if ( object instanceof QName ) {
+            QName that = (QName) object;
+            // we cache hash codes so this should be quick
+            if ( hashCode() == that.hashCode() ) {
+                return getQualifiedName().equals( that.getQualifiedName() )
+                    && getNamespaceURI().equals( that.getNamespaceURI());
+            }
+        }
+        return false;
+    }
 }
 
 
@@ -144,5 +169,5 @@ public class NameModel {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameModel.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: QName.java,v 1.1 2001/01/16 18:52:16 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.8 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.9 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -26,9 +26,10 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.ElementHandler;
 import org.dom4j.Entity;
-import org.dom4j.TreeException;
 import org.dom4j.Namespace;
+import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
+import org.dom4j.TreeException;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -39,7 +40,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -331,16 +332,26 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
 
 
+    protected QName getQName(String localName, Namespace namespace) {
+        return QName.get(localName, namespace);
+    }
+    
+    protected QName getQName(String localName) {
+        return QName.get(localName);
+    }
+    
     protected Namespace getNamespace(String prefix, String uri) {
         return ContentFactory.getNamespace(prefix, uri);
     }
 
     protected Element createElement(String localName, Namespace namespace) {
-        return peekBranch().addElement(localName, namespace);
+        QName qname = getQName(localName, namespace);
+        return peekBranch().addElement(qname);
     }
     
     protected Element createElement(String localName) {
-        return peekBranch().addElement(localName);
+        QName qname = getQName(localName);
+        return peekBranch().addElement(qname);
     }
     
     protected ElementStack createElementStack() {
@@ -402,5 +413,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.8 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.9 2001/01/16 18:52:16 jstrachan Exp $
  */

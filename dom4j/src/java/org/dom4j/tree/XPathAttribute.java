@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathAttribute.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathAttribute.java,v 1.4 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.Element;
+import org.dom4j.QName;
 import org.dom4j.Namespace;
 
 /** <p><code>XPathAttribute</code> implements a doubly linked node which 
@@ -17,7 +18,7 @@ import org.dom4j.Namespace;
   * It is useful when evalutating XPath expressions.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathAttribute extends DefaultAttribute {
 
@@ -25,12 +26,12 @@ public class XPathAttribute extends DefaultAttribute {
     private Element parent;
 
     
-    public XPathAttribute(NameModel nameModel, String value) { 
-        super(nameModel, value);
+    public XPathAttribute(QName qname, String value) { 
+        super(qname, value);
     }
     
-    public XPathAttribute(Element parent, NameModel nameModel, String value) { 
-        super(nameModel, value);
+    public XPathAttribute(Element parent, QName qname, String value) { 
+        super(qname, value);
         this.parent = parent;
     }
     
@@ -68,16 +69,8 @@ public class XPathAttribute extends DefaultAttribute {
         this.parent = parent;
     }
 
-    public void setName(String name) {
-        setNameModel( NameModel.get(name, getNamespace()) );
-    }
-    
     public void setValue(String value) {
 	this.value = value;
-    }
-    
-    public void setNamespace(Namespace namespace) {
-        setNameModel( NameModel.get(getName(), namespace) );
     }
     
     public Element getParent() {
@@ -139,5 +132,5 @@ public class XPathAttribute extends DefaultAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathAttribute.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathAttribute.java,v 1.4 2001/01/16 18:52:16 jstrachan Exp $
  */

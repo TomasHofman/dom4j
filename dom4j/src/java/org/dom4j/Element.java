@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.10 2001/01/16 16:30:42 jstrachan Exp $
+ * $Id: Element.java,v 1.11 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public interface Element extends Branch {
 
@@ -36,22 +36,20 @@ public interface Element extends Branch {
       */
     public boolean isRootElement();
 
+    /** <p>Returns the <code>QName</code> of this element which represents 
+      * the local name, the qualified name and the <code>Namespace</code>.</p>
+      *
+      * @return the <code>QName</code> associated with this element
+      */
+    public QName getQName();    
+    
     /** <p>Returns the <code>Namespace</code> of this element if one exists 
       * otherwise <code>Namespace.NO_NAMESPACE</code> is returned.</p>
       *
-      * @return the <code>Namespace</code> associated with this node
+      * @return the <code>Namespace</code> associated with this element
       */
     public Namespace getNamespace();
 
-    /** <p>Sets the <code>Namespace</code> of this element or if this element
-      * is read only then an <code>UnsupportedOperationException</code> 
-      * is thrown.</p>
-      *
-      * @param namespace is the <code>Namespace</code> to associate with this 
-      * element
-      */
-    public void setNamespace(Namespace namespace);
-    
     
  
     /** <p>Returns the <code>Namespace</code> which is mapped to the given
@@ -429,5 +427,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.10 2001/01/16 16:30:42 jstrachan Exp $
+ * $Id: Element.java,v 1.11 2001/01/16 18:52:16 jstrachan Exp $
  */

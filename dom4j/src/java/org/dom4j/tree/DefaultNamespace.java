@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultNamespace.java,v 1.5 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.6 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -16,7 +16,7 @@ import org.dom4j.Node;
 /** <p><code>DefaultNamespace</code> is the DOM4J default implementation
   * of <code>Namespace</code>.</p>
   *
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DefaultNamespace extends AbstractNamespace {
 
@@ -28,6 +28,9 @@ public class DefaultNamespace extends AbstractNamespace {
 
     /** The URI for this namespace */
     private String uri;
+
+    /** A cached version of the hashcode for efficiency */
+    private int hashCode;
 
     
     public static Namespace get(String prefix, String uri) {
@@ -42,6 +45,37 @@ public class DefaultNamespace extends AbstractNamespace {
         this.uri = uri;
     }
 
+    
+    /** @return the hash code based on the qualified name and the URI of the 
+      * namespace.
+      */
+    public int hashCode() {
+        if ( hashCode == 0 ) {
+            hashCode = uri.hashCode() 
+                ^ prefix.hashCode();
+            if ( hashCode == 0 ) {
+                hashCode = 0xbabe;
+            }
+        }
+        return hashCode;
+    }
+  
+    public boolean equals(Object object) {
+        if ( this == object ) {
+            return true;
+        }
+        else if ( object instanceof Namespace ) {
+            Namespace that = (Namespace) object;
+            
+            // we cache hash codes so this should be quick
+            if ( hashCode() == that.hashCode() ) {
+                return uri.equals( that.getURI() ) 
+                    && prefix.equals( that.getPrefix() );
+            }
+        }
+        return false;
+    }
+    
     /** @return the prefix for this <code>Namespace</code>.
       */
     public String getPrefix() {
@@ -105,5 +139,5 @@ public class DefaultNamespace extends AbstractNamespace {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultNamespace.java,v 1.5 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.6 2001/01/16 18:52:16 jstrachan Exp $
  */

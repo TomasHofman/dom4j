@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameModelCache.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.1 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -12,43 +12,44 @@ package org.dom4j.tree;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.dom4j.QName;
 import org.dom4j.Namespace;
 
-/** <p><code>NameModelCache</code> caches instances of <code>NameModel</code> 
+/** <p><code>QNameCache</code> caches instances of <code>QName</code> 
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class NameModelCache {
+public class QNameCache {
 
-    /** Cache of {@link NameModel} instances with no namespace */ 
+    /** Cache of {@link QName} instances with no namespace */ 
     protected static Map noNamespaceCache = new HashMap();
     
     /** Cache of {@link Map} instances indexed by namespace which contain 
-      * caches of {@link NameModel} for each name
+      * caches of {@link QName} for each name
       */ 
     protected static Map namespaceCache = new HashMap();
 
 
-    /** @return the name model for the given name and no namepsace 
+    /** @return the QName for the given name and no namepsace 
       */
-    public NameModel get(String name) {
-        NameModel answer = (NameModel) noNamespaceCache.get(name);
+    public QName get(String name) {
+        QName answer = (QName) noNamespaceCache.get(name);
         if (answer == null) {
-            answer = new NameModel(name);
+            answer = new QName(name);
             noNamespaceCache.put(name, answer);
         }
         return answer;
     }
     
-    /** @return the name model for the given name and namepsace 
+    /** @return the QName for the given name and namepsace 
       */
-    public NameModel get(String name, Namespace namespace) {
+    public QName get(String name, Namespace namespace) {
         Map cache = getNamespaceCache(namespace);
-        NameModel answer = (NameModel) cache.get(name);
+        QName answer = (QName) cache.get(name);
         if (answer == null) {
-            answer = new NameModel(name, namespace);
+            answer = new QName(name, namespace);
             cache.put(name, answer);
         }
         return answer;
@@ -123,5 +124,5 @@ public class NameModelCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameModelCache.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.1 2001/01/16 18:52:16 jstrachan Exp $
  */

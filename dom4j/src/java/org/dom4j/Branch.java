@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.7 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Branch.java,v 1.8 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public interface Branch extends Node {
 
@@ -89,6 +89,14 @@ public interface Branch extends Node {
       * @return the newly added <code>Element</code> node.
       */    
     public Element addElement(String name);
+    
+    /** Adds a new <code>Element</code> node with the given {@link QName} 
+      * to this branch and returns a reference to the new node.
+      *
+      * @param qname is the qualified name for the <code>Element</code> node.
+      * @return the newly added <code>Element</code> node.
+      */    
+    public Element addElement(QName qname);
     
     /** Adds a new <code>Element</code> node with the given name and namespace
       * prefix and URI to this branch and returns a reference to the new node.
@@ -211,5 +219,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.7 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Branch.java,v 1.8 2001/01/16 18:52:16 jstrachan Exp $
  */

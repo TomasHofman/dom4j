@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ContentFactory.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ContentFactory.java,v 1.4 2001/01/16 18:52:16 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -25,7 +25,7 @@ import org.dom4j.tree.DefaultProcessingInstruction;
   * the easy creation of DOM4J XML content nodes. </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class ContentFactory {
 
@@ -55,12 +55,16 @@ public class ContentFactory {
     
     // Factory methods
     
+    public Attribute createAttribute(QName qname, String value) {
+        return new DefaultAttribute(qname, value);
+    }
+    
     public Attribute createAttribute(String name, String value) {
-        return new DefaultAttribute(name, value);
+        return createAttribute(createQName(name), value);
     }
     
     public Attribute createAttribute(String name, String value, Namespace namespace) {
-        return new DefaultAttribute(name, value, namespace);
+        return createAttribute(createQName(name, namespace), value);
     }
 
     public CDATA createCDATA(String text) {
@@ -77,16 +81,20 @@ public class ContentFactory {
     
 
     // elements
+    public Element createElement(QName qname) {
+        return new DefaultElement(qname);
+    }
+    
     public Element createElement(String name) {
-        return new DefaultElement(name);
+        return createElement(createQName(name));
     }
     
     public Element createElement(String name, String prefix, String uri) {
-        return createElement(name, createNamespace(prefix, uri));
+        return createElement(createQName(name, createNamespace(prefix, uri)));
     }
     
     public Element createElement(String name, Namespace namespace) {
-        return new DefaultElement(name, namespace);
+        return createElement(createQName(name, namespace));
     }
     
     
@@ -108,6 +116,14 @@ public class ContentFactory {
     
     public ProcessingInstruction createProcessingInstruction(String target, Map data) {
         return new DefaultProcessingInstruction(target, data);
+    }
+    
+    public QName createQName(String localName, Namespace namespace) {
+        return QName.get(localName, namespace);
+    }
+    
+    public QName createQName(String localName) {
+        return QName.get(localName);
     }
     
 }
@@ -157,5 +173,5 @@ public class ContentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ContentFactory.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ContentFactory.java,v 1.4 2001/01/16 18:52:16 jstrachan Exp $
  */
