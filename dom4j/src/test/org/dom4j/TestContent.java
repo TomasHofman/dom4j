@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.7 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: TestContent.java,v 1.8 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,10 +18,18 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestContent extends AbstractTestCase {
 
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestContent.class );
+    }
+    
     public TestContent(String name) {
         super(name);
     }
@@ -97,16 +105,6 @@ public class TestContent extends AbstractTestCase {
         assert( "Iteration completed", iterated );
     }
         
-    // JUnit stuff
-    //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestContent.class );
-    }
-    
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void testGetAttributes(Element author) throws Exception {
@@ -169,5 +167,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.7 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: TestContent.java,v 1.8 2001/03/30 17:19:13 jstrachan Exp $
  */

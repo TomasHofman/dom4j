@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestText.java,v 1.1 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: TestText.java,v 1.2 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -21,7 +21,7 @@ import org.dom4j.Text;
 /** Test harness for the text() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestText extends AbstractTestCase {
 
@@ -32,6 +32,14 @@ public class TestText extends AbstractTestCase {
         "//author/text()"
     };
     
+    
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestText.class );
+    }
     
     public TestText(String name) {
         super(name);
@@ -46,16 +54,8 @@ public class TestText extends AbstractTestCase {
         }
     }
         
-    // JUnit stuff
+    // Implementation methods
     //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestText.class );
-    }
-    
     protected void testXPath(String xpath) {
         List list = document.selectNodes(xpath);
         
@@ -126,5 +126,5 @@ public class TestText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestText.java,v 1.1 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: TestText.java,v 1.2 2001/03/30 17:19:13 jstrachan Exp $
  */

@@ -4,43 +4,65 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NumberFunction.java,v 1.3 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.1 2001/03/30 17:19:13 jstrachan Exp $
  */
 
+package org.dom4j.xpath;
 
-package org.dom4j.xpath.function;
-
-import org.dom4j.xpath.impl.Context;
-
+import java.util.Iterator;
 import java.util.List;
 
-/**
-   <p><b>4.4</b> <code><i>number</i> number(<i>object</i>)</code> 
-   
-   @author bob mcwhirter (bob @ werken.com)
-*/
-public class NumberFunction implements Function {
+import junit.framework.*;
+import junit.textui.TestRunner;
 
-    public Object call(Context context, List args) {
-        if (args.size() == 1) {
-            return evaluate(args.get(0));
-        }
-        // FIXME: Toss exception
-        return null;
+import org.dom4j.AbstractTestCase;
+import org.dom4j.Node;
+
+/** Test harness for numeric XPath expressions
+  *
+  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+  * @version $Revision: 1.1 $
+  */
+public class TestNumber extends AbstractTestCase {
+
+    protected static boolean VERBOSE = true;
+    
+    protected static String[] paths = {
+        "count(//author)",
+        "count(//author/attribute::*)",
+        "sum(count(//author),count(//author/attribute::*))"
+    };
+    
+    
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestNumber.class );
+    }
+    
+    public TestNumber(String name) {
+        super(name);
     }
 
-    public static Double evaluate(Object obj) {
-        if (obj instanceof Double) {
-            return (Double) obj;
+    // Test case(s)
+    //-------------------------------------------------------------------------                    
+    public void testXPaths() throws Exception {        
+        int size = paths.length;
+        for ( int i = 0; i < size; i++ ) {
+            testXPath( document, paths[i] );
         }
-        else {
-            String text = StringFunction.evaluate(obj);
-            System.out.println( "converting: " + text + " into a number" );
-            return Double.valueOf( text );
-        }
+    }
+        
+    // Implementation methods
+    //-------------------------------------------------------------------------                    
+    protected void testXPath(Node node, String xpath) {
+        Number number = node.numberValueOf( xpath );
+
+        log( "Searched path: " + xpath + " found: " + number );        
     }
 }
-
 
 
 
@@ -87,5 +109,5 @@ public class NumberFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NumberFunction.java,v 1.3 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.1 2001/03/30 17:19:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestFilter.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.4 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -24,7 +24,7 @@ import org.dom4j.XPath;
 /** Test harness for XPath filters
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestFilter extends AbstractTestCase {
 
@@ -37,6 +37,14 @@ public class TestFilter extends AbstractTestCase {
         ".='XXXX'"
     };
     
+    
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestFilter.class );
+    }
     
     public TestFilter(String name) {
         super(name);
@@ -51,16 +59,8 @@ public class TestFilter extends AbstractTestCase {
         }
     }
         
-    // JUnit stuff
+    // Implementation methods
     //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestFilter.class );
-    }
-    
     protected void testXPath(String xpathExpression) {
         NodeFilter nodeFilter = DocumentHelper.createXPathFilter( xpathExpression );
         assert( "No NodeFilter object was created", nodeFilter != null );
@@ -131,5 +131,5 @@ public class TestFilter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestFilter.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.4 2001/03/30 17:19:13 jstrachan Exp $
  */

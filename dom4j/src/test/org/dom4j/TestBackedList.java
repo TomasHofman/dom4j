@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBackedList.java,v 1.5 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.6 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,10 +20,18 @@ import org.dom4j.io.XMLWriter;
 /** A test harness to test the backed list feature of DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestBackedList extends AbstractTestCase {
 
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestBackedList.class );
+    }
+    
     public TestBackedList(String name) {
         super(name);
     }
@@ -37,16 +45,8 @@ public class TestBackedList extends AbstractTestCase {
         mutate(element);
     }
         
-    // JUnit stuff
+    // Implementation methods
     //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestBackedList.class );
-    }
-    
     protected void mutate(Element element) throws Exception {
         DocumentFactory factory = DocumentFactory.getInstance();
         
@@ -111,5 +111,5 @@ public class TestBackedList extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBackedList.java,v 1.5 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.6 2001/03/30 17:19:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBoolean.java,v 1.4 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestBoolean.java,v 1.5 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -23,7 +23,7 @@ import org.dom4j.XPath;
 /** Test harness for the boolean expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestBoolean extends AbstractTestCase {
 
@@ -41,6 +41,14 @@ public class TestBoolean extends AbstractTestCase {
     };
     
     
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestBoolean.class );
+    }
+    
     public TestBoolean(String name) {
         super(name);
     }
@@ -54,16 +62,8 @@ public class TestBoolean extends AbstractTestCase {
         }
     }
         
-    // JUnit stuff
+    // Implementation methods
     //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestBoolean.class );
-    }
-    
     protected void testXPath(String xpathExpression) {
         XPath xpath = DocumentHelper.createXPath( xpathExpression );
         assert( "No xpath object was created", xpath != null );
@@ -133,5 +133,5 @@ public class TestBoolean extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBoolean.java,v 1.4 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestBoolean.java,v 1.5 2001/03/30 17:19:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.7 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the use of Namespaces.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -35,6 +35,14 @@ public class TestNamespace extends AbstractTestCase {
     
     protected static QName XSL_TEMPLATE = QName.get( "template", XSL_NAMESPACE );
     
+    
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestNamespace.class );
+    }
     
     public TestNamespace(String name) {
         super(name);
@@ -86,16 +94,6 @@ public class TestNamespace extends AbstractTestCase {
         while ( iter.hasNext() );
     }
         
-    // JUnit stuff
-    //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestNamespace.class );
-    }
-    
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
@@ -156,5 +154,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.7 2001/03/30 17:19:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAttribute.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestAttribute.java,v 1.4 2001/03/30 17:19:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the attribute axis 
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestAttribute extends AbstractTestCase {
 
@@ -38,6 +38,14 @@ public class TestAttribute extends AbstractTestCase {
         "@name"
     };
     
+    
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
+    
+    public static Test suite() {
+        return new TestSuite( TestAttribute.class );
+    }
     
     public TestAttribute(String name) {
         super(name);
@@ -52,16 +60,8 @@ public class TestAttribute extends AbstractTestCase {
         }
     }
         
-    // JUnit stuff
+    // Implementation methods
     //-------------------------------------------------------------------------                    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestAttribute.class );
-    }
-    
     protected void testXPath(String xpathText) {
         XPath xpath = DocumentHelper.createXPath(xpathText);
         List list = xpath.selectNodes( document );
@@ -134,5 +134,5 @@ public class TestAttribute extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAttribute.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestAttribute.java,v 1.4 2001/03/30 17:19:13 jstrachan Exp $
  */
