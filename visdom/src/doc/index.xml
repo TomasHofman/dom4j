@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<document url="http://www.dom4j.org/visdom/index.xml">
+  <body>
+    <title>VisDom: visual XML tools</title>
+
+    <header>
+      <p><i>VisDom</i> is a collection of visual tools for working with XML.
+      <i>VisDom</i> is built using Java and the <i>dom4j</i> XML framework.
+      </p>
+    </header>
+
+    <section title="Getting Started">
+      <p>You can download the current $VERSION$ release 
+        or a nightly build via the <a href="download.html">download page</a>.</p>
+    </section>
+
+  </body>
+</document>

@@ -1,0 +1,28 @@
+<FreeDOM>
+  <configuration>
+    <fileSystems>
+      <fileSystem>c:\</fileSystem>
+      <fileSystem>d:\</fileSystem>
+      <fileSystem>ftp://ftp.dom4j.org</fileSystem>
+    </fileSystems>
+  </configuration>
+  <plugins>
+    <plugin name="java">
+      <reader>org.dom4j.io.saxReaders.JavaReader</reader>
+      <writer>org.dom4j.io.saxWriters.JavaWriter</writer>
+      <editors>
+        <editor>class-editor</editor>
+        <editor>method-editor</editor>
+      </editors>
+    </plugin>
+  </plugins>
+  
+  <development>
+    <feature name="File System Content"/>
+    <feature name="DOM Tree Content"/>
+    <feature name="XPath Tool Content"/>
+    <feature name="Config Editor = XML Editor editing config file" />
+  </development>
+</FreeDOM>
+
+ 
