@@ -4,18 +4,22 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NumberExpr.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: NumberExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
 
 import org.dom4j.Element;
+import org.dom4j.xpath.impl.Context;
 
-public class NumberExpr extends Expr {
+public class NumberExpr extends Expr implements org.jaxpath.expr.NumberExpr {
     
-    private Double _number = null;
+    private Number _number = null;
     
+    public NumberExpr(Number number) {
+        _number = number;
+    }
     public NumberExpr(String number) {
         _number = new Double( number );
     }
@@ -75,5 +79,5 @@ public class NumberExpr extends Expr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NumberExpr.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: NumberExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */

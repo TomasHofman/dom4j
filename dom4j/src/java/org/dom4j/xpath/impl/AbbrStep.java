@@ -4,14 +4,23 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbbrStep.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: AbbrStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
 
+import java.util.List;
+
 public abstract class AbbrStep extends Step {
 
+    public void addPredicate(org.jaxpath.expr.Predicate predicate) {
+        throw new RuntimeException( "Not supported yet" );
+    }
+    
+    public List getPredicates() {
+        throw new RuntimeException( "Not supported yet" );
+    }
 }
 
 
@@ -59,5 +68,5 @@ public abstract class AbbrStep extends Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbbrStep.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: AbbrStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */

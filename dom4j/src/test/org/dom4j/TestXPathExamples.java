@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.3 2001/07/12 18:02:32 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestXPathExamples extends TestCase {
 
@@ -80,6 +80,11 @@ public class TestXPathExamples extends TestCase {
         
     protected void testContext(Element documentTest, Element context) throws Exception {
         String xpath = context.attributeValue( "select" );        
+        
+        if ( VERBOSE ) {
+            log( "Selecting nodes for XPath: " + testDocument.createXPath( xpath ) );
+        }
+        
         List list = testDocument.selectNodes( xpath );
         
         assertTrue( "Found at least one context nodes to test for path: " + xpath, list != null && list.size() > 0 );
@@ -113,7 +118,8 @@ public class TestXPathExamples extends TestCase {
         
         if ( VERBOSE ) {
             log( "" );
-            log( "XPath is: " + testContext.createXPath( xpath ) );
+            log( "XPath for: " + xpath );
+            log( "is: " + testContext.createXPath( xpath ) );
             log( "" );
         }
         
@@ -145,15 +151,17 @@ public class TestXPathExamples extends TestCase {
     protected void testValueOf(Element documentTest, Element context, Element valueOf) throws Exception {
         String xpath = valueOf.attributeValue( "select" );
         String description = "valueOf: " + xpath;
+        
+        if ( VERBOSE ) {
+            log( "XPath: " + testContext.createXPath( xpath ) );
+        }
+        
         String expected = valueOf.getText();
         String result = testContext.valueOf( xpath );            
 
         log( description );
         log( "\texpected: " + expected + " result: " + result );
 
-        if ( VERBOSE ) {
-            log( "XPath: " + testContext.createXPath( xpath ) );
-        }
         assertEquals( description, expected, result );
     }
 }
@@ -203,5 +211,5 @@ public class TestXPathExamples extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.3 2001/07/12 18:02:32 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
  */

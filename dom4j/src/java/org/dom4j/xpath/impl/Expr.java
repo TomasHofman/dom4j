@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Expr.java,v 1.3 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: Expr.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
@@ -13,12 +13,22 @@ package org.dom4j.xpath.impl;
 import org.dom4j.Node;
 import org.dom4j.rule.Pattern;
 import org.dom4j.xpath.function.StringFunction;
+import org.dom4j.xpath.impl.Context;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Expr 
-{
+public abstract class Expr implements org.jaxpath.expr.Expr {    
+    
+    public String getText() {
+        return "[N/I]";
+    }
+    
+    public org.jaxpath.expr.Expr simplify() {
+        return this;
+    }
+    
+    
     public abstract Object evaluate(Context context);
   
     public String valueOf(Context context)  {
@@ -113,5 +123,5 @@ public abstract class Expr
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Expr.java,v 1.3 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: Expr.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
  */

@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SelfStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: SelfStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
 
 import org.dom4j.xpath.ContextSupport;
+import org.dom4j.xpath.impl.Context;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -79,5 +80,5 @@ public class SelfStep extends AbbrStep
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SelfStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: SelfStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */

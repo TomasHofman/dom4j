@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXHelper.java,v 1.5 2001/05/14 15:44:13 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.6 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * SAX and XMLReader objects.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 class SAXHelper {
 
@@ -73,6 +73,7 @@ class SAXHelper {
         }
         catch (Exception e) {
             // JAXP is not loaded so continue, its probably not in the CLASSPATH
+            return null;
         }
         
         // try use JAXP to load the XMLReader...
@@ -166,5 +167,5 @@ class SAXHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXHelper.java,v 1.5 2001/05/14 15:44:13 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.6 2001/07/16 08:36:13 jstrachan Exp $
  */

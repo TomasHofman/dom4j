@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameTestStep.java,v 1.6 2001/07/03 10:14:06 jstrachan Exp $
+ * $Id: NameTestStep.java,v 1.7 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
@@ -19,6 +19,9 @@ import org.dom4j.Namespace;
 import org.dom4j.Node;
 import org.dom4j.QName;
 import org.dom4j.rule.Pattern;
+import org.dom4j.xpath.impl.Context;
+
+import org.saxpath.Axis;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -34,7 +37,7 @@ public class NameTestStep extends UnAbbrStep {
     
     
     public NameTestStep( 
-        String axis, 
+        Axis axis, 
         String namespacePrefix, 
         String localName 
     ) {
@@ -293,5 +296,5 @@ public class NameTestStep extends UnAbbrStep {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameTestStep.java,v 1.6 2001/07/03 10:14:06 jstrachan Exp $
+ * $Id: NameTestStep.java,v 1.7 2001/07/16 08:36:13 jstrachan Exp $
  */

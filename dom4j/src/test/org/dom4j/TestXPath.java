@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.14 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.15 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,28 +18,39 @@ import junit.textui.TestRunner;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class TestXPath extends AbstractTestCase {
 
-    protected static boolean VERBOSE = false;
+    protected static boolean VERBOSE = true;
     
     protected static String[] paths = {
+        ".",
+        "*",
+        "/",
+        "/.",
+        "/*",
+        "/node()",
+        "/child::node()",
+        "/self::node()",
         "root",
+        "/root",
+        "/root/author",
         "text()",
         "//author",
-        "//author[@location='UK']",
         "//author/text()",
-        "//*[.='James Strachan']",
         "//@location",
         "//attribute::*",
         "//namespace::*",
         "normalize-space(/root)",
+        "//author[@location]",
+        "//author[@location='UK']",
+        "root|author",
+        "//*[.='James Strachan']",
+        "//root/author[1]",
         "normalize-space(/root/author)",
         "normalize-space(' a  b  c  d ')",
-        "root|author",
         "//root|//author[1]|//author[2]",
-        "//root/author[1]",
         "//root/author[2]",
         "//root/author[3]"
     };
@@ -69,11 +80,12 @@ public class TestXPath extends AbstractTestCase {
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void testXPath(String xpathExpression) {
+        log( "Searched path: " + xpathExpression );
+        
         XPath xpath = DocumentHelper.createXPath(xpathExpression);
         
         List list = xpath.selectNodes( document );
         
-        log( "Searched path: " + xpathExpression );
         log( "Found        : " + list.size() + " result(s)" );
         
         if ( VERBOSE ) {
@@ -152,5 +164,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.14 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.15 2001/07/16 08:36:13 jstrachan Exp $
  */

@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ParentStep.java,v 1.4 2001/05/23 16:40:24 jstrachan Exp $
+ * $Id: ParentStep.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
  */
 package org.dom4j.xpath.impl;
 
 import org.dom4j.Document;
 import org.dom4j.Node;
 import org.dom4j.Element;
+import org.dom4j.xpath.impl.Context;
 
 import java.util.Set;
 import java.util.HashSet;
@@ -105,5 +106,5 @@ public class ParentStep extends AbbrStep {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ParentStep.java,v 1.4 2001/05/23 16:40:24 jstrachan Exp $
+ * $Id: ParentStep.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
  */

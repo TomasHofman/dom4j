@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BinaryExpr.java,v 1.4 2001/04/05 12:04:31 jstrachan Exp $
+ * $Id: BinaryExpr.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
@@ -15,6 +15,7 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.xpath.ContextSupport;
 import org.dom4j.xpath.function.BooleanFunction;
+import org.dom4j.xpath.impl.Context;
 
 
 import java.util.List;
@@ -22,16 +23,28 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
 
-public class BinaryExpr extends Expr {
+public class BinaryExpr extends Expr implements org.jaxpath.expr.BinaryExpr {
     
     private Op    _op   = null;
     private Expr  _lhs  = null;
     private Expr  _rhs  = null;
     
+    public BinaryExpr(Op op, org.jaxpath.expr.Expr lhs, org.jaxpath.expr.Expr rhs) {
+        this( op, (Expr) lhs, (Expr) rhs );
+    }
+    
     public BinaryExpr(Op op, Expr lhs, Expr rhs) {
         _op  = op;
         _lhs = lhs;
         _rhs = rhs;
+    }
+    
+    public org.jaxpath.expr.Expr getLHS() {
+        return _lhs;
+    }
+    
+    public org.jaxpath.expr.Expr getRHS() {
+        return _rhs;
     }
     
     public Object evaluate(Context context) {
@@ -179,5 +192,5 @@ public class BinaryExpr extends Expr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BinaryExpr.java,v 1.4 2001/04/05 12:04:31 jstrachan Exp $
+ * $Id: BinaryExpr.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
  */

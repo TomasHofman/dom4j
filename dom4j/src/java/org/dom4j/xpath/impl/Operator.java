@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Operator.java,v 1.6 2001/04/05 17:32:44 jstrachan Exp $
+ * $Id: Operator.java,v 1.7 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
@@ -13,6 +13,8 @@ package org.dom4j.xpath.impl;
 import org.dom4j.Attribute;
 import org.dom4j.Element;
 import org.dom4j.Node;
+
+import org.dom4j.xpath.impl.Context;
 
 import java.util.List;
 
@@ -168,5 +170,5 @@ class Operator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Operator.java,v 1.6 2001/04/05 17:32:44 jstrachan Exp $
+ * $Id: Operator.java,v 1.7 2001/07/16 08:36:13 jstrachan Exp $
  */

@@ -4,13 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VariableExpr.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: VariableExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
 
-public class VariableExpr extends Expr {
+import org.dom4j.xpath.impl.Context;
+
+public class VariableExpr extends Expr implements org.jaxpath.expr.VariableReferenceExpr {
     
     private String _name = null;
     
@@ -68,5 +70,5 @@ public class VariableExpr extends Expr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VariableExpr.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: VariableExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */

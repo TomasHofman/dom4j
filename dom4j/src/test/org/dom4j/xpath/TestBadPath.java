@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBadPath.java,v 1.2 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: TestBadPath.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,13 +25,13 @@ import org.dom4j.XPath;
 /** Tests bad XPath expressions
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestBadPath extends AbstractTestCase {
 
     String[] paths = {
         "+",
-        "/foo/bar/"
+//        "/foo/bar/"
     };
     
     public static void main( String[] args ) {
@@ -120,5 +120,5 @@ public class TestBadPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBadPath.java,v 1.2 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: TestBadPath.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */

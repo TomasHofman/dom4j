@@ -4,11 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: OpNodeSetNodeSet.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: OpNodeSetNodeSet.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
+
+import org.dom4j.xpath.impl.Context;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -109,5 +111,5 @@ class OpNodeSetNodeSet extends Operator
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OpNodeSetNodeSet.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: OpNodeSetNodeSet.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */

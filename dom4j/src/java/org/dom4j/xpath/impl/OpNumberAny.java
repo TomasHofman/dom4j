@@ -4,11 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: OpNumberAny.java,v 1.4 2001/04/05 17:32:44 jstrachan Exp $
+ * $Id: OpNumberAny.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
+
+import org.dom4j.xpath.impl.Context;
 
 class OpNumberAny extends Operator {
     
@@ -98,5 +100,5 @@ class OpNumberAny extends Operator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OpNumberAny.java,v 1.4 2001/04/05 17:32:44 jstrachan Exp $
+ * $Id: OpNumberAny.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
  */

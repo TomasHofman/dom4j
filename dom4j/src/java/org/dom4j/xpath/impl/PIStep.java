@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PIStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: PIStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
 
 
@@ -12,6 +12,9 @@ package org.dom4j.xpath.impl;
 
 import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
+import org.dom4j.xpath.impl.Context;
+
+import org.saxpath.Axis;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -22,12 +25,12 @@ public class PIStep extends NodeTypeStep {
     
     private String _target;
     
-    public PIStep(String axis, String target) {
-        super(axis, null);
+    public PIStep(Axis axis, String target) {
+        super( Node.PROCESSING_INSTRUCTION_NODE, axis );
         _target = target;
     }
     
-    protected boolean matches(Object node) {        
+    public boolean matches(Object node) {        
         if ( node instanceof ProcessingInstruction ) {
             if ( _target == null ) {
                 return true;
@@ -115,5 +118,5 @@ public class PIStep extends NodeTypeStep {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PIStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: PIStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
  */
