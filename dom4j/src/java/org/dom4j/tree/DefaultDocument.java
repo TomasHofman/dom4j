@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.9 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -28,7 +28,7 @@ import org.dom4j.XPathHelper;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -183,13 +183,11 @@ public class DefaultDocument extends AbstractDocument {
         return false;
     }
     
-    public List getContent() {
-        List backingList = getContentList();
-        return new BackedList(this, backingList, backingList);
-    }
-    
     public void setContent(List contents) {
         this.contents = contents;
+        if ( contents instanceof ContentListFacade ) {
+            this.contents = ((ContentListFacade) contents).getBackingList();
+        }
     }
     
     public void clearContent() {
@@ -327,5 +325,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.9 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
  */

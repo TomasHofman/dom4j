@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.9 2001/01/18 17:54:51 jstrachan Exp $
+ * $Id: Branch.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public interface Branch extends Node {
 
@@ -41,10 +41,11 @@ public interface Branch extends Node {
       */    
     public int getNodeCount();
     
-    /** <p>Returns the content nodes of this branch as a <code>List</code>. 
+    /** <p>Returns the content nodes of this branch as a backed {@link List}
+      * so that the content of this branch may be modified directly using
+      * the {@link List} interface.
       * The <code>List</code> is backed by the <code>Branch</code> so that
-      * changes to the list are reflected in the branch though the reverse 
-      * is not true.</p>
+      * changes to the list are reflected in the branch and vice versa.</p>
       *
       * @return the nodes that this branch contains as a <code>List</code>
       */    
@@ -234,5 +235,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.9 2001/01/18 17:54:51 jstrachan Exp $
+ * $Id: Branch.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
  */
