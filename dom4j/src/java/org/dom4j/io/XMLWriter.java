@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.19 2001/05/11 08:26:34 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.20 2001/05/11 12:58:55 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -28,6 +28,7 @@ import java.util.StringTokenizer;
    
 import org.dom4j.Attribute;
 import org.dom4j.CDATA;
+import org.dom4j.CharacterData;
 import org.dom4j.Comment;
 import org.dom4j.DocumentType;
 import org.dom4j.Document;
@@ -66,7 +67,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -225,12 +226,20 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
         }
 
         // Print out additional namespace declarations
-        List additionalNamespaces = element.additionalNamespaces();
-        if (additionalNamespaces != null) {
-            for (int i=0; i<additionalNamespaces.size(); i++) {
-                Namespace additional = (Namespace)additionalNamespaces.get(i);
+        boolean textOnly = true;
+        for ( int i = 0; i < size; i++ ) {
+            Node node = element.node(i);
+            if ( node instanceof Namespace ) {
+                Namespace additional = (Namespace) node;
                 namespaces.push(additional);
                 write(additional);
+            }
+            else {             
+                if ( textOnly ) {
+                    if ( ! ( node instanceof CharacterData) ) {
+                        textOnly = false;
+                    }
+                }
             }
         }
 
@@ -242,7 +251,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             writeEmptyElementClose(element);
         }
         else {
-            if ( element.isTextOnly() ) {
+            if ( textOnly ) {
                 String text = format.isTrimText() ? element.getTextTrim() : element.getText();
                 if (text == null || text.length() <= 0 ) {
                     writeEmptyElementClose(element);
@@ -995,5 +1004,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.19 2001/05/11 08:26:34 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.20 2001/05/11 12:58:55 jstrachan Exp $
  */
