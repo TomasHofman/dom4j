@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBoolean.java,v 1.3 2001/01/26 16:53:14 jstrachan Exp $
+ * $Id: TestBoolean.java,v 1.4 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -16,14 +16,14 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
 import org.dom4j.XPath;
-import org.dom4j.XPathHelper;
 
 /** Test harness for the boolean expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestBoolean extends AbstractTestCase {
 
@@ -65,7 +65,7 @@ public class TestBoolean extends AbstractTestCase {
     }
     
     protected void testXPath(String xpathExpression) {
-        XPath xpath = XPathHelper.createXPath( xpathExpression );
+        XPath xpath = DocumentHelper.createXPath( xpathExpression );
         assert( "No xpath object was created", xpath != null );
         
         log( "Evaluating xpath: " + xpath );
@@ -133,5 +133,5 @@ public class TestBoolean extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBoolean.java,v 1.3 2001/01/26 16:53:14 jstrachan Exp $
+ * $Id: TestBoolean.java,v 1.4 2001/02/19 12:05:47 jstrachan Exp $
  */

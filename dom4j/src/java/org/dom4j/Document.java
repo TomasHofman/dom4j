@@ -4,17 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Document.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Document.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import org.dom4j.XPathEngine;
-
 /** <p><code>Document</code> defines an XML Document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public interface Document extends Branch {
 
@@ -35,9 +33,6 @@ public interface Document extends Branch {
     
     public void setDocType(String name, String publicId, String systemId);    
     public DocumentType createDocType(String name, String publicId, String systemId);
-    
-    public XPathEngine getXPathEngine();
-    public void setXPathEngine(XPathEngine xpathEngine);
 
 }
 
@@ -89,5 +84,5 @@ public interface Document extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Document.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Document.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
  */

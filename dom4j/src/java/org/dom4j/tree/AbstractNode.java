@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.11 2001/02/06 16:31:04 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.12 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -15,21 +15,24 @@ import java.io.StringWriter;
 import java.util.List;
 
 import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.Visitor;
 import org.dom4j.XPath;
-import org.dom4j.XPathEngine;
-import org.dom4j.XPathHelper;
 
 /** <p><code>AbstractNode</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
+    /** The <code>DocumentFactory</code> instance used by default */
+    private static final DocumentFactory DOCUMENT_FACTORY = DocumentFactory.getInstance();
+    
+
     public AbstractNode() {
     }
 
@@ -144,26 +147,19 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
     }
     
     public XPath createXPath(String xpathExpression) {
-        return getXPathEngine().createXPath(xpathExpression);
+        return getDocumentFactory().createXPath(xpathExpression);
     }
     
-    public XPathEngine getXPathEngine() {
-        XPathEngine answer = null;
-        Document document = getDocument();
-        if ( document != null ) {
-            answer = document.getXPathEngine();
-        }
-        if ( answer == null ) {
-            answer = XPathHelper.getInstance();
-        }
-        return answer;
-    }
     
     public Node asXPathNode(Element parent) {
         if (supportsParent()) {
             return this;
         }
         return createXPathNode(parent);
+    }
+    
+    protected DocumentFactory getDocumentFactory() {
+        return DOCUMENT_FACTORY;
     }
     
     protected Node createXPathNode(Element parent) {
@@ -217,5 +213,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.11 2001/02/06 16:31:04 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.12 2001/02/19 12:05:47 jstrachan Exp $
  */

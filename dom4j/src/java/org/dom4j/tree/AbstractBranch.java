@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.20 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.21 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,6 @@ import org.dom4j.Branch;
 import org.dom4j.CDATA;
 import org.dom4j.CharacterData;
 import org.dom4j.Comment;
-import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.IllegalAddException;
@@ -38,15 +37,12 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
     /** The XML writer used by default */
     protected static final XMLWriter writer = new XMLWriter( "  ", false );
-
-    /** The <code>DocumentFactory</code> instance used by default */
-    private static final DocumentFactory CONTENT_FACTORY = DocumentFactory.getInstance();
 
     
     public AbstractBranch() { 
@@ -296,10 +292,6 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
         throw new IllegalAddException( "Invalid node type. Cannot add node: " + node + " to this branch: " + this );
     }
     
-    /** Allows derived classes to override the factory behaviour */
-    protected DocumentFactory getDocumentFactory() {
-        return CONTENT_FACTORY;
-    }
 
 }
 
@@ -348,5 +340,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.20 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.21 2001/02/19 12:05:47 jstrachan Exp $
  */

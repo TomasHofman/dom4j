@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSortBy.java,v 1.1 2001/02/06 16:31:04 jstrachan Exp $
+ * $Id: TestSortBy.java,v 1.2 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -17,17 +17,17 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Namespace;
 import org.dom4j.Node;
 import org.dom4j.XPath;
-import org.dom4j.XPathHelper;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 /** Test harness for the sorting version of the selectNodes() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestSortBy extends AbstractTestCase {
 
@@ -120,5 +120,5 @@ public class TestSortBy extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSortBy.java,v 1.1 2001/02/06 16:31:04 jstrachan Exp $
+ * $Id: TestSortBy.java,v 1.2 2001/02/19 12:05:47 jstrachan Exp $
  */

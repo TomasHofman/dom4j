@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValueOf.java,v 1.2 2001/01/29 23:53:32 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -17,15 +17,15 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Namespace;
 import org.dom4j.XPath;
-import org.dom4j.XPathHelper;
 import org.dom4j.io.SAXReader;
 
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestValueOf extends AbstractTestCase {
 
@@ -118,5 +118,5 @@ public class TestValueOf extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValueOf.java,v 1.2 2001/01/29 23:53:32 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */

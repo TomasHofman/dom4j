@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAttribute.java,v 1.2 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: TestAttribute.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -18,14 +18,14 @@ import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Attribute;
+import org.dom4j.DocumentHelper;
 import org.dom4j.XPath;
-import org.dom4j.XPathHelper;
 import org.dom4j.io.SAXReader;
 
 /** Test harness for the attribute axis 
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestAttribute extends AbstractTestCase {
 
@@ -63,7 +63,7 @@ public class TestAttribute extends AbstractTestCase {
     }
     
     protected void testXPath(String xpathText) {
-        XPath xpath = XPathHelper.createXPath(xpathText);
+        XPath xpath = DocumentHelper.createXPath(xpathText);
         List list = xpath.selectNodes( document );
         
         log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
@@ -134,5 +134,5 @@ public class TestAttribute extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAttribute.java,v 1.2 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: TestAttribute.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathGrep.java,v 1.4 2001/02/06 17:24:48 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 
@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
   * command on Unix but uses XPath expressions for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class XPathGrep extends AbstractDemo {
     
@@ -61,7 +61,7 @@ public class XPathGrep extends AbstractDemo {
     }
 
     public void setXPath(String xpathExpression) {
-        xpath = XPathHelper.createXPath( xpathExpression );
+        xpath = DocumentHelper.createXPath( xpathExpression );
     }
     
     protected void processFile(String fileName) throws Exception {
@@ -162,5 +162,5 @@ public class XPathGrep extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathGrep.java,v 1.4 2001/02/06 17:24:48 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
  */

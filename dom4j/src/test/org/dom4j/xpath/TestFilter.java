@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestFilter.java,v 1.2 2001/01/11 14:01:52 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -16,15 +16,15 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
-import org.dom4j.XPath;
 import org.dom4j.NodeFilter;
-import org.dom4j.XPathHelper;
+import org.dom4j.XPath;
 
 /** Test harness for XPath filters
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestFilter extends AbstractTestCase {
 
@@ -62,7 +62,7 @@ public class TestFilter extends AbstractTestCase {
     }
     
     protected void testXPath(String xpathExpression) {
-        NodeFilter nodeFilter = XPathHelper.createXPathFilter( xpathExpression );
+        NodeFilter nodeFilter = DocumentHelper.createXPathFilter( xpathExpression );
         assert( "No NodeFilter object was created", nodeFilter != null );
         
         if ( VERBOSE ) {
@@ -131,5 +131,5 @@ public class TestFilter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestFilter.java,v 1.2 2001/01/11 14:01:52 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */

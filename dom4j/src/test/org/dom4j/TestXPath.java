@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.12 2001/02/06 13:05:42 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.13 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class TestXPath extends AbstractTestCase {
 
@@ -69,7 +69,7 @@ public class TestXPath extends AbstractTestCase {
     }
     
     protected void testXPath(String xpathExpression) {
-        XPath xpath = XPathHelper.createXPath(xpathExpression);
+        XPath xpath = DocumentHelper.createXPath(xpathExpression);
         
         List list = xpath.selectNodes( document );
         
@@ -152,5 +152,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.12 2001/02/06 13:05:42 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.13 2001/02/19 12:05:47 jstrachan Exp $
  */

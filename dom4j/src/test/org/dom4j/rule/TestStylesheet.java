@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestStylesheet.java,v 1.2 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: TestStylesheet.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -22,7 +22,7 @@ import org.dom4j.*;
   * XSLT rule engine.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestStylesheet extends AbstractTestCase {
 
@@ -90,7 +90,7 @@ public class TestStylesheet extends AbstractTestCase {
     protected void addTemplate( final String match ) {
         log( "Adding template match: " + match );
         
-        Pattern pattern = XPathHelper.createPattern( match );
+        Pattern pattern = DocumentHelper.createPattern( match );
         
         log( "Pattern: " + pattern );
         log( "........................................" );
@@ -156,5 +156,5 @@ public class TestStylesheet extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestStylesheet.java,v 1.2 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: TestStylesheet.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the use of Namespaces.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -29,7 +29,7 @@ public class TestNamespace extends AbstractTestCase {
     protected static String INPUT_XML_FILE = "xml/namespaces.xml";
     
     /** Namespace to use in tests */
-    protected static Namespace XSL_NAMESPACE = DocumentFactory.newNamespace( 
+    protected static Namespace XSL_NAMESPACE = Namespace.get( 
         "xsl", "http://www.w3.org/1999/XSL/Transform" 
     );
     
@@ -156,5 +156,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
  */

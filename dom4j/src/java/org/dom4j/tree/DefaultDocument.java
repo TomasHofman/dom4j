@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.11 2001/02/19 12:05:47 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,14 +21,12 @@ import org.dom4j.Element;
 import org.dom4j.IllegalAddException;
 import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
-import org.dom4j.XPathEngine;
-import org.dom4j.XPathHelper;
 
 /** <p><code>DefaultDocument</code> is the default DOM4J default implementation
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -46,9 +44,6 @@ public class DefaultDocument extends AbstractDocument {
     
     /** The document type for this document */
     private DocumentType docType;
-    
-    /** The engine used to evaluate XPath expressions for this document */
-    private XPathEngine xpathEngine;
     
     
     public DefaultDocument() { 
@@ -101,18 +96,6 @@ public class DefaultDocument extends AbstractDocument {
     public DocumentType createDocType(String name, String publicId, String systemId) {
         return new DefaultDocumentType( name, publicId, systemId );
     }
-    
-    public XPathEngine getXPathEngine() {
-        if ( xpathEngine == null ) {
-            xpathEngine = XPathHelper.getInstance();
-        }
-        return xpathEngine;
-    }
-    
-    public void setXPathEngine(XPathEngine xpathEngine) {
-        this.xpathEngine = xpathEngine;
-    }
-    
     
     public List getProcessingInstructions() {
         List source = contents;
@@ -325,5 +308,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.11 2001/02/19 12:05:47 jstrachan Exp $
  */
