@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.17 2001/05/03 17:18:29 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.18 2001/05/15 08:36:39 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -40,10 +40,13 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
+    /** Should standard entities be passed through? */
+    private static final boolean SHOW_STANDARD_ENTITIES = false;
+    
     /** The factory used to create new <code>Document</code> instances */
     private DocumentFactory documentFactory;
 
@@ -224,9 +227,11 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
 
     public void startEntity(String name) throws SAXException {
         // Ignore DTD references
-        if (! insideDTDSection && ! getIgnoreEntityNames().contains(name)) {
-            Element element = elementStack.peekElement();
-            entity = element.addEntity(name);
+        if (! insideDTDSection ) {
+            if ( SHOW_STANDARD_ENTITIES || ! getIgnoreEntityNames().contains(name)) {
+                Element element = elementStack.peekElement();
+                entity = element.addEntity(name);
+            }
         }
     }
 
@@ -368,5 +373,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.17 2001/05/03 17:18:29 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.18 2001/05/15 08:36:39 jstrachan Exp $
  */

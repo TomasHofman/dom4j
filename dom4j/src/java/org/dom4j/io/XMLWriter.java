@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.21 2001/05/11 14:01:34 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.22 2001/05/15 08:36:39 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -67,7 +67,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @version $Revision: 1.22 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -241,7 +241,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             }
             else {             
                 if ( textOnly ) {
-                    if ( ! ( node instanceof CharacterData) ) {
+                    if ( ! ( node instanceof Text) ) {
                         textOnly = false;
                     }
                 }
@@ -299,7 +299,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
       * @param cdata <code>CDATA</code> to output.
       */
     public void write(CDATA cdata) throws IOException {
-        writer.write(cdata.asXML());
+        cdata.write(writer);
         lastOutputNodeType = Node.CDATA_SECTION_NODE;
     }
     
@@ -314,7 +314,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             }
             indent();
         }
-        writer.write(comment.asXML());
+        comment.write(writer);
         writePrintln();
 
         lastOutputNodeType = Node.COMMENT_NODE;
@@ -357,7 +357,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
       * @param entity <code>Entity</code> to output.
       */
     public void write(Entity entity) throws IOException {
-        writer.write(entity.asXML());
+        entity.write(writer);
         lastOutputNodeType = Node.ENTITY_REFERENCE_NODE;
     }
     
@@ -388,7 +388,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
       */
     public void write(ProcessingInstruction processingInstruction) throws IOException {
         //indent();
-        writer.write(processingInstruction.asXML());
+        processingInstruction.write(writer);
         writePrintln();
         lastOutputNodeType = Node.PROCESSING_INSTRUCTION_NODE;
     }
@@ -427,8 +427,8 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             else {                    
                 writer.write(text);
             }
-*/
             text = escapeElementEntities(text);
+*/
             if (trimText) {
                 StringTokenizer tokenizer = new StringTokenizer(text);
                 while (tokenizer.hasMoreTokens()) {
@@ -1102,5 +1102,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.21 2001/05/11 14:01:34 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.22 2001/05/15 08:36:39 jstrachan Exp $
  */
