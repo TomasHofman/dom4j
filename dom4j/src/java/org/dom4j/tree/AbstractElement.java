@@ -27,7 +27,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -345,6 +345,16 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     
     
     // Helper methods
+    
+    public String getAttributeValue(String name, String defaultValue) {
+        String answer = getAttributeValue(name);
+        return (answer != null) ? answer : defaultValue;
+    }
+
+    public String getAttributeValue(String name, Namespace namespace, String defaultValue) {
+        String answer = getAttributeValue(name, namespace);
+        return (answer != null) ? answer : defaultValue;
+    }
     
     public String getElementText(String name) {
         Element element = getElement(name);
