@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Rule.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: Rule.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -15,7 +15,7 @@ import org.dom4j.Node;
   * can be performed such as in the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class Rule implements Comparable {
 
@@ -40,6 +40,18 @@ public class Rule implements Comparable {
     public Rule() {
     }
 
+    /** Constructs a new Rule with the same instance data
+      * as the given rule but a different pattern.
+      */
+    public Rule(Rule that, Pattern pattern) {
+        this.mode = that.mode;
+        this.importPrecedence = that.importPrecedence;
+        this.priority = that.priority;
+        this.appearenceCount = that.appearenceCount;
+        this.action = that.action;
+        this.pattern = pattern;
+    }
+
     public int compareTo(Object that) {
         if ( that instanceof Rule ) {
             return compareTo((Rule) that);
@@ -47,10 +59,10 @@ public class Rule implements Comparable {
         return getClass().getName().compareTo( that.getClass().getName() );
     }
     
-    public final short getMatchType() {
-        return pattern.getMatchType();
-    }
     
+    /** @return true if the pattern matches the given 
+      * DOM4J node.
+      */
     public final boolean matches( Node node ) {
         return pattern.matches( node );
     }
@@ -68,6 +80,53 @@ public class Rule implements Comparable {
         }
         return answer;
     }
+    
+    
+    /** If this rule contains a union pattern then this
+      * method should return an array of Rules which
+      * describe the union rule, which should contain more than one rule.
+      * Otherwise this method should return null.
+      *
+      * @return an array of the rules which make up this union rule
+      * or null if this rule is not a union rule
+      */
+    public Rule[] getUnionRules() {
+        Pattern[] patterns = pattern.getUnionPatterns();
+        if ( patterns == null ) {
+            return null;
+        }
+        int size = patterns.length;
+        Rule[] answer = new Rule[ size ];
+        for ( int i = 0; i < size; i++ ) {
+            answer[i] = new Rule( this, patterns[i] );
+        }
+        return answer;
+    }
+
+    
+    /** @return the type of node the pattern matches
+      * which by default should return ANY_NODE if it can
+      * match any kind of node.
+      */
+    public final short getMatchType() {
+        return pattern.getMatchType();
+    }
+
+
+    /** For patterns which only match an ATTRIBUTE_NODE or an 
+      * ELEMENT_NODE then this pattern may return the name of the
+      * element or attribute it matches. This allows a more efficient
+      * rule matching algorithm to be performed, rather than a brute 
+      * force approach of evaluating every pattern for a given Node.
+      *
+      * @return the name of the element or attribute this pattern matches
+      * or null if this pattern matches any or more than one name.
+      */
+    public final String getMatchesNodeName() {
+        return pattern.getMatchesNodeName();
+    }
+    
+    
     
     
     
@@ -202,5 +261,5 @@ public class Rule implements Comparable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Rule.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: Rule.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Pattern.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: Pattern.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -16,21 +16,10 @@ import org.dom4j.Node;
   * the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public interface Pattern {
 
-    /** @return true if the pattern matches the given 
-      * DOM4J node.
-      */
-    public boolean matches( Node node );
-    
-    /** @return the type of node the pattern matches
-      * which by default should return MATCHES_ANY
-      */
-    public short getMatchType();
-
-    
     // These node numbers are compatable with DOM4J's Node types
 
     /** Matches any node */
@@ -41,6 +30,49 @@ public interface Pattern {
     
     /** Count of the number of node types */
     public static final short NUMBER_OF_TYPES = Node.UNKNOWN_NODE;
+    
+    
+    /** @return true if the pattern matches the given 
+      * DOM4J node.
+      */
+    public boolean matches( Node node );
+    
+    /** Returns the default resolution policy of the pattern according to the
+      * <a href="http://www.w3.org/TR/xslt11/#conflict">
+      * XSLT conflict resolution spec</a>. 
+      * 
+      */
+    public double getPriority();
+    
+    /** If this pattern is a union pattern then this
+      * method should return an array of patterns which
+      * describe the union pattern, which should contain more than one pattern.
+      * Otherwise this method should return null.
+      *
+      * @return an array of the patterns which make up this union pattern
+      * or null if this pattern is not a union pattern
+      */
+    public Pattern[] getUnionPatterns();
+
+    
+    /** @return the type of node the pattern matches
+      * which by default should return ANY_NODE if it can
+      * match any kind of node.
+      */
+    public short getMatchType();
+
+
+    /** For patterns which only match an ATTRIBUTE_NODE or an 
+      * ELEMENT_NODE then this pattern may return the name of the
+      * element or attribute it matches. This allows a more efficient
+      * rule matching algorithm to be performed, rather than a brute 
+      * force approach of evaluating every pattern for a given Node.
+      *
+      * @return the name of the element or attribute this pattern matches
+      * or null if this pattern matches any or more than one name.
+      */
+    public String getMatchesNodeName();
+    
     
 }
 
@@ -89,5 +121,5 @@ public interface Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Pattern.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: Pattern.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RuleManager.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: RuleManager.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -18,33 +18,39 @@ import org.dom4j.Node;
   * can be found for a given DOM4J Node using the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class RuleManager {
 
-    /** Map of SortedSets of Rules indexed by mode */
-    private HashMap modeToRuleSets = new HashMap();
+    /** Map of RuleSetManagers indexed by mode */
+    private HashMap ruleSetManagers = new HashMap();
     
     public RuleManager() {
     }
 
     public void addRule(Rule rule) {
-        int matchType = rule.getMatchType();
-        RuleSet[] ruleSets = getRuleSets( rule.getMode() );
-        
-        getRuleSet( ruleSets, matchType ).addRule( rule );
-        if ( matchType != Pattern.ANY_NODE ) {
-            getRuleSet( ruleSets, Pattern.ANY_NODE ).addRule( rule );
+        RuleSetManager ruleSetManager = getRuleSetManager( rule.getMode() );
+        Rule[] childRules = rule.getUnionRules();
+        if ( childRules != null ) {
+            for ( int i = 0, size = childRules.length; i < size; i++ ) {
+                ruleSetManager.addRule( childRules[i] );
+            }
+        }
+        else {
+            ruleSetManager.addRule( rule );
         }
     }
     
     public void removeRule(Rule rule) {
-        int matchType = rule.getMatchType();
-        RuleSet[] ruleSets = getRuleSets( rule.getMode() );
-        
-        getRuleSet( ruleSets, matchType ).removeRule( rule );
-        if ( matchType != Pattern.ANY_NODE ) {
-            getRuleSet( ruleSets, Pattern.ANY_NODE ).removeRule( rule );
+        RuleSetManager ruleSetManager = getRuleSetManager( rule.getMode() );
+        Rule[] childRules = rule.getUnionRules();
+        if ( childRules != null ) {
+            for ( int i = 0, size = childRules.length; i < size; i++ ) {
+                ruleSetManager.removeRule( childRules[i] );
+            }
+        }
+        else {
+            ruleSetManager.removeRule( rule );
         }
     }
 
@@ -56,41 +62,27 @@ public class RuleManager {
       * @return the matching Rule or no rule if none matched
       */
     public Rule getMatchingRule(String mode, Node node) {
-        RuleSet[] ruleSets = getRuleSets( mode );
-        int matchType = node.getNodeType();
-        if ( matchType < 0 || matchType >= ruleSets.length ) {
-            matchType = Pattern.ANY_NODE;
+        RuleSetManager ruleSetManager = (RuleSetManager) ruleSetManagers.get(mode);
+        if ( ruleSetManager != null ) {
+            return ruleSetManager.getMatchingRule( node );
         }
-        RuleSet ruleSet = ruleSets[ matchType ];
-        return ruleSet.getMatchingRule( node );
+        return null;
     }
     
     public void clear() {
-        modeToRuleSets.clear();
+        ruleSetManagers.clear();
     }
     
     
-    protected RuleSet[] getRuleSets( String mode ) {
-        RuleSet[] ruleSets = (RuleSet[]) modeToRuleSets.get(mode);
-        if ( ruleSets == null ) {
-            ruleSets = new RuleSet[ Pattern.NUMBER_OF_TYPES ];
-            modeToRuleSets.put(mode, ruleSets);
+    protected RuleSetManager getRuleSetManager( String mode ) {
+        RuleSetManager ruleSetManager = (RuleSetManager) ruleSetManagers.get(mode);
+        if ( ruleSetManager == null ) {
+            ruleSetManager = new RuleSetManager();
+            ruleSetManagers.put(mode, ruleSetManager);
         }
-        return ruleSets;
+        return ruleSetManager;
     }
     
-    protected RuleSet getRuleSet( RuleSet[] ruleSets, int matchType ) {
-        if ( matchType >= Pattern.NUMBER_OF_TYPES ) {
-            matchType = Pattern.ANY_NODE;
-        }
-        RuleSet ruleSet = ruleSets[ matchType ];
-        if ( ruleSet == null ) {
-            ruleSet = new RuleSet();
-            ruleSets[ matchType ] = ruleSet;
-        }
-        return ruleSet;
-    }
-
 }
 
 
@@ -138,5 +130,5 @@ public class RuleManager {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RuleManager.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: RuleManager.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */

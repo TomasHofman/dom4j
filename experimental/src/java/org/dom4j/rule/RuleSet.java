@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RuleSet.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: RuleSet.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -13,13 +13,14 @@ import java.util.TreeSet;
 
 import org.dom4j.Node;
 
-/** <p><code>RuleSet</code> manages a set of rules for a given mode
-  * and kind of Node to match against such that a Rule can be found for a given 
-  * DOM4J Node using the XSLT processing model by sorting the rules in
-  * the XSLT defined precedence order.</p>
+/** <p><code>RuleSet</code> manages a set of rules which are sorted
+  * in order of relevance according to the XSLT defined conflict
+  * resolution policy. This makes finding the correct rule for 
+  * a DOM4J Node using the XSLT processing model efficient as the
+  * rules can be evaluated in order of priority.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class RuleSet {
 
@@ -120,5 +121,5 @@ public class RuleSet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RuleSet.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: RuleSet.java,v 1.2 2001/02/02 11:15:54 jstrachan Exp $
  */
