@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.49 2001/07/12 11:33:30 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.50 2001/07/12 16:42:48 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.49 $
+  * @version $Revision: 1.50 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -54,8 +54,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     protected static final List EMPTY_LIST = Collections.EMPTY_LIST;
     protected static final Iterator EMPTY_ITERATOR = EMPTY_LIST.iterator();
     
-    
-    protected static final int DEFAULT_CONTENT_LIST_SIZE = 5;
     
     protected static final boolean VERBOSE_TOSTRING = false;
         
@@ -154,16 +152,30 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
     
     public String toString() {
-        if ( VERBOSE_TOSTRING ) {
-            return super.toString() + " [Element: <" + getQualifiedName() 
-                + " uri: " + getNamespaceURI()
-                + " attributes: " + attributeList()
-                + " content: " + contentList() + " />]";
+        String uri = getNamespaceURI();
+        if ( uri != null && uri.length() > 0 ) {
+            if ( VERBOSE_TOSTRING ) {
+                return super.toString() + " [Element: <" + getQualifiedName() 
+                    + " uri: " + uri
+                    + " attributes: " + attributeList()
+                    + " content: " + contentList() + " />]";
+            }
+            else {
+                return super.toString() + " [Element: <" + getQualifiedName() 
+                    + " uri: " + uri
+                    + " attributes: " + attributeList() + "/>]";
+            }
         }
         else {
-            return super.toString() + " [Element: <" + getQualifiedName() 
-                + " uri: " + getNamespaceURI()
-                + " attributes: " + attributeList() + "/>]";
+            if ( VERBOSE_TOSTRING ) {
+                return super.toString() + " [Element: <" + getQualifiedName() 
+                    + " attributes: " + attributeList()
+                    + " content: " + contentList() + " />]";
+            }
+            else {
+                return super.toString() + " [Element: <" + getQualifiedName() 
+                    + " attributes: " + attributeList() + "/>]";
+            }
         }
     }
     
@@ -1155,13 +1167,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
     
     /** A Factory Method pattern which creates 
-      * a List implementation used to store content
-      */
-    protected List createContentList() {
-        return new ArrayList( DEFAULT_CONTENT_LIST_SIZE );
-    }
-    
-    /** A Factory Method pattern which creates 
       * a List implementation used to store attributes
       */
     protected List createAttributeList() {
@@ -1174,33 +1179,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     protected List createAttributeList( int size ) {
         return new ArrayList( size );
     }
-    
-    /** A Factory Method pattern which creates 
-      * a BackedList implementation used to store results of 
-      * a filtered content query such as 
-      * {@link #processingInstructions} or
-      * {@link #elements} which changes are reflected in the content
-      */
-    protected BackedList createResultList() {
-        return new BackedList( this, contentList() );
-    }
-    
-    /** A Factory Method pattern which creates 
-      * a BackedList implementation which contains a single result
-      */
-    protected List createSingleResultList( Object result ) {
-        BackedList list = new BackedList( this, contentList(), 1 );
-        list.addLocal( result );
-        return list;
-    }
-    
-    /** A Factory Method pattern which creates an empty
-      * a BackedList implementation
-      */
-    protected List createEmptyList() {
-        return new BackedList( this, contentList(), 0 );
-    }
-    
     
     protected Iterator createSingleIterator( Object result ) {
         return new SingleIterator( result );
@@ -1252,5 +1230,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.49 2001/07/12 11:33:30 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.50 2001/07/12 16:42:48 jstrachan Exp $
  */

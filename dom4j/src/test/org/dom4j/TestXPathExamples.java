@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.1 2001/07/03 10:14:06 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.2 2001/07/12 16:42:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestXPathExamples extends TestCase {
 
@@ -100,6 +100,10 @@ public class TestXPathExamples extends TestCase {
             Element test = (Element) iter.next();
             runTest( documentTest, context, test );
         }
+        for ( Iterator iter = context.elementIterator( "valueOf" ); iter.hasNext(); ) {
+            Element valueOf = (Element) iter.next();
+            testValueOf( documentTest, context, valueOf );
+        }
     }
         
     protected void runTest(Element documentTest, Element context, Element test) throws Exception {
@@ -138,6 +142,17 @@ public class TestXPathExamples extends TestCase {
         }
     }
         
+    protected void testValueOf(Element documentTest, Element context, Element valueOf) throws Exception {
+        String xpath = valueOf.attributeValue( "select" );
+        String description = "valueOf: " + xpath;
+        String expected = valueOf.getText();
+        String result = testContext.valueOf( xpath );            
+
+        log( description );
+        log( "\texpected: " + expected + " result: " + result );
+
+        assertEquals( description, expected, result );
+    }
 }
 
 
@@ -185,5 +200,5 @@ public class TestXPathExamples extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.1 2001/07/03 10:14:06 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.2 2001/07/12 16:42:48 jstrachan Exp $
  */

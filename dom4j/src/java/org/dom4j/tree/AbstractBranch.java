@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.33 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.34 2001/07/12 16:42:48 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -12,6 +12,7 @@ package org.dom4j.tree;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -39,13 +40,15 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.33 $
+  * @version $Revision: 1.34 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
     /** The output format used by default */
     protected static final OutputFormat outputFormat = new OutputFormat();
 
+    protected static final int DEFAULT_CONTENT_LIST_SIZE = 5;
+    
     
     public AbstractBranch() { 
     }
@@ -295,6 +298,48 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     /** @return the internal List used to manage the content */
     protected abstract List contentList();
+
+    /** A Factory Method pattern which creates 
+      * a List implementation used to store content
+      */
+    protected List createContentList() {
+        return new ArrayList( DEFAULT_CONTENT_LIST_SIZE );
+    }
+    
+    /** A Factory Method pattern which creates 
+      * a List implementation used to store content
+      */
+    protected List createContentList(int size) {
+        return new ArrayList( size );
+    }
+    
+    
+    /** A Factory Method pattern which creates 
+      * a BackedList implementation used to store results of 
+      * a filtered content query such as 
+      * {@link #processingInstructions} or
+      * {@link #elements} which changes are reflected in the content
+      */
+    protected BackedList createResultList() {
+        return new BackedList( this, contentList() );
+    }
+    
+    /** A Factory Method pattern which creates 
+      * a BackedList implementation which contains a single result
+      */
+    protected List createSingleResultList( Object result ) {
+        BackedList list = new BackedList( this, contentList(), 1 );
+        list.addLocal( result );
+        return list;
+    }
+    
+    /** A Factory Method pattern which creates an empty
+      * a BackedList implementation
+      */
+    protected List createEmptyList() {
+        return new BackedList( this, contentList(), 0 );
+    }
+    
     
     protected abstract void addNode(Node node);
     
@@ -312,7 +357,21 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
       * events to be fired.
       */
     protected abstract void childRemoved(Node node);
-    
+
+    /** Called when the given List content has been removed so
+      * each node should have its parent and document relationships
+      * cleared
+      */
+    protected void contentRemoved() {
+        List content = contentList();
+        for ( int i = 0, size = content.size(); i < size; i++ ) {
+            Object object = content.get(i);
+            if ( object instanceof Node ) {
+                 childRemoved( (Node) object );
+            }            
+        }
+    }
+
     /** Called when an invalid node has been added. 
       * Throws an {@link IllegalAddException}.
       */
@@ -368,5 +427,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.33 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.34 2001/07/12 16:42:48 jstrachan Exp $
  */
