@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.29 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.30 2001/08/28 06:43:18 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Map;
 
 import org.dom4j.rule.Pattern;
@@ -40,7 +41,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.29 $
+  * @version $Revision: 1.30 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -227,6 +228,12 @@ public class DocumentFactory implements Serializable {
     }
     
     
+    /** Returns a list of all the QName instances currently used by this document factory
+     */
+    public List getQNames() {
+        return cache.getQNames();
+    }
+    
     // Implementation methods
     
     /** <p><code>createSingleton</code> creates the singleton instance
@@ -314,5 +321,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.29 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.30 2001/08/28 06:43:18 jstrachan Exp $
  */

@@ -4,12 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QNameCache.java,v 1.5 2001/07/25 13:15:14 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.6 2001/08/28 06:43:18 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.dom4j.DocumentFactory;
@@ -20,7 +23,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class QNameCache {
 
@@ -45,6 +48,18 @@ public class QNameCache {
         this.documentFactory = documentFactory;
     }
 
+    /** Returns a list of all the QName instances currently used
+     */
+    public List getQNames() {
+        List answer = new ArrayList();
+        answer.addAll( noNamespaceCache.values() );
+        for ( Iterator iter = namespaceCache.values().iterator(); iter.hasNext(); ) {
+            Map map = (Map) iter.next();
+            answer.addAll( map.values() );
+        }
+        return answer;
+    }
+    
     /** @return the QName for the given name and no namepsace 
       */
     public QName get(String name) {
@@ -194,5 +209,5 @@ public class QNameCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.5 2001/07/25 13:15:14 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.6 2001/08/28 06:43:18 jstrachan Exp $
  */
