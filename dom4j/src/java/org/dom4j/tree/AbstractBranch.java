@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.29 2001/06/18 08:10:03 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.30 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,8 +38,8 @@ import org.xml.sax.Attributes;
 /** <p><code>AbstractBranch</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.29 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.30 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -148,13 +148,14 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
         }
     }
     
-    public void addComment(String comment) {
-        Comment node = getDocumentFactory().createComment( comment );
-        add( node );
-    }
-    
     public Element addElement(String name) {
         Element node = getDocumentFactory().createElement( name );
+        add( node );
+        return node;
+    }
+    
+    public Element addElement(String qualifiedName, String namespaceURI) {
+        Element node = getDocumentFactory().createElement( qualifiedName, namespaceURI );
         add( node );
         return node;
     }
@@ -176,19 +177,6 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
         QName qName = getDocumentFactory().createQName( name, namespace );
         return addElement( qName );
     }
-    
-    public ProcessingInstruction addProcessingInstruction(String target, String data) {
-        ProcessingInstruction node = getDocumentFactory().createProcessingInstruction( target, data );
-        add( node );
-        return node;
-    }
-    
-    public ProcessingInstruction addProcessingInstruction(String target, Map data) {
-        ProcessingInstruction node = getDocumentFactory().createProcessingInstruction( target, data );
-        add( node );
-        return node;
-    }
-    
     
     // polymorphic node methods    
 
@@ -360,5 +348,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.29 2001/06/18 08:10:03 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.30 2001/06/20 18:59:23 jstrachan Exp $
  */

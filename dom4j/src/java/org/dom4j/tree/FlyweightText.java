@@ -4,57 +4,42 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathCDATA.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: FlyweightText.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.Text;
+import org.dom4j.Visitor;
 
-/** <p><code>XPathCDATA</code> implements a doubly linked node which 
-  * supports the parent relationship and is mutable.
-  * It is useful when evalutating XPath expressions.</p>
+/** <p><code>FlyweightText</code> is a Flyweight pattern implementation
+  * of a singly linked, read-only XML Text.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * <p>This node could be shared across documents and elements though 
+  * it does not support the parent relationship.</p>
+  *
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public class XPathCDATA extends DefaultCDATA {
+public class FlyweightText extends AbstractText implements Text {
 
-    /** The parent of this node */
-    private Element parent;
+    /** Text of the <code>Text</code> node */
+    protected String text;
 
-    /** @param text is the CDATA text
+    /** @param text is the Text text
       */
-    public XPathCDATA(String text) {
-	super(text);
-    }
-
-    /** @param parent is the parent element
-      * @param text is the CDATA text
-      */
-    public XPathCDATA(Element parent, String text) {
-	super(text);
-        this.parent = parent;
-    }
-
-    public void setText(String text) {
+    public FlyweightText(String text) {
 	this.text = text;
     }
-    
-    public Element getParent() {
-        return parent;
-    }
 
-    public void setParent(Element parent) {
-        this.parent = parent;
+    public String getText() {
+	return text;
     }
     
-    public boolean supportsParent() {
-        return true;
-    }
-
-    public boolean isReadOnly() {
-        return false;
+    protected Node createXPathResult(Element parent) {
+        return new DefaultText( parent, getText() );
     }
 }
 
@@ -103,5 +88,5 @@ public class XPathCDATA extends DefaultCDATA {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathCDATA.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: FlyweightText.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */

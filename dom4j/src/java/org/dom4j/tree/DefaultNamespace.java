@@ -4,43 +4,43 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathComment.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.8 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.Namespace;
 
-/** <p><code>XPathComment</code> implements a doubly linked node which 
+/** <p><code>DefaultNamespace</code> implements a doubly linked node which 
   * supports the parent relationship and is mutable.
-  * It is useful when evalutating XPath expressions.</p>
+  * It is useful when returning results from XPath expressions.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.8 $
   */
-public class XPathComment extends DefaultComment {
+public class DefaultNamespace extends Namespace {
 
     /** The parent of this node */
     private Element parent;
 
-    /** @param text is the Comment text
+    /** @param prefix is the prefix for this namespace
+      * @param uri is the URI for this namespace
       */
-    public XPathComment(String text) {
-	super(text);
+    public DefaultNamespace(String prefix,String uri) {
+        super( prefix, uri );
     }
 
     /** @param parent is the parent element
-      * @param text is the Comment text
+      * @param prefix is the prefix for this namespace
+      * @param uri is the URI for this namespace
       */
-    public XPathComment(Element parent, String text) {
-	super(text);
+    public DefaultNamespace(Element parent,String prefix,String uri) {
+        super( prefix, uri );
         this.parent = parent;
     }
 
-    public void setText(String text) {
-	this.text = text;
-    }
-    
     public Element getParent() {
         return parent;
     }
@@ -51,10 +51,6 @@ public class XPathComment extends DefaultComment {
     
     public boolean supportsParent() {
         return true;
-    }
-
-    public boolean isReadOnly() {
-        return false;
     }
 }
 
@@ -103,5 +99,5 @@ public class XPathComment extends DefaultComment {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathComment.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.8 2001/06/20 18:59:23 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.20 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.21 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,9 +21,9 @@ import org.dom4j.tree.DefaultElement;
 import org.dom4j.tree.DefaultEntity;
 import org.dom4j.tree.DefaultProcessingInstruction;
 import org.dom4j.tree.QNameCache;
-import org.dom4j.tree.XPathAttribute;
-import org.dom4j.tree.XPathEntity;
-import org.dom4j.tree.XPathText;
+import org.dom4j.tree.DefaultAttribute;
+import org.dom4j.tree.DefaultEntity;
+import org.dom4j.tree.DefaultText;
 import org.dom4j.xpath.DefaultXPath;
 import org.dom4j.xpath.XPathPattern;
 
@@ -37,7 +37,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public class DocumentFactory {
 
@@ -102,10 +102,13 @@ public class DocumentFactory {
         return createElement(createQName(name));
     }
 
+    public Element createElement(String qualifiedName, String namespaceURI) {
+        return createElement(createQName(qualifiedName, namespaceURI));
+    }
+
     
     public Attribute createAttribute(Element owner, QName qname, String value) {
-        //return new DefaultAttribute(qname, value);
-        return new XPathAttribute(qname, value);
+        return new DefaultAttribute(qname, value);
     }
     
     public Attribute createAttribute(Element owner, String name, String value) {
@@ -121,15 +124,9 @@ public class DocumentFactory {
     }
     
     public Text createText(String text) {
-        // allow editing in place by default
-        return new XPathText(text);
+        return new DefaultText(text);
     }
     
-    
-    public Entity createEntity(String name) {
-        // allow editing in place by default
-        return new XPathEntity(name);
-    }
     
     public Entity createEntity(String name, String text) {
         return new DefaultEntity(name, text);
@@ -307,5 +304,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.20 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.21 2001/06/20 18:59:23 jstrachan Exp $
  */

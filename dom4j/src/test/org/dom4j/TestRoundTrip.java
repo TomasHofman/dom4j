@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRoundTrip.java,v 1.2 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -27,8 +27,8 @@ import org.dom4j.util.NodeComparator;
 
 /** A test harness to test the the round trips of Documents.
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.3 $
   */
 public class TestRoundTrip extends AbstractTestCase {
     
@@ -336,5 +336,5 @@ public class TestRoundTrip extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRoundTrip.java,v 1.2 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
  */

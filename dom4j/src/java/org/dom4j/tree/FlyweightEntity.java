@@ -4,84 +4,89 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathEntity.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: FlyweightEntity.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
-import org.dom4j.Node;
 import org.dom4j.Element;
+import org.dom4j.Node;
 
-/** <p><code>XPathEntity</code> implements a doubly linked node which 
-  * supports the parent relationship and is mutable.
-  * It is useful when evalutating XPath expressions.</p>
+/** <p><code>FlyweightEntity</code> is a Flyweight pattern implementation
+  * of a singly linked, read-only XML entity.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * <p>This node could be shared across documents and elements though 
+  * it does not support the parent relationship.</p>
+  *
+  * <p>Often this node needs to be created and then the text content added
+  * later (for example in SAX) so this implementation allows a call to 
+  * {@link #setText} providing the entity has no text already.
+  *
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public class XPathEntity extends DefaultEntity {
+public class FlyweightEntity extends AbstractEntity {
 
-    /** The parent of this node */
-    private Element parent;
+    /** The name of the <code>Entity</code> */
+    protected String name;
+
+    /** The text of the <code>Entity</code> */
+    protected String text;
+
+    /** A default constructor for implementors to use.
+      */
+    protected FlyweightEntity() {
+    }
 
     /** Creates the <code>Entity</code> with the specified name
       *
       * @param name is the name of the entity
       */
-    public XPathEntity(String name) {
-        super( name );
-    }
-
-    /** Creates the <code>Entity</code> with the specified name
-      * and text.
-      *
-      * @param name is the name of the entity
-      * @param text is the text of the entity
-      */
-    public XPathEntity(String name, String text) {
-        super( name, text );
-    }
-    
-    
-    /** Creates the <code>Entity</code> with the specified name
-      * and text.
-      *
-      * @param parent is the parent element
-      * @param name is the name of the entity
-      * @param text is the text of the entity
-      */
-    public XPathEntity(Element parent, String name, String text) {
-        super( name, text );
-        this.parent = parent;
-    }
-
-    
-    public void setName(String name) {
+    public FlyweightEntity(String name) {
         this.name = name;
     }
-    
-    public void setText(String text) {
+
+    /** Creates the <code>Entity</code> with the specified name
+      * and text.
+      *
+      * @param name is the name of the entity
+      * @param text is the text of the entity
+      */
+    public FlyweightEntity(String name,String text) {
+        this.name = name;
         this.text = text;
     }
-    
-    
 
-    public Element getParent() {
-        return parent;
-    }
-
-    public void setParent(Element parent) {
-        this.parent = parent;
-    }
-    
-    public boolean supportsParent() {
-        return true;
-    }
-    
-    public boolean isReadOnly() {
-        return false;
+    /** @return the name of the entity
+      */
+    public String getName() {
+        return name;
     }
 
+    /** @return the text of the entity
+      */
+    public String getText() {
+        return text;
+    }
+    
+    /** sets the value of the entity if it is not defined yet
+      * otherwise an <code>UnsupportedOperationException</code> is thrown
+      * as this class is read only.
+      */
+    public void setText(String text) {
+        if (this.text != null) {
+            this.text = text;
+        }
+        else {
+            throw new UnsupportedOperationException( 
+                "This Entity is read-only. It cannot be modified" 
+            );
+        }
+    }
+    
+    protected Node createXPathResult(Element parent) {
+        return new DefaultEntity( parent, getName(), getText() );
+    }
 }
 
 
@@ -129,5 +134,5 @@ public class XPathEntity extends DefaultEntity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathEntity.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: FlyweightEntity.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */

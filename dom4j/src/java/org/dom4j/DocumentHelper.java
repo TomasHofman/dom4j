@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.6 2001/06/20 11:54:19 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,8 +22,8 @@ import org.xml.sax.SAXException;
 /** <p><code>DocumentHelper</code> is a collection of helper methods 
   * for using DOM4J.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.7 $
   */
 public class DocumentHelper {
 
@@ -68,10 +68,6 @@ public class DocumentHelper {
         return DocumentFactory.getInstance().createText(text);
     }
     
-    
-    public static Entity createEntity(String name) {
-        return DocumentFactory.getInstance().createEntity(name);
-    }
     
     public static Entity createEntity(String name, String text) {
         return DocumentFactory.getInstance().createEntity(name, text);
@@ -261,5 +257,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.6 2001/06/20 11:54:19 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */

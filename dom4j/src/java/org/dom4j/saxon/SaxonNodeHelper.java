@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonNodeHelper.java,v 1.2 2001/04/02 18:24:31 jstrachan Exp $
+ * $Id: SaxonNodeHelper.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.saxon;
@@ -27,13 +27,13 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.QName;
 import org.dom4j.Namespace;
-import org.dom4j.tree.XPathAttribute;
+import org.dom4j.tree.DefaultAttribute;
 
 /** <p><code>SaxonNodeHelper</code> contains a collection of utility methods
   * for use across Node implementations.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.3 $
   */
 public class SaxonNodeHelper {
 
@@ -277,5 +277,5 @@ public class SaxonNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonNodeHelper.java,v 1.2 2001/04/02 18:24:31 jstrachan Exp $
+ * $Id: SaxonNodeHelper.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
  */

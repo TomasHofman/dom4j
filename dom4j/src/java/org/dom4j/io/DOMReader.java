@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMReader.java,v 1.5 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -34,8 +34,8 @@ import org.dom4j.Text;
 /** <p><code>DOMReader</code> navigates a W3C DOM tree and creates
   * a DOM4J tree from it.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.6 $
   */
 public class DOMReader {
 
@@ -105,20 +105,32 @@ public class DOMReader {
                 break;
 
             case org.w3c.dom.Node.PROCESSING_INSTRUCTION_NODE:
-                current.addProcessingInstruction(
-                    node.getNodeName(), node.getNodeValue()
-                );
+                if ( current instanceof Element ) {
+                    ((Element) current).addProcessingInstruction( 
+                        node.getNodeName(), node.getNodeValue() 
+                    );
+                }
+                else {
+                    ((Document) current).addProcessingInstruction( 
+                        node.getNodeName(), node.getNodeValue() 
+                    );
+                }
                 break;
 
             case org.w3c.dom.Node.COMMENT_NODE:
-                current.addComment( node.getNodeValue() );
+                if ( current instanceof Element ) {
+                    ((Element) current).addComment( node.getNodeValue() );
+                }
+                else {
+                    ((Document) current).addComment( node.getNodeValue() );
+                }
                 break;
 
             case org.w3c.dom.Node.DOCUMENT_TYPE_NODE:
                 org.w3c.dom.DocumentType domDocType 
                     = (org.w3c.dom.DocumentType) node;
                 
-                document.setDocType( 
+                document.addDocType( 
                     domDocType.getName(), 
                     domDocType.getPublicId(), 
                     domDocType.getSystemId() 
@@ -144,7 +156,7 @@ public class DOMReader {
                         );
                     }
                     else {
-                        element.addEntity( node.getNodeName() );
+                        element.addEntity( node.getNodeName(), "" );
                     }
                 }
                 break;
@@ -191,8 +203,8 @@ public class DOMReader {
                         String uri = attribute.getNodeValue();                        
                         if ( namespaceUri == null || ! namespaceUri.equals( uri ) ) {
                             String prefix = name.substring(index + 1);
-                            Namespace namespace = element.addNamespace( prefix, uri );
-                            namespaceStack.push( namespace );
+                            Namespace namespace = namespaceStack.addNamespace( prefix, uri );
+                            element.add( namespace );
                         }
                     }
                 } 
@@ -210,7 +222,7 @@ public class DOMReader {
                     attribute.getLocalName(), 
                     attribute.getNodeName() 
                 );
-                element.setAttributeValue( attributeQName, attribute.getNodeValue() );
+                element.addAttribute( attributeQName, attribute.getNodeValue() );
             }
         }
 
@@ -288,5 +300,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.5 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
  */

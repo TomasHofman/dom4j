@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.21 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: Branch.java,v 1.22 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,7 +13,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import org.xml.sax.Attributes;
 
@@ -24,8 +23,8 @@ import org.xml.sax.Attributes;
   * This interface allows both elements and documents to be treated in a 
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.22 $
   */
 public interface Branch extends Node {
 
@@ -124,12 +123,6 @@ public interface Branch extends Node {
     public void setProcessingInstructions(List listOfPIs);
     
     
-    /** Adds a new <code>Comment</code> node with the given text to this branch.
-      *
-      * @param comment is the text for the <code>Comment</code> node.
-      */    
-    public void addComment(String comment);
-    
     /** Adds a new <code>Element</code> node with the given name to this branch
       * and returns a reference to the new node.
       *
@@ -146,6 +139,15 @@ public interface Branch extends Node {
       */    
     public Element addElement(QName qname);
     
+    /** Adds a new <code>Element</code> node with the given qualified name
+      * and namespace URI to this branch and returns a reference to the new node.
+      *
+      * @param qualifiedName is the fully qualified name of the Element
+      * @param namespaceURI is the URI of the namespace to use
+      * @return the newly added <code>Element</code> node.
+      */    
+    public Element addElement(String qualifiedName, String namespaceURI);
+    
     /** Adds a new <code>Element</code> node with the given {@link QName} 
       * to this branch and returns a reference to the new node. 
       * This method is used by {@link org.dom4j.io.SAXReader} to allow
@@ -157,20 +159,6 @@ public interface Branch extends Node {
       */    
     public Element addElement(QName qName, Attributes attributes);
     
-    /** Adds a processing instruction for the given target
-      *
-      * @param target is the target of the processing instruction
-      * @text is the textual data (key/value pairs) of the processing instruction
-      */
-    public ProcessingInstruction addProcessingInstruction(String target, String text);
-    
-    /** Adds a processing instruction for the given target
-      *
-      * @param target is the target of the processing instruction
-      * @data is a Map of the key / value pairs of the processing instruction
-      */
-    public ProcessingInstruction addProcessingInstruction(String target, Map data);
-
     /** Removes the processing instruction for the given target if it exists
       *
       * @return true if a processing instruction was removed else false
@@ -307,5 +295,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.21 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: Branch.java,v 1.22 2001/06/20 18:59:23 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractTestCase.java,v 1.6 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -17,8 +17,8 @@ import junit.textui.TestRunner;
 
 /** An abstract base class for some DOM4J test cases
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.7 $
   */
 public class AbstractTestCase extends TestCase {
 
@@ -39,15 +39,16 @@ public class AbstractTestCase extends TestCase {
         document = DocumentHelper.createDocument();
         
         Element root = document.addElement( "root" );
-        Element author1 = root.addElement( "author" );
-        author1.setAttributeValue( "name", "James" );
-        author1.setAttributeValue( "location", "UK" );
-        author1.addText("James Strachan");
         
-        Element author2 = root.addElement( "author" );
-        author2.setAttributeValue( "name", "Bob" );
-        author2.setAttributeValue( "location", "Canada" );
-        author2.addText("Bob McWhirter");
+        Element author1 = root.addElement( "author" )
+            .addAttribute( "name", "James" )
+            .addAttribute( "location", "UK" )
+            .addText("James Strachan");
+        
+        Element author2 = root.addElement( "author" )
+            .addAttribute( "name", "Bob" )
+            .addAttribute( "location", "Canada" )
+            .addText("Bob McWhirter");
     }
 
 }
@@ -97,5 +98,5 @@ public class AbstractTestCase extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractTestCase.java,v 1.6 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */

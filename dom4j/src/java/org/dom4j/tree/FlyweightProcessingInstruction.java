@@ -4,92 +4,95 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathProcessingInstruction.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: FlyweightProcessingInstruction.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
+import java.util.Collections;
 import java.util.Map;
 
-import org.dom4j.Node;
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.ProcessingInstruction;
 
-/** <p><code>XPathProcessingInstruction</code> implements a doubly linked node which 
-  * supports the parent relationship and is mutable.
-  * It is useful when evalutating XPath expressions.</p>
+/** <p><code>FlyweightProcessingInstruction</code> is a Flyweight pattern implementation
+  * of a singly linked, read-only XML Processing Instruction.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * <p>This node could be shared across documents and elements though 
+  * it does not support the parent relationship.</p>
+  *
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public class XPathProcessingInstruction extends DefaultProcessingInstruction {
+public class FlyweightProcessingInstruction extends AbstractProcessingInstruction {
 
-    /** The parent of this node */
-    private Element parent;
+    /** The target of the PI */
+    protected String target;
 
-    /** <p>This will create a new PI with the given target and values</p>
-      *
-      * @param target is the name of the PI
-      * @param values is the <code>Map</code> values for the PI
+    /** The values for the PI as a String */
+    protected String text;
+
+    /** The values for the PI in name/value pairs */
+    protected Map values;
+
+    /** A default constructor for implementors to use.
       */
-    public XPathProcessingInstruction(String target, Map values) {
-        super(target, values);
+    public FlyweightProcessingInstruction() { 
     }
 
     /** <p>This will create a new PI with the given target and values</p>
       *
       * @param target is the name of the PI
-      * @param values is the values for the PI
+      * @param values is the <code>Map</code> of the values for the PI
       */
-    public XPathProcessingInstruction(String target, String values) {
-        super(target, values);
-    }
-
-    /** <p>This will create a new PI with the given target and values</p>
-      *
-      * @param parent is the parent element
-      * @param target is the name of the PI
-      * @param values is the values for the PI
-      */
-    public XPathProcessingInstruction(Element parent, String target, String values) {
-        super(target, values);
-        this.parent = parent;
-    }
-    
-    public void setTarget(String target) {
+    public FlyweightProcessingInstruction(String target,Map values) {
         this.target = target;
-    }
-    
-    public void setText(String text) {
-        this.text = text;
-        this.values = parseValues(text);
-    }
-    
-    public void setValues(Map values) {
         this.values = values;
         this.text = toString(values);
     }
-    
-    public void setValue(String name, String value) {
-        values.put(name, value);
-    }
-    
 
-    public Element getParent() {
-        return parent;
+    /** <p>This will create a new PI with the given target and values</p>
+      *
+      * @param target is the name of the PI
+      * @param text is the values for the PI as text
+      */
+    public FlyweightProcessingInstruction(String target,String text) {
+        this.target = target;
+        this.text = text;
+        this.values = parseValues(text);
     }
 
-    public void setParent(Element parent) {
-        this.parent = parent;
+    public String getTarget() {
+        return target;
+    }
+
+    public void setTarget(String target) {
+        throw new UnsupportedOperationException( "This PI is read-only and cannot be modified" );
+    }
+
+    public String getText() {
+        return text;
     }
     
-    public boolean supportsParent() {
-        return true;
+    public String getValue(String name) {
+        String answer = (String) values.get(name);
+        if (answer == null) {
+            return "";
+        }
+        return answer;
     }
     
-    public boolean isReadOnly() {
-        return false;
+    public Map getValues() {
+        return Collections.unmodifiableMap( values );
+    }
+    
+    protected Node createXPathResult(Element parent) {
+        return new DefaultProcessingInstruction( parent, getTarget(), getText() );
     }
 }
+
+
 
 
 
@@ -136,5 +139,5 @@ public class XPathProcessingInstruction extends DefaultProcessingInstruction {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathProcessingInstruction.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: FlyweightProcessingInstruction.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */

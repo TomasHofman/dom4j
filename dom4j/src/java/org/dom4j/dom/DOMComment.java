@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMComment.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMComment.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -12,7 +12,7 @@ package org.dom4j.dom;
 import org.dom4j.Comment;
 import org.dom4j.Element;
 import org.dom4j.QName;
-import org.dom4j.tree.XPathComment;
+import org.dom4j.tree.DefaultComment;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
@@ -22,10 +22,10 @@ import org.w3c.dom.NodeList;
 /** <p><code>DOMText</code> implements a Text node which 
   * supports the W3C DOM API.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.4 $
   */
-public class DOMComment extends XPathComment implements org.w3c.dom.Comment {
+public class DOMComment extends DefaultComment implements org.w3c.dom.Comment {
 
     public DOMComment(String text) {
 	super(text);
@@ -230,5 +230,5 @@ public class DOMComment extends XPathComment implements org.w3c.dom.Comment {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMComment.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMComment.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */

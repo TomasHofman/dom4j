@@ -4,19 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Namespace.java,v 1.10 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: Namespace.java,v 1.11 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import org.dom4j.tree.AbstractNode;
 import org.dom4j.tree.NamespaceCache;
-import org.dom4j.tree.XPathNamespace;
+import org.dom4j.tree.DefaultNamespace;
 
-/** <p><code>Namespace</code> defines the standard behaviour for an XML namespace.</p>
+/** <p><code>Namespace</code> is a Flyweight Namespace that can be shared amongst nodes.</p>
   * 
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.11 $
   */
 public class Namespace extends AbstractNode {
     
@@ -154,7 +154,7 @@ public class Namespace extends AbstractNode {
     }
     
     protected Node createXPathResult(Element parent) {
-        return new XPathNamespace( parent, getPrefix(), getURI() );
+        return new DefaultNamespace( parent, getPrefix(), getURI() );
     }    
     
 }
@@ -204,5 +204,5 @@ public class Namespace extends AbstractNode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Namespace.java,v 1.10 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: Namespace.java,v 1.11 2001/06/20 18:59:23 jstrachan Exp $
  */

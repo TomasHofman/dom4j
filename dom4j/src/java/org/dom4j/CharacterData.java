@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CharacterData.java,v 1.3 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: CharacterData.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,8 +13,8 @@ package org.dom4j;
   * character based nodes such as the <code>CDATA</code>, <code>Comment</code> 
   * and <code>Text</code> nodes.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.4 $
   */
 public interface CharacterData extends Node {
 
@@ -71,5 +71,5 @@ public interface CharacterData extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CharacterData.java,v 1.3 2001/06/20 09:40:53 jstrachan Exp $
+ * $Id: CharacterData.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */

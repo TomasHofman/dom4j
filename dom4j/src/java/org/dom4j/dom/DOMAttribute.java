@@ -4,14 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMAttribute.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.dom;
 
 import org.dom4j.Element;
 import org.dom4j.QName;
-import org.dom4j.tree.XPathAttribute;
+import org.dom4j.tree.DefaultAttribute;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
@@ -21,10 +21,10 @@ import org.w3c.dom.NodeList;
 /** <p><code>DOMAttribute</code> implements a doubly linked attribute which 
   * supports the W3C DOM API.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.5 $
   */
-public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
+public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
     
     public DOMAttribute(QName qname) { 
         super(qname);
@@ -215,5 +215,5 @@ public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMAttribute.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ValidateDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: ValidateDemo.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 import org.dom4j.Document;
@@ -17,8 +17,8 @@ import org.xml.sax.SAXException;
 
 /** A sample program demonstrating the use of validation using SAXValidator
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.3 $
   */
 public class ValidateDemo extends AbstractDemo {
     
@@ -73,7 +73,7 @@ public class ValidateDemo extends AbstractDemo {
             DocumentType docType = document.getDocType();
             if ( docType == null ) {
                 println( "Adding an NITF doc type" );
-                document.setDocType( "nitf", null, "nitf.dtd" );
+                document.addDocType( "nitf", null, "nitf.dtd" );
             }
 
             // now lets validate
@@ -136,5 +136,5 @@ public class ValidateDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ValidateDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: ValidateDemo.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
  */

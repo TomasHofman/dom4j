@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CreateXMLDemo.java,v 1.6 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 
@@ -24,8 +24,8 @@ import org.dom4j.io.XMLWriter;
   * This sample generates an XML document representing the state of the current JVM
   * displaying the current system properties.
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.7 $
   */
 public class CreateXMLDemo extends AbstractDemo {
     
@@ -63,7 +63,7 @@ public class CreateXMLDemo extends AbstractDemo {
             String name = (String) enum.nextElement();
             String value = properties.getProperty( name );
             Element element = root.addElement( "property" );
-            element.setAttributeValue( "name", name );
+            element.addAttribute( "name", name );
             element.addText( value );
         }
         return document;
@@ -115,5 +115,5 @@ public class CreateXMLDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CreateXMLDemo.java,v 1.6 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */

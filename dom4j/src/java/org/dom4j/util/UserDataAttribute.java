@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UserDataAttribute.java,v 1.1 2001/05/28 14:38:00 jstrachan Exp $
+ * $Id: UserDataAttribute.java,v 1.2 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -12,7 +12,7 @@ package org.dom4j.util;
 import org.dom4j.Element;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
-import org.dom4j.tree.XPathAttribute;
+import org.dom4j.tree.DefaultAttribute;
 
 /** <p><code>UserDataAttribute</code> support the adornment of a user 
   * data object on an Element or Attribute instance such that the 
@@ -22,9 +22,9 @@ import org.dom4j.tree.XPathAttribute;
   * adorn the trees with user defined objects.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
-public class UserDataAttribute extends XPathAttribute {
+public class UserDataAttribute extends DefaultAttribute {
 
     /** The user data object */
     private Object data;
@@ -93,5 +93,5 @@ public class UserDataAttribute extends XPathAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataAttribute.java,v 1.1 2001/05/28 14:38:00 jstrachan Exp $
+ * $Id: UserDataAttribute.java,v 1.2 2001/06/20 18:59:23 jstrachan Exp $
  */

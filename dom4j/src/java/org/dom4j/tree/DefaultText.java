@@ -4,40 +4,59 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultText.java,v 1.5 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DefaultText.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.Element;
-import org.dom4j.Node;
-import org.dom4j.Text;
-import org.dom4j.Visitor;
 
-/** <p><code>DefaultText</code> is the default DOM4J implementation of a 
-  * singly linked read only XML Text.</p>
+/** <p><code>DefaultText</code> is the default Text implementation.
+  * It is a doubly linked node which supports the parent relationship 
+  * and can be modified in place.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.6 $
   */
-public class DefaultText extends AbstractText implements Text {
+public class DefaultText extends FlyweightText {
 
-    /** Text of the <code>Text</code> node */
-    protected String text;
+    /** The parent of this node */
+    private Element parent;
 
     /** @param text is the Text text
       */
     public DefaultText(String text) {
-	this.text = text;
+	super(text);
     }
 
-    public String getText() {
-	return text;
+    /** @param parent is the parent element
+      * @param text is the Text text
+      */
+    public DefaultText(Element parent,String text) {
+	super(text);
+        this.parent = parent;
+    }
+
+    public void setText(String text) {
+	this.text = text;
     }
     
-    protected Node createXPathResult(Element parent) {
-        return new XPathText( parent, getText() );
+    public Element getParent() {
+        return parent;
     }
+
+    public void setParent(Element parent) {
+        this.parent = parent;
+    }
+    
+    public boolean supportsParent() {
+        return true;
+    }
+
+    public boolean isReadOnly() {
+        return false;
+    }
+
 }
 
 
@@ -85,5 +104,5 @@ public class DefaultText extends AbstractText implements Text {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultText.java,v 1.5 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DefaultText.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
  */

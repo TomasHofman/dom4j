@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PullParserReader.java,v 1.1 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: PullParserReader.java,v 1.2 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -43,7 +43,7 @@ import xpp.XmlPullParserException;
   * validation but it is very fast for use in SOAP style environments.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class PullParserReader {
 
@@ -284,7 +284,7 @@ public class PullParserReader {
             String uri = startTag.getURI(i);
             String value = startTag.getValue(i);
             QName attributeQname = getQName( name, uri );
-            element.setAttributeValue( attributeQname, value );
+            element.addAttribute( attributeQname, value );
         }
         branch.add( element );
         return element;
@@ -368,5 +368,5 @@ public class PullParserReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PullParserReader.java,v 1.1 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: PullParserReader.java,v 1.2 2001/06/20 18:59:23 jstrachan Exp $
  */

@@ -4,59 +4,43 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathText.java,v 1.3 2001/05/23 14:53:54 jstrachan Exp $
+ * $Id: FlyweightComment.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
+import org.dom4j.Comment;
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.Visitor;
 
-/** <p><code>XPathText</code> implements a doubly linked node which 
-  * supports the parent relationship and is mutable.
-  * It is useful when evalutating XPath expressions.</p>
+/** <p><code>FlyweightComment</code> is a Flyweight pattern implementation
+  * of a singly linked, read-only XML Comment.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * <p>This node could be shared across documents and elements though 
+  * it does not support the parent relationship.</p>
+  *
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public class XPathText extends DefaultText {
+public class FlyweightComment extends AbstractComment implements Comment {
 
-    /** The parent of this node */
-    private Element parent;
+    /** Text of the <code>Comment</code> node */
+    protected String text;
 
-    /** @param text is the Text text
+    /** @param text is the Comment text
       */
-    public XPathText(String text) {
-	super(text);
-    }
-
-    /** @param parent is the parent element
-      * @param text is the Text text
-      */
-    public XPathText(Element parent, String text) {
-	super(text);
-        this.parent = parent;
-    }
-
-    public void setText(String text) {
+    public FlyweightComment(String text) {
 	this.text = text;
     }
-    
-    public Element getParent() {
-        return parent;
-    }
 
-    public void setParent(Element parent) {
-        this.parent = parent;
+    public String getText() {
+	return text;
     }
     
-    public boolean supportsParent() {
-        return true;
+    protected Node createXPathResult(Element parent) {
+        return new DefaultComment( parent, getText() );
     }
-
-    public boolean isReadOnly() {
-        return false;
-    }
-
 }
 
 
@@ -104,5 +88,5 @@ public class XPathText extends DefaultText {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathText.java,v 1.3 2001/05/23 14:53:54 jstrachan Exp $
+ * $Id: FlyweightComment.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMEntityReference.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMEntityReference.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -14,7 +14,7 @@ import java.util.Map;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.QName;
-import org.dom4j.tree.XPathEntity;
+import org.dom4j.tree.DefaultEntity;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
@@ -24,10 +24,10 @@ import org.w3c.dom.NodeList;
 /** <p><code>DOMEntity</code> implements a Entity node which 
   * supports the W3C DOM API.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.4 $
   */
-public class DOMEntityReference extends XPathEntity implements org.w3c.dom.EntityReference {
+public class DOMEntityReference extends DefaultEntity implements org.w3c.dom.EntityReference {
 
     public DOMEntityReference(String name) {
         super( name );
@@ -199,5 +199,5 @@ public class DOMEntityReference extends XPathEntity implements org.w3c.dom.Entit
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMEntityReference.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMEntityReference.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */

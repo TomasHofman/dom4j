@@ -4,14 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNamespace.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMNamespace.java,v 1.2 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.dom;
 
 import org.dom4j.Element;
 import org.dom4j.QName;
-import org.dom4j.tree.XPathNamespace;
+import org.dom4j.tree.DefaultNamespace;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
@@ -21,10 +21,10 @@ import org.w3c.dom.NodeList;
 /** <p><code>DOMNamespace</code> implements a Namespace that is compatable 
   * with the DOM API.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.2 $
   */
-public class DOMNamespace extends XPathNamespace implements org.w3c.dom.Node {
+public class DOMNamespace extends DefaultNamespace implements org.w3c.dom.Node {
     
     public DOMNamespace(String prefix, String uri) {
         super( prefix, uri );
@@ -193,5 +193,5 @@ public class DOMNamespace extends XPathNamespace implements org.w3c.dom.Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNamespace.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMNamespace.java,v 1.2 2001/06/20 18:59:23 jstrachan Exp $
  */

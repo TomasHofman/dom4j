@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMText.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMText.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -12,7 +12,7 @@ package org.dom4j.dom;
 import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.Text;
-import org.dom4j.tree.XPathText;
+import org.dom4j.tree.DefaultText;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
@@ -22,10 +22,10 @@ import org.w3c.dom.NodeList;
 /** <p><code>DOMText</code> implements a Text node which 
   * supports the W3C DOM API.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.4 $
   */
-public class DOMText extends XPathText implements org.w3c.dom.Text {
+public class DOMText extends DefaultText implements org.w3c.dom.Text {
 
     public DOMText(String text) {
 	super(text);
@@ -268,5 +268,5 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMText.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMText.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
  */

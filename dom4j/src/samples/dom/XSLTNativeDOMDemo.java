@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTNativeDOMDemo.java,v 1.4 2001/06/20 09:44:04 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package dom;
@@ -30,8 +30,8 @@ import XSLTDemo;
 /** This sample program peforms XSLT on the native DOM implementation of 
   * dom4j.
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.5 $
   */
 public class XSLTNativeDOMDemo extends XSLTDemo {
     
@@ -119,5 +119,5 @@ public class XSLTNativeDOMDemo extends XSLTDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTNativeDOMDemo.java,v 1.4 2001/06/20 09:44:04 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
  */

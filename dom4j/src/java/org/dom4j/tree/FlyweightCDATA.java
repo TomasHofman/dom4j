@@ -4,53 +4,42 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathNamespace.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: FlyweightCDATA.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
+import org.dom4j.CDATA;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.dom4j.Namespace;
+import org.dom4j.Visitor;
 
-/** <p><code>XPathNamespace</code> implements a doubly linked node which 
-  * supports the parent relationship and is mutable.
-  * It is useful when returning results from XPath expressions.</p>
+/** <p><code>FlyweightCDATA</code> is a Flyweight pattern implementation
+  * of a singly linked, read-only XML CDATA.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * <p>This node could be shared across documents and elements though 
+  * it does not support the parent relationship.</p>
+  *
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public class XPathNamespace extends Namespace {
+public class FlyweightCDATA extends AbstractCDATA implements CDATA {
 
-    /** The parent of this node */
-    private Element parent;
+    /** Text of the <code>CDATA</code> node */
+    protected String text;
 
-    /** @param prefix is the prefix for this namespace
-      * @param uri is the URI for this namespace
+    /** @param text is the CDATA text
       */
-    public XPathNamespace(String prefix, String uri) {
-        super( prefix, uri );
+    public FlyweightCDATA(String text) {
+	this.text = text;
     }
 
-    /** @param parent is the parent element
-      * @param prefix is the prefix for this namespace
-      * @param uri is the URI for this namespace
-      */
-    public XPathNamespace(Element parent, String prefix, String uri) {
-        super( prefix, uri );
-        this.parent = parent;
-    }
-
-    public Element getParent() {
-        return parent;
-    }
-
-    public void setParent(Element parent) {
-        this.parent = parent;
+    public String getText() {
+	return text;
     }
     
-    public boolean supportsParent() {
-        return true;
+    protected Node createXPathResult(Element parent) {
+        return new DefaultCDATA( parent, getText() );
     }
 }
 
@@ -99,5 +88,5 @@ public class XPathNamespace extends Namespace {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathNamespace.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: FlyweightCDATA.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
  */

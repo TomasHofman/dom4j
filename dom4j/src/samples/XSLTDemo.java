@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.7 2001/06/20 09:44:04 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.8 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 import javax.xml.transform.Result;
@@ -21,8 +21,8 @@ import org.dom4j.io.XMLWriter;
 
 /** A sample program to demonstrate using XSLT to transform a dom4j Document.
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.8 $
   */
 public class XSLTDemo extends SAXDemo {
     
@@ -129,5 +129,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.7 2001/06/20 09:44:04 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.8 2001/06/20 18:59:23 jstrachan Exp $
  */

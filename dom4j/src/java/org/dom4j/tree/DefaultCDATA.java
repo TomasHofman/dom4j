@@ -4,39 +4,57 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultCDATA.java,v 1.5 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DefaultCDATA.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
-import org.dom4j.CDATA;
 import org.dom4j.Element;
-import org.dom4j.Node;
-import org.dom4j.Visitor;
 
-/** <p><code>DefaultCDATA</code> is the default DOM4J implementation of a 
-  * singly linked read only XML CDATA.</p>
+/** <p><code>DefaultCDATA</code> is the default CDATA implementation.
+  * It is a doubly linked node which supports the parent relationship 
+  * and can be modified in place.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.6 $
   */
-public class DefaultCDATA extends AbstractCDATA implements CDATA {
+public class DefaultCDATA extends FlyweightCDATA {
 
-    /** Text of the <code>CDATA</code> node */
-    protected String text;
+    /** The parent of this node */
+    private Element parent;
 
     /** @param text is the CDATA text
       */
     public DefaultCDATA(String text) {
-	this.text = text;
+	super(text);
     }
 
-    public String getText() {
-	return text;
+    /** @param parent is the parent element
+      * @param text is the CDATA text
+      */
+    public DefaultCDATA(Element parent,String text) {
+	super(text);
+        this.parent = parent;
+    }
+
+    public void setText(String text) {
+	this.text = text;
     }
     
-    protected Node createXPathResult(Element parent) {
-        return new XPathCDATA( parent, getText() );
+    public Element getParent() {
+        return parent;
+    }
+
+    public void setParent(Element parent) {
+        this.parent = parent;
+    }
+    
+    public boolean supportsParent() {
+        return true;
+    }
+
+    public boolean isReadOnly() {
+        return false;
     }
 }
 
@@ -85,5 +103,5 @@ public class DefaultCDATA extends AbstractCDATA implements CDATA {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultCDATA.java,v 1.5 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DefaultCDATA.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
  */

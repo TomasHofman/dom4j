@@ -4,17 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Document.java,v 1.6 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: Document.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */
 
 package org.dom4j;
+
+import java.util.Map;
 
 import org.xml.sax.EntityResolver;
 
 /** <p><code>Document</code> defines an XML Document.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.7 $
   */
 public interface Document extends Branch {
 
@@ -30,12 +32,49 @@ public interface Document extends Branch {
       */    
     public void setRootElement(Element rootElement);
 
+    
+    /** Adds a new <code>Comment</code> node with the given text to this branch.
+      *
+      * @param comment is the text for the <code>Comment</code> node.
+      * @return this <code>Document</code> instance.
+      */    
+    public Document addComment(String comment);
+
+    /** Adds a processing instruction for the given target
+      *
+      * @param target is the target of the processing instruction
+      * @param text is the textual data (key/value pairs) of the processing instruction
+      * @return this <code>Document</code> instance.
+      */
+    public Document addProcessingInstruction(String target, String text);
+    
+    /** Adds a processing instruction for the given target
+      *
+      * @param target is the target of the processing instruction
+      * @param data is a Map of the key / value pairs of the processing instruction
+      * @return this <code>Document</code> instance.
+      */
+    public Document addProcessingInstruction(String target, Map data);
+    
+    /** Adds a DOCTYPE declaration to this document
+      *
+      * @param name is the name of the root element
+      * @param publicId is the PUBLIC URI
+      * @param systemId is the SYSTEM URI
+      * @return this <code>Document</co`de> instance.
+      */
+    public Document addDocType(String name, String publicId, String systemId);    
+
+    
+
+    /** @return the DocumentType property 
+      */
     public DocumentType getDocType();
+    
+    /** Sets the DocumentType property
+      */
     public void setDocType(DocumentType docType);
     
-    public void setDocType(String name, String publicId, String systemId);    
-    public DocumentType createDocType(String name, String publicId, String systemId);
-
     
     /** @return the EntityResolver used to find resolve URIs such as for DTDs,
       * or XML Schema documents 
@@ -97,5 +136,5 @@ public interface Document extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Document.java,v 1.6 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: Document.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
  */
