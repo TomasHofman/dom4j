@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaAttribute.java,v 1.1 2001/05/23 20:27:13 jstrachan Exp $
+ * $Id: SchemaAttribute.java,v 1.2 2001/05/30 14:17:14 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -22,7 +22,7 @@ import org.dom4j.tree.AbstractAttribute;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class SchemaAttribute extends AbstractAttribute implements ValidationContextProvider {
 
@@ -45,6 +45,12 @@ public class SchemaAttribute extends AbstractAttribute implements ValidationCont
     public SchemaAttribute(QName qname, DataType dataType) {
         this.qname = qname;
         this.dataType = dataType;
+    }
+
+    public String toString() {
+        return getClass().getName() + hashCode() 
+            + " [Attribute: name " + getQualifiedName() 
+            + " value \"" + getValue() + "\" data: " + getData() + "]";
     }
 
     public SchemaAttribute(QName qname, DataType dataType, String text) { 
@@ -193,5 +199,5 @@ public class SchemaAttribute extends AbstractAttribute implements ValidationCont
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaAttribute.java,v 1.1 2001/05/23 20:27:13 jstrachan Exp $
+ * $Id: SchemaAttribute.java,v 1.2 2001/05/30 14:17:14 jstrachan Exp $
  */
