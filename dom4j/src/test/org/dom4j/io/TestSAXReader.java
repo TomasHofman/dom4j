@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.StringWriter;
 import java.net.URL;
+import java.util.List;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -109,6 +110,19 @@ public class TestSAXReader extends TestCase {
         }
     }
     
+    public void testBug527062() throws Exception {
+        SAXReader reader = new SAXReader();
+        reader.setValidation(true);
+        Document doc = reader.read(TestSAXReader.class.getResource("/xml/test/test.xml"));
+        List l = doc.selectNodes("//broked/junk");
+        for (int i = 0; i < l.size(); i++) {
+            System.out.println("Found node: " + ((Element)l.get(i)).getStringValue());
+        }
+        
+        assertEquals("hi there", ((Element)l.get(0)).getStringValue());
+        assertEquals("hello world", ((Element)l.get(1)).getStringValue());
+    }
+    
 }
 
 
@@ -156,5 +170,5 @@ public class TestSAXReader extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSAXReader.java,v 1.5 2004/03/24 20:41:40 maartenc Exp $
+ * $Id: TestSAXReader.java,v 1.6 2004/03/31 07:29:54 maartenc Exp $
  */
