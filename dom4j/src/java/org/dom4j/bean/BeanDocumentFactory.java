@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDocumentFactory.java,v 1.2 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.3 2001/03/01 23:49:02 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class BeanDocumentFactory extends DocumentFactory {
 
@@ -83,8 +83,10 @@ public class BeanDocumentFactory extends DocumentFactory {
     
     protected Object createBean( QName qname, Attributes attributes ) {
         String value = attributes.getValue( "className" );
+        
+        System.out.println( "#### found class: " + value );
+        
         if ( value != null ) {
-            System.out.println( "#### found class: " + value );
             try {
                 Class beanClass = Class.forName( value );
                 return beanClass.newInstance();
@@ -98,7 +100,7 @@ public class BeanDocumentFactory extends DocumentFactory {
     
     protected void handleException(Exception e) {
         // ignore introspection exceptions
-        System.out.println( "Warning: couldn't create bean: " + e );
+        System.out.println( "#### Warning: couldn't create bean: " + e );
     }
 }
 
@@ -147,5 +149,5 @@ public class BeanDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDocumentFactory.java,v 1.2 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.3 2001/03/01 23:49:02 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.14 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.15 2001/03/01 23:49:02 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -65,7 +65,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class SAXReader {
 
@@ -151,8 +151,6 @@ public class SAXReader {
     /** @return the <code>DocumentFactory</code> used to create document objects
       */
     public DocumentFactory getDocumentFactory() {
-        System.out.println( "getDocumentFactory() = " + factory );
-        
         if (factory == null) {
             factory = DocumentFactory.getInstance();
         }
@@ -623,5 +621,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.14 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.15 2001/03/01 23:49:02 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanElement.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.2 2001/03/01 23:49:02 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -22,7 +22,7 @@ import org.dom4j.tree.DefaultElement;
 /** <p><code>BeanElement</code> uses a Java Bean to store its attributes.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BeanElement extends DefaultElement {
 
@@ -62,6 +62,7 @@ public class BeanElement extends DefaultElement {
     // Implementation methods
     
     protected DocumentFactory getDocumentFactory() {
+        System.out.println( "###### BeanElement:getDocumentFactory()");
         return DOCUMENT_FACTORY;
     }
     
@@ -123,5 +124,5 @@ public class BeanElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanElement.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.2 2001/03/01 23:49:02 jstrachan Exp $
  */
