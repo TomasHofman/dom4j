@@ -10,7 +10,7 @@ import org.dom4j.tree.DefaultDocument;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DocumentFactory {
 
@@ -21,8 +21,13 @@ public class DocumentFactory {
     protected XPathEngine XPathEngine;
     
     // Some static helper methods
+    
     public static Document create() {
         return singleton.createDocument();
+    }
+    
+    public static Document create(Element rootElement) {
+        return singleton.createDocument(rootElement);
     }
     
     /** <p>Access to singleton implementation of DocumentFactory which 
@@ -66,6 +71,13 @@ public class DocumentFactory {
     public Document createDocument() {
         Document answer = new DefaultDocument();
         answer.setXPathEngine( getXPathEngine() );
+        return answer;
+    }
+    
+    
+    public Document createDocument(Element rootElement) {
+        Document answer = createDocument();
+        answer.setRootElement(rootElement);
         return answer;
     }
     
