@@ -16,13 +16,23 @@ import org.dom4j.tree.DefaultProcessingInstruction;
   * the easy creation of DOM4J XML content nodes. </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class ContentFactory {
 
     /** The Singleton instance */
     protected static ContentFactory singleton = new ContentFactory();
- 
+
+    // Static helper methods
+    
+    /** A helper method which returns a {@link Namespace} instance
+      * for the given prefix and URI using the singleton content factory
+      */
+    public static Namespace getNamespace(String prefix, String uri) {
+        return singleton.createNamespace(prefix, uri);
+    }
+    
+    
     /** <p>Access to the Singleton instance of ContentFactory for
       * the default implementation.</p>
       *
