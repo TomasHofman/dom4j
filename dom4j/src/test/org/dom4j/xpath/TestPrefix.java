@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestPrefix.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
+ * $Id: TestPrefix.java,v 1.3 2001/11/02 12:50:51 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,10 +22,12 @@ import org.dom4j.Namespace;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
+import org.jaxen.SimpleNamespaceContext;
+
 /** Tests finding items using a namespace prefix
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestPrefix extends AbstractTestCase {
 
@@ -64,11 +66,17 @@ public class TestPrefix extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void testXPath(String xpathText) {
         XPath xpath = DocumentHelper.createXPath(xpathText);
+        
+        SimpleNamespaceContext context = new SimpleNamespaceContext();
+        context.addNamespace( "xplt", "www.xxxx.com" );
+        context.addNamespace( "xpl", "www.xxxx.com" );
+        xpath.setNamespaceContext( context );
+        
         List list = xpath.selectNodes( document );
         
         log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
 
-        assertTrue( list.size() > 0 );
+        assertTrue( "Should have found at lest one result", list.size() > 0 );
         
         if ( VERBOSE ) {
             log( "xpath: " + xpath );
@@ -126,5 +134,5 @@ public class TestPrefix extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestPrefix.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
+ * $Id: TestPrefix.java,v 1.3 2001/11/02 12:50:51 jstrachan Exp $
  */

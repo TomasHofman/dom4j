@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDatatype2.java,v 1.2 2001/11/02 11:51:46 jstrachan Exp $
+ * $Id: TestDatatype2.java,v 1.3 2001/11/02 12:50:51 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -30,7 +30,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for XML Schema Datatypes support
   *
   * @author Yuxin Ruan
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestDatatype2 extends TestCase {
     
@@ -51,7 +51,7 @@ public class TestDatatype2 extends TestCase {
     
     public void tearDown() {
     }
-    
+/*    
     public void testLongAttribute() throws Exception {
         Document doc=getSource();
         Element root=doc.getRootElement();
@@ -60,6 +60,7 @@ public class TestDatatype2 extends TestCase {
         validateData("testLongAttribute",attrData,new Long(123));
         System.out.println("retrieved attribute "+attrData);
     }
+*/
     
     public void testFloatElement() throws Exception {
         Document doc=getSource();

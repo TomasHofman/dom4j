@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.60 2001/08/16 09:41:21 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.61 2001/11/02 12:50:51 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.60 $
+  * @version $Revision: 1.61 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -1184,6 +1184,19 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return answer;
     }
     
+    // Implementation helper methods
+    //-------------------------------------------------------------------------    
+
+    /** Ensures that the list of attributes has the given size */
+    public void ensureAttributesCapacity(int minCapacity) {
+        if ( minCapacity > 1 ) {
+            List list = attributeList();
+            if ( list instanceof ArrayList ) {
+                ArrayList arrayList = (ArrayList) list;
+                arrayList.ensureCapacity(minCapacity);            
+            }
+        }
+    }
     
     // Implementation methods
     //-------------------------------------------------------------------------    
@@ -1325,5 +1338,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.60 2001/08/16 09:41:21 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.61 2001/11/02 12:50:51 jstrachan Exp $
  */
