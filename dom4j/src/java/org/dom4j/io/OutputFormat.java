@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: OutputFormat.java,v 1.3 2001/05/09 15:30:28 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.4 2001/06/18 08:10:02 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -13,7 +13,7 @@ package org.dom4j.io;
   * used by {@link XMLWriter} and its base classes to format the XML output
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class OutputFormat implements Cloneable {
 
@@ -24,7 +24,7 @@ public class OutputFormat implements Cloneable {
     private boolean suppressDeclaration = false;
 
     /** The encoding format */
-    private String encoding = "UTF8";
+    private String encoding = "UTF-8";
 
     /** Whether or not to output the encoding in the XML declaration - default is <code>false</code> */
     private boolean omitEncoding = false;
@@ -39,7 +39,7 @@ public class OutputFormat implements Cloneable {
     private boolean newlines = false;
 
     /** New line separator */
-    private String lineSeparator = "\r\n";
+    private String lineSeparator = "\n";
 
     /** should we preserve whitespace or not in text nodes? */
     private boolean trimText = false;
@@ -376,5 +376,5 @@ public class OutputFormat implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OutputFormat.java,v 1.3 2001/05/09 15:30:28 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.4 2001/06/18 08:10:02 jstrachan Exp $
  */
