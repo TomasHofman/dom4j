@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDocType.java,v 1.5 2003/04/07 22:24:21 jstrachan Exp $
+ * $Id: TestDocType.java,v 1.6 2004/03/04 21:38:00 maartenc Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the DocType functionality
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestDocType extends AbstractTestCase {
 
@@ -47,14 +47,14 @@ public class TestDocType extends AbstractTestCase {
         assertTrue( "Has DOCTYPE", docType!= null );
         
         List declarations = docType.getInternalDeclarations();
-        assertTrue( "DOCTYPE has declarations", declarations != null && declarations.size() == 1 );
+        assertTrue( "DOCTYPE has declarations", declarations != null && !declarations.isEmpty() );
         
         ElementDecl decl = (ElementDecl) declarations.get(0);
         
         assertEquals( "name is correct", "greeting", decl.getName() );
         assertEquals( "model is correct", "(#PCDATA)", decl.getModel() );
         
-        assertEquals( "getText() is correct", "<!ELEMENT greeting (#PCDATA)>", docType.getText() );
+        assertEquals( "getText() is correct", "<!ELEMENT greeting (#PCDATA)>", decl.toString() );
     }
         
     // Implementation methods
@@ -111,5 +111,5 @@ public class TestDocType extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDocType.java,v 1.5 2003/04/07 22:24:21 jstrachan Exp $
+ * $Id: TestDocType.java,v 1.6 2004/03/04 21:38:00 maartenc Exp $
  */
