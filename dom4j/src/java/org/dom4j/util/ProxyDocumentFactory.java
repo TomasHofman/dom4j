@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ProxyDocumentFactory.java,v 1.6 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: ProxyDocumentFactory.java,v 1.7 2001/08/31 08:58:53 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -24,9 +24,10 @@ import org.dom4j.NodeFilter;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.QName;
 import org.dom4j.Text;
-import org.dom4j.VariableContext;
 import org.dom4j.XPath;
 import org.dom4j.rule.Pattern;
+
+import org.jaxen.VariableContext;
 
 import org.xml.sax.Attributes;
 
@@ -38,7 +39,7 @@ import org.xml.sax.Attributes;
   * aware.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public abstract class ProxyDocumentFactory {
 
@@ -211,5 +212,5 @@ public abstract class ProxyDocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ProxyDocumentFactory.java,v 1.6 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: ProxyDocumentFactory.java,v 1.7 2001/08/31 08:58:53 jstrachan Exp $
  */
