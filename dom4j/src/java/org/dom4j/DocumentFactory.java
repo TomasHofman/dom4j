@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.11 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.12 2001/03/14 18:13:28 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -35,7 +35,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class DocumentFactory {
 
@@ -170,6 +170,22 @@ public class DocumentFactory {
       *
       * @param xpathFilterExpression is the XPath filter expression 
       * to create
+      * @param variableContext is the variable context to use when evaluating the XPath
+      * @return a new <code>NodeFilter</code> instance
+      */
+    public NodeFilter createXPathFilter(String xpathFilterExpression, VariableContext variableContext) {
+        DefaultXPath answer = new DefaultXPath( ".[" + xpathFilterExpression + "]" );        
+        answer.setVariableContext( variableContext );
+        return answer;
+    }
+    
+    /** <p><code>createXPathFilter</code> parses a NodeFilter
+      * from the given XPath filter expression.
+      * XPath filter expressions occur within XPath expressions such as
+      * <code>self::node()[ filterExpression ]</code></p>
+      *
+      * @param xpathFilterExpression is the XPath filter expression 
+      * to create
       * @return a new <code>NodeFilter</code> instance
       */
     public NodeFilter createXPathFilter(String xpathFilterExpression) {
@@ -261,5 +277,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.11 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.12 2001/03/14 18:13:28 jstrachan Exp $
  */
