@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: OpNumberAny.java,v 1.3 2001/04/02 18:24:31 jstrachan Exp $
+ * $Id: OpNumberAny.java,v 1.4 2001/04/05 17:32:44 jstrachan Exp $
  */
 
 
@@ -47,7 +47,7 @@ class OpNumberAny extends Operator {
             );
         }
         else {
-            System.out.println( "#### I can't handle operator: " + op );
+            //System.out.println( "#### I can't handle operator: " + op );
         }
         return null;
     }
@@ -98,5 +98,5 @@ class OpNumberAny extends Operator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OpNumberAny.java,v 1.3 2001/04/02 18:24:31 jstrachan Exp $
+ * $Id: OpNumberAny.java,v 1.4 2001/04/05 17:32:44 jstrachan Exp $
  */
