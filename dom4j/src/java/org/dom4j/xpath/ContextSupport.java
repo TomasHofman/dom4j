@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ContextSupport.java,v 1.4 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: ContextSupport.java,v 1.5 2001/06/19 14:14:31 jstrachan Exp $
  */
 
 
@@ -108,18 +108,19 @@ public class ContextSupport {
         return _nsContext.translateNamespacePrefix(prefix);
     }
     
+/*    
     public QName getQName( String prefix, String localName ) {
         return QName.get( localName, getNamespaceByPrefix( prefix ) );
     }
     
     public Namespace getNamespaceByPrefix(String prefix) {
-        if ( _nsContext == null ) {
+        if ( _nsContext != null ) {
             System.err.println("SHORT_CIRCUIT: NO_NAMESPACE");
             return Namespace.NO_NAMESPACE;
         }
         return _nsContext.getNamespaceByPrefix( prefix );
     }
-    
+*/    
 
     /** Retrieve a named function
      *
@@ -205,5 +206,5 @@ public class ContextSupport {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ContextSupport.java,v 1.4 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: ContextSupport.java,v 1.5 2001/06/19 14:14:31 jstrachan Exp $
  */
