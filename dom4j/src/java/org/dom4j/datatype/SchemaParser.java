@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SchemaParser.java,v 1.8 2001/11/08 21:55:47 yruan2 Exp $
+ * $Id: SchemaParser.java,v 1.9 2001/11/22 12:54:09 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -32,7 +32,7 @@ import org.relaxng.datatype.ValidationContext;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.8 $
+ * @version $Revision: 1.9 $
  */
 public class SchemaParser {
 
@@ -147,7 +147,10 @@ public class SchemaParser {
         if (nameAttr==null) return;
         String name=nameAttr.getText();
         QName qname=getQName(name);
-        DatatypeElementFactory elementFactory=new DatatypeElementFactory(qname);
+        
+        DatatypeElementFactory elementFactory = getDatatypeElementFactory( qname );        
+        //DatatypeElementFactory elementFactory=new DatatypeElementFactory(qname);
+        
         onSchemaComplexType(schemaComplexType,elementFactory);
         namedTypeResolver.registerComplexType(qname,elementFactory);
     }
@@ -204,9 +207,9 @@ public class SchemaParser {
     /** processes an XML Schema &lt;attribute&gt; tag
      */
     protected void onDatatypeAttribute(
-    Element xsdElement,
-    DatatypeElementFactory elementFactory,
-    Element xsdAttribute
+        Element xsdElement,
+        DatatypeElementFactory elementFactory,
+        Element xsdAttribute
     ) {
         String name = xsdAttribute.attributeValue( "name" );
         QName qname = getQName( name );
@@ -414,5 +417,5 @@ public class SchemaParser {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaParser.java,v 1.8 2001/11/08 21:55:47 yruan2 Exp $
+ * $Id: SchemaParser.java,v 1.9 2001/11/22 12:54:09 jstrachan Exp $
  */
