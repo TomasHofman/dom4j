@@ -4,12 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXHelper.java,v 1.15 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: SAXHelper.java,v 1.16 2004/11/12 21:31:08 maartenc Exp $
  */
 
 package org.dom4j.io;
 
-import org.dom4j.io.aelfred2.SAXDriver;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
@@ -20,7 +19,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * SAX and XMLReader objects.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 class SAXHelper {
 
@@ -81,13 +80,11 @@ class SAXHelper {
                      );
                     e.printStackTrace();
                 }
+                throw new SAXException(e);
             }
         }
         if ( reader == null ) {
-            System.out.println(
-                    "Warning: Error occurred using SAX to load a SAXParser. " +
-                    "Will use Aelfred instead");
-            reader = new SAXDriver();
+        	throw new SAXException("Couldn't create SAX reader");
         }
         return reader;
     }
@@ -180,5 +177,5 @@ class SAXHelper {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXHelper.java,v 1.15 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: SAXHelper.java,v 1.16 2004/11/12 21:31:08 maartenc Exp $
  */
