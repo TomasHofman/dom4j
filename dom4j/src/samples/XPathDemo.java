@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathDemo.java,v 1.7 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.8 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 
@@ -17,24 +17,20 @@ import org.dom4j.io.XMLWriter;
 /** A sample program to demonstrate the use of XPath expressions.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class XPathDemo extends SAXDemo {
     
     protected String xpath = "*";
     
     
-    public XPathDemo() {
-    }
-        
-    /** The program entry point.
-      *
-      * @param args the command line arguments
-      */
     public static void main(String[] args) {
         run( new XPathDemo(), args );
     }    
     
+    public XPathDemo() {
+    }
+        
     public void run(String[] args) throws Exception {    
         if ( args.length < 2 ) {
             printUsage( "<XML document URL> <XPath expression>" );
@@ -114,5 +110,5 @@ public class XPathDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathDemo.java,v 1.7 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.8 2001/01/24 16:52:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CountDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: CountDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 
@@ -13,7 +13,7 @@ import org.dom4j.*;
 /** A sample program to count the number of various kinds of DOM4J node types
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class CountDemo extends SAXDemo {
     
@@ -24,17 +24,13 @@ public class CountDemo extends SAXDemo {
     private int numProcessingInstructions;
     
     
-    public CountDemo() {
-    }
-        
-    /** The program entry point.
-      *
-      * @param args the command line arguments
-      */
     public static void main(String[] args) {
         run( new CountDemo(), args );
     }    
     
+    public CountDemo() {
+    }
+        
     protected void process(Document document) throws Exception {
         numCharacters = 0;
         numComments = 0;
@@ -128,5 +124,5 @@ public class CountDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CountDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: CountDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */

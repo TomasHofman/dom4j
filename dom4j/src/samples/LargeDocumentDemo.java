@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LargeDocumentDemo.java,v 1.3 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 
@@ -17,23 +17,19 @@ import org.dom4j.io.SAXReader;
   * {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     
     protected String pruningPath;
     
-    public LargeDocumentDemo() {
-    }
-        
-    /** The program entry point.
-      *
-      * @param args the command line arguments
-      */
     public static void main(String[] args) {
         run( new LargeDocumentDemo(), args );
     }    
     
+    public LargeDocumentDemo() {
+    }
+        
     public void run(String[] args) throws Exception {    
         if ( args.length < 2 ) {
             printUsage( "<XML document URL> <pruningPath>" );
@@ -113,5 +109,5 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LargeDocumentDemo.java,v 1.3 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathComment.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathComment.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -16,7 +16,7 @@ import org.dom4j.Element;
   * It is useful when evalutating XPath expressions.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XPathComment extends DefaultComment {
 
@@ -53,6 +53,9 @@ public class XPathComment extends DefaultComment {
         return true;
     }
 
+    public boolean isReadOnly() {
+        return false;
+    }
 }
 
 
@@ -100,5 +103,5 @@ public class XPathComment extends DefaultComment {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathComment.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathComment.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
  */

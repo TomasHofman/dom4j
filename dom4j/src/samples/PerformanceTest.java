@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceTest.java,v 1.9 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.10 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 import java.net.URL;
@@ -19,7 +19,7 @@ import org.dom4j.io.DocumentReader;
 /** Perform some DOM4J parsing peformance test cases.
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class PerformanceTest extends SAXDemo {
     
@@ -37,16 +37,12 @@ public class PerformanceTest extends SAXDemo {
     protected String documentFactoryClassName;
     
     
-    public PerformanceTest() {
-    }
-    
-    /** The program entry point.
-      *
-      * @param args the command line arguments
-      */
     public static void main(String[] args) {
         run( new PerformanceTest(), args );
     }    
+    
+    public PerformanceTest() {
+    }
     
     public void run(String[] args) throws Exception {    
         if ( args.length < 1 ) {
@@ -219,5 +215,5 @@ public class PerformanceTest extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceTest.java,v 1.9 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.10 2001/01/24 16:52:13 jstrachan Exp $
  */

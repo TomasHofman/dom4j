@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathProcessingInstruction.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathProcessingInstruction.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -19,39 +19,39 @@ import org.dom4j.Element;
   * It is useful when evalutating XPath expressions.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XPathProcessingInstruction extends DefaultProcessingInstruction {
 
     /** The parent of this node */
     private Element parent;
 
-    /** <p>This will create a new PI with the given target and data</p>
+    /** <p>This will create a new PI with the given target and values</p>
       *
       * @param target is the name of the PI
-      * @param data is the <code>Map</code> data for the PI
+      * @param values is the <code>Map</code> values for the PI
       */
-    public XPathProcessingInstruction(String target, Map data) {
-        super(target, data);
+    public XPathProcessingInstruction(String target, Map values) {
+        super(target, values);
     }
 
-    /** <p>This will create a new PI with the given target and data</p>
+    /** <p>This will create a new PI with the given target and values</p>
       *
       * @param target is the name of the PI
-      * @param data is the data for the PI
+      * @param values is the values for the PI
       */
-    public XPathProcessingInstruction(String target, String data) {
-        super(target, data);
+    public XPathProcessingInstruction(String target, String values) {
+        super(target, values);
     }
 
-    /** <p>This will create a new PI with the given target and data</p>
+    /** <p>This will create a new PI with the given target and values</p>
       *
       * @param parent is the parent element
       * @param target is the name of the PI
-      * @param data is the data for the PI
+      * @param values is the values for the PI
       */
-    public XPathProcessingInstruction(Element parent, String target, String data) {
-        super(target, data);
+    public XPathProcessingInstruction(Element parent, String target, String values) {
+        super(target, values);
         this.parent = parent;
     }
     
@@ -59,18 +59,18 @@ public class XPathProcessingInstruction extends DefaultProcessingInstruction {
         this.target = target;
     }
     
-    public void setText(String rawData) {
-        this.rawData = rawData;
-        this.mapData = parseData(rawData);
+    public void setText(String text) {
+        this.text = text;
+        this.values = parseValues(text);
     }
     
-    public void setValues(Map mapData) {
-        this.mapData = mapData;
-        this.rawData = toString(mapData);
+    public void setValues(Map values) {
+        this.values = values;
+        this.text = toString(values);
     }
     
     public void setValue(String name, String value) {
-        mapData.put(name, value);
+        values.put(name, value);
     }
     
 
@@ -85,7 +85,10 @@ public class XPathProcessingInstruction extends DefaultProcessingInstruction {
     public boolean supportsParent() {
         return true;
     }
-
+    
+    public boolean isReadOnly() {
+        return false;
+    }
 }
 
 
@@ -133,5 +136,5 @@ public class XPathProcessingInstruction extends DefaultProcessingInstruction {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathProcessingInstruction.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathProcessingInstruction.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
  */

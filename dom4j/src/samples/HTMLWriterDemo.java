@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: HTMLWriterDemo.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: HTMLWriterDemo.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 
@@ -16,20 +16,16 @@ import org.dom4j.io.XMLWriter;
   * XHTML documents to HTML aware browsers.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class HTMLWriterDemo extends SAXDemo {
     
-    public HTMLWriterDemo() {
-    }
-    
-    /** The program entry point.
-      *
-      * @param args the command line arguments
-      */
     public static void main(String[] args) {
         run( new HTMLWriterDemo(), args );
     }    
+    
+    public HTMLWriterDemo() {
+    }
     
     /** A Factory Method to create an <code>XMLWriter</code>
       * instance allowing derived classes to change this behaviour
@@ -85,5 +81,5 @@ public class HTMLWriterDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriterDemo.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: HTMLWriterDemo.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
  */

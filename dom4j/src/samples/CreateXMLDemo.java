@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CreateXMLDemo.java,v 1.3 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 
@@ -24,9 +24,13 @@ import org.dom4j.io.XMLWriter;
   * displaying the current system properties.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class CreateXMLDemo extends AbstractDemo {
+    
+    public static void main(String[] args) {
+        run( new CreateXMLDemo(), args );
+    }    
     
     public CreateXMLDemo() {
     }
@@ -60,16 +64,7 @@ public class CreateXMLDemo extends AbstractDemo {
             element.addText( value );
         }
         return document;
-    }
-    
-    
-    /** The program entry point.
-      *
-      * @param args the command line arguments
-      */
-    public static void main(String[] args) {
-        run( new CreateXMLDemo(), args );
-    }    
+    }       
 }
 
 
@@ -117,5 +112,5 @@ public class CreateXMLDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CreateXMLDemo.java,v 1.3 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */

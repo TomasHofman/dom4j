@@ -4,15 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 import org.dom4j.DocumentException;
 
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+
 /** An abstract base class for the demo programs.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public abstract class AbstractDemo {
 
@@ -40,6 +44,27 @@ public abstract class AbstractDemo {
         catch (Throwable t) {
             System.out.println( "Exception occurred: " + t );
             t.printStackTrace();
+        }
+    }
+
+    /** @return the {@link URL} for the given file
+      * where the given file name can be either a name of a file or a URL
+      */
+    protected URL getURL( String xmlFile ) throws Exception {
+        try {
+            return new URL( xmlFile );
+        }
+        catch (MalformedURLException e) {
+            // try create the URL from a File object
+            try {
+                File file = new File( xmlFile );
+                return file.toURL();
+            }
+            catch (MalformedURLException e2) {
+                println( "Couldn't create a valid URL or File from: " + xmlFile );
+                println( "Caught: " + e.getMessage() + " and " + e2.getMessage() );
+                return null;
+            }
         }
     }
     
@@ -98,5 +123,5 @@ public abstract class AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */

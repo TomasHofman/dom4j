@@ -4,76 +4,89 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo2.java,v 1.6 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.1 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 
 import java.net.URL;
 
-import org.dom4j.*;
-import org.dom4j.io.DocumentReader;
+import org.dom4j.Document;
+import org.dom4j.io.DOMReader;
+import org.dom4j.io.DOMWriter;
 import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 
-/** This demo uses the Visitor Pattern in DOM4J to display the effect
-  * of changing the {@link DocumentFactory} used when reading a DOM4J 
-  * object model from a {@link SAXReader}.
+/** This sample program parses an XML document as a DOM4J tree using
+  * SAX, it then creates a W3C DOM tree which is then used as input for
+  * creating a new DOM4J tree which is then output. 
+  * This is clearly not terribly useful but demonstrates how to convert from 
+  * text <-> DOM4J and DOM4J <-> DOM
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.1 $
   */
-public class VisitorDemo2 extends VisitorDemo {
-    
-    /** The DocumentFactory class name to use */
-    protected String documentFactoryClassName;
+public class SAXDOMDemo extends AbstractDemo {
     
     public static void main(String[] args) {
-        run( new VisitorDemo2(), args );
+        run( new SAXDOMDemo(), args );
     }    
     
-    public VisitorDemo2() {
+    public SAXDOMDemo() {
     }
-        
+    
     public void run(String[] args) throws Exception {    
-        if ( args.length < 1 ) {
-            printUsage( "<XML document URL> [<Document Factory Class Name>]" );
+        if ( args.length < 1) {
+            printUsage( "<XML document URL>" );
             return;
         }
-
-        String xmlFile = args[0];
         
-        documentFactoryClassName = (args.length > 1) 
-            ? args[1] : null;
-            
-        parse( xmlFile );
+        parse( args[0] );
+    }
+    
+    protected void parse( String xmlFile ) throws Exception {
+        URL url = getURL( xmlFile );
+        if ( url != null ) {
+            parse( url );
+        }
     }
     
     protected void parse( URL url ) throws Exception {
-        DocumentReader reader = createDocumentReader();
+        SAXReader reader = new SAXReader();
         Document document = reader.read(url);
-        process(document);
+        
+        println( "Parsed to DOM4J tree using SAX: " + document );
+        
+        // now lets make a DOM object
+        DOMWriter domWriter = new DOMWriter();
+        org.w3c.dom.Document domDocument = domWriter.write(document);
+        
+        println( "Converted to DOM tree: " + domDocument );
+        
+        // now lets read it back as a DOM4J object
+        DOMReader domReader = new DOMReader();        
+        document = domReader.read( domDocument );
+        
+        println( "Converted to DOM4J tree using DOM: " + document );
+        
+        process( document );
     }
     
-    protected DocumentReader createDocumentReader() throws Exception {
-        println( "Using SAX parser: " + System.getProperty( "org.xml.sax.driver", "default" ) );
-        
-        DocumentReader answer = new SAXReader();        
-        if ( documentFactoryClassName != null ) {
-            try {
-                Class theClass = Class.forName( documentFactoryClassName );
-                DocumentFactory factory = (DocumentFactory) theClass.newInstance();
-                if ( factory != null ) {
-                    println( "DocumentFactory:  " + factory );
-                    answer.setDocumentFactory( factory );
-                }
-            }
-            catch (Exception e) {
-                println( "ERROR: Failed to create an instance of DocumentFactory: " + documentFactoryClassName );
-                println( "Exception: " + e );
-                e.printStackTrace();
-            }
-        }
-        return answer;
+    
+    protected void process(Document document) throws Exception {
+        XMLWriter writer = createXMLWriter();
+        writer.write(document, System.out);                
     }
+
+    /** A Factory Method to create an <code>XMLWriter</code>
+      * instance allowing derived classes to change this behaviour
+      */
+    protected XMLWriter createXMLWriter() {
+        XMLWriter writer = new XMLWriter("  ", true);
+        writer.setTrimText(true);
+        writer.setExpandEmptyElements(true);
+        return writer;
+    }
+    
 }
 
 
@@ -121,5 +134,5 @@ public class VisitorDemo2 extends VisitorDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo2.java,v 1.6 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.1 2001/01/24 16:52:13 jstrachan Exp $
  */

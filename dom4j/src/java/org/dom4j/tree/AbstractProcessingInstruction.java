@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractProcessingInstruction.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,7 +21,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractProcessingInstruction extends AbstractNode implements ProcessingInstruction {
 
@@ -69,12 +69,12 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
     
     /** <p>This will convert the Map to a string representation.</p>
       *
-      * @param mapData is a <code>Map</code> of PI data to convert
+      * @param values is a <code>Map</code> of PI data to convert
       */
-    protected String toString(Map mapData) {
+    protected String toString(Map values) {
         StringBuffer buffer = new StringBuffer();
         
-        for ( Iterator iter = mapData.entrySet().iterator(); iter.hasNext(); ) {
+        for ( Iterator iter = values.entrySet().iterator(); iter.hasNext(); ) {
             Map.Entry entry = (Map.Entry) iter.next();
             String name = (String) entry.getKey();
             String value = (String) entry.getValue();
@@ -91,14 +91,14 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
 
     /**<p>Parses the raw data of PI as a <code>Map</code>.</p>
       *
-      * @param rawData <code>String</code> PI data to parse
+      * @param text <code>String</code> PI data to parse
       */
-    protected Map parseData(String rawData) {
+    protected Map parseValues(String text) {
         Map data = new HashMap();
 
         // Break up name/value pairs
         StringTokenizer s =
-            new StringTokenizer(rawData);
+            new StringTokenizer(text);
 
         // Iterate through the pairs
         while (s.hasMoreTokens()) {
@@ -164,5 +164,5 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractProcessingInstruction.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
  */

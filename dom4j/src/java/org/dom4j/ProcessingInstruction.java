@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ProcessingInstruction.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ProcessingInstruction.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -17,7 +17,7 @@ import java.util.Map;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public interface ProcessingInstruction extends Node {
 
@@ -32,6 +32,11 @@ public interface ProcessingInstruction extends Node {
       * method. It is added for clarity.
       */
     public void setTarget(String target);
+
+    /** @return the text for all the data associated with
+      * the processing instruction
+      */
+    public String getText();
     
     /** <p>Returns the value of a specific name in the PI.</p>
       *
@@ -39,6 +44,11 @@ public interface ProcessingInstruction extends Node {
       * @return the value of the named attribute
       */
     public String getValue(String name);
+    
+    /** @return the values for this processing instruction as 
+      * a Map
+      */
+    public Map getValues();
 
     public void setValue(String name, String value);    
     public void setValues(Map data);
@@ -93,5 +103,5 @@ public interface ProcessingInstruction extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ProcessingInstruction.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ProcessingInstruction.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
  */
