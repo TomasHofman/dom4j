@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.26 2003/04/07 22:14:54 jstrachan Exp $
+ * $Id: Node.java,v 1.27 2004/06/24 09:15:32 maartenc Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public interface Node extends Cloneable {
 
@@ -469,7 +469,7 @@ public interface Node extends Cloneable {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -486,5 +486,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.26 2003/04/07 22:14:54 jstrachan Exp $
+ * $Id: Node.java,v 1.27 2004/06/24 09:15:32 maartenc Exp $
  */

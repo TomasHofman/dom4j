@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.53 2004/06/22 11:42:43 maartenc Exp $
+ * $Id: DefaultElement.java,v 1.54 2004/06/24 09:15:45 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -63,7 +63,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.53 $
+  * @version $Revision: 1.54 $
   */
 
 public class DefaultElement extends AbstractElement {
@@ -1849,7 +1849,7 @@ public class DefaultElement extends AbstractElement {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -1866,5 +1866,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.53 2004/06/22 11:42:43 maartenc Exp $
+ * $Id: DefaultElement.java,v 1.54 2004/06/24 09:15:45 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultNamespace.java,v 1.11 2003/04/07 22:14:10 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.12 2004/06/24 09:15:45 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -17,7 +17,7 @@ import org.dom4j.Namespace;
   * It is useful when returning results from XPath expressions.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class DefaultNamespace extends Namespace {
 
@@ -106,7 +106,7 @@ public class DefaultNamespace extends Namespace {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -123,5 +123,5 @@ public class DefaultNamespace extends Namespace {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultNamespace.java,v 1.11 2003/04/07 22:14:10 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.12 2004/06/24 09:15:45 maartenc Exp $
  */

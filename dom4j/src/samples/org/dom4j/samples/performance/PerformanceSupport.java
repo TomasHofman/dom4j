@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceSupport.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: PerformanceSupport.java,v 1.2 2004/06/24 09:16:06 maartenc Exp $
  */
 
 package org.dom4j.samples.performance;
@@ -14,7 +14,7 @@ import org.dom4j.samples.SAXDemo;
 /** Base class for all simple performance tests
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class PerformanceSupport extends SAXDemo {
     
@@ -91,7 +91,7 @@ public abstract class PerformanceSupport extends SAXDemo {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -108,5 +108,5 @@ public abstract class PerformanceSupport extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceSupport.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: PerformanceSupport.java,v 1.2 2004/06/24 09:16:06 maartenc Exp $
  */

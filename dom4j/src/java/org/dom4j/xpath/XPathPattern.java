@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.14 2004/02/28 12:36:25 maartenc Exp $
+ * $Id: XPathPattern.java,v 1.15 2004/06/24 09:16:02 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -30,7 +30,7 @@ import org.jaxen.saxpath.SAXPathException;
   * which uses an XPath xpath.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class XPathPattern implements org.dom4j.rule.Pattern {
     
@@ -153,7 +153,7 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -170,5 +170,5 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.14 2004/02/28 12:36:25 maartenc Exp $
+ * $Id: XPathPattern.java,v 1.15 2004/06/24 09:16:02 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttribute.java,v 1.17 2004/06/23 13:48:56 maartenc Exp $
+ * $Id: AbstractAttribute.java,v 1.18 2004/06/24 09:15:44 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -22,7 +22,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
@@ -174,7 +174,7 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -191,5 +191,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.17 2004/06/23 13:48:56 maartenc Exp $
+ * $Id: AbstractAttribute.java,v 1.18 2004/06/24 09:15:44 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Stylesheet.java,v 1.8 2004/02/29 12:34:21 maartenc Exp $
+ * $Id: Stylesheet.java,v 1.9 2004/06/24 09:15:41 maartenc Exp $
  */
 
 package org.dom4j.rule;
@@ -22,7 +22,7 @@ import org.dom4j.XPath;
   * stylesheet can be applied to a source document or node.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class Stylesheet {
 
@@ -207,7 +207,7 @@ public class Stylesheet {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -224,5 +224,5 @@ public class Stylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Stylesheet.java,v 1.8 2004/02/29 12:34:21 maartenc Exp $
+ * $Id: Stylesheet.java,v 1.9 2004/06/24 09:15:41 maartenc Exp $
  */

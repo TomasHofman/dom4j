@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMReader.java,v 1.13 2004/06/22 11:42:34 maartenc Exp $
+ * $Id: DOMReader.java,v 1.14 2004/06/24 09:15:36 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.dom4j.tree.NamespaceStack;
   * a DOM4J tree from it.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class DOMReader {
 
@@ -285,7 +285,7 @@ public class DOMReader {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -302,5 +302,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.13 2004/06/22 11:42:34 maartenc Exp $
+ * $Id: DOMReader.java,v 1.14 2004/06/24 09:15:36 maartenc Exp $
  */

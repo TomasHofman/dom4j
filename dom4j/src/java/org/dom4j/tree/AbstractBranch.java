@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.39 2003/05/15 22:48:02 maartenc Exp $
+ * $Id: AbstractBranch.java,v 1.40 2004/06/24 09:15:44 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -28,7 +28,7 @@ import org.dom4j.io.OutputFormat;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.39 $
+  * @version $Revision: 1.40 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -401,7 +401,7 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -418,5 +418,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.39 2003/05/15 22:48:02 maartenc Exp $
+ * $Id: AbstractBranch.java,v 1.40 2004/06/24 09:15:44 maartenc Exp $
  */

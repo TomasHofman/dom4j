@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.42 2004/06/16 13:35:42 maartenc Exp $
+ * $Id: Element.java,v 1.43 2004/06/24 09:15:30 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.42 $
+  * @version $Revision: 1.43 $
   */
 public interface Element extends Branch {
 
@@ -671,7 +671,7 @@ public interface Element extends Branch {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -688,5 +688,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.42 2004/06/16 13:35:42 maartenc Exp $
+ * $Id: Element.java,v 1.43 2004/06/24 09:15:30 maartenc Exp $
  */

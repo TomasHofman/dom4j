@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeElement.java,v 1.5 2003/04/07 22:15:26 jstrachan Exp $
+ * $Id: DatatypeElement.java,v 1.6 2004/06/24 09:15:35 maartenc Exp $
  */
 
 package org.dom4j.datatype;
@@ -26,7 +26,7 @@ import org.relaxng.datatype.ValidationContext;
   * specification.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DatatypeElement extends DefaultElement implements SerializationContext, ValidationContext {
 
@@ -179,7 +179,7 @@ public class DatatypeElement extends DefaultElement implements SerializationCont
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -196,5 +196,5 @@ public class DatatypeElement extends DefaultElement implements SerializationCont
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeElement.java,v 1.5 2003/04/07 22:15:26 jstrachan Exp $
+ * $Id: DatatypeElement.java,v 1.6 2004/06/24 09:15:35 maartenc Exp $
  */

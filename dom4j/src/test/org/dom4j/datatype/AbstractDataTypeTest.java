@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDataTypeTest.java,v 1.3 2003/04/07 22:24:35 jstrachan Exp $
+ * $Id: AbstractDataTypeTest.java,v 1.4 2004/06/24 09:16:11 maartenc Exp $
  */
 
 package org.dom4j.datatype;
@@ -22,7 +22,7 @@ import org.dom4j.Node;
   * for testing XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class AbstractDataTypeTest extends AbstractTestCase {
 
@@ -111,7 +111,7 @@ public class AbstractDataTypeTest extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -128,5 +128,5 @@ public class AbstractDataTypeTest extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDataTypeTest.java,v 1.3 2003/04/07 22:24:35 jstrachan Exp $
+ * $Id: AbstractDataTypeTest.java,v 1.4 2004/06/24 09:16:11 maartenc Exp $
  */

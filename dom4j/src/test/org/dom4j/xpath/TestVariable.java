@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestVariable.java,v 1.11 2003/04/07 22:24:46 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.12 2004/06/24 09:16:15 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -24,7 +24,7 @@ import org.jaxen.SimpleVariableContext;
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestVariable extends AbstractTestCase {
 
@@ -124,7 +124,7 @@ public class TestVariable extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -141,5 +141,5 @@ public class TestVariable extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestVariable.java,v 1.11 2003/04/07 22:24:46 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.12 2004/06/24 09:16:15 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeDemo.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: DatatypeDemo.java,v 1.2 2004/06/24 09:16:03 maartenc Exp $
  */
 
 package org.dom4j.samples;
@@ -16,7 +16,7 @@ import org.dom4j.io.SAXReader;
 /** A simple test program to demonstrate using XML Schema Data Types
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DatatypeDemo extends AbstractDemo {
     
@@ -66,7 +66,7 @@ public class DatatypeDemo extends AbstractDemo {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -83,5 +83,5 @@ public class DatatypeDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeDemo.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: DatatypeDemo.java,v 1.2 2004/06/24 09:16:03 maartenc Exp $
  */

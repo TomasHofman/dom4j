@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: STAXEventReader.java,v 1.1 2004/03/28 21:08:03 maartenc Exp $
+ * $Id: STAXEventReader.java,v 1.2 2004/06/24 09:15:39 maartenc Exp $
  */
 package org.dom4j.io;
 
@@ -550,7 +550,7 @@ public class STAXEventReader {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -567,6 +567,6 @@ public class STAXEventReader {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: STAXEventReader.java,v 1.1 2004/03/28 21:08:03 maartenc Exp $
+ * $Id: STAXEventReader.java,v 1.2 2004/06/24 09:15:39 maartenc Exp $
  */
 

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FlyweightEntity.java,v 1.2 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: FlyweightEntity.java,v 1.3 2004/06/24 09:15:46 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,7 @@ import org.dom4j.Node;
   * {@link #setText} providing the entity has no text already.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class FlyweightEntity extends AbstractEntity {
 
@@ -117,7 +117,7 @@ public class FlyweightEntity extends AbstractEntity {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -134,5 +134,5 @@ public class FlyweightEntity extends AbstractEntity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FlyweightEntity.java,v 1.2 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: FlyweightEntity.java,v 1.3 2004/06/24 09:15:46 maartenc Exp $
  */

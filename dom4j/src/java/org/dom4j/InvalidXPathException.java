@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: InvalidXPathException.java,v 1.2 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: InvalidXPathException.java,v 1.3 2004/06/24 09:15:32 maartenc Exp $
  */
 
 package org.dom4j;
@@ -12,7 +12,7 @@ package org.dom4j;
 /** <p><code>InvalidXPathException</code> is thrown when an invalid
   * XPath expression is used to traverse an XML document</p>
   *
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class InvalidXPathException extends IllegalArgumentException {
 
@@ -53,7 +53,7 @@ public class InvalidXPathException extends IllegalArgumentException {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -70,5 +70,5 @@ public class InvalidXPathException extends IllegalArgumentException {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: InvalidXPathException.java,v 1.2 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: InvalidXPathException.java,v 1.3 2004/06/24 09:15:32 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSerialize.java,v 1.11 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestSerialize.java,v 1.12 2004/06/24 09:16:10 maartenc Exp $
  */
 
 package org.dom4j;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that a dom4j document is Serializable
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestSerialize extends AbstractTestCase {
 
@@ -158,7 +158,7 @@ public class TestSerialize extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -175,5 +175,5 @@ public class TestSerialize extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSerialize.java,v 1.11 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestSerialize.java,v 1.12 2004/06/24 09:16:10 maartenc Exp $
  */

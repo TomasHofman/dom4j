@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PrettyPrintDemo.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: PrettyPrintDemo.java,v 1.2 2004/06/24 09:16:05 maartenc Exp $
  */
 
 package org.dom4j.samples.jaxp;
@@ -27,7 +27,7 @@ import org.dom4j.io.XMLResult;
   * using dom4j's pretty printing output format.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class PrettyPrintDemo extends SAXDemo {
     
@@ -89,7 +89,7 @@ public class PrettyPrintDemo extends SAXDemo {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -106,5 +106,5 @@ public class PrettyPrintDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PrettyPrintDemo.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: PrettyPrintDemo.java,v 1.2 2004/06/24 09:16:05 maartenc Exp $
  */

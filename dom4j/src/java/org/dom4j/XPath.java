@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.15 2004/06/14 18:42:53 maartenc Exp $
+ * $Id: XPath.java,v 1.16 2004/06/24 09:15:34 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.jaxen.VariableContext;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public interface XPath extends NodeFilter {
 
@@ -254,7 +254,7 @@ public interface XPath extends NodeFilter {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -271,5 +271,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.15 2004/06/14 18:42:53 maartenc Exp $
+ * $Id: XPath.java,v 1.16 2004/06/24 09:15:34 maartenc Exp $
  */

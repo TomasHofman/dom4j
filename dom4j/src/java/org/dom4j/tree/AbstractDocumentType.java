@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocumentType.java,v 1.13 2003/04/07 22:14:11 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.14 2004/06/24 09:15:44 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -22,7 +22,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public abstract class AbstractDocumentType extends AbstractNode implements DocumentType {
 
@@ -172,7 +172,7 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -189,5 +189,5 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocumentType.java,v 1.13 2003/04/07 22:14:11 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.14 2004/06/24 09:15:44 maartenc Exp $
  */

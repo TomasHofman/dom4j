@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TrimXMLFilter.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: TrimXMLFilter.java,v 1.2 2004/06/24 09:16:08 maartenc Exp $
  */
 
 package org.dom4j.samples.sax;
@@ -16,7 +16,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
 /** An example XMLFilter which trims all text content, removing whitespace
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TrimXMLFilter extends XMLFilterImpl {
     
@@ -69,7 +69,7 @@ public class TrimXMLFilter extends XMLFilterImpl {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -86,5 +86,5 @@ public class TrimXMLFilter extends XMLFilterImpl {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TrimXMLFilter.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: TrimXMLFilter.java,v 1.2 2004/06/24 09:16:08 maartenc Exp $
  */

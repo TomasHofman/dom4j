@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.27 2003/05/15 22:49:19 maartenc Exp $
+ * $Id: Branch.java,v 1.28 2004/06/24 09:15:30 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.List;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.27 $
+  * @version $Revision: 1.28 $
   */
 public interface Branch extends Node {
 
@@ -280,7 +280,7 @@ public interface Branch extends Node {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -297,5 +297,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.27 2003/05/15 22:49:19 maartenc Exp $
+ * $Id: Branch.java,v 1.28 2004/06/24 09:15:30 maartenc Exp $
  */

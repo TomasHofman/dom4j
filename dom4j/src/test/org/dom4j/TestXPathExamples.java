@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.9 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestXPathExamples.java,v 1.10 2004/06/24 09:16:11 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.dom4j.rule.Pattern;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestXPathExamples extends TestCase {
 
@@ -239,7 +239,7 @@ public class TestXPathExamples extends TestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -256,5 +256,5 @@ public class TestXPathExamples extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.9 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestXPathExamples.java,v 1.10 2004/06/24 09:16:11 maartenc Exp $
  */

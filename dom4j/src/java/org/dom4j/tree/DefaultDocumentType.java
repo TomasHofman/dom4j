@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocumentType.java,v 1.6 2003/04/07 22:14:31 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.7 2004/06/24 09:15:45 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -15,7 +15,7 @@ import java.util.List;
   * of an XML document type.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class DefaultDocumentType extends AbstractDocumentType {
 
@@ -141,7 +141,7 @@ public class DefaultDocumentType extends AbstractDocumentType {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -158,5 +158,5 @@ public class DefaultDocumentType extends AbstractDocumentType {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocumentType.java,v 1.6 2003/04/07 22:14:31 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.7 2004/06/24 09:15:45 maartenc Exp $
  */

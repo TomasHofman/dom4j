@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LinkChecker.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: LinkChecker.java,v 1.2 2004/06/24 09:16:03 maartenc Exp $
  */
 
 package org.dom4j.samples;
@@ -19,7 +19,7 @@ import org.dom4j.Document;
   * all the hypertext links in a source file.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class LinkChecker extends SAXDemo {
     
@@ -71,7 +71,7 @@ public class LinkChecker extends SAXDemo {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -88,5 +88,5 @@ public class LinkChecker extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LinkChecker.java,v 1.1 2004/04/27 09:24:43 maartenc Exp $
+ * $Id: LinkChecker.java,v 1.2 2004/06/24 09:16:03 maartenc Exp $
  */

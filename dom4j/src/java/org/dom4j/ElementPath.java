@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementPath.java,v 1.2 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: ElementPath.java,v 1.3 2004/06/24 09:15:32 maartenc Exp $
  */
 
 package org.dom4j;
@@ -15,7 +15,7 @@ package org.dom4j;
   * {@link Element} being processed.
   *
   * @author <a href="mailto:dwhite@equipecom.com">Dave White</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface ElementPath
 {
@@ -81,7 +81,7 @@ public interface ElementPath
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -98,5 +98,5 @@ public interface ElementPath
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementPath.java,v 1.2 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: ElementPath.java,v 1.3 2004/06/24 09:15:32 maartenc Exp $
  */

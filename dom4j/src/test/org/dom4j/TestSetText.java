@@ -103,7 +103,7 @@ public class TestSetText extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -120,5 +120,5 @@ public class TestSetText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSetText.java,v 1.2 2003/04/07 22:24:15 jstrachan Exp $
+ * $Id: TestSetText.java,v 1.3 2004/06/24 09:16:10 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementNameIterator.java,v 1.7 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: ElementNameIterator.java,v 1.8 2004/06/24 09:15:45 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -19,7 +19,7 @@ import org.dom4j.Element;
   * interface and are not of the correct element name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   * @deprecated  THIS CLASS WILL BE REMOVED IN dom4j-1.6 !!
   */
 public class ElementNameIterator extends FilterIterator {
@@ -71,7 +71,7 @@ public class ElementNameIterator extends FilterIterator {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -88,5 +88,5 @@ public class ElementNameIterator extends FilterIterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementNameIterator.java,v 1.7 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: ElementNameIterator.java,v 1.8 2004/06/24 09:15:45 maartenc Exp $
  */

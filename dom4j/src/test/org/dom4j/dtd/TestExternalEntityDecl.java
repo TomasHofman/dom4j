@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestExternalEntityDecl.java,v 1.2 2004/03/04 21:23:18 maartenc Exp $
+ * $Id: TestExternalEntityDecl.java,v 1.3 2004/06/24 09:16:12 maartenc Exp $
  */
 
 package org.dom4j.dtd;
@@ -26,7 +26,7 @@ import junit.textui.TestRunner;
   *
   * @author Bryan Thompson
   * @author Maarten Coene
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 
 public class TestExternalEntityDecl extends TestCase {
@@ -182,7 +182,7 @@ public class TestExternalEntityDecl extends TestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -199,5 +199,5 @@ public class TestExternalEntityDecl extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestExternalEntityDecl.java,v 1.2 2004/03/04 21:23:18 maartenc Exp $
+ * $Id: TestExternalEntityDecl.java,v 1.3 2004/06/24 09:16:12 maartenc Exp $
  */

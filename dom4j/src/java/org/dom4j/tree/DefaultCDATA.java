@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultCDATA.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: DefaultCDATA.java,v 1.8 2004/06/24 09:15:45 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -16,7 +16,7 @@ import org.dom4j.Element;
   * and can be modified in place.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class DefaultCDATA extends FlyweightCDATA {
 
@@ -86,7 +86,7 @@ public class DefaultCDATA extends FlyweightCDATA {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -103,5 +103,5 @@ public class DefaultCDATA extends FlyweightCDATA {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultCDATA.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: DefaultCDATA.java,v 1.8 2004/06/24 09:15:45 maartenc Exp $
  */

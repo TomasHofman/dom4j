@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FilterIterator.java,v 1.6 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: FilterIterator.java,v 1.7 2004/06/24 09:15:46 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
   * for implementors of {@link Iterator} which filter an existing iterator.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   * @deprecated  THIS CLASS WILL BE REMOVED IN dom4j-1.6 !!
   */
 public abstract class FilterIterator implements Iterator {
@@ -107,7 +107,7 @@ public abstract class FilterIterator implements Iterator {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -124,5 +124,5 @@ public abstract class FilterIterator implements Iterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FilterIterator.java,v 1.6 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: FilterIterator.java,v 1.7 2004/06/24 09:15:46 maartenc Exp $
  */

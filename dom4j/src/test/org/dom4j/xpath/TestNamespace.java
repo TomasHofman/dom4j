@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.10 2003/04/07 22:24:42 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.11 2004/06/24 09:16:14 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the namespace axis 
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -129,7 +129,7 @@ public class TestNamespace extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -146,5 +146,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.10 2003/04/07 22:24:42 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.11 2004/06/24 09:16:14 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSchemaParse.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestSchemaParse.java,v 1.5 2004/06/24 09:16:11 maartenc Exp $
  */
 
 package org.dom4j.datatype;
@@ -23,7 +23,7 @@ import org.dom4j.io.SAXReader;
   * Luis Peña Sánchez
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestSchemaParse extends AbstractTestCase {
 
@@ -85,7 +85,7 @@ public class TestSchemaParse extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -102,5 +102,5 @@ public class TestSchemaParse extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSchemaParse.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestSchemaParse.java,v 1.5 2004/06/24 09:16:11 maartenc Exp $
  */

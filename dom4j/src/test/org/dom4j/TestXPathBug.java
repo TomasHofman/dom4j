@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathBug.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestXPathBug.java,v 1.7 2004/06/24 09:16:11 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestXPathBug extends AbstractTestCase {
     
@@ -157,7 +157,7 @@ public class TestXPathBug extends AbstractTestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -174,5 +174,5 @@ public class TestXPathBug extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathBug.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestXPathBug.java,v 1.7 2004/06/24 09:16:11 maartenc Exp $
  */

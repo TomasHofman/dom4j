@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMElement.java,v 1.19 2004/06/10 20:20:16 maartenc Exp $
+ * $Id: DOMElement.java,v 1.20 2004/06/24 09:15:36 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -27,7 +27,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
@@ -408,7 +408,7 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -425,5 +425,5 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMElement.java,v 1.19 2004/06/10 20:20:16 maartenc Exp $
+ * $Id: DOMElement.java,v 1.20 2004/06/24 09:15:36 maartenc Exp $
  */

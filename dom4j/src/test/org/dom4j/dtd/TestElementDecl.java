@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestElementDecl.java,v 1.1 2004/03/04 21:23:18 maartenc Exp $
+ * $Id: TestElementDecl.java,v 1.2 2004/06/24 09:16:12 maartenc Exp $
  */
 
 package org.dom4j.dtd;
@@ -22,7 +22,7 @@ import junit.textui.TestRunner;
   *
   * @author Bryan Thompson
   * @author Maarten Coene
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 
 public class TestElementDecl extends TestCase {
@@ -114,7 +114,7 @@ public class TestElementDecl extends TestCase {
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -131,5 +131,5 @@ public class TestElementDecl extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestElementDecl.java,v 1.1 2004/03/04 21:23:18 maartenc Exp $
+ * $Id: TestElementDecl.java,v 1.2 2004/06/24 09:16:12 maartenc Exp $
  */

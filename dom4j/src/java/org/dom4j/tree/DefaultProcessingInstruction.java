@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultProcessingInstruction.java,v 1.9 2003/04/07 22:14:15 jstrachan Exp $
+ * $Id: DefaultProcessingInstruction.java,v 1.10 2004/06/24 09:15:45 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -19,7 +19,7 @@ import org.dom4j.Element;
   * and can be modified in place.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DefaultProcessingInstruction extends FlyweightProcessingInstruction {
 
@@ -119,7 +119,7 @@ public class DefaultProcessingInstruction extends FlyweightProcessingInstruction
  *    trademark of MetaStuff, Ltd.
  *
  * 5. Due credit should be given to the DOM4J Project
- *    (http://dom4j.org/).
+ *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
  * ``AS IS'' AND ANY EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT
@@ -136,5 +136,5 @@ public class DefaultProcessingInstruction extends FlyweightProcessingInstruction
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultProcessingInstruction.java,v 1.9 2003/04/07 22:14:15 jstrachan Exp $
+ * $Id: DefaultProcessingInstruction.java,v 1.10 2004/06/24 09:15:45 maartenc Exp $
  */
