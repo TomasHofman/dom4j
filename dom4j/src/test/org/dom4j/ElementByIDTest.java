@@ -4,23 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementByIDTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: ElementByIDTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.io.File;
-
 import junit.textui.TestRunner;
-
-import org.dom4j.io.SAXReader;
 
 
 /** 
  * Tests the elementByID() method
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ElementByIDTest extends AbstractTestCase {
 
@@ -34,7 +30,8 @@ public class ElementByIDTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testElementByID() throws Exception {        
-        String id = "message";        
+        String id = "message";
+        Document document = getDocument(INPUT_XML_FILE);
         
         // test XPath
         Element element = (Element) document.selectSingleNode( "//*[@ID='" + id + "']" );
@@ -54,11 +51,6 @@ public class ElementByIDTest extends AbstractTestCase {
         assertTrue( "Found no element", element == null );
     }
     
-    protected void setUp() throws Exception {
-    	super.setUp();
-        SAXReader reader = new SAXReader();
-        document = reader.read( new File( INPUT_XML_FILE ) );
-    }
 }
 
 
@@ -106,5 +98,5 @@ public class ElementByIDTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementByIDTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: ElementByIDTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

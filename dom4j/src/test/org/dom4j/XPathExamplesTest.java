@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathExamplesTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XPathExamplesTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import org.dom4j.rule.Pattern;
  * Performs a number of unit test cases on the XPath engine
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class XPathExamplesTest extends AbstractTestCase {
 
@@ -46,7 +46,7 @@ public class XPathExamplesTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testXPaths() throws Exception {
-        Document document = xmlReader.read(getClass().getResource("/xml/test/xpath/tests.xml"));
+        Document document = getDocument("/xml/test/xpath/tests.xml");
         Element root = document.getRootElement();
         for ( Iterator iter = root.elementIterator( "document" ); iter.hasNext(); ) {
             Element documentTest = (Element) iter.next();
@@ -58,7 +58,7 @@ public class XPathExamplesTest extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void testDocument(Element documentTest) throws Exception {
         String url = documentTest.attributeValue( "url" );
-        testDocument = xmlReader.read(getClass().getResource("/" + url));
+        testDocument = xmlReader.read(getFile(url));
         assertTrue( "Loaded test document: " + url, testDocument != null );
         
         log( "Loaded document: " + url );
@@ -241,5 +241,5 @@ public class XPathExamplesTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathExamplesTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XPathExamplesTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

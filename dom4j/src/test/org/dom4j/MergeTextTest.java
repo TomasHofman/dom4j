@@ -4,12 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: MergeTextTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: MergeTextTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.io.File;
 import java.util.Iterator;
 
 import junit.textui.TestRunner;
@@ -20,12 +19,12 @@ import org.dom4j.io.SAXReader;
  * A test harness for SAXReader option setMergeAdjacentText(true)
  *
  * @author <a href="mailto:slehmann@novell.com">Steen Lehmann</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class MergeTextTest extends AbstractTestCase {
 
     /** Input XML file to read */
-    protected static String INPUT_XML_FILE = "xml/test/mergetext.xml";
+    protected static String INPUT_XML_FILE = "/xml/test/mergetext.xml";
     
 	public static void main(String[] args) {
 		TestRunner.run(MergeTextTest.class);
@@ -39,19 +38,16 @@ public class MergeTextTest extends AbstractTestCase {
         // no two Text objects should be adjacent to each other in the
         // document.
 
+        SAXReader reader = new SAXReader();
+        reader.setMergeAdjacentText(true);
+        Document document = getDocument(INPUT_XML_FILE, reader);
+
         checkNoAdjacent(document.getRootElement());
         log( "No adjacent Text nodes in " + document.asXML() );
     }
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
-    protected void setUp() throws Exception {
-    	super.setUp();
-        SAXReader reader = new SAXReader();
-        reader.setMergeAdjacentText(true);
-        document = reader.read( new File( INPUT_XML_FILE ).toURL() );
-    }
-    
     private void checkNoAdjacent(Element parent) {
         // Check that no two Text nodes are adjacent in the parent's content
         Node prev = null;
@@ -117,5 +113,5 @@ public class MergeTextTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: MergeTextTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: MergeTextTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

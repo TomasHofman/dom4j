@@ -4,13 +4,12 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: NamespacesTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: NamespacesTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.StringReader;
-import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,14 +19,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.DOMReader;
-import org.dom4j.io.SAXReader;
 import org.xml.sax.InputSource;
 
 /**
  * Test the use of namespaces
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class NamespacesTest extends AbstractTestCase {
 
@@ -121,9 +119,7 @@ public class NamespacesTest extends AbstractTestCase {
     }
 
     public void testNamespaceForDefaultPrefix() throws Exception {
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource("/xml/test/defaultNamespace.xml");
-        Document document = reader.read(url);
+        Document document = getDocument("/xml/test/defaultNamespace.xml");
 
         testNamespaceForDefaultPrefix( document );
         testNamespaceForDefaultPrefix( saxRoundTrip( document ) );
@@ -144,9 +140,7 @@ public class NamespacesTest extends AbstractTestCase {
     }
 
     public void testAttributeDefaultPrefix() throws Exception {
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource("/xml/test/soap3.xml");
-        Document document = reader.read(url);
+        Document document = getDocument("/xml/test/soap3.xml");
 
         testAttributeDefaultPrefix( document );
         testAttributeDefaultPrefix( saxRoundTrip( document ) );
@@ -203,9 +197,7 @@ public class NamespacesTest extends AbstractTestCase {
 
 
     public void testRedeclareNamespaces() throws Exception {
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource("/xml/test/soap2.xml");
-        Document document = reader.read(url);
+        Document document = getDocument("/xml/test/soap2.xml");
         testRedeclareNamespaces( document );
         testRedeclareNamespaces( saxRoundTrip( document ) );
         testRedeclareNamespaces( domRoundTrip( document ) );
@@ -239,9 +231,7 @@ public class NamespacesTest extends AbstractTestCase {
     }
 
     public void testDefaultNamespaceIssue() throws Exception {
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource("/xml/test/defaultNamespaceIssue.xsd");
-        Document document = reader.read(url);
+        Document document = getDocument("/xml/test/defaultNamespaceIssue.xsd");
         testDefaultNamespaceIssue( document );
         testDefaultNamespaceIssue( saxRoundTrip( document ) );
         testDefaultNamespaceIssue( domRoundTrip( document ) );
@@ -288,11 +278,7 @@ public class NamespacesTest extends AbstractTestCase {
     //-------------------------------------------------------------------------
     protected void setUp() throws Exception {
     	super.setUp();
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource("/xml/test/test_schema.xml");
-        if (url != null) {
-        	document = reader.read(url);
-        }
+       	document = getDocument("/xml/test/test_schema.xml");
     }
 
     protected Document saxRoundTrip(Document document) throws Exception {
@@ -369,5 +355,5 @@ public class NamespacesTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespacesTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: NamespacesTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

@@ -4,12 +4,12 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLSpaceAttributeTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XMLSpaceAttributeTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.io.*;
+import java.io.IOException;
 
 import junit.textui.TestRunner;
 
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
  * If it is preserve, then keep whitespace.
  *
  * @author <a href="mailto:ddlucas@lse.com">David Lucas</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class XMLSpaceAttributeTest extends AbstractTestCase {
 
@@ -29,7 +29,6 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------
     public void testWithTextTrimOn() throws Exception {
-      try {
         String xmlString = "<top >" +
           "<row><col>   This is a test!</col></row>"+
           "<row><col xml:space=\'preserve\' >   This is a test!</col></row>"+
@@ -57,17 +56,11 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
         actual=c5.getText();
         assertEquals("compared element text expecting trimmed whitespace",
                      expected,actual);
-      }
-      catch (Exception ex) {
-        ex.printStackTrace();
-        assertTrue(ex.getMessage(),false);
-      }
     }
 
 
     //-------------------------------------------------------------------------
     public void testWithTextTrimOff() throws Exception {
-      try {
         String xmlString = "<top >" +
           "<row><col>   This is a test!</col></row>"+
           "<row><col xml:space=\'preserve\' >   This is a test!</col></row>"+
@@ -84,16 +77,10 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
         String actual=c4.getText();
 
         assertEquals("compared element text expecting whitespace",expected,actual);
-      }
-      catch (Exception ex) {
-        ex.printStackTrace();
-        assertTrue(ex.getMessage(),false);
-      }
     }
 
     //-------------------------------------------------------------------------
     public void testWithTextTrimOnFollow() throws Exception {
-      try {
         String xmlString = "<top >" +
           "<row><col>   This is a test!</col></row>"+
           "<row>"+
@@ -131,15 +118,10 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
         expected="This is a test!";
         actual=c12.getText();
         assertEquals("compared element text follow trimmed whitespace",expected,actual);
-      }
-      catch (Exception ex) {
-        ex.printStackTrace();
-        assertTrue(ex.getMessage(),false);
-      }
     }
+
     //-------------------------------------------------------------------------
     public void testWithTextTrimOnNested() throws Exception {
-      try {
         String xmlString = "<top >" +
           "<row><col>   This is a test!</col></row>"+
           "<row>"+
@@ -174,12 +156,8 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
         expected="   This is embedded! ";
         actual=c12.getText();
         assertEquals("compared element text nested preserved whitespace",expected,actual);
-      }
-      catch (Exception ex) {
-        ex.printStackTrace();
-        assertTrue(ex.getMessage(),false);
-      }
     }
+
     // Implementation methods
     //-------------------------------------------------------------------------
 
@@ -208,7 +186,6 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
 
     //-------------------------------------------------------------------------
     public void testWithEscapeTextTrimOn() throws Exception {
-      try {
         String xmlString = "<top >" +
           "<row><col>   This is a test!</col></row>"+
           "<row><col xml:space=\'preserve\' >   This is a test!\r\nWith a new line, special character like &amp; , and\t tab.</col></row>"+
@@ -227,11 +204,6 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
         expected="This is a test! With a new line, special character like & , and tab.";
         actual=c4.getText();
         assertEquals("compared element text expecting whitespace",expected,actual);
-      }
-      catch (Exception ex) {
-        ex.printStackTrace();
-        assertTrue(ex.getMessage(),false);
-      }
     }
 
 
@@ -282,5 +254,5 @@ public class XMLSpaceAttributeTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLSpaceAttributeTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XMLSpaceAttributeTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

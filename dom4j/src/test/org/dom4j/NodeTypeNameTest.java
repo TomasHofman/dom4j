@@ -4,23 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NodeTypeNameTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: NodeTypeNameTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.net.URL;
 import java.util.Iterator;
 
 import junit.textui.TestRunner;
-
-import org.dom4j.io.SAXReader;
 
 /** 
  * Tests the getNodeNameType() method
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class NodeTypeNameTest extends AbstractTestCase {
     
@@ -31,7 +28,7 @@ public class NodeTypeNameTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testDocument() throws Exception {
-        testDocument(document);
+        testDocument(getDocument());
     }
     
     public void testCDATA() throws Exception {
@@ -53,9 +50,7 @@ public class NodeTypeNameTest extends AbstractTestCase {
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void testDocument(String fileName) throws Exception {
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource(fileName);
-        Document document = reader.read(url);
+        Document document = getDocument(fileName);
         testDocument(document);
     }
 
@@ -161,5 +156,5 @@ public class NodeTypeNameTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NodeTypeNameTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: NodeTypeNameTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

@@ -4,13 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMTest.java,v 1.1 2004/11/12 21:33:20 maartenc Exp $
+ * $Id: DOMTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */
 
 package org.dom4j.dom;
 
-import java.io.File;
-import java.io.InputStream;
 import java.io.StringReader;
 
 import junit.textui.TestRunner;
@@ -27,12 +25,10 @@ import org.w3c.dom.NodeList;
  * A test harness to test the native DOM implementation of dom4j
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class DOMTest extends AbstractTestCase {
 
-    protected static boolean VERBOSE = false;
-    
     /** Elements. */
     private long elements;
 
@@ -124,17 +120,12 @@ public class DOMTest extends AbstractTestCase {
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
-    
     protected void setUp() throws Exception {
     	super.setUp();
         SAXReader reader = new SAXReader( DOMDocumentFactory.getInstance() );
-        InputStream testDocument = getClass().getResourceAsStream("/xml/contents.xml");
-        if (testDocument == null) {
-            document = reader.read( new File( "xml/contents.xml" ) );
-        } else {
-            document = reader.read( testDocument );
-        }
+        document = getDocument("/xml/contents.xml", reader);
     }
+    
     /** Traverses the specified node, recursively. */
     protected void traverse(Node node) {
 
@@ -238,5 +229,5 @@ public class DOMTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMTest.java,v 1.1 2004/11/12 21:33:20 maartenc Exp $
+ * $Id: DOMTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */

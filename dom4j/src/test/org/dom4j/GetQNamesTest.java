@@ -4,12 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: GetQNamesTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: GetQNamesTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.net.URL;
 import java.util.List;
 
 import junit.textui.TestRunner;
@@ -20,11 +19,9 @@ import org.dom4j.io.SAXReader;
  * A test harness to test the DocumentFactory.getQNames() method
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class GetQNamesTest extends AbstractTestCase {
-    
-    private DocumentFactory factory = new DocumentFactory();
     
 	public static void main(String[] args) {
 		TestRunner.run(GetQNamesTest.class);
@@ -32,13 +29,19 @@ public class GetQNamesTest extends AbstractTestCase {
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testQNames() throws Exception {        
-        List qnames = factory.getQNames();
+    public void testQNames() throws Exception {
+    	DocumentFactory factory = new DocumentFactory();
 
-        assertTrue( "Found 15 QNames", qnames.size() == 15 );
+    	SAXReader reader = new SAXReader();
+        reader.setDocumentFactory( factory );
+        getDocument("/xml/test/soap2.xml", reader);
+
+        List qnames = factory.getQNames();
+        assertEquals("Number of QNames not correct", 15, qnames.size());
     }
     
-    /** Test the element rename functionality which was lacking as spotted by
+    /** 
+     * Test the element rename functionality which was lacking as spotted by
      * Rob Lebowitz
      */
     public void testRename() throws Exception {
@@ -58,15 +61,6 @@ public class GetQNamesTest extends AbstractTestCase {
         assertEquals( "QNamed correctly", xyz, root.getQName() );
     }
         
-    // Implementation methods
-    //-------------------------------------------------------------------------                    
-    protected void setUp() throws Exception {
-    	super.setUp();
-        SAXReader reader = new SAXReader();
-        reader.setDocumentFactory( factory );
-        URL url = getClass().getResource("/xml/test/soap2.xml");
-        document = reader.read(url);
-    }
 }
 
 
@@ -114,5 +108,5 @@ public class GetQNamesTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: GetQNamesTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: GetQNamesTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathBugTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XPathBugTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
@@ -13,13 +13,11 @@ import java.util.List;
 
 import junit.textui.TestRunner;
 
-import org.dom4j.io.SAXReader;
-
 /** 
  * A test harness to test XPath expression evaluation in DOM4J
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class XPathBugTest extends AbstractTestCase {
     
@@ -30,8 +28,7 @@ public class XPathBugTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testXPaths() throws Exception {        
-        SAXReader reader = new SAXReader();
-        Document document = reader.read(getClass().getResource("/xml/rabo1ae.xml"));
+        Document document = getDocument("/xml/rabo1ae.xml");
         Element root = (Element) document.selectSingleNode( "/m:Msg/m:Contents/m:Content" );
         
         assertTrue( "root is not null", root != null );
@@ -165,5 +162,5 @@ public class XPathBugTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathBugTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XPathBugTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XSLTTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,13 +20,12 @@ import junit.textui.TestRunner;
 
 import org.dom4j.io.DocumentResult;
 import org.dom4j.io.DocumentSource;
-import org.dom4j.io.SAXReader;
 
 /** 
  * Tests that XSLT works correctly
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class XSLTTest extends AbstractTestCase {
 
@@ -56,8 +55,7 @@ public class XSLTTest extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
     	super.setUp();
-        SAXReader reader = new SAXReader();
-        document = reader.read(getClass().getResource("/xml/nitf/sample.xml"));
+        document = getDocument("/xml/nitf/sample.xml");
     }
         
     protected Document transform(String xsl) throws Exception {   
@@ -66,7 +64,7 @@ public class XSLTTest extends AbstractTestCase {
         // load the transformer
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer( 
-            new StreamSource(getClass().getResourceAsStream(xsl))
+            new StreamSource(getFile(xsl))
         );
         
         // now lets create the TrAX source and result
@@ -125,5 +123,5 @@ public class XSLTTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: XSLTTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

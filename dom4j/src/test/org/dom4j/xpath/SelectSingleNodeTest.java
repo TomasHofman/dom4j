@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SelectSingleNodeTest.java,v 1.1 2004/11/12 21:33:22 maartenc Exp $
+ * $Id: SelectSingleNodeTest.java,v 1.2 2004/11/20 12:47:52 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -15,13 +15,12 @@ import org.dom4j.AbstractTestCase;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
 
 /** 
  * Tests the selectSingleNode method
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SelectSingleNodeTest extends AbstractTestCase {
 
@@ -32,6 +31,7 @@ public class SelectSingleNodeTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testSelectSingleNode() throws Exception {        
+    	Document document = getDocument("/xml/test/jimBrain.xml");
         Node node = document.selectSingleNode("/properties/client/threadsafe");
         assertTrue( "Found a valid node", node != null );
         
@@ -52,7 +52,7 @@ public class SelectSingleNodeTest extends AbstractTestCase {
 
     /** Test out Steen's bug */
     public void testSteensBug() throws Exception {        
-        Document document = new SAXReader().read(getClass().getResource("/xml/schema/personal.xsd"));
+        Document document = getDocument("/xml/schema/personal.xsd");
         
         assertNotNull( document.selectSingleNode( "/xs:schema/xs:element[@name='person']" ) );
         
@@ -61,12 +61,6 @@ public class SelectSingleNodeTest extends AbstractTestCase {
         assertNotNull( root.selectSingleNode( "/xs:schema/xs:element[@name='person']" ) );        
     }
     
-    // Implementation methods
-    //-------------------------------------------------------------------------                    
-    protected void setUp() throws Exception {
-    	super.setUp();
-        document = new SAXReader().read(getClass().getResource("/xml/test/jimBrain.xml"));
-    }
 }
 
 
@@ -114,5 +108,5 @@ public class SelectSingleNodeTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SelectSingleNodeTest.java,v 1.1 2004/11/12 21:33:22 maartenc Exp $
+ * $Id: SelectSingleNodeTest.java,v 1.2 2004/11/20 12:47:52 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SerializeTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: SerializeTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,12 +24,10 @@ import org.dom4j.io.SAXReader;
  * Tests that a dom4j document is Serializable
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SerializeTest extends AbstractTestCase {
 
-    protected static final boolean VERBOSE = false;
-    
 	public static void main(String[] args) {
 		TestRunner.run(SerializeTest.class);
 	}
@@ -59,7 +57,7 @@ public class SerializeTest extends AbstractTestCase {
         // now parse a document using my factory
         SAXReader reader = new SAXReader();
         reader.setDocumentFactory( factory );
-        Document doc = reader.read(getClass().getResource("/xml/soap.xml"));
+        Document doc = getDocument("/xml/soap.xml", reader);
 
         // now lets use the prefixes
         Node element = doc.selectSingleNode( "/SOAP-ENV:Envelope/SOAP-ENV:Body/m:BabelFish" );
@@ -88,8 +86,7 @@ public class SerializeTest extends AbstractTestCase {
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void testSerialize(String xmlFile) throws Exception {
-        SAXReader reader = new SAXReader();
-        Document document = reader.read(getClass().getResource(xmlFile));
+        Document document = getDocument(xmlFile);
         String text = document.asXML();
         
         ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
@@ -163,5 +160,5 @@ public class SerializeTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SerializeTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: SerializeTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

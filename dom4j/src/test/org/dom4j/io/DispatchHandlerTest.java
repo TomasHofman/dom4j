@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DispatchHandlerTest.java,v 1.1 2004/11/12 21:33:20 maartenc Exp $
+ * $Id: DispatchHandlerTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -30,11 +30,11 @@ public class DispatchHandlerTest extends AbstractTestCase {
         
         SAXReader reader = new SAXReader();
         reader.addHandler("/products/product/colour", handler);
-        reader.read(getClass().getResource("/xml/test/sample.xml"));
+        reader.read(getFile("/xml/test/sample.xml"));
         
         assertEquals(3, handler.getCount());
         
-        reader.read(getClass().getResource("/xml/test/sample.xml"));
+        reader.read(getFile("/xml/test/sample.xml"));
         assertEquals(6, handler.getCount());
     }
     
@@ -102,5 +102,5 @@ public class DispatchHandlerTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DispatchHandlerTest.java,v 1.1 2004/11/12 21:33:20 maartenc Exp $
+ * $Id: DispatchHandlerTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */

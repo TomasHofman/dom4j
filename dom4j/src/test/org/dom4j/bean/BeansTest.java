@@ -4,12 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeansTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: BeansTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j.bean;
-
-import java.net.URL;
 
 import junit.textui.TestRunner;
 
@@ -29,9 +27,8 @@ public class BeansTest extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testReadXML() throws Exception {
-        URL url = getClass().getResource("/xml/bean/gui.xml");
-        SAXReader reader = new SAXReader( BeanDocumentFactory.getInstance() );
-        reader.read(url);
+        SAXReader reader = new SAXReader(BeanDocumentFactory.getInstance());
+        getDocument("/xml/bean/gui.xml", reader);
     }
     
 }
@@ -81,5 +78,5 @@ public class BeansTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeansTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: BeansTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

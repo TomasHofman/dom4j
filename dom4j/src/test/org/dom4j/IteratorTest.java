@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IteratorTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: IteratorTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import junit.textui.TestRunner;
  * A test harness to test the Iterator API in DOM4J
  *
  * @author <a href="mailto:jdoughty@jdoughty@cs.gmu.edu">Jonathan Doughty</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class IteratorTest extends AbstractTestCase {
 
@@ -32,7 +32,7 @@ public class IteratorTest extends AbstractTestCase {
 
     protected void setUp() throws Exception {
     	super.setUp();
-        iterDocument = createDocument();
+        iterDocument = DocumentHelper.createDocument();
         
         Element root = iterDocument.addElement( "root" );
 
@@ -191,5 +191,5 @@ public class IteratorTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IteratorTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: IteratorTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

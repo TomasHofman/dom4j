@@ -4,14 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RoundTripTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: RoundTripTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.net.URL;
 
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -33,7 +32,7 @@ import org.dom4j.io.XMLWriter;
  * A test harness to test the the round trips of Documents.
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class RoundTripTest extends AbstractTestCase {
     
@@ -53,62 +52,55 @@ public class RoundTripTest extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     public void testTextRoundTrip() throws Exception {
         for ( int i = 0, size = testDocuments.length; i < size; i++ ) {
-            Document doc = parseDocument( testDocuments[i] );
+            Document doc = getDocument( testDocuments[i] );
             roundTripText( doc );
         }
     }
     
     public void testSAXRoundTrip() throws Exception {
         for ( int i = 0, size = testDocuments.length; i < size; i++ ) {
-            Document doc = parseDocument( testDocuments[i] );
+            Document doc = getDocument( testDocuments[i] );
             roundTripSAX( doc );
         }
     }
     
     public void testDOMRoundTrip() throws Exception {
         for ( int i = 0, size = testDocuments.length; i < size; i++ ) {
-            Document doc = parseDocument( testDocuments[i] );
+            Document doc = getDocument( testDocuments[i] );
             roundTripDOM( doc );
         }
     }
     
     public void testJAXPRoundTrip() throws Exception {
         for ( int i = 0, size = testDocuments.length; i < size; i++ ) {
-            Document doc = parseDocument( testDocuments[i] );
+            Document doc = getDocument( testDocuments[i] );
             roundTripJAXP( doc );
         }
     }
     
     public void testFullRoundTrip() throws Exception {        
         for ( int i = 0, size = testDocuments.length; i < size; i++ ) {
-            Document doc = parseDocument( testDocuments[i] );
+            Document doc = getDocument( testDocuments[i] );
             roundTripFull( doc );
         }
     }
 
     public void testRoundTrip() throws Exception {
-    	SAXReader reader = new SAXReader();
-    	Document document = reader.read(getClass().getResource("/xml/xmlspec.xml"));
+    	Document document = getDocument("/xml/xmlspec.xml");
   
         //Document doc1 = roundTripText( document );
         Document doc1 = roundTripSAX( document );
         Document doc2 = roundTripDOM( doc1);
         Document doc3 = roundTripSAX( doc2 );
-        //Document doc4 = roundTripText( doc3 );
-        //Document doc5 = roundTripDOM( doc4 );
-        Document doc5 = roundTripDOM( doc3 );
+        Document doc4 = roundTripText( doc3 );
+        Document doc5 = roundTripDOM( doc4 );
+        //Document doc5 = roundTripDOM( doc3 );
         
         assertDocumentsEqual( document, doc5 );
     }
     
     // Implementation methods
     //-------------------------------------------------------------------------                    
-    protected Document parseDocument(String file) throws Exception {
-        SAXReader reader = new SAXReader();
-        URL  url = getClass().getResource(file);
-        return reader.read(url);
-    }
-    
     protected Document roundTripDOM(Document document) throws Exception {
         // now lets make a DOM object
         DOMWriter domWriter = new DOMWriter();
@@ -248,5 +240,5 @@ public class RoundTripTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RoundTripTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: RoundTripTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
  */

@@ -4,18 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ManualSchemaPrefixTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: ManualSchemaPrefixTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */
 
 package org.dom4j.datatype;
-
-import java.net.URL;
 
 import junit.textui.TestRunner;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
-import org.dom4j.io.SAXReader;
 
 
 /** 
@@ -23,7 +20,7 @@ import org.dom4j.io.SAXReader;
  * manually load the schemas using prefixes in the XSD file.
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ManualSchemaPrefixTest extends AutoSchemaTest {
 
@@ -36,9 +33,7 @@ public class ManualSchemaPrefixTest extends AutoSchemaTest {
     protected DocumentFactory loadDocumentFactory() throws Exception {
         DatatypeDocumentFactory factory = new DatatypeDocumentFactory();
         
-        SAXReader reader = new SAXReader();
-        URL url = getClass().getResource("/xml/test/schema/personal-prefix.xsd");
-        Document schemaDocument = reader.read(url);
+        Document schemaDocument = getDocument("/xml/test/schema/personal-prefix.xsd");
         factory.loadSchema(schemaDocument);
         return factory;
     }
@@ -89,5 +84,5 @@ public class ManualSchemaPrefixTest extends AutoSchemaTest {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ManualSchemaPrefixTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: ManualSchemaPrefixTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */

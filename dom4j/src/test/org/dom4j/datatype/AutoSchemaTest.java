@@ -4,13 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AutoSchemaTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: AutoSchemaTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
 import java.math.BigInteger;
-import java.net.URL;
 import java.util.Calendar;
 
 import junit.textui.TestRunner;
@@ -24,7 +23,7 @@ import org.dom4j.io.SAXReader;
  * use auto-loading of the XML Schema document
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AutoSchemaTest extends AbstractDataTypeTestCase {
 
@@ -63,13 +62,10 @@ public class AutoSchemaTest extends AbstractDataTypeTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
     	super.setUp();
-        DocumentFactory factory = loadDocumentFactory();
-        
+
+    	DocumentFactory factory = loadDocumentFactory();
         SAXReader reader = new SAXReader(factory);
-        String uri = getDocumentURI();
-        
-        URL url = getClass().getResource(uri);
-        document = reader.read(url);
+        document = getDocument(getDocumentURI(), reader);
     }
     
     protected String getDocumentURI() {
@@ -127,5 +123,5 @@ public class AutoSchemaTest extends AbstractDataTypeTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AutoSchemaTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: AutoSchemaTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */

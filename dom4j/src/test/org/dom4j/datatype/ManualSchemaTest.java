@@ -4,18 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ManualSchemaTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: ManualSchemaTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */
 
 package org.dom4j.datatype;
-
-import java.net.URL;
 
 import junit.textui.TestRunner;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
-import org.dom4j.io.SAXReader;
 
 
 /** 
@@ -23,12 +20,10 @@ import org.dom4j.io.SAXReader;
  * manually load the schemas
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ManualSchemaTest extends AutoSchemaTest {
 
-    protected static boolean VERBOSE = true;
-    
 	public static void main(String[] args) {
 		TestRunner.run(ManualSchemaTest.class);
 	}
@@ -42,10 +37,7 @@ public class ManualSchemaTest extends AutoSchemaTest {
     protected DocumentFactory loadDocumentFactory() throws Exception {
         DatatypeDocumentFactory factory = new DatatypeDocumentFactory();
         
-        SAXReader reader = new SAXReader();
-        
-        URL url = getClass().getResource("/xml/test/schema/personal.xsd");
-        Document schemaDocument = reader.read(url);
+        Document schemaDocument = getDocument("/xml/test/schema/personal.xsd");
         factory.loadSchema(schemaDocument);
         return factory;
     }
@@ -96,5 +88,5 @@ public class ManualSchemaTest extends AutoSchemaTest {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ManualSchemaTest.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: ManualSchemaTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
  */
