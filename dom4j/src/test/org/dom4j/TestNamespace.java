@@ -4,14 +4,16 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.8 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.9 2002/02/01 13:04:32 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import junit.framework.*;
 import junit.textui.TestRunner;
@@ -21,7 +23,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the use of Namespaces.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -93,7 +95,31 @@ public class TestNamespace extends AbstractTestCase {
         }
         while ( iter.hasNext() );
     }
+
+    /** Tests the use of namespace URI Mapping associated with a DocumentFactory */
+    public void testNamespaceUriMap() throws Exception {
+        // register namespace prefix->uri mappings with factory
+        Map uris = new HashMap();
+        uris.put( "x", "fooNamespace" );
+        uris.put( "y", "barNamespace" );
         
+        DocumentFactory factory = new DocumentFactory();
+        factory.setXPathNamespaceURIs( uris );
+        
+        // parse or create a document
+        SAXReader reader = new SAXReader();
+        reader.setDocumentFactory( factory );
+        Document doc = reader.read( "xml/test/nestedNamespaces.xml" );
+        
+        // evaluate XPath using registered namespace prefixes
+        // which do not appear in the document (though the URIs do!)
+        String value = doc.valueOf( "/x:pizza/y:cheese/x:pepper" );
+        
+        log( "Found value: " + value );
+        
+        assertEquals( "XPath used default namesapce URIS", "works", value );
+    }
+    
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
@@ -154,5 +180,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.8 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.9 2002/02/01 13:04:32 jstrachan Exp $
  */

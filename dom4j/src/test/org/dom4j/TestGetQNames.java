@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetQNames.java,v 1.1 2001/08/28 06:43:18 jstrachan Exp $
+ * $Id: TestGetQNames.java,v 1.2 2002/02/01 13:04:32 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the DocumentFactory.getQNames() method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestGetQNames extends AbstractTestCase {
     
@@ -44,6 +44,26 @@ public class TestGetQNames extends AbstractTestCase {
         List qnames = factory.getQNames();
 
         assertTrue( "Found 15 QNames", qnames.size() == 15 );
+    }
+    
+    /** Test the element rename functionality which was lacking as spotted by
+     * Rob Lebowitz
+     */
+    public void testRename() throws Exception {
+        Document doc = DocumentHelper.createDocument();
+        Element root = doc.addElement( "foo" );
+        
+        assertEquals( "named correctly", "foo", root.getName() );
+        
+        root.setName( "bar" );
+        
+        assertEquals( "named correctly", "bar", root.getName() );
+        
+        QName xyz = root.getQName( "xyz" );
+        
+        root.setQName( xyz );
+        
+        assertEquals( "QNamed correctly", xyz, root.getQName() );
     }
         
     // Implementation methods
@@ -100,5 +120,5 @@ public class TestGetQNames extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetQNames.java,v 1.1 2001/08/28 06:43:18 jstrachan Exp $
+ * $Id: TestGetQNames.java,v 1.2 2002/02/01 13:04:32 jstrachan Exp $
  */
