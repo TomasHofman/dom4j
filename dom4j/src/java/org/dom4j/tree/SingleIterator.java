@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SingleIterator.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: SingleIterator.java,v 1.3 2001/07/03 10:14:06 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -17,7 +17,7 @@ import org.dom4j.Element;
   * object instance.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class SingleIterator implements Iterator {
 
@@ -29,18 +29,14 @@ public class SingleIterator implements Iterator {
     }
 
     public boolean hasNext() {
-        if ( first ) {
-            first = false;
-            return true;
-        }
-        else {
-            object = null;
-            return false;
-        }
+        return first;
     }
 
     public Object next() {
-        return object;
+        Object answer = object;
+        object = null;
+        first = false;
+        return answer;
     }
 
     public void remove() {
@@ -94,5 +90,5 @@ public class SingleIterator implements Iterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SingleIterator.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: SingleIterator.java,v 1.3 2001/07/03 10:14:06 jstrachan Exp $
  */
