@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SubstringFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: SubstringFunction.java,v 1.3 2001/05/15 15:02:02 jstrachan Exp $
  */
 
 
@@ -50,7 +50,8 @@ public class SubstringFunction implements Function
 
     int start = RoundFunction.evaluate( NumberFunction.evaluate(startArg) ).intValue();
 
-    start += 1;
+    // Java Strings start at 0 rather than 1
+    start -= 1;
 
     return str.substring(start);
 
@@ -69,8 +70,9 @@ public class SubstringFunction implements Function
     int len = RoundFunction.evaluate(
       NumberFunction.evaluate(lenArg) ).intValue();
 
-    start += 1;
-
+    // Java Strings start at 0 rather than 1
+    start -= 1;
+    
     int end = start + len;
 
     return str.substring(start,
@@ -124,5 +126,5 @@ public class SubstringFunction implements Function
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SubstringFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: SubstringFunction.java,v 1.3 2001/05/15 15:02:02 jstrachan Exp $
  */

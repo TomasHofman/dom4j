@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.22 2001/05/15 08:36:39 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.23 2001/05/15 15:02:02 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -67,11 +67,11 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
-    private static final boolean ESCAPE_XML_ENTITIES = true;
+    private static final boolean ESCAPE_XML_ENTITIES = false;
     
     protected static final OutputFormat DEFAULT_FORMAT = new OutputFormat();
 
@@ -240,10 +240,8 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
                 write(additional);
             }
             else {             
-                if ( textOnly ) {
-                    if ( ! ( node instanceof Text) ) {
-                        textOnly = false;
-                    }
+                if ( textOnly && ! ( node instanceof Text) ) {
+                    textOnly = false;
                 }
             }
         }
@@ -257,14 +255,26 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
         }
         else {
             if ( textOnly ) {
-                String text = format.isTrimText() ? element.getTextTrim() : element.getText();
-                if (text == null || text.length() <= 0 ) {
-                    writeEmptyElementClose(element);
+                if ( format.isTrimText() ) {
+                    String text = element.getTextTrim();
+                    if (text == null || text.length() <= 0 ) {
+                        writeEmptyElementClose(element);
+                    }
+                    else {
+                        // we know it's not null or empty from above
+                        writer.write(">");
+                        writer.write( text );
+                        writeClose(element);
+                    }
                 }
                 else {
-                    // we know it's not null or empty from above
+                    // we have at least one text node so lets assume
+                    // that its non-empty
                     writer.write(">");
-                    writer.write( text );
+                    for ( int i = 0; i < size; i++ ) {
+                        Node node = element.node(i);
+                        writer.write(node.getText());
+                    }
                     writeClose(element);
                 }
             }
@@ -1102,5 +1112,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.22 2001/05/15 08:36:39 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.23 2001/05/15 15:02:02 jstrachan Exp $
  */
