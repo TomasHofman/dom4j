@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDataTypes.java,v 1.1 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.2 2001/05/30 21:23:26 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -31,7 +31,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestDataTypes extends AbstractDataTypeTest {
 
@@ -53,6 +53,53 @@ public class TestDataTypes extends AbstractDataTypeTest {
 /** The commented tests below are commented out due to current limitations
   * with Sun's xsdlib
   */
+
+/*    
+    public void testDuration() throws Exception {        
+        testNodes( "//durationTag", Object.class );
+    }
+    public void testDate() throws Exception {        
+        testNodes( "//dateTag", Date.class );
+    }
+    public void testTime() throws Exception {        
+        testNodes( "//timeTag", Number.class );
+    }
+    public void testDateTime() throws Exception {        
+        testNodes( "//dateTimeTag", Date.class );
+    }
+    
+    public void testgYearMonth() throws Exception {        
+        testNodes( "//gYearMonthTag", String.class );
+    }
+    public void testgYear() throws Exception {        
+        testNodes( "//gYearTag", Integer.class );
+    }
+    public void testgMonthDay() throws Exception {        
+        testNodes( "//gMonthDayTag", String.class );
+    }
+    public void testgDay() throws Exception {        
+        testNodes( "//gDayTag", Integer.class );
+    }
+    public void testgMonth() throws Exception {        
+        testNodes( "//gMonthTag", Integer.class );
+    }
+*/    
+
+    public void testBoolean() throws Exception {        
+        testNodes( "//booleanTag", Boolean.class );
+    }
+/*    
+    public void testBase64Binary() throws Exception {        
+        testNodes( "//base64BinaryTag", byte[].class );
+    }
+    public void testHexBinary() throws Exception {        
+        testNodes( "//hexBinaryTag", byte[].class  );
+    }
+*/
+    
+    
+    
+    // Number types
     
     public void testFloat() throws Exception {        
         testNodes( "//floatTag", Float.class );
@@ -172,5 +219,5 @@ public class TestDataTypes extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDataTypes.java,v 1.1 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.2 2001/05/30 21:23:26 jstrachan Exp $
  */
