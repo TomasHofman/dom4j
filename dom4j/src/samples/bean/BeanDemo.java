@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDemo.java,v 1.1 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.2 2001/03/02 00:08:04 jstrachan Exp $
  */
 
 
@@ -12,12 +12,15 @@ package bean;
 
 import AbstractDemo;
 
+import java.awt.Component;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.bean.BeanDocumentFactory;
 import org.dom4j.io.SAXReader;
 
@@ -25,7 +28,7 @@ import org.dom4j.io.SAXReader;
   * inside a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BeanDemo extends AbstractDemo {
     
@@ -64,10 +67,24 @@ public class BeanDemo extends AbstractDemo {
         for ( Iterator iter = windows.iterator(); iter.hasNext(); ) {
             Element element = (Element) iter.next();
             Object window = element.getData();
+            if ( window instanceof Component ) {
+                Component component = (Component) window;
+                component.setVisible(true);
+            }
             
             println( "found element: " + element );
             println( "found window: " + window );
         }
+        
+        println( "" );
+        println( "Now lets find all the fonts..." );
+        
+        List fonts = document.selectNodes( "//@font" );
+        for ( Iterator iter = fonts.iterator(); iter.hasNext(); ) {
+            Attribute font = (Attribute) iter.next();
+            println( "found font: " + font.getData() );
+        }
+        
     }
 
 }
@@ -117,5 +134,5 @@ public class BeanDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDemo.java,v 1.1 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.2 2001/03/02 00:08:04 jstrachan Exp $
  */

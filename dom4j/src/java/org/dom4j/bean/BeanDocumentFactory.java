@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDocumentFactory.java,v 1.3 2001/03/01 23:49:02 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.4 2001/03/02 00:08:04 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class BeanDocumentFactory extends DocumentFactory {
 
@@ -49,7 +49,7 @@ public class BeanDocumentFactory extends DocumentFactory {
     public Element createElement(QName qname) {
         Object bean = createBean( qname );
         if ( bean == null ) {
-            return new DefaultElement(qname);
+            return new BeanElement(qname);
         }
         else {
             return new BeanElement(qname, bean);
@@ -59,7 +59,7 @@ public class BeanDocumentFactory extends DocumentFactory {
     public Element createElement(QName qname, Attributes attributes) {
         Object bean = createBean( qname, attributes );
         if ( bean == null ) {
-            return new DefaultElement(qname);
+            return new BeanElement(qname);
         }
         else {
             return new BeanElement(qname, bean);
@@ -83,9 +83,6 @@ public class BeanDocumentFactory extends DocumentFactory {
     
     protected Object createBean( QName qname, Attributes attributes ) {
         String value = attributes.getValue( "className" );
-        
-        System.out.println( "#### found class: " + value );
-        
         if ( value != null ) {
             try {
                 Class beanClass = Class.forName( value );
@@ -149,5 +146,5 @@ public class BeanDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDocumentFactory.java,v 1.3 2001/03/01 23:49:02 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.4 2001/03/02 00:08:04 jstrachan Exp $
  */
