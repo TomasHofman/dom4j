@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.23 2002/02/20 02:42:27 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.24 2002/03/13 03:29:55 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -241,7 +241,7 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
                 if ( item instanceof Boolean ) {
                     return ((Boolean) item).booleanValue();
                 }
-                return true;
+                return answer.contains( node );
             }
             return false;
         }
@@ -376,5 +376,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.23 2002/02/20 02:42:27 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.24 2002/03/13 03:29:55 jstrachan Exp $
  */
