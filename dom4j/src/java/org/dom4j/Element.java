@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.40 2004/03/24 10:03:06 maartenc Exp $
+ * $Id: Element.java,v 1.41 2004/06/10 20:17:56 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.40 $
+  * @version $Revision: 1.41 $
   */
 public interface Element extends Branch {
 
@@ -70,11 +70,14 @@ public interface Element extends Branch {
       */
     public Namespace getNamespaceForPrefix(String prefix);
 
-    /** <p>Returns the <code>Namespace</code> which is mapped to the given
-      * URI or null if it could not be found.</p>
-      *
-      * @return the <code>Namespace</code> associated with the given URI
-      */
+    /**
+     * <p>Returns the <code>Namespace</code> which is mapped to the given
+     * URI or null if it could not be found. If there is more than one
+     * <code>Namespace</code> mapped to the URI, which of them will be 
+     * returned is undetermined.</p>
+     *
+     * @return the <code>Namespace</code> associated with the given URI
+     */
     public Namespace getNamespaceForURI(String uri);
     
     /** <p>Returns the namespace prefix of this element if one exists 
@@ -678,5 +681,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.40 2004/03/24 10:03:06 maartenc Exp $
+ * $Id: Element.java,v 1.41 2004/06/10 20:17:56 maartenc Exp $
  */
