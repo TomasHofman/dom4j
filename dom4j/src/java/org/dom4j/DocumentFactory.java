@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.25 2001/07/25 13:15:14 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.26 2001/08/09 00:29:43 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -38,7 +38,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -190,7 +190,8 @@ public class DocumentFactory implements Serializable {
       * @return a new <code>NodeFilter</code> instance
       */
     public NodeFilter createXPathFilter(String xpathFilterExpression, VariableContext variableContext) {
-        DefaultXPath answer = new DefaultXPath( ".[" + xpathFilterExpression + "]" );        
+        XPathPattern answer = new XPathPattern( xpathFilterExpression );
+        //DefaultXPath answer = new DefaultXPath( ".[" + xpathFilterExpression + "]" );        
         answer.setVariableContext( variableContext );
         return answer;
     }
@@ -205,7 +206,8 @@ public class DocumentFactory implements Serializable {
       * @return a new <code>NodeFilter</code> instance
       */
     public NodeFilter createXPathFilter(String xpathFilterExpression) {
-        return new DefaultXPath( ".[" + xpathFilterExpression + "]" );        
+        //return new DefaultXPath( ".[" + xpathFilterExpression + "]" );        
+        return new XPathPattern( xpathFilterExpression );
     }
     
     /** <p><code>createPattern</code> parses the given 
@@ -308,5 +310,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.25 2001/07/25 13:15:14 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.26 2001/08/09 00:29:43 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.5 2001/08/09 00:29:43 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,11 +21,11 @@ import org.dom4j.io.SAXReader;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestXPathExamples extends TestCase {
 
-    protected static boolean VERBOSE = false;
+    protected static boolean VERBOSE = true;
 
     protected SAXReader xmlReader = new SAXReader();
     
@@ -34,6 +34,9 @@ public class TestXPathExamples extends TestCase {
     
     /** The context node on which the tests are being run */
     protected Node testContext;
+
+    /** factory for XPath, Patterns and nodes */
+    protected DocumentFactory factory = DocumentFactory.getInstance();
     
     
     public static void main( String[] args ) {
@@ -109,6 +112,10 @@ public class TestXPathExamples extends TestCase {
             Element valueOf = (Element) iter.next();
             testValueOf( documentTest, context, valueOf );
         }
+        for ( Iterator iter = context.elementIterator( "pattern" ); iter.hasNext(); ) {
+            Element pattern = (Element) iter.next();
+            testPattern( documentTest, context, pattern );
+        }
     }
         
     protected void runTest(Element documentTest, Element context, Element test) throws Exception {
@@ -164,6 +171,21 @@ public class TestXPathExamples extends TestCase {
 
         assertEquals( description, expected, result );
     }
+    
+    protected void testPattern(Element documentTest, Element context, Element pattern) throws Exception {
+        String match = pattern.attributeValue( "match" );
+        String description = "match: " + match;
+        
+        log( "" );
+        log( description );
+
+        if ( VERBOSE ) {
+            log( "Pattern: " + factory.createPattern( match ) );
+        }
+        
+        assertTrue( description, testContext.matches( match ) );
+        
+    }
 }
 
 
@@ -211,5 +233,5 @@ public class TestXPathExamples extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.5 2001/08/09 00:29:43 jstrachan Exp $
  */

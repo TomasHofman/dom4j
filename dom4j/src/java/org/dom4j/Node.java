@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.19 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: Node.java,v 1.20 2001/08/09 00:29:43 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public interface Node extends Cloneable {
 
@@ -385,6 +385,18 @@ public interface Node extends Cloneable {
       */
     public Number numberValueOf(String xpathExpression);
 
+        
+    /** <p><code>matches</code> returns true if the given node matches 
+      * the given XSLT pattern expression. XSLT patterns are a subset of
+      * XPath expressions used in XSLT in the 
+      * <code>&lt;xsl:template match="pattern"/&gt;</code>
+      * template matching.</p>
+      *
+      * @param pattern is the XSLT pattern to match this node to
+      * @return true if the given node matches this XSLT Pattern
+      */
+    public boolean matches(String pattern);
+
     /** <p><code>createXPath</code> creates an XPath object for
       * the given xpathExpression.
       * The XPath object allows the variable context to be specified.</p>
@@ -468,5 +480,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.19 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: Node.java,v 1.20 2001/08/09 00:29:43 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.20 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.21 2001/08/09 00:29:43 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,12 +21,13 @@ import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.Visitor;
 import org.dom4j.XPath;
+import org.dom4j.rule.Pattern;
 
 /** <p><code>AbstractNode</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.20 $
+ * @version $Revision: 1.21 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
@@ -195,8 +196,17 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
         return xpath.numberValueOf(this);
     }
     
+    public boolean matches(String patternText) {        
+        Pattern pattern = createPattern(patternText);
+        return pattern.matches(this);
+    }
+    
     public XPath createXPath(String xpathExpression) {
         return getDocumentFactory().createXPath(xpathExpression);
+    }
+    
+    public Pattern createPattern(String patternText) {
+        return getDocumentFactory().createPattern(patternText);
     }
     
     
@@ -262,5 +272,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.20 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.21 2001/08/09 00:29:43 jstrachan Exp $
  */

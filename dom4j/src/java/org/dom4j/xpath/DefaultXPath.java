@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.14 2001/08/01 09:08:39 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.15 2001/08/09 00:29:43 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -88,7 +88,7 @@ public class DefaultXPath implements org.dom4j.XPath {
             xpath.setVariableContext( 
                 new org.jaxen.VariableContext() {
                     public Object getVariableValue(String prefix, String localName) {
-                        return variableContext.getVariableValue( localName );
+                        return variableContext.getVariableValue( prefix, localName );
                     }
                 }
             );
@@ -333,5 +333,5 @@ public class DefaultXPath implements org.dom4j.XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.14 2001/08/01 09:08:39 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.15 2001/08/09 00:29:43 jstrachan Exp $
  */
