@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestXMLSpaceAttribute.java,v 1.2 2004/06/24 09:16:10 maartenc Exp $
+ * $Id: TestXMLSpaceAttribute.java,v 1.3 2004/06/25 08:03:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import java.io.*;
   * If it is preserve, then keep whitespace.
   *
   * @author <a href="mailto:ddlucas@lse.com">David Lucas</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestXMLSpaceAttribute extends AbstractTestCase {
 
@@ -272,7 +272,7 @@ public class TestXMLSpaceAttribute extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -288,7 +288,7 @@ public class TestXMLSpaceAttribute extends AbstractTestCase {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLSpaceAttribute.java,v 1.2 2004/06/24 09:16:10 maartenc Exp $
+ * $Id: TestXMLSpaceAttribute.java,v 1.3 2004/06/25 08:03:47 maartenc Exp $
  */

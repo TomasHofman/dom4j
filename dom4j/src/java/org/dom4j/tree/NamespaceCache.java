@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: NamespaceCache.java,v 1.9 2004/06/04 08:27:21 maartenc Exp $
+ * $Id: NamespaceCache.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,7 @@ import org.dom4j.Namespace;
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
  * @author Maarten Coene
  * @author Brett Finnell
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class NamespaceCache {
 
@@ -147,7 +147,7 @@ public class NamespaceCache {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://dom4j.org/
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -165,5 +165,5 @@ public class NamespaceCache {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceCache.java,v 1.9 2004/06/04 08:27:21 maartenc Exp $
+ * $Id: NamespaceCache.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
  */

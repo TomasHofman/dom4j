@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: OutputFormat.java,v 1.12 2004/06/24 09:15:38 maartenc Exp $
+ * $Id: OutputFormat.java,v 1.13 2004/06/25 08:03:37 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -13,7 +13,7 @@ package org.dom4j.io;
   * used by {@link XMLWriter} and its base classes to format the XML output
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class OutputFormat implements Cloneable {
 
@@ -459,7 +459,7 @@ public class OutputFormat implements Cloneable {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -475,7 +475,7 @@ public class OutputFormat implements Cloneable {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OutputFormat.java,v 1.12 2004/06/24 09:15:38 maartenc Exp $
+ * $Id: OutputFormat.java,v 1.13 2004/06/25 08:03:37 maartenc Exp $
  */

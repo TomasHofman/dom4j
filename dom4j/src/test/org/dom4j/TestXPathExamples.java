@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.10 2004/06/24 09:16:11 maartenc Exp $
+ * $Id: TestXPathExamples.java,v 1.11 2004/06/25 08:03:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.dom4j.rule.Pattern;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestXPathExamples extends TestCase {
 
@@ -238,7 +238,7 @@ public class TestXPathExamples extends TestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -254,7 +254,7 @@ public class TestXPathExamples extends TestCase {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.10 2004/06/24 09:16:11 maartenc Exp $
+ * $Id: TestXPathExamples.java,v 1.11 2004/06/25 08:03:47 maartenc Exp $
  */

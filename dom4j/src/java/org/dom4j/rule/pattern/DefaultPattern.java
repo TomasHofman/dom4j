@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultPattern.java,v 1.3 2004/06/24 09:15:42 maartenc Exp $
+ * $Id: DefaultPattern.java,v 1.4 2004/06/25 08:03:39 maartenc Exp $
  */
 
 package org.dom4j.rule.pattern;
@@ -25,7 +25,7 @@ import org.dom4j.rule.Pattern;
   * should be overloaded to allow more rule filtering to occur.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DefaultPattern implements Pattern {
     
@@ -85,7 +85,7 @@ public class DefaultPattern implements Pattern {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -101,7 +101,7 @@ public class DefaultPattern implements Pattern {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultPattern.java,v 1.3 2004/06/24 09:15:42 maartenc Exp $
+ * $Id: DefaultPattern.java,v 1.4 2004/06/25 08:03:39 maartenc Exp $
  */

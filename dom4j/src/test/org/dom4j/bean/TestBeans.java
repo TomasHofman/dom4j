@@ -4,6 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
+ * $Id: TestBeans.java,v 1.2 2004/06/25 08:03:47 maartenc Exp $
  */
 
 package org.dom4j.bean;
@@ -70,7 +71,7 @@ public class TestBeans extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://dom4j.org/
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -88,5 +89,5 @@ public class TestBeans extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBeans.java,v 1.1 2004/06/09 12:34:22 maartenc Exp $
+ * $Id: TestBeans.java,v 1.2 2004/06/25 08:03:47 maartenc Exp $
  */

@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMProcessingInstruction.java,v 1.9 2004/06/24 09:15:36 maartenc Exp $
+ * $Id: DOMProcessingInstruction.java,v 1.10 2004/06/25 08:03:35 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DOMProcessingInstruction extends DefaultProcessingInstruction implements org.w3c.dom.ProcessingInstruction {
 
@@ -215,7 +215,7 @@ public class DOMProcessingInstruction extends DefaultProcessingInstruction imple
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -231,7 +231,7 @@ public class DOMProcessingInstruction extends DefaultProcessingInstruction imple
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMProcessingInstruction.java,v 1.9 2004/06/24 09:15:36 maartenc Exp $
+ * $Id: DOMProcessingInstruction.java,v 1.10 2004/06/25 08:03:35 maartenc Exp $
  */

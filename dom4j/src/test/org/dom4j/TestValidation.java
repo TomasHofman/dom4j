@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValidation.java,v 1.5 2004/06/24 09:16:10 maartenc Exp $
+ * $Id: TestValidation.java,v 1.6 2004/06/25 08:03:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import org.xml.sax.SAXException;
 /** A test harness for validation when using SAXReader
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestValidation extends AbstractTestCase {
 
@@ -75,7 +75,7 @@ public class TestValidation extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -91,7 +91,7 @@ public class TestValidation extends AbstractTestCase {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValidation.java,v 1.5 2004/06/24 09:16:10 maartenc Exp $
+ * $Id: TestValidation.java,v 1.6 2004/06/25 08:03:47 maartenc Exp $
  */

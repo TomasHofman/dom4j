@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: BeanElement.java,v 1.12 2004/06/09 12:34:22 maartenc Exp $
+ * $Id: BeanElement.java,v 1.13 2004/06/25 08:03:34 maartenc Exp $
  */
 
 package org.dom4j.bean;
@@ -26,7 +26,7 @@ import org.dom4j.tree.NamespaceStack;
 /** <p><code>BeanElement</code> uses a Java Bean to store its attributes.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class BeanElement extends DefaultElement {
 
@@ -177,7 +177,7 @@ public class BeanElement extends DefaultElement {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://dom4j.org/
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -195,5 +195,5 @@ public class BeanElement extends DefaultElement {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanElement.java,v 1.12 2004/06/09 12:34:22 maartenc Exp $
+ * $Id: BeanElement.java,v 1.13 2004/06/25 08:03:34 maartenc Exp $
  */

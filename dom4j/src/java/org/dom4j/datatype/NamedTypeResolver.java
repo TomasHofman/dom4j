@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamedTypeResolver.java,v 1.5 2004/06/24 09:15:35 maartenc Exp $
+ * $Id: NamedTypeResolver.java,v 1.6 2004/06/25 08:03:34 maartenc Exp $
  */
 
 package org.dom4j.datatype;
@@ -23,7 +23,7 @@ import org.dom4j.QName;
 /** <p><code>NamedTypeResolver</code> resolves named types for a given QName.</p>
  *
  * @author Yuxin Ruan
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 class NamedTypeResolver {
 
@@ -115,7 +115,7 @@ class NamedTypeResolver {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -131,7 +131,7 @@ class NamedTypeResolver {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamedTypeResolver.java,v 1.5 2004/06/24 09:15:35 maartenc Exp $
+ * $Id: NamedTypeResolver.java,v 1.6 2004/06/25 08:03:34 maartenc Exp $
  */

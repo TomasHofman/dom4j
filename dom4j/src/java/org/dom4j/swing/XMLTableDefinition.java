@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLTableDefinition.java,v 1.5 2004/06/24 09:15:43 maartenc Exp $
+ * $Id: XMLTableDefinition.java,v 1.6 2004/06/25 08:03:40 maartenc Exp $
  */
 
 package org.dom4j.swing;
@@ -27,7 +27,7 @@ import org.jaxen.VariableContext;
   * on an XML document.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $ 
+  * @version $Revision: 1.6 $ 
   */
 public class XMLTableDefinition implements Serializable, VariableContext {
 
@@ -262,7 +262,7 @@ public class XMLTableDefinition implements Serializable, VariableContext {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -278,7 +278,7 @@ public class XMLTableDefinition implements Serializable, VariableContext {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLTableDefinition.java,v 1.5 2004/06/24 09:15:43 maartenc Exp $
+ * $Id: XMLTableDefinition.java,v 1.6 2004/06/25 08:03:40 maartenc Exp $
  */

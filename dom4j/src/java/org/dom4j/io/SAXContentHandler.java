@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.53 2004/06/24 09:15:38 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.54 2004/06/25 08:03:37 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.53 $
+  * @version $Revision: 1.54 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -834,7 +834,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -850,7 +850,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.53 2004/06/24 09:15:38 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.54 2004/06/25 08:03:37 maartenc Exp $
  */

@@ -4,8 +4,9 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: STAXEventWriter.java,v 1.4 2004/06/24 09:15:39 maartenc Exp $
+ * $Id: STAXEventWriter.java,v 1.5 2004/06/25 08:03:38 maartenc Exp $
  */
+
 package org.dom4j.io;
 
 import java.io.IOException;
@@ -545,7 +546,7 @@ public class STAXEventWriter {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -563,5 +564,5 @@ public class STAXEventWriter {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: STAXEventWriter.java,v 1.4 2004/06/24 09:15:39 maartenc Exp $
+ * $Id: STAXEventWriter.java,v 1.5 2004/06/25 08:03:38 maartenc Exp $
  */

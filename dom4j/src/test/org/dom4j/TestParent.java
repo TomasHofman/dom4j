@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.11 2004/06/24 09:16:10 maartenc Exp $
+ * $Id: TestParent.java,v 1.12 2004/06/25 08:03:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import junit.textui.TestRunner;
   * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -115,7 +115,7 @@ public class TestParent extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -131,7 +131,7 @@ public class TestParent extends AbstractTestCase {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.11 2004/06/24 09:16:10 maartenc Exp $
+ * $Id: TestParent.java,v 1.12 2004/06/25 08:03:47 maartenc Exp $
  */

@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CountDemo.java,v 1.2 2004/06/24 09:16:03 maartenc Exp $
+ * $Id: CountDemo.java,v 1.3 2004/06/25 08:03:43 maartenc Exp $
  */
 
 package org.dom4j.samples;
@@ -21,7 +21,7 @@ import org.dom4j.VisitorSupport;
 /** A sample program to count the number of various kinds of DOM4J node types
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class CountDemo extends SAXDemo {
     
@@ -114,7 +114,7 @@ public class CountDemo extends SAXDemo {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -130,7 +130,7 @@ public class CountDemo extends SAXDemo {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CountDemo.java,v 1.2 2004/06/24 09:16:03 maartenc Exp $
+ * $Id: CountDemo.java,v 1.3 2004/06/25 08:03:43 maartenc Exp $
  */

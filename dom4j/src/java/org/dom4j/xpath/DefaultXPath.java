@@ -1,10 +1,10 @@
 /*
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.30 2004/06/24 09:16:02 maartenc Exp $
+ * $Id: DefaultXPath.java,v 1.31 2004/06/25 08:03:42 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -357,7 +357,7 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project
+ * 5. Due credit should be given to the DOM4J Project - 
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -373,7 +373,7 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  *
- * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
+ * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.30 2004/06/24 09:16:02 maartenc Exp $
+ * $Id: DefaultXPath.java,v 1.31 2004/06/25 08:03:42 maartenc Exp $
  */
