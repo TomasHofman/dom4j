@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathFunctionContext.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: XPathFunctionContext.java,v 1.3 2001/04/19 17:47:09 jstrachan Exp $
  */
 
 
@@ -137,6 +137,14 @@ public class XPathFunctionContext implements FunctionContext {
 
         addFunction( "round",
                      new RoundFunction());
+
+        
+        // ----------------------------------------
+        //     Extension Functions
+        // ----------------------------------------
+
+        addFunction( "matrix-concat",
+                     new MatrixConcatFunction());        
     }
 
     /** Add a function to this FunctionContext
@@ -211,5 +219,5 @@ public class XPathFunctionContext implements FunctionContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathFunctionContext.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: XPathFunctionContext.java,v 1.3 2001/04/19 17:47:09 jstrachan Exp $
  */
