@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.27 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: AbstractNode.java,v 1.28 2004/08/04 18:21:58 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -26,7 +26,7 @@ import org.dom4j.rule.Pattern;
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.27 $
+ * @version $Revision: 1.28 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
@@ -154,7 +154,7 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
     public Object selectObject(String xpathExpression) {
         XPath xpath = createXPath(xpathExpression);
-        return xpath.selectObject(this);
+        return xpath.evaluate(this);
     }
     
     public List selectNodes(String xpathExpression) {
@@ -276,5 +276,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.27 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: AbstractNode.java,v 1.28 2004/08/04 18:21:58 maartenc Exp $
  */
