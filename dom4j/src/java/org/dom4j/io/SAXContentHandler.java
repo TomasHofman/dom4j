@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.47 2004/03/04 10:44:42 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.48 2004/03/30 15:05:38 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.47 $
+  * @version $Revision: 1.48 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -242,6 +242,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
         elementStack.pushElement(element);
         currentElement = element;
 
+        entity = null;      // fixes bug527062
 
         if ( elementHandler != null ) {
             elementHandler.onStart(elementStack);
@@ -264,6 +265,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
         if ( end == 0 ) {
             return;
         }
+        
         if ( currentElement != null ) {
             if (entity != null) {
                 if ( mergeAdjacentText && textInTextBuffer ) {
@@ -851,5 +853,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.47 2004/03/04 10:44:42 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.48 2004/03/30 15:05:38 maartenc Exp $
  */
