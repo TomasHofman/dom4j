@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDemo.java,v 1.3 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.4 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
@@ -22,7 +22,7 @@ import org.dom4j.io.XMLWriter;
   * XML tree then converting it to a DOM4J tree.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMDemo extends AbstractDemo {
     
@@ -33,7 +33,7 @@ public class DOMDemo extends AbstractDemo {
     public DOMDemo() {
     }
     
-    protected void parse( URL url ) throws Exception {
+    protected Document parse( URL url ) throws Exception {
         // parse a DOM tree
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -50,7 +50,7 @@ public class DOMDemo extends AbstractDemo {
         
         println( "Created DOM4J document: " + document );
         
-        process(document);
+        return document;
     }
     
     protected void process(Document document) throws Exception {
@@ -103,5 +103,5 @@ public class DOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDemo.java,v 1.3 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.4 2001/04/07 10:56:26 jstrachan Exp $
  */

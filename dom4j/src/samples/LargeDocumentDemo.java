@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LargeDocumentDemo.java,v 1.6 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.7 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
@@ -17,7 +17,7 @@ import org.dom4j.io.SAXReader;
   * {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     
@@ -39,7 +39,8 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
         String xmlFile = args[0];
         pruningPath = args[1];
         
-        parse( xmlFile );
+        Document document = parse( xmlFile );
+        process(document);
     }
     
     // ElementHandler interface     
@@ -49,7 +50,7 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
         );
     }
     
-    protected void parse( URL url ) throws Exception {
+    protected Document parse( URL url ) throws Exception {
         SAXReader reader = new SAXReader();        
 
         println( "Parsing document:   " + url );
@@ -61,6 +62,8 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
         Document document = reader.read(url);
         
         // the document will be complete but have the prunePath elements pruned
+        
+        return document;
     }
 }
 
@@ -109,5 +112,5 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LargeDocumentDemo.java,v 1.6 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.7 2001/04/07 10:56:26 jstrachan Exp $
  */

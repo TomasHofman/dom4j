@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDemo.java,v 1.9 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.10 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
@@ -18,7 +18,7 @@ import org.dom4j.io.XMLWriter;
 /** A simple test program to demonstrate using SAX to create a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class SAXDemo extends AbstractDemo {
     
@@ -29,16 +29,11 @@ public class SAXDemo extends AbstractDemo {
     public SAXDemo() {
     }
     
-    protected void parse( URL url ) throws Exception {
+    protected Document parse( URL url ) throws Exception {
         SAXReader reader = new SAXReader();
-        Document document = reader.read(url);
-        process(document);
+        return reader.read(url);
     }
     
-    protected void process(Document document) throws Exception {
-        writer.write(document);
-    }
-
 }
 
 
@@ -86,5 +81,5 @@ public class SAXDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDemo.java,v 1.9 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.10 2001/04/07 10:56:26 jstrachan Exp $
  */

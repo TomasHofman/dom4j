@@ -4,13 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDemo.java,v 1.2 2001/03/02 00:08:04 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.3 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
 package bean;
 
-import AbstractDemo;
+import SAXDemo;
 
 import java.awt.Component;
 import java.net.URL;
@@ -28,9 +28,9 @@ import org.dom4j.io.SAXReader;
   * inside a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
-public class BeanDemo extends AbstractDemo {
+public class BeanDemo extends SAXDemo {
     
     public static void main(String[] args) {
         run( new BeanDemo(), args );
@@ -45,20 +45,14 @@ public class BeanDemo extends AbstractDemo {
             return;
         }
         
-        parse( args[0] );
-    }
-    
-    protected void parse( String xmlFile ) throws Exception {
-        URL url = getURL( xmlFile );
-        if ( url != null ) {
-            parse( url );
-        }
-    }
-    
-    protected void parse( URL url ) throws Exception {
-        SAXReader reader = new SAXReader( BeanDocumentFactory.getInstance() );
-        Document document = reader.read(url);
+        Document document = parse( args[0] );
         process(document);
+    }
+    
+    
+    protected Document parse( URL url ) throws Exception {
+        SAXReader reader = new SAXReader( BeanDocumentFactory.getInstance() );
+        return reader.read(url);
     }
     
     protected void process(Document document) throws Exception {
@@ -134,5 +128,5 @@ public class BeanDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDemo.java,v 1.2 2001/03/02 00:08:04 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.3 2001/04/07 10:56:26 jstrachan Exp $
  */

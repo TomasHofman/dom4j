@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDOMDemo.java,v 1.4 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.5 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
@@ -27,7 +27,7 @@ import org.dom4j.io.XMLWriter;
   * SAX <-> DOM4J and DOM4J <-> DOM and DOM4J <-> text
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class SAXDOMDemo extends AbstractDemo {
     
@@ -38,7 +38,7 @@ public class SAXDOMDemo extends AbstractDemo {
     public SAXDOMDemo() {
     }
     
-    protected void parse( URL url ) throws Exception {
+    protected Document parse( URL url ) throws Exception {
         SAXReader saxReader = new SAXReader();
         Document document = saxReader.read(url);
         
@@ -66,12 +66,7 @@ public class SAXDOMDemo extends AbstractDemo {
         
         println( "Converted DOM4J to SAX events then back to DOM4J: " + document );
         
-        process( document );
-    }
-    
-    
-    protected void process(Document document) throws Exception {
-        writer.write(document);
+        return document;
     }
 }
 
@@ -120,5 +115,5 @@ public class SAXDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDOMDemo.java,v 1.4 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.5 2001/04/07 10:56:26 jstrachan Exp $
  */

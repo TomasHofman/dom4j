@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NativeDOMDemo.java,v 1.1 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.2 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
@@ -22,7 +22,7 @@ import AbstractDemo;
 /** A simple test program to demonstrate the use of native DOM support.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class NativeDOMDemo extends AbstractDemo {
     
@@ -39,10 +39,10 @@ public class NativeDOMDemo extends AbstractDemo {
             return;
         }
 
-        parse( args[0] );
+        parseDOM( args[0] );
     }
     
-    protected void parse( String xmlFile ) throws Exception {
+    protected void parseDOM( String xmlFile ) throws Exception {
 
         println( "Loading document: " + xmlFile );
         
@@ -54,15 +54,14 @@ public class NativeDOMDemo extends AbstractDemo {
         if ( document instanceof org.w3c.dom.Document ) {
             org.w3c.dom.Document domDocument = (org.w3c.dom.Document) document;
             println( "Created W3C DOM document: " + domDocument );
-            process(domDocument);
+            processDOM(domDocument);
         }
         else {
             println( "FAILED to make a native W3C DOM document!!" );
-            
         }
     }
     
-    protected void process(org.w3c.dom.Document document) throws Exception {
+    protected void processDOM(org.w3c.dom.Document document) throws Exception {
     }
 }
 
@@ -111,5 +110,5 @@ public class NativeDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NativeDOMDemo.java,v 1.1 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.2 2001/04/07 10:56:26 jstrachan Exp $
  */

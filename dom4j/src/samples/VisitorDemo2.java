@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo2.java,v 1.7 2001/01/29 23:53:32 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.8 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 
@@ -18,7 +18,7 @@ import org.dom4j.io.SAXReader;
   * object model from a {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class VisitorDemo2 extends VisitorDemo {
     
@@ -43,12 +43,7 @@ public class VisitorDemo2 extends VisitorDemo {
         documentFactoryClassName = (args.length > 1) 
             ? args[1] : null;
             
-        parse( xmlFile );
-    }
-    
-    protected void parse( URL url ) throws Exception {
-        SAXReader reader = createSAXReader();
-        Document document = reader.read(url);
+        Document document = parse( xmlFile );
         process(document);
     }
     
@@ -120,5 +115,5 @@ public class VisitorDemo2 extends VisitorDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo2.java,v 1.7 2001/01/29 23:53:32 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.8 2001/04/07 10:56:26 jstrachan Exp $
  */

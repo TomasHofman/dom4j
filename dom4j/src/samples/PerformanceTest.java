@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceTest.java,v 1.11 2001/01/29 23:53:32 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.12 2001/04/07 10:56:26 jstrachan Exp $
  */
 
 import java.net.URL;
@@ -18,7 +18,7 @@ import org.dom4j.io.SAXReader;
 /** Perform some DOM4J parsing peformance test cases.
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class PerformanceTest extends SAXDemo {
     
@@ -59,7 +59,7 @@ public class PerformanceTest extends SAXDemo {
             loopCount = Integer.parseInt(args[2]);
         }        
 
-        parse( xmlFile );
+        loopParse( getURL( xmlFile ) );
     }
     
     /** Parses the XML document at the given <code>URL</code> 
@@ -67,7 +67,7 @@ public class PerformanceTest extends SAXDemo {
       *
       * @param url is the <code>URL</code> to read 
       */
-    protected void parse( URL url ) throws Exception {
+    protected void loopParse( URL url ) throws Exception {
         SAXReader reader = createSAXReader();
                     
         println( "Parsing url:      " + url );
@@ -129,6 +129,7 @@ public class PerformanceTest extends SAXDemo {
         average = total / (loopCount - 2);
         
         println( "Average (excluding first & second run): " + average + " (ms)" );
+        return;
     }
 
     /** Parses the XML document at the given URL and times how long it takes.
@@ -214,5 +215,5 @@ public class PerformanceTest extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceTest.java,v 1.11 2001/01/29 23:53:32 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.12 2001/04/07 10:56:26 jstrachan Exp $
  */
