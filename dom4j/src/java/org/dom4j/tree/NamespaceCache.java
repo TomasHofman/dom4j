@@ -4,13 +4,14 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: NamespaceCache.java,v 1.6 2002/10/25 14:47:34 ddlucas Exp $
+ * $Id: NamespaceCache.java,v 1.7 2002/11/12 09:56:04 slehmann Exp $
  */
 
 package org.dom4j.tree;
 
-import java.util.Hashtable;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Collections;
 
 import org.dom4j.Namespace;
 
@@ -18,7 +19,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class NamespaceCache {
 
@@ -86,14 +87,14 @@ public class NamespaceCache {
       * @return a newly created {@link Map} instance.
       */
     protected Map createPrefixMap() {
-        return new Hashtable();
+        return Collections.synchronizedMap(new HashMap());
     }
 
     /** A factory method to create URI caches
       * @return a newly created {@link Map} instance.
       */
     protected Map createURIMap() {
-        return new Hashtable();
+        return Collections.synchronizedMap(new HashMap());
     }
 }
 
@@ -142,5 +143,5 @@ public class NamespaceCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceCache.java,v 1.6 2002/10/25 14:47:34 ddlucas Exp $
+ * $Id: NamespaceCache.java,v 1.7 2002/11/12 09:56:04 slehmann Exp $
  */
