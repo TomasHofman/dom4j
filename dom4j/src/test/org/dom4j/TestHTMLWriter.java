@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestHTMLWriter.java,v 1.7 2004/06/06 07:59:37 maartenc Exp $
+ * $Id: TestHTMLWriter.java,v 1.8 2004/06/18 14:30:59 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.StringWriter;
+import java.net.URL;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -17,11 +18,12 @@ import junit.textui.TestRunner;
 
 import org.dom4j.io.HTMLWriter;
 import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
 
 /** Test harness for the HTMLWriter
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestHTMLWriter extends AbstractTestCase {
 
@@ -127,6 +129,22 @@ public class TestHTMLWriter extends AbstractTestCase {
         assertEquals(expected, buffer.toString());
     }
     
+    public void testBug619415() throws Exception {
+        URL url = getClass().getResource("/xml/test/dosLineFeeds.xml");
+        SAXReader reader = new SAXReader();
+        Document doc = reader.read(url);
+        
+        StringWriter wr = new StringWriter();
+        HTMLWriter writer = new HTMLWriter(wr, new OutputFormat("", false));
+        writer.write(doc);
+        
+        String result = wr.toString();
+        System.out.println(result);
+        
+        assertTrue(result.indexOf("Mary had a little lamb.") > -1);
+        assertTrue(result.indexOf("Hello, this is a test.") > -1);
+    }
+    
 }
 
 
@@ -174,5 +192,5 @@ public class TestHTMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestHTMLWriter.java,v 1.7 2004/06/06 07:59:37 maartenc Exp $
+ * $Id: TestHTMLWriter.java,v 1.8 2004/06/18 14:30:59 maartenc Exp $
  */
