@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMReader.java,v 1.11 2004/03/07 14:45:06 maartenc Exp $
+ * $Id: DOMReader.java,v 1.12 2004/06/15 16:11:45 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.dom4j.tree.NamespaceStack;
   * a DOM4J tree from it.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class DOMReader {
 
@@ -166,18 +166,24 @@ public class DOMReader {
         int previouslyDeclaredNamespaces = namespaceStack.size();
 
         String namespaceUri = node.getNamespaceURI();
+        String elementPrefix = node.getPrefix();
+        if (elementPrefix == null) {
+            elementPrefix = "";
+        }
+        
         org.w3c.dom.NamedNodeMap attributeList = node.getAttributes();
         if (( attributeList != null ) && ( namespaceUri == null )) {
             // test if we have an "xmlns" attribute
             org.w3c.dom.Node attribute = attributeList.getNamedItem( "xmlns" );
             if ( attribute != null ) {
                 namespaceUri = attribute.getNodeValue();
+                elementPrefix = "";
             }
         }
 
         QName qName = namespaceStack.getQName( namespaceUri, node.getLocalName(), node.getNodeName() );
         Element element = current.addElement(qName);
-
+        
         if ( attributeList != null ) {
             int size = attributeList.getLength();
             List attributes = new ArrayList(size);
@@ -187,17 +193,11 @@ public class DOMReader {
                 // Define all namespaces first then process attributes later
                 String name = attribute.getNodeName();
                 if (name.startsWith("xmlns")) {
-                    int index = name.indexOf( ':', 5 );
+                    String prefix = getPrefix(name);
                     String uri = attribute.getNodeValue();
-                    if ( namespaceUri == null || ! namespaceUri.equals( uri ) ) {
-                        Namespace namespace = null;
-                        if ( index > 0 ) {
-                            String prefix = name.substring(index + 1);
-                            namespace = namespaceStack.addNamespace( prefix, uri );
-                        }
-                        else {
-                            namespace = namespaceStack.addNamespace( "", uri );
-                        }
+
+                    if (!uri.equals(namespaceUri) || !prefix.equals(elementPrefix)) {
+                        Namespace namespace = namespaceStack.addNamespace( prefix, uri );
                         element.add( namespace );
                     }
                 }
@@ -244,6 +244,15 @@ public class DOMReader {
         namespaceStack.clear();
         if ( ! namespaceStack.contains( Namespace.XML_NAMESPACE ) ) {
             namespaceStack.push( Namespace.XML_NAMESPACE );
+        }
+    }
+    
+    private String getPrefix(String xmlnsDecl) {
+        int index = xmlnsDecl.indexOf(':', 5);
+        if (index != -1) {
+            return xmlnsDecl.substring(index + 1);
+        } else {
+            return "";
         }
     }
 }
@@ -293,5 +302,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.11 2004/03/07 14:45:06 maartenc Exp $
+ * $Id: DOMReader.java,v 1.12 2004/06/15 16:11:45 maartenc Exp $
  */
