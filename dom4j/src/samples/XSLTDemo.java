@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.2 2001/04/09 07:47:58 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.3 2001/04/10 18:11:22 jstrachan Exp $
  */
 
 import java.net.URL;
@@ -12,6 +12,8 @@ import java.net.URL;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamSource;
 
 import org.dom4j.Document;
 import org.dom4j.io.DocumentResult;
@@ -27,7 +29,7 @@ import org.xml.sax.InputSource;
 /** A simple test program to demonstrate using SAX to create a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XSLTDemo extends SAXDemo {
     
@@ -71,8 +73,10 @@ public class XSLTDemo extends SAXDemo {
     /** Perform XSLT on the stylesheet */
     protected void process(Document document) throws Exception {
         // load the transformer
-        TransformerReader transformerReader = new TransformerReader();
-        Transformer transformer = transformerReader.read( xsl );
+        TransformerFactory factory = TransformerFactory.newInstance();
+        Transformer transformer = factory.newTransformer( 
+            new StreamSource( xsl.toString() ) 
+        );
         
         // now lets create the TRaX source and result
         // objects and do the transformation
@@ -132,5 +136,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.2 2001/04/09 07:47:58 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.3 2001/04/10 18:11:22 jstrachan Exp $
  */
