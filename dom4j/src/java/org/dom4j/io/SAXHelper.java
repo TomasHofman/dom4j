@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXHelper.java,v 1.3 2001/05/11 16:29:06 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.4 2001/05/14 12:42:56 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * SAX and XMLReader objects.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 class SAXHelper {
 
@@ -67,35 +67,36 @@ class SAXHelper {
       */
     protected static XMLReader createXMLReaderViaJAXP(boolean validating) {
         try {
-            Class factoryClass = Class.forName("javax.xml.parsers.SAXParserFactory");
-            // try use JAXP to load the XMLReader...
-            try {
-                return JAXPHelper.createXMLReader( validating );
-            }
-            catch (Exception e) {
-                if ( isVerboseErrorReporting() ) {
-                    // log all exceptions as warnings and carry
-                    // on as we have a default SAX parser we can use
-                    System.out.println( 
-                        "Warning: Caught exception attempting to use JAXP to "
-                         + "load a SAX XMLReader " 
-                    );
-                    System.out.println( "Warning: Exception was: " + e );
-                    System.out.println( 
-                        "Warning: I will print the stack trace then carry on "
-                         + "using the default SAX parser" 
-                     );
-                    e.printStackTrace();
-                }
-                else {
-                    System.out.println( 
-                        "Info: Could not use JAXP to load a SAXParser. Will use Aelfred instead" 
-                    );
-                }
-            }
+            Class.forName("javax.xml.parsers.SAXParserFactory");
         }
         catch (Exception e) {
             // JAXP is not loaded so continue, its probably not in the CLASSPATH
+        }
+        
+        // try use JAXP to load the XMLReader...
+        try {
+            return JAXPHelper.createXMLReader( validating );
+        }
+        catch (Throwable e) {
+            if ( isVerboseErrorReporting() ) {
+                // log all exceptions as warnings and carry
+                // on as we have a default SAX parser we can use
+                System.out.println( 
+                    "Warning: Caught exception attempting to use JAXP to "
+                     + "load a SAX XMLReader " 
+                );
+                System.out.println( "Warning: Exception was: " + e );
+                System.out.println( 
+                    "Warning: I will print the stack trace then carry on "
+                     + "using the default SAX parser" 
+                 );
+                e.printStackTrace();
+            }
+            else {
+                System.out.println( 
+                    "Warning: Error occurred using JAXP to load a SAXParser. Will use Aelfred instead" 
+                );
+            }
         }
         return null;
     }
@@ -160,5 +161,5 @@ class SAXHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXHelper.java,v 1.3 2001/05/11 16:29:06 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.4 2001/05/14 12:42:56 jstrachan Exp $
  */
