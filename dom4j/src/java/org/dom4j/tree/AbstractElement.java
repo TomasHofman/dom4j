@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.48 2001/07/03 14:42:42 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.49 2001/07/12 11:33:30 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.48 $
+  * @version $Revision: 1.49 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -893,6 +893,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                     }
                     else {
                         previousText = text;
+                        i++;
                     }
                 }
             }
@@ -1251,5 +1252,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.48 2001/07/03 14:42:42 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.49 2001/07/12 11:33:30 jstrachan Exp $
  */
