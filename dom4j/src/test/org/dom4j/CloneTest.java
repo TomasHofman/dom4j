@@ -13,19 +13,15 @@ import java.util.Comparator;
 
 import org.dom4j.dom.DOMDocument;
 import org.dom4j.dom.DOMDocumentFactory;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
 import org.dom4j.util.NodeComparator;
 
 /**
  * A test harness to test the clone() methods on Nodes
  * 
  * @author <a href="mailto:jstrachan@apache.org">James Strachan </a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class CloneTest extends AbstractTestCase {
-    private static final boolean VERBOSE = false;
-
     private Comparator comparator = new NodeComparator();
 
     public static void main(String[] args) {
@@ -41,9 +37,10 @@ public class CloneTest extends AbstractTestCase {
         Element el = doc.addElement("root");
         el.addNamespace("pref2", "uri2");
 
-        DOMDocument other = (DOMDocument) doc.cloneNode(true);
+        DOMDocument clone = (DOMDocument) doc.cloneNode(true);
         
-        assertNodesEqual(doc, other);
+        assertNotSame(doc, clone);
+        assertNodesEqual(doc, clone);
     }
 
     public void testElementWithNamespaceClone() {
@@ -52,6 +49,7 @@ public class CloneTest extends AbstractTestCase {
         element.addNamespace("prefix", "uri");
         Element clone = (Element) element.clone();
 
+        assertNotSame(element, clone);
         assertNodesEqual(element, clone);
     }
 
@@ -60,21 +58,8 @@ public class CloneTest extends AbstractTestCase {
 
         Document doc2 = (Document) document.clone();
 
-        assertTrue("Returned a new document", document != doc2);
-
-        if (VERBOSE) {
-            XMLWriter writer = new XMLWriter(System.out, OutputFormat
-                    .createPrettyPrint());
-
-            log("document1");
-            writer.write(document);
-
-            log("document2");
-            writer.write(doc2);
-        }
-
-        assertTrue("Documents are equal",
-                comparator.compare(document, doc2) == 0);
+        assertNotSame(document, doc2);
+        assertNodesEqual(document, doc2);
     }
 
     public void testAddCloneToOtherElement() {
