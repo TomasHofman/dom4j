@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.9 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.10 2001/08/29 18:05:18 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -31,7 +31,6 @@ import org.saxpath.SAXPathException;
 import java.io.StringReader;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -43,7 +42,7 @@ import java.util.Map;
   * which uses an XPath xpath.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class XPathPattern implements org.dom4j.rule.Pattern {
     
@@ -74,7 +73,9 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
 
     public boolean matches( Node node ) {
         try {
-            context.setNodeSet( Collections.singletonList( node ) );
+            ArrayList list = new ArrayList(1);
+            list.add( node );
+            context.setNodeSet( list );
             return pattern.matches( node, context );
         }
         catch (JaxenException e) {
@@ -192,5 +193,5 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.9 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.10 2001/08/29 18:05:18 jstrachan Exp $
  */
