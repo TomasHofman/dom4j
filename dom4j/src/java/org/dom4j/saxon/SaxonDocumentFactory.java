@@ -4,54 +4,53 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractEntity.java,v 1.6 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: SaxonDocumentFactory.java,v 1.1 2001/03/03 14:46:22 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j.saxon;
 
+import java.util.Map;
+
+import org.dom4j.DocumentFactory;
+import org.dom4j.Attribute;
 import org.dom4j.Element;
-import org.dom4j.Entity;
-import org.dom4j.Visitor;
+import org.dom4j.QName;
+import org.dom4j.tree.DefaultAttribute;
+import org.dom4j.tree.DefaultElement;
 
+import org.xml.sax.Attributes;
 
-/** <p><code>AbstractEntity</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+/** <p><code>SaxonDocumentFactory</code> is a factory of DOM4J objects
+  * which implement the SAXON document object model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.1 $
   */
-public abstract class AbstractEntity extends AbstractNode implements Entity {
+public class SaxonDocumentFactory extends DocumentFactory {
 
-    public AbstractEntity() {
-    }
-    
-    public short getNodeType() {
-        return ENTITY_REFERENCE_NODE;
-    }
+    /** The Singleton instance */
+    private static SaxonDocumentFactory singleton = new SaxonDocumentFactory();
 
-    public String getPath() {
-        // From XPaths perspective, entities are included in text
-        Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/text()"
-            : "text()";
+    /** <p>Access to the singleton instance of this factory.</p>
+      *
+      * @return the default singleon instance
+      */
+    public static DocumentFactory getInstance() {
+        return singleton;
     }
     
-    public String toString() {
-        return super.toString() + " [Entity: &" + getName() + ";]";
+    
+    // Factory methods
+    
+/*    
+    public Attribute createAttribute(QName qname, String value) {
+        return new SaxonAttribute(qname, value);
     }
+*/    
 
-    public String getString() {
-        return "&" + getName() + ";";
-    }
+    // SAXON helper methods
     
-    public String asXML() {
-        return "&" + getName() + ";";
-    }
-    
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
+    // Implementation methods
     
 }
 
@@ -100,5 +99,5 @@ public abstract class AbstractEntity extends AbstractNode implements Entity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractEntity.java,v 1.6 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: SaxonDocumentFactory.java,v 1.1 2001/03/03 14:46:22 jstrachan Exp $
  */

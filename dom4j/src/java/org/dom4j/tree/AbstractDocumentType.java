@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocumentType.java,v 1.4 2001/02/01 23:19:19 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.5 2001/03/03 14:46:22 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,7 +21,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractDocumentType extends AbstractNode implements DocumentType {
 
@@ -32,10 +32,6 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
         return DOCUMENT_TYPE_NODE;
     }
 
-    public String toString() {
-        return super.toString() + " [DocumentType: " + asXML() + "]";
-    }
-
     public String getName() {
         return getElementName();
     }
@@ -44,6 +40,15 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
         setElementName(name);
     }
     
+    public String getPath() {
+        // not available in XPath
+        return "";
+    }
+
+    public String toString() {
+        return super.toString() + " [DocumentType: " + asXML() + "]";
+    }
+
     public String asXML() {
         StringBuffer buffer = new StringBuffer( "<!DOCTYPE " );
         buffer.append( getElementName() );
@@ -123,5 +128,5 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocumentType.java,v 1.4 2001/02/01 23:19:19 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.5 2001/03/03 14:46:22 jstrachan Exp $
  */

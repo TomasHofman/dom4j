@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.9 2001/02/06 16:31:04 jstrachan Exp $
+ * $Id: Node.java,v 1.10 2001/03/03 14:46:22 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public interface Node extends Cloneable {
 
@@ -175,6 +175,13 @@ public interface Node extends Cloneable {
       * together.
       */
     public String getString();    
+    
+    /** <p>Returns the String of the XPath expression to reach this node from 
+      * the root node.</p>
+      *
+      * @return the XPath text expression for this node.
+      */
+    public String getPath();
     
     
     /** <p><code>asXML</code> returns the textual XML representation of this 
@@ -368,5 +375,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.9 2001/02/06 16:31:04 jstrachan Exp $
+ * $Id: Node.java,v 1.10 2001/03/03 14:46:22 jstrachan Exp $
  */

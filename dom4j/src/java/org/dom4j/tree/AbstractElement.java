@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.26 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.27 2001/03/03 14:46:22 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,10 +39,13 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
+    protected static final boolean VERBOSE_TOSTRING = false;
+    
+    
     public AbstractElement() { 
     }
 
@@ -69,6 +72,13 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         throw new UnsupportedOperationException("The name and namespace of this Element cannot be changed" );
     }
         
+    public String getPath() {
+        Element parent = getParent();
+        return ( parent != null ) 
+            ? parent.getPath() + "/" + getQualifiedName()
+            : getQualifiedName();
+    }
+    
     public String asXML() {
         try {
             StringWriter out = new StringWriter();
@@ -124,9 +134,15 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
     
     public String toString() {
-        return super.toString() + " [Element: <" + getQualifiedName() 
-            + " attributes: " + getAttributeList()
-            + " content: " + getContentList() + " />]";
+        if ( VERBOSE_TOSTRING ) {
+            return super.toString() + " [Element: <" + getQualifiedName() 
+                + " attributes: " + getAttributeList()
+                + " content: " + getContentList() + " />]";
+        }
+        else {
+            return super.toString() + " [Element: <" + getQualifiedName() 
+                + " attributes: " + getAttributeList() + "/>]";
+        }
     }
     
 
@@ -595,5 +611,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.26 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.27 2001/03/03 14:46:22 jstrachan Exp $
  */

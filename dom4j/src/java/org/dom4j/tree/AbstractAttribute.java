@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttribute.java,v 1.8 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.9 2001/03/03 14:46:22 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -19,7 +19,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
@@ -87,6 +87,13 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
         return getQName().getQualifiedName();
     }
     
+    public String getPath() {
+        Element parent = getParent();
+        return ( parent != null ) 
+            ? parent.getPath() + "/@" + getName() 
+            : "@" + getName();
+    }
+    
     protected Node createXPathNode(Element parent) {
         return new XPathAttribute(parent, getQName(), getValue());
     }
@@ -139,5 +146,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.8 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.9 2001/03/03 14:46:22 jstrachan Exp $
  */

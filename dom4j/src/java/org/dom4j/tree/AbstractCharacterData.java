@@ -4,23 +4,32 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractCharacterData.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractCharacterData.java,v 1.3 2001/03/03 14:46:22 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.CharacterData;
+import org.dom4j.Element;
 
 /** <p><code>AbstractCharacterData</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class AbstractCharacterData extends AbstractNode implements CharacterData {
 
     public AbstractCharacterData() {
     }
+    
+    public String getPath() {
+        Element parent = getParent();
+        return ( parent != null ) 
+            ? parent.getPath() + "/text()"
+            : "text()";
+    }
+    
 }
 
 
@@ -68,5 +77,5 @@ public abstract class AbstractCharacterData extends AbstractNode implements Char
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractCharacterData.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractCharacterData.java,v 1.3 2001/03/03 14:46:22 jstrachan Exp $
  */
