@@ -4,18 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathEngine.java,v 1.5 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: XPathEngine.java,v 1.6 2001/02/05 18:12:52 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.util.List;
 
+import org.dom4j.rule.Pattern;
+
 /** <p><code>XPathEngine</code> implements an XPath engine for
   * creating XPath objects and navigation using a DOM4J Document model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public interface XPathEngine {
 
@@ -27,7 +29,7 @@ public interface XPathEngine {
       */
     public XPath createXPath(String xpathExpression);
     
-    /** <p><code>NodeFilter</code> parses a NodeFilter
+    /** <p><code>createXPathFilter</code> parses a NodeFilter
       * from the given XPath filter expression.
       * XPath filter expressions occur within XPath expressions such as
       * <code>self::node()[ filterExpression ]</code></p>
@@ -37,6 +39,16 @@ public interface XPathEngine {
       * @return a new <code>NodeFilter</code> instance
       */
     public NodeFilter createXPathFilter(String xpathFilterExpression);
+    
+    /** <p><code>createPattern</code> parses the given 
+      * XPath expression to create an XSLT style {@link Pattern} instance
+      * which can then be used in an XSLT processing model.</p>
+      *
+      * @param xpathPattern is the XPath pattern expression 
+      * to create
+      * @return a new <code>Pattern</code> instance
+      */
+    public Pattern createPattern(String xpathPattern);
     
 }
 
@@ -85,5 +97,5 @@ public interface XPathEngine {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathEngine.java,v 1.5 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: XPathEngine.java,v 1.6 2001/02/05 18:12:52 jstrachan Exp $
  */

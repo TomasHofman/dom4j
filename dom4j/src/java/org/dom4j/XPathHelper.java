@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathHelper.java,v 1.6 2001/02/02 18:36:33 jstrachan Exp $
+ * $Id: XPathHelper.java,v 1.7 2001/02/05 18:12:52 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,11 +13,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.dom4j.rule.Pattern;
+
 /** <p><code>XPathHelper</code> contains some helper methods for using 
   * and creating {@link XPathEngine} instances.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class XPathHelper {
 
@@ -101,7 +103,7 @@ public class XPathHelper {
         return getInstance().createXPath(xpathExpression);
     }
     
-    /** <p><code>NodeFilter</code> parses a NodeFilter
+    /** <p><code>createXPathFilter</code> parses a NodeFilter
       * from the given XPath filter expression using the singleton
       * {@link XPathEngine}.
       * XPath filter expressions occur within XPath expressions such as
@@ -114,6 +116,19 @@ public class XPathHelper {
     public static NodeFilter createXPathFilter(String xpathFilterExpression) {
         return getInstance().createXPathFilter(xpathFilterExpression);
     }
+    
+    /** <p><code>createPattern</code> parses the given 
+      * XPath expression to create an XSLT style {@link Pattern} instance
+      * which can then be used in an XSLT processing model.</p>
+      *
+      * @param xpathPattern is the XPath pattern expression 
+      * to create
+      * @return a new <code>Pattern</code> instance
+      */
+    public static Pattern createPattern(String xpathPattern) {
+        return getInstance().createPattern(xpathPattern);
+    }
+    
     
     /** <p><code>selectNodes</code> performs the given XPath
       * expression on the {@link List} of {@link Node} instances appending
@@ -215,5 +230,5 @@ public class XPathHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathHelper.java,v 1.6 2001/02/02 18:36:33 jstrachan Exp $
+ * $Id: XPathHelper.java,v 1.7 2001/02/05 18:12:52 jstrachan Exp $
  */
