@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.58 2004/08/04 18:22:39 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.59 2004/08/06 09:51:50 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -38,13 +38,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.ext.DeclHandler;
 import org.xml.sax.ext.LexicalHandler;
-import org.xml.sax.ext.Locator2;
 import org.xml.sax.helpers.DefaultHandler;
 
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.58 $
+  * @version $Revision: 1.59 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -733,12 +732,8 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
             return null;
         }
         
-        // try to use the Locator2 interface
-        if (locator instanceof Locator2) {
-            return ((Locator2) locator).getEncoding();
-        }
-        
-        // use reflection as fallback plan
+        // use reflection to avoid dependency on Locator2 
+        // or other locator implemenations.
         try {
             Method m = locator.getClass().getMethod("getEncoding", new Class[]{});
             if (m != null) {
@@ -874,5 +869,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.58 2004/08/04 18:22:39 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.59 2004/08/06 09:51:50 maartenc Exp $
  */
