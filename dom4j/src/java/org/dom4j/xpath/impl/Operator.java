@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Operator.java,v 1.4 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: Operator.java,v 1.5 2001/04/02 18:24:31 jstrachan Exp $
  */
 
 
@@ -58,6 +58,12 @@ class Operator {
             else if (Operator.eitherIsString(lhsValue, rhsValue)) {
                 result = OpStringAny.evaluate(
                     context, op, lhsValue, rhsValue
+                );
+            }
+            else {
+                System.out.println( 
+                    "#### I don't know how to handle operator: " 
+                    + op + " on lhs: " + lhsValue + " and rhs: " + rhsValue 
                 );
             }
         }        
@@ -160,5 +166,5 @@ class Operator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Operator.java,v 1.4 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: Operator.java,v 1.5 2001/04/02 18:24:31 jstrachan Exp $
  */

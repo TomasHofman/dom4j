@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonNodeHelper.java,v 1.1 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: SaxonNodeHelper.java,v 1.2 2001/04/02 18:24:31 jstrachan Exp $
  */
 
 package org.dom4j.saxon;
@@ -33,7 +33,7 @@ import org.dom4j.tree.XPathAttribute;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class SaxonNodeHelper {
 
@@ -45,6 +45,17 @@ public class SaxonNodeHelper {
         return that == other;
     }
 
+    public static String getPublicId(Node node) {
+        Document document = node.getDocument();
+        if ( document != null ) {
+            DocumentType docType = document.getDocType();
+            if ( docType != null ) {
+                return docType.getPublicID();
+            }
+        }
+        return "";
+    }
+    
     public static String getSystemId(Node node) {
         Document document = node.getDocument();
         if ( document != null ) {
@@ -59,6 +70,10 @@ public class SaxonNodeHelper {
     public static String getBaseURI(Node node) {
         // XXXX: no support for xml:base yet
         return getSystemId(node);
+    }
+
+    public static int getColumnNumber(Node node) {
+        return -1;
     }
 
     public static int getLineNumber(Node node) {
@@ -210,6 +225,11 @@ public class SaxonNodeHelper {
     public static void notSupported() {
         throw new UnsupportedOperationException("Not supported yet");
     }
+
+    public static org.w3c.dom.Node getOriginatingNode(Node node) {
+        notSupported();
+        return null;
+    }
 }
 
 
@@ -257,5 +277,5 @@ public class SaxonNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonNodeHelper.java,v 1.1 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: SaxonNodeHelper.java,v 1.2 2001/04/02 18:24:31 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: SaxonAttribute.java,v 1.4 2001/04/02 18:24:31 jstrachan Exp $
  */
 
 package org.dom4j.saxon;
@@ -32,9 +32,9 @@ import org.dom4j.dom.DOMAttribute;
   * supports the SAXON tree API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
-public abstract class SaxonAttribute extends DOMAttribute implements AttributeInfo {
+public class SaxonAttribute extends DOMAttribute implements AttributeInfo {
 
     protected static NodeInfo[] emptyArray = new NodeInfo[0];
     protected static SingletonEnumeration emptyEnumeration = new SingletonEnumeration(null);
@@ -86,12 +86,20 @@ public abstract class SaxonAttribute extends DOMAttribute implements AttributeIn
         return SaxonNodeHelper.isSameNode(this, other);
     }
 
+    public String getPublicId() {
+        return SaxonNodeHelper.getPublicId(this);
+    }
+    
     public String getSystemId() {
         return SaxonNodeHelper.getSystemId(this);
     }
     
     public String getBaseURI() {
         return SaxonNodeHelper.getBaseURI(this);
+    }
+
+    public int getColumnNumber() {
+        return SaxonNodeHelper.getColumnNumber(this);
     }
 
     public int getLineNumber() {
@@ -173,6 +181,11 @@ public abstract class SaxonAttribute extends DOMAttribute implements AttributeIn
     public void copyStringValue(Outputter out) throws TransformerException {
         SaxonNodeHelper.copyStringValue(this, out);
     }
+
+    public org.w3c.dom.Node getOriginatingNode() {
+        return SaxonNodeHelper.getOriginatingNode(this);
+    }
+
 }
 
 
@@ -220,5 +233,5 @@ public abstract class SaxonAttribute extends DOMAttribute implements AttributeIn
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: SaxonAttribute.java,v 1.4 2001/04/02 18:24:31 jstrachan Exp $
  */
