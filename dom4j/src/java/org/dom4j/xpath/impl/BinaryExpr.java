@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BinaryExpr.java,v 1.7 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: BinaryExpr.java,v 1.8 2001/07/26 16:22:29 jstrachan Exp $
  */
 
 
@@ -59,9 +59,10 @@ public class BinaryExpr extends Expr implements org.jaxen.expr.BinaryExpr {
     
     public Object evaluate(Context context) {
         
-        //System.err.println( "Evaluating: " + _op + " " + _lhs + " " + _rhs );
         
         Object result = null;
+        
+        Context duplicateContext = context.duplicate();        
         
         Object lhsValue = _lhs.evaluate( context );
         
@@ -78,7 +79,6 @@ public class BinaryExpr extends Expr implements org.jaxen.expr.BinaryExpr {
                 return Boolean.TRUE;
             }
             
-            Context duplicateContext = context.duplicate();        
             rhsValue = _rhs.evaluate( duplicateContext );
             
             if (BooleanFunction.evaluate(rhsValue).booleanValue()) {
@@ -92,7 +92,6 @@ public class BinaryExpr extends Expr implements org.jaxen.expr.BinaryExpr {
                 return Boolean.FALSE;
             }
             
-            Context duplicateContext = context.duplicate();        
             rhsValue = _rhs.evaluate( duplicateContext );
             
             if ( ! BooleanFunction.evaluate(rhsValue).booleanValue()) {
@@ -101,10 +100,7 @@ public class BinaryExpr extends Expr implements org.jaxen.expr.BinaryExpr {
             return Boolean.TRUE;
         }
         else {
-            Context duplicateContext = context.duplicate();        
             rhsValue = _rhs.evaluate( duplicateContext );
-            
-            //System.out.println( "Evaluating lhs: " + lhsValue + " rhs: " + rhsValue + " operation: " + _op );
             
             result = Operator.evaluate(
                 duplicateContext, _op, lhsValue, rhsValue
@@ -205,5 +201,5 @@ public class BinaryExpr extends Expr implements org.jaxen.expr.BinaryExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BinaryExpr.java,v 1.7 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: BinaryExpr.java,v 1.8 2001/07/26 16:22:29 jstrachan Exp $
  */
