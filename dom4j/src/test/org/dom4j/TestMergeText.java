@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestMergeText.java,v 1.1 2002/11/10 21:02:35 slehmann Exp $
+ * $Id: TestMergeText.java,v 1.3 2002/11/10 21:11:11 slehmann Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness for SAXReader option setMergeAdjacentText(true)
   *
   * @author <a href="mailto:slehmann@novell.com">Steen Lehmann</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.3 $
   */
 public class TestMergeText extends AbstractTestCase {
 
@@ -69,7 +69,6 @@ public class TestMergeText extends AbstractTestCase {
                     if (n instanceof Text && (prev != null && prev instanceof Text)) {
                         fail("Node: " + n + " is text and so is its "
                             + "preceding sibling: " + prev);
-                        assertTrue(false);
                     }
                     else if (n instanceof Element) {
                         checkNoAdjacent((Element)n);
@@ -126,5 +125,5 @@ public class TestMergeText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestMergeText.java,v 1.1 2002/11/10 21:02:35 slehmann Exp $
+ * $Id: TestMergeText.java,v 1.3 2002/11/10 21:11:11 slehmann Exp $
  */
