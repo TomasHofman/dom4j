@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.5 2001/05/08 10:02:56 jstrachan Exp $
+ * $Id: QName.java,v 1.6 2001/05/15 18:17:38 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class QName implements Serializable {
 
@@ -37,7 +37,10 @@ public class QName implements Serializable {
     /** A cached version of the hashcode for efficiency */
     private int hashCode;
     
+    /** The document factory used for this QName if specified or null */
+    private DocumentFactory documentFactory;
 
+    
     public static synchronized QName get(String name) {
         return cache.get(name);
     }
@@ -51,15 +54,7 @@ public class QName implements Serializable {
     }
     
     public static synchronized QName get(String qualifiedName, String uri) {
-        int index = qualifiedName.indexOf( ':' );
-        if ( index < 0 ) {
-            return get( qualifiedName, Namespace.get( uri ) );
-        }
-        else {
-            String name = qualifiedName.substring( index + 1 );
-            String prefix = qualifiedName.substring( 0, index );
-            return cache.get(name, Namespace.get( prefix, uri ));
-        }
+        return cache.get(qualifiedName, uri);
     }
     
     public static synchronized QName get(String localName, Namespace namespace, String qualifiedName) {
@@ -156,6 +151,15 @@ public class QName implements Serializable {
         }
         return false;
     }
+    
+    /** @return the factory that should be used for Elements of this QName */
+    public DocumentFactory getDocumentFactory() {
+        return documentFactory;
+    }
+
+    public void setDocumentFactory(DocumentFactory documentFactory) {
+        this.documentFactory = documentFactory;
+    }
 }
 
 
@@ -203,5 +207,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.5 2001/05/08 10:02:56 jstrachan Exp $
+ * $Id: QName.java,v 1.6 2001/05/15 18:17:38 jstrachan Exp $
  */

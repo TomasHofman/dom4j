@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.25 2001/05/11 12:58:55 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.26 2001/05/15 18:17:38 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -67,7 +67,7 @@ public class DefaultElement extends AbstractElement {
     
     
     public DefaultElement(String name) { 
-        this.qname = QName.get(name);
+        this.qname = getDocumentFactory().createQName(name);
     }
 
     public DefaultElement(QName qname) { 
@@ -75,7 +75,7 @@ public class DefaultElement extends AbstractElement {
     }
 
     public DefaultElement(String name, Namespace namespace) { 
-        this.qname = QName.get(name, namespace);
+        this.qname = getDocumentFactory().createQName(name, namespace);
     }
 
     public Element getParent() {
@@ -466,7 +466,7 @@ public class DefaultElement extends AbstractElement {
     }
 
     public Element element(String name, Namespace namespace) {
-        return element( QName.get( name, namespace ) );
+        return element( getDocumentFactory().createQName( name, namespace ) );
     }
     
     
@@ -548,7 +548,7 @@ public class DefaultElement extends AbstractElement {
     }
     
     public List elements(String name, Namespace namespace) {
-        return elements( QName.get(name, namespace ) );
+        return elements( getDocumentFactory().createQName(name, namespace ) );
     }
     
     public Iterator elementIterator() {
@@ -598,7 +598,7 @@ public class DefaultElement extends AbstractElement {
     }
     
     public Iterator elementIterator(String name, Namespace namespace) {
-        return elementIterator( QName.get( name, namespace ) );
+        return elementIterator( getDocumentFactory().createQName( name, namespace ) );
     }
     
     public void setContent(List content) {
@@ -735,7 +735,7 @@ public class DefaultElement extends AbstractElement {
     }
 
     public Attribute attribute(String name, Namespace namespace) {
-        return attribute( QName.get( name, namespace ) );
+        return attribute( getDocumentFactory().createQName( name, namespace ) );
     }
 
     public boolean remove(Attribute attribute) {
@@ -913,5 +913,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.25 2001/05/11 12:58:55 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.26 2001/05/15 18:17:38 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocument.java,v 1.3 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMDocument.java,v 1.4 2001/05/15 18:17:38 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -30,7 +30,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document {
 
@@ -231,7 +231,7 @@ public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document
     }
 
     public org.w3c.dom.Attr createAttribute(String name) throws DOMException {
-        return new DOMAttribute( QName.get(name) );
+        return new DOMAttribute( DOCUMENT_FACTORY.createQName(name) );
     }
     
     public org.w3c.dom.EntityReference createEntityReference(String name) throws DOMException {
@@ -248,14 +248,14 @@ public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document
     public org.w3c.dom.Element createElementNS(
         String namespaceURI, String qualifiedName
     ) throws DOMException {
-        QName qname = QName.get( qualifiedName, namespaceURI );
+        QName qname = DOCUMENT_FACTORY.createQName( qualifiedName, namespaceURI );
         return new DOMElement( qname );
     }
 
     public org.w3c.dom.Attr createAttributeNS(
         String namespaceURI, String qualifiedName
     ) throws DOMException {
-        QName qname = QName.get( qualifiedName, namespaceURI );
+        QName qname = DOCUMENT_FACTORY.createQName( qualifiedName, namespaceURI );
         return new DOMAttribute( qname );
     }
 
@@ -319,5 +319,5 @@ public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocument.java,v 1.3 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMDocument.java,v 1.4 2001/05/15 18:17:38 jstrachan Exp $
  */

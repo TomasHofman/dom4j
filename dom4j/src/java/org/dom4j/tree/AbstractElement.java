@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.33 2001/05/11 14:01:34 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.34 2001/05/15 18:17:38 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,11 +40,14 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.33 $
+  * @version $Revision: 1.34 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
     protected static final boolean VERBOSE_TOSTRING = false;
+        
+    /** The <code>DocumentFactory</code> instance used by default */
+    private static final DocumentFactory DOCUMENT_FACTORY = DocumentFactory.getInstance();
     
     
     public AbstractElement() { 
@@ -596,6 +599,12 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     /** @return the internal List used to store attributes
       */
     protected abstract List attributeList();
+    
+    protected DocumentFactory getDocumentFactory() {
+        DocumentFactory factory = getQName().getDocumentFactory();
+        return ( factory != null ) ? factory : DOCUMENT_FACTORY;
+    }
+    
 }
 
 
@@ -643,5 +652,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.33 2001/05/11 14:01:34 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.34 2001/05/15 18:17:38 jstrachan Exp $
  */

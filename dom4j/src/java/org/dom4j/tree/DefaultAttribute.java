@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultAttribute.java,v 1.5 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: DefaultAttribute.java,v 1.6 2001/05/15 18:17:38 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.QName;
   * <p>It implements a singly linked attribute.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DefaultAttribute extends AbstractAttribute {
 
@@ -47,7 +47,7 @@ public class DefaultAttribute extends AbstractAttribute {
       * @param value is the value of the attribute
       */
     public DefaultAttribute(String name, String value) {
-        this.qname = QName.get(name);
+        this.qname = getDocumentFactory().createQName(name);
         this.value = value;
     }
 
@@ -59,7 +59,7 @@ public class DefaultAttribute extends AbstractAttribute {
       * @param namespace is the namespace of the attribute
       */
     public DefaultAttribute(String name, String value, Namespace namespace) {
-        this.qname = QName.get(name, namespace);
+        this.qname = getDocumentFactory().createQName(name, namespace);
         this.value = value;
     }
     
@@ -117,5 +117,5 @@ public class DefaultAttribute extends AbstractAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultAttribute.java,v 1.5 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: DefaultAttribute.java,v 1.6 2001/05/15 18:17:38 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.13 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.14 2001/05/15 18:17:38 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,6 +21,7 @@ import org.dom4j.tree.DefaultElement;
 import org.dom4j.tree.DefaultEntity;
 import org.dom4j.tree.DefaultProcessingInstruction;
 import org.dom4j.tree.DefaultText;
+import org.dom4j.tree.QNameCache;
 import org.dom4j.tree.XPathEntity;
 import org.dom4j.xpath.DefaultXPath;
 import org.dom4j.xpath.XPathPattern;
@@ -35,12 +36,14 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class DocumentFactory {
 
     /** The Singleton instance */
     private static DocumentFactory singleton;
+    
+    protected transient QNameCache cache;
 
     static {
         String className = System.getProperty( 
@@ -59,7 +62,10 @@ public class DocumentFactory {
     public static DocumentFactory getInstance() {
         return singleton;
     }
-    
+
+    public DocumentFactory() {
+        cache = new QNameCache(this);
+    }
     
     // Factory methods
     
@@ -135,11 +141,19 @@ public class DocumentFactory {
     }
     
     public QName createQName(String localName, Namespace namespace) {
-        return QName.get(localName, namespace);
+        return cache.get(localName, namespace);
     }
     
     public QName createQName(String localName) {
-        return QName.get(localName);
+        return cache.get(localName);
+    }
+    
+    public QName createQName(String name, String prefix, String uri) {
+        return cache.get(name, Namespace.get( prefix, uri ));
+    }
+
+    public QName createQName(String qualifiedName, String uri) {
+        return cache.get(qualifiedName, uri);
     }
     
     /** <p><code>createXPath</code> parses an XPath expression
@@ -279,5 +293,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.13 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.14 2001/05/15 18:17:38 jstrachan Exp $
  */
