@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.6 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.7 2002/02/10 15:56:04 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -32,7 +32,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -166,6 +166,37 @@ public class TestXMLWriter extends AbstractTestCase {
         assertEquals( "getText() returns the correct text padding", expected, doc2.getRootElement().getText() );
     }
     
+    /** This test was provided by Manfred Lotz */
+    public void testWhitespaceBug2() throws Exception {
+        Document doc = DocumentHelper.createDocument();
+        Element root = doc.addElement( "root" );
+        Element meaning = root.addElement( "meaning" );
+        meaning.addText( "to li" );
+        meaning.addText( "ve" );
+        
+        OutputFormat format = new OutputFormat();
+        format.setEncoding("UTF-8");
+        format.setIndentSize(4);
+        format.setNewlines(true);
+        format.setTrimText(true);
+        format.setExpandEmptyElements(true);
+        
+        StringWriter buffer = new StringWriter();
+        XMLWriter writer = new XMLWriter(buffer, format);
+        writer.write( doc );
+        
+        String xml = buffer.toString();
+        log( xml );
+        
+        Document doc2 = DocumentHelper.parseText( xml );
+        String text = doc2.valueOf( "/root/meaning" );
+        String expected = "to live";
+        
+        assertEquals( "valueOf() returns the correct text padding", expected, text );
+        
+        assertEquals( "getText() returns the correct text padding", expected, doc2.getRootElement().element("meaning").getText() );
+    }
+    
     protected void generateXML(ContentHandler handler) throws SAXException {
 	handler.startDocument();
 	AttributesImpl attrs = new AttributesImpl();
@@ -225,5 +256,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.6 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.7 2002/02/10 15:56:04 jstrachan Exp $
  */
