@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.8 2001/02/01 23:19:19 jstrachan Exp $
+ * $Id: Node.java,v 1.9 2001/02/06 16:31:04 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public interface Node extends Cloneable {
 
@@ -234,6 +234,40 @@ public interface Node extends Cloneable {
       */
     public List selectNodes(String xpathExpression);
     
+    /** <p><code>selectNodes</code> evaluates an XPath expression then
+      * sorts the results using a secondary XPath expression
+      * Returns a sorted <code>List</code> of <code>Node</code> instances.</p>
+      *
+      * @param xpathExpression is the XPath expression to be evaluated
+      * @param comparisonXPathExpression is the XPath expression used
+      *     to compare the results by for sorting
+      * @return the list of <code>Node</code> instances 
+      * sorted by the comparisonXPathExpression
+      */
+    public List selectNodes( 
+        String xpathExpression, 
+        String comparisonXPathExpression 
+    );
+    
+    /** <p><code>selectNodes</code> evaluates an XPath expression then
+      * sorts the results using a secondary XPath expression
+      * Returns a sorted <code>List</code> of <code>Node</code> instances.</p>
+      *
+      * @param xpathExpression is the XPath expression to be evaluated
+      * @param comparisonXPathExpression is the XPath expression used
+      *     to compare the results by for sorting
+      * @param removeDuplicates if this parameter is true then duplicate 
+      *     values (using the comparisonXPathExpression) are removed from
+      *     the result List.
+      * @return the list of <code>Node</code> instances 
+      * sorted by the comparisonXPathExpression
+      */
+    public List selectNodes(
+        String xpathExpression, 
+        String comparisonXPathExpression, 
+        boolean removeDuplicates
+    );
+    
     /** <p><code>selectSingleNode</code> evaluates an XPath expression
       * and returns the result as a single <code>Node</code> instance.</p>
       *
@@ -334,5 +368,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.8 2001/02/01 23:19:19 jstrachan Exp $
+ * $Id: Node.java,v 1.9 2001/02/06 16:31:04 jstrachan Exp $
  */
