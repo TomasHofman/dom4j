@@ -1,12 +1,11 @@
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: ReverseDocumentOrderComparator.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ *
+ * $Id: ReverseDocumentOrderComparator.java,v 1.3 2001/05/04 16:24:21 jstrachan Exp $
  */
-
 
 package org.dom4j.xpath.util;
 
@@ -22,68 +21,57 @@ import java.util.Collections;
 
 import java.io.Serializable;
 
-public class ReverseDocumentOrderComparator implements Serializable
-{
-
-  private Map _orderings = null;
-
-  public ReverseDocumentOrderComparator(Document document)
-  {
-    Element rootElement = document.getRootElement();
-
-    if (rootElement != null)
-    {
-
-      List orderedElements = Partition.documentOrderDescendants( rootElement );
-
-      _orderings = new HashMap(orderedElements.size() + 1);
-
-      _orderings.put(rootElement, new Integer(0));
-
-      Iterator elemIter = orderedElements.iterator();
-      int counter = 1;
-
-      while (elemIter.hasNext())
-      {
-        _orderings.put( elemIter.next(),
-                        new Integer(counter) );
-        ++counter;
-      }
+public class ReverseDocumentOrderComparator implements Serializable {
+    
+    private static final Map EMPTY_MAP = new HashMap(0);    
+    
+    private Map _orderings = null;
+    
+    public ReverseDocumentOrderComparator(Document document) {
+        Element rootElement = document.getRootElement();        
+        if (rootElement != null) {            
+            List orderedElements = Partition.documentOrderDescendants( rootElement );
+            
+            _orderings = new HashMap(orderedElements.size() + 1);
+            
+            _orderings.put(rootElement, new Integer(0));
+            
+            Iterator elemIter = orderedElements.iterator();
+            int counter = 1;
+            
+            while (elemIter.hasNext()) {
+                _orderings.put( elemIter.next(),
+                new Integer(counter) );
+                ++counter;
+            }
+        }
+        else {
+            _orderings = EMPTY_MAP;
+        }
+        
     }
-    else
+    
+    public int compare(Object lhsIn, Object rhsIn) throws ClassCastException
     {
-      _orderings = Collections.EMPTY_MAP;
+        Element lhs = (Element) lhsIn;
+        Element rhs = (Element) rhsIn;
+        
+        if (lhs.equals(rhs)) {
+            return 0;
+        }
+        
+        int lhsIndex = ((Integer)_orderings.get(lhs)).intValue();
+        int rhsIndex = ((Integer)_orderings.get(rhs)).intValue();
+        
+        if (lhsIndex < rhsIndex) {
+            return 1;
+        }
+        else if (lhsIndex > rhsIndex) {
+            return -1;
+        }        
+        return 0;
     }
-
-  }
-
-  public int compare(Object lhsIn,
-                     Object rhsIn)
-    throws ClassCastException
-  {
-    Element lhs = (Element) lhsIn;
-    Element rhs = (Element) rhsIn;
-
-    if (lhs.equals(rhs))
-    {
-      return 0;
-    }
-
-    int lhsIndex = ((Integer)_orderings.get(lhs)).intValue();
-    int rhsIndex = ((Integer)_orderings.get(rhs)).intValue();
-
-    if (lhsIndex < rhsIndex)
-    {
-      return 1;
-    }
-    else if (lhsIndex > rhsIndex)
-    {
-      return -1;
-    } 
-
-    return 0;
-  }
-
+    
 }
 
 
@@ -131,5 +119,5 @@ public class ReverseDocumentOrderComparator implements Serializable
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ReverseDocumentOrderComparator.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: ReverseDocumentOrderComparator.java,v 1.3 2001/05/04 16:24:21 jstrachan Exp $
  */
