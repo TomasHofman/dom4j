@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.22 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: Branch.java,v 1.23 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
 public interface Branch extends Node {
 
@@ -147,17 +147,6 @@ public interface Branch extends Node {
       * @return the newly added <code>Element</code> node.
       */    
     public Element addElement(String qualifiedName, String namespaceURI);
-    
-    /** Adds a new <code>Element</code> node with the given {@link QName} 
-      * to this branch and returns a reference to the new node. 
-      * This method is used by {@link org.dom4j.io.SAXReader} to allow
-      * more optimal or more flexible construction of element instances based 
-      * on the available attributes.
-      *
-      * @param qname is the qualified name for the <code>Element</code> node.
-      * @return the newly added <code>Element</code> node.
-      */    
-    public Element addElement(QName qName, Attributes attributes);
     
     /** Removes the processing instruction for the given target if it exists
       *
@@ -295,5 +284,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.22 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: Branch.java,v 1.23 2001/06/25 15:57:32 jstrachan Exp $
  */

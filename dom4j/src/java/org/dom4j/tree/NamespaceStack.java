@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.8 2001/06/22 10:19:12 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.1 2001/06/25 15:57:32 jstrachan Exp $
  */
 
-package org.dom4j.io;
+package org.dom4j.tree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,13 +19,13 @@ import org.dom4j.QName;
 
 /** NamespaceStack implements a stack of namespaces and optionally
   * maintains a cache of all the fully qualified names (<code>QName</code>)
-  * which are in scope. This is useful when building or navigating a DOM4J 
+  * which are in scope. This is useful when building or navigating a <i>dom4j</i>
   * document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.1 $
   */
-class NamespaceStack {
+public class NamespaceStack {
  
     /** The factory used to create new <code>Namespace</code> instances */
     private DocumentFactory documentFactory;
@@ -284,5 +284,5 @@ class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.8 2001/06/22 10:19:12 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.1 2001/06/25 15:57:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElementFactory.java,v 1.3 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: SchemaElementFactory.java,v 1.4 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
   * in an XML Schema.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SchemaElementFactory extends DocumentFactory {
     
@@ -92,17 +92,7 @@ public class SchemaElementFactory extends DocumentFactory {
             return new SchemaElement(qname, dataType);
         }
     }
-    
-    public Element createElement(QName qname, Attributes attributes) {
-        DataType dataType = getChildElementDataType( qname );
-        if ( dataType == null ) {
-            return super.createElement( qname, attributes );
-        }
-        else {
-            return new SchemaElement(qname, attributes, dataType);
-        }
-    }
-    
+
     public Attribute createAttribute(Element owner, QName qname, String value) {
         DataType dataType = getAttributeDataType(qname);
         if ( dataType == null ) {
@@ -112,9 +102,6 @@ public class SchemaElementFactory extends DocumentFactory {
             return new SchemaAttribute( qname, dataType, value );
         }
     }
-    
-    
-    
 }
 
 
@@ -162,5 +149,5 @@ public class SchemaElementFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElementFactory.java,v 1.3 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: SchemaElementFactory.java,v 1.4 2001/06/25 15:57:32 jstrachan Exp $
  */

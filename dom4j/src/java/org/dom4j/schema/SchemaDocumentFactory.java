@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaDocumentFactory.java,v 1.4 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: SchemaDocumentFactory.java,v 1.5 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -22,7 +22,6 @@ import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.io.SAXReader;
 
-import org.xml.sax.Attributes;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 
@@ -32,7 +31,7 @@ import org.xml.sax.InputSource;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class SchemaDocumentFactory extends DocumentFactory {
 
@@ -46,6 +45,9 @@ public class SchemaDocumentFactory extends DocumentFactory {
     
     private static final Namespace XSI_NAMESPACE
         = Namespace.get( "xsi", "http://www.w3.org/2001/XMLSchema-instance" );
+    
+    private static final QName XSI_SCHEMA_LOCATION
+        = QName.get( "schemaLocation", XSI_NAMESPACE );
     
     private static final QName XSI_NO_SCHEMA_LOCATION
         = QName.get( "noNamespaceSchemaLocation", XSI_NAMESPACE );
@@ -100,10 +102,6 @@ public class SchemaDocumentFactory extends DocumentFactory {
         
     // DocumentFactory methods
     //-------------------------------------------------------------------------
-    
-    public Element createElement(QName qname, Attributes attributes) {
-        return super.createElement(qname, attributes);
-    }
     
     public Attribute createAttribute(Element owner, QName qname, String value) {
         if ( autoLoadSchema && qname.equals( XSI_NO_SCHEMA_LOCATION ) ) {
@@ -185,5 +183,5 @@ public class SchemaDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaDocumentFactory.java,v 1.4 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: SchemaDocumentFactory.java,v 1.5 2001/06/25 15:57:32 jstrachan Exp $
  */

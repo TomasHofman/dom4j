@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMReader.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.7 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -31,11 +31,13 @@ import org.dom4j.ProcessingInstruction;
 import org.dom4j.QName;
 import org.dom4j.Text;
 
+import org.dom4j.tree.NamespaceStack;
+
 /** <p><code>DOMReader</code> navigates a W3C DOM tree and creates
   * a DOM4J tree from it.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class DOMReader {
 
@@ -300,5 +302,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.6 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.7 2001/06/25 15:57:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElement.java,v 1.2 2001/05/30 21:23:26 jstrachan Exp $
+ * $Id: SchemaElement.java,v 1.3 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * specification.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class SchemaElement extends DefaultElement implements ValidationContextProvider {
 
@@ -41,8 +41,8 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
         this.dataType = dataType;
     }
 
-    public SchemaElement(QName qname, Attributes attributes, DataType dataType) { 
-        super(qname, attributes);
+    public SchemaElement(QName qname, int attributeCount, DataType dataType) { 
+        super(qname, attributeCount);
         this.dataType = dataType;
     }
 
@@ -134,5 +134,5 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElement.java,v 1.2 2001/05/30 21:23:26 jstrachan Exp $
+ * $Id: SchemaElement.java,v 1.3 2001/06/25 15:57:32 jstrachan Exp $
  */

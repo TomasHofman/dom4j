@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NonLazyDocumentFactory.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyDocumentFactory.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -16,8 +16,6 @@ import org.dom4j.Element;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
 
-import org.xml.sax.Attributes;
-
 /** <p><code>NonLazyDocumentFactory</code> is a factory of XML objects which 
   * avoid using the lazy creation pattern. This results in a slower
   * creation of a Document and uses more memory but it means that the
@@ -25,7 +23,7 @@ import org.xml.sax.Attributes;
   * modified.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class NonLazyDocumentFactory extends DocumentFactory {
     
@@ -47,10 +45,6 @@ public class NonLazyDocumentFactory extends DocumentFactory {
     
     public Element createElement(QName qname) {
         return new NonLazyElement(qname);
-    }
-    
-    public Element createElement(QName qname, Attributes attributes) {
-        return new NonLazyElement(qname, attributes);
     }
 }
 
@@ -99,5 +93,5 @@ public class NonLazyDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NonLazyDocumentFactory.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyDocumentFactory.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
  */

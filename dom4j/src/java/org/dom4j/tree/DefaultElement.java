@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.35 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.36 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -35,13 +35,11 @@ import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
 
-import org.xml.sax.Attributes;
-
 /** <p><code>DefaultElement</code> is the default DOM4J default implementation
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.35 $
+  * @version $Revision: 1.36 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -71,14 +69,6 @@ public class DefaultElement extends AbstractElement {
 
     public DefaultElement(QName qname) { 
         this.qname = qname;
-    }
-
-    public DefaultElement(QName qname, Attributes attributes) { 
-        this.qname = qname;
-        int size = attributes.getLength();
-        if ( size > 1 ) {
-            this.attributes = new ArrayList( size );
-        }
     }
 
     public DefaultElement(QName qname, int attributeCount) { 
@@ -913,6 +903,23 @@ public class DefaultElement extends AbstractElement {
         }
     }
     
+    protected List attributeList(int size) {
+        if ( attributes instanceof List ) {
+            return (List) attributes;
+        }
+        else if ( attributes != null ) {
+            List list = createAttributeList(size);
+            list.add( attributes );
+            attributes = list;
+            return list;
+        }
+        else {
+            List list = createAttributeList(size);
+            attributes = list;
+            return list;
+        }
+    }
+    
     protected void setAttributeList(List attributes) {
         this.attributes = attributes;
     }
@@ -966,5 +973,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.35 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.36 2001/06/25 15:57:32 jstrachan Exp $
  */

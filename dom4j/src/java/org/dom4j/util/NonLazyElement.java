@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NonLazyElement.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyElement.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -23,13 +23,11 @@ import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.tree.BaseElement;
 
-import org.xml.sax.Attributes;
-
 /** <p><code>NonLazyElement</code> is the default DOM4J default implementation
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class NonLazyElement extends BaseElement {
 
@@ -51,10 +49,9 @@ public class NonLazyElement extends BaseElement {
         this.content = createContentList();
     }
 
-    public NonLazyElement(QName qname, Attributes attributes) { 
-        super(qname, attributes);
-        int size = attributes.getLength();
-        this.attributes = createAttributeList( size );
+    public NonLazyElement(QName qname, int attributeCount) { 
+        super(qname);
+        this.attributes = createAttributeList( attributeCount );
         this.content = createContentList();
     }
 
@@ -105,5 +102,5 @@ public class NonLazyElement extends BaseElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NonLazyElement.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyElement.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
  */

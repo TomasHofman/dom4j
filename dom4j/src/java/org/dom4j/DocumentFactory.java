@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.21 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.22 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -37,7 +37,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @version $Revision: 1.22 $
   */
 public class DocumentFactory {
 
@@ -88,14 +88,6 @@ public class DocumentFactory {
     
     public Element createElement(QName qname) {
         return new DefaultElement(qname);
-    }
-    
-    public Element createElement(QName qname, int attributeCount) {
-        return new DefaultElement(qname, attributeCount);
-    }
-    
-    public Element createElement(QName qname, Attributes attributes) {
-        return new DefaultElement(qname, attributes);
     }
     
     public Element createElement(String name) {
@@ -304,5 +296,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.21 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.22 2001/06/25 15:57:32 jstrachan Exp $
  */

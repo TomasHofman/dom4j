@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedDocumentFactory.java,v 1.1 2001/05/28 14:38:00 jstrachan Exp $
+ * $Id: IndexedDocumentFactory.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -18,15 +18,13 @@ import org.dom4j.Element;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
 
-import org.xml.sax.Attributes;
-
 /** <p><code>IndexedDocumentFactory</code> is a factory of XML objects which 
   * create indexed Element implementations to allow quicker lookup via name
   * of Element and Attributes though at the expense of more memory used
   * to create the name indexes.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class IndexedDocumentFactory extends DocumentFactory {
     
@@ -49,9 +47,9 @@ public class IndexedDocumentFactory extends DocumentFactory {
     public Element createElement(QName qname) {
         return new IndexedElement(qname);
     }
-    
-    public Element createElement(QName qname, Attributes attributes) {
-        return new IndexedElement(qname, attributes);
+
+    public Element createElement(QName qname, int attributeCount) {
+        return new IndexedElement(qname, attributeCount);
     }
 }
 
@@ -100,5 +98,5 @@ public class IndexedDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedDocumentFactory.java,v 1.1 2001/05/28 14:38:00 jstrachan Exp $
+ * $Id: IndexedDocumentFactory.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
  */
