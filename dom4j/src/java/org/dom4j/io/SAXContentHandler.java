@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.49 2004/04/01 06:50:44 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.50 2004/04/16 12:36:46 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.49 $
+  * @version $Revision: 1.50 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -136,18 +136,16 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
 
 
     public SAXContentHandler() {
-        this( DocumentFactory.getInstance() );
+        this(DocumentFactory.getInstance());
     }
 
     public SAXContentHandler(DocumentFactory documentFactory) {
-        this.documentFactory = documentFactory;
-        this.namespaceStack = new NamespaceStack(documentFactory);
+        this(documentFactory, null);
     }
 
     public SAXContentHandler(DocumentFactory documentFactory, ElementHandler elementHandler) {
-        this.documentFactory = documentFactory;
-        this.elementHandler = elementHandler;
-        this.namespaceStack = new NamespaceStack(documentFactory);
+        this(documentFactory, elementHandler, null);
+        this.elementStack = createElementStack();
     }
 
     public SAXContentHandler(DocumentFactory documentFactory, ElementHandler elementHandler, ElementStack elementStack) {
@@ -191,15 +189,13 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
     }
 
     public void startDocument() throws SAXException {
+        System.out.println("start document ...");
+        
         document = createDocument();
         currentElement = null;
 
-        if ( elementStack == null ) {
-            elementStack = createElementStack();
-        }
-        else {
-            elementStack.clear();
-        }
+        elementStack.clear();
+
         if ( (elementHandler != null) &&
              (elementHandler instanceof DispatchHandler) ) {
             elementStack.setDispatchHandler((DispatchHandler)elementHandler);
@@ -858,5 +854,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.49 2004/04/01 06:50:44 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.50 2004/04/16 12:36:46 maartenc Exp $
  */
