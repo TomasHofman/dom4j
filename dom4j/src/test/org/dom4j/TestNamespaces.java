@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.16 2004/06/25 08:03:47 maartenc Exp $
+ * $Id: TestNamespaces.java,v 1.17 2004/07/06 16:58:17 maartenc Exp $
  */
 
 package org.dom4j;
@@ -28,7 +28,7 @@ import org.xml.sax.InputSource;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -222,27 +222,27 @@ public class TestNamespaces extends AbstractTestCase {
 
     public void testRedeclareNamespaces(Document document) throws Exception {
         assertNamespaces(
-            document.selectNodes( "//*[local-name()='Envelope'" ),
+            document.selectNodes( "//*[local-name()='Envelope']" ),
             "SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/"
         );
         assertNamespaces(
-            document.selectNodes( "//*[local-name()='Body'" ),
+            document.selectNodes( "//*[local-name()='Body']" ),
             "SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/"
         );
         assertNamespaces(
-            document.selectNodes( "//*[local-name()='bar'" ),
+            document.selectNodes( "//*[local-name()='bar']" ),
             "a", "barURI"
         );
         assertNamespaces(
-            document.selectNodes( "//*[local-name()='newBar'" ),
+            document.selectNodes( "//*[local-name()='newBar']" ),
             "a", "newBarURI"
         );
         assertNamespaces(
-            document.selectNodes( "//*[local-name()='foo'" ),
+            document.selectNodes( "//*[local-name()='foo']" ),
             "", "fooURI"
         );
         assertNamespaces(
-            document.selectNodes( "//*[local-name()='newFoo'" ),
+            document.selectNodes( "//*[local-name()='newFoo']" ),
             "", "newFooURI"
         );
     }
@@ -361,5 +361,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.16 2004/06/25 08:03:47 maartenc Exp $
+ * $Id: TestNamespaces.java,v 1.17 2004/07/06 16:58:17 maartenc Exp $
  */
