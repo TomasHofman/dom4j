@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.30 2001/08/28 06:43:18 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.31 2001/09/20 08:41:04 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -41,7 +41,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.30 $
+  * @version $Revision: 1.31 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -51,10 +51,16 @@ public class DocumentFactory implements Serializable {
     protected transient QNameCache cache;
 
     static {
-        String className = System.getProperty( 
-            "org.dom4j.factory", 
-            "org.dom4j.DocumentFactory" 
-        );
+        String className = null;
+        try {
+            className = System.getProperty( 
+                "org.dom4j.factory", 
+                "org.dom4j.DocumentFactory" 
+            );
+        }
+        catch (Exception e) {
+            className = "org.dom4j.DocumentFactory";
+        }
         singleton = createSingleton( className );
     }
     
@@ -321,5 +327,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.30 2001/08/28 06:43:18 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.31 2001/09/20 08:41:04 jstrachan Exp $
  */
