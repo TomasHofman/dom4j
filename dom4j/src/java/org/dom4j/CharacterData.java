@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CharacterData.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: CharacterData.java,v 1.3 2001/06/20 09:40:53 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -14,10 +14,16 @@ package org.dom4j;
   * and <code>Text</code> nodes.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface CharacterData extends Node {
 
+    /** Appends the given text to this nodes text value. Calling this
+      * method is equivalent of the code <code>node.setText( node.getText() + text )</code>
+      * but allows for possible implementation optimisations (such as a text based node
+      * storing a StringBuffer internally
+      */
+    public void appendText(String text);
 }
 
 
@@ -65,5 +71,5 @@ public interface CharacterData extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CharacterData.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: CharacterData.java,v 1.3 2001/06/20 09:40:53 jstrachan Exp $
  */

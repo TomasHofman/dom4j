@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.20 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: Branch.java,v 1.21 2001/06/20 09:40:53 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -25,7 +25,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public interface Branch extends Node {
 
@@ -241,6 +241,25 @@ public interface Branch extends Node {
       * @return true if the processing instruction was removed
       */
     public boolean remove(ProcessingInstruction pi);
+
+
+    /**
+     * Puts all <code>Text</code> nodes in the full depth of the sub-tree 
+     * underneath this <code>Node</code>, including attribute nodes, into a 
+     * "normal" form where only structure (e.g., elements, comments, 
+     * processing instructions, CDATA sections, and entity references) 
+     * separates <code>Text</code> nodes, i.e., there are neither adjacent 
+     * <code>Text</code> nodes nor empty <code>Text</code> nodes. This can 
+     * be used to ensure that the DOM view of a document is the same as if 
+     * it were saved and re-loaded, and is useful when operations (such as 
+     * XPointer  lookups) that depend on a particular document tree 
+     * structure are to be used.In cases where the document contains 
+     * <code>CDATASections</code>, the normalize operation alone may not be 
+     * sufficient, since XPointers do not differentiate between 
+     * <code>Text</code> nodes and <code>CDATASection</code> nodes.
+     * @version DOM Level 2
+     */
+    public void normalize();
 }
 
 
@@ -288,5 +307,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.20 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: Branch.java,v 1.21 2001/06/20 09:40:53 jstrachan Exp $
  */

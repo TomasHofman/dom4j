@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocument.java,v 1.4 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: DOMDocument.java,v 1.5 2001/06/20 09:40:53 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -30,7 +30,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document {
 
@@ -159,10 +159,6 @@ public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document
 
     public org.w3c.dom.Node cloneNode(boolean deep) {
         return DOMNodeHelper.cloneNode(this, deep);
-    }
-
-    public void normalize() {
-        DOMNodeHelper.normalize(this);
     }
 
     public boolean isSupported(String feature, String version) {
@@ -319,5 +315,5 @@ public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocument.java,v 1.4 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: DOMDocument.java,v 1.5 2001/06/20 09:40:53 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.31 2001/06/19 10:47:57 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.32 2001/06/20 09:40:53 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -68,7 +68,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.31 $
+  * @version $Revision: 1.32 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -392,16 +392,14 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
     public void write(Namespace namespace) throws IOException {
         if ( namespace != null ) {
             String prefix = namespace.getPrefix();
+            writer.write(" xmlns");
             if (prefix != null && prefix.length() > 0) {
-                writer.write(" xmlns");
-                if (!prefix.equals("")) {
-                    writer.write(":");
-                    writer.write(prefix);
-                }
-                writer.write("=\"");
-                writer.write(namespace.getURI());
-                writer.write("\"");
+                writer.write(":");
+                writer.write(prefix);
             }
+            writer.write("=\"");
+            writer.write(namespace.getURI());
+            writer.write("\"");
         }
     }
 
@@ -1027,5 +1025,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.31 2001/06/19 10:47:57 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.32 2001/06/20 09:40:53 jstrachan Exp $
  */

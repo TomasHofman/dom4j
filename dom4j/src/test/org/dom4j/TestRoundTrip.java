@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRoundTrip.java,v 1.1 2001/05/31 07:20:22 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.2 2001/06/20 09:40:53 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -28,12 +28,13 @@ import org.dom4j.util.NodeComparator;
 /** A test harness to test the the round trips of Documents.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestRoundTrip extends AbstractTestCase {
     
     //protected String xmlFile = "xml/test/encode.xml";
-    protected String xmlFile = "xml/fibo.xml";
+    //protected String xmlFile = "xml/fibo.xml";
+    protected String xmlFile = "xml/test/test_schema.xml";
     
     public static void main( String[] args ) {
         TestRunner.run( suite() );
@@ -58,7 +59,6 @@ public class TestRoundTrip extends AbstractTestCase {
         roundTripSAX( document );
     }
     
-/*    
     public void testDOMRoundTrip() throws Exception {
         roundTripDOM( document );
     }
@@ -70,7 +70,7 @@ public class TestRoundTrip extends AbstractTestCase {
 
         assertDocumentsEqual( document, doc4 );
     }
-*/    
+
     
     // Implementation methods
     //-------------------------------------------------------------------------                    
@@ -138,6 +138,9 @@ public class TestRoundTrip extends AbstractTestCase {
         assert( "Doc1 not null", doc1 != null );
         assert( "Doc2 not null", doc2 != null );
  
+        doc1.normalize();
+        doc2.normalize();
+        
         assertNodesEqual(doc1, doc2);
         
         NodeComparator comparator = new NodeComparator();
@@ -183,11 +186,11 @@ public class TestRoundTrip extends AbstractTestCase {
     
     protected void assertNodesEqual( QName n1, QName n2 ) {
         assertEquals( 
-            "URIs equal for: " + n1 + " and: " + n2,
+            "URIs equal for: " + n1.getQualifiedName() + " and " + n2.getQualifiedName(),
             n1.getNamespaceURI(), n2.getNamespaceURI() 
         );
         assertEquals( 
-            "qualified names equal for: " + n1 + " and: " + n2,
+            "qualified names equal",
             n1.getQualifiedName(), n2.getQualifiedName() 
         );
     }
@@ -333,5 +336,5 @@ public class TestRoundTrip extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRoundTrip.java,v 1.1 2001/05/31 07:20:22 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.2 2001/06/20 09:40:53 jstrachan Exp $
  */

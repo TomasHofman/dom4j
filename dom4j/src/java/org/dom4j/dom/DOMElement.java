@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMElement.java,v 1.9 2001/05/18 12:01:55 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.10 2001/06/20 09:40:53 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -31,7 +31,7 @@ import org.xml.sax.Attributes;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
@@ -154,10 +154,6 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
     public org.w3c.dom.Node cloneNode(boolean deep) {
         return DOMNodeHelper.cloneNode(this, deep);
-    }
-
-    public void normalize() {
-        DOMNodeHelper.normalize(this);
     }
 
     public boolean isSupported(String feature, String version) {
@@ -400,5 +396,5 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMElement.java,v 1.9 2001/05/18 12:01:55 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.10 2001/06/20 09:40:53 jstrachan Exp $
  */
