@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.4 2001/08/03 11:00:34 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.5 2001/08/09 13:35:14 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -32,7 +32,7 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMWriter {
 
@@ -66,7 +66,11 @@ public class DOMWriter {
             for ( int i = 0; i < size; i++ ) {
                 try {
                     String name = DEFAULT_DOM_DOCUMENT_CLASSES[i];
-                    domDocumentClass = Class.forName( name );
+                    domDocumentClass = Class.forName( 
+                        name,
+                        true,
+                        DOMWriter.class.getClassLoader()
+                    );
                     if ( domDocumentClass != null ) {
                         break;
                     }
@@ -99,7 +103,11 @@ public class DOMWriter {
       */
     public void setDomDocumentClassName(String className) throws DocumentException {
         try {
-            this.domDocumentClass = Class.forName( className );
+            this.domDocumentClass = Class.forName( 
+                className,
+                true,
+                DOMWriter.class.getClassLoader()
+            );
         }
         catch (Exception e) {
             throw new DocumentException( 
@@ -413,5 +421,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.4 2001/08/03 11:00:34 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.5 2001/08/09 13:35:14 jstrachan Exp $
  */

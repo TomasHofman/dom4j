@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.26 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.27 2001/08/09 13:35:14 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -38,7 +38,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -239,7 +239,7 @@ public class DocumentFactory implements Serializable {
             Class theClass = Class.forName( 
                 className, 
                 true, 
-                DocumentHelper.class.getClassLoader() 
+                DocumentFactory.class.getClassLoader() 
             );
             return (DocumentFactory) theClass.newInstance();
         }
@@ -310,5 +310,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.26 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.27 2001/08/09 13:35:14 jstrachan Exp $
  */
