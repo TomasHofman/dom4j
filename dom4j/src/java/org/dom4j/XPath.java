@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.6 2001/02/24 11:18:15 jstrachan Exp $
+ * $Id: XPath.java,v 1.7 2001/03/30 16:42:54 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import java.util.List;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public interface XPath extends NodeFilter {
 
@@ -43,6 +43,21 @@ public interface XPath extends NodeFilter {
       * @return true if the given node matches this XPath expression
       */
     public boolean matches(Node node);
+
+    /** <p><code>selectObject</code> evaluates an XPath expression and returns 
+      * the result as an {@link Object}. The object returned can
+      * either be a {@link List} of {@link Node} instances, a {@link Node} 
+      * instance, a {@link String} or a {@link Number} instance depending on 
+      * the XPath expression. 
+      *
+      * @param context is either a node or a list of nodes on which to 
+      *    evalute the XPath
+      * @return the value of the XPath expression as a
+      * {@link List} of {@link Node} instances, a {@link Node} 
+      * instance, a {@link String} or a {@link Number} instance depending on 
+      * the XPath expression. 
+      */
+    public Object selectObject(Object context);
 
     /** <p><code>selectNodes</code> performs this XPath expression
       * on the given {@link Node} or {@link List} of {@link Node}s 
@@ -104,6 +119,17 @@ public interface XPath extends NodeFilter {
       */
     public String valueOf(Object context);
     
+    /** <p><code>numberValueOf</code> evaluates an XPath expression
+      * and returns the numeric value of the XPath expression if the XPath
+      * expression results in a number, or null if the result is not a number.
+      *
+      * @param context is either a node or a list of nodes on which to 
+      *    evalute the XPath
+      * @return the numeric result of the XPath expression or null
+      * if the result is not a number.
+      */
+    public Number numberValueOf(Object context);
+
     /** <p><code>sort</code> sorts the given List of Nodes
       * using this XPath expression as a {@link Comparator}.</p>
       *
@@ -167,5 +193,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.6 2001/02/24 11:18:15 jstrachan Exp $
+ * $Id: XPath.java,v 1.7 2001/03/30 16:42:54 jstrachan Exp $
  */

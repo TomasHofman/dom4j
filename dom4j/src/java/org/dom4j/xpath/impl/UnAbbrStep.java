@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UnAbbrStep.java,v 1.4 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.5 2001/03/30 16:42:54 jstrachan Exp $
  */
 
 
@@ -444,7 +444,7 @@ public abstract class UnAbbrStep extends Step {
         return null;
     }
     
-  /** @return a list of {@link Attributes} instances which
+  /** @return a list of {@link Attribute} instances which
    * support the parent relationship
    */
     protected List attributes(Element element) {
@@ -517,5 +517,5 @@ public abstract class UnAbbrStep extends Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UnAbbrStep.java,v 1.4 2001/03/20 23:00:45 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.5 2001/03/30 16:42:54 jstrachan Exp $
  */

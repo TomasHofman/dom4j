@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.2 2001/02/26 12:44:40 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.3 2001/03/30 16:42:54 jstrachan Exp $
  */
 
 package org.dom4j;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ import org.dom4j.rule.Pattern;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DocumentHelper {
 
@@ -243,5 +244,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.2 2001/02/26 12:44:40 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.3 2001/03/30 16:42:54 jstrachan Exp $
  */

@@ -1,6 +1,6 @@
 // LexicalHandler.java - optional handler for lexical parse events.
 // Public Domain: no warranty.
-// $Id: LexicalHandler.java,v 1.1 2001/03/05 21:40:06 jstrachan Exp $
+// $Id: LexicalHandler.java,v 1.2 2001/03/30 16:42:54 jstrachan Exp $
 
 package org.xml.sax.ext;
 
@@ -54,7 +54,7 @@ public interface LexicalHandler
      *
      * <p>All declarations reported through 
      * {@link org.xml.sax.DTDHandler DTDHandler} or
-     * {@link org.xml.sax.DeclHandler DeclHandler} events must appear
+     * {@link org.xml.sax.ext.DeclHandler DeclHandler} events must appear
      * between the startDTD and {@link #endDTD endDTD} events.
      * Declarations are assumed to belong to the internal DTD subset
      * unless they appear between {@link #startEntity startEntity}
