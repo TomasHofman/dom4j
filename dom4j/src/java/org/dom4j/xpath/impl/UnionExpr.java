@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UnionExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: UnionExpr.java,v 1.4 2001/07/16 17:17:13 jstrachan Exp $
  */
 
 
@@ -41,6 +41,16 @@ public class UnionExpr extends Expr implements org.jaxpath.expr.UnionExpr {
         return _rhs;
     }
 
+    public org.jaxpath.expr.Expr simplify() {
+        if ( _lhs != null ) {
+            _lhs = (Expr) _lhs.simplify();
+        }
+        if ( _rhs != null ) {
+            _rhs = (Expr) _rhs.simplify();
+        }
+        return this;
+    }
+    
     public Object evaluate(Context context) {        
         Object lhsValue = null;
         Object rhsValue = null;
@@ -126,5 +136,5 @@ public class UnionExpr extends Expr implements org.jaxpath.expr.UnionExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UnionExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: UnionExpr.java,v 1.4 2001/07/16 17:17:13 jstrachan Exp $
  */

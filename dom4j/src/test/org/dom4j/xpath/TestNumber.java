@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNumber.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.6 2001/07/16 17:17:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,13 +22,20 @@ import org.dom4j.XPath;
 /** Test harness for numeric XPath expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestNumber extends AbstractTestCase {
 
     protected static boolean VERBOSE = false;
     
     protected static String[] paths = {
+        "2+2",
+        "2 + 2",
+        "10 + count(descendant::author) * 5",
+        "10 + (count(descendant::author) * 5)",
+        "2 + (2 * 5)",
+        "sum(count(//author),count(//author/attribute::*))",
+        "12 + sum(count(//author),count(//author/attribute::*)) div 2",
         "count(//author)",
         "count(//author/attribute::*)",
         "count(descendant::author)",
@@ -36,14 +43,6 @@ public class TestNumber extends AbstractTestCase {
         "count(ancestor::author)",
         "count(descendant::*)",
         "count(descendant::author)+1",
-        "2 + 2",
-/*        
-        "10 + count(descendant::author) * 5",
-        "10 + (count(descendant::author) * 5)",
-        "2 + (2 * 5)",
-        "sum(count(//author),count(//author/attribute::*))",
-        "12 + sum(count(//author),count(//author/attribute::*)) / 2",
-*/
     };
     
     
@@ -139,5 +138,5 @@ public class TestNumber extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNumber.java,v 1.5 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.6 2001/07/16 17:17:13 jstrachan Exp $
  */

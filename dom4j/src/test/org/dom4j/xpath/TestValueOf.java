@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValueOf.java,v 1.7 2001/07/03 08:13:32 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.8 2001/07/16 17:17:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestValueOf extends AbstractTestCase {
 
@@ -64,7 +64,7 @@ public class TestValueOf extends AbstractTestCase {
         "../child::node()",
         "/",
         "/*",
-//        "*",
+        "*",
         "/child::node()",
     };
     
@@ -168,5 +168,5 @@ public class TestValueOf extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValueOf.java,v 1.7 2001/07/03 08:13:32 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.8 2001/07/16 17:17:13 jstrachan Exp $
  */
