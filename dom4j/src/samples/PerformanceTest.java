@@ -8,7 +8,7 @@ import org.dom4j.io.SAXReader;
 /** Perform some DOM4J parsing peformance test cases.
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class PerformanceTest extends SAXDemo {
     
@@ -41,7 +41,7 @@ public class PerformanceTest extends SAXDemo {
         }
 
         String xmlFile = args[0];
-        String xmlReaderClassName = (args.length > 1) 
+        xmlReaderClassName = (args.length > 1) 
             ? args[1] : DEFAULT_XMLREADER_CLASSNAME;
         
         loopCount = DEFAULT_LOOP_COUNT;
@@ -49,7 +49,7 @@ public class PerformanceTest extends SAXDemo {
             loopCount = Integer.parseInt(args[2]);
         }        
 
-        parse( xmlFile, xmlReaderClassName );
+        parse( xmlFile );
     }
     
     /** Parses the XML document at the given <code>URL</code> 

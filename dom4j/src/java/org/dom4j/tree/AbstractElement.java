@@ -27,7 +27,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -62,6 +62,47 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             }
         }
         return getName();
+    }
+
+    public Namespace getNamespaceForPrefix(String prefix) {
+        if ( prefix == null || prefix.length() <= 0 ) {
+            return Namespace.NO_NAMESPACE;
+        }
+        else if ( prefix.equals( getNamespacePrefix() ) ) {
+            return getNamespace();
+        }
+        else if ( prefix.equals( "xml" ) ) {
+            return Namespace.XML_NAMESPACE;
+        }
+        else {
+            Namespace answer = getContentModel().getNamespaceForPrefix(prefix);
+            if ( answer == null ) {
+                Element parent = getParent();
+                if ( parent != null ) {
+                    answer = parent.getNamespaceForPrefix(prefix);
+                }
+            }
+            return answer;
+        }
+    }
+
+    public Namespace getNamespaceForURI(String uri) {
+        if ( uri == null || uri.length() <= 0 ) {
+            return Namespace.NO_NAMESPACE;
+        }
+        else if ( uri.equals( getNamespaceURI() ) ) {
+            return getNamespace();
+        }
+        else {
+            Namespace answer = getContentModel().getNamespaceForURI(uri);
+            if ( answer == null ) {
+                Element parent = getParent();
+                if ( parent != null ) {
+                    answer = parent.getNamespaceForURI(uri);
+                }
+            }
+            return answer;
+        }
     }
 
     
@@ -328,10 +369,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     
     public Entity createEntity(String name, String text) {
         return getContentFactory().createEntity(name, text);
-    }
-    
-    public Namespace createNamespace(String prefix, String uri) {
-        return getContentFactory().createNamespace(prefix, uri);
     }
     
     

@@ -15,7 +15,7 @@ import org.dom4j.Text;
   * XML content nodes for an XML elements.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultContentFactory implements ContentFactory {
 
@@ -55,6 +55,10 @@ public class DefaultContentFactory implements ContentFactory {
     // elements
     public Element createElement(String name) {
         return new DefaultElement(name);
+    }
+    
+    public Element createElement(String name, String prefix, String uri) {
+        return createElement(name, createNamespace(prefix, uri));
     }
     
     public Element createElement(String name, Namespace namespace) {

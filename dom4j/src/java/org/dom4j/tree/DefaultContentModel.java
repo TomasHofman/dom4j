@@ -21,13 +21,46 @@ import org.dom4j.Text;
   * <code>ContentModel</code>.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DefaultContentModel extends AbstractContentModel {
 
     /** Store the contents of the element as a lazily created <code>List</code> */
     private List contents;
     
+    public Namespace getNamespaceForPrefix(String prefix) {
+        List source = contents;
+        if ( source != null ) {
+            int size = source.size();
+            for ( int i = 0; i < size; i++ ) {
+                Object object = source.get(i);
+                if ( object instanceof Namespace ) {
+                    Namespace namespace = (Namespace) object;
+                    if ( prefix.equals( namespace.getPrefix() ) ) {
+                        return namespace;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+   
+    public Namespace getNamespaceForURI(String uri) {
+        List source = contents;
+        if ( source != null ) {
+            int size = source.size();
+            for ( int i = 0; i < size; i++ ) {
+                Object object = source.get(i);
+                if ( object instanceof Namespace ) {
+                    Namespace namespace = (Namespace) object;
+                    if ( uri.equals( namespace.getURI() ) ) {
+                        return namespace;
+                    }
+                }
+            }
+        }
+        return null;
+    }
     
     public List getAdditionalNamespaces(String defaultNamespaceURI) {
         List answer = createResultList();

@@ -17,7 +17,7 @@ import org.dom4j.Text;
   * resusable units.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public interface ContentFactory {
 
@@ -31,6 +31,7 @@ public interface ContentFactory {
 
     // elements
     public Element createElement(String name);
+    public Element createElement(String name, String prefix, String uri);
     public Element createElement(String name, Namespace namespace);
     
     

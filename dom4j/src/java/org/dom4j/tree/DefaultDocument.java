@@ -15,7 +15,7 @@ import org.dom4j.XPathHelper;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -88,6 +88,7 @@ public class DefaultDocument extends AbstractDocument {
             );
         }
         super.add(element);
+        this.rootElement = element;
         element.setDocument(this);
     }
     

@@ -21,7 +21,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -81,5 +81,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
     public String toString() {
         return super.toString() + " [Document: name " + getName() + "]";
     }
-    
+       
 }

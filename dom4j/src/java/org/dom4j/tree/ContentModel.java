@@ -19,10 +19,14 @@ import org.dom4j.Text;
   * resusable units.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface ContentModel {
 
+    public Namespace getNamespaceForPrefix(String prefix);
+    
+    public Namespace getNamespaceForURI(String uri);
+    
     /** <p>Returns any additional namespaces declarations for this element 
       * other than namespace returned via the {@link Element#getNamespace()} method. 
       * If no additional namespace declarations are present for this

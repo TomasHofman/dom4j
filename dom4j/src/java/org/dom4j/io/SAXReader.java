@@ -1,11 +1,11 @@
 package org.dom4j.io;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.IOException;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.Reader;
 import java.net.URL;
 
@@ -28,15 +28,12 @@ import org.xml.sax.helpers.XMLReaderFactory;
 /** <p><code>SAXReader</code> creates a DOM4J tree from SAX parsing events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
-public class SAXReader {
+public class SAXReader extends TreeReader {
 
     /** <code>XMLReader</code> used to parse the SAX events */
     private XMLReader xmlReader;
-    
-    /** <code>DocumentFactory</code> used to create new document objects */
-    private DocumentFactory factory = DocumentFactory.getInstance();
     
     /** Whether validation should occur */
     private boolean validating;
@@ -130,32 +127,9 @@ public class SAXReader {
         setXMLReader( XMLReaderFactory.createXMLReader(xmlReaderClassName) );
     }
 
-    /** @return the <code>DocumentFactory</code> used to create document objects
-      */
-    public DocumentFactory getDocumentFactory() {
-        return factory;
-    }
-
-    /**
-     * <p>
-     * This sets the <code>Factory</code> for the <code>Builder</code>.
-     * This method allows the building of custom DOM4J tree objects to be implemented
-     * easily using a custom derivation of {@link DocumentFactory}
-     * </p>
-     *
-     * @param factory <code>DocumentFactory</code> used to create DOM4J objects
-     */
-    public void setDocumentFactory(DocumentFactory factory) {
-        if (factory == null) {
-            factory = DocumentFactory.getInstance();
-        }
-        this.factory = factory;
-    }
-
-    
-    /** <p>Reads a Document from the given <code>File</code> using SAX</p>
+    /** <p>Reads a Document from the given <code>File</code></p>
       *
-      * @param file <code>File</code> to read from.
+      * @param file is the <code>File</code> to read from.
       * @return the newly created Document instance
       * @throws TreeException if an error occurs during parsing.
       * @throws FileNotFoundException if the file could not be found
@@ -165,7 +139,6 @@ public class SAXReader {
         document.setName( file.getAbsolutePath() );
         return document;
     }
-    
     
     /** <p>Reads a Document from the given <code>URL</code> using SAX</p>
       *
@@ -247,7 +220,7 @@ public class SAXReader {
         try {
             XMLReader reader = getXMLReader();
 
-            Document document = factory.createDocument();        
+            Document document = createDocument();
             DefaultHandler contentHandler = createContentHandler(document);
             reader.setContentHandler(contentHandler);
 
