@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanElement.java,v 1.4 2001/03/02 11:43:17 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -22,7 +22,7 @@ import org.dom4j.tree.DefaultElement;
 /** <p><code>BeanElement</code> uses a Java Bean to store its attributes.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class BeanElement extends DefaultElement {
 
@@ -61,23 +61,23 @@ public class BeanElement extends DefaultElement {
         setAttributeList(null);
     }
     
-    public Attribute getAttribute(String name) {
-        return getBeanAttributeList().getAttribute(name);
+    public Attribute attribute(String name) {
+        return getBeanAttributeList().attribute(name);
     }
     
-    public Attribute getAttribute(QName qname) {
-        return getBeanAttributeList().getAttribute(qname);
+    public Attribute attribute(QName qname) {
+        return getBeanAttributeList().attribute(qname);
     }
     
     public void setAttributeValue(String name, String value) {
-        Attribute attribute = getAttribute(name);
+        Attribute attribute = attribute(name);
         if (attribute != null ) {
             attribute.setValue(value);
         }
     }
 
     public void setAttributeValue(QName qName, String value) {
-        Attribute attribute = getAttribute(qName);
+        Attribute attribute = attribute(qName);
         if (attribute != null ) {
             attribute.setValue(value);
         }
@@ -96,7 +96,7 @@ public class BeanElement extends DefaultElement {
     }
     
     protected BeanAttributeList getBeanAttributeList() {
-        return (BeanAttributeList) getAttributeList();
+        return (BeanAttributeList) attributeList();
     }
     
     /** A Factory Method pattern which lazily creates 
@@ -152,5 +152,5 @@ public class BeanElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanElement.java,v 1.4 2001/03/02 11:43:17 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.1 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.2 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -31,7 +31,7 @@ import org.dom4j.Text;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DOMWriter {
 
@@ -180,7 +180,7 @@ public class DOMWriter {
         }
         
         // add the attributes
-        List attributes = element.getAttributes();
+        List attributes = element.attributes();
         size = attributes.size();
         for ( int i = 0; i < size ; i++ ) {
             Attribute attribute = (Attribute) attributes.get(i);   
@@ -259,7 +259,7 @@ public class DOMWriter {
         HashSet localNamespaces
     ) {
         if ( ! isIgnoreableNamespace( namespace, localNamespaces ) ) {
-            String attributeName = getAttributeNameForNamespace(namespace);
+            String attributeName = attributeNameForNamespace(namespace);
             if ( localNamespaces == parentNamespaces ) {
                 localNamespaces = (HashSet) parentNamespaces.clone();
             }
@@ -276,7 +276,7 @@ public class DOMWriter {
         return declaredNamespaces.contains( namespace );
     }
     
-    protected String getAttributeNameForNamespace(Namespace namespace) {
+    protected String attributeNameForNamespace(Namespace namespace) {
         String xmlns = "xmlns";
         String prefix = namespace.getPrefix();
         if ( prefix.length() > 0 ) {
@@ -368,5 +368,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.1 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.2 2001/03/06 16:40:19 jstrachan Exp $
  */

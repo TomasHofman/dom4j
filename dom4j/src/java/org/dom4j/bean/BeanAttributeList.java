@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanAttributeList.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
+ * $Id: BeanAttributeList.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -21,7 +21,7 @@ import org.dom4j.QName;
   * which are the properties of a JavaBean.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class BeanAttributeList extends AbstractList {
 
@@ -38,7 +38,7 @@ public class BeanAttributeList extends AbstractList {
     public BeanAttributeList(BeanElement parent, BeanMetaData beanMetaData) { 
         this.parent = parent;
         this.beanMetaData = beanMetaData;
-        this.attributes = new BeanAttribute[ beanMetaData.getAttributeCount() ];
+        this.attributes = new BeanAttribute[ beanMetaData.attributeCount() ];
     }
     
     public BeanAttributeList(BeanElement parent) { 
@@ -47,20 +47,20 @@ public class BeanAttributeList extends AbstractList {
         Object data = parent.getData();
         Class beanClass = (data != null) ? data.getClass() : null;
         this.beanMetaData = BeanMetaData.get( beanClass );
-        this.attributes = new BeanAttribute[ beanMetaData.getAttributeCount() ];
+        this.attributes = new BeanAttribute[ beanMetaData.attributeCount() ];
     }
     
-    public Attribute getAttribute(String name) {
+    public Attribute attribute(String name) {
         int index = beanMetaData.getIndex(name);
-        return getAttribute(index);
+        return attribute(index);
     }
     
-    public Attribute getAttribute(QName qname) {
+    public Attribute attribute(QName qname) {
         int index = beanMetaData.getIndex(qname);
-        return getAttribute(index);
+        return attribute(index);
     }
     
-    public BeanAttribute getAttribute(int index) {
+    public BeanAttribute attribute(int index) {
         if ( index >= 0 && index <= attributes.length ) {
             BeanAttribute attribute = attributes[index];
             if ( attribute == null ) {
@@ -189,5 +189,5 @@ public class BeanAttributeList extends AbstractList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanAttributeList.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
+ * $Id: BeanAttributeList.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UnAbbrStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 
@@ -447,8 +447,8 @@ public abstract class UnAbbrStep extends Step {
   /** @return a list of {@link Attributes} instances which
    * support the parent relationship
    */
-    protected List getAttributes(Element element) {
-        List results = element.getAttributes();
+    protected List attributes(Element element) {
+        List results = element.attributes();
         supportsParentList(element, results);
         return results;
     }
@@ -517,5 +517,5 @@ public abstract class UnAbbrStep extends Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UnAbbrStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */

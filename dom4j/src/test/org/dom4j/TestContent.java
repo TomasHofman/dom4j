@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: TestContent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -38,8 +38,8 @@ public class TestContent extends AbstractTestCase {
         Element author1 = (Element) authors.get(0);
         Element author2 = (Element) authors.get(1);
         
-        assert( "Author1 is James", author1.getAttributeValue( "name" ).equals( "James" ) );
-        assert( "Author2 is Bob", author2.getAttributeValue( "name" ).equals( "Bob" ) );
+        assert( "Author1 is James", author1.attributeValue( "name" ).equals( "James" ) );
+        assert( "Author2 is Bob", author2.attributeValue( "name" ).equals( "Bob" ) );
         
         testGetAttributes(author1);
         testGetAttributes(author2);
@@ -115,10 +115,10 @@ public class TestContent extends AbstractTestCase {
         String undefinedName = "undefined-attribute-name";
         String defaultValue = "** Default Value **";
         
-        String value = author.getAttributeValue( definedName, defaultValue );
+        String value = author.attributeValue( definedName, defaultValue );
         assert( "Defined value doesn't return specified default value", value != defaultValue );
         
-        value = author.getAttributeValue( undefinedName, defaultValue );        
+        value = author.attributeValue( undefinedName, defaultValue );        
         assert( "Undefined value returns specified default value", value == defaultValue );
     }
     
@@ -169,5 +169,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: TestContent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Mode.java,v 1.2 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: Mode.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -25,7 +25,7 @@ import org.dom4j.Node;
   * reduce the number of Rule evaluations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class Mode {
 
@@ -55,8 +55,8 @@ public class Mode {
     }
     
     public void applyTemplates( Element element ) throws Exception {
-        for ( int i = 0, size = element.getAttributeCount(); i < size; i++ ) {
-            Attribute attribute = element.getAttribute(i);
+        for ( int i = 0, size = element.attributeCount(); i < size; i++ ) {
+            Attribute attribute = element.attribute(i);
             fireRule( attribute );
         }
         for ( int i = 0, size = element.getNodeCount(); i < size; i++ ) {
@@ -268,5 +268,5 @@ public class Mode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Mode.java,v 1.2 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: Mode.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */

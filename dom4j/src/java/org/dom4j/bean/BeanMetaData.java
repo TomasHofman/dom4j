@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanMetaData.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
+ * $Id: BeanMetaData.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -22,7 +22,7 @@ import org.dom4j.QName;
 /** <p><code>BeanMetaData</code> contains metadata about a bean class.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class BeanMetaData {
 
@@ -97,7 +97,7 @@ public class BeanMetaData {
         
     /** @return the number of attribtutes for this bean type
       */
-    public int getAttributeCount() {
+    public int attributeCount() {
         return propertyDescriptors.length;
     }
     
@@ -193,5 +193,5 @@ public class BeanMetaData {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanMetaData.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
+ * $Id: BeanMetaData.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */

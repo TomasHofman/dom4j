@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameTestStep.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: NameTestStep.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 
@@ -81,18 +81,18 @@ public class NameTestStep extends UnAbbrStep {
     public List applyToAttribute(Object node, ContextSupport support) {
         if ( node instanceof Element ) {
             if ( matchesAnyName ) {
-                return getAttributes( (Element) node );
+                return attributes( (Element) node );
             }
             else {
                 Element element = (Element) node;
                 Attribute attr = null;
                 
                 if ( _namespacePrefix == null ) {
-                    attr = element.getAttribute( _localName );
+                    attr = element.attribute( _localName );
                 }
                 else {
                     QName qName = support.getQName( _namespacePrefix, _localName );                    
-                    attr = element.getAttribute( qName );
+                    attr = element.attribute( qName );
                 }
                 
                 if ( attr != null ) {
@@ -286,5 +286,5 @@ public class NameTestStep extends UnAbbrStep {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameTestStep.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: NameTestStep.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.10 2001/02/06 14:59:36 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.11 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 // This is a port of a file from the JDOM project
@@ -131,7 +131,7 @@ import org.dom4j.Text;
  * @author David &amp; Will (from Post Tool Design)
  * @author Dan Schaffer
  * @author Alex Chaffee (alex@jguru.com)
- * @version $Revision: 1.10 $ 
+ * @version $Revision: 1.11 $ 
  */
 public class XMLWriter implements Cloneable {
 
@@ -1103,7 +1103,7 @@ public class XMLWriter implements Cloneable {
             }
         }
 
-        printAttributes(element.getAttributes(), element, out, namespaces);
+        printAttributes(element.attributes(), element, out, namespaces);
 
         // handle "" string same as empty
         if (stringOnly) {
@@ -1566,5 +1566,5 @@ public class XMLWriter implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.10 2001/02/06 14:59:36 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.11 2001/03/06 16:40:19 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: TestParent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import junit.textui.TestRunner;
   * {@link Node#asXPathNode} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -67,7 +67,7 @@ public class TestParent extends AbstractTestCase {
     }
     
     protected void testParentRelationship( Element element ) {
-        testParentRelationship( element, element.getAttributes() );
+        testParentRelationship( element, element.attributes() );
         testParentRelationship( element, element.getContent() );
     }    
     
@@ -134,5 +134,5 @@ public class TestParent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: TestParent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
  */
