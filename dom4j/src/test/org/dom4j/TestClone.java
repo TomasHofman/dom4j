@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestClone.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: TestClone.java,v 1.4 2001/07/03 08:07:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.dom4j.util.NodeComparator;
 /** A test harness to test the clone() methods on Nodes
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestClone extends AbstractTestCase {
 
@@ -51,7 +51,7 @@ public class TestClone extends AbstractTestCase {
         
         Document doc2 = (Document) document.clone();
         
-        assert( "Returned a new document", document != doc2 );
+        assertTrue( "Returned a new document", document != doc2 );
         
         if ( VERBOSE ) {        
             XMLWriter writer = new XMLWriter( 
@@ -65,7 +65,7 @@ public class TestClone extends AbstractTestCase {
             writer.write( doc2 );
         }
         
-        assert( "Documents are equal", comparator.compare( document, doc2 ) == 0 );
+        assertTrue( "Documents are equal", comparator.compare( document, doc2 ) == 0 );
     }
     
     public void testRootElementClone() throws Exception {
@@ -81,7 +81,7 @@ public class TestClone extends AbstractTestCase {
         Element author = doc2.getRootElement();
         author.addAttribute( "foo", "bar" );
         
-        assert( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
+        assertTrue( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
     }
     
     public void testRootCompare2() throws Exception {                
@@ -90,7 +90,7 @@ public class TestClone extends AbstractTestCase {
         
         author.addText( "foo" );
         
-        assert( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
+        assertTrue( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
     }
     
     public void testAuthorCompare1() throws Exception {                
@@ -98,7 +98,7 @@ public class TestClone extends AbstractTestCase {
         Element author = (Element) doc2.selectSingleNode( "//author" );
         author.addAttribute( "name", "James Strachan" );
         
-        assert( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
+        assertTrue( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
     }
     
     public void testAuthorCompare2() throws Exception {                
@@ -107,18 +107,18 @@ public class TestClone extends AbstractTestCase {
         
         author.addText( "foo" );
         
-        assert( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
+        assertTrue( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
     }
     
     
     protected void testElementClone( Element element ) throws Exception {        
         Element element2 = (Element) element.clone();
         
-        assert( "Returned a new Element", element2 != element );
-        assert( "New element has no parent", element2.getParent() == null );
-        assert( "New element has no Document", element2.getDocument() == null );
+        assertTrue( "Returned a new Element", element2 != element );
+        assertTrue( "New element has no parent", element2.getParent() == null );
+        assertTrue( "New element has no Document", element2.getDocument() == null );
         
-        assert( "Element fragments are equal", comparator.compare( element, element2 ) == 0 );
+        assertTrue( "Element fragments are equal", comparator.compare( element, element2 ) == 0 );
     }
     
 }
@@ -168,5 +168,5 @@ public class TestClone extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestClone.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: TestClone.java,v 1.4 2001/07/03 08:07:21 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestIndexedElement.java,v 1.1 2001/06/29 12:33:02 jstrachan Exp $
+ * $Id: TestIndexedElement.java,v 1.2 2001/07/03 08:07:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.util.IndexedDocumentFactory;
 /** A test harness for the IndexedElement implementation
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestIndexedElement extends AbstractTestCase {
 
@@ -74,7 +74,7 @@ public class TestIndexedElement extends AbstractTestCase {
         }
         log( "..........................................." );
         
-        assert( "Found some results", list.size() > 0 );
+        assertTrue( "Found some results", list.size() > 0 );
     }
             
 
@@ -128,5 +128,5 @@ public class TestIndexedElement extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestIndexedElement.java,v 1.1 2001/06/29 12:33:02 jstrachan Exp $
+ * $Id: TestIndexedElement.java,v 1.2 2001/07/03 08:07:21 jstrachan Exp $
  */

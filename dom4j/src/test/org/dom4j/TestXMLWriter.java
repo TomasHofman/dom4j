@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.2 2001/06/29 12:33:02 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.3 2001/07/03 08:07:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -28,7 +28,7 @@ import org.dom4j.tree.DefaultDocument;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -65,7 +65,7 @@ public class TestXMLWriter extends AbstractTestCase {
             log( "]. Done" );
         }
         
-        assert( "Output text is bigger than 10 characters", text.length() > 10 );
+        assertTrue( "Output text is bigger than 10 characters", text.length() > 10 );
     }        
     
     public void testWriterBug() throws Exception {        
@@ -80,7 +80,7 @@ public class TestXMLWriter extends AbstractTestCase {
         SAXReader reader = new SAXReader();
         Document doc2 = reader.read( in );
         
-        assert( "Generated document has a root element", doc2.getRootElement() != null );
+        assertTrue( "Generated document has a root element", doc2.getRootElement() != null );
         assertEquals( "Generated document has corrent named root element", doc2.getRootElement().getName(), "project" );
     }
 }
@@ -130,5 +130,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.2 2001/06/29 12:33:02 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.3 2001/07/03 08:07:21 jstrachan Exp $
  */
