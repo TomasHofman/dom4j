@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: HTMLWriter.java,v 1.14 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.15 2002/06/01 14:57:42 laramiec Exp $
  */
 
 package org.dom4j.io;
@@ -184,7 +184,7 @@ import org.xml.sax.SAXException;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Laramie Crocker
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -397,6 +397,29 @@ public class HTMLWriter extends XMLWriter {
         return (Set)(internalGetOmitElementCloseSet().clone());
     }
 
+    /** To use the empty set, pass an empty Set, or null:
+     *  <pre>
+     *     setOmitElementCloseSet(new HashSet());
+     *   or
+     *     setOmitElementCloseSet(null);
+     * </pre>
+     */
+    public void setOmitElementCloseSet(Set newSet){
+        omitElementCloseSet = new HashSet();  //resets, and safely empties it out if newSet is null.
+        if (newSet != null){
+            omitElementCloseSet = new HashSet();
+            Object aTag;
+            Iterator iter = newSet.iterator();
+            while ( iter.hasNext() ) {
+                aTag = iter.next();
+                if (aTag != null){
+                    omitElementCloseSet.add(aTag.toString().toUpperCase());
+                }
+            }
+
+        }
+    }
+
 
     protected String getPadText() {
         return " ";
@@ -472,11 +495,10 @@ public class HTMLWriter extends XMLWriter {
     public void setPreformattedTags(Set newSet){
         // no fancy merging, just set it, assuming they did a getExcludeTrimTags()
         //   first if they wanted to preserve the default set.
-        if ( newSet == null ) {
-            preformattedTags = null;  //remove the set.
-        } else {
+        preformattedTags = new HashSet();  //resets, and safely empties it out if newSet is null.
+        if ( newSet != null ) {
             Object aTag;
-            Iterator iter = preformattedTags.iterator();
+            Iterator iter = newSet.iterator();
             while ( iter.hasNext() ) {
                 aTag = iter.next();
                 if (aTag != null){
@@ -485,6 +507,7 @@ public class HTMLWriter extends XMLWriter {
             }
         }
     }
+
 
     /**
      * @return true if the qualifiedName passed in matched (case-insensitively)
@@ -740,5 +763,5 @@ entities: &#160; &amp; &quot; &lt; &gt; %23
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.14 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.15 2002/06/01 14:57:42 laramiec Exp $
  */
