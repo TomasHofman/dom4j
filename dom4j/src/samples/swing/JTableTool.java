@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTableTool.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: JTableTool.java,v 1.4 2003/04/07 22:25:07 jstrachan Exp $
  */
 
 package swing;
@@ -15,7 +15,6 @@ import javax.swing.JTable;
 
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
-import org.dom4j.swing.XMLTableDefinition;
 import org.dom4j.swing.XMLTableModel;
 
 
@@ -24,7 +23,7 @@ import org.dom4j.swing.XMLTableModel;
   * such as in xml/swing/.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class JTableTool {
     
@@ -112,5 +111,5 @@ public class JTableTool {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTableTool.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: JTableTool.java,v 1.4 2003/04/07 22:25:07 jstrachan Exp $
  */

@@ -8,10 +8,8 @@
 
 package org.dom4j;
 
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 /** Tests the setText method
@@ -122,5 +120,5 @@ public class TestSetText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSetText.java,v 1.1 2003/02/12 23:47:17 maartenc Exp $
+ * $Id: TestSetText.java,v 1.2 2003/04/07 22:24:15 jstrachan Exp $
  */

@@ -4,14 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CreateXMLDemo.java,v 1.8 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.9 2003/04/07 22:24:52 jstrachan Exp $
  */
 
 
 import java.io.FileWriter;
 import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Properties;
 
 import org.dom4j.Document;
@@ -25,7 +23,7 @@ import org.dom4j.io.XMLWriter;
   * displaying the current system properties.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class CreateXMLDemo extends AbstractDemo {
     
@@ -115,5 +113,5 @@ public class CreateXMLDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CreateXMLDemo.java,v 1.8 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.9 2003/04/07 22:24:52 jstrachan Exp $
  */

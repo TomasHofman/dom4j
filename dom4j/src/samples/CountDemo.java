@@ -4,16 +4,23 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CountDemo.java,v 1.5 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: CountDemo.java,v 1.6 2003/04/07 22:24:54 jstrachan Exp $
  */
 
 
-import org.dom4j.*;
+import org.dom4j.Attribute;
+import org.dom4j.Comment;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.ProcessingInstruction;
+import org.dom4j.Text;
+import org.dom4j.Visitor;
+import org.dom4j.VisitorSupport;
 
 /** A sample program to count the number of various kinds of DOM4J node types
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class CountDemo extends SAXDemo {
     
@@ -124,5 +131,5 @@ public class CountDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CountDemo.java,v 1.5 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: CountDemo.java,v 1.6 2003/04/07 22:24:54 jstrachan Exp $
  */

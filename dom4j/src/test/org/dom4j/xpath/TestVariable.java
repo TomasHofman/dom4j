@@ -4,30 +4,27 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestVariable.java,v 1.10 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.11 2003/04/07 22:24:46 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
 
-import java.io.File;
-import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
 import org.dom4j.XPath;
-import org.dom4j.io.SAXReader;
-
 import org.jaxen.SimpleVariableContext;
 
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestVariable extends AbstractTestCase {
 
@@ -144,5 +141,5 @@ public class TestVariable extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestVariable.java,v 1.10 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.11 2003/04/07 22:24:46 jstrachan Exp $
  */

@@ -4,26 +4,22 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ParseLoop.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: ParseLoop.java,v 1.3 2003/04/07 22:25:13 jstrachan Exp $
  */
 
 package performance;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.StringReader;
 
 import org.dom4j.Document;
-import org.dom4j.DocumentFactory;
-import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 
 /** A simple parsing program that loops which makes it easier to profile
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class ParseLoop {
     
@@ -113,5 +109,5 @@ public class ParseLoop {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ParseLoop.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: ParseLoop.java,v 1.3 2003/04/07 22:25:13 jstrachan Exp $
  */

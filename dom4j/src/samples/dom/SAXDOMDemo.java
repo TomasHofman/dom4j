@@ -4,10 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDOMDemo.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.4 2003/04/07 22:24:52 jstrachan Exp $
  */
 
 package dom;
+
+import AbstractDemo;
 
 import org.dom4j.Document;
 import org.dom4j.io.DOMReader;
@@ -15,9 +17,6 @@ import org.dom4j.io.DOMWriter;
 import org.dom4j.io.SAXContentHandler;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.SAXWriter;
-import org.dom4j.io.XMLWriter;
-
-import AbstractDemo;
 
 /** This sample program parses an XML document as a DOM4J tree using
   * SAX, it then creates a W3C DOM tree which is then used as input for
@@ -28,7 +27,7 @@ import AbstractDemo;
   * SAX <-> DOM4J and DOM4J <-> DOM and DOM4J <-> text
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SAXDOMDemo extends AbstractDemo {
     
@@ -116,5 +115,5 @@ public class SAXDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDOMDemo.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.4 2003/04/07 22:24:52 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.10 2003/02/13 23:10:48 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.11 2003/04/07 22:24:26 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -12,10 +12,9 @@ package org.dom4j;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
-import java.util.Iterator;
-import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.OutputFormat;
@@ -23,7 +22,6 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.dom4j.tree.BaseElement;
 import org.dom4j.tree.DefaultDocument;
-
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.AttributesImpl;
@@ -31,7 +29,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -288,5 +286,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.10 2003/02/13 23:10:48 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.11 2003/04/07 22:24:26 jstrachan Exp $
  */

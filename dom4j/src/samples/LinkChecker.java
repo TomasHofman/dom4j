@@ -4,21 +4,21 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LinkChecker.java,v 1.7 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: LinkChecker.java,v 1.8 2003/04/07 22:24:59 jstrachan Exp $
  */
 
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.dom4j.*;
-import org.dom4j.io.XMLWriter;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
 
 /** A sample program to demonstrate the use of XPath in DOM4J to find
   * all the hypertext links in a source file.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class LinkChecker extends SAXDemo {
     
@@ -87,5 +87,5 @@ public class LinkChecker extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LinkChecker.java,v 1.7 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: LinkChecker.java,v 1.8 2003/04/07 22:24:59 jstrachan Exp $
  */

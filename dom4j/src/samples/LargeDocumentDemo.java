@@ -4,17 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LargeDocumentDemo.java,v 1.11 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.12 2003/04/07 22:24:58 jstrachan Exp $
  */
 
-import org.dom4j.*;
+import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.ElementHandler;
+import org.dom4j.ElementPath;
 import org.dom4j.io.SAXReader;
 
 /** This sample parses a big document using the pruning option of the 
   * {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     
@@ -122,5 +125,5 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LargeDocumentDemo.java,v 1.11 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.12 2003/04/07 22:24:58 jstrachan Exp $
  */

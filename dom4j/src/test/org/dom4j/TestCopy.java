@@ -4,21 +4,21 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestCopy.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestCopy.java,v 1.4 2003/04/07 22:24:20 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 /** A test harness to test the copy() methods on Element
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestCopy extends AbstractTestCase {
 
@@ -130,5 +130,5 @@ public class TestCopy extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestCopy.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestCopy.java,v 1.4 2003/04/07 22:24:20 jstrachan Exp $
  */

@@ -4,23 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractTestCase.java,v 1.15 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.16 2003/04/07 22:24:19 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
-import junit.textui.TestRunner;
+import junit.framework.TestCase;
 
 import org.dom4j.util.NodeComparator;
 
 /** An abstract base class for some DOM4J test cases
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class AbstractTestCase extends TestCase {
 
@@ -299,5 +295,5 @@ public class AbstractTestCase extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractTestCase.java,v 1.15 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.16 2003/04/07 22:24:19 jstrachan Exp $
  */

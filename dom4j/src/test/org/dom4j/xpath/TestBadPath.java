@@ -4,28 +4,22 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBadPath.java,v 1.6 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestBadPath.java,v 1.7 2003/04/07 22:24:43 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
-import org.dom4j.Branch;
-import org.dom4j.Element;
-import org.dom4j.Node;
 import org.dom4j.XPath;
 
 /** Tests bad XPath expressions
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestBadPath extends AbstractTestCase {
 
@@ -120,5 +114,5 @@ public class TestBadPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBadPath.java,v 1.6 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestBadPath.java,v 1.7 2003/04/07 22:24:43 jstrachan Exp $
  */

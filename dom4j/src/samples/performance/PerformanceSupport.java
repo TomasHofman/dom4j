@@ -4,24 +4,17 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceSupport.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: PerformanceSupport.java,v 1.3 2003/04/07 22:25:13 jstrachan Exp $
  */
 
 package performance;
 
 import SAXDemo;
 
-import java.io.IOException;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentFactory;
-import org.dom4j.DocumentException;
-import org.dom4j.io.SAXReader;
-
 /** Base class for all simple performance tests
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class PerformanceSupport extends SAXDemo {
     
@@ -115,5 +108,5 @@ public abstract class PerformanceSupport extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceSupport.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: PerformanceSupport.java,v 1.3 2003/04/07 22:25:13 jstrachan Exp $
  */

@@ -9,15 +9,12 @@
 package org.dom4j.io;
 
 import java.io.File;
-import java.io.FileReader;
 import java.net.URL;
-import java.util.Iterator;
-import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import org.dom4j.io.SAXReader;
-import org.xml.sax.InputSource;
 
 /** A test harness to test the content API in DOM4J
   *
@@ -101,5 +98,5 @@ public class TestSAXReader extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSAXReader.java,v 1.1 2003/02/11 23:56:04 maartenc Exp $
+ * $Id: TestSAXReader.java,v 1.2 2003/04/07 22:25:05 jstrachan Exp $
  */

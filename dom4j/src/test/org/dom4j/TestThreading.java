@@ -4,27 +4,27 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestThreading.java,v 1.1 2002/10/25 13:48:40 ddlucas Exp $
+ * $Id: TestThreading.java,v 1.2 2003/04/07 22:24:16 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import org.dom4j.tree.*;
-import org.dom4j.io.*;
+import com.clarkware.junitperf.LoadTest;
+import com.clarkware.junitperf.TimedTest;
 
-import java.util.*;
-import java.text.*;
+import java.text.FieldPosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-import com.clarkware.junitperf.*;
-import junit.extensions.*;
-import junit.framework.*;
-import junit.textui.TestRunner;
+import junit.extensions.RepeatedTest;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 
 
 /** A test harness to test the dom4j package in a threaded environment
   *
   * @author <a href="mailto:ddlucas@lse.com">David Lucas</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestThreading extends AbstractTestCase {
     public TestThreading(String name) {
@@ -378,5 +378,5 @@ public class TestThreading extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestThreading.java,v 1.1 2002/10/25 13:48:40 ddlucas Exp $
+ * $Id: TestThreading.java,v 1.2 2003/04/07 22:24:16 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XercesDemo.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
  */
 
 package validate;
@@ -12,19 +12,15 @@ package validate;
 import AbstractDemo;
 
 import org.dom4j.Document;
-import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 import org.dom4j.util.XMLErrorHandler;
 
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXParseException;
-
 /** Validates a document using Xerces and an XML Schema.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XercesDemo extends AbstractDemo {
     
@@ -114,5 +110,5 @@ public class XercesDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XercesDemo.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestIterator.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestIterator.java,v 1.3 2003/04/07 22:24:16 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -12,14 +12,15 @@ package org.dom4j;
 import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 
 /** A test harness to test the Iterator API in DOM4J
   *
   * @author <a href="mailto:jdoughty@jdoughty@cs.gmu.edu">Jonathan Doughty</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestIterator extends AbstractTestCase {
 
@@ -198,5 +199,5 @@ public class TestIterator extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestIterator.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestIterator.java,v 1.3 2003/04/07 22:24:16 jstrachan Exp $
  */

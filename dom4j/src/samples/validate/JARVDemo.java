@@ -4,33 +4,27 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JARVDemo.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: JARVDemo.java,v 1.3 2003/04/07 22:24:48 jstrachan Exp $
  */
 
 package validate;
-
-import com.sun.msv.verifier.jarv.TheFactoryImpl;
-
-import javax.xml.parsers.SAXParserFactory;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.SAXWriter;
-
-import org.xml.sax.ErrorHandler;
-import org.xml.sax.SAXParseException;
-
 import org.iso_relax.verifier.Schema;
 import org.iso_relax.verifier.Verifier;
 import org.iso_relax.verifier.VerifierFactory;
 import org.iso_relax.verifier.VerifierHandler;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXParseException;
 
 /** A sample program which validates an already existing dom4j Document
   * using the JARV API using Sun's MSV library implementation.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class JARVDemo {
     
@@ -148,5 +142,5 @@ public class JARVDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JARVDemo.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: JARVDemo.java,v 1.3 2003/04/07 22:24:48 jstrachan Exp $
  */

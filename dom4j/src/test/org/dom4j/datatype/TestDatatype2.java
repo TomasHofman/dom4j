@@ -4,15 +4,12 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestDatatype2.java,v 1.7 2002/05/20 08:14:09 jstrachan Exp $
+ * $Id: TestDatatype2.java,v 1.8 2003/04/07 22:24:35 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
 
 import java.io.StringReader;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Map;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -21,16 +18,15 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.Element;
-import org.dom4j.Attribute;
-
 import org.dom4j.io.SAXReader;
 
 /** Test harness for XML Schema Datatypes support
   *
   * @author Yuxin Ruan
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestDatatype2 extends TestCase {
 

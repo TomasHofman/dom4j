@@ -4,25 +4,22 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestPriority.java,v 1.1 2001/08/16 22:22:16 jstrachan Exp $
+ * $Id: TestPriority.java,v 1.2 2003/04/07 22:25:12 jstrachan Exp $
  */
 
 package org.dom4j.rule;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.DocumentFactory;
-import org.dom4j.rule.Pattern;
 
 /** Tests the priority behaviour of Pattern.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestPriority extends TestCase
 {

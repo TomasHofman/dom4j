@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathTool.java,v 1.2 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathTool.java,v 1.3 2003/04/07 22:24:56 jstrachan Exp $
  */
 
 import java.io.BufferedReader;
@@ -13,17 +13,16 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.dom4j.Document;
-import org.dom4j.Node;
 import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 /** A simple program that parsers a document and allows XPath expressions to be
   * evaluated on the document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XPathTool extends SAXDemo {
     
@@ -178,5 +177,5 @@ public class XPathTool extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathTool.java,v 1.2 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathTool.java,v 1.3 2003/04/07 22:24:56 jstrachan Exp $
  */

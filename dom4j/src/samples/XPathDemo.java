@@ -4,20 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathDemo.java,v 1.12 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.13 2003/04/07 22:25:01 jstrachan Exp $
  */
 
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.dom4j.*;
-import org.dom4j.io.XMLWriter;
+import org.dom4j.Document;
 
 /** A sample program to demonstrate the use of XPath expressions.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class XPathDemo extends SAXDemo {
     
@@ -109,5 +108,5 @@ public class XPathDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathDemo.java,v 1.12 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.13 2003/04/07 22:25:01 jstrachan Exp $
  */

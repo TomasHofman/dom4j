@@ -4,23 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestUriMap.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestUriMap.java,v 1.3 2003/04/07 22:24:38 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
 
 import java.io.File;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
-import org.dom4j.Branch;
-import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
@@ -28,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the use of a Map for defining namespace URIs
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestUriMap extends AbstractTestCase {
 
@@ -109,5 +106,5 @@ public class TestUriMap extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestUriMap.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestUriMap.java,v 1.3 2003/04/07 22:24:38 jstrachan Exp $
  */

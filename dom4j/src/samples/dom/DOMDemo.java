@@ -4,26 +4,25 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDemo.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.4 2003/04/07 22:24:51 jstrachan Exp $
  */
 
 
 package dom;
+
+import AbstractDemo;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.dom4j.Document;
 import org.dom4j.io.DOMReader;
-import org.dom4j.io.XMLWriter;
-
-import AbstractDemo;
 
 /** A simple test program to demonstrate using W3C DOM and JAXP to load a DOM
   * XML tree then converting it to a DOM4J tree.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMDemo extends AbstractDemo {
     
@@ -104,5 +103,5 @@ public class DOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDemo.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.4 2003/04/07 22:24:51 jstrachan Exp $
  */

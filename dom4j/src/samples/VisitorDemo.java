@@ -4,16 +4,27 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo.java,v 1.5 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: VisitorDemo.java,v 1.6 2003/04/07 22:25:03 jstrachan Exp $
  */
 
 
-import org.dom4j.*;
+import org.dom4j.Attribute;
+import org.dom4j.CDATA;
+import org.dom4j.Comment;
+import org.dom4j.Document;
+import org.dom4j.DocumentType;
+import org.dom4j.Element;
+import org.dom4j.Entity;
+import org.dom4j.Namespace;
+import org.dom4j.ProcessingInstruction;
+import org.dom4j.Text;
+import org.dom4j.Visitor;
+import org.dom4j.VisitorSupport;
 
 /** A sample program to demonstrate the use of the Visitor Pattern in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class VisitorDemo extends SAXDemo {
     
@@ -117,5 +128,5 @@ public class VisitorDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo.java,v 1.5 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: VisitorDemo.java,v 1.6 2003/04/07 22:25:03 jstrachan Exp $
  */

@@ -8,12 +8,9 @@
 
 package org.dom4j;
 
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-import org.dom4j.tree.DefaultElement;
 
 /** A test harness to test the addAttribute() methods on attributes
   *
@@ -112,5 +109,5 @@ public class TestAddAttribute extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAddAttribute.java,v 1.1 2003/02/13 21:46:50 maartenc Exp $
+ * $Id: TestAddAttribute.java,v 1.2 2003/04/07 22:24:34 jstrachan Exp $
  */

@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo2.java,v 1.10 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.11 2003/04/07 22:24:56 jstrachan Exp $
  */
 
 
-import org.dom4j.*;
+import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
 import org.dom4j.io.SAXReader;
 
 /** This demo uses the Visitor Pattern in DOM4J to display the effect
@@ -16,7 +17,7 @@ import org.dom4j.io.SAXReader;
   * object model from a {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class VisitorDemo2 extends VisitorDemo {
     
@@ -113,5 +114,5 @@ public class VisitorDemo2 extends VisitorDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo2.java,v 1.10 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.11 2003/04/07 22:24:56 jstrachan Exp $
  */

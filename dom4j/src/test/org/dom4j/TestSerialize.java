@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSerialize.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.10 2003/04/07 22:24:34 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,23 +13,19 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-
-import java.io.StringWriter;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
-import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
 /** Tests that a dom4j document is Serializable
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestSerialize extends AbstractTestCase {
 
@@ -179,5 +175,5 @@ public class TestSerialize extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSerialize.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.10 2003/04/07 22:24:34 jstrachan Exp $
  */

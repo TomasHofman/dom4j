@@ -4,25 +4,25 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestTableModel.java,v 1.1 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: TestTableModel.java,v 1.2 2003/04/07 22:25:20 jstrachan Exp $
  */
 
 package org.dom4j.swing;
 
 import javax.swing.table.TableModel;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
-import org.dom4j.swing.XMLTableDefinition;
-import org.dom4j.swing.XMLTableModel;
 
 /** Tests the Swing TableModel using a dom4j document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestTableModel extends TestCase
 {

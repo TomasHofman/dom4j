@@ -4,33 +4,25 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchema.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.3 2003/04/07 22:24:38 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
-import org.dom4j.AbstractTestCase;
-import org.dom4j.Attribute;
 import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
-import org.dom4j.Element;
-import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
-import org.dom4j.datatype.DatatypeDocumentFactory;
 
 
 /** Test harness for the XML Schema Data Type integration. These tests
   * manually load the schemas
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestManualSchema extends TestAutoSchema {
 
@@ -110,5 +102,5 @@ public class TestManualSchema extends TestAutoSchema {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchema.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.3 2003/04/07 22:24:38 jstrachan Exp $
  */

@@ -4,18 +4,16 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PullParserDemo.java,v 1.3 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: PullParserDemo.java,v 1.4 2003/04/07 22:24:59 jstrachan Exp $
  */
 
 import org.dom4j.Document;
-import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XPPReader;
-import org.dom4j.io.XMLWriter;
 
 /** A sample program that demonstrates using the XML Pull Parser to create a dom4j Document
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class PullParserDemo extends AbstractDemo {
     
@@ -78,5 +76,5 @@ public class PullParserDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PullParserDemo.java,v 1.3 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: PullParserDemo.java,v 1.4 2003/04/07 22:24:59 jstrachan Exp $
  */

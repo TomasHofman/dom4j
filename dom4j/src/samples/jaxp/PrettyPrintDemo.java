@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PrettyPrintDemo.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: PrettyPrintDemo.java,v 1.3 2003/04/07 22:24:47 jstrachan Exp $
  */
 
 package jaxp;
@@ -21,15 +21,13 @@ import javax.xml.transform.TransformerFactory;
 import org.dom4j.Document;
 import org.dom4j.io.DocumentSource;
 import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLResult;
-import org.dom4j.io.XMLWriter;
 
 /** A sample program which uses JAXP to write a dom4j Document to a stream
   * using dom4j's pretty printing output format.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class PrettyPrintDemo extends SAXDemo {
     
@@ -108,5 +106,5 @@ public class PrettyPrintDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PrettyPrintDemo.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: PrettyPrintDemo.java,v 1.3 2003/04/07 22:24:47 jstrachan Exp $
  */

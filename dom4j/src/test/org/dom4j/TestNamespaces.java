@@ -4,34 +4,30 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.12 2002/12/03 10:46:56 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.13 2003/04/07 22:24:31 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import java.io.File;
 import java.io.StringReader;
-import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.DOMReader;
-import org.dom4j.io.DOMWriter;
 import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
-
 import org.xml.sax.InputSource;
 
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -359,5 +355,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.12 2002/12/03 10:46:56 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.13 2003/04/07 22:24:31 jstrachan Exp $
  */

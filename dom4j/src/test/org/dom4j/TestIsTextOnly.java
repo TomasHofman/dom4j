@@ -4,22 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestIsTextOnly.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestIsTextOnly.java,v 1.4 2003/04/07 22:24:26 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 /** A test harness to test the parent relationship and use of the
   * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestIsTextOnly extends AbstractTestCase {
     
@@ -96,5 +94,5 @@ public class TestIsTextOnly extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestIsTextOnly.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestIsTextOnly.java,v 1.4 2003/04/07 22:24:26 jstrachan Exp $
  */

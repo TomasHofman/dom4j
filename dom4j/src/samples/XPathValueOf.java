@@ -4,14 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathValueOf.java,v 1.7 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathValueOf.java,v 1.8 2003/04/07 22:24:53 jstrachan Exp $
  */
 
-import java.util.Iterator;
-import java.util.List;
-
-import org.dom4j.*;
-import org.dom4j.io.SAXReader;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.XPath;
 
 /** A utility program which performs XPath expressions on one or more XML
   * files and outputs the valueOf the XPath expression. 
@@ -19,7 +17,7 @@ import org.dom4j.io.SAXReader;
   * command on Unix but uses XPath valueOf for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class XPathValueOf extends SAXDemo {
     
@@ -114,5 +112,5 @@ public class XPathValueOf extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathValueOf.java,v 1.7 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathValueOf.java,v 1.8 2003/04/07 22:24:53 jstrachan Exp $
  */

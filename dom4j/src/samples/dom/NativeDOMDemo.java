@@ -4,22 +4,22 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NativeDOMDemo.java,v 1.4 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.5 2003/04/07 22:24:50 jstrachan Exp $
  */
 
 
 package dom;
 
+import AbstractDemo;
+
 import org.dom4j.Document;
 import org.dom4j.dom.DOMDocumentFactory;
 import org.dom4j.io.SAXReader;
 
-import AbstractDemo;
-
 /** A simple test program to demonstrate the use of native DOM support.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class NativeDOMDemo extends AbstractDemo {
     
@@ -107,5 +107,5 @@ public class NativeDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NativeDOMDemo.java,v 1.4 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.5 2003/04/07 22:24:50 jstrachan Exp $
  */

@@ -4,26 +4,22 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.10 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.11 2003/04/07 22:25:00 jstrachan Exp $
  */
 
-import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.dom4j.Document;
 import org.dom4j.io.DocumentResult;
 import org.dom4j.io.DocumentSource;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 
 /** A sample program to demonstrate using XSLT to transform a dom4j Document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class XSLTDemo extends SAXDemo {
     
@@ -130,5 +126,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.10 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.11 2003/04/07 22:25:00 jstrachan Exp $
  */

@@ -4,27 +4,23 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SongFilter.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: SongFilter.java,v 1.3 2003/04/07 22:25:16 jstrachan Exp $
  */
 
 package rule;
 
 import java.io.File;
 
-import org.dom4j.DocumentHelper;
 import org.dom4j.Document;
-import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Node;
-
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.dom4j.io.OutputFormat;
-
 import org.dom4j.rule.Action;
-import org.dom4j.rule.Pattern;
-import org.dom4j.rule.Stylesheet;
 import org.dom4j.rule.Rule;
+import org.dom4j.rule.Stylesheet;
 
 /**
  * This class is 1:1 representation of the stlyesheet <code>SongFilter.xsl</code> in package.
@@ -148,5 +144,5 @@ public class SongFilter {
  *
  * Copyright 2002 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SongFilter.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: SongFilter.java,v 1.3 2003/04/07 22:25:16 jstrachan Exp $
  */

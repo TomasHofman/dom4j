@@ -4,26 +4,23 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestStylesheet2.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: TestStylesheet2.java,v 1.4 2003/04/07 22:25:10 jstrachan Exp $
  */
 
 package org.dom4j.rule;
 
-import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
-import org.dom4j.*;
+import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
 
 /** A test harness to test the use of the Stylesheet and the
   * XSLT rule engine.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestStylesheet2 extends TestStylesheet {
 
@@ -129,5 +126,5 @@ public class TestStylesheet2 extends TestStylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestStylesheet2.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: TestStylesheet2.java,v 1.4 2003/04/07 22:25:10 jstrachan Exp $
  */

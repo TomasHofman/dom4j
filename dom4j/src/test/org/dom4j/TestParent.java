@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestParent.java,v 1.10 2003/04/07 22:24:17 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -12,14 +12,15 @@ package org.dom4j;
 import java.util.Iterator;
 import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 /** A test harness to test the parent relationship and use of the
   * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -132,5 +133,5 @@ public class TestParent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestParent.java,v 1.10 2003/04/07 22:24:17 jstrachan Exp $
  */

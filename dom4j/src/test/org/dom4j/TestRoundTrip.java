@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRoundTrip.java,v 1.12 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.13 2003/04/07 22:24:28 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -15,21 +15,16 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.util.Iterator;
-import java.util.List;
 import java.net.URL;
 
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
-
-import org.w3c.tidy.Tidy;
 
 import org.dom4j.io.DOMReader;
 import org.dom4j.io.DOMWriter;
@@ -39,11 +34,12 @@ import org.dom4j.io.SAXContentHandler;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.SAXWriter;
 import org.dom4j.io.XMLWriter;
+import org.w3c.tidy.Tidy;
 
 /** A test harness to test the the round trips of Documents.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class TestRoundTrip extends AbstractTestCase {
     
@@ -286,5 +282,5 @@ public class TestRoundTrip extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRoundTrip.java,v 1.12 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.13 2003/04/07 22:24:28 jstrachan Exp $
  */

@@ -4,23 +4,23 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathGrep.java,v 1.11 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.12 2003/04/07 22:24:56 jstrachan Exp $
  */
 
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.dom4j.*;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.XPath;
 
 /** A utility program which performs XPath expressions on one or more XML
   * files and outputs the matches. It is similar to the <code>grep</code>
   * command on Unix but uses XPath expressions for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class XPathGrep extends SAXDemo {
     
@@ -136,5 +136,5 @@ public class XPathGrep extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathGrep.java,v 1.11 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.12 2003/04/07 22:24:56 jstrachan Exp $
  */

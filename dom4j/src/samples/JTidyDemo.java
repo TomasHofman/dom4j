@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTidyDemo.java,v 1.2 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: JTidyDemo.java,v 1.3 2003/04/07 22:24:59 jstrachan Exp $
  */
 
 import java.io.BufferedInputStream;
@@ -15,13 +15,12 @@ import java.net.URL;
 
 import org.dom4j.Document;
 import org.dom4j.io.DOMReader;
-
 import org.w3c.tidy.Tidy;
 
 /** A program which uses JTidy to parse some HTML and turn it into a dom4j Document
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class JTidyDemo extends AbstractDemo {
     
@@ -97,5 +96,5 @@ public class JTidyDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTidyDemo.java,v 1.2 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: JTidyDemo.java,v 1.3 2003/04/07 22:24:59 jstrachan Exp $
  */

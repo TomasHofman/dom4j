@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTreeDemo.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: JTreeDemo.java,v 1.4 2003/04/07 22:25:05 jstrachan Exp $
  */
 
 package swing;
@@ -18,14 +18,12 @@ import javax.swing.JTree;
 import org.dom4j.Document;
 import org.dom4j.swing.DocumentTreeModel;
 
-import org.xml.sax.InputSource;
-
 
 /** A sample program to build a JTree GUI from a dom4j Document
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
   * @author Jakob Jenkov
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class JTreeDemo extends SAXDemo {
     
@@ -97,5 +95,5 @@ public class JTreeDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTreeDemo.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: JTreeDemo.java,v 1.4 2003/04/07 22:25:05 jstrachan Exp $
  */

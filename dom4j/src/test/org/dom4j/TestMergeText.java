@@ -4,16 +4,16 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestMergeText.java,v 1.3 2002/11/10 21:11:11 slehmann Exp $
+ * $Id: TestMergeText.java,v 1.4 2003/04/07 22:24:24 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.io.File;
 import java.util.Iterator;
-import java.util.List;
 
-import junit.framework.*;
+import junit.framework.Test;
+import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.SAXReader;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness for SAXReader option setMergeAdjacentText(true)
   *
   * @author <a href="mailto:slehmann@novell.com">Steen Lehmann</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestMergeText extends AbstractTestCase {
 
@@ -125,5 +125,5 @@ public class TestMergeText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestMergeText.java,v 1.3 2002/11/10 21:11:11 slehmann Exp $
+ * $Id: TestMergeText.java,v 1.4 2003/04/07 22:24:24 jstrachan Exp $
  */

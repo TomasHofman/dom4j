@@ -4,32 +4,31 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLResult.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestXMLResult.java,v 1.3 2003/04/07 22:24:25 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.io.StringWriter;
 
-import junit.framework.*;
-import junit.textui.TestRunner;
-
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 
-import org.dom4j.Document;
+import junit.framework.Test;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
+
 import org.dom4j.io.DocumentSource;
 import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLResult;
 import org.dom4j.io.XMLWriter;
 
 /** Test harness for the XMLResult which acts as a JAXP Result
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestXMLResult extends AbstractTestCase {
 
@@ -136,5 +135,5 @@ public class TestXMLResult extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLResult.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestXMLResult.java,v 1.3 2003/04/07 22:24:25 jstrachan Exp $
  */
