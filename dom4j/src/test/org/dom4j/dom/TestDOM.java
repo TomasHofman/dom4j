@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDOM.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: TestDOM.java,v 1.2 2002/04/19 17:45:20 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -18,6 +18,8 @@ import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Document;
+import org.dom4j.Element;
+import org.dom4j.dom.DOMDocument;
 import org.dom4j.dom.DOMDocumentFactory;
 import org.dom4j.io.DOMWriter;
 import org.dom4j.io.SAXReader;
@@ -30,7 +32,7 @@ import org.w3c.dom.NodeList;
 /** A test harness to test the native DOM implementation of dom4j
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestDOM extends AbstractTestCase {
 
@@ -76,6 +78,13 @@ public class TestDOM extends AbstractTestCase {
             + " attributes: " + attributes 
             + " characters: " + characters 
         );
+    }
+
+    /** Tests the bug found by Soumanjoy */
+    public void testClassCastBug() throws Exception {
+        DOMDocument oDocument = new DOMDocument("Root");
+        oDocument.createElement("Parent"); 
+        //<-- Fails here when the code is broken.
     }
         
     // Implementation methods
@@ -188,5 +197,5 @@ public class TestDOM extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDOM.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: TestDOM.java,v 1.2 2002/04/19 17:45:20 jstrachan Exp $
  */
