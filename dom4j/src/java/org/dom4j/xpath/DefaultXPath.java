@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.24 2002/03/13 03:29:55 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.25 2002/04/20 04:02:50 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -14,17 +14,17 @@ import org.dom4j.Element;
 import org.dom4j.InvalidXPathException;
 import org.dom4j.Node;
 import org.dom4j.NodeFilter;
-import org.dom4j.XPath;
 import org.dom4j.XPathException;
 
 import org.dom4j.rule.Pattern;
 
-import org.jaxen.BaseXPath;
+import org.jaxen.XPath;
 import org.jaxen.FunctionContext;
 import org.jaxen.JaxenException;
 import org.jaxen.NamespaceContext;
 import org.jaxen.SimpleNamespaceContext;
 import org.jaxen.VariableContext;
+import org.jaxen.dom4j.Dom4jXPath;
 
 import org.saxpath.XPathReader;
 import org.saxpath.SAXPathException;
@@ -52,7 +52,7 @@ import java.util.Map;
 public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
 
     private String text;
-    private BaseXPath xpath;
+    private XPath xpath;
     private NamespaceContext namespaceContext;
     
 
@@ -308,9 +308,9 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
         return valueOf( node );
     }
     
-    protected static BaseXPath parse(String text) {        
+    protected static XPath parse(String text) {        
         try {
-            return new org.jaxen.dom4j.XPath( text );
+            return new Dom4jXPath( text );
         }
         catch (SAXPathException e) {
             throw new InvalidXPathException( text, e.getMessage() );
@@ -376,5 +376,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.24 2002/03/13 03:29:55 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.25 2002/04/20 04:02:50 jstrachan Exp $
  */
