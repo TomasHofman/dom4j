@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestHTMLWriter.java,v 1.6 2004/06/04 23:28:52 maartenc Exp $
+ * $Id: TestHTMLWriter.java,v 1.7 2004/06/06 07:59:37 maartenc Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.OutputFormat;
 /** Test harness for the HTMLWriter
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestHTMLWriter extends AbstractTestCase {
 
@@ -114,6 +114,19 @@ public class TestHTMLWriter extends AbstractTestCase {
         assertEquals(expected, buffer.toString());
     }
     
+    public void testBug923882asWriterWithEmptyCharArray() throws Exception {
+        // use an the HTMLWriter sax-methods.
+        //
+        StringWriter buffer = new StringWriter();
+        HTMLWriter writer = new HTMLWriter(buffer, OutputFormat.createPrettyPrint());
+        writer.characters("wor".toCharArray(), 0, 3);
+        writer.characters(new char[0], 0, 0);
+        writer.characters("d-being-cut".toCharArray(), 0, 11);
+                
+        String expected = "word-being-cut";
+        assertEquals(expected, buffer.toString());
+    }
+    
 }
 
 
@@ -161,5 +174,5 @@ public class TestHTMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestHTMLWriter.java,v 1.6 2004/06/04 23:28:52 maartenc Exp $
+ * $Id: TestHTMLWriter.java,v 1.7 2004/06/06 07:59:37 maartenc Exp $
  */
