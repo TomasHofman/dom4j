@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UserDataElement.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: UserDataElement.java,v 1.3 2001/07/24 08:46:17 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -45,7 +45,7 @@ import org.xml.sax.Attributes;
   * adorn the trees with user defined objects.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class UserDataElement extends DefaultElement {
 
@@ -68,6 +68,41 @@ public class UserDataElement extends DefaultElement {
     public void setData(Object data) {
         this.data = data;
     }    
+    
+    public String toString() {
+        return super.toString() + " userData: " + data;
+    }
+    
+    public Object clone() {
+        UserDataElement answer = (UserDataElement) super.clone();
+        if ( answer != this ) {
+            answer.data = getCopyOfUserData();
+        }
+        return answer;
+    }
+
+    // Implementation methods
+    //-------------------------------------------------------------------------    
+    
+    /** If a deep copy of user data is required whenever the clone() or createCopy()
+      * methods are called on this element then this method should return a clone 
+      * of the user data
+      */
+    protected Object getCopyOfUserData() {
+        return data;            
+    }
+
+    protected Element createElement(String name) {
+        Element answer = getDocumentFactory().createElement(name);
+        answer.setData( getCopyOfUserData() );
+        return answer;
+    }
+    
+    protected Element createElement(QName qName) {
+        Element answer = getDocumentFactory().createElement(qName);
+        answer.setData( getCopyOfUserData() );
+        return answer;
+    }
 }
 
 
@@ -115,5 +150,5 @@ public class UserDataElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataElement.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: UserDataElement.java,v 1.3 2001/07/24 08:46:17 jstrachan Exp $
  */
