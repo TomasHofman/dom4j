@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: QName.java,v 1.12 2003/04/07 22:14:56 jstrachan Exp $
+ * $Id: QName.java,v 1.13 2004/06/04 08:27:57 maartenc Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class QName implements Serializable {
 
@@ -54,11 +54,23 @@ public class QName implements Serializable {
     }
 
     public static QName get(String name, String prefix, String uri) {
-        return getCache().get(name, Namespace.get( prefix, uri ));
+        if ((prefix == null || prefix.length() == 0) && (uri == null)) {
+            return QName.get(name);
+        } else if (prefix == null || prefix.length() == 0) {
+            return getCache().get(name, Namespace.get(uri));
+        } else if (uri == null) {
+            return QName.get(name);
+        } else {
+            return getCache().get(name, Namespace.get(prefix, uri));
+        }
     }
 
     public static QName get(String qualifiedName, String uri) {
-        return getCache().get(qualifiedName, uri);
+        if (uri == null) {
+            return getCache().get(qualifiedName);
+        } else {
+            return getCache().get(qualifiedName, uri);
+        }
     }
 
     public static QName get(String localName, Namespace namespace, String qualifiedName) {
@@ -247,5 +259,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.12 2003/04/07 22:14:56 jstrachan Exp $
+ * $Id: QName.java,v 1.13 2004/06/04 08:27:57 maartenc Exp $
  */
