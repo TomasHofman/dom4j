@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NumberFunction.java,v 1.3 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: NumberFunction.java,v 1.4 2001/04/06 14:25:32 jstrachan Exp $
  */
 
 
@@ -35,7 +35,7 @@ public class NumberFunction implements Function {
         }
         else {
             String text = StringFunction.evaluate(obj);
-            System.out.println( "converting: " + text + " into a number" );
+            //System.out.println( "converting: " + text + " into a number" );
             return Double.valueOf( text );
         }
     }
@@ -87,5 +87,5 @@ public class NumberFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NumberFunction.java,v 1.3 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: NumberFunction.java,v 1.4 2001/04/06 14:25:32 jstrachan Exp $
  */
