@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBackedList.java,v 1.11 2003/06/05 23:12:21 maartenc Exp $
+ * $Id: TestBackedList.java,v 1.12 2004/02/26 22:24:30 maartenc Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
 /** A test harness to test the backed list feature of DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestBackedList extends AbstractTestCase {
 
@@ -84,6 +84,14 @@ public class TestBackedList extends AbstractTestCase {
         assertEquals(4, children.size());
         assertEquals("dummy1", ((Node) children.get(1)).getName());
         assertEquals("dummy2", ((Node) children.get(2)).getName());
+        
+        /*
+         * Some tests for issue reported at
+         * http://sourceforge.net/tracker/index.php?func=detail&aid=853714&group_id=16035&atid=316035
+         */
+        children.add(children.size(), factory.createElement("dummy3"));
+        children = root.elements("author");
+        children.add(children.size(), factory.createElement("dummy4"));
     }
     
     public void testSort() {
@@ -170,5 +178,5 @@ public class TestBackedList extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBackedList.java,v 1.11 2003/06/05 23:12:21 maartenc Exp $
+ * $Id: TestBackedList.java,v 1.12 2004/02/26 22:24:30 maartenc Exp $
  */
