@@ -4,52 +4,28 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractTestCase.java,v 1.5 2001/02/07 14:51:19 jstrachan Exp $
+ * $Id: Action.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
  */
 
-package org.dom4j;
+package org.dom4j.rule;
 
-import java.util.Iterator;
-import java.util.List;
+import org.dom4j.Node;
 
-import junit.framework.*;
-import junit.textui.TestRunner;
 
-/** An abstract base class for some DOM4J test cases
+/** <p><code>Action</code> represents some default action which should occur
+  * when a rule matches a node in the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.1 $
   */
-public class AbstractTestCase extends TestCase {
+public interface Action {
 
-    protected Document document;
-    
-    
-    public AbstractTestCase(String name) {
-        super(name);
-    }
+    public void run(Node node);
 
-    public void log(String text) {
-        System.out.println(text);
-    }
 
-    // Implementation methods
-    //-------------------------------------------------------------------------                    
-    protected void setUp() throws Exception {
-        document = DocumentFactory.newDocument();
-        
-        Element root = document.addElement( "root" );
-        Element author1 = root.addElement( "author" );
-        author1.setAttributeValue( "name", "James" );
-        author1.setAttributeValue( "location", "UK" );
-        author1.addText("James Strachan");
-        
-        Element author2 = root.addElement( "author" );
-        author2.setAttributeValue( "name", "Bob" );
-        author2.setAttributeValue( "location", "Canada" );
-        author2.addText("Bob McWhirter");
-    }
-
+    /** An action which does nothing.
+      */
+    public static final Action NULL_ACTION = NullAction.SINGLETON;
 }
 
 
@@ -97,5 +73,5 @@ public class AbstractTestCase extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractTestCase.java,v 1.5 2001/02/07 14:51:19 jstrachan Exp $
+ * $Id: Action.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
  */
