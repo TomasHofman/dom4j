@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNumber.java,v 1.2 2001/04/02 18:24:31 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.3 2001/05/23 16:40:24 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,19 +22,19 @@ import org.dom4j.XPath;
 /** Test harness for numeric XPath expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestNumber extends AbstractTestCase {
 
-    protected static boolean VERBOSE = true;
+    protected static boolean VERBOSE = false;
     
     protected static String[] paths = {
         "count(//author)",
         "count(//author/attribute::*)",
         "sum(count(//author),count(//author/attribute::*))",
-        "count(ancestor::author)",
         "count(descendant::author)",
         "count(ancestor::*)",
+        "count(ancestor::author)",
         "count(descendant::*)",
         "count(descendant::author)+1",
         "10 + (count(descendant::author) * 5)",
@@ -64,21 +64,30 @@ public class TestNumber extends AbstractTestCase {
             testXPath( document, paths[i] );
             testXPath( element, paths[i] );
         }
+        log( "Finished successfully" );
     }
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
-    protected void testXPath(Node node, String xpathText) {
-        XPath xpath = node.createXPath( xpathText );
-        Number number = xpath.numberValueOf( node );
+    protected void testXPath(Node node, String xpathText) throws Exception {
+        try {
+            XPath xpath = node.createXPath( xpathText );
+            Number number = xpath.numberValueOf( node );
 
-        log( "Searched path: " + xpath + " found: " + number );
+            log( "Searched path: " + xpathText + " found: " + number );
 
-        if ( VERBOSE ) {
-            log( "    xpath: " + xpath );        
-            log( "    for: " + node );        
+            if ( VERBOSE ) {
+                log( "    xpath: " + xpath );        
+                log( "    for: " + node );        
+            }
+        }
+        catch (Throwable e) {
+            log( "Caught exception: " + e );
+            e.printStackTrace();
+            assert( "Failed to process:  " + xpathText + " caught exception: " + e, false );
         }
     }
+    
 }
 
 
@@ -126,5 +135,5 @@ public class TestNumber extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNumber.java,v 1.2 2001/04/02 18:24:31 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.3 2001/05/23 16:40:24 jstrachan Exp $
  */

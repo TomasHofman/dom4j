@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValueOf.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.6 2001/05/23 16:40:24 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestValueOf extends AbstractTestCase {
 
@@ -64,9 +64,8 @@ public class TestValueOf extends AbstractTestCase {
         "../child::node()",
         "/",
         "/*",
-        "/child::node()",
 //        "*",
-        "1+1"
+        "/child::node()",
     };
     
     
@@ -105,14 +104,20 @@ public class TestValueOf extends AbstractTestCase {
     }
         
     protected void testXPath(Node node, String xpathExpr) throws Exception {
-        XPath xpath = node.createXPath( xpathExpr );
-        String value = xpath.valueOf(node);
-        
-        log( "valueOf: " + xpathExpr + " is: " + value );
-        
-        if ( VERBOSE ) {
-            log( "xpath object: " + xpath );
-            log( "===============================" );
+        try {
+            XPath xpath = node.createXPath( xpathExpr );
+            String value = xpath.valueOf(node);
+
+            log( "valueOf: " + xpathExpr + " is: " + value );
+
+            if ( VERBOSE ) {
+                log( "xpath object: " + xpath );
+                log( "===============================" );
+            }
+        }
+        catch (Throwable e) {
+            e.printStackTrace();
+            assert( "Failed with exception: " + e, false );
         }
     }
     
@@ -163,5 +168,5 @@ public class TestValueOf extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValueOf.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.6 2001/05/23 16:40:24 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UnAbbrStep.java,v 1.5 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.6 2001/05/23 16:40:24 jstrachan Exp $
  */
 
 
@@ -279,14 +279,15 @@ public abstract class UnAbbrStep extends Step {
     public List applyToAncestor(Object node, ContextSupport support) {
         List results = new ArrayList();
         
-        results.addAll( applyToParent( node, support ) );
-        
+        //results.addAll( applyToParent( node, support ) );
         Object parent = ParentStep.findParent( node );        
         if ( parent != null ) {
+            results.addAll( applyToSelf( parent, support ) );
+        
             results.addAll( 
                 applyToAncestor( parent, support ) 
             );
-        }        
+        }
         return results;
     }
     
@@ -517,5 +518,5 @@ public abstract class UnAbbrStep extends Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UnAbbrStep.java,v 1.5 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.6 2001/05/23 16:40:24 jstrachan Exp $
  */

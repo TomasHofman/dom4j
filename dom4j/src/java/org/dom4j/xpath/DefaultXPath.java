@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.8 2001/05/23 15:11:29 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.9 2001/05/23 16:40:24 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -341,12 +341,15 @@ public class DefaultXPath implements org.dom4j.XPath {
             _expr = recog.xpath();
         }
         catch (RecognitionException e) {
+            System.err.println( "Caught: " + e );
             e.printStackTrace();
         }
         catch (TokenStreamException e) {
+            System.err.println( "Caught: " + e );
             e.printStackTrace();
         }
         if ( _expr == null ) {
+            System.err.println( "Invalid XPath expression: " + _xpath );
             throw new RuntimeException( "Invalid XPath expression: " + _xpath );
         }
     }
@@ -450,5 +453,5 @@ public class DefaultXPath implements org.dom4j.XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.8 2001/05/23 15:11:29 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.9 2001/05/23 16:40:24 jstrachan Exp $
  */
