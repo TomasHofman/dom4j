@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UserDataDocumentFactory.java,v 1.3 2001/07/03 14:42:43 jstrachan Exp $
+ * $Id: UserDataDocumentFactory.java,v 1.4 2001/08/08 14:00:47 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -30,7 +30,7 @@ import org.dom4j.io.SAXReader;
   * adorn the trees with user defined objects.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class UserDataDocumentFactory extends DocumentFactory {
     
@@ -54,9 +54,10 @@ public class UserDataDocumentFactory extends DocumentFactory {
         return new UserDataElement(qname);
     }
 
-    public Attribute createAttribute(QName qname, String value) {
+    public Attribute createAttribute(Element owner, QName qname, String value) {
         return new UserDataAttribute(qname, value);
-    }    
+    }
+    
 }
 
 
@@ -104,5 +105,5 @@ public class UserDataDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataDocumentFactory.java,v 1.3 2001/07/03 14:42:43 jstrachan Exp $
+ * $Id: UserDataDocumentFactory.java,v 1.4 2001/08/08 14:00:47 jstrachan Exp $
  */
