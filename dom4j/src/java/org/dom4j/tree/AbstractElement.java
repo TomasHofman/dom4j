@@ -27,7 +27,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -46,11 +46,13 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
 
     public String getNamespacePrefix() {
-        return getNamespace().getPrefix();
+        Namespace namespace = getNamespace();
+        return (namespace != null) ? namespace.getPrefix() : "";
     }
 
     public String getNamespaceURI() {
-        return getNamespace().getURI();
+        Namespace namespace = getNamespace();
+        return (namespace != null) ? namespace.getPrefix() : "";
     }
 
     public String getQualifiedName() {

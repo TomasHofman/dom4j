@@ -8,7 +8,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
@@ -29,11 +29,13 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
     }
 
     public String getNamespacePrefix() {
-        return getNamespace().getPrefix();
+        Namespace namespace = getNamespace();
+        return (namespace != null) ? namespace.getPrefix() : "";
     }
 
     public String getNamespaceURI() {
-        return getNamespace().getURI();
+        Namespace namespace = getNamespace();
+        return (namespace != null) ? namespace.getPrefix() : "";
     }
 
     public void setNamespace(Namespace namespace) {
