@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Namespace.java,v 1.17 2003/04/07 22:14:53 jstrachan Exp $
+ * $Id: Namespace.java,v 1.18 2004/03/22 08:20:12 maartenc Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import org.dom4j.tree.NamespaceCache;
 /** <p><code>Namespace</code> is a Flyweight Namespace that can be shared amongst nodes.</p>
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class Namespace extends AbstractNode {
     
@@ -92,7 +92,10 @@ public class Namespace extends AbstractNode {
         return hashCode;
     }
 
-  
+    /**
+     * Checks whether this Namespace equals the given Namespace. Two Namespaces
+     * are equals if their URI and prefix are equal.
+     */  
     public boolean equals(Object object) {
         if ( this == object ) {
             return true;
@@ -235,5 +238,5 @@ public class Namespace extends AbstractNode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Namespace.java,v 1.17 2003/04/07 22:14:53 jstrachan Exp $
+ * $Id: Namespace.java,v 1.18 2004/03/22 08:20:12 maartenc Exp $
  */
