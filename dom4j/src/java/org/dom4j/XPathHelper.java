@@ -4,16 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathHelper.java,v 1.3 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: XPathHelper.java,v 1.4 2001/01/17 15:53:31 jstrachan Exp $
  */
 
 package org.dom4j;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /** <p><code>XPathHelper</code> contains some helper methods for using 
   * and creating {@link XPathEngine} instances.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathHelper {
 
@@ -111,6 +115,40 @@ public class XPathHelper {
         return getInstance().createXPathFilter(xpathFilterExpression);
     }
     
+    /** <p><code>selectNodes</code> performs the given XPath
+      * expression on the {@link List} of {@link Node} instances appending
+      * all the results together into a single list.</p>
+      *
+      * @param xpathFilterExpression is the XPath filter expression 
+      * to evaluate
+      * @param nodes is the list of nodes on which to evalute the XPath
+      * @return the results of all the XPath evaluations as a single list
+      */
+    public static List selectNodes(XPath xpath, List nodes) {
+        ArrayList answer = new ArrayList();
+        for ( Iterator iter = nodes.iterator(); iter.hasNext(); ) {
+            Object object = iter.next();
+            if ( object instanceof Node ) {
+                Node node = (Node) object;
+                answer.addAll( node.selectNodes( xpath ) );
+            }
+        }
+        return answer;
+    }
+    
+    /** <p><code>selectNodes</code> performs the given XPath
+      * expression on the {@link List} of {@link Node} instances appending
+      * all the results together into a single list.</p>
+      *
+      * @param xpathFilterExpression is the XPath filter expression 
+      * to evaluate
+      * @param nodes is the list of nodes on which to evalute the XPath
+      * @return the results of all the XPath evaluations as a single list
+      */
+    public static List selectNodes(String xpathFilterExpression, List nodes) {
+        return selectNodes( createXPath(xpathFilterExpression), nodes );
+    }
+    
     
 }
 
@@ -159,5 +197,5 @@ public class XPathHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathHelper.java,v 1.3 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: XPathHelper.java,v 1.4 2001/01/17 15:53:31 jstrachan Exp $
  */
