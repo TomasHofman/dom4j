@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocumentType.java,v 1.3 2001/10/10 13:55:46 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.4 2001/10/12 11:05:01 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -17,7 +17,7 @@ import org.dom4j.DocumentType;
   * of an XML document type.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DefaultDocumentType extends AbstractDocumentType {
 
@@ -30,8 +30,11 @@ public class DefaultDocumentType extends AbstractDocumentType {
     /** Holds value of property systemID. */    
     private String systemID;
     
-    /** The DTD declarations */
-    private List declarations;
+    /** The internal DTD declarations */
+    private List internalDeclarations;
+    
+    /** The external DTD declarations */
+    private List externalDeclarations;
     
     public DefaultDocumentType() { 
     }
@@ -93,14 +96,20 @@ public class DefaultDocumentType extends AbstractDocumentType {
         this.systemID = systemID;
     }
     
-    /** Returns a list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
-    public List getDeclarations() {
-        return declarations;
+    public List getInternalDeclarations() {
+        return internalDeclarations;
     }
     
-    /** Sets the list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
-    public void setDeclarations(List declarations) {
-        this.declarations = declarations;
+    public void setInternalDeclarations(List internalDeclarations) {
+        this.internalDeclarations = internalDeclarations;
+    }
+    
+    public List getExternalDeclarations() {
+        return externalDeclarations;
+    }
+    
+    public void setExternalDeclarations(List externalDeclarations) {
+        this.externalDeclarations = externalDeclarations;
     }
 }
 
@@ -151,5 +160,5 @@ public class DefaultDocumentType extends AbstractDocumentType {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocumentType.java,v 1.3 2001/10/10 13:55:46 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.4 2001/10/12 11:05:01 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentType.java,v 1.3 2001/10/10 14:03:16 jstrachan Exp $
+ * $Id: DocumentType.java,v 1.4 2001/10/12 11:04:49 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -14,7 +14,7 @@ import java.util.List;
 /** <p><code>DocumentType</code> defines an XML DOCTYPE declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public interface DocumentType extends Node {
 
@@ -36,11 +36,26 @@ public interface DocumentType extends Node {
     public String getSystemID();
     public void setSystemID(String systemID);
 
-    /** Returns a list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
-    public List getDeclarations();
+    /** Returns a list of internal DTD declaration objects, 
+      * defined in the {@link org.dom4j.dtd} package 
+       */    
+    public List getInternalDeclarations();
     
-    /** Sets the list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
-    public void setDeclarations(List declarations);
+    /** Sets the list of internal DTD declaration objects, 
+      * defined in the {@link org.dom4j.dtd} package 
+      */    
+    public void setInternalDeclarations(List declarations);
+
+    /** Returns a list of internal DTD declaration objects, 
+      * defined in the {@link org.dom4j.dtd} package 
+       */    
+    public List getExternalDeclarations();
+    
+    /** Sets the list of internal DTD declaration objects, 
+      * defined in the {@link org.dom4j.dtd} package 
+      */    
+    public void setExternalDeclarations(List declarations);
+
 }
 
 
@@ -98,5 +113,5 @@ public interface DocumentType extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentType.java,v 1.3 2001/10/10 14:03:16 jstrachan Exp $
+ * $Id: DocumentType.java,v 1.4 2001/10/12 11:04:49 jstrachan Exp $
  */

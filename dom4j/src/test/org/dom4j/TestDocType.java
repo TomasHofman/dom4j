@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDocType.java,v 1.2 2001/10/10 14:04:57 jstrachan Exp $
+ * $Id: TestDocType.java,v 1.3 2001/10/12 11:05:44 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the DocType functionality
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestDocType extends AbstractTestCase {
 
@@ -46,7 +46,7 @@ public class TestDocType extends AbstractTestCase {
         DocumentType docType = document.getDocType();
         assertTrue( "Has DOCTYPE", docType!= null );
         
-        List declarations = docType.getDeclarations();
+        List declarations = docType.getInternalDeclarations();
         assertTrue( "DOCTYPE has declarations", declarations != null && declarations.size() == 1 );
         
         ElementDecl decl = (ElementDecl) declarations.get(0);
@@ -61,6 +61,7 @@ public class TestDocType extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
+        reader.setIncludeInternalDTDDeclarations(true);
         document = reader.read( INPUT_XML_FILE );
     }
 }
@@ -110,5 +111,5 @@ public class TestDocType extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDocType.java,v 1.2 2001/10/10 14:04:57 jstrachan Exp $
+ * $Id: TestDocType.java,v 1.3 2001/10/12 11:05:44 jstrachan Exp $
  */
