@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.10 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestContent.java,v 1.11 2002/04/23 14:22:13 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,10 +18,12 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestContent extends AbstractTestCase {
 
+    protected DocumentFactory factory = new DocumentFactory();
+    
     public static void main( String[] args ) {
         TestRunner.run( suite() );
     }
@@ -105,6 +107,33 @@ public class TestContent extends AbstractTestCase {
         assertTrue( "Iteration completed", iterated );
     }
         
+    public void testOrderOfPI() throws Exception {
+        Document document = factory.createDocument();        
+        document.addProcessingInstruction( "xml-stylesheet", "type=\"text/xsl\" href=\"...\"" );
+        document.addElement( "root" );
+        
+        List list = document.content();
+        Object pi = list.get(0);
+        Object root = list.get(1);
+        
+        assertTrue( "First element is a PI", pi instanceof ProcessingInstruction );
+        assertTrue( "Second element is an element", root instanceof Element );
+        
+        document = DocumentHelper.parseText(
+            "<?xml version=\"1.0\" ?>\n"
+            + "<?xml-stylesheet type=\"text/xsl\" href=\"foo\" ?>\n"
+            + "<root/>" 
+        );
+        
+        list = document.content();
+        pi = list.get(0);
+        root = list.get(1);
+        
+        assertTrue( "First element is a PI", pi instanceof ProcessingInstruction );
+        assertTrue( "Second element is an element", root instanceof Element );
+        
+    }
+        
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void testGetAttributes(Element author) throws Exception {
@@ -167,5 +196,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.10 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestContent.java,v 1.11 2002/04/23 14:22:13 jstrachan Exp $
  */
