@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.38 2003/05/15 22:49:19 maartenc Exp $
+ * $Id: Element.java,v 1.39 2003/12/03 14:28:06 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.38 $
+  * @version $Revision: 1.39 $
   */
 public interface Element extends Branch {
 
@@ -328,11 +328,12 @@ public interface Element extends Branch {
       * and appends the text values together.
       * 
       * @return the textual content of this Element. Child elements are not navigated.
+      * This method does not return null;
       */
     public String getText();    
    
     /** @return the trimmed text value where whitespace is trimmed and
-      * normalised into single spaces
+      * normalised into single spaces. This method does not return null.
       */
     public String getTextTrim();
 
@@ -675,5 +676,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.38 2003/05/15 22:49:19 maartenc Exp $
+ * $Id: Element.java,v 1.39 2003/12/03 14:28:06 jstrachan Exp $
  */
