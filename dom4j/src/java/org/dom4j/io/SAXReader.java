@@ -4,11 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.11 2001/01/29 13:02:56 jstrachan Exp $
  */
 
 package org.dom4j.io;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -41,7 +43,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 /** <p><code>SAXReader</code> creates a DOM4J tree from SAX parsing events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class SAXReader extends DocumentReader {
 
@@ -447,12 +449,82 @@ public class SAXReader extends DocumentReader {
     protected XMLReader createXMLReader() throws SAXException {
         String className = System.getProperty( "org.xml.sax.driver" );
         if (className == null || className.trim().length() <= 0) {
+            XMLReader reader = createXMLReaderViaJAXP();
+            if ( reader != null ) {
+                return reader;
+            }
             return new SAXDriver();
         }
         return XMLReaderFactory.createXMLReader();
     }
 
+    /** This method attempts to use JAXP to locate the  
+      * SAX2 XMLReader implementation.  
+      * This method uses reflection to avoid being dependent directly
+      * on the JAXP classes.
+      */
+    protected XMLReader createXMLReaderViaJAXP() {
+        Class factoryClass = null;
+        try {
+            factoryClass = Class.forName("javax.xml.parsers.SAXParserFactory");
+        }
+        catch (Exception e) {
+            // JAXP is not loaded so continue
+        }
+        if (factoryClass == null) {
+            return null;
+        }
+        try {            
+            Method newParserInstanceMethod 
+                = factoryClass.getMethod("newInstance", null);            
+            Object factory = newParserInstanceMethod.invoke(null, null);
+            if ( factory != null ) {
+                // set validating mode
+                Class[] setValidatePrototype = { boolean.class };
+                Method setValidatingMethod = factoryClass.getMethod(
+                    "setValidating", setValidatePrototype
+                );
+                Object[] setValidaingArgs = { 
+                    (isValidating()) ? Boolean.TRUE : Boolean.FALSE 
+                };
+                setValidatingMethod.invoke( factory, setValidaingArgs );
 
+                // create JAXP SAXParser
+                Method newSAXParserMethod 
+                    = factoryClass.getMethod("newSAXParser", null);
+                Object jaxpParser  = newSAXParserMethod.invoke(factory, null);
+                if ( jaxpParser != null ) {
+                    Class parserClass = jaxpParser.getClass();
+                    Method getXMLReaderMethod 
+                        = parserClass.getMethod("getXMLReader", null);
+
+                    return (XMLReader) getXMLReaderMethod.invoke(jaxpParser, null);
+                }
+            }
+        }
+        catch (Throwable e) {
+            // log all exceptions as warnings and carry
+            // on as we have a default SAX parser we can use
+            System.out.println( 
+                "Warning: Caught exception attempting to use JAXP to "
+                 + "load a SAX XMLReader " 
+            );
+            
+            // extract the real exception if its wrapped in 
+            // a reflection exception wrapper
+            if ( e instanceof InvocationTargetException ) {
+                InvocationTargetException ie = (InvocationTargetException) e;
+                e = ie.getTargetException();
+            }
+            System.out.println( "Warning: Exception was: " + e );
+            System.out.println( 
+                "Warning: I will print the stack trace then carry on "
+                 + "using the default SAX parser" 
+             );
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 
 
@@ -500,5 +572,5 @@ public class SAXReader extends DocumentReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.11 2001/01/29 13:02:56 jstrachan Exp $
  */

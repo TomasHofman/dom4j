@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.7 2001/01/29 13:02:56 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,6 +21,7 @@ import org.dom4j.tree.DefaultEntity;
 import org.dom4j.tree.DefaultNamespace;
 import org.dom4j.tree.DefaultProcessingInstruction;
 import org.dom4j.tree.DefaultText;
+import org.dom4j.tree.XPathEntity;
 
 /** <p><code>DocumentFactory</code> is a collection of factory methods to allow
   * easy custom building of DOM4J trees. The default tree that is built uses
@@ -30,7 +31,7 @@ import org.dom4j.tree.DefaultText;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class DocumentFactory {
 
@@ -221,7 +222,8 @@ public class DocumentFactory {
     
     
     public Entity createEntity(String name) {
-        return new DefaultEntity(name);
+        // allow this entity to be modified in place
+        return new XPathEntity(name);
     }
     
     public Entity createEntity(String name, String text) {
@@ -307,5 +309,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.7 2001/01/29 13:02:56 jstrachan Exp $
  */
