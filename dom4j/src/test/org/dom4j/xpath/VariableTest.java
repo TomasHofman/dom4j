@@ -22,12 +22,19 @@ import org.jaxen.SimpleVariableContext;
  * Test harness for the valueOf() function
  * 
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan </a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class VariableTest extends AbstractTestCase {
-    protected static String[] paths = {"$author", "$author/@name",
-            "$root/author", "$root/author[1]", "$root/author[1]/@name",
-            "$author/@name"};
+    // TODO: uncomment these if jaxen bug is fixed
+    // http://jira.codehaus.org/browse/JAXEN-73
+    protected static String[] paths = {
+            "$author",
+//            "$author/@name",
+//            "$root/author",
+//            "$root/author[1]",
+//            "$root/author[1]/@name",
+//            "$author/@name"
+        };
 
     private SimpleVariableContext variableContext = new SimpleVariableContext();
 
