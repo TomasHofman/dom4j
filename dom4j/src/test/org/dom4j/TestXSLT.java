@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXSLT.java,v 1.1 2001/06/18 08:10:03 jstrachan Exp $
+ * $Id: TestXSLT.java,v 1.2 2001/06/20 09:44:04 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -28,7 +28,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that XSLT works correctly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestXSLT extends AbstractTestCase {
 
@@ -78,7 +78,7 @@ public class TestXSLT extends AbstractTestCase {
             new StreamSource( xsl ) 
         );
         
-        // now lets create the TRaX source and result
+        // now lets create the TrAX source and result
         // objects and do the transformation
         Source source = new DocumentSource( document );
         DocumentResult result = new DocumentResult();
@@ -134,5 +134,5 @@ public class TestXSLT extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXSLT.java,v 1.1 2001/06/18 08:10:03 jstrachan Exp $
+ * $Id: TestXSLT.java,v 1.2 2001/06/20 09:44:04 jstrachan Exp $
  */
