@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLTableColumnDefinition.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: XMLTableColumnDefinition.java,v 1.3 2002/05/30 07:54:38 jstrachan Exp $
  */
 
 package org.dom4j.swing;
@@ -19,7 +19,7 @@ import org.dom4j.XPath;
   * within a table definition.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $ 
+  * @version $Revision: 1.3 $ 
   */
 public class XMLTableColumnDefinition implements Serializable {
 
@@ -36,6 +36,9 @@ public class XMLTableColumnDefinition implements Serializable {
     
     /** Holds value of property xpath. */
     private XPath xpath;
+    
+    /** Holds the XPath used for the column name */
+    private XPath columnNameXPath;
 
     public static int parseType(String typeName) {
         if ( typeName != null && typeName.length() > 0 ) {
@@ -64,6 +67,13 @@ public class XMLTableColumnDefinition implements Serializable {
     public XMLTableColumnDefinition(String name, XPath xpath, int type) {
         this.name = name;
         this.xpath = xpath;
+        this.type = type;
+    }
+    
+    public XMLTableColumnDefinition(XPath columnNameXPath, XPath xpath, int type) {
+        this.name = name;
+        this.xpath = xpath;
+        this.columnNameXPath = columnNameXPath;
         this.type = type;
     }
     
@@ -139,6 +149,20 @@ public class XMLTableColumnDefinition implements Serializable {
         this.xpath = xpath;
     }
     
+    /** 
+     * @return the XPath used to create the column name
+     */
+    public XPath getColumnNameXPath() {
+        return columnNameXPath;
+    }
+    
+    /** Setter for property xpath.
+     * @param xpath New value of property xpath.
+     */
+    public void setColumnNameXPath(XPath columnNameXPath) {
+        this.columnNameXPath = columnNameXPath;
+    }
+    
     // Implementation methods
     //-------------------------------------------------------------------------                
     protected XPath createXPath(String expression) {
@@ -196,5 +220,5 @@ public class XMLTableColumnDefinition implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLTableColumnDefinition.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: XMLTableColumnDefinition.java,v 1.3 2002/05/30 07:54:38 jstrachan Exp $
  */
