@@ -28,7 +28,7 @@ import org.xml.sax.helpers.AttributesImpl;
  * A simple test harness to check that the XML Writer works
  * 
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan </a>
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class XMLWriterTest extends AbstractTestCase {
     protected static final boolean VERBOSE = false;
@@ -287,6 +287,32 @@ public class XMLWriterTest extends AbstractTestCase {
         System.out.println("xml: " + xml);
 
         String expected = "<root>prefix <b></b> suffix</root>";
+        assertEquals(expected, xml);
+    }
+
+    public void testPadding2() throws Exception {
+        Document doc = DocumentFactory.getInstance().createDocument();
+        Element root = doc.addElement("root");
+        root.addText("prefix");
+        root.addElement("b");
+        root.addText("suffix");
+
+        OutputFormat format = new OutputFormat("", false);
+        format.setOmitEncoding(true);
+        format.setSuppressDeclaration(true);
+        format.setExpandEmptyElements(true);
+        format.setPadText(true);
+        format.setTrimText(true);
+
+        StringWriter buffer = new StringWriter();
+        XMLWriter writer = new XMLWriter(buffer, format);
+        writer.write(doc);
+
+        String xml = buffer.toString();
+
+        System.out.println("xml: " + xml);
+
+        String expected = "<root>prefix<b></b>suffix</root>";
         assertEquals(expected, xml);
     }
 
