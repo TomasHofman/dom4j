@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMReader.java,v 1.3 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.4 2001/05/31 07:20:22 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -35,7 +35,7 @@ import org.dom4j.Text;
   * a DOM4J tree from it.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMReader {
 
@@ -130,12 +130,19 @@ public class DOMReader {
                 break;
 
 
-            case org.w3c.dom.Node.ENTITY_REFERENCE_NODE:
+            case org.w3c.dom.Node.ENTITY_REFERENCE_NODE: {
                 // is there a better way to get the value of an entity?
-                element.addEntity(
-                    node.getNodeName(), 
-                    node.getFirstChild().getNodeValue()
-                );
+                    org.w3c.dom.Node firstChild = node.getFirstChild();
+                    if ( firstChild != null ) {
+                        element.addEntity(
+                            node.getNodeName(), 
+                            firstChild.getNodeValue()
+                        );
+                    }
+                    else {
+                        element.addEntity( node.getNodeName() );
+                    }
+                }
                 break;
 
             case org.w3c.dom.Node.ENTITY_NODE:
@@ -281,5 +288,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.3 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.4 2001/05/31 07:20:22 jstrachan Exp $
  */

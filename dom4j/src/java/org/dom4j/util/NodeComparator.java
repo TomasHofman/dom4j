@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NodeComparator.java,v 1.1 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: NodeComparator.java,v 1.2 2001/05/31 07:20:22 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -30,7 +30,7 @@ import org.dom4j.Text;
   * which is capable of comparing Nodes for equality based on their values.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class NodeComparator implements Comparator {
     
@@ -195,6 +195,14 @@ public class NodeComparator implements Comparator {
         return answer;
     }
     
+    public int compare( Namespace n1, Namespace n2 ) {
+        int answer = compare( n1.getURI(), n2.getURI() );
+        if ( answer == 0 ) {
+            answer = compare( n1.getPrefix(), n2.getPrefix() );
+        }
+        return answer;
+    }
+    
     public int compare( CharacterData t1, CharacterData t2 ) {
         return compare( t1.getText(), t2.getText() );
     }
@@ -313,5 +321,5 @@ public class NodeComparator implements Comparator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NodeComparator.java,v 1.1 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: NodeComparator.java,v 1.2 2001/05/31 07:20:22 jstrachan Exp $
  */
