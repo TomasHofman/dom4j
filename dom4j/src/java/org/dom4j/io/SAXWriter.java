@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXWriter.java,v 1.15 2002/06/18 08:02:11 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.16 2002/06/21 03:13:48 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -25,6 +25,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.Namespace;
+import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
 
@@ -49,7 +50,7 @@ import org.xml.sax.helpers.LocatorImpl;
 /** <p><code>SAXWriter</code> writes a DOM4J tree to a SAX ContentHandler.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class SAXWriter implements XMLReader {
 
@@ -119,6 +120,49 @@ public class SAXWriter implements XMLReader {
     }
 
     
+    /**
+     * A polymorphic method to write any Node to this SAX stream
+     */
+    public void write(Node node) throws SAXException {
+        int nodeType = node.getNodeType();
+        switch (nodeType) {
+            case Node.ELEMENT_NODE:
+                write((Element) node);
+                break;
+            case Node.ATTRIBUTE_NODE:
+                write((Attribute) node);
+                break;
+            case Node.TEXT_NODE:
+                write(node.getText());
+                break;
+            case Node.CDATA_SECTION_NODE:
+                write((CDATA) node);
+                break;
+            case Node.ENTITY_REFERENCE_NODE:
+                write((Entity) node);
+                break;
+            case Node.PROCESSING_INSTRUCTION_NODE:
+                write((ProcessingInstruction) node);
+                break;
+            case Node.COMMENT_NODE:
+                write((Comment) node);
+                break;
+            case Node.DOCUMENT_NODE:
+                write((Document) node);
+                break;
+            case Node.DOCUMENT_TYPE_NODE:
+                write((DocumentType) node);
+                break;
+            case Node.NAMESPACE_NODE:
+                // Will be output with attributes
+                //write((Namespace) node);
+                break;
+            default:
+                throw new SAXException( "Invalid node type: " + node );
+        }
+    }
+
+
     /** Generates SAX events for the given Document and all its content
       *
       * @param document is the Document to parse
@@ -683,5 +727,5 @@ public class SAXWriter implements XMLReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXWriter.java,v 1.15 2002/06/18 08:02:11 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.16 2002/06/21 03:13:48 jstrachan Exp $
  */
