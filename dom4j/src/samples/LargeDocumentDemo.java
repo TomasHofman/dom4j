@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LargeDocumentDemo.java,v 1.9 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.10 2001/05/21 15:28:29 jstrachan Exp $
  */
 
 import org.dom4j.*;
@@ -14,7 +14,7 @@ import org.dom4j.io.SAXReader;
   * {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     
@@ -41,10 +41,20 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     }
     
     // ElementHandler interface     
-    public void handle(Element element) {
-        println( "Called during parsing with element: " + element 
+    public void onStart(ElementPath path) {
+        Element element = path.getCurrent();
+        println( "onStart: of parsing element: " + element );
+    }
+    
+    public void onEnd(ElementPath path) {
+        Element element = path.getCurrent();
+        
+        println( "onEnd: of parsing element: " + element
             + " with: " + element.content().size() + " content node(s)" 
         );
+        
+        // now prune the current element to reduce memory
+        element.detach();
     }
     
     protected Document parse( String url ) throws Exception {
@@ -54,7 +64,7 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
         println( "Using Pruning Path: " + pruningPath );
         
         // enable pruning to call me back as each Element is complete
-        reader.setPruningMode( pruningPath, this );
+        reader.addHandler( pruningPath, this );
         
         println( "##### starting parse" );
         Document document = reader.read(url);
@@ -112,5 +122,5 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LargeDocumentDemo.java,v 1.9 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.10 2001/05/21 15:28:29 jstrachan Exp $
  */
