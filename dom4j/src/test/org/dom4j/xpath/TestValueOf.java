@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValueOf.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestValueOf extends AbstractTestCase {
 
@@ -44,16 +44,29 @@ public class TestValueOf extends AbstractTestCase {
         "/root/author[3]",
         "/root/author[3]/@name",
         "name()",
+        "name(.)",
         "name(..)",
+        "name(child::node())",
         "name(parent::*)",
         "name(../*)",
+        "name(../child::node())",
         "local-name()",
         "local-name(..)",
         "local-name(parent::*)",
         "local-name(../*)",
         "parent::*",
-        ".."
-        
+        "name(/)",
+        "name(/child::node())",
+        "name(/*)",
+        ".",
+        "..",
+        "../*",
+        "../child::node()",
+        "/",
+        "/*",
+        "/child::node()",
+//        "*",
+        "1+1"
     };
     
     
@@ -150,5 +163,5 @@ public class TestValueOf extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValueOf.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
  */

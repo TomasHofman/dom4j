@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameFunction.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
+ * $Id: NameFunction.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
  */
 
 
@@ -41,19 +41,14 @@ public class NameFunction implements Function {
             if (first instanceof List) {
                 return nameOfList( (List) first );
             }
-            else if (first instanceof Document) {
-                Document document = (Document) first;
-                Element element = document.getRootElement();
-                if (element != null) {
-                    return element.getQualifiedName();
-                }
-            }
             else if (first instanceof Element) {
                 return ((Element) first).getQualifiedName();
             }
             else if (first instanceof Attribute) {
                 return ((Attribute) first).getQualifiedName();
             }
+            // a document does not have an 'expanded name' in XPath
+            // http://www.w3.org/TR/xpath#dt-expanded-name
         }
         return "";
     }
@@ -105,5 +100,5 @@ public class NameFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameFunction.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
+ * $Id: NameFunction.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LocalNameFunction.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
+ * $Id: LocalNameFunction.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
  */
 
 
@@ -41,19 +41,14 @@ public class LocalNameFunction implements Function {
             if (first instanceof List) {
                 return nameOfList( (List) first );
             }
-            else if (first instanceof Document) {
-                Document document = (Document) first;
-                Element element = document.getRootElement();
-                if (element != null) {
-                    return element.getName();
-                }
-            }
             else if (first instanceof Element) {
                 return ((Element) first).getName();
             }
             else if (first instanceof Attribute) {
                 return ((Attribute) first).getName();
             }
+            // a document does not have an 'expanded name' in XPath
+            // http://www.w3.org/TR/xpath#dt-expanded-name
         }
         return "";
     }
@@ -104,5 +99,5 @@ public class LocalNameFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LocalNameFunction.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
+ * $Id: LocalNameFunction.java,v 1.5 2001/05/23 16:01:52 jstrachan Exp $
  */
