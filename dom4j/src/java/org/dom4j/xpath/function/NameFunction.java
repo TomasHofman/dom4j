@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameFunction.java,v 1.3 2001/04/12 16:55:42 jstrachan Exp $
+ * $Id: NameFunction.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
  */
 
 
@@ -28,21 +28,27 @@ public class NameFunction implements Function {
         if (args.size() == 0) {
             return evaluate( context );
         }
-        return evaluate( context.duplicate( args ) );
+        return nameOfList( args );
     }
 
     public static String evaluate(Context context) {
-        List list = context.getNodeSet();
+        return nameOfList( context.getNodeSet() );
+    }
+    
+    public static String nameOfList(List list) {
         if ( ! list.isEmpty() ) {            
             Object first = list.get(0);
-            if (first instanceof Document) {
+            if (first instanceof List) {
+                return nameOfList( (List) first );
+            }
+            else if (first instanceof Document) {
                 Document document = (Document) first;
                 Element element = document.getRootElement();
                 if (element != null) {
                     return element.getQualifiedName();
                 }
             }
-            if (first instanceof Element) {
+            else if (first instanceof Element) {
                 return ((Element) first).getQualifiedName();
             }
             else if (first instanceof Attribute) {
@@ -51,6 +57,7 @@ public class NameFunction implements Function {
         }
         return "";
     }
+    
 }
 
 
@@ -98,5 +105,5 @@ public class NameFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameFunction.java,v 1.3 2001/04/12 16:55:42 jstrachan Exp $
+ * $Id: NameFunction.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
  */

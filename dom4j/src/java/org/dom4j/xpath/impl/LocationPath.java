@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LocationPath.java,v 1.4 2001/04/12 16:55:42 jstrachan Exp $
+ * $Id: LocationPath.java,v 1.5 2001/05/22 12:24:11 jstrachan Exp $
  */
 
 
@@ -70,15 +70,29 @@ public class LocationPath extends PathExpr {
                         results.add( each );
                         return results;
                     }
-                    else if ( each instanceof Element ) {
+                    else if ( each instanceof Node ) {
                         List results = new ArrayList(1);
-                        results.add( ((Element)each).getDocument() );
+                        results.add( ((Node) each).getDocument() );
                         return results;
                     }
                 }
             }
-            else {
-                return Collections.EMPTY_LIST;
+            return Collections.EMPTY_LIST;
+        }
+        
+        if ( isAbsolute() ) {
+            Iterator nodeIter = context.getNodeSet().iterator();
+            while ( nodeIter.hasNext() ) {
+                Object each = nodeIter.next();  
+                if ( each instanceof Document ) {
+                    context.setNodeSet( (Document) each );
+                    break;
+                }
+                else if ( each instanceof Node ) {
+                    Node node = (Node) each;
+                    context.setNodeSet( node.getDocument() );
+                    break;
+                }
             }
         }
         
@@ -220,5 +234,5 @@ public class LocationPath extends PathExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LocationPath.java,v 1.4 2001/04/12 16:55:42 jstrachan Exp $
+ * $Id: LocationPath.java,v 1.5 2001/05/22 12:24:11 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValueOf.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -17,15 +17,17 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
+import org.dom4j.Element;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Namespace;
+import org.dom4j.Node;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestValueOf extends AbstractTestCase {
 
@@ -40,7 +42,18 @@ public class TestValueOf extends AbstractTestCase {
         "/root/author[2]",
         "/root/author[2]/@name",
         "/root/author[3]",
-        "/root/author[3]/@name"
+        "/root/author[3]/@name",
+        "name()",
+        "name(..)",
+        "name(parent::*)",
+        "name(../*)",
+        "local-name()",
+        "local-name(..)",
+        "local-name(parent::*)",
+        "local-name(../*)",
+        "parent::*",
+        ".."
+        
     };
     
     
@@ -59,16 +72,35 @@ public class TestValueOf extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testXPaths() throws Exception {        
+        Element root = document.getRootElement();
+        List children = root.elements( "author" );
+        Element child1 = (Element) children.get(0);
+        
+        testXPath( document );
+        testXPath( root );
+        testXPath( child1 );
+    }
+        
+    protected void testXPath(Node node) throws Exception {        
+        log( "Testing XPath on: " + node );
+        log( "===============================" );
+        
         int size = paths.length;
         for ( int i = 0; i < size; i++ ) {
-            testXPath( paths[i] );
+            testXPath( node, paths[i] );
         }
     }
         
-    protected void testXPath(String xpath) {
-        String value = document.valueOf(xpath);
+    protected void testXPath(Node node, String xpathExpr) throws Exception {
+        XPath xpath = node.createXPath( xpathExpr );
+        String value = xpath.valueOf(node);
         
-        log( "valueOf: " + xpath + " is: " + value );
+        log( "valueOf: " + xpathExpr + " is: " + value );
+        
+        if ( VERBOSE ) {
+            log( "xpath object: " + xpath );
+            log( "===============================" );
+        }
     }
     
 }
@@ -118,5 +150,5 @@ public class TestValueOf extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValueOf.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestValueOf.java,v 1.4 2001/05/22 12:24:11 jstrachan Exp $
  */
