@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSAXReader.java,v 1.10 2004/06/25 08:03:50 maartenc Exp $
+ * $Id: TestSAXReader.java,v 1.11 2004/08/07 18:58:47 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -21,6 +21,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.io.XMLWriter;
 import org.xml.sax.EntityResolver;
@@ -134,6 +135,14 @@ public class TestSAXReader extends TestCase {
         assertEquals("hello world", ((Element)l.get(1)).getStringValue());
     }
     
+    public void testEscapedComment() throws Exception {
+    	Document doc = DocumentHelper.parseText("<eg>&lt;!-- declarations for &lt;head> &amp; &lt;body> --&gt;</eg>");
+    	Element eg = doc.getRootElement();
+    	System.out.println(doc.asXML());
+    	assertEquals("<!-- declarations for <head> & <body> -->", eg.getText());
+    }
+
+    
 }
 
 
@@ -181,5 +190,5 @@ public class TestSAXReader extends TestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSAXReader.java,v 1.10 2004/06/25 08:03:50 maartenc Exp $
+ * $Id: TestSAXReader.java,v 1.11 2004/08/07 18:58:47 maartenc Exp $
  */
