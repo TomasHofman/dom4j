@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.15 2001/02/06 17:24:48 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.16 2001/02/07 11:35:54 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -112,9 +112,7 @@ public class DefaultElement extends AbstractElement {
     public String getText() {
         if ( contents == null ) {
             if ( firstNode != null ) {
-                if ( firstNode instanceof Text ) {
-                    return firstNode.getText();
-                }
+                return getContentAsText( firstNode );
             }
             return "";
         }
@@ -126,50 +124,35 @@ public class DefaultElement extends AbstractElement {
     public String getString() {
         if ( contents == null ) {
             if ( firstNode != null ) {
-                if ( firstNode instanceof Text ) {
-                    return firstNode.getText();
-                }
-                else if (firstNode instanceof Element ) {
-                    Element element = (Element) firstNode;
-                    return element.getString();
-                }
-                else if (firstNode instanceof Entity ) {
-                    Entity entity = (Entity) firstNode;
-                    return entity.getString();
-                }
+                return getContentAsStringValue( firstNode );
             }
-            return "";
         }
         else {
-            StringBuffer buffer = new StringBuffer();
-            for ( int i = 0, size = contents.size(); i < size; i++ ) {
-                Object node = contents.get(i);
-                String string = null;
-                if ( node instanceof String ) {
-                    string = (String) node;
+            int size = contents.size();
+            if ( size > 0 ) {
+                if ( size == 1 ) {
+                    // optimised to avoid StringBuffer creation
+                    return getContentAsStringValue( contents.get(0) );
                 }
-                else if ( node instanceof Text ) { 
-                    Text text = (Text) node;
-                    string = text.getText();
-                }
-                else if (firstNode instanceof Entity ) {
-                    Entity entity = (Entity) firstNode;
-                    string = entity.getString();
-                }
-                else if ( node instanceof Element ) { 
-                    Element element = (Element) node;
-                    string = element.getString();
-                }
-                if ( string != null ) {
-                    if ( buffer.length() > 0 ) {
-                        buffer.append( ' ' );
+                else {
+                    StringBuffer buffer = new StringBuffer();
+                    for ( int i = 0; i < size; i++ ) {
+                        Object node = contents.get(i);
+                        String string = getContentAsStringValue( node ); 
+                        if ( string.length() > 0 ) {
+                            if ( buffer.length() > 0 ) {
+                                buffer.append( ' ' );
+                            }
+                            buffer.append( string );
+                        }
                     }
-                    buffer.append( string );
+                    return buffer.toString();
                 }
             }
-            return buffer.toString();
         }
+        return "";
     }
+    
     
     public Namespace getNamespaceForPrefix(String prefix) {
         if ( prefix == null || prefix.length() <= 0 ) {
@@ -917,5 +900,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.15 2001/02/06 17:24:48 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.16 2001/02/07 11:35:54 jstrachan Exp $
  */
