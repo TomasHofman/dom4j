@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DocumentFactory.java,v 1.39 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: DocumentFactory.java,v 1.40 2004/07/11 10:49:36 maartenc Exp $
  */
 
 package org.dom4j;
@@ -38,7 +38,7 @@ import org.jaxen.VariableContext;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.39 $
+  * @version $Revision: 1.40 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -90,6 +90,20 @@ public class DocumentFactory implements Serializable {
     public Document createDocument() {
         DefaultDocument answer = new DefaultDocument();
         answer.setDocumentFactory( this );
+        return answer;
+    }
+    
+    /**
+     * @since 1.5
+     */
+    public Document createDocument(String encoding) {
+        // to keep the DocumentFactory backwards compatible, we have to do this
+        // in this not so nice way, since subclasses only need to extend the
+        // createDocument() method.
+        Document answer = createDocument();
+        if (answer instanceof DefaultDocument) {
+            ((DefaultDocument) answer).setXMLEncoding(encoding);
+        }
         return answer;
     }
 
@@ -369,5 +383,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.39 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: DocumentFactory.java,v 1.40 2004/07/11 10:49:36 maartenc Exp $
  */

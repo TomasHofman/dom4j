@@ -4,14 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.22 2004/06/29 14:25:20 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.23 2004/07/11 10:49:36 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.io.ByteArrayInputStream;
 import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -19,12 +17,13 @@ import java.util.StringTokenizer;
 import org.dom4j.io.SAXReader;
 import org.dom4j.rule.Pattern;
 import org.jaxen.VariableContext;
+import org.xml.sax.InputSource;
 
 /** <p><code>DocumentHelper</code> is a collection of helper methods 
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
 public class DocumentHelper {
 
@@ -210,7 +209,33 @@ public class DocumentHelper {
       */
     public static Document parseText(String text) throws DocumentException {
         SAXReader reader = new SAXReader();
-        return reader.read(new StringReader(text));
+        String encoding = getEncoding(text);
+        
+        InputSource source = new InputSource(new StringReader(text));
+        source.setEncoding(encoding);
+        return reader.read(source);
+    }
+    
+    private static String getEncoding(String text) {
+    	String result = null;
+    	
+    	String xml = text.trim();
+    	if (xml.startsWith("<?xml")) {
+    		int end = xml.indexOf("?>");
+    		String sub = xml.substring(0, end);
+			StringTokenizer tokens = new StringTokenizer(sub, " =\"\'");
+			while (tokens.hasMoreTokens()) {
+				String token = tokens.nextToken();
+				if ("encoding".equals(token)) {
+					if (tokens.hasMoreTokens()) {
+						result = tokens.nextToken();
+					}
+					break;
+				}
+			}
+    	}
+    	
+    	return result;
     }
 
     /** <p>makeElement</p> a helper method which navigates from the
@@ -308,5 +333,5 @@ public class DocumentHelper {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.22 2004/06/29 14:25:20 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.23 2004/07/11 10:49:36 maartenc Exp $
  */
