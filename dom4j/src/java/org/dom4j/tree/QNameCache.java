@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QNameCache.java,v 1.1 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.2 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -19,7 +19,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class QNameCache {
 
@@ -43,7 +43,7 @@ public class QNameCache {
         return answer;
     }
     
-    /** @return the QName for the given name and namepsace 
+    /** @return the QName for the given local name and namepsace 
       */
     public QName get(String name, Namespace namespace) {
         Map cache = getNamespaceCache(namespace);
@@ -51,6 +51,19 @@ public class QNameCache {
         if (answer == null) {
             answer = new QName(name, namespace);
             cache.put(name, answer);
+        }
+        return answer;
+    }
+    
+
+    /** @return the QName for the given local name, qualified name and namepsace 
+      */
+    public QName get(String localName, Namespace namespace, String qualifiedName) {
+        Map cache = getNamespaceCache(namespace);
+        QName answer = (QName) cache.get(localName);
+        if (answer == null) {
+            answer = new QName(localName, namespace, qualifiedName);
+            cache.put(localName, answer);
         }
         return answer;
     }
@@ -124,5 +137,5 @@ public class QNameCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.1 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.2 2001/01/30 15:26:09 jstrachan Exp $
  */

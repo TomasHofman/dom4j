@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.13 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: Branch.java,v 1.14 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import java.util.Map;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public interface Branch extends Node {
 
@@ -117,28 +117,6 @@ public interface Branch extends Node {
       * @return the newly added <code>Element</code> node.
       */    
     public Element addElement(QName qname);
-    
-    /** Adds a new <code>Element</code> node with the given name and namespace
-      * prefix and URI to this branch and returns a reference to the new node.
-      *
-      * @param name is the name for the <code>Element</code> node.
-      * @param prefix is the namespace prefix for the 
-      *   <code>Element</code> node.
-      * @param uri is the namespace URI for the 
-      *   <code>Element</code> node.
-      * @return the newly added <code>Element</code> node.
-      */    
-    public Element addElement(String name, String prefix, String uri);
-    
-    /** Adds a new <code>Element</code> node with the given name and namespace
-      * to this branch and returns a reference to the new node.
-      *
-      * @param name is the name for the <code>Element</code> node.
-      * @param namespace is the <code>Namespace</code> for the 
-      *   <code>Element</code> node.
-      * @return the newly added <code>Element</code> node.
-      */    
-    public Element addElement(String name, Namespace namespace);
     
     /** Adds a processing instruction for the given target
       *
@@ -271,5 +249,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.13 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: Branch.java,v 1.14 2001/01/30 15:26:09 jstrachan Exp $
  */

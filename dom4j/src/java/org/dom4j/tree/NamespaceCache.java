@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceCache.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: NamespaceCache.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class NamespaceCache {
 
@@ -30,7 +30,7 @@ public class NamespaceCache {
 
     /** @return the name model for the given name and namepsace 
       */
-    public Namespace get(String prefix, String uri) {
+    public synchronized Namespace get(String prefix, String uri) {
         Map cache = getURICache(uri);
         Namespace answer = (Namespace) cache.get(prefix);
         if (answer == null) {
@@ -60,7 +60,7 @@ public class NamespaceCache {
       * @return a newly created {@link Namespace} instance.
       */
     protected Namespace createNamespace(String prefix, String uri) {
-        return new DefaultNamespace(prefix, uri);
+        return new Namespace(prefix, uri);
     }
     /** A factory method to create prefix caches
       * @return a newly created {@link Map} instance.
@@ -122,5 +122,5 @@ public class NamespaceCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceCache.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: NamespaceCache.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
  */

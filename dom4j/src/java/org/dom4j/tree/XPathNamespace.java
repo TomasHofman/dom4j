@@ -4,22 +4,23 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathNamespace.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathNamespace.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
-import org.dom4j.Node;
 import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.Namespace;
 
 /** <p><code>XPathNamespace</code> implements a doubly linked node which 
   * supports the parent relationship and is mutable.
-  * It is useful when evalutating XPath expressions.</p>
+  * It is useful when returning results from XPath expressions.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
-public class XPathNamespace extends DefaultNamespace {
+public class XPathNamespace extends Namespace {
 
     /** The parent of this node */
     private Element parent;
@@ -98,5 +99,5 @@ public class XPathNamespace extends DefaultNamespace {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathNamespace.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: XPathNamespace.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
  */

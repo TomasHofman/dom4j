@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.20 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.21 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -176,10 +176,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         }
     }
     
-    public String getAttributeValue(String name, Namespace ns) {
-        return getAttributeValue( QName.get( name, ns ) );
-    }
-
     public String getAttributeValue(String name, String defaultValue) {
         String answer = getAttributeValue(name);
         return (answer != null) ? answer : defaultValue;
@@ -187,11 +183,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
 
     public String getAttributeValue(QName qName, String defaultValue) {
         String answer = getAttributeValue(qName);
-        return (answer != null) ? answer : defaultValue;
-    }
-    
-    public String getAttributeValue(String name, Namespace namespace, String defaultValue) {
-        String answer = getAttributeValue(name, namespace);
         return (answer != null) ? answer : defaultValue;
     }
     
@@ -221,10 +212,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         else {
             attribute.setValue(value);
         }
-    }
-    
-    public void setAttributeValue(String name, String value, Namespace namespace) {
-        setAttributeValue( QName.get( name, namespace ), value );
     }
     
     public void add(Attribute attribute) {
@@ -274,7 +261,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return node;
     }
     
-    public Namespace addAdditionalNamespace(String prefix, String uri) {
+    public Namespace addNamespace(String prefix, String uri) {
         Namespace node = getDocumentFactory().createNamespace(prefix, uri);
         add(node);
         return node;
@@ -359,13 +346,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
     
     public void add(Namespace namespace) {
-        String prefix = namespace.getPrefix();
-        if ( prefix.equals( getNamespacePrefix() ) ) {
-            throw new IllegalAddException( 
-                "The namespace with the given prefix conflicts with the "
-                + "prefix of this element: " + prefix 
-            );
-        }
         addNode(namespace);
     }
     
@@ -425,11 +405,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return (element != null) ? element.getText() : null;
     }
         
-    public String getElementText(String name, Namespace namespace) {
-        Element element = getElement(name);
-        return (element != null) ? element.getText() : null;
-    }
-    
     
     public String getElementTextTrim(String name) {
         Element element = getElement(name);
@@ -441,11 +416,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return (element != null) ? element.getTextTrim() : null;
     }
         
-    public String getElementTextTrim(String name, Namespace namespace) {
-        Element element = getElement(name, namespace);
-        return (element != null) ? element.getTextTrim() : null;
-    }
-    
 
     // add to me content from another element
     // analagous to the addAll(collection) methods in Java 2 collections
@@ -453,13 +423,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         for (Iterator i = attributeIterator(); i.hasNext(); ) {
             Attribute attribute = (Attribute) i.next();
             if ( attribute.supportsParent() ) {
-                Namespace namespace = attribute.getNamespace();
-                if (namespace != null) {
-                    setAttributeValue(attribute.getName(), attribute.getValue(), namespace);
-                }
-                else {
-                    setAttributeValue(attribute.getName(), attribute.getValue(), namespace);
-                }
+                setAttributeValue(attribute.getQName(), attribute.getValue());
             }
             else {
                 element.add(attribute);
@@ -535,10 +499,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return clone;
     }
     
-    public Element createCopy(String name, Namespace namespace) {
-        return createCopy( QName.get( name, namespace ) );
-    }
-
     protected Element createElement(String name) {
         return getDocumentFactory().createElement(name);
     }
@@ -615,5 +575,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.20 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.21 2001/01/30 15:26:09 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.8 2001/01/25 17:34:07 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.9 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 // This is a port of a file from the JDOM project
@@ -131,7 +131,7 @@ import org.dom4j.Text;
  * @author David &amp; Will (from Post Tool Design)
  * @author Dan Schaffer
  * @author Alex Chaffee (alex@jguru.com)
- * @version $Revision: 1.8 $ 
+ * @version $Revision: 1.9 $ 
  */
 public class XMLWriter implements Cloneable {
 
@@ -1041,8 +1041,7 @@ public class XMLWriter implements Cloneable {
         Namespace ns = element.getNamespace();
         if (ns != null && ns != Namespace.NO_NAMESPACE && ns != Namespace.XML_NAMESPACE) {
             String prefix = ns.getPrefix();        
-            String uri = namespaces.getURI(prefix);
-            if (!ns.getURI().equals(uri)) { // output a new namespace declaration
+            if ( ! namespaces.containsPrefix( prefix ) ) {
                 namespaces.push(ns);
                 printNamespace(ns, out);
             }
@@ -1521,5 +1520,5 @@ public class XMLWriter implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.8 2001/01/25 17:34:07 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.9 2001/01/30 15:26:09 jstrachan Exp $
  */

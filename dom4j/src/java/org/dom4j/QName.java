@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.2 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: QName.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class QName {
 
@@ -44,12 +44,26 @@ public class QName {
         return cache.get(name, namespace);
     }
     
+    public static synchronized QName get(String name, String prefix, String uri) {
+        return cache.get(name, Namespace.get( prefix, uri ));
+    }
+    
+    public static synchronized QName get(String localName, Namespace namespace, String qualifiedName) {
+        return cache.get(localName, namespace, qualifiedName);
+    }
+    
     public QName(String name) {
         this( name, Namespace.NO_NAMESPACE );
     }
     
     public QName(String name, Namespace namespace) {
         this.name = (name == null) ? "" : name;
+        this.namespace = (namespace == null) ? Namespace.NO_NAMESPACE : namespace;
+    }
+
+    public QName(String name, Namespace namespace, String qualifiedName) {
+        this.name = (name == null) ? "" : name;
+        this.qualifiedName = qualifiedName;
         this.namespace = (namespace == null) ? Namespace.NO_NAMESPACE : namespace;
     }
 
@@ -175,5 +189,5 @@ public class QName {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.2 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: QName.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
  */

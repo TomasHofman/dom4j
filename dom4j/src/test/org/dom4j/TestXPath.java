@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.9 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.10 2001/01/30 15:26:09 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,11 +18,11 @@ import junit.textui.TestRunner;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestXPath extends AbstractTestCase {
 
-    protected static boolean VERBOSE = false;
+    protected static boolean VERBOSE = true;
     
     protected static String[] paths = {
         "root",
@@ -38,7 +38,10 @@ public class TestXPath extends AbstractTestCase {
         "normalize-space(/root/author)",
         "normalize-space(' a  b  c  d ')",
         "root|author",
-        "//root|//author"
+        "//root|//author[1]|//author[2]",
+        "//root/author[1]",
+        "//root/author[2]",
+        "//root/author[3]"
     };
     
     
@@ -126,5 +129,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.9 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.10 2001/01/30 15:26:09 jstrachan Exp $
  */
