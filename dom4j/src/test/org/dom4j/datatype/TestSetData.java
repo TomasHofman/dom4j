@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSetData.java,v 1.4 2003/06/05 23:12:21 maartenc Exp $
+ * $Id: TestSetData.java,v 1.5 2003/09/26 06:13:33 werken Exp $
  */
 
 package org.dom4j.datatype;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Tests setting the value of datatype aware element or attribute value
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestSetData extends AbstractTestCase {
 
@@ -181,7 +181,7 @@ public class TestSetData extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
-        Document schema = reader.read( "d:/projects/dom4j/xml/test/schema/personal.xsd" );
+        Document schema = reader.read( "xml/test/schema/personal.xsd" );
         factory.loadSchema( schema );
         Namespace ns = new Namespace( "t", "urn://testing" );
         factory.loadSchema( schema, ns );
@@ -233,5 +233,5 @@ public class TestSetData extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSetData.java,v 1.4 2003/06/05 23:12:21 maartenc Exp $
+ * $Id: TestSetData.java,v 1.5 2003/09/26 06:13:33 werken Exp $
  */

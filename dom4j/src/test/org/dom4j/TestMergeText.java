@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestMergeText.java,v 1.4 2003/04/07 22:24:24 jstrachan Exp $
+ * $Id: TestMergeText.java,v 1.5 2003/09/26 06:13:33 werken Exp $
  */
 
 package org.dom4j;
@@ -21,12 +21,12 @@ import org.dom4j.io.SAXReader;
 /** A test harness for SAXReader option setMergeAdjacentText(true)
   *
   * @author <a href="mailto:slehmann@novell.com">Steen Lehmann</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestMergeText extends AbstractTestCase {
 
     /** Input XML file to read */
-    protected static String INPUT_XML_FILE = "xml/test/mergeText.xml";
+    protected static String INPUT_XML_FILE = "xml/test/mergetext.xml";
     
     public static void main( String[] args ) {
         TestRunner.run( suite() );
@@ -57,7 +57,7 @@ public class TestMergeText extends AbstractTestCase {
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
         reader.setMergeAdjacentText(true);
-        document = reader.read( new File( INPUT_XML_FILE ) );
+        document = reader.read( new File( INPUT_XML_FILE ).toURL() );
     }
     
     private void checkNoAdjacent(Element parent) {
@@ -125,5 +125,5 @@ public class TestMergeText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestMergeText.java,v 1.4 2003/04/07 22:24:24 jstrachan Exp $
+ * $Id: TestMergeText.java,v 1.5 2003/09/26 06:13:33 werken Exp $
  */
