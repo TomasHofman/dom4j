@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.12 2003/04/07 22:15:01 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.13 2004/02/27 16:57:00 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class DOMNodeHelper {
 
@@ -383,7 +383,16 @@ public class DOMNodeHelper {
     public static NodeList createNodeList( final List list ) {
         return new NodeList() {
             public org.w3c.dom.Node item(int index) {
-                return DOMNodeHelper.asDOMNode( (Node) list.get( index ) );
+                if (index >= getLength()) {
+                    /*
+                     * From the NodeList specification:
+                     * If index is greater than or equal to the number of nodes
+                     * in the list, this returns null.
+                     */
+                    return null;
+                } else {
+                    return DOMNodeHelper.asDOMNode( (Node) list.get( index ) );
+                }
             }
             public int getLength() {
                 return list.size();
@@ -511,5 +520,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.12 2003/04/07 22:15:01 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.13 2004/02/27 16:57:00 maartenc Exp $
  */
