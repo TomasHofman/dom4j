@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.40 2001/11/15 23:38:29 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.41 2001/11/15 23:53:23 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.40 $
+  * @version $Revision: 1.41 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -674,18 +674,21 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
       * text node with it and add it to the current element 
       */
     protected void completeCurrentTextNode() {
-        boolean whitespace = true;
         if ( stripWhitespaceText ) {
+            boolean whitespace = true;
             for ( int i = 0, size = textBuffer.length(); i < size; i++ ) {
                 if ( ! Character.isWhitespace( textBuffer.charAt(i) ) ) {
                     whitespace = false;
                     break;
                 }
             }
+            if ( ! whitespace ) {
+                currentElement.addText( textBuffer.toString() );
+            }
         }
-        if ( ! whitespace ) {
+        else {
             currentElement.addText( textBuffer.toString() );
-        }
+        }        
         textBuffer.setLength(0);
         textInTextBuffer = false;
     }
@@ -829,5 +832,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.40 2001/11/15 23:38:29 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.41 2001/11/15 23:53:23 jstrachan Exp $
  */
