@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.32 2001/08/06 15:10:33 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.33 2001/08/09 11:45:27 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -45,7 +45,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.32 $
+  * @version $Revision: 1.33 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -387,16 +387,20 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     /** Add all the attributes to the given elements
       */
     protected void addAttributes( Element element, Attributes attributes ) {
+        // XXXX: as an optimisation, we could deduce this value from the current
+        // SAX parser settings, the SAX namespaces-prefixes feature
+        
+        boolean noNamespaceAttributes = false;
         if ( element instanceof AbstractElement ) {
             // optimised method
             AbstractElement baseElement = (AbstractElement) element;
-            baseElement.setAttributes( attributes, namespaceStack );
+            baseElement.setAttributes( attributes, namespaceStack, noNamespaceAttributes );
         }
         else {
             int size = attributes.getLength();
             for ( int i = 0; i < size; i++ ) {
                 String attributeQualifiedName = attributes.getQName(i);
-                if ( ! attributeQualifiedName.startsWith( "xmlns" ) ) {
+                if ( noNamespaceAttributes || ! attributeQualifiedName.startsWith( "xmlns" ) ) {
                     String attributeURI = attributes.getURI(i);
                     String attributeLocalName = attributes.getLocalName(i);
                     String attributeValue = attributes.getValue(i);
@@ -463,5 +467,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.32 2001/08/06 15:10:33 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.33 2001/08/09 11:45:27 jstrachan Exp $
  */
