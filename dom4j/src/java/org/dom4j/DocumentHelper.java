@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.16 2004/04/23 06:50:07 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.17 2004/04/29 09:42:23 maartenc Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.jaxen.VariableContext;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class DocumentHelper {
 
@@ -244,7 +244,7 @@ public class DocumentHelper {
       * existed on the path or were created by this method.
       */
     public static Element makeElement(Branch source, String path) {
-        StringTokenizer enum = new StringTokenizer( path, "/" );
+        StringTokenizer tokens = new StringTokenizer( path, "/" );
         Element parent;
         if ( source instanceof Document ) {
             Document document = (Document) source;
@@ -252,7 +252,7 @@ public class DocumentHelper {
             
             // lets throw a NoSuchElementException 
             // if we are given an empty path
-            String name = enum.nextToken();
+            String name = tokens.nextToken();
             if ( parent == null ) {
                 parent = document.addElement( name );
             }
@@ -261,8 +261,8 @@ public class DocumentHelper {
             parent = (Element) source;
         }
         Element element = null;
-        while ( enum.hasMoreTokens() ) {
-            String name = enum.nextToken();
+        while ( tokens.hasMoreTokens() ) {
+            String name = tokens.nextToken();
             if ( name.indexOf( ':' ) > 0 ) {
                 element = parent.element( parent.getQName( name ) );
             }
@@ -323,5 +323,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.16 2004/04/23 06:50:07 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.17 2004/04/29 09:42:23 maartenc Exp $
  */
