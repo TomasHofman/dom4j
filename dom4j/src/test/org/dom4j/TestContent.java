@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.11 2002/04/23 14:22:13 jstrachan Exp $
+ * $Id: TestContent.java,v 1.12 2002/04/23 14:43:30 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -133,6 +133,24 @@ public class TestContent extends AbstractTestCase {
         assertTrue( "Second element is an element", root instanceof Element );
         
     }
+    
+    public void testAddingInTheMiddle() throws Exception {
+        Document doc = factory.createDocument();
+        Element root = doc.addElement( "html" );
+        Element header = root.addElement( "header" );
+        Element footer = root.addElement( "footer" );
+
+        // now lets add <foo> in between header & footer
+        List list = root.content();
+        Element foo = factory.createElement( "foo" );
+        list.add( 1, foo );
+
+        // assertions
+        assertTrue( list.size() == 3 );
+        assertTrue( list.get(0) == header );
+        assertTrue( list.get(1) == foo );
+        assertTrue( list.get(2) == footer );
+    }
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
@@ -196,5 +214,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.11 2002/04/23 14:22:13 jstrachan Exp $
+ * $Id: TestContent.java,v 1.12 2002/04/23 14:43:30 jstrachan Exp $
  */
