@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMDocumentFactory.java,v 1.18 2004/12/17 19:57:27 maartenc Exp $
+ * $Id: DOMDocumentFactory.java,v 1.19 2005/01/05 08:32:28 ddlucas Exp $
  */
 
 package org.dom4j.dom;
@@ -23,39 +23,51 @@ import org.dom4j.Namespace;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.QName;
 import org.dom4j.Text;
-
+import org.dom4j.util.SingletonStrategy;
 import org.w3c.dom.DOMException;
 
-/**
- * <p>
- * <code>DOMDocumentFactory</code> is a factory of DOM4J objects which
- * implement the W3C DOM API.
- * </p>
- *
- * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.18 $
- */
-public class DOMDocumentFactory extends DocumentFactory
-    implements org.w3c.dom.DOMImplementation {
-    private static final ThreadLocal SINGLE_PER_THREAD = new ThreadLocal();
-    private static String domDocumentFactoryClassName = null;
+/** <p><code>DOMDocumentFactory</code> is a factory of DOM4J objects
+  * which implement the W3C DOM API.</p>
+  *
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.19 $
+  */
+public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.DOMImplementation {
 
-    /**
-     * <p>
-     * Access to the singleton instance of this factory.
-     * </p>
-     *
-     * @return the default singleon instance
-     */
-    public static DocumentFactory getInstance() {
-        DOMDocumentFactory fact = (DOMDocumentFactory) SINGLE_PER_THREAD.get();
+    /** The Singleton instance */
+    private static SingletonStrategy singleton=null;
 
-        if (fact == null) {
-            fact = new DOMDocumentFactory();
-            SINGLE_PER_THREAD.set(fact);
+    static {
+      try{
+        String defaultSingletonClass = "org.dom4j.util.SimpleSingleton";
+        Class clazz = null;
+        try {
+          String singletonClass = defaultSingletonClass;
+          singletonClass = System.getProperty(
+              "org.dom4j.dom.DOMDocumentFactory.singleton.strategy",
+              singletonClass);
+          clazz = DOMDocumentFactory.class.forName(singletonClass);
         }
+        catch (Exception exc1) {
+          try {
+            String singletonClass = defaultSingletonClass;
+            clazz = DOMDocumentFactory.class.forName(singletonClass);
+          }
+          catch (Exception exc2) {
+          }
+        }
+        singleton = (SingletonStrategy) clazz.newInstance();
+        singleton.setSingletonClassName(DOMDocumentFactory.class.getName());
+      }  catch(Exception exc3) {}
+    }
 
-        return fact;
+    /** <p>Access to the singleton instance of this factory.</p>
+      *
+      * @return the default singleon instance
+      */
+    public static DocumentFactory getInstance() {
+      DOMDocumentFactory fact =(DOMDocumentFactory)singleton.instance();
+       return fact;
     }
 
     // Factory methods
@@ -209,5 +221,5 @@ public class DOMDocumentFactory extends DocumentFactory
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentFactory.java,v 1.18 2004/12/17 19:57:27 maartenc Exp $
+ * $Id: DOMDocumentFactory.java,v 1.19 2005/01/05 08:32:28 ddlucas Exp $
  */
