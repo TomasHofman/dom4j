@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.46 2001/06/26 17:35:02 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.47 2001/06/29 11:10:19 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.46 $
+  * @version $Revision: 1.47 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -409,6 +409,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         // now lets add all attribute values
         int size = attributes.getLength();
         if ( size > 0 ) {
+            DocumentFactory factory = getDocumentFactory();
             if ( size == 1 ) {
                 // allow lazy construction of the List of Attributes
                 String attributeURI = attributes.getURI(0);
@@ -419,7 +420,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                 QName attributeQName = namespaceStack.getQName( 
                     attributeURI, attributeLocalName, attributeQualifiedName 
                 );
-                addAttribute(attributeQName, attributeValue);
+                add(factory.createAttribute(this, attributeQName, attributeValue));
             }
             else {
                 List list = attributeList(size);
@@ -435,7 +436,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                     QName attributeQName = namespaceStack.getQName( 
                         attributeURI, attributeLocalName, attributeQualifiedName 
                     );
-                    Attribute attribute = getDocumentFactory().createAttribute(
+                    Attribute attribute = factory.createAttribute(
                         this, attributeQName, attributeValue
                     );
                     list.add(attribute);
@@ -1246,5 +1247,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.46 2001/06/26 17:35:02 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.47 2001/06/29 11:10:19 jstrachan Exp $
  */

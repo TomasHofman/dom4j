@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRoundTrip.java,v 1.4 2001/06/22 10:19:12 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.5 2001/06/29 11:10:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -35,7 +35,7 @@ import org.dom4j.util.NodeComparator;
 /** A test harness to test the the round trips of Documents.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestRoundTrip extends AbstractTestCase {
     
@@ -276,6 +276,14 @@ public class TestRoundTrip extends AbstractTestCase {
     protected void assertNodesEqualContent( Branch b1, Branch b2 ) {
         int c1 = b1.nodeCount();
         int c2 = b2.nodeCount();
+        
+        if ( c1 != c2 ) {
+            log( "Content of: " + b1 );
+            log( "is: " + b1.content() );
+            log( "Content of: " + b2 );
+            log( "is: " + b2.content() );
+        }
+        
         assertEquals( 
             "Branches have same number of children (" + c1 + ", " + c2 
                 + " for: " + b1 + " and " + b2,
@@ -376,5 +384,5 @@ public class TestRoundTrip extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRoundTrip.java,v 1.4 2001/06/22 10:19:12 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.5 2001/06/29 11:10:19 jstrachan Exp $
  */
