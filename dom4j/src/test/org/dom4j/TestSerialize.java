@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSerialize.java,v 1.6 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.7 2001/10/25 11:18:35 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that a dom4j document is Serializable
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestSerialize extends AbstractTestCase {
 
@@ -84,6 +84,10 @@ public class TestSerialize extends AbstractTestCase {
         assertTrue( "Read back document after serialization", doc2 != null && doc2 instanceof Document );
         
         assertDocumentsEqual( document, (Document) doc2 );        
+        
+        // now lets try add something to the document...
+        
+        doc2.getRootElement().addElement( "new" );
     }            
     
     protected void setUp() throws Exception {
@@ -135,5 +139,5 @@ public class TestSerialize extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSerialize.java,v 1.6 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.7 2001/10/25 11:18:35 jstrachan Exp $
  */

@@ -4,12 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.31 2001/09/20 08:41:04 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.32 2001/10/25 11:18:18 jstrachan Exp $
  */
 
 package org.dom4j;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.Serializable;
+
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.31 $
+  * @version $Revision: 1.32 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -75,7 +78,7 @@ public class DocumentFactory implements Serializable {
     }
 
     public DocumentFactory() {
-        cache = createQNameCache();
+        init();
     }
     
     
@@ -280,6 +283,16 @@ public class DocumentFactory implements Serializable {
         return new QNameCache(this);
     }
 
+    
+    
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();
+        init();
+    }
+    
+    protected void init() {
+        cache = createQNameCache();
+    }
 }
 
 
@@ -327,5 +340,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.31 2001/09/20 08:41:04 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.32 2001/10/25 11:18:18 jstrachan Exp $
  */
