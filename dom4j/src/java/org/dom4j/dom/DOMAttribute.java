@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMAttribute.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.6 2001/09/25 16:48:10 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
     
@@ -75,9 +75,12 @@ public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
         DOMNodeHelper.setNodeValue(this, nodeValue);
     }
         
-
+    
     public org.w3c.dom.Node getParentNode() {
-        return DOMNodeHelper.getParentNode(this);
+        // Per http://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-637646024 
+        // and the NIST conformance tests, Attr.getParentNode() should always 
+        // return null
+        return null;
     }
     
     public NodeList getChildNodes() {
@@ -215,5 +218,5 @@ public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMAttribute.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.6 2001/09/25 16:48:10 jstrachan Exp $
  */
