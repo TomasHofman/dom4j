@@ -4,7 +4,8 @@ import org.dom4j.XPathEngine;
 
 /** <p><code>Document</code> defines an XML Document.</p>
   *
-  * @version $Revision: 1.1 $
+  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+  * @version $Revision: 1.2 $
   */
 public interface Document extends Branch {
 

@@ -2,13 +2,15 @@ package org.dom4j.tree;
 
 import java.util.Map;
 
+import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
 
 /** <p><code>DefaultProcessingInstruction</code> is the DOM4J default implementation
   * of a singly linked, read-only XML Processing Instruction.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DefaultProcessingInstruction extends AbstractProcessingInstruction {
 
@@ -23,7 +25,8 @@ public class DefaultProcessingInstruction extends AbstractProcessingInstruction 
 
     /** A default constructor for implementors to use.
       */
-    protected DefaultProcessingInstruction() { }
+    public DefaultProcessingInstruction() { 
+    }
 
     /** <p>This will create a new PI with the given target and data</p>
       *
@@ -32,7 +35,8 @@ public class DefaultProcessingInstruction extends AbstractProcessingInstruction 
       */
     public DefaultProcessingInstruction(String target, Map data) {
         this.target = target;
-        setValues(data);
+        this.mapData = data;
+        this.rawData = toString(data);
     }
 
     /** <p>This will create a new PI with the given target and data</p>
@@ -64,6 +68,10 @@ public class DefaultProcessingInstruction extends AbstractProcessingInstruction 
             return "";
         }
         return answer;
+    }
+    
+    protected Node createXPathNode(Element parent) {
+        return new XPathProcessingInstruction( parent, getTarget(), getText() );
     }
 }
 

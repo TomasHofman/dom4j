@@ -1,5 +1,7 @@
 package org.dom4j.tree;
 
+import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.Namespace;
 
 /** <p><code>DefaultAttribute</code> is the DOM4J default implementation
@@ -8,7 +10,7 @@ import org.dom4j.Namespace;
   * <p>It implements a singly linked attribute.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultAttribute extends AbstractAttribute {
 
@@ -60,5 +62,9 @@ public class DefaultAttribute extends AbstractAttribute {
 
     public String getValue() {
         return value;
+    }
+    
+    protected Node createXPathNode(Element parent) {
+        return new XPathAttribute(parent, name, value, namespace);
     }
 }

@@ -26,7 +26,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -35,6 +35,9 @@ public class DefaultElement extends AbstractElement {
 
     /** The <code>Namespace</code> for this elemenet */
     private Namespace namespace;
+
+    /** The parent of this node */
+    private Element parent;
 
     /** The <code>ContentModel</code> for this elemenet */
     private ContentModel contentModel;
@@ -76,6 +79,18 @@ public class DefaultElement extends AbstractElement {
         this.name = name;
     }
     
+    public Element getParent() {
+        return parent;
+    }
+
+    public void setParent(Element parent) {
+        this.parent = parent;
+    }
+    
+    public boolean supportsParent() {
+        return true;
+    }
+
     /** Allows derived classes to override the content model */
     protected ContentModel getContentModel() {
         if ( contentModel == null ) {

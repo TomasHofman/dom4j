@@ -1,5 +1,7 @@
 package org.dom4j.tree;
 
+import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.Text;
 import org.dom4j.TreeVisitor;
 
@@ -7,7 +9,7 @@ import org.dom4j.TreeVisitor;
   * singly linked read only XML Text.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultText extends AbstractText implements Text {
 
@@ -24,4 +26,7 @@ public class DefaultText extends AbstractText implements Text {
 	return text;
     }
     
+    protected Node createXPathNode(Element parent) {
+        return new XPathText( parent, getText() );
+    }
 }
