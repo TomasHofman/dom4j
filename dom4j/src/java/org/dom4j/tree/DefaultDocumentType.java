@@ -4,10 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocumentType.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.3 2001/10/10 13:55:46 jstrachan Exp $
  */
 
 package org.dom4j.tree;
+
+import java.util.List;
 
 import org.dom4j.DocumentType;
 
@@ -15,7 +17,7 @@ import org.dom4j.DocumentType;
   * of an XML document type.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DefaultDocumentType extends AbstractDocumentType {
 
@@ -27,6 +29,9 @@ public class DefaultDocumentType extends AbstractDocumentType {
     
     /** Holds value of property systemID. */    
     private String systemID;
+    
+    /** The DTD declarations */
+    private List declarations;
     
     public DefaultDocumentType() { 
     }
@@ -87,6 +92,16 @@ public class DefaultDocumentType extends AbstractDocumentType {
     public void setSystemID(String systemID) {
         this.systemID = systemID;
     }
+    
+    /** Returns a list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
+    public List getDeclarations() {
+        return declarations;
+    }
+    
+    /** Sets the list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
+    public void setDeclarations(List declarations) {
+        this.declarations = declarations;
+    }
 }
 
 
@@ -136,5 +151,5 @@ public class DefaultDocumentType extends AbstractDocumentType {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocumentType.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.3 2001/10/10 13:55:46 jstrachan Exp $
  */

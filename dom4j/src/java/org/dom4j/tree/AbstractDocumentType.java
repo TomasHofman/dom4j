@@ -4,15 +4,16 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocumentType.java,v 1.8 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.9 2001/10/10 13:55:46 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
@@ -24,7 +25,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public abstract class AbstractDocumentType extends AbstractNode implements DocumentType {
 
@@ -107,6 +108,16 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
             writer.write( systemID );
             writer.write( "\"" );
         }
+        List list = getDeclarations();
+        if ( list != null && list.size() > 0 ) {
+            writer.write( " [" );
+            for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+                Object decl = iter.next();
+                writer.write( "\n  " );
+                writer.write( decl.toString() );
+            }
+            writer.write( "\n]" );
+        }
         writer.write(">");
     }
     
@@ -162,5 +173,5 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocumentType.java,v 1.8 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.9 2001/10/10 13:55:46 jstrachan Exp $
  */
