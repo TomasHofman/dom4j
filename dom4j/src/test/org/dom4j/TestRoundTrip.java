@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRoundTrip.java,v 1.8 2001/07/12 11:33:30 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.9 2001/08/03 11:00:34 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -34,13 +34,14 @@ import org.dom4j.io.XMLWriter;
 /** A test harness to test the the round trips of Documents.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestRoundTrip extends AbstractTestCase {
     
     //protected String xmlFile = "xml/test/encode.xml";
     //protected String xmlFile = "xml/fibo.xml";
-    protected String xmlFile = "xml/test/test_schema.xml";
+    protected String xmlFile = "xml/schema/personal-prefix.xsd";
+    //protected String xmlFile = "xml/test/test_schema.xml";
     
     public static void main( String[] args ) {
         TestRunner.run( suite() );
@@ -220,5 +221,5 @@ public class TestRoundTrip extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRoundTrip.java,v 1.8 2001/07/12 11:33:30 jstrachan Exp $
+ * $Id: TestRoundTrip.java,v 1.9 2001/08/03 11:00:34 jstrachan Exp $
  */

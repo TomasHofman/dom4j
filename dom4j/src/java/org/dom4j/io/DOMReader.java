@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMReader.java,v 1.7 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.8 2001/08/03 11:00:34 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -37,7 +37,7 @@ import org.dom4j.tree.NamespaceStack;
   * a DOM4J tree from it.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class DOMReader {
 
@@ -251,7 +251,7 @@ public class DOMReader {
     
     protected void clearNamespaceStack() {
         namespaceStack.clear();
-        if ( ! namespaceStack.containsPrefix("xml" ) ) {
+        if ( ! namespaceStack.contains( Namespace.XML_NAMESPACE ) ) {
             namespaceStack.push( Namespace.XML_NAMESPACE );
         }
     }
@@ -302,5 +302,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.7 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.8 2001/08/03 11:00:34 jstrachan Exp $
  */

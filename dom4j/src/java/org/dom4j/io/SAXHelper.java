@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXHelper.java,v 1.7 2001/07/25 09:35:07 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.8 2001/08/03 11:00:34 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * SAX and XMLReader objects.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 class SAXHelper {
 
@@ -46,7 +46,7 @@ class SAXHelper {
       * or JAXP if the system property is not set.
       */
     public static XMLReader createXMLReader(boolean validating) throws SAXException {
-        XMLReader reader = createXMLReaderViaJAXP( validating );
+        XMLReader reader = createXMLReaderViaJAXP( validating, true );
         if ( reader == null ) {
             String className = null;
             try {
@@ -69,7 +69,7 @@ class SAXHelper {
       * This method uses reflection to avoid being dependent directly
       * on the JAXP classes.
       */
-    protected static XMLReader createXMLReaderViaJAXP(boolean validating) {
+    protected static XMLReader createXMLReaderViaJAXP(boolean validating, boolean namespaceAware) {
         if ( ! classNameAvailable( "javax.xml.parsers.SAXParserFactory" ) ) {
             // don't attempt to use JAXP if it is not in the ClassPath
             return null;
@@ -77,7 +77,7 @@ class SAXHelper {
         
         // try use JAXP to load the XMLReader...
         try {
-            return JAXPHelper.createXMLReader( validating );
+            return JAXPHelper.createXMLReader( validating, namespaceAware );
         }
         catch (Throwable e) {
             if ( ! loggedWarning ) {                    
@@ -179,5 +179,5 @@ class SAXHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXHelper.java,v 1.7 2001/07/25 09:35:07 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.8 2001/08/03 11:00:34 jstrachan Exp $
  */
