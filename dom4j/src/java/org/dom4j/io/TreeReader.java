@@ -16,7 +16,7 @@ import org.dom4j.TreeException;
   * of DOM4J XML trees.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class TreeReader {
 
@@ -74,7 +74,7 @@ public abstract class TreeReader {
       */
     public Document read(URL url) throws TreeException {
         try {
-            Document document = read(url.openStream());
+            Document document = read(new BufferedInputStream(url.openStream()));
             document.setName( url.toString() );
             return document;
         }
