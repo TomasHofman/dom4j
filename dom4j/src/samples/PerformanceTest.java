@@ -10,7 +10,7 @@ import org.dom4j.io.TreeReader;
 /** Perform some DOM4J parsing peformance test cases.
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class PerformanceTest extends SAXDemo {
     
@@ -51,7 +51,7 @@ public class PerformanceTest extends SAXDemo {
             ? args[1] : null;
             
         xmlReaderClassName = (args.length > 2) 
-            ? args[2] : DEFAULT_XMLREADER_CLASSNAME;
+            ? args[2] : null;
         
         loopCount = DEFAULT_LOOP_COUNT;
         if (args.length > 3) {

@@ -10,7 +10,7 @@ import org.dom4j.io.XMLWriter;
 /** Decompiles a binary format DOM4J tree then writes the XML as a text file
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class Decompile extends SAXDemo {
     
@@ -39,7 +39,7 @@ public class Decompile extends SAXDemo {
             ? args[1] : null;
         
         xmlReaderClassName = (args.length > 2) 
-            ? args[2] : DEFAULT_XMLREADER_CLASSNAME;
+            ? args[2] : null;
 
         println( "Decompiling binary XML file: " + xmlFile + 
             ((outputFileName != null ) 

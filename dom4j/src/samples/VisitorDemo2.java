@@ -10,7 +10,7 @@ import org.dom4j.io.SAXReader;
   * object model from a {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class VisitorDemo2 extends VisitorDemo {
     
@@ -40,7 +40,7 @@ public class VisitorDemo2 extends VisitorDemo {
             ? args[1] : null;
             
         xmlReaderClassName = (args.length > 2) 
-            ? args[2] : DEFAULT_XMLREADER_CLASSNAME;
+            ? args[2] : null;
         
         parse( xmlFile );
     }

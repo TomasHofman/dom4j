@@ -10,7 +10,7 @@ import org.dom4j.io.SAXReader;
   * and processes a document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class AbstractReaderDemo extends SAXDemo {
     
@@ -38,9 +38,9 @@ public class AbstractReaderDemo extends SAXDemo {
         
         documentFactoryClassName = (args.length > 1) 
             ? args[1] : null;
-            
+
         xmlReaderClassName = (args.length > 2) 
-            ? args[2] : DEFAULT_XMLREADER_CLASSNAME;
+            ? args[2] : null;
         
         parse( xmlFile );
     }

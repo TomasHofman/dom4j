@@ -11,6 +11,7 @@ import java.util.Set;
 import org.dom4j.Attribute;
 import org.dom4j.CDATA;
 import org.dom4j.Comment;
+import org.dom4j.ContentFactory;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.ElementHandler;
@@ -28,7 +29,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -322,7 +323,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
 
 
     protected Namespace getNamespace(String prefix, String uri) {
-        return null;
+        return ContentFactory.getNamespace(prefix, uri);
     }
 
     protected Element createElement(String localName, Namespace namespace) {

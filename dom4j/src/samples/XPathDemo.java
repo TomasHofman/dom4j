@@ -8,7 +8,7 @@ import org.dom4j.io.XMLWriter;
 /** A sample program to demonstrate the use of XPath expressions.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathDemo extends SAXDemo {
     
@@ -35,7 +35,7 @@ public class XPathDemo extends SAXDemo {
         String xmlFile = args[0];
         xpath = args[1];
         xmlReaderClassName = (args.length > 2) 
-            ? args[2] : DEFAULT_XMLREADER_CLASSNAME;
+            ? args[2] : null;
         
         parse( xmlFile );
     }

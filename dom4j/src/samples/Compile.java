@@ -9,7 +9,7 @@ import org.dom4j.io.BinaryWriter;
 /** Creates a DOM4J tree from an XML URL using SAX then compiles it into a binary file
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class Compile extends SAXDemo {
     
@@ -36,7 +36,7 @@ public class Compile extends SAXDemo {
         String xmlFile = args[0];
         outputFileName = args[1];
         String xmlReaderClassName = (args.length > 2) 
-            ? args[2] : DEFAULT_XMLREADER_CLASSNAME;
+            ? args[2] : null;
 
         println( "Compiling text XML file: " + xmlFile + " into binary file: " + outputFileName );
         

@@ -7,12 +7,12 @@ import org.dom4j.Node;
 /** <p><code>DefaultNamespace</code> is the DOM4J default implementation
   * of <code>Namespace</code>.</p>
   *
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DefaultNamespace extends AbstractNamespace {
 
     /** Cache of Namespace instances */
-    protected static NamespaceCache cache = new NamespaceCache();
+    protected static final NamespaceCache cache = new NamespaceCache();
     
     /** The prefix mapped to this namespace */
     private String prefix;
