@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.20 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: Node.java,v 1.21 2001/08/16 19:50:22 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public interface Node extends Cloneable {
 
@@ -386,16 +386,16 @@ public interface Node extends Cloneable {
     public Number numberValueOf(String xpathExpression);
 
         
-    /** <p><code>matches</code> returns true if the given node matches 
-      * the given XSLT pattern expression. XSLT patterns are a subset of
-      * XPath expressions used in XSLT in the 
-      * <code>&lt;xsl:template match="pattern"/&gt;</code>
-      * template matching.</p>
+    /** <p><code>matches</code> returns true if evaluating the given
+      * XPath expression on this node returns true or a non-empty node set.
+      * So calling this method is equivalent to calling 
+      * <code>&lt;xsl:if test="xpathExpression"/&gt;</code>
+      * in XSLT.</p>
       *
-      * @param pattern is the XSLT pattern to match this node to
+      * @param xpathExpression is an XPath expression
       * @return true if the given node matches this XSLT Pattern
       */
-    public boolean matches(String pattern);
+    public boolean matches(String xpathExpression);
 
     /** <p><code>createXPath</code> creates an XPath object for
       * the given xpathExpression.
@@ -480,5 +480,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.20 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: Node.java,v 1.21 2001/08/16 19:50:22 jstrachan Exp $
  */

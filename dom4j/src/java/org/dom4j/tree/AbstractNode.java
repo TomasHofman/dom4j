@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.21 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.22 2001/08/16 19:50:22 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -19,6 +19,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Node;
+import org.dom4j.NodeFilter;
 import org.dom4j.Visitor;
 import org.dom4j.XPath;
 import org.dom4j.rule.Pattern;
@@ -27,7 +28,7 @@ import org.dom4j.rule.Pattern;
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.21 $
+ * @version $Revision: 1.22 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
@@ -197,12 +198,16 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
     }
     
     public boolean matches(String patternText) {        
-        Pattern pattern = createPattern(patternText);
-        return pattern.matches(this);
+        NodeFilter filter = createXPathFilter(patternText);
+        return filter.matches(this);
     }
     
     public XPath createXPath(String xpathExpression) {
         return getDocumentFactory().createXPath(xpathExpression);
+    }
+    
+    public NodeFilter createXPathFilter(String patternText) {
+        return getDocumentFactory().createXPathFilter(patternText);
     }
     
     public Pattern createPattern(String patternText) {
@@ -272,5 +277,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.21 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.22 2001/08/16 19:50:22 jstrachan Exp $
  */

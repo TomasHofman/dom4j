@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.15 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.16 2001/08/16 19:50:22 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -13,6 +13,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.InvalidXPathException;
 import org.dom4j.Node;
+import org.dom4j.NodeFilter;
 import org.dom4j.VariableContext;
 import org.dom4j.XPath;
 import org.dom4j.XPathException;
@@ -44,7 +45,7 @@ import java.util.Map;
  *  @author bob mcwhirter (bob @ werken.com)
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  */
-public class DefaultXPath implements org.dom4j.XPath {
+public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
 
     private String text;
     private BaseXPath xpath;
@@ -202,8 +203,12 @@ public class DefaultXPath implements org.dom4j.XPath {
     
     public boolean matches( Node node ) {
         try {
-            Object answer = xpath.selectSingleNode( node );
-            if ( answer != null && answer.equals( node ) ) {
+            List answer = xpath.selectNodes( node );
+            if ( answer != null && answer.size() > 0 ) {
+                Object item = answer.get(0);
+                if ( item instanceof Boolean ) {
+                    return ((Boolean) item).booleanValue();
+                }
                 return true;
             }
             return false;
@@ -333,5 +338,5 @@ public class DefaultXPath implements org.dom4j.XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.15 2001/08/09 00:29:43 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.16 2001/08/16 19:50:22 jstrachan Exp $
  */
