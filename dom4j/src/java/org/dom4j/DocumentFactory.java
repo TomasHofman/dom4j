@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.5 2001/01/11 12:23:55 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import org.dom4j.tree.DefaultDocument;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DocumentFactory {
 
@@ -99,7 +99,7 @@ public class DocumentFactory {
       */
     protected XPathEngine createXPathEngine() {
         // use the default
-        return XPathHelper.getDefaultXPathEngine();
+        return XPathHelper.getInstance();
     }
 
     
@@ -150,5 +150,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.5 2001/01/11 12:23:55 jstrachan Exp $
  */

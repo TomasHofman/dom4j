@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBoolean.java,v 1.2 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.1 2001/01/11 12:23:55 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -18,22 +18,19 @@ import junit.textui.TestRunner;
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Node;
 import org.dom4j.XPath;
+import org.dom4j.NodeFilter;
 import org.dom4j.XPathHelper;
 
-/** Test harness for the boolean expressions
+/** Test harness for XPath filters
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class TestBoolean extends AbstractTestCase {
+public class TestFilter extends AbstractTestCase {
 
     protected static boolean VERBOSE = true;
     
     protected static String[] paths = {
-        ".[name()='author']",
-        ".[.='James Strachan']",
-        ".[name()='XXXX']",
-        ".[.='XXXX']",
         "name()='author'",
         "name()='XXXX'",
         ".='James Strachan'",
@@ -41,7 +38,7 @@ public class TestBoolean extends AbstractTestCase {
     };
     
     
-    public TestBoolean(String name) {
+    public TestFilter(String name) {
         super(name);
     }
 
@@ -61,29 +58,26 @@ public class TestBoolean extends AbstractTestCase {
     }
     
     public static Test suite() {
-        return new TestSuite( TestBoolean.class );
+        return new TestSuite( TestFilter.class );
     }
     
     protected void testXPath(String xpathExpression) {
-        XPath xpath = XPathHelper.createXPath( xpathExpression );
-        assert( "No xpath object was created", xpath != null );
+        NodeFilter nodeFilter = XPathHelper.createXPathFilter( xpathExpression );
+        assert( "No NodeFilter object was created", nodeFilter != null );
         
-        log( "Evaluating xpath: " + xpath );
+        log( "Evaluating XPathFilter: " + xpathExpression + " using NodeFilter: " + nodeFilter );
         
         List list = document.selectNodes("//author");
         for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
             Node node = (Node) iter.next();
-            testXPath(node, xpath);
-        }
-    }
-        
-    protected void testXPath(Node node, XPath xpath) {
-        List list = node.selectNodes(xpath);
-        
-        log( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
-        
-        if ( VERBOSE ) {
-            System.out.println( list );
+            
+            if ( nodeFilter.matches( node ) ) {
+                log( "Matches node: "+ node );
+            }
+            else {
+                log( "No match for node: "+ node );
+            }
+            
         }
     }
 }
@@ -133,5 +127,5 @@ public class TestBoolean extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBoolean.java,v 1.2 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.1 2001/01/11 12:23:55 jstrachan Exp $
  */

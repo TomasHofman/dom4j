@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.5 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.6 2001/01/11 12:23:55 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -24,7 +24,7 @@ import org.dom4j.XPathHelper;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -97,7 +97,7 @@ public class DefaultDocument extends AbstractDocument {
     
     public XPathEngine getXPathEngine() {
         if ( xpathEngine == null ) {
-            xpathEngine = XPathHelper.getDefaultXPathEngine();
+            xpathEngine = XPathHelper.getInstance();
         }
         return xpathEngine;
     }
@@ -182,5 +182,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.5 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.6 2001/01/11 12:23:55 jstrachan Exp $
  */

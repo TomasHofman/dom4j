@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.4 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.5 2001/01/11 12:23:55 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -26,7 +26,7 @@ import org.dom4j.XPathHelper;
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
@@ -95,7 +95,7 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
             answer = document.getXPathEngine();
         }
         if ( answer == null ) {
-            answer = XPathHelper.getDefaultXPathEngine();
+            answer = XPathHelper.getInstance();
         }
         return answer;
     }
@@ -178,5 +178,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.4 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.5 2001/01/11 12:23:55 jstrachan Exp $
  */
