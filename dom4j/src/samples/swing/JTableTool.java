@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTableTool.java,v 1.1 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: JTableTool.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
  */
 
 package swing;
@@ -24,7 +24,7 @@ import org.dom4j.swing.XMLTableModel;
   * such as in xml/swing/.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class JTableTool {
     
@@ -36,9 +36,9 @@ public class JTableTool {
     public void run(String[] args) throws Exception {
         if ( args.length <= 1 ) {
             System.out.println( "Usage: <tableXMLDescription> <xmlFileName>" );
-            System.out.println():
+            System.out.println();
             System.out.println( "This program displays a document in a Swing JTable given a table description" );
-            System.out.println():
+            System.out.println();
             System.out.println( "For example running this program as follows will display the servlets of a web.xml" );
             System.out.println( "    java swing.JTableTool xml/swing/tableForWeb.xml xml/web.xml" );
             System.out.println( "This example will display the periodic table in a JTable" );
@@ -112,5 +112,5 @@ public class JTableTool {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTableTool.java,v 1.1 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: JTableTool.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
  */

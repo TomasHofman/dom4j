@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PullParseTest.java,v 1.1 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: PullParseTest.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
  */
 
 package performance;
@@ -18,18 +18,18 @@ import java.io.StringReader;
 import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
 import org.dom4j.DocumentException;
-import org.dom4j.io.PullParserReader;
+import org.dom4j.io.XPPReader;
 
 /** Tests the performance of parsing a Document with the XML Pull Parser
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class PullParseTest extends PerformanceSupport {
     
     private int bufferSize = 128 * 1024;
     private Document document;
-    private PullParserReader xmlReader;
+    private XPPReader xmlReader;
     private String text;
     
     public static void main(String[] args) {
@@ -40,7 +40,7 @@ public class PullParseTest extends PerformanceSupport {
     }
     
     protected void setUp() throws Exception {
-        xmlReader = new PullParserReader();        
+        xmlReader = new XPPReader();        
 
         StringBuffer buffer = new StringBuffer( 64 * 1024 );
         BufferedReader reader = new BufferedReader( new FileReader( xmlFile ) );
@@ -113,5 +113,5 @@ public class PullParseTest extends PerformanceSupport {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PullParseTest.java,v 1.1 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: PullParseTest.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
  */
