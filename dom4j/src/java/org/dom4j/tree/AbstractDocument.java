@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocument.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.5 2001/01/10 19:00:14 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -32,7 +32,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -135,6 +135,10 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
         element.setDocument(null);
         return answer;
     }
+        
+    public Node asXPathNode(Element parent) {
+        return this;
+    }
     
     
     
@@ -213,5 +217,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocument.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.5 2001/01/10 19:00:14 jstrachan Exp $
  */

@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.4 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: TestText.java,v 1.1 2001/01/10 19:00:14 jstrachan Exp $
  */
 
-package org.dom4j;
+package org.dom4j.xpath;
 
 import java.util.Iterator;
 import java.util.List;
@@ -15,27 +15,25 @@ import java.util.List;
 import junit.framework.*;
 import junit.textui.TestRunner;
 
-/** A test harness to test XPath expression evaluation in DOM4J
+import org.dom4j.AbstractTestCase;
+import org.dom4j.Text;
+
+/** Test harness for the text() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.1 $
   */
-public class TestXPath extends AbstractTestCase {
+public class TestText extends AbstractTestCase {
 
     protected static boolean VERBOSE = true;
     
     protected static String[] paths = {
-        "root",
         "text()",
-        "//author",
-        "//author[@location='UK']",
-        "//author/text()",
-        "//*[.='James Strachan']",
-        "//@location"
+        "//author/text()"
     };
     
     
-    public TestXPath(String name) {
+    public TestText(String name) {
         super(name);
     }
 
@@ -55,19 +53,32 @@ public class TestXPath extends AbstractTestCase {
     }
     
     public static Test suite() {
-        return new TestSuite( TestXPath.class );
+        return new TestSuite( TestText.class );
     }
     
     protected void testXPath(String xpath) {
         List list = document.selectNodes(xpath);
         
-        System.out.println( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
+        log( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
         
         if ( VERBOSE ) {
             System.out.println( list );
         }
+        
+        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+            Object object = iter.next();
+            
+            log( "Found Result: " + object );
+            
+            assert( "Results should be Text objects", object instanceof Text );
+            
+            Text text = (Text) object;
+            
+            assert( "Results should support the parent relationship", text.supportsParent() );
+            assert( "Results should contain reference to the parent element", text.getParent() != null );
+            assert( "Results should contain reference to the owning document", text.getDocument() != null );
+        }
     }
-
 }
 
 
@@ -115,5 +126,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.4 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: TestText.java,v 1.1 2001/01/10 19:00:14 jstrachan Exp $
  */

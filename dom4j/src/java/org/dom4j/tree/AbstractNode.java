@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.4 2001/01/10 19:00:14 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -26,7 +26,7 @@ import org.dom4j.XPathHelper;
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
     
@@ -128,7 +128,7 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
     }
     
     protected Node createXPathNode(Element parent) {
-        throw new RuntimeException("asXPathNode() not yet implemented fully");
+        throw new RuntimeException("asXPathNode() not yet implemented fully for: " + this );
     }
     
 }
@@ -178,5 +178,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.4 2001/01/10 19:00:14 jstrachan Exp $
  */
