@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.30 2001/06/18 08:10:02 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.31 2001/06/19 10:47:57 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -68,7 +68,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.30 $
+  * @version $Revision: 1.31 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -183,7 +183,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
 
         writer.write("\"");
         
-        writer.write(escapeAttributeEntities(attribute.getValue()));
+        writeEscapeAttributeEntities(attribute.getValue());
         
         writer.write("\"");
         lastOutputNodeType = Node.ATTRIBUTE_NODE;
@@ -745,7 +745,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             writer.write(" ");
             writer.write(attribute.getQualifiedName());
             writer.write("=\"");            
-            writer.write(escapeAttributeEntities(attribute.getValue()));            
+            writeEscapeAttributeEntities(attribute.getValue());            
             writer.write("\"");
         }
     }
@@ -759,12 +759,8 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
     protected void write(Attributes attributes, int index) throws IOException {       
         writer.write(" ");
         writer.write(attributes.getQName(index));
-        writer.write("=");
-
-        writer.write("\"");
-        
-        writer.write(escapeAttributeEntities(attributes.getValue(index)));
-
+        writer.write("=\"");        
+        writeEscapeAttributeEntities(attributes.getValue(index));
         writer.write("\"");
     }
 
@@ -922,6 +918,12 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
         return answer;
     }
     
+    protected void writeEscapeAttributeEntities(String text) throws IOException {
+        if ( text != null ) {
+            String escapedText = escapeAttributeEntities( text );
+            writer.write( escapedText );
+        }
+    }
     /** This will take the pre-defined entities in XML 1.0 and
       * convert their character representation to the appropriate
       * entity reference, suitable for XML attributes.
@@ -1025,5 +1027,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.30 2001/06/18 08:10:02 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.31 2001/06/19 10:47:57 jstrachan Exp $
  */
