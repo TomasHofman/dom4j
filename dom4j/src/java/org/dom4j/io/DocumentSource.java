@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentSource.java,v 1.2 2001/04/09 12:09:06 jstrachan Exp $
+ * $Id: DocumentSource.java,v 1.3 2001/08/08 13:43:24 jstrachan Exp $
  */
 
 package org.dom4j.io;
 
 import javax.xml.transform.Source;
 import javax.xml.transform.sax.SAXSource;
+import javax.xml.transform.TransformerFactory;
 
 import org.dom4j.Document;
 import org.dom4j.Node;
@@ -23,9 +24,15 @@ import org.xml.sax.XMLReader;
   * for a {@link Document}.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DocumentSource extends SAXSource {
+    
+    /** If {@link javax.xml.transform.TransformerFactory#getFeature}
+      * returns <code>true</code> when passed this value as an argument
+      * then the Transformer natively supports <i>dom4j</i>.
+      */
+    public final static String DOM4J_FEATURE = "http://org.dom4j.io.DoucmentSource/feature";
 
     /** The XMLReader to use */
     private XMLReader xmlReader = new SAXWriter();
@@ -165,5 +172,5 @@ public class DocumentSource extends SAXSource {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentSource.java,v 1.2 2001/04/09 12:09:06 jstrachan Exp $
+ * $Id: DocumentSource.java,v 1.3 2001/08/08 13:43:24 jstrachan Exp $
  */
