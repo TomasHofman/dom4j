@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestVariable.java,v 1.2 2001/02/26 14:31:25 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.3 2001/02/27 14:01:42 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -26,13 +26,14 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestVariable extends AbstractTestCase {
 
     protected static boolean VERBOSE = true;
     
     protected static String[] paths = {
+        "$root/author",
         "$root/author[1]",
         "$root/author[1]/@name",
         "$author",
@@ -72,7 +73,9 @@ public class TestVariable extends AbstractTestCase {
         log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
         
         if ( VERBOSE ) {
+            log( "" );
             log( "xpath: " + xpath );
+            log( "" );
             log( "results: " + list );
         }
         
@@ -139,5 +142,5 @@ public class TestVariable extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestVariable.java,v 1.2 2001/02/26 14:31:25 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.3 2001/02/27 14:01:42 jstrachan Exp $
  */
