@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Stylesheet.java,v 1.10 2004/06/25 08:03:39 maartenc Exp $
+ * $Id: Stylesheet.java,v 1.11 2004/08/22 12:16:33 maartenc Exp $
  */
 
 package org.dom4j.rule;
@@ -22,7 +22,7 @@ import org.dom4j.XPath;
   * stylesheet can be applied to a source document or node.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class Stylesheet {
 
@@ -40,7 +40,7 @@ public class Stylesheet {
     }
     
     public void removeRule( Rule rule ) {
-        ruleManager.addRule( rule );
+        ruleManager.removeRule( rule );
     }
 
     /** Runs this stylesheet on the given input which should be 
@@ -224,5 +224,5 @@ public class Stylesheet {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Stylesheet.java,v 1.10 2004/06/25 08:03:39 maartenc Exp $
+ * $Id: Stylesheet.java,v 1.11 2004/08/22 12:16:33 maartenc Exp $
  */
