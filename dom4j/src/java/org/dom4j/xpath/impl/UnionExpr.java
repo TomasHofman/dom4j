@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UnionExpr.java,v 1.4 2001/07/16 17:17:13 jstrachan Exp $
+ * $Id: UnionExpr.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
 
-public class UnionExpr extends Expr implements org.jaxpath.expr.UnionExpr {
+public class UnionExpr extends Expr implements org.jaxen.expr.UnionExpr {
     
     private Expr  _lhs  = null;
     private Expr  _rhs  = null;
@@ -33,15 +33,15 @@ public class UnionExpr extends Expr implements org.jaxpath.expr.UnionExpr {
         _rhs = rhs;
     }
     
-    public org.jaxpath.expr.Expr getLHS() {
+    public org.jaxen.expr.Expr getLHS() {
         return _lhs;
     }
     
-    public org.jaxpath.expr.Expr getRHS() {
+    public org.jaxen.expr.Expr getRHS() {
         return _rhs;
     }
 
-    public org.jaxpath.expr.Expr simplify() {
+    public org.jaxen.expr.Expr simplify() {
         if ( _lhs != null ) {
             _lhs = (Expr) _lhs.simplify();
         }
@@ -136,5 +136,5 @@ public class UnionExpr extends Expr implements org.jaxpath.expr.UnionExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UnionExpr.java,v 1.4 2001/07/16 17:17:13 jstrachan Exp $
+ * $Id: UnionExpr.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNumber.java,v 1.6 2001/07/16 17:17:13 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.7 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,7 +22,7 @@ import org.dom4j.XPath;
 /** Test harness for numeric XPath expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestNumber extends AbstractTestCase {
 
@@ -31,8 +31,10 @@ public class TestNumber extends AbstractTestCase {
     protected static String[] paths = {
         "2+2",
         "2 + 2",
-        "10 + count(descendant::author) * 5",
-        "10 + (count(descendant::author) * 5)",
+        "2 + number(1) + 2",
+        "number(1) * 2",
+        "10 + count(ancestor-or-self::author) + 5",
+        "2 + count(//author) + 2",
         "2 + (2 * 5)",
         "sum(count(//author),count(//author/attribute::*))",
         "12 + sum(count(//author),count(//author/attribute::*)) div 2",
@@ -43,6 +45,11 @@ public class TestNumber extends AbstractTestCase {
         "count(ancestor::author)",
         "count(descendant::*)",
         "count(descendant::author)+1",
+/*        
+        "2 + number(1) * 2",
+        "10 + count(descendant::author) * 5",
+        "10 + (count(descendant::author) * 5)",
+*/
     };
     
     
@@ -75,14 +82,16 @@ public class TestNumber extends AbstractTestCase {
     protected void testXPath(Node node, String xpathText) throws Exception {
         try {
             XPath xpath = node.createXPath( xpathText );
-            Number number = xpath.numberValueOf( node );
-
-            log( "Searched path: " + xpathText + " found: " + number );
-
+            
             if ( VERBOSE ) {
                 log( "    xpath: " + xpath );        
                 log( "    for: " + node );        
             }
+            
+            Number number = xpath.numberValueOf( node );
+
+            log( "Searched path: " + xpathText + " found: " + number );
+
         }
         catch (Throwable e) {
             log( "Caught exception: " + e );
@@ -138,5 +147,5 @@ public class TestNumber extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNumber.java,v 1.6 2001/07/16 17:17:13 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.7 2001/07/17 10:31:41 jstrachan Exp $
  */

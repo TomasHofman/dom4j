@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.4 2001/07/16 08:47:40 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,7 +22,7 @@ import org.saxpath.XPathReader;
 import org.saxpath.SAXPathException;
 import org.saxpath.helpers.XPathReaderFactory;
 
-import org.jaxpath.JAXPathHandler;
+import org.jaxen.JAXPathHandler;
 
 import java.io.StringReader;
 
@@ -39,7 +39,7 @@ import java.util.Map;
   * which uses an XPath expression.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class XPathPattern implements Pattern {
     
@@ -50,7 +50,7 @@ public class XPathPattern implements Pattern {
     
     public XPathPattern(String text) {
         this.text = text;
-        this.expression = parse( text );
+        this.expression = DefaultXPath.parse( text );
     }
 
     public boolean matches( Node node ) {
@@ -109,33 +109,6 @@ public class XPathPattern implements Pattern {
     protected Context createContext() {
         return new Context();
     }
-    
-
-    private Expr parse( String text ) {
-	  Expr expr = null;
-        try {
-            XPathReader reader = XPathReaderFactory.createReader();
-            
-            JAXPathHandler handler = new JAXPathHandler();
-            
-            handler.setXPathFactory( new DefaultXPathFactory() );
-            
-            reader.setXPathHandler( handler );
-            
-            reader.parse( text );
-            
-            org.jaxpath.expr.XPath xpath = handler.getXPath(true);
-            expr = (Expr) xpath.getRootExpr();
-        }
-        catch (SAXPathException e) {
-            throw new InvalidXPathException( text, e.getMessage() );
-        }
-        if ( expr == null ) {
-            throw new InvalidXPathException( text );
-        }
-        return expr;
-    }
-    
 }
 
 
@@ -183,5 +156,5 @@ public class XPathPattern implements Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.4 2001/07/16 08:47:40 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
  */

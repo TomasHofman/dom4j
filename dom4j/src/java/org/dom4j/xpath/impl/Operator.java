@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Operator.java,v 1.8 2001/07/16 17:17:13 jstrachan Exp $
+ * $Id: Operator.java,v 1.9 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -127,7 +127,7 @@ class Operator {
             return Double.valueOf( s );
 /*            
             if ( s != null && s.length() > 0 ) {
-                //System.out.println( "Converting: " + s + " to number" );
+                System.out.println( "Converting: " + s + " to number" );
                 return Double.valueOf( s );
             }
             else {
@@ -136,7 +136,7 @@ class Operator {
                 e.printStackTrace();
             }
             return null;
-*/            
+*/
         }
     }
     
@@ -196,5 +196,5 @@ class Operator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Operator.java,v 1.8 2001/07/16 17:17:13 jstrachan Exp $
+ * $Id: Operator.java,v 1.9 2001/07/17 10:31:41 jstrachan Exp $
  */

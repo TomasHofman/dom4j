@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: StringExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: StringExpr.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -12,7 +12,7 @@ package org.dom4j.xpath.impl;
 
 import org.dom4j.xpath.impl.Context;
 
-public class StringExpr extends Expr implements org.jaxpath.expr.LiteralExpr {
+public class StringExpr extends Expr implements org.jaxen.expr.LiteralExpr {
     
     private String _text = null;
     
@@ -75,5 +75,5 @@ public class StringExpr extends Expr implements org.jaxpath.expr.LiteralExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: StringExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: StringExpr.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */

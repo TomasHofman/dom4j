@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Step.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: Step.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -21,7 +21,7 @@ import java.util.HashSet;
 
 import org.dom4j.Node;
 
-public abstract class Step extends Expr implements org.jaxpath.expr.Step {
+public abstract class Step extends Expr implements org.jaxen.expr.Step {
     
     private boolean _isAbsolute = false;
     
@@ -95,5 +95,5 @@ public abstract class Step extends Expr implements org.jaxpath.expr.Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Step.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: Step.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Predicate.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: Predicate.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Collections;
 
-public class Predicate implements org.jaxpath.expr.Predicate {
+public class Predicate implements org.jaxen.expr.Predicate {
     
     private Expr _expr = null;
     
@@ -28,7 +28,7 @@ public class Predicate implements org.jaxpath.expr.Predicate {
         return "[N/I]";
     }
 
-    public org.jaxpath.expr.Expr simplify() {
+    public org.jaxen.expr.Expr simplify() {
         return this;
     }
     
@@ -36,11 +36,11 @@ public class Predicate implements org.jaxpath.expr.Predicate {
         _expr = expr;
     }
     
-    public org.jaxpath.expr.Expr getExpr() {
+    public org.jaxen.expr.Expr getExpr() {
         return _expr;
     }
     
-    public void setExpr(org.jaxpath.expr.Expr expr) {
+    public void setExpr(org.jaxen.expr.Expr expr) {
         _expr = (Expr) expr;
     }
         
@@ -140,5 +140,5 @@ public class Predicate implements org.jaxpath.expr.Predicate {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Predicate.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: Predicate.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */

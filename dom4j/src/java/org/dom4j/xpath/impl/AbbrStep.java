@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbbrStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: AbbrStep.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public abstract class AbbrStep extends Step {
 
-    public void addPredicate(org.jaxpath.expr.Predicate predicate) {
+    public void addPredicate(org.jaxen.expr.Predicate predicate) {
         throw new RuntimeException( "Not supported yet" );
     }
     
@@ -68,5 +68,5 @@ public abstract class AbbrStep extends Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbbrStep.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: AbbrStep.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Expr.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: Expr.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -18,13 +18,13 @@ import org.dom4j.xpath.impl.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Expr implements org.jaxpath.expr.Expr {    
+public abstract class Expr implements org.jaxen.expr.Expr {    
     
     public String getText() {
         return "[N/I]";
     }
     
-    public org.jaxpath.expr.Expr simplify() {
+    public org.jaxen.expr.Expr simplify() {
         return this;
     }
     
@@ -123,5 +123,5 @@ public abstract class Expr implements org.jaxpath.expr.Expr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Expr.java,v 1.4 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: Expr.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UnAbbrStep.java,v 1.8 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.9 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -46,7 +46,7 @@ public abstract class UnAbbrStep extends Step {
         return _axisCode;
     }
     
-    public void addPredicate(org.jaxpath.expr.Predicate pred) {
+    public void addPredicate(org.jaxen.expr.Predicate pred) {
         if ( _predicates == null ) {
             _predicates = new ArrayList();
         }        
@@ -465,5 +465,5 @@ public abstract class UnAbbrStep extends Step {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UnAbbrStep.java,v 1.8 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: UnAbbrStep.java,v 1.9 2001/07/17 10:31:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NumberExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: NumberExpr.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */
 
 
@@ -13,7 +13,7 @@ package org.dom4j.xpath.impl;
 import org.dom4j.Element;
 import org.dom4j.xpath.impl.Context;
 
-public class NumberExpr extends Expr implements org.jaxpath.expr.NumberExpr {
+public class NumberExpr extends Expr implements org.jaxen.expr.NumberExpr {
     
     private Number _number = null;
     
@@ -79,5 +79,5 @@ public class NumberExpr extends Expr implements org.jaxpath.expr.NumberExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NumberExpr.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: NumberExpr.java,v 1.4 2001/07/17 10:31:41 jstrachan Exp $
  */
