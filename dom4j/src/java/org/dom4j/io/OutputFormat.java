@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: OutputFormat.java,v 1.4 2001/06/18 08:10:02 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.5 2001/08/06 15:10:33 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -13,7 +13,7 @@ package org.dom4j.io;
   * used by {@link XMLWriter} and its base classes to format the XML output
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class OutputFormat implements Cloneable {
 
@@ -328,6 +328,18 @@ public class OutputFormat implements Cloneable {
         format.setTrimText(true);
         return format;
     }
+
+    /** A static helper method to create the default compact format.
+      * This format does not have any indentation or newlines after an alement 
+      * and all other whitespace trimmed 
+      */    
+    public static OutputFormat createCompactFormat() {
+        OutputFormat format = new OutputFormat();
+        format.setIndent(false);
+        format.setNewlines(false);
+        format.setTrimText(true);
+        return format;
+    }
     
 }
 
@@ -376,5 +388,5 @@ public class OutputFormat implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OutputFormat.java,v 1.4 2001/06/18 08:10:02 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.5 2001/08/06 15:10:33 jstrachan Exp $
  */

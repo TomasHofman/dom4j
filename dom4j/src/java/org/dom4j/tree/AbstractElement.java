@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.56 2001/08/06 10:46:13 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.57 2001/08/06 15:10:33 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.56 $
+  * @version $Revision: 1.57 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -453,7 +453,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                     String attributeLocalName = attributes.getLocalName(0);
                     String attributeValue = attributes.getValue(0);
 
-                    QName attributeQName = namespaceStack.getQName( 
+                    QName attributeQName = namespaceStack.getAttributeQName( 
                         attributeURI, attributeLocalName, attributeQualifiedName 
                     );
                     add(factory.createAttribute(this, attributeQName, attributeValue));
@@ -471,7 +471,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                         String attributeLocalName = attributes.getLocalName(i);
                         String attributeValue = attributes.getValue(i);
 
-                        QName attributeQName = namespaceStack.getQName( 
+                        QName attributeQName = namespaceStack.getAttributeQName( 
                             attributeURI, attributeLocalName, attributeQualifiedName 
                         );
                         Attribute attribute = factory.createAttribute(
@@ -1295,5 +1295,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.56 2001/08/06 10:46:13 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.57 2001/08/06 15:10:33 jstrachan Exp $
  */

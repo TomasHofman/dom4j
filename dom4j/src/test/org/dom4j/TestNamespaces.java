@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespaces.java,v 1.3 2001/08/03 11:00:34 jstrachan Exp $
+ * $Id: TestNamespaces.java,v 1.4 2001/08/06 15:10:33 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -29,7 +29,7 @@ import org.dom4j.io.XMLWriter;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -133,6 +133,33 @@ public class TestNamespaces extends AbstractTestCase {
             
             log( "found: " + ns.asXML() );
 
+        }
+    }
+    
+    public void testAttributeDefaultPrefix() throws Exception {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read("xml/test/soap3.xml");
+        
+        List list = document.selectNodes( "//@*[local-name()='actor']" );
+        
+        assertTrue( "Matched at least one 'actor' attribute", list.size() > 0 );
+
+        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+            Attribute attribute = (Attribute) iter.next();
+            
+            log( "found: " + attribute.asXML() );
+            
+            Element element = attribute.getParent();
+            assertTrue( "Attribute has a parent", element != null );
+            
+            Namespace ns = element.getNamespaceForPrefix( "" );
+        
+            assertNamespace( ns, "", "http://schemas.xmlsoap.org/soap/envelope/" );
+            
+            Namespace ns2 = attribute.getNamespace();
+            
+            assertNamespace( ns2, "", "http://schemas.xmlsoap.org/soap/envelope/" );
+            
         }
     }
     
@@ -299,5 +326,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.3 2001/08/03 11:00:34 jstrachan Exp $
+ * $Id: TestNamespaces.java,v 1.4 2001/08/06 15:10:33 jstrachan Exp $
  */

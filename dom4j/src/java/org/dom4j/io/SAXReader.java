@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.27 2001/08/06 09:45:23 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.28 2001/08/06 15:10:33 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -75,7 +75,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.27 $
+  * @version $Revision: 1.28 $
   */
 public class SAXReader {
 
@@ -93,7 +93,9 @@ public class SAXReader {
  
     /** ErrorHandler class to use */
     private ErrorHandler errorHandler;
- 
+
+    /** Should element & attribute names and namespace URIs be interned? */
+    private boolean stringInternEnabled = true;
     
     
     
@@ -334,6 +336,21 @@ public class SAXReader {
         this.validating = validating;
     }
     
+    /** Sets whether String interning
+      * is enabled or disabled for element & attribute names and namespace URIs.
+      * This proprety is enabled by default.
+      */
+    public boolean isStringInternEnabled() {
+        return stringInternEnabled;
+    }
+    
+    /** Sets whether String interning 
+      * is enabled or disabled for element & attribute names and namespace URIs
+      */
+    public void setStringInternEnabled(boolean stringInternEnabled) {
+        this.stringInternEnabled = stringInternEnabled;
+    }
+    
     /** @return the <code>DocumentFactory</code> used to create document objects
       */
     public DocumentFactory getDocumentFactory() {
@@ -472,6 +489,10 @@ public class SAXReader {
                 "http://xml.org/sax/features/namespace-prefixes", 
                 false
             );
+            reader.setFeature(
+                "http://xml.org/sax/features/string-intern", 
+                isStringInternEnabled()
+            );
 
             // configure validation support
             reader.setFeature(
@@ -583,5 +604,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.27 2001/08/06 09:45:23 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.28 2001/08/06 15:10:33 jstrachan Exp $
  */
