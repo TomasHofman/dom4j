@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.21 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.22 2002/02/15 16:51:52 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -30,6 +30,7 @@ import org.saxpath.XPathReader;
 import org.saxpath.SAXPathException;
 import org.saxpath.helpers.XPathReaderFactory;
 
+import java.io.Serializable;
 import java.io.StringReader;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ import java.util.Map;
  *  @author bob mcwhirter (bob @ werken.com)
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  */
-public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
+public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
 
     private String text;
     private BaseXPath xpath;
@@ -375,5 +376,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.21 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.22 2002/02/15 16:51:52 jstrachan Exp $
  */
