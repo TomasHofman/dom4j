@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXReader.java,v 1.48 2004/03/19 13:39:34 maartenc Exp $
+ * $Id: SAXReader.java,v 1.49 2004/03/24 20:41:09 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -65,7 +65,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.48 $
+  * @version $Revision: 1.49 $
   */
 public class SAXReader {
 
@@ -193,9 +193,8 @@ public class SAXReader {
       * @param file is the <code>File</code> to read from.
       * @return the newly created Document instance
       * @throws DocumentException if an error occurs during parsing.
-      * @throws MalformedURLException if a URL could not be made for the given File
       */
-    public Document read(File file) throws DocumentException, MalformedURLException {
+    public Document read(File file) throws DocumentException {
         try {
             /*
              * We cannot convert the file to an URL because if the filename
@@ -205,9 +204,14 @@ public class SAXReader {
              * http://myhost.com/index)
              * Thanks to Christian Oetterli
              */
-            return read( new InputSource(new FileInputStream(file)) );
+            InputSource source = new InputSource(new FileInputStream(file));
+            String systemId = file.getAbsolutePath();
+            if (systemId != null) {
+                source.setSystemId("file:/" + systemId.replace('\\', '/'));
+            }
+            return read(source);
         } catch (FileNotFoundException e) {
-            throw new MalformedURLException(e.getMessage());
+            throw new DocumentException(e.getMessage(), e);
         }
     }
 
@@ -806,5 +810,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.48 2004/03/19 13:39:34 maartenc Exp $
+ * $Id: SAXReader.java,v 1.49 2004/03/24 20:41:09 maartenc Exp $
  */
