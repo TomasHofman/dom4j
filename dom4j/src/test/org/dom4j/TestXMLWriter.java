@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.14 2004/03/28 21:50:51 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.15 2004/03/29 21:04:44 maartenc Exp $
  */
 
 package org.dom4j;
@@ -29,7 +29,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -212,6 +212,30 @@ public class TestXMLWriter extends AbstractTestCase {
         assertEquals( "getText() returns the correct text padding", expected, doc2.getRootElement().element("meaning").getText() );
     }
     
+    public void testPadding() throws Exception {
+        Document doc = DocumentFactory.getInstance().createDocument();
+        Element root = doc.addElement("root");
+        root.addText("prefix");
+        root.addElement("b");
+        root.addText("suffix");
+        
+        OutputFormat format = new OutputFormat("", false);
+        format.setOmitEncoding(true);
+        format.setSuppressDeclaration(true);
+        format.setExpandEmptyElements(true);
+        format.setPadText(true);
+        //format.setTrimText(true);
+        
+        StringWriter buffer = new StringWriter();
+        XMLWriter writer = new XMLWriter(buffer, format);
+        writer.write(doc);
+        String xml = buffer.toString();
+        
+        System.out.println("xml: " + xml);
+        String expected = "<root>prefix <b></b> suffix</root>";
+        assertEquals(expected, xml);
+    }
+    
     /*
      * This must be tested manually to see if the layout is correct.
      */
@@ -341,5 +365,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.14 2004/03/28 21:50:51 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.15 2004/03/29 21:04:44 maartenc Exp $
  */
