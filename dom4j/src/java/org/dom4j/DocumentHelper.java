@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.13 2003/04/07 22:14:46 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.14 2004/03/25 15:17:13 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.io.StringReader;
+import java.io.ByteArrayInputStream;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -22,7 +22,7 @@ import org.jaxen.VariableContext;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class DocumentHelper {
 
@@ -208,7 +208,7 @@ public class DocumentHelper {
       */
     public static Document parseText(String text) throws DocumentException {
         SAXReader reader = new SAXReader();
-        return reader.read( new StringReader( text ) );
+        return reader.read(new ByteArrayInputStream(text.getBytes()));
     }
 
     /** <p>makeElement</p> a helper method which navigates from the
@@ -306,5 +306,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.13 2003/04/07 22:14:46 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.14 2004/03/25 15:17:13 maartenc Exp $
  */
