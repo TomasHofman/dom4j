@@ -4,11 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAutoSchema.java,v 1.3 2001/07/05 13:37:02 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.4 2001/08/14 15:17:25 jstrachan Exp $
  */
 
 package org.dom4j.schema;
 
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -30,7 +32,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * use auto-loading of the XML Schema document
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestAutoSchema extends AbstractDataTypeTest {
 
@@ -60,21 +62,21 @@ public class TestAutoSchema extends AbstractDataTypeTest {
         testNodes( "//person/note", String.class );
     }
 
+    public void testDate() throws Exception {        
+        testNodes( "//person/@d", Calendar.class );
+    }
+    
+    public void testDateTime() throws Exception {        
+        testNodes( "//person/@dt", Calendar.class );
+    }
+    
+    public void testInteger() throws Exception {        
+        testNodes( "//person/@age", BigInteger.class );
+    }
 /*
  * these don't yet work due to a bug in Sun's xsdlib 
  *
  
-    public void testDate() throws Exception {        
-        testNodes( "//person/@d", Date.class );
-    }
-    
-    public void testDateTime() throws Exception {        
-        testNodes( "//person/@dt", Date.class );
-    }
-    
-    public void testInteger() throws Exception {        
-        testNodes( "//person/@age", Integer.class );
-    }
 */
 
     
@@ -146,5 +148,5 @@ public class TestAutoSchema extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAutoSchema.java,v 1.3 2001/07/05 13:37:02 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.4 2001/08/14 15:17:25 jstrachan Exp $
  */
