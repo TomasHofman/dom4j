@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.36 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.37 2001/07/03 14:42:43 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.36 $
+  * @version $Revision: 1.37 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -828,13 +828,7 @@ public class DefaultElement extends AbstractElement {
     // Implementation methods
     //-------------------------------------------------------------------------    
 
-    protected void addNode(Node node) {
-        if (node.getParent() != null) {
-            // XXX: could clone here
-            String message = "The Node already has an existing parent of \"" 
-                + node.getParent().getQualifiedName() + "\"";
-            throw new IllegalAddException(this, node, message);
-        }
+    protected void addNewNode(Node node) {
         if (content == null) {
             content = node;
         }
@@ -973,5 +967,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.36 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.37 2001/07/03 14:42:43 jstrachan Exp $
  */

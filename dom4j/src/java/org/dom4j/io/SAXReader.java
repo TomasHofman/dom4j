@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.23 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.24 2001/07/03 14:42:42 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Serializable;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -74,7 +75,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.23 $
+  * @version $Revision: 1.24 $
   */
 public class SAXReader {
 
@@ -477,18 +478,25 @@ public class SAXReader {
                 
             }
         }
-        final String uriPrefix = prefix;
-        return new EntityResolver() {
-            public InputSource resolveEntity(String publicId, String systemId) {            
-                // try create a relative URI reader...
-                if ( systemId != null && systemId.length() > 0 ) {
-                    if ( uriPrefix != null ) {
-                        systemId = uriPrefix + systemId;
-                    }                    
-                }
-                return new InputSource(systemId);
+        return new SAXEntityResolver(prefix);
+    }
+    
+    protected static class SAXEntityResolver implements EntityResolver, Serializable {
+        String uriPrefix;
+        
+        public SAXEntityResolver(String uriPrefix) {
+            this.uriPrefix = uriPrefix;
+        }
+        
+        public InputSource resolveEntity(String publicId, String systemId) {            
+            // try create a relative URI reader...
+            if ( systemId != null && systemId.length() > 0 ) {
+                if ( uriPrefix != null ) {
+                    systemId = uriPrefix + systemId;
+                }                    
             }
-        };
+            return new InputSource(systemId);
+        }
     }
 
     
@@ -540,5 +548,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.23 2001/06/19 10:38:45 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.24 2001/07/03 14:42:42 jstrachan Exp $
  */

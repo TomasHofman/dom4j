@@ -4,47 +4,69 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NonLazyDocumentFactory.java,v 1.3 2001/07/03 14:42:43 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.1 2001/07/03 14:42:43 jstrachan Exp $
  */
 
-package org.dom4j.util;
+package org.dom4j;
 
-import org.dom4j.Attribute;
-import org.dom4j.Document;
-import org.dom4j.DocumentFactory;
-import org.dom4j.Element;
-import org.dom4j.Namespace;
-import org.dom4j.QName;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-/** <p><code>NonLazyDocumentFactory</code> is a factory of XML objects which 
-  * avoid using the lazy creation pattern. This results in a slower
-  * creation of a Document and uses more memory but it means that the
-  * same Document instance can be shared across threads provided it is not
-  * modified.</p>
+import java.io.StringWriter;
+import java.util.Iterator;
+import java.util.List;
+
+import junit.framework.*;
+import junit.textui.TestRunner;
+
+import org.dom4j.io.SAXReader;
+
+/** Tests that a dom4j document is Serializable
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public class NonLazyDocumentFactory extends DocumentFactory {
+public class TestSerialize extends AbstractTestCase {
+
+    protected static final boolean VERBOSE = false;
     
-    /** The Singleton instance */
-    static transient NonLazyDocumentFactory singleton = new NonLazyDocumentFactory();
     
-    
-    /** <p>Access to the singleton instance of this factory.</p>
-      *
-      * @return the default singleon instance
-      */
-    public static DocumentFactory getInstance() {
-        return singleton;
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
     }
     
-        
-    // DocumentFactory methods
-    //-------------------------------------------------------------------------
+    public static Test suite() {
+        return new TestSuite( TestSerialize.class );
+    }
     
-    public Element createElement(QName qname) {
-        return new NonLazyElement(qname);
+    public TestSerialize(String name) {
+        super(name);
+    }
+
+    // Test case(s)
+    //-------------------------------------------------------------------------                    
+    public void testSerialize() throws Exception {
+        ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
+        ObjectOutputStream out = new ObjectOutputStream( bytesOut );
+        out.writeObject( document );
+        out.close();
+        
+        byte[] data = bytesOut.toByteArray();
+        
+        ObjectInputStream in = new ObjectInputStream( new ByteArrayInputStream( data ) );
+        Object doc2 = in.readObject();
+        in.close();
+        
+        assert( "Read back document after serialization", doc2 != null && doc2 instanceof Document );
+        
+        assertDocumentsEqual( document, (Document) doc2 );
+    }            
+    
+    protected void setUp() throws Exception {
+        SAXReader reader = new SAXReader();
+        document = reader.read( "xml/schema/personal.xsd" );
     }
 }
 
@@ -93,5 +115,5 @@ public class NonLazyDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NonLazyDocumentFactory.java,v 1.3 2001/07/03 14:42:43 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.1 2001/07/03 14:42:43 jstrachan Exp $
  */

@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.22 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.23 2001/07/03 14:42:42 jstrachan Exp $
  */
 
 package org.dom4j;
 
+import java.io.Serializable;
 import java.util.Map;
 
 import org.dom4j.rule.Pattern;
@@ -37,12 +38,12 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
-public class DocumentFactory {
+public class DocumentFactory implements Serializable {
 
     /** The Singleton instance */
-    private static DocumentFactory singleton;
+    private static transient DocumentFactory singleton;
     
     protected transient QNameCache cache;
 
@@ -296,5 +297,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.22 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.23 2001/07/03 14:42:42 jstrachan Exp $
  */

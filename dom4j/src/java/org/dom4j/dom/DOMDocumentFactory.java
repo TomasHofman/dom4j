@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocumentFactory.java,v 1.9 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.10 2001/07/03 14:42:42 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -28,13 +28,14 @@ import org.dom4j.Text;
   * which implement the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.DOMImplementation {
 
     /** The Singleton instance */
-    protected static DOMDocumentFactory singleton = new DOMDocumentFactory();
-
+    protected static transient DOMDocumentFactory singleton = new DOMDocumentFactory();
+    
+    
     /** <p>Access to the singleton instance of this factory.</p>
       *
       * @return the default singleon instance
@@ -187,5 +188,5 @@ public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.D
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentFactory.java,v 1.9 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.10 2001/07/03 14:42:42 jstrachan Exp $
  */

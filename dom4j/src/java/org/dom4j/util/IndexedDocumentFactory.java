@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedDocumentFactory.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: IndexedDocumentFactory.java,v 1.3 2001/07/03 14:42:43 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -24,12 +24,12 @@ import org.dom4j.QName;
   * to create the name indexes.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class IndexedDocumentFactory extends DocumentFactory {
     
     /** The Singleton instance */
-    static IndexedDocumentFactory singleton = new IndexedDocumentFactory();
+    static transient IndexedDocumentFactory singleton = new IndexedDocumentFactory();
     
     
     /** <p>Access to the singleton instance of this factory.</p>
@@ -98,5 +98,5 @@ public class IndexedDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedDocumentFactory.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: IndexedDocumentFactory.java,v 1.3 2001/07/03 14:42:43 jstrachan Exp $
  */

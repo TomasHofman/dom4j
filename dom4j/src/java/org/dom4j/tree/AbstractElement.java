@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.47 2001/06/29 11:10:19 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.48 2001/07/03 14:42:42 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.47 $
+  * @version $Revision: 1.48 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -626,13 +626,13 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     
     public Element addCDATA(String cdata) {
         CDATA node = getDocumentFactory().createCDATA(cdata);
-        add(node);
+        addNewNode(node);
         return this;
     }
     
     public Element addComment(String comment) {
         Comment node = getDocumentFactory().createComment( comment );
-        add( node );
+        addNewNode( node );
         return this;
     }
     
@@ -654,38 +654,38 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         }
 */        
         Element node = factory.createElement( name );
-        add( node );
+        addNewNode( node );
         return node;
     }
     
     public Element addEntity(String name, String text) {
         Entity node = getDocumentFactory().createEntity(name, text);
-        add(node);
+        addNewNode(node);
         return this;
     }
     
     public Element addNamespace(String prefix, String uri) {
         Namespace node = getDocumentFactory().createNamespace(prefix, uri);
-        add(node);
+        addNewNode(node);
         return this;
     }
 
     public Element addProcessingInstruction(String target, String data) {
         ProcessingInstruction node = getDocumentFactory().createProcessingInstruction( target, data );
-        add( node );
+        addNewNode( node );
         return this;
     }
     
     public Element addProcessingInstruction(String target, Map data) {
         ProcessingInstruction node = getDocumentFactory().createProcessingInstruction( target, data );
-        add( node );
+        addNewNode( node );
         return this;
     }
     
     
     public Element addText(String text) {
         Text node = getDocumentFactory().createText(text);
-        add(node);
+        addNewNode(node);
         return this;
     }
     
@@ -1097,7 +1097,11 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                 + node.getParent().getQualifiedName() + "\"";
             throw new IllegalAddException(this, node, message);
         }
-        
+        addNewNode(node);
+    }
+    
+    /** Like addNode() but does not require a parent check */
+    protected void addNewNode(Node node) {
         contentList().add( node );
 
         childAdded(node);
@@ -1247,5 +1251,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.47 2001/06/29 11:10:19 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.48 2001/07/03 14:42:42 jstrachan Exp $
  */

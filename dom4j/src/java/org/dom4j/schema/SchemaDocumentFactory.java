@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaDocumentFactory.java,v 1.5 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: SchemaDocumentFactory.java,v 1.6 2001/07/03 14:42:42 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class SchemaDocumentFactory extends DocumentFactory {
 
@@ -41,7 +41,7 @@ public class SchemaDocumentFactory extends DocumentFactory {
     
     
     /** The Singleton instance */
-    static SchemaDocumentFactory singleton = new SchemaDocumentFactory();
+    static transient SchemaDocumentFactory singleton = new SchemaDocumentFactory();
     
     private static final Namespace XSI_NAMESPACE
         = Namespace.get( "xsi", "http://www.w3.org/2001/XMLSchema-instance" );
@@ -183,5 +183,5 @@ public class SchemaDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaDocumentFactory.java,v 1.5 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: SchemaDocumentFactory.java,v 1.6 2001/07/03 14:42:42 jstrachan Exp $
  */
