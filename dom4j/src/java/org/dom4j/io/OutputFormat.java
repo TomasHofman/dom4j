@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: OutputFormat.java,v 1.10 2004/02/28 14:00:32 maartenc Exp $
+ * $Id: OutputFormat.java,v 1.11 2004/05/04 18:25:15 wolfftw Exp $
  */
 
 package org.dom4j.io;
@@ -13,7 +13,7 @@ package org.dom4j.io;
   * used by {@link XMLWriter} and its base classes to format the XML output
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class OutputFormat implements Cloneable {
 
@@ -22,6 +22,9 @@ public class OutputFormat implements Cloneable {
 
     /** Whether or not to suppress the XML declaration - default is <code>false</code> */
     private boolean suppressDeclaration = false;
+    
+    /** Whether or not to print new line after the XML declaration - default is <code>true</code> */
+    private boolean newLineAfterDeclaration = true;
 
     /** The encoding format */
     private String encoding = "UTF-8";
@@ -174,6 +177,24 @@ public class OutputFormat implements Cloneable {
       */
     public boolean isSuppressDeclaration() {
         return suppressDeclaration;
+    }
+    
+    /** <p> This will set whether a new line is printed after the XML
+      *  declaration (assuming it is not supressed.)
+      * 
+      *  @param newLineAfterDeclaration <code>boolean</code> indicating 
+      *  whether or not to print new line following the XML declaration. The
+      *  default is true.
+      *  
+      */
+    public void setNewLineAfterDeclaration(boolean newLineAfterDeclaration) {
+        this.newLineAfterDeclaration = newLineAfterDeclaration;
+    }
+
+    /** @return true if a new line should be printed following XML declaration
+      */
+    public boolean isNewLineAfterDeclaration() {
+        return newLineAfterDeclaration;
     }
 
     public boolean isExpandEmptyElements() {
@@ -456,5 +477,5 @@ public class OutputFormat implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OutputFormat.java,v 1.10 2004/02/28 14:00:32 maartenc Exp $
+ * $Id: OutputFormat.java,v 1.11 2004/05/04 18:25:15 wolfftw Exp $
  */
