@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.21 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.22 2001/06/29 12:33:02 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -29,7 +29,7 @@ import org.xml.sax.EntityResolver;
   * of an XML document.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @version $Revision: 1.22 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -124,10 +124,7 @@ public class DefaultDocument extends AbstractDocument {
     }    
     
     public List processingInstructions() {
-        List source = contents;
-        if ( source == null ) {
-            return createEmptyList();
-        }
+        List source = contentList();
         List answer = createResultList();
         int size = source.size();
         for ( int i = 0; i < size; i++ ) {
@@ -140,10 +137,7 @@ public class DefaultDocument extends AbstractDocument {
     }
     
     public List processingInstructions(String target) {
-        List source = contents;
-        if ( source == null ) {
-            return createEmptyList();
-        }
+        List source = contentList();
         List answer = createResultList();
         int size = source.size();
         for ( int i = 0; i < size; i++ ) {
@@ -159,16 +153,14 @@ public class DefaultDocument extends AbstractDocument {
     }
     
     public ProcessingInstruction processingInstruction(String target) {
-        List source = contents;
-        if ( source != null ) {
-            int size = source.size();
-            for ( int i = 0; i < size; i++ ) {
-                Object object = source.get(i);
-                if ( object instanceof ProcessingInstruction ) {
-                    ProcessingInstruction pi = (ProcessingInstruction) object;
-                    if ( target.equals( pi.getName() ) ) {                  
-                        return pi;
-                    }
+        List source = contentList();
+        int size = source.size();
+        for ( int i = 0; i < size; i++ ) {
+            Object object = source.get(i);
+            if ( object instanceof ProcessingInstruction ) {
+                ProcessingInstruction pi = (ProcessingInstruction) object;
+                if ( target.equals( pi.getName() ) ) {                  
+                    return pi;
                 }
             }
         }
@@ -176,16 +168,14 @@ public class DefaultDocument extends AbstractDocument {
     }
     
     public boolean removeProcessingInstruction(String target) {
-        List source = contents;
-        if ( source != null ) {
-            for ( Iterator iter = source.iterator(); iter.hasNext(); ) {
-                Object object = iter.next();
-                if ( object instanceof ProcessingInstruction ) {
-                    ProcessingInstruction pi = (ProcessingInstruction) object;
-                    if ( target.equals( pi.getName() ) ) {                  
-                        iter.remove();
-                        return true;
-                    }
+        List source = contentList();
+        for ( Iterator iter = source.iterator(); iter.hasNext(); ) {
+            Object object = iter.next();
+            if ( object instanceof ProcessingInstruction ) {
+                ProcessingInstruction pi = (ProcessingInstruction) object;
+                if ( target.equals( pi.getName() ) ) {                  
+                    iter.remove();
+                    return true;
                 }
             }
         }
@@ -193,45 +183,33 @@ public class DefaultDocument extends AbstractDocument {
     }
     
     public void setContent(List contents) {
-        this.contents = contents;
         if ( contents instanceof ContentListFacade ) {
-            this.contents = ((ContentListFacade) contents).getBackingList();
+            contents = ((ContentListFacade) contents).getBackingList();
         }
+        Element newRoot = null;
+        if ( contents != null ) {
+            for ( Iterator iter = contents.iterator(); iter.hasNext(); ) {
+                Object object = iter.next();
+                if ( object instanceof Element ) {
+                    if ( newRoot == null ) {
+                        newRoot = (Element) object;
+                    }
+                    else {
+                        throw new IllegalAddException( "A document may only contain one Element: " + contents );
+                    }
+                }
+            }
+        }
+        this.contents = contents;
+        this.rootElement = newRoot;
     }
     
     public void clearContent() {
         contents = null;
+        rootElement = null;
     }
     
     
-    public Node node(int index) {
-        if (contents != null) {
-            Object object = contents.get(index);
-            if (object instanceof Node) {
-                return (Node) object;
-            }
-            if (object instanceof String) {
-                return getDocumentFactory().createText(object.toString());
-            }
-        }
-        return null;
-    }
-    
-    public int nodeCount() {
-        return ( contents == null ) ? 0 : contents.size();
-    }
-    
-    public int indexOf(Node node) {
-        return ( contents == null ) ? -1 : contents.indexOf( node );
-    }
-    
-    public Iterator nodeIterator() {
-        if (contents != null) {
-            return contents.iterator();
-        }
-        return EMPTY_ITERATOR;
-    }
-
     public void setDocumentFactory(DocumentFactory documentFactory) {
         this.documentFactory = documentFactory;
     }
@@ -258,10 +236,7 @@ public class DefaultDocument extends AbstractDocument {
                 String message = "The Node already has an existing document: " + document;
                 throw new IllegalAddException(this, node, message);
             }
-            if (contents == null) {
-                contents = createContentList();
-            }
-            contents.add(node);
+            contentList().add(node);
             childAdded(node);
         }
     }
@@ -270,7 +245,7 @@ public class DefaultDocument extends AbstractDocument {
         if ( node == rootElement) {
             rootElement = null;
         }
-        if (contents != null && contents.remove(node)) {
+        if (contentList().remove(node)) {
             childRemoved(node);
             return true;
         }
@@ -357,5 +332,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.21 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.22 2001/06/29 12:33:02 jstrachan Exp $
  */

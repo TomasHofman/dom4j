@@ -4,10 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.1 2001/05/09 15:30:28 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.2 2001/06/29 12:33:02 jstrachan Exp $
  */
 
 package org.dom4j;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 
 import java.io.StringWriter;
 import java.util.Iterator;
@@ -16,12 +19,16 @@ import java.util.List;
 import junit.framework.*;
 import junit.textui.TestRunner;
 
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
+import org.dom4j.tree.BaseElement;
+import org.dom4j.tree.DefaultDocument;
 
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -60,6 +67,22 @@ public class TestXMLWriter extends AbstractTestCase {
         
         assert( "Output text is bigger than 10 characters", text.length() > 10 );
     }        
+    
+    public void testWriterBug() throws Exception {        
+        Element project = new BaseElement("project"); 
+        Document doc = new DefaultDocument(project); 
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        XMLWriter writer = new XMLWriter(out, new OutputFormat("\t", true, "ISO-8859-1")); 
+        writer.write(doc); 
+        
+        ByteArrayInputStream in = new ByteArrayInputStream( out.toByteArray() );
+        SAXReader reader = new SAXReader();
+        Document doc2 = reader.read( in );
+        
+        assert( "Generated document has a root element", doc2.getRootElement() != null );
+        assertEquals( "Generated document has corrent named root element", doc2.getRootElement().getName(), "project" );
+    }
 }
 
 
@@ -107,5 +130,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.1 2001/05/09 15:30:28 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.2 2001/06/29 12:33:02 jstrachan Exp $
  */

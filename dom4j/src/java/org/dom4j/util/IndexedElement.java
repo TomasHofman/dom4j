@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedElement.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.3 2001/06/29 12:33:02 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -41,7 +41,7 @@ import org.dom4j.tree.DefaultElement;
   * optimise lookups via name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class IndexedElement extends DefaultElement {
 
@@ -64,12 +64,12 @@ public class IndexedElement extends DefaultElement {
         super(qname, attributeCount);
     }
     
-    public Attribute getAttribute(String name) {
-        return (Attribute) getAttributeIndex().get(name);
+    public Attribute attribute(String name) {
+        return (Attribute) attributeIndex().get(name);
     }
 
-    public Attribute getAttribute(QName qName) {
-        return (Attribute) getAttributeIndex().get(qName);
+    public Attribute attribute(QName qName) {
+        return (Attribute) attributeIndex().get(qName);
     }
 
     public Element element(String name) {
@@ -165,9 +165,12 @@ public class IndexedElement extends DefaultElement {
         return false;
     }
 
-    protected Map getAttributeIndex() {
+    protected Map attributeIndex() {
         if ( attributeIndex == null ) {
             attributeIndex = createAttributeIndex();
+            for (Iterator iter = attributeIterator(); iter.hasNext(); ) {
+                addToAttributeIndex( (Attribute) iter.next() );
+            }
         }
         return attributeIndex;
     }
@@ -175,6 +178,9 @@ public class IndexedElement extends DefaultElement {
     protected Map elementIndex() {
         if ( elementIndex == null ) {
             elementIndex = createElementIndex();
+            for (Iterator iter = elementIterator(); iter.hasNext(); ) {
+                addToElementIndex( (Element) iter.next() );
+            }
         }
         return elementIndex;
     }
@@ -183,9 +189,6 @@ public class IndexedElement extends DefaultElement {
       */
     protected Map createAttributeIndex() {
         Map answer = createIndex();
-        for (Iterator iter = attributeIterator(); iter.hasNext(); ) {
-            addToAttributeIndex( (Attribute) iter.next() );
-        }
         return answer;
     }
     
@@ -193,9 +196,6 @@ public class IndexedElement extends DefaultElement {
       */
     protected Map createElementIndex() {
         Map answer = createIndex();
-        for (Iterator iter = elementIterator(); iter.hasNext(); ) {
-            addToElementIndex( (Element) iter.next() );
-        }
         return answer;
     }
 
@@ -330,5 +330,5 @@ public class IndexedElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedElement.java,v 1.2 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.3 2001/06/29 12:33:02 jstrachan Exp $
  */
