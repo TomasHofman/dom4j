@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestRule.java,v 1.2 2001/12/06 13:17:44 jstrachan Exp $
+ * $Id: TestRule.java,v 1.3 2002/03/06 19:33:16 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -19,14 +19,16 @@ import java.util.TreeSet;
 import junit.framework.*;
 import junit.textui.TestRunner;
 
+import org.dom4j.CDATA;
 import org.dom4j.Document;
+import org.dom4j.Element;
 import org.dom4j.DocumentFactory;
 import org.dom4j.rule.Pattern;
 
 /** Tests the ordering of Rules
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestRule extends TestCase {
     
@@ -113,6 +115,13 @@ public class TestRule extends TestCase {
         
         assertTrue( "/ matches document", rule.matches( document ) );
         assertTrue( "/ does not match root element", ! rule.matches( document.getRootElement() ) );
+    }
+    
+    public void testTextMatchesCDATA() {
+        CDATA cdata = factory.createCDATA( "<>&" );
+        Rule rule = createRule( "text()" );
+        
+        assertTrue( "text() matches CDATA", rule.matches( cdata ) );
     }
     
     protected Rule createRule(String expr) {
