@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BranchTreeNode.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: BranchTreeNode.java,v 1.4 2002/07/15 14:27:00 jstrachan Exp $
  */
 
 package org.dom4j.swing;
@@ -24,7 +24,7 @@ import org.dom4j.Node;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Jakob Jenkov
-  * @version $Revision: 1.3 $ 
+  * @version $Revision: 1.4 $ 
   */
 public class BranchTreeNode extends LeafTreeNode {
 
@@ -94,26 +94,33 @@ public class BranchTreeNode extends LeafTreeNode {
         // are asked for.
         // XXXX - we may wish to detect inconsistencies here....
         if ( children == null ) {
-            // add attributes and content as children?
-            Branch branch = getXmlBranch();
-            int size = branch.nodeCount();
-            children = new ArrayList( size );
-            for ( int i = 0; i < size; i++ ) {
-                Node node = branch.node(i);
-                
-                // ignore whitespace text nodes
-                if ( node instanceof CharacterData ) {
-                    String text = node.getText();
-                    if ( text == null ) {
-                        continue;
-                    }
-                    text = text.trim();
-                    if ( text.length() <= 0 ) {
-                        continue;
-                    }
+            children = createChildList();
+        }
+        return children;
+    }
+    
+    
+    /** Factory method to create List of children TreeNodes */
+    protected List createChildList() {
+        // add attributes and content as children?
+        Branch branch = getXmlBranch();
+        int size = branch.nodeCount();
+        List children = new ArrayList( size );
+        for ( int i = 0; i < size; i++ ) {
+            Node node = branch.node(i);
+            
+            // ignore whitespace text nodes
+            if ( node instanceof CharacterData ) {
+                String text = node.getText();
+                if ( text == null ) {
+                    continue;
                 }
-                children.add( createChildTreeNode( node ) );
+                text = text.trim();
+                if ( text.length() <= 0 ) {
+                    continue;
+                }
             }
+            children.add( createChildTreeNode( node ) );
         }
         return children;
     }
@@ -179,5 +186,5 @@ public class BranchTreeNode extends LeafTreeNode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BranchTreeNode.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: BranchTreeNode.java,v 1.4 2002/07/15 14:27:00 jstrachan Exp $
  */
