@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.65 2004/03/29 21:04:19 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.66 2004/03/31 15:35:28 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -66,7 +66,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.65 $
+  * @version $Revision: 1.66 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     
@@ -870,7 +870,6 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
                         lastTextNode = null;
                         
                         if (format.isPadText()) {
-                            System.out.println("writing pad");
                             writer.write(PAD_TEXT);
                         }
                     }
@@ -1545,5 +1544,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.65 2004/03/29 21:04:19 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.66 2004/03/31 15:35:28 maartenc Exp $
  */
