@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.5 2001/08/17 17:19:22 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.6 2001/09/20 10:48:18 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -24,7 +24,7 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class NamespaceStack {
  
@@ -65,6 +65,10 @@ public class NamespaceStack {
         namespaceStack.add( namespace );
         namespaceCacheList.add( null );
         currentNamespaceCache = null;
+        String prefix = namespace.getPrefix();
+        if ( prefix == null || prefix.length() == 0 ) {
+            defaultNamespace = namespace;
+        }
     }      
     
     /** Pops the most recently used <code>Namespace</code> from
@@ -124,7 +128,21 @@ public class NamespaceStack {
     /** @return true if the given prefix is in the stack.
       */
     public boolean contains( Namespace namespace ) {
-        return namespaceStack.contains(namespace);
+        String prefix = namespace.getPrefix();
+        Namespace current = null;
+        if ( prefix == null || prefix.length() == 0 ) {
+            current = getDefaultNamespace();
+        }
+        else {
+            current = getNamespaceForPrefix( prefix );
+        }
+        if ( current == null ) {
+            return false;
+        }
+        if ( current == namespace ) {
+            return true;
+        }
+        return namespace.getURI().equals( current.getURI() );
     }
     
     public QName getQName( String namespaceURI, String localName, String qualifiedName ) {
@@ -346,5 +364,5 @@ public class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.5 2001/08/17 17:19:22 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.6 2001/09/20 10:48:18 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.3 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.4 2001/09/20 10:48:18 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -28,7 +28,7 @@ import org.dom4j.tree.DefaultDocument;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -83,6 +83,34 @@ public class TestXMLWriter extends AbstractTestCase {
         assertTrue( "Generated document has a root element", doc2.getRootElement() != null );
         assertEquals( "Generated document has corrent named root element", doc2.getRootElement().getName(), "project" );
     }
+    
+    public void testNamespaceBug() throws Exception {        
+        Document doc = DocumentHelper.createDocument();
+        
+        Element root = doc.addElement("root","ns1");
+        Element child1 = root.addElement("joe","ns2");
+        child1.addElement("zot","ns1");
+        
+        StringWriter out = new StringWriter();
+        XMLWriter writer = new XMLWriter(
+            out,
+            OutputFormat.createPrettyPrint() 
+        );
+        writer.write(doc);
+        String text = out.toString();
+        
+        //System.out.println( "Generated:" + text );
+        
+        Document doc2 = DocumentHelper.parseText( text );
+        root = doc2.getRootElement();
+        assertEquals( "root has correct namespace", "ns1", root.getNamespaceURI() );
+        
+        Element joe = (Element) root.elementIterator().next();
+        assertEquals( "joe has correct namespace", "ns2", joe.getNamespaceURI() );
+        
+        Element zot = (Element) joe.elementIterator().next();
+        assertEquals( "zot has correct namespace", "ns1", zot.getNamespaceURI() );
+    }
 }
 
 
@@ -130,5 +158,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.3 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.4 2001/09/20 10:48:18 jstrachan Exp $
  */
