@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.8 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: XPath.java,v 1.9 2001/11/16 16:30:34 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import org.jaxen.FunctionContext;
 import org.jaxen.NamespaceContext;
@@ -20,7 +21,7 @@ import org.jaxen.VariableContext;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public interface XPath extends NodeFilter {
 
@@ -161,6 +162,22 @@ public interface XPath extends NodeFilter {
       */
     public void setNamespaceContext(NamespaceContext namespaceContext);
     
+    /** Sets the current NamespaceContext from a Map where the keys
+      * are the String namespace prefixes and the values are the namespace
+      * URIs For example.<br>
+      *
+      * <pre>
+      * Map uris = new HashMap();<br/>
+      * uris.put( "SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/" );<br/>
+      * uris.put( "m", "urn:xmethodsBabelFish" );<br/>
+      * XPath xpath = document.createXPath( "/SOAP-ENV:Envelope/SOAP-ENV:Body/m:BabelFish" );<br/>
+      * xpath.setNamespaceURIs( uris );<br/>
+      * Node babelfish = xpath.selectSingleNode( document );<br/>
+      * </pre>
+      *
+      */
+    public void setNamespaceURIs(Map map);
+    
     /** @return the current variable context
       */
     public VariableContext getVariableContext();
@@ -217,5 +234,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.8 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: XPath.java,v 1.9 2001/11/16 16:30:34 jstrachan Exp $
  */

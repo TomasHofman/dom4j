@@ -4,84 +4,59 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestPrefix.java,v 1.4 2001/11/16 16:30:34 jstrachan Exp $
+ * $Id: TestUriMap.java,v 1.1 2001/11/16 16:30:34 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Namespace;
+import org.dom4j.Branch;
+import org.dom4j.Element;
+import org.dom4j.Node;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
-import org.jaxen.SimpleNamespaceContext;
-
-/** Tests finding items using a namespace prefix
+/** Tests the use of a Map for defining namespace URIs
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.1 $
   */
-public class TestPrefix extends AbstractTestCase {
+public class TestUriMap extends AbstractTestCase {
 
-    protected static boolean VERBOSE = false;
-    
-    protected static String[] paths = {
-        "//xplt:anyElement",
-        "//xpl:insertText",
-        "/Template/Application1/xpl:insertText",
-        "/Template/Application2/xpl:insertText"
-    };
-    
-    
     public static void main( String[] args ) {
         TestRunner.run( suite() );
     }
     
     public static Test suite() {
-        return new TestSuite( TestPrefix.class );
+        return new TestSuite( TestUriMap.class );
     }
     
-    public TestPrefix(String name) {
+    public TestUriMap(String name) {
         super(name);
     }
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testXPaths() throws Exception {        
-        int size = paths.length;
-        for ( int i = 0; i < size; i++ ) {
-            testXPath( paths[i] );
-        }
-    }
+    public void testURIMap() throws Exception {
+        Map uris = new HashMap();
+        uris.put( "SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/" );
+        uris.put( "m", "urn:xmethodsBabelFish" );        
+        XPath xpath = document.createXPath( "/SOAP-ENV:Envelope/SOAP-ENV:Body/m:BabelFish" );
+        xpath.setNamespaceURIs( uris );        
+        Node babelfish = xpath.selectSingleNode( document );
         
-    // Implementation methods
-    //-------------------------------------------------------------------------                    
-    protected void testXPath(String xpathText) {
-        XPath xpath = DocumentHelper.createXPath(xpathText);
+        //log( "Found: " + babelfish );
         
-        SimpleNamespaceContext context = new SimpleNamespaceContext();
-        context.addNamespace( "xplt", "www.xxxx.com" );
-        context.addNamespace( "xpl", "www.xxxx.com" );
-        xpath.setNamespaceContext( context );
-        
-        List list = xpath.selectNodes( document );
-        
-        log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
-
-        assertTrue( "Should have found at lest one result", list.size() > 0 );
-        
-        if ( VERBOSE ) {
-            log( "xpath: " + xpath );
-            log( "results: " + list );
-        }
+        assertTrue( "Found valid node", babelfish != null );
     }
     
     protected void setUp() throws Exception {
@@ -134,5 +109,5 @@ public class TestPrefix extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestPrefix.java,v 1.4 2001/11/16 16:30:34 jstrachan Exp $
+ * $Id: TestUriMap.java,v 1.1 2001/11/16 16:30:34 jstrachan Exp $
  */

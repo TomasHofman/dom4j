@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.19 2001/11/02 12:50:51 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.20 2001/11/16 16:30:34 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -23,6 +23,7 @@ import org.jaxen.BaseXPath;
 import org.jaxen.FunctionContext;
 import org.jaxen.JaxenException;
 import org.jaxen.NamespaceContext;
+import org.jaxen.SimpleNamespaceContext;
 import org.jaxen.VariableContext;
 
 import org.saxpath.XPathReader;
@@ -86,6 +87,10 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
     
     public NamespaceContext getNamespaceContext() {
         return namespaceContext;
+    }
+    
+    public void setNamespaceURIs(Map map) {
+        setNamespaceContext( new SimpleNamespaceContext( map ) );
     }
     
     public void setNamespaceContext(NamespaceContext namespaceContext) {
@@ -366,5 +371,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.19 2001/11/02 12:50:51 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.20 2001/11/16 16:30:34 jstrachan Exp $
  */
