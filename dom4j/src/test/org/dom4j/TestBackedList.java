@@ -4,23 +4,26 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBackedList.java,v 1.10 2003/04/07 22:24:27 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.11 2003/06/05 23:12:21 maartenc Exp $
  */
 
 package org.dom4j;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+import org.dom4j.Node;
 
 import org.dom4j.io.XMLWriter;
 
 /** A test harness to test the backed list feature of DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestBackedList extends AbstractTestCase {
 
@@ -43,6 +46,62 @@ public class TestBackedList extends AbstractTestCase {
         mutate(element);
         element = (Element) document.selectSingleNode( "//author" );
         mutate(element);
+    }
+    
+    public void testAddRemove() throws Exception {
+        Element parentElement = (Element) document.selectSingleNode( "/root" );
+        List children = parentElement.elements(); 
+        int lastPos = children.size() - 1; 
+        Element child = (Element) children.get(lastPos); 
+        try {
+            // should throw an exception cause we cannot add same child twice
+            children.add(0, child); 
+            fail();
+        } catch (IllegalAddException e) {}
+    }
+    
+    public void testAddWithIndex() throws Exception {
+        DocumentFactory factory = DocumentFactory.getInstance();
+        
+        Element root = (Element) document.selectSingleNode( "/root" );
+        List children = root.elements();  // return a list of 2 author elements
+        
+        assertEquals(2, children.size());
+        
+        children.add(1, factory.createElement("dummy1"));
+        children = root.elements();
+        
+        assertEquals(3, children.size());
+        
+        children = root.elements("author");
+        
+        assertEquals(2, children.size());
+        
+        children.add(1, factory.createElement("dummy2"));
+        
+        children = root.elements();
+        
+        assertEquals(4, children.size());
+        assertEquals("dummy1", ((Node) children.get(1)).getName());
+        assertEquals("dummy2", ((Node) children.get(2)).getName());
+    }
+    
+    public void testSort() {
+//        DocumentFactory factory = DocumentFactory.getInstance();
+//        Element root = (Element) document.selectSingleNode( "/root" );
+//        root.elements().add(factory.createElement("aaa"));
+//        
+//        List elements = root.elements();
+//        Collections.sort(elements, new Comparator() {
+//            public int compare(Object obj1, Object obj2) {
+//                Node node1 = (Node) obj1;
+//                Node node2 = (Node) obj2;
+//                return node1.getName().compareTo(node2.getName());
+//            }
+//        }); 
+//        
+//        List sortedElements = root.elements();
+//        assertEquals("aaa", ((Node) sortedElements.get(0)).getName());
     }
         
     // Implementation methods
@@ -111,5 +170,5 @@ public class TestBackedList extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBackedList.java,v 1.10 2003/04/07 22:24:27 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.11 2003/06/05 23:12:21 maartenc Exp $
  */
