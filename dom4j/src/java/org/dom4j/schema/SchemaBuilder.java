@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaBuilder.java,v 1.1 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: SchemaBuilder.java,v 1.2 2001/05/28 15:31:37 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -24,7 +24,7 @@ import org.dom4j.QName;
 /** <p><code>SchemaBuilder</code> reads an XML Schema Document.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class SchemaBuilder {
     
@@ -72,26 +72,27 @@ public class SchemaBuilder {
     
     /** processes an XML Schema &lt;element&gt; tag 
       */
-    protected void onSchemaElement( Element schemaElement ) {
-        String name = schemaElement.attributeValue( "name" );
-        String type = schemaElement.attributeValue( "type" );
+    protected void onSchemaElement( Element xsdElement ) {
+        String name = xsdElement.attributeValue( "name" );
+        String type = xsdElement.attributeValue( "type" );
         QName qname = getQName( name );
         
         if ( type != null ) {
             // register type with this element name
         }
-        Element schemaComplexType = schemaElement.element( XSD_COMPLEXTYPE );
+        SchemaElementFactory elementFactory 
+            = getSchemaElementFactory( qname );
+        
+        Element schemaComplexType = xsdElement.element( XSD_COMPLEXTYPE );
         if ( schemaComplexType != null ) {
-            onSchemaComplexType( qname, schemaComplexType );
+            onSchemaComplexType( schemaComplexType, elementFactory );
         }
-        Iterator iter = schemaElement.elementIterator( XSD_ATTRIBUTE );
+        Iterator iter = xsdElement.elementIterator( XSD_ATTRIBUTE );
         if ( iter.hasNext() ) {
-            SchemaElementFactory elementFactory 
-                = getSchemaElementFactory( qname );
 
             do {
                 onSchemaAttribute( 
-                    schemaElement, 
+                    xsdElement, 
                     elementFactory,
                     (Element) iter.next() 
                 );
@@ -102,19 +103,49 @@ public class SchemaBuilder {
     
     /** processes an XML Schema &lt;complexTypegt; tag 
       */
-    protected void onSchemaComplexType( QName elementQName, Element schemaComplexType ) {
+    protected void onSchemaComplexType( Element schemaComplexType, SchemaElementFactory elementFactory ) {
+        Iterator iter = schemaComplexType.elementIterator( XSD_ATTRIBUTE );
+        while ( iter.hasNext() ) {
+            Element xsdAttribute = (Element) iter.next();
+            String name = xsdAttribute.attributeValue( "name" );
+            QName qname = getQName( name );
+            
+            DataType dataType = dataTypeForXsdAttribute( xsdAttribute );
+            if ( dataType != null ) {
+                // register the DataType for the given Attribute 
+                elementFactory.setChildElementDataType( qname, dataType );
+            }
+            else {
+                String type = xsdAttribute.attributeValue( "type" );
+                System.out.println( "Warning: Couldn't find DataType for type: " + type + " attribute: " + name );
+            }
+        }
     }
     
     /** processes an XML Schema &lt;attribute&gt; tag 
       */
     protected void onSchemaAttribute( 
-        Element schemaElement, 
+        Element xsdElement, 
         SchemaElementFactory elementFactory, 
-        Element schemaAttribute 
+        Element xsdAttribute 
     ) {
-        String name = schemaAttribute.attributeValue( "name" );
-        String type = schemaAttribute.attributeValue( "type" );
+        String name = xsdAttribute.attributeValue( "name" );
         QName qname = getQName( name );
+        DataType dataType = dataTypeForXsdAttribute( xsdAttribute );
+        if ( dataType != null ) {
+            // register the DataType for the given Attribute 
+            elementFactory.setAttributeDataType( qname, dataType );
+        }
+        else {
+            String type = xsdAttribute.attributeValue( "type" );
+            System.out.println( "Warning: Couldn't find DataType for type: " + type + " attribute: " + name );
+        }
+    }
+    
+    /** processes an XML Schema &lt;attribute&gt; tag 
+      */
+    protected DataType dataTypeForXsdAttribute( Element xsdAttribute ) {
+        String type = xsdAttribute.attributeValue( "type" );
         DataType dataType = null;
         if ( type != null ) {
             dataType = (DataType) dataTypeCache.get( type );
@@ -126,27 +157,20 @@ public class SchemaBuilder {
         }
         else {
             // must parse the <simpleType> element
-            Element simpleTypeElement = schemaAttribute.element( XSD_SIMPLETYPE );
-            if ( simpleTypeElement == null ) {
+            Element xsdSimpleType = xsdAttribute.element( XSD_SIMPLETYPE );
+            if ( xsdSimpleType == null ) {
+                String name = xsdAttribute.attributeValue( "name" );
                 throw new InvalidSchemaException( 
-                    "The attribute: " + name + " in element: " 
-                    + schemaElement.getQualifiedName() 
-                    + " has no type attribute and does not contain a <simpleType/> element" 
+                    "The attribute: " + name + " has no type attribute and does not contain a <simpleType/> element" 
                 );
             }
-            dataType = loadDataTypeFromSimpleType( simpleTypeElement );            
+            dataType = loadDataTypeFromSimpleType( xsdSimpleType );            
         }
-        if ( dataType != null ) {
-            // register the DataType for the given Attribute 
-            elementFactory.setAttributeDataType( qname, dataType );
-        }
-        else {
-            System.out.println( "Warning: Couldn't find DataType for type: " + type + " attribute: " + qname.getQualifiedName() );
-        }
+        return dataType;
     }
     
     /** Loads a DataType object from a <simpleType> attribute schema element */
-    protected DataType loadDataTypeFromSimpleType( Element simpleTypeElement ) {
+    protected DataType loadDataTypeFromSimpleType( Element xsdSimpleType ) {
         return null;
     }
 
@@ -157,6 +181,7 @@ public class SchemaBuilder {
         SchemaElementFactory factory = documentFactory.getElementFactory( elementQName );               
         if ( factory == null ) {
             factory = new SchemaElementFactory( elementQName );
+            elementQName.setDocumentFactory(factory);
         }
         return factory;
     }
@@ -211,5 +236,5 @@ public class SchemaBuilder {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaBuilder.java,v 1.1 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: SchemaBuilder.java,v 1.2 2001/05/28 15:31:37 jstrachan Exp $
  */
