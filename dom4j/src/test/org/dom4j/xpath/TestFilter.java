@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestFilter.java,v 1.1 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.2 2001/01/11 14:01:52 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -24,11 +24,11 @@ import org.dom4j.XPathHelper;
 /** Test harness for XPath filters
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestFilter extends AbstractTestCase {
 
-    protected static boolean VERBOSE = true;
+    protected static boolean VERBOSE = false;
     
     protected static String[] paths = {
         "name()='author'",
@@ -65,17 +65,21 @@ public class TestFilter extends AbstractTestCase {
         NodeFilter nodeFilter = XPathHelper.createXPathFilter( xpathExpression );
         assert( "No NodeFilter object was created", nodeFilter != null );
         
-        log( "Evaluating XPathFilter: " + xpathExpression + " using NodeFilter: " + nodeFilter );
+        if ( VERBOSE ) {
+            log( "Evaluating XPathFilter: " + xpathExpression + " using NodeFilter: " + nodeFilter );
+        }
+        
+        log( "Evaluating XPathFilter: " + xpathExpression );
         
         List list = document.selectNodes("//author");
         for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
             Node node = (Node) iter.next();
             
             if ( nodeFilter.matches( node ) ) {
-                log( "Matches node: "+ node );
+                log( "Matches node: "+ node.asXML() );
             }
             else {
-                log( "No match for node: "+ node );
+                log( "No match for node: "+ node.asXML() );
             }
             
         }
@@ -127,5 +131,5 @@ public class TestFilter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestFilter.java,v 1.1 2001/01/11 12:23:55 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.2 2001/01/11 14:01:52 jstrachan Exp $
  */
