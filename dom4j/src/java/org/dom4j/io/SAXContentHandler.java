@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.30 2001/08/06 08:17:46 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.31 2001/08/06 10:46:13 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -45,7 +45,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.30 $
+  * @version $Revision: 1.31 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -396,14 +396,16 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
             int size = attributes.getLength();
             for ( int i = 0; i < size; i++ ) {
                 String attributeQualifiedName = attributes.getQName(i);
-                String attributeURI = attributes.getURI(i);
-                String attributeLocalName = attributes.getLocalName(i);
-                String attributeValue = attributes.getValue(i);
+                if ( ! attributeQualifiedName.startsWith( "xmlns" ) ) {
+                    String attributeURI = attributes.getURI(i);
+                    String attributeLocalName = attributes.getLocalName(i);
+                    String attributeValue = attributes.getValue(i);
 
-                QName attributeQName = namespaceStack.getQName( 
-                    attributeURI, attributeLocalName, attributeQualifiedName 
-                );
-                element.addAttribute(attributeQName, attributeValue);
+                    QName attributeQName = namespaceStack.getQName( 
+                        attributeURI, attributeLocalName, attributeQualifiedName 
+                    );
+                    element.addAttribute(attributeQName, attributeValue);
+                }
             }
         }
     }
@@ -461,5 +463,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.30 2001/08/06 08:17:46 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.31 2001/08/06 10:46:13 jstrachan Exp $
  */

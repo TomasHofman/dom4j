@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.55 2001/07/30 19:21:07 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.56 2001/08/06 10:46:13 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.55 $
+  * @version $Revision: 1.56 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -448,14 +448,16 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             if ( size == 1 ) {
                 // allow lazy construction of the List of Attributes
                 String attributeQualifiedName = attributes.getQName(0);
-                String attributeURI = attributes.getURI(0);
-                String attributeLocalName = attributes.getLocalName(0);
-                String attributeValue = attributes.getValue(0);
+                if ( ! attributeQualifiedName.startsWith( "xmlns" ) ) {
+                    String attributeURI = attributes.getURI(0);
+                    String attributeLocalName = attributes.getLocalName(0);
+                    String attributeValue = attributes.getValue(0);
 
-                QName attributeQName = namespaceStack.getQName( 
-                    attributeURI, attributeLocalName, attributeQualifiedName 
-                );
-                add(factory.createAttribute(this, attributeQName, attributeValue));
+                    QName attributeQName = namespaceStack.getQName( 
+                        attributeURI, attributeLocalName, attributeQualifiedName 
+                    );
+                    add(factory.createAttribute(this, attributeQName, attributeValue));
+                }
             }
             else {
                 List list = attributeList(size);
@@ -464,18 +466,20 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                     // optimised to avoid the call to attribute(QName) to 
                     // lookup an attribute for a given QName
                     String attributeQualifiedName = attributes.getQName(i);
-                    String attributeURI = attributes.getURI(i);
-                    String attributeLocalName = attributes.getLocalName(i);
-                    String attributeValue = attributes.getValue(i);
+                    if ( ! attributeQualifiedName.startsWith( "xmlns" ) ) {
+                        String attributeURI = attributes.getURI(i);
+                        String attributeLocalName = attributes.getLocalName(i);
+                        String attributeValue = attributes.getValue(i);
 
-                    QName attributeQName = namespaceStack.getQName( 
-                        attributeURI, attributeLocalName, attributeQualifiedName 
-                    );
-                    Attribute attribute = factory.createAttribute(
-                        this, attributeQName, attributeValue
-                    );
-                    list.add(attribute);
-                    childAdded(attribute);
+                        QName attributeQName = namespaceStack.getQName( 
+                            attributeURI, attributeLocalName, attributeQualifiedName 
+                        );
+                        Attribute attribute = factory.createAttribute(
+                            this, attributeQName, attributeValue
+                        );
+                        list.add(attribute);
+                        childAdded(attribute);
+                    }
                 }
             }
         }
@@ -1291,5 +1295,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.55 2001/07/30 19:21:07 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.56 2001/08/06 10:46:13 jstrachan Exp $
  */
