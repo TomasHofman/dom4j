@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathAttribute.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: XPathAttribute.java,v 1.6 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,13 +18,17 @@ import org.dom4j.Namespace;
   * It is useful when evalutating XPath expressions.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class XPathAttribute extends DefaultAttribute {
 
     /** The parent of this node */
     private Element parent;
 
+    
+    public XPathAttribute(QName qname) { 
+        super(qname);
+    }
     
     public XPathAttribute(QName qname, String value) { 
         super(qname, value);
@@ -136,5 +140,5 @@ public class XPathAttribute extends DefaultAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathAttribute.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: XPathAttribute.java,v 1.6 2001/03/21 00:53:57 jstrachan Exp $
  */

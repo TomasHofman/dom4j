@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: QName.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class QName {
 
@@ -46,6 +46,18 @@ public class QName {
     
     public static synchronized QName get(String name, String prefix, String uri) {
         return cache.get(name, Namespace.get( prefix, uri ));
+    }
+    
+    public static synchronized QName get(String qualifiedName, String uri) {
+        int index = qualifiedName.indexOf( ':' );
+        if ( index < 0 ) {
+            return get( qualifiedName, Namespace.get( uri ) );
+        }
+        else {
+            String name = qualifiedName.substring( index + 1 );
+            String prefix = qualifiedName.substring( 0, index );
+            return cache.get(name, Namespace.get( prefix, uri ));
+        }
     }
     
     public static synchronized QName get(String localName, Namespace namespace, String qualifiedName) {
@@ -189,5 +201,5 @@ public class QName {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: QName.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
  */

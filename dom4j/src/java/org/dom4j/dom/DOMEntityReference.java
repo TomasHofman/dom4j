@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMEntityReference.java,v 1.2 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DOMEntityReference.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DOMEntityReference extends XPathEntity implements org.w3c.dom.EntityReference {
 
@@ -57,7 +57,7 @@ public class DOMEntityReference extends XPathEntity implements org.w3c.dom.Entit
     }
 
     public String getLocalName() {
-        return DOMNodeHelper.getPrefix(this);
+        return DOMNodeHelper.getLocalName(this);
     }
 
     public String getNodeName() {
@@ -199,5 +199,5 @@ public class DOMEntityReference extends XPathEntity implements org.w3c.dom.Entit
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMEntityReference.java,v 1.2 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DOMEntityReference.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
  */

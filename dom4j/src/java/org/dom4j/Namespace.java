@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Namespace.java,v 1.6 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: Namespace.java,v 1.7 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import org.dom4j.tree.XPathNamespace;
 /** <p><code>Namespace</code> defines the standard behaviour for an XML namespace.</p>
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class Namespace extends AbstractNode {
     
@@ -49,6 +49,15 @@ public class Namespace extends AbstractNode {
       */
     public static Namespace get(String prefix, String uri) {
         return cache.get(prefix, uri);
+    }
+    
+    /** A helper method to return the Namespace instance
+      * for no prefix and the URI
+      *
+      * @return an interned Namespace object
+      */
+    public static Namespace get(String uri) {
+        return cache.get(uri);
     }
     
     /** @param prefix is the prefix for this namespace
@@ -187,5 +196,5 @@ public class Namespace extends AbstractNode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Namespace.java,v 1.6 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: Namespace.java,v 1.7 2001/03/21 00:53:57 jstrachan Exp $
  */

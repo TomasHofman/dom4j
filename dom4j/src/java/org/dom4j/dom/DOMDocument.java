@@ -4,37 +4,57 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMText.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMDocument.java,v 1.1 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.dom;
 
-import org.dom4j.Element;
-import org.dom4j.QName;
-import org.dom4j.Text;
-import org.dom4j.tree.XPathText;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.w3c.dom.Document;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.DocumentType;
+import org.dom4j.Element;
+import org.dom4j.Namespace;
+import org.dom4j.Node;
+import org.dom4j.QName;
+import org.dom4j.tree.DefaultDocument;
+
 import org.w3c.dom.DOMException;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
-/** <p><code>DOMText</code> implements a Text node which 
+/** <p><code>DOMDocument</code> implements an XML document which 
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public class DOMText extends XPathText implements org.w3c.dom.Text {
+public class DOMDocument extends DefaultDocument implements org.w3c.dom.Document {
 
-    public DOMText(String text) {
-	super(text);
+    public DOMDocument() { 
     }
 
-    public DOMText(Element parent, String text) {
-	super(parent, text);
+    public DOMDocument(String name) { 
+        super(name);
     }
 
+    public DOMDocument(Element rootElement) { 
+        super(rootElement);
+    }
+
+    public DOMDocument(DocumentType docType) { 
+        super(docType);
+    }
+
+    public DOMDocument(Element rootElement, DocumentType docType) { 
+        super(rootElement, docType);
+    }
+
+    public DOMDocument(String name, Element rootElement, DocumentType docType) { 
+        super(name, rootElement, docType);
+    }
 
     
     // org.w3c.dom.Node interface
@@ -79,15 +99,15 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
     }
     
     public NodeList getChildNodes() {
-        return DOMNodeHelper.getChildNodes(this);
+        return DOMNodeHelper.createNodeList( content() );
     }
 
     public org.w3c.dom.Node getFirstChild() {
-        return DOMNodeHelper.getFirstChild(this);
+        return DOMNodeHelper.asDOMNode( getNode(0) );
     }
 
     public org.w3c.dom.Node getLastChild() {
-        return DOMNodeHelper.getLastChild(this);
+        return DOMNodeHelper.asDOMNode( getNode( getNodeCount() - 1 ) );
     }
 
     public org.w3c.dom.Node getPreviousSibling() {
@@ -101,8 +121,8 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
     public NamedNodeMap getAttributes() {
         return DOMNodeHelper.getAttributes(this);
     }
-
-    public Document getOwnerDocument() {
+    
+    public org.w3c.dom.Document getOwnerDocument() {
         return DOMNodeHelper.getOwnerDocument(this);
     }
 
@@ -148,79 +168,101 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
         return DOMNodeHelper.hasAttributes(this);
     }
     
-    // org.w3c.dom.CharacterData interface
-    //-------------------------------------------------------------------------        
-    public String getData() throws DOMException {
-        return DOMNodeHelper.getData(this);
-    }
     
-    public void setData(String data) throws DOMException {
-        DOMNodeHelper.setData(this, data);
-    }
-
-    public int getLength() {
-        return DOMNodeHelper.getLength(this);
-    }
-
-    public String substringData( int offset, int count) throws DOMException {
-        return DOMNodeHelper.substringData(this, offset, count);
-    }
-
-    public void appendData(String arg) throws DOMException {
-        DOMNodeHelper.appendData(this, arg);
-    }
-
-    public void insertData(int offset, String arg) throws DOMException {
-        DOMNodeHelper.insertData(this, offset, arg);
-    }
-
-    public void deleteData(int offset, int count) throws DOMException {
-        DOMNodeHelper.deleteData(this, offset, count);
-    }
-
-    public void replaceData( 
-        int offset, int count, String arg 
-    ) throws DOMException {
-        DOMNodeHelper.replaceData(this, offset, count, arg);
-    }
-    
-    // org.w3c.dom.Text interface
+    // org.w3c.dom.Document interface
     //-------------------------------------------------------------------------            
-    public org.w3c.dom.Text splitText(int offset) throws DOMException {
-        if ( isReadOnly() ) {
-            throw new DOMException( 
-                DOMException.NO_MODIFICATION_ALLOWED_ERR,
-                "CharacterData node is read only: " + this
-            );
-        }
-        else {
-            String text = getText();
-            int length = (text != null) ? text.length() : 0;
-            if ( offset < 0 || offset >= length ) {
-                throw new DOMException( 
-                    DOMException.INDEX_SIZE_ERR, 
-                    "No text at offset: " + offset
-                );
-            }
-            else {
-                String start = text.substring(0, offset);
-                String rest = text.substring(offset);
-                setText(start);
-                Element parent = getParent();
-                Text newText = createText(rest);
-                if ( parent != null ) {
-                    parent.add( newText );
-                }
-                return DOMNodeHelper.asDOMText( newText );
-            }
-        }
+    public NodeList getElementsByTagName(String name) {
+        ArrayList list = new ArrayList();
+        DOMNodeHelper.appendElementsByTagName( list, this, name );
+        return DOMNodeHelper.createNodeList( list );
     }
+    
+    public NodeList getElementsByTagNameNS(
+        String namespaceURI, String localName
+    ) {
+        ArrayList list = new ArrayList();
+        DOMNodeHelper.appendElementsByTagNameNS(list, this, namespaceURI, localName );
+        return DOMNodeHelper.createNodeList( list );
+    }
+
+    
+    public org.w3c.dom.DocumentType getDoctype() {
+        return DOMNodeHelper.asDOMDocumentType( getDocType() );
+    }
+
+    public org.w3c.dom.DOMImplementation getImplementation() {
+        return DOMDocumentFactory.singleton;
+    }
+
+    public org.w3c.dom.Element getDocumentElement() {
+        return DOMNodeHelper.asDOMElement( getRootElement() );
+    }
+
+    public org.w3c.dom.Element createElement(String tagName) throws DOMException {
+        return new DOMElement(tagName);
+    }
+
+    public org.w3c.dom.DocumentFragment createDocumentFragment() {
+        DOMNodeHelper.notSupported();
+        return null;
+    }
+
+    public org.w3c.dom.Text createTextNode(String data) {
+        return new DOMText(data);
+    }
+
+    public org.w3c.dom.Comment createComment(String data) {
+        return new DOMComment(data);
+    }
+
+    public org.w3c.dom.CDATASection createCDATASection(String data) throws DOMException {
+        return new DOMCDATA(data);
+    }
+
+    public org.w3c.dom.ProcessingInstruction createProcessingInstruction(
+        String target, String data
+    ) throws DOMException {
+        return new DOMProcessingInstruction(target, data);
+    }
+
+    public org.w3c.dom.Attr createAttribute(String name) throws DOMException {
+        return new DOMAttribute( QName.get(name) );
+    }
+    
+    public org.w3c.dom.EntityReference createEntityReference(String name) throws DOMException {
+        return new DOMEntityReference(name);
+    }
+
+    public org.w3c.dom.Node importNode(
+        org.w3c.dom.Node importedNode, boolean deep
+    ) throws DOMException {
+        DOMNodeHelper.notSupported();
+        return null;
+    }
+
+    public org.w3c.dom.Element createElementNS(
+        String namespaceURI, String qualifiedName
+    ) throws DOMException {
+        QName qname = QName.get( qualifiedName, namespaceURI );
+        return new DOMElement( qname );
+    }
+
+    public org.w3c.dom.Attr createAttributeNS(
+        String namespaceURI, String qualifiedName
+    ) throws DOMException {
+        QName qname = QName.get( qualifiedName, namespaceURI );
+        return new DOMAttribute( qname );
+    }
+
+
+    public org.w3c.dom.Element getElementById(String elementId) {
+        return DOMNodeHelper.asDOMElement( elementByID( elementId ) );
+    }
+    
+    
     
     // Implementation methods
     //-------------------------------------------------------------------------            
-    protected Text createText(String text) {
-        return new DOMText( text );
-    }
 }
 
 
@@ -268,5 +310,5 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMText.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMDocument.java,v 1.1 2001/03/21 00:53:57 jstrachan Exp $
  */

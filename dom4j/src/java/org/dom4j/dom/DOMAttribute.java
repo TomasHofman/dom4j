@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -22,10 +22,13 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
-
+    
+    public DOMAttribute(QName qname) { 
+        super(qname);
+    }
     
     public DOMAttribute(QName qname, String value) { 
         super(qname, value);
@@ -212,5 +215,5 @@ public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.23 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.24 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.23 $
+  * @version $Revision: 1.24 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -269,9 +269,34 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     }
     
     
+    public Element elementByID(String elementID) {
+        for ( int i = 0, size = getNodeCount(); i < size; i++ ) {
+            Node node = getNode(i);
+            if ( node instanceof Element ) {
+                Element element = (Element) node;
+                String id = elementID(element);
+                if ( id != null && id.equals( elementID ) ) {
+                    return element;
+                }
+                else {
+                    return element.elementByID( elementID );
+                }
+            }
+        }
+        return null;
+    }
+    
     
     
     // Implementation methods
+    
+    /** @return the ID of the given <code>Element</code>
+      */
+    protected String elementID(Element element) {
+        // XXX: there will be other ways of finding the ID
+        // XXX: should probably have an IDResolver or something
+        return element.attributeValue( "ID" );
+    }
     
     /** @return the internal List used to manage the content */
     protected abstract List getContentList();
@@ -348,5 +373,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.23 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.24 2001/03/21 00:53:57 jstrachan Exp $
  */

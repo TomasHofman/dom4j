@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.26 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: Element.java,v 1.27 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public interface Element extends Branch {
 
@@ -291,11 +291,7 @@ public interface Element extends Branch {
       * @return true if this element contains mixed content.
       */
     public boolean hasMixedContent();    
-    
-    // return the child elements
-    public Element elementByID(String elementID);
-    
-    
+        
     /** Returns the first element for the given local name and any namespace.
       * 
       * @return the first element with the given local name 
@@ -566,5 +562,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.26 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: Element.java,v 1.27 2001/03/21 00:53:57 jstrachan Exp $
  */

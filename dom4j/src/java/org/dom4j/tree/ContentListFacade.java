@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ContentListFacade.java,v 1.2 2001/01/24 19:21:48 jstrachan Exp $
+ * $Id: ContentListFacade.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -27,14 +27,14 @@ import org.dom4j.Text;
 
 /** <p><code>ContentListFacade</code> represents a facade of the 
   * content of a {@link Branch} which is returned via calls to the
-  * {@link Branch#getContent} method to allow users to modify the content
+  * {@link Branch#content} method to allow users to modify the content
   * of a {@link Branch} directly using the {@link List} interface. 
   * This list is backed by the branch such that changes to the list will
   * be reflected in the branch and changes to the branch will be reflected
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class ContentListFacade extends AbstractList {
 
@@ -205,5 +205,5 @@ public class ContentListFacade extends AbstractList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ContentListFacade.java,v 1.2 2001/01/24 19:21:48 jstrachan Exp $
+ * $Id: ContentListFacade.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceCache.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: NamespaceCache.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class NamespaceCache {
 
@@ -26,6 +26,11 @@ public class NamespaceCache {
       * caches of {@link Namespace} for each prefix
       */ 
     protected static Map cache;
+
+    /** Cache of {@link Namespace} instances indexed by URI 
+      * for default namespaces with no prefixes
+      */ 
+    protected static Map noPrefixCache;
 
 
     /** @return the name model for the given name and namepsace 
@@ -36,6 +41,21 @@ public class NamespaceCache {
         if (answer == null) {
             answer = createNamespace(prefix, uri);
             cache.put(prefix, answer);
+        }
+        return answer;
+    }
+    
+
+    /** @return the name model for the given name and namepsace 
+      */
+    public synchronized Namespace get(String uri) {
+        if ( noPrefixCache == null ) {
+            noPrefixCache = createURIMap();
+        }
+        Namespace answer = (Namespace) noPrefixCache.get(uri);
+        if (answer == null) {
+            answer = createNamespace("", uri);
+            noPrefixCache.put(uri, answer);
         }
         return answer;
     }
@@ -122,5 +142,5 @@ public class NamespaceCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceCache.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: NamespaceCache.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
  */

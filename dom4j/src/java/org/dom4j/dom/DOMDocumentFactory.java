@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocumentFactory.java,v 1.2 2001/03/06 00:35:32 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -16,6 +16,7 @@ import org.dom4j.CDATA;
 import org.dom4j.Comment;
 import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
+import org.dom4j.DocumentType;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.ProcessingInstruction;
@@ -28,12 +29,12 @@ import org.xml.sax.Attributes;
   * which implement the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
-public class DOMDocumentFactory extends DocumentFactory {
+public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.DOMImplementation {
 
     /** The Singleton instance */
-    private static DOMDocumentFactory singleton = new DOMDocumentFactory();
+    protected static DOMDocumentFactory singleton = new DOMDocumentFactory();
 
     /** <p>Access to the singleton instance of this factory.</p>
       *
@@ -47,14 +48,14 @@ public class DOMDocumentFactory extends DocumentFactory {
     // Factory methods
     
     public Document createDocument() {
-/*        
         DOMDocument answer = new DOMDocument();
         answer.setDocumentFactory( this );
         return answer;
-*/
-        return null;
     }
     
+    public DocumentType createDocType(String name, String publicId, String systemId) {
+        return new DOMDocumentType( name, publicId, systemId );
+    }
     
     public Element createElement(QName qname) {
         return new DOMElement(qname);
@@ -92,7 +93,44 @@ public class DOMDocumentFactory extends DocumentFactory {
         return new DOMProcessingInstruction(target, data);
     }
     
-    // Implementation methods
+    // org.w3c.dom.DOMImplementation interface
+    
+    public boolean hasFeature(String feature, String version) {
+        return false;
+    }
+
+    public org.w3c.dom.DocumentType createDocumentType(
+        String qualifiedName, String publicId, String systemId
+    ) throws org.w3c.dom.DOMException {
+        return new DOMDocumentType( qualifiedName, publicId, systemId );
+    }
+
+    public org.w3c.dom.Document createDocument(
+        String namespaceURI, 
+        String qualifiedName, 
+        org.w3c.dom.DocumentType documentType
+    ) throws org.w3c.dom.DOMException {
+        DocumentType docType = asDocumentType( documentType );
+        DOMDocument document = new DOMDocument( docType );
+        document.addElement( QName.get( qualifiedName, namespaceURI ) );
+        return document;
+   }
+
+
+    // Implementation methods 
+    
+    protected DocumentType asDocumentType( org.w3c.dom.DocumentType documentType ) {
+        if ( documentType instanceof DocumentType ) {
+            return (DocumentType) documentType;
+        }
+        else {
+            return new DOMDocumentType( 
+                documentType.getName(), 
+                documentType.getPublicId(), 
+                documentType.getSystemId() 
+            );
+        }
+    }
     
 }
 
@@ -141,5 +179,5 @@ public class DOMDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentFactory.java,v 1.2 2001/03/06 00:35:32 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.22 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.23 2001/03/21 00:53:57 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -413,33 +413,6 @@ public class DefaultElement extends AbstractElement {
             }
         }
         return false;
-    }
-    
-    public Element elementByID(String elementID) {
-        if ( content instanceof List ) {
-            List list = (List) content;
-            int size = list.size();
-            for ( int i = 0; i < size; i++ ) {
-                Object object = list.get(i);
-                if ( object instanceof Element ) {
-                    Element element = (Element) object;
-                    String id = elementID(element);
-                    if ( id != null && id.equals( elementID ) ) {
-                        return element;
-                    }
-                }
-            }
-        }
-        else {
-            if ( content instanceof Element ) {
-                Element element = (Element) content;
-                String id = elementID(element);
-                if ( id != null && id.equals( elementID ) ) {
-                    return element;
-                }
-            }
-        }
-        return null;
     }
     
     public Element element(String name) {
@@ -866,13 +839,6 @@ public class DefaultElement extends AbstractElement {
         return new SingleIterator( result );
     }
     
-    /** @return the ID of the given <code>Element</code>
-      */
-    protected String elementID(Element element) {
-        // XXX: there will be other ways of finding the ID
-        // XXX: should probably have an IDResolver or something
-        return element.attributeValue( "id" );
-    }
 }
 
 
@@ -920,5 +886,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.22 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.23 2001/03/21 00:53:57 jstrachan Exp $
  */
