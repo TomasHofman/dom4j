@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultCDATA.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: DefaultCDATA.java,v 1.10 2004/09/24 12:24:10 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -16,7 +16,7 @@ import org.dom4j.Element;
   * and can be modified in place.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DefaultCDATA extends FlyweightCDATA {
 
@@ -26,19 +26,19 @@ public class DefaultCDATA extends FlyweightCDATA {
     /** @param text is the CDATA text
       */
     public DefaultCDATA(String text) {
-    super(text);
+    	super(text);
     }
 
     /** @param parent is the parent element
       * @param text is the CDATA text
       */
     public DefaultCDATA(Element parent,String text) {
-    super(text);
+    	super(text);
         this.parent = parent;
     }
 
     public void setText(String text) {
-    this.text = text;
+    	this.text = text;
     }
     
     public Element getParent() {
@@ -103,5 +103,5 @@ public class DefaultCDATA extends FlyweightCDATA {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultCDATA.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: DefaultCDATA.java,v 1.10 2004/09/24 12:24:10 maartenc Exp $
  */
