@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.58 2003/02/13 23:22:45 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.59 2003/02/25 01:36:56 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.58 $
+  * @version $Revision: 1.59 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -86,8 +86,11 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     };
 
     private static final boolean SUPPORT_PAD_TEXT = false;
-
+    
     protected static final OutputFormat DEFAULT_FORMAT = new OutputFormat();
+
+    /** Should entityRefs by resolved when writing ? */
+    private boolean resolveEntityRefs = false;
 
     /** Stores the last type of node written so algorithms can refer to the
       * previous node type */
@@ -1056,7 +1059,11 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     }
 
     protected void writeEntity(Entity entity) throws IOException {
-        writeEntityRef( entity.getName() );
+        if (!resolveEntityRefs()) {
+            writeEntityRef( entity.getName() );
+        } else {
+            writer.write(entity.getText());
+        }
     }
 
     protected void writeEntityRef(String name) throws IOException {
@@ -1394,6 +1401,14 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     protected OutputFormat getOutputFormat() {
         return format;
     }
+    
+    public boolean resolveEntityRefs() {
+        return resolveEntityRefs;
+    }
+    
+    public void setResolveEntityRefs(boolean resolve) {
+        this.resolveEntityRefs = resolve;
+    }
 }
 
 
@@ -1441,5 +1456,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.58 2003/02/13 23:22:45 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.59 2003/02/25 01:36:56 maartenc Exp $
  */
