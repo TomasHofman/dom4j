@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.9 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.10 2001/02/06 14:59:36 jstrachan Exp $
  */
 
 // This is a port of a file from the JDOM project
@@ -131,7 +131,7 @@ import org.dom4j.Text;
  * @author David &amp; Will (from Post Tool Design)
  * @author Dan Schaffer
  * @author Alex Chaffee (alex@jguru.com)
- * @version $Revision: 1.9 $ 
+ * @version $Revision: 1.10 $ 
  */
 public class XMLWriter implements Cloneable {
 
@@ -833,6 +833,52 @@ public class XMLWriter implements Cloneable {
     }
     
     
+    /**
+     * <p>
+     * Print out the given object which should be a String, a Node or a List
+     * of Nodes
+     * </p>
+     *
+     * @param object is the object to output.
+     * @param out <code>Writer</code> to write to.
+     **/
+    public void write(Object object, Writer out)
+        throws IOException
+    {
+        if (object instanceof Node) {
+            write((Node) object, out);
+        }
+        else if (object instanceof String) {
+            write((String) object, out);
+        }
+        else if (object instanceof List) {
+            List list = (List) object;
+            for ( int i = 0, size = list.size(); i < size; i++ ) {
+                write( list.get(i), out );
+            }
+        }
+        else if (object != null) {
+            write( object.toString(), out);
+        }
+    }
+    
+    /**
+     * <p>
+     * Print out the given object which should be a String, a Node or a List
+     * of Nodes
+     * </p>
+     *
+     * @param object is the object to output.
+     * @param out <code>Writer</code> to write to.
+     **/
+    public void write(Object object, OutputStream out)
+        throws IOException
+    {
+        Writer writer = makeWriter(out);
+        write(object, writer);
+        writer.flush();         // Flush the output to the underlying stream
+    }
+    
     
     // output as string
     
@@ -1520,5 +1566,5 @@ public class XMLWriter implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.9 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.10 2001/02/06 14:59:36 jstrachan Exp $
  */
