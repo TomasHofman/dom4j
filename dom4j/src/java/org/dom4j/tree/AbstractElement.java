@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.54 2001/07/27 12:33:51 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.55 2001/07/30 19:21:07 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.54 $
+  * @version $Revision: 1.55 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -447,9 +447,9 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             DocumentFactory factory = getDocumentFactory();
             if ( size == 1 ) {
                 // allow lazy construction of the List of Attributes
+                String attributeQualifiedName = attributes.getQName(0);
                 String attributeURI = attributes.getURI(0);
                 String attributeLocalName = attributes.getLocalName(0);
-                String attributeQualifiedName = attributes.getQName(0);
                 String attributeValue = attributes.getValue(0);
 
                 QName attributeQName = namespaceStack.getQName( 
@@ -463,9 +463,9 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                 for ( int i = 0; i < size; i++ ) {
                     // optimised to avoid the call to attribute(QName) to 
                     // lookup an attribute for a given QName
+                    String attributeQualifiedName = attributes.getQName(i);
                     String attributeURI = attributes.getURI(i);
                     String attributeLocalName = attributes.getLocalName(i);
-                    String attributeQualifiedName = attributes.getQName(i);
                     String attributeValue = attributes.getValue(i);
 
                     QName attributeQName = namespaceStack.getQName( 
@@ -1046,10 +1046,10 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     
     
     public Namespace getNamespaceForPrefix(String prefix) {
-        if ( prefix == null || prefix.length() <= 0 ) {
-            return Namespace.NO_NAMESPACE;
+        if ( prefix == null ) {
+            prefix = "";
         }
-        else if ( prefix.equals( getNamespacePrefix() ) ) {
+        if ( prefix.equals( getNamespacePrefix() ) ) {
             return getNamespace();
         }
         else if ( prefix.equals( "xml" ) ) {
@@ -1067,6 +1067,16 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
                     }
                 }
             }
+        }
+        Element parent = getParent();
+        if ( parent != null ) {
+            Namespace answer = parent.getNamespaceForPrefix(prefix);
+            if ( answer != null ) {
+                return answer;
+            }               
+        }
+        if ( prefix == null || prefix.length() <= 0 ) {
+            return Namespace.NO_NAMESPACE;
         }
         return null;
     }
@@ -1281,5 +1291,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.54 2001/07/27 12:33:51 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.55 2001/07/30 19:21:07 jstrachan Exp $
  */

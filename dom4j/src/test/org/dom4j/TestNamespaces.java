@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespaces.java,v 1.1 2001/07/23 12:15:18 jstrachan Exp $
+ * $Id: TestNamespaces.java,v 1.2 2001/07/30 19:23:30 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -106,6 +106,28 @@ public class TestNamespaces extends AbstractTestCase {
         log( "found: " + ns.asXML() );
     }
     
+    public void testNamespaceForDefaultPrefix() throws Exception {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read("xml/test/defaultNamespace.xml");
+        
+        List list = document.selectNodes( "//*" );
+        
+        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+            Element element = (Element) iter.next();
+            
+            Namespace ns = element.getNamespaceForPrefix( "" );
+        
+            assertNamespace( ns, "", "dummyNamespace" );
+            
+            ns = element.getNamespaceForPrefix( null );
+        
+            assertNamespace( ns, "", "dummyNamespace" );
+            
+            log( "found: " + ns.asXML() );
+
+        }
+    }
+    
     public void testNamespaceForURI() throws Exception {
         Element root = document.getRootElement();
         
@@ -182,5 +204,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.1 2001/07/23 12:15:18 jstrachan Exp $
+ * $Id: TestNamespaces.java,v 1.2 2001/07/30 19:23:30 jstrachan Exp $
  */

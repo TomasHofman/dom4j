@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.40 2001/07/25 16:15:05 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.41 2001/07/30 19:21:07 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.40 $
+  * @version $Revision: 1.41 $
   */
 public class DefaultElement extends AbstractElement {
     
@@ -184,14 +184,11 @@ public class DefaultElement extends AbstractElement {
     
     
     public Namespace getNamespaceForPrefix(String prefix) {
-        if ( prefix == null || prefix.length() <= 0 ) {
-            return Namespace.NO_NAMESPACE;
+        if ( prefix == null ) {
+            prefix = "";
         }
-        else if ( prefix.equals( getNamespacePrefix() ) ) {
+        if ( prefix.equals( getNamespacePrefix() ) ) {
             return getNamespace();
-        }
-        else if ( prefix.equals( "xml" ) ) {
-            return Namespace.XML_NAMESPACE;
         }
         else {
             if ( content instanceof List ) {
@@ -214,10 +211,16 @@ public class DefaultElement extends AbstractElement {
                     return namespace;
                 }
             }
-            Element parent = getParent();
-            if ( parent != null ) {
-                return parent.getNamespaceForPrefix(prefix);
-            }
+        }
+        Element parent = getParent();
+        if ( parent != null ) {
+            Namespace answer = parent.getNamespaceForPrefix(prefix);
+            if ( answer != null ) {
+                return answer;
+            }               
+        }
+        if ( prefix == null || prefix.length() <= 0 ) {
+            return Namespace.NO_NAMESPACE;
         }
         return null;
     }
@@ -1015,5 +1018,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.40 2001/07/25 16:15:05 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.41 2001/07/30 19:21:07 jstrachan Exp $
  */
