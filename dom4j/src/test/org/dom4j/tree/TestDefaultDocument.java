@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDefaultDocument.java,v 1.5 2004/07/11 10:49:38 maartenc Exp $
+ * $Id: TestDefaultDocument.java,v 1.6 2004/10/09 12:12:15 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -68,6 +68,20 @@ public class TestDefaultDocument extends AbstractTestCase {
         System.out.println(document.asXML());
         
         DocumentHelper.parseText(document.asXML());
+    }
+    
+    public void testAsXMLWithEncoding() throws Exception {
+    	DefaultDocument document = new DefaultDocument();
+    	document.addElement("root");
+    	document.setXMLEncoding("ISO-8859-1");
+    	
+    	Document doc = DocumentHelper.parseText("<?xml version='1.0' encoding='ISO-8859-1'?><root/>");
+    	
+    	String xml1 = document.asXML();
+    	String xml2 = doc.asXML();
+    	
+    	assertTrue(xml1.indexOf("ISO-8859-1") != -1);
+    	assertTrue(xml2.indexOf("ISO-8859-1") != -1);
     }
     
     public void testEncoding() throws Exception {
@@ -135,5 +149,5 @@ public class TestDefaultDocument extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDefaultDocument.java,v 1.5 2004/07/11 10:49:38 maartenc Exp $
+ * $Id: TestDefaultDocument.java,v 1.6 2004/10/09 12:12:15 maartenc Exp $
  */
