@@ -4,10 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultNamespaceContext.java,v 1.3 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: DefaultNamespaceContext.java,v 1.4 2002/07/29 15:07:00 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
+
+import java.io.Serializable;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -24,7 +26,7 @@ import org.jaxen.NamespaceContext;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   */
-public class DefaultNamespaceContext implements NamespaceContext {
+public class DefaultNamespaceContext implements NamespaceContext, Serializable {
 
     private final Element element;
     
@@ -106,5 +108,5 @@ public class DefaultNamespaceContext implements NamespaceContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultNamespaceContext.java,v 1.3 2002/05/20 08:14:14 jstrachan Exp $
+ * $Id: DefaultNamespaceContext.java,v 1.4 2002/07/29 15:07:00 jstrachan Exp $
  */
