@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.14 2004/06/25 12:34:47 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.15 2004/06/28 14:19:33 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -27,13 +27,14 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class DOMWriter {
 
     private static boolean loggedWarning = false;
     private static final String[] DEFAULT_DOM_DOCUMENT_CLASSES = {
         "org.apache.xerces.dom.DocumentImpl", // Xerces
+        "gnu.xml.dom.DomDocument", // GNU JAXP
         "org.apache.crimson.tree.XmlDocument", // Crimson
         "com.sun.xml.tree.XmlDocument", // Sun's Project X
         "oracle.xml.parser.v2.XMLDocument", // Oracle V2
@@ -426,5 +427,5 @@ public class DOMWriter {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.14 2004/06/25 12:34:47 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.15 2004/06/28 14:19:33 maartenc Exp $
  */
