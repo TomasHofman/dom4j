@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.21 2001/08/16 19:50:22 jstrachan Exp $
+ * $Id: Node.java,v 1.22 2001/09/15 14:55:14 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @version $Revision: 1.22 $
   */
 public interface Node extends Cloneable {
 
@@ -288,12 +288,14 @@ public interface Node extends Cloneable {
       *
       * <code>
       *     Node node = ...;
-      *     node.detach();
       *     Element someOtherElement = ...;
-      *     someOtherElement.add( node );
+      *     someOtherElement.add( node.detach() );
       * </code>
+      *
+      * @return the node that has been removed from its parent node if 
+      * any and its document if any.
       */
-    public void detach();
+    public Node detach();
     
     
     
@@ -480,5 +482,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.21 2001/08/16 19:50:22 jstrachan Exp $
+ * $Id: Node.java,v 1.22 2001/09/15 14:55:14 jstrachan Exp $
  */
