@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: keywords.xsl,v 1.1 2001/08/03 15:24:03 jstrachan Exp $
+     $Id: keywords.xsl,v 1.2 2002/05/13 18:57:36 tradem Exp $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -25,12 +25,9 @@
   </meta>
 </xsl:template>
 
-<xsl:template match="keyword[position()!=last()]" mode="html.header">
-  <xsl:apply-templates/><xsl:text>, </xsl:text>
-</xsl:template>
-
-<xsl:template match="keyword[position()=last()]" mode="html.header">
+<xsl:template match="keyword" mode="html.header">
   <xsl:apply-templates/>
+  <xsl:if test="following-sibling::keyword">, </xsl:if>
 </xsl:template>
 
 <!-- ==================================================================== -->

@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: info.xsl,v 1.1 2001/08/03 15:24:03 jstrachan Exp $
+     $Id: info.xsl,v 1.2 2002/05/13 18:57:36 tradem Exp $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
