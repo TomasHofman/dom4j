@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.11 2001/01/30 15:56:27 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.12 2001/02/06 13:05:42 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestXPath extends AbstractTestCase {
 
@@ -73,13 +73,36 @@ public class TestXPath extends AbstractTestCase {
         
         List list = xpath.selectNodes( document );
         
-        log( "Searched path: " + xpathExpression + " found: " + list.size() + " result(s)" );
+        log( "Searched path: " + xpathExpression );
+        log( "Found        : " + list.size() + " result(s)" );
         
         if ( VERBOSE ) {
-            log( "XPath:   " + xpath );
+            log( "..........................................." );
+            log( "XPath:       :" + xpath );
+            log( "..........................................." );
         }
         
-        log( "Results: "+ list );
+        log( "Results" );
+        if ( list == null ) {
+            log( "null" );
+        }
+        else {
+            log( "[" );
+            for ( int i = 0, size = list.size(); i < size; i++ ) {
+                Object object = list.get(i);
+                String text = "null";
+                if ( object instanceof Node ) {
+                    Node node = (Node) object;
+                    text = node.asXML();
+                }
+                else if ( object != null ) {
+                    text = object.toString();
+                }
+                log( "    " + text );
+            }
+            log( "]" );
+        }
+        log( "..........................................." );
     }
 
 }
@@ -129,5 +152,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.11 2001/01/30 15:56:27 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.12 2001/02/06 13:05:42 jstrachan Exp $
  */
