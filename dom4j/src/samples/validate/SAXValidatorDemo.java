@@ -4,29 +4,37 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ValidateDemo.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: SAXValidatorDemo.java,v 1.1 2001/08/20 14:57:20 jstrachan Exp $
  */
+
+package validate;
+
+import AbstractDemo;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentType;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.SAXValidator;
+import org.dom4j.io.XMLWriter;
+import org.dom4j.util.XMLErrorHandler;
 
 import org.xml.sax.SAXException;
 
 /** A sample program demonstrating the use of validation using SAXValidator
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public class ValidateDemo extends AbstractDemo {
+public class SAXValidatorDemo extends AbstractDemo {
     
     public static void main(String[] args) {
-        run( new ValidateDemo(), args );
+        run( new SAXValidatorDemo(), args );
     }    
     
-    public ValidateDemo() {
+    public SAXValidatorDemo() {
     }
         
     public void run(String[] args) throws Exception {    
@@ -50,9 +58,13 @@ public class ValidateDemo extends AbstractDemo {
     protected void validate( String url, boolean validateOnParse ) throws Exception {        
         println( "Parsing: " + url + " with validation mode: " + validateOnParse );
         
+        XMLErrorHandler errorHandler = new XMLErrorHandler();
+        
         if ( validateOnParse ) {
             // validate as we parse
             SAXReader reader = new SAXReader( true );
+            reader.setErrorHandler( errorHandler );
+            
             try {
                 Document document = reader.read( url );
                 println( "Document: " + url + " is valid!" );
@@ -79,6 +91,7 @@ public class ValidateDemo extends AbstractDemo {
             // now lets validate
             try {
                 SAXValidator validator = new SAXValidator();
+                validator.setErrorHandler( errorHandler );
                 validator.validate( document );
 
                 println( "Document: " + url + " is valid!" );
@@ -87,6 +100,13 @@ public class ValidateDemo extends AbstractDemo {
                 println( "Document: " + url + " is not valid" );
                 println( "Exception: " + e );
             }
+        }
+        
+        // now lets output any errors as XML        
+        Element errors = errorHandler.getErrors();
+        if ( errors.hasContent() ) {
+            XMLWriter writer = new XMLWriter( OutputFormat.createPrettyPrint() );
+            writer.write( errors );
         }
     }
 }
@@ -136,5 +156,5 @@ public class ValidateDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ValidateDemo.java,v 1.3 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: SAXValidatorDemo.java,v 1.1 2001/08/20 14:57:20 jstrachan Exp $
  */
