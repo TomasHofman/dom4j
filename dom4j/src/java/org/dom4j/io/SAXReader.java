@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.42 2002/11/27 07:35:33 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.43 2003/02/11 23:56:01 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.42 $
+  * @version $Revision: 1.43 $
   */
 public class SAXReader {
 
@@ -207,7 +207,19 @@ public class SAXReader {
       * @throws MalformedURLException if a URL could not be made for the given File
       */
     public Document read(File file) throws DocumentException, MalformedURLException {
-        return read( file.toURL() );
+        try {
+            /*
+             * We cannot convert the file to an URL because if the filename
+             * contains '#' characters, there will be problems with the 
+             * URL in the InputSource (because a URL like 
+             * http://myhost.com/index#anchor is treated the same as
+             * http://myhost.com/index)
+             * Thanks to Christian Oetterli
+             */
+            return read( new InputSource(new FileReader(file)) );
+        } catch (FileNotFoundException e) {
+            throw new MalformedURLException(e.getMessage());
+        }
     }
     
     /** <p>Reads a Document from the given <code>URL</code> using SAX</p>
@@ -804,5 +816,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.42 2002/11/27 07:35:33 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.43 2003/02/11 23:56:01 maartenc Exp $
  */
