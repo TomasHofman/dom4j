@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LargeDocumentDemo.java,v 1.12 2003/04/07 22:24:58 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.13 2004/04/20 08:38:17 maartenc Exp $
  */
 
 import org.dom4j.Document;
@@ -17,7 +18,7 @@ import org.dom4j.io.SAXReader;
   * {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     
@@ -125,5 +126,5 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LargeDocumentDemo.java,v 1.12 2003/04/07 22:24:58 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.13 2004/04/20 08:38:17 maartenc Exp $
  */

@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CreateXMLDemo.java,v 1.9 2003/04/07 22:24:52 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.10 2004/04/20 08:38:17 maartenc Exp $
  */
 
 
@@ -23,7 +24,7 @@ import org.dom4j.io.XMLWriter;
   * displaying the current system properties.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class CreateXMLDemo extends AbstractDemo {
     
@@ -113,5 +114,5 @@ public class CreateXMLDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CreateXMLDemo.java,v 1.9 2003/04/07 22:24:52 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.10 2004/04/20 08:38:17 maartenc Exp $
  */

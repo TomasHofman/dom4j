@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeDemo.java,v 1.4 2003/04/07 22:25:01 jstrachan Exp $
+ * $Id: DatatypeDemo.java,v 1.5 2004/04/20 08:38:17 maartenc Exp $
  */
 
 import org.dom4j.Document;
@@ -14,7 +15,7 @@ import org.dom4j.io.SAXReader;
 /** A simple test program to demonstrate using XML Schema Data Types
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DatatypeDemo extends AbstractDemo {
     
@@ -81,5 +82,5 @@ public class DatatypeDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeDemo.java,v 1.4 2003/04/07 22:25:01 jstrachan Exp $
+ * $Id: DatatypeDemo.java,v 1.5 2004/04/20 08:38:17 maartenc Exp $
  */

@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathGrep.java,v 1.12 2003/04/07 22:24:56 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.13 2004/04/20 08:38:17 maartenc Exp $
  */
 
 
@@ -20,7 +21,7 @@ import org.dom4j.XPath;
   * command on Unix but uses XPath expressions for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class XPathGrep extends SAXDemo {
     
@@ -136,5 +137,5 @@ public class XPathGrep extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathGrep.java,v 1.12 2003/04/07 22:24:56 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.13 2004/04/20 08:38:17 maartenc Exp $
  */

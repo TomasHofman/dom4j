@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.11 2003/04/07 22:25:00 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.12 2004/04/20 08:38:17 maartenc Exp $
  */
 
 import javax.xml.transform.Source;
@@ -19,7 +20,7 @@ import org.dom4j.io.DocumentSource;
 /** A sample program to demonstrate using XSLT to transform a dom4j Document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class XSLTDemo extends SAXDemo {
     
@@ -126,5 +127,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.11 2003/04/07 22:25:00 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.12 2004/04/20 08:38:17 maartenc Exp $
  */

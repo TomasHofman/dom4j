@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo2.java,v 1.11 2003/04/07 22:24:56 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.12 2004/04/20 08:38:17 maartenc Exp $
  */
 
 
@@ -17,7 +18,7 @@ import org.dom4j.io.SAXReader;
   * object model from a {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class VisitorDemo2 extends VisitorDemo {
     
@@ -114,5 +115,5 @@ public class VisitorDemo2 extends VisitorDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo2.java,v 1.11 2003/04/07 22:24:56 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.12 2004/04/20 08:38:17 maartenc Exp $
  */

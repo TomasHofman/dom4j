@@ -1,10 +1,11 @@
+package samples;
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  * 
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDemo.java,v 1.13 2003/04/07 22:24:53 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.14 2004/04/20 08:38:17 maartenc Exp $
  */
 
 import org.dom4j.Document;
@@ -13,7 +14,7 @@ import org.dom4j.io.SAXReader;
 /** A simple test program to demonstrate using SAX to create a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class SAXDemo extends AbstractDemo {
     
@@ -76,5 +77,5 @@ public class SAXDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDemo.java,v 1.13 2003/04/07 22:24:53 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.14 2004/04/20 08:38:17 maartenc Exp $
  */
