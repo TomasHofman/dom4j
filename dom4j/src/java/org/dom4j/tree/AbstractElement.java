@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.41 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.42 2001/06/19 10:38:45 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -42,7 +42,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.41 $
+  * @version $Revision: 1.42 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -571,9 +571,25 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         add(node);
     }
     
-    public void addText(String text) {
-        Text node = getDocumentFactory().createText(text);
-        add(node);
+    public Element addElement(String name) {
+        DocumentFactory factory = getDocumentFactory();
+        
+        // should we inherit the parents namespace?
+/*        
+        
+        String prefix = getPrefix();
+        Element node = null;
+        if ( prefix == null || prefix.length() <= 0 ) {
+            QName qname = factory.createQName( name, getNamespace() );
+            node = factory.createElement( qname );
+        }
+        else {
+            node = factory.createElement( name );
+        }
+*/        
+        Element node = factory.createElement( name );
+        add( node );
+        return node;
     }
     
     public Entity addEntity(String name) {
@@ -594,6 +610,11 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return node;
     }
 
+    public void addText(String text) {
+        Text node = getDocumentFactory().createText(text);
+        add(node);
+    }
+    
 
     // polymorphic node methods    
     public void add(Node node) {
@@ -1088,5 +1109,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.41 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.42 2001/06/19 10:38:45 jstrachan Exp $
  */

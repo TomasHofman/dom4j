@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.22 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.23 2001/06/19 10:38:45 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -74,7 +74,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
 public class SAXReader {
 
@@ -359,16 +359,6 @@ public class SAXReader {
         setXMLReader( XMLReaderFactory.createXMLReader(xmlReaderClassName) );
     }
 
-    private DispatchHandler getDispatchHandler() {
-        if (dispatchHandler == null) {
-            dispatchHandler = new DispatchHandler();
-        }
-        return dispatchHandler;   
-    }
-    
-    private void setDispatchHandler(DispatchHandler dispatchHandler) {
-        this.dispatchHandler = dispatchHandler;
-    }
     
     /** Adds the <code>ElementHandler</code> to be called when the 
       * specified path is encounted.
@@ -402,7 +392,17 @@ public class SAXReader {
     }
     
     // Implementation methods    
-    //-------------------------------------------------------------------------                
+    //-------------------------------------------------------------------------                    
+    protected DispatchHandler getDispatchHandler() {
+        if (dispatchHandler == null) {
+            dispatchHandler = new DispatchHandler();
+        }
+        return dispatchHandler;   
+    }
+    
+    protected void setDispatchHandler(DispatchHandler dispatchHandler) {
+        this.dispatchHandler = dispatchHandler;
+    }
     
     /** Factory Method to allow alternate methods of 
       * creating and configuring XMLReader objects
@@ -540,5 +540,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.22 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.23 2001/06/19 10:38:45 jstrachan Exp $
  */
