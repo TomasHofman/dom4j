@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.24 2001/05/23 11:27:49 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.25 2001/05/23 11:38:26 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -67,7 +67,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.24 $
+  * @version $Revision: 1.25 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -422,7 +422,6 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
                     writer.write(padText);
                 }
             }
-/*            
             text = escapeElementEntities(text);
             if (trimText) {
                 StringTokenizer tokenizer = new StringTokenizer(text);
@@ -438,23 +437,6 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             } 
             else {                    
                 writer.write(text);
-            }
-            text = escapeElementEntities(text);
-*/
-            if (trimText) {
-                StringTokenizer tokenizer = new StringTokenizer(text);
-                while (tokenizer.hasMoreTokens()) {
-                    String token = tokenizer.nextToken();
-                    
-                    writeEscapeElementEntities( token );
-                    
-                    if (tokenizer.hasMoreTokens()) {
-                        writer.write(" ");
-                    }
-                }
-            } 
-            else {                    
-                writeEscapeElementEntities( text );
             }
             
             lastOutputNodeType = Node.TEXT_NODE;
@@ -1054,5 +1036,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.24 2001/05/23 11:27:49 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.25 2001/05/23 11:38:26 jstrachan Exp $
  */
