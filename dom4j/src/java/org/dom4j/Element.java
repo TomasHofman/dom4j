@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.15 2001/01/22 15:22:21 jstrachan Exp $
+ * $Id: Element.java,v 1.16 2001/01/25 19:27:33 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,13 +26,13 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public interface Element extends Branch {
 
  
     /** @return true if this element is the root element of a document
-      * and this element supports upward navigation else false.
+      * and this element supports the parent relationship else false.
       */
     public boolean isRootElement();
 
@@ -121,6 +121,9 @@ public interface Element extends Branch {
     
     // Text API
     
+    /** Returns the textual format of this Element.
+      */
+    public String getText();    
     public String getTextTrim();
 
     
@@ -508,5 +511,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.15 2001/01/22 15:22:21 jstrachan Exp $
+ * $Id: Element.java,v 1.16 2001/01/25 19:27:33 jstrachan Exp $
  */
