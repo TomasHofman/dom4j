@@ -4,13 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocument.java,v 1.25 2004/02/28 17:51:17 maartenc Exp $
+ * $Id: AbstractDocument.java,v 1.26 2004/03/25 15:10:30 maartenc Exp $
  */
 
 package org.dom4j.tree;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +32,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -62,13 +62,13 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
     
     public String asXML() {
         try {
-            StringWriter out = new StringWriter();
-            XMLWriter writer = new XMLWriter( out, outputFormat );
+            ByteArrayOutputStream out = new ByteArrayOutputStream();
+            XMLWriter writer = new XMLWriter(out, outputFormat);
             writer.write(this);
             return out.toString();
         } 
         catch (IOException e) {
-            throw new RuntimeException("Wierd IOException while generating textual representation: " + e.getMessage());
+            throw new RuntimeException("IOException while generating textual representation: " + e.getMessage());
         }
     }
 
@@ -259,5 +259,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocument.java,v 1.25 2004/02/28 17:51:17 maartenc Exp $
+ * $Id: AbstractDocument.java,v 1.26 2004/03/25 15:10:30 maartenc Exp $
  */
