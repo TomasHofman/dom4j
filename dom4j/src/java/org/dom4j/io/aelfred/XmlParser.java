@@ -46,7 +46,7 @@ import java.util.Iterator;
 import org.xml.sax.SAXException;
 
 
-// $Id: XmlParser.java,v 1.3 2001/07/30 21:20:54 jstrachan Exp $
+// $Id: XmlParser.java,v 1.4 2002/02/01 10:55:25 jstrachan Exp $
 
 /**
  * Parse XML documents and return parse events through call-backs.
@@ -56,7 +56,7 @@ import org.xml.sax.SAXException;
  * @author Written by David Megginson &lt;dmeggins@microstar.com&gt;
  *	(version 1.2a with bugfixes)
  * @author Updated by David Brownell &lt;david-b@pacbell.net&gt;
- * @version $Date: 2001/07/30 21:20:54 $
+ * @version $Date: 2002/02/01 10:55:25 $
  * @see SAXDriver
  */
 final class XmlParser
@@ -3611,7 +3611,7 @@ loop:
 		    encoding = null;	// autodetect
 		else {
 		    temp = encoding.indexOf ('=', temp + 7);
-		    encoding = encoding.substring (temp);
+		    encoding = encoding.substring (temp + 1);
 		    if ((temp = encoding.indexOf (';')) > 0)
 			encoding = encoding.substring (0, temp);
 
