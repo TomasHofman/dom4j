@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.9 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: Element.java,v 1.10 2001/01/16 16:30:42 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public interface Element extends Branch {
 
@@ -111,6 +111,9 @@ public interface Element extends Branch {
     
     public String getTextTrim();
 
+    
+    // Content API
+    
     // always returns nodes which support
     // the parent relationship including Text, Namespace etc.
     public Node getXPathNode(int index);
@@ -426,5 +429,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.9 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: Element.java,v 1.10 2001/01/16 16:30:42 jstrachan Exp $
  */
