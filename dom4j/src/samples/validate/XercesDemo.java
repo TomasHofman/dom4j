@@ -4,40 +4,71 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaDemo.java,v 1.1 2001/05/24 00:46:18 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.1 2001/08/30 07:54:10 jstrachan Exp $
  */
 
+package validate;
+
+import AbstractDemo;
+
 import org.dom4j.Document;
+import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.dom4j.schema.SchemaDocumentFactory;
+import org.dom4j.util.XMLErrorHandler;
 
-/** A simple test program to demonstrate using XML Schema Data Types
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.SAXParseException;
+
+/** Validates a document using Xerces and an XML Schema.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @version $Revision: 1.1 $
   */
-public class SchemaDemo extends AbstractDemo {
+public class XercesDemo extends AbstractDemo {
     
     public static void main(String[] args) {
-        run( new SchemaDemo(), args );
+        run( new XercesDemo(), args );
     }    
     
-    public SchemaDemo() {
+    public XercesDemo() {
     }
     
-    protected Document parse( String xmlFile ) throws Exception {
+    public void run(String[] args) throws Exception {    
+        if ( args.length < 1) {
+            printUsage( "no XML document URL specified" );
+            return;
+        }
+        
+        parse( args[0] );
+    }    
+    
+    protected Document parse(String uri) throws Exception {
         SAXReader reader = new SAXReader();
-        reader.setDocumentFactory( SchemaDocumentFactory.getInstance() );
-        return reader.read(xmlFile);
-    }
+        
+        reader.setValidation(true);
+        
+        // specify the schema to use
+        reader.setProperty( 
+            "http://apache.org/xml/properties/schema/external-noNamespaceSchemaLocation", 
+            "personal.xsd" 
+        );
     
-    protected void process(Document document) throws Exception {
-        getXMLWriter().write(document);
+        // add an error handler which turns any errors into XML
+        XMLErrorHandler errorHandler = new XMLErrorHandler();
+        reader.setErrorHandler( errorHandler );
+
+        // now lets parse the document
+        Document document = reader.read(uri);
+
+        // now lets output the errors as XML        
+        XMLWriter writer = new XMLWriter( OutputFormat.createPrettyPrint() );
+        writer.write( errorHandler.getErrors() );        
+
+        return document;
     }
 }
-
 
 
 
@@ -83,5 +114,5 @@ public class SchemaDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaDemo.java,v 1.1 2001/05/24 00:46:18 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.1 2001/08/30 07:54:10 jstrachan Exp $
  */
