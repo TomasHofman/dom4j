@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.27 2003/04/07 22:15:45 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.28 2004/02/27 16:36:13 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -29,7 +29,6 @@ import org.jaxen.SimpleNamespaceContext;
 import org.jaxen.VariableContext;
 import org.jaxen.XPath;
 import org.jaxen.dom4j.Dom4jXPath;
-import org.saxpath.SAXPathException;
 
 
 /** <p>Default implementation of {@link org.dom4j.XPath} which uses the
@@ -301,7 +300,7 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
         try {
             return new Dom4jXPath( text );
         }
-        catch (SAXPathException e) {
+        catch (JaxenException e) {
             throw new InvalidXPathException( text, e.getMessage() );
         }
         catch (RuntimeException e) {
@@ -365,5 +364,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.27 2003/04/07 22:15:45 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.28 2004/02/27 16:36:13 maartenc Exp $
  */
