@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.45 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.46 2001/06/26 17:35:02 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.45 $
+  * @version $Revision: 1.46 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -99,13 +99,13 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         if ( parent == null ) {
             return "/" + getQualifiedName();
         }
-        StringBuffer buffer = new StringBuffer( parent.getPath() );
+        StringBuffer buffer = new StringBuffer( parent.getUniquePath() );
         buffer.append( "/" );
         buffer.append( getQualifiedName() );
         List mySiblings = parent.elements( getQName() );
         if ( mySiblings.size() > 1 ) {
             int idx = mySiblings.indexOf( this );
-            if ( idx > 0 ) {
+            if ( idx >= 0 ) {
                 buffer.append( "[" );
                 buffer.append( Integer.toString( ++idx ) );
                 buffer.append( "]" );
@@ -1246,5 +1246,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.45 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.46 2001/06/26 17:35:02 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.3 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.4 2001/06/26 17:35:02 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.Node;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -56,13 +56,13 @@ public class TestGetPath extends AbstractTestCase {
         
         List elements = root.elements();
         
-        testPath( (Node) elements.get(0), "/root/author" );
+        testPath( (Node) elements.get(0), "/root/author", "/root/author[1]" );
         
         for ( int i = 0, size = elements.size(); i < size; i++ ) {
             String path = "/root/author";
             String uniquePath = "/root/author";
-            if ( i > 0 ) {
-                uniquePath = "/root/author[" + (i + 1) + "]";
+            if ( size > 1 ) {
+                uniquePath = "/root/author[" + (i + 1) + "]";                
             }
 
             Element element = (Element) elements.get(i);
@@ -160,5 +160,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.3 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.4 2001/06/26 17:35:02 jstrachan Exp $
  */
