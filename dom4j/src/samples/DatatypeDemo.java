@@ -4,19 +4,19 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeDemo.java,v 1.1 2001/08/30 07:54:10 jstrachan Exp $
+ * $Id: DatatypeDemo.java,v 1.2 2001/08/30 19:05:43 jstrachan Exp $
  */
 
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
-import org.dom4j.schema.SchemaDocumentFactory;
+import org.dom4j.datatype.DatatypeDocumentFactory;
 
 /** A simple test program to demonstrate using XML Schema Data Types
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DatatypeDemo extends AbstractDemo {
     
@@ -29,7 +29,7 @@ public class DatatypeDemo extends AbstractDemo {
     
     protected Document parse( String xmlFile ) throws Exception {
         SAXReader reader = new SAXReader();
-        reader.setDocumentFactory( SchemaDocumentFactory.getInstance() );
+        reader.setDocumentFactory( DatatypeDocumentFactory.getInstance() );
         return reader.read(xmlFile);
     }
     
@@ -83,5 +83,5 @@ public class DatatypeDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeDemo.java,v 1.1 2001/08/30 07:54:10 jstrachan Exp $
+ * $Id: DatatypeDemo.java,v 1.2 2001/08/30 19:05:43 jstrachan Exp $
  */

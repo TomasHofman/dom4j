@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDataTypes.java,v 1.4 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */
 
-package org.dom4j.schema;
+package org.dom4j.datatype;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -26,14 +26,14 @@ import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
-import org.dom4j.schema.SchemaDocumentFactory;
+import org.dom4j.datatype.DatatypeDocumentFactory;
 
 
 /** Test harness to test the various data types supported in the 
   * XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.1 $
   */
 public class TestDataTypes extends AbstractDataTypeTest {
 
@@ -165,7 +165,7 @@ public class TestDataTypes extends AbstractDataTypeTest {
     // Implementation methods
     //-------------------------------------------------------------------------                        
     protected void setUp() throws Exception {
-        DocumentFactory factory = SchemaDocumentFactory.getInstance();
+        DocumentFactory factory = DatatypeDocumentFactory.getInstance();
         SAXReader reader = new SAXReader( factory );
         document = reader.read( "xml/test/schema/test.xml" );
     }
@@ -216,5 +216,5 @@ public class TestDataTypes extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDataTypes.java,v 1.4 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */

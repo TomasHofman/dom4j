@@ -4,64 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchema.java,v 1.7 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: InvalidSchemaException.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */
 
-package org.dom4j.schema;
+package org.dom4j.datatype;
 
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
-import junit.textui.TestRunner;
-
-import org.dom4j.AbstractTestCase;
-import org.dom4j.Attribute;
-import org.dom4j.Document;
-import org.dom4j.DocumentFactory;
-import org.dom4j.Element;
-import org.dom4j.Node;
-import org.dom4j.io.SAXReader;
-import org.dom4j.schema.SchemaDocumentFactory;
-
-
-/** Test harness for the XML Schema Data Type integration. These tests
-  * manually load the schemas
+/** <p><code>InvalidSchemaException</code> is thrown when an invalid
+  * XML Schema document is used</p>
   *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.1 $
   */
-public class TestManualSchema extends TestAutoSchema {
+public class InvalidSchemaException extends IllegalArgumentException {
 
-    protected static boolean VERBOSE = true;
-    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
-    }
-    
-    public static Test suite() {
-        return new TestSuite( TestManualSchema.class );
-    }
-    
-    public TestManualSchema(String name) {
-        super(name);
-    }
-
-    
-    // Implementation methods
-    //-------------------------------------------------------------------------                    
-    protected String getDocumentURI() {
-        return "xml/test/schema/personal.xml";
-    }
-    
-    protected DocumentFactory loadDocumentFactory() throws Exception {
-        SchemaDocumentFactory factory = new SchemaDocumentFactory();
-        
-        SAXReader reader = new SAXReader();
-        Document schemaDocument = reader.read( "xml/test/schema/personal.xsd" );
-        factory.loadSchema( schemaDocument );
-        return factory;
+    public InvalidSchemaException(String reason) {
+        super(reason);
     }
 }
 
@@ -110,5 +66,5 @@ public class TestManualSchema extends TestAutoSchema {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchema.java,v 1.7 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: InvalidSchemaException.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */

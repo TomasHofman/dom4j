@@ -4,13 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAutoSchema.java,v 1.6 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: TestManualSchemaPrefix.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */
 
-package org.dom4j.schema;
+package org.dom4j.datatype;
 
-import java.math.BigInteger;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -25,77 +23,40 @@ import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
-import org.dom4j.schema.SchemaDocumentFactory;
+import org.dom4j.datatype.DatatypeDocumentFactory;
 
 
 /** Test harness for the XML Schema Data Type integration. These tests
-  * use auto-loading of the XML Schema document
+  * manually load the schemas using prefixes in the XSD file.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.1 $
   */
-public class TestAutoSchema extends AbstractDataTypeTest {
+public class TestManualSchemaPrefix extends TestAutoSchema {
 
     public static void main( String[] args ) {
         TestRunner.run( suite() );
     }
     
     public static Test suite() {
-        return new TestSuite( TestAutoSchema.class );
+        return new TestSuite( TestManualSchemaPrefix.class );
     }
     
-    public TestAutoSchema(String name) {
+    public TestManualSchemaPrefix(String name) {
         super(name);
-    }
-
-    // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testIntAttribute() throws Exception {        
-        testNodes( "//person/@x", Integer.class );
-    }
-    
-    public void testIntElement() throws Exception {        
-        testNodes( "//person/salary", Integer.class );
-    }
-    
-    public void testString() throws Exception {        
-        testNodes( "//person/note", String.class );
-    }
-
-    public void testDate() throws Exception {        
-        testNodes( "//person/@d", Calendar.class );
-    }
-    
-    public void testDateTime() throws Exception {        
-        testNodes( "//person/@dt", Calendar.class );
-    }
-    
-    public void testInteger() throws Exception {        
-        testNodes( "//person/@age", BigInteger.class );
     }
 
     
     // Implementation methods
     //-------------------------------------------------------------------------                    
-    protected void setUp() throws Exception {
-        DocumentFactory factory = loadDocumentFactory();
-        
-        SAXReader reader = new SAXReader( factory );
-        String uri = getDocumentURI();
-        
-        log( "Parsing: " + uri );
-        
-        document = reader.read( uri );
-    }
-    
-    protected String getDocumentURI() {
-        return "xml/test/schema/personal-schema.xml";
-    }
-    
     protected DocumentFactory loadDocumentFactory() throws Exception {
-        return SchemaDocumentFactory.getInstance();
+        DatatypeDocumentFactory factory = new DatatypeDocumentFactory();
+        
+        SAXReader reader = new SAXReader();
+        Document schemaDocument = reader.read( "xml/test/schema/personal-prefix.xsd" );
+        factory.loadSchema( schemaDocument );
+        return factory;
     }
-    
 }
 
 
@@ -143,5 +104,5 @@ public class TestAutoSchema extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAutoSchema.java,v 1.6 2001/08/20 12:41:27 jstrachan Exp $
+ * $Id: TestManualSchemaPrefix.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */

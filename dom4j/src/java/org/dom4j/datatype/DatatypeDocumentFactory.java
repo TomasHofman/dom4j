@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaDocumentFactory.java,v 1.7 2001/08/14 13:21:10 jstrachan Exp $
+ * $Id: DatatypeDocumentFactory.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */
 
-package org.dom4j.schema;
+package org.dom4j.datatype;
 
 import com.sun.msv.datatype.xsd.XSDatatype;
 
@@ -25,15 +25,15 @@ import org.dom4j.io.SAXReader;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 
-/** <p><code>SchemaDocumentFactory</code> is a factory of XML objects which 
+/** <p><code>DatatypeDocumentFactory</code> is a factory of XML objects which 
   * support the 
   * <a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Data Types</a>
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.1 $
   */
-public class SchemaDocumentFactory extends DocumentFactory {
+public class DatatypeDocumentFactory extends DocumentFactory {
 
     
     // XXXX: I don't think interning of QNames is necessary
@@ -41,7 +41,7 @@ public class SchemaDocumentFactory extends DocumentFactory {
     
     
     /** The Singleton instance */
-    static transient SchemaDocumentFactory singleton = new SchemaDocumentFactory();
+    static transient DatatypeDocumentFactory singleton = new DatatypeDocumentFactory();
     
     private static final Namespace XSI_NAMESPACE
         = Namespace.get( "xsi", "http://www.w3.org/2001/XMLSchema-instance" );
@@ -54,7 +54,7 @@ public class SchemaDocumentFactory extends DocumentFactory {
     
 
     /** The builder of XML Schemas */
-    private SchemaBuilder schemaBuilder;
+    private SchemaParser schemaBuilder;
     
     /** reader of XML Schemas */
     private SAXReader xmlSchemaReader = new SAXReader();
@@ -72,8 +72,8 @@ public class SchemaDocumentFactory extends DocumentFactory {
         return singleton;
     }
     
-    public SchemaDocumentFactory() {
-        schemaBuilder = new SchemaBuilder(this);
+    public DatatypeDocumentFactory() {
+        schemaBuilder = new SchemaParser(this);
     }
 
     
@@ -87,16 +87,16 @@ public class SchemaDocumentFactory extends DocumentFactory {
         schemaBuilder.build( schemaDocument );
     }
     
-    /** Registers the given <code>SchemaElementFactory</code> for the given 
+    /** Registers the given <code>DatatypeElementFactory</code> for the given 
       * &lt;element&gt; schema element
       */
-    public SchemaElementFactory getElementFactory( QName elementQName ) {
+    public DatatypeElementFactory getElementFactory( QName elementQName ) {
         if ( DO_INTERN_QNAME ) {
             elementQName = intern( elementQName );
         }
         DocumentFactory factory = elementQName.getDocumentFactory();
-        return (factory instanceof SchemaElementFactory) 
-            ? (SchemaElementFactory) factory : null;
+        return (factory instanceof DatatypeElementFactory) 
+            ? (DatatypeElementFactory) factory : null;
     }
     
         
@@ -183,5 +183,5 @@ public class SchemaDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaDocumentFactory.java,v 1.7 2001/08/14 13:21:10 jstrachan Exp $
+ * $Id: DatatypeDocumentFactory.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */

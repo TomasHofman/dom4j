@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElement.java,v 1.5 2001/08/14 16:39:27 jstrachan Exp $
+ * $Id: DatatypeElement.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */
 
-package org.dom4j.schema;
+package org.dom4j.datatype;
 
 import com.sun.msv.datatype.DatabindableDatatype;
 
@@ -21,14 +21,14 @@ import org.relaxng.datatype.ValidationContext;
 
 import org.xml.sax.Attributes;
 
-/** <p><code>SchemaElement</code> represents an Element which supports the
+/** <p><code>DatatypeElement</code> represents an Element which supports the
   * <a href="http://www.w3.org/TR/xmlschema-2/">XML Schema Data Types</a>
   * specification.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.1 $
   */
-public class SchemaElement extends DefaultElement implements ValidationContext {
+public class DatatypeElement extends DefaultElement implements ValidationContext {
 
     /** The <code>XSDatatype</code> of the <code>Attribute</code> */
     private XSDatatype datatype;
@@ -38,12 +38,12 @@ public class SchemaElement extends DefaultElement implements ValidationContext {
 
 
     
-    public SchemaElement(QName qname, XSDatatype datatype) {
+    public DatatypeElement(QName qname,XSDatatype datatype) {
         super(qname);
         this.datatype = datatype;
     }
 
-    public SchemaElement(QName qname, int attributeCount, XSDatatype datatype) { 
+    public DatatypeElement(QName qname,int attributeCount,XSDatatype datatype) { 
         super(qname, attributeCount);
         this.datatype = datatype;
     }
@@ -150,5 +150,5 @@ public class SchemaElement extends DefaultElement implements ValidationContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElement.java,v 1.5 2001/08/14 16:39:27 jstrachan Exp $
+ * $Id: DatatypeElement.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */

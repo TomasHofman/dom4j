@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElementFactory.java,v 1.5 2001/08/14 13:21:10 jstrachan Exp $
+ * $Id: DatatypeElementFactory.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */
 
-package org.dom4j.schema;
+package org.dom4j.datatype;
 
 import com.sun.msv.datatype.xsd.XSDatatype;
 
@@ -23,18 +23,18 @@ import org.dom4j.QName;
 
 import org.xml.sax.Attributes;
 
-/** <p><code>SchemaElementFactory</code> is a factory for a specific Element 
+/** <p><code>DatatypeElementFactory</code> is a factory for a specific Element 
   * in an XML Schema.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.1 $
   */
-public class SchemaElementFactory extends DocumentFactory {
+public class DatatypeElementFactory extends DocumentFactory {
     
     private QName elementQName;
     
     
-    public SchemaElementFactory(QName elementQName) {
+    public DatatypeElementFactory(QName elementQName) {
         this.elementQName = elementQName;
     }
     
@@ -88,7 +88,7 @@ public class SchemaElementFactory extends DocumentFactory {
             return super.createElement( qname );
         }
         else {
-            return new SchemaElement(qname, dataType);
+            return new DatatypeElement(qname, dataType);
         }
     }
 
@@ -98,7 +98,7 @@ public class SchemaElementFactory extends DocumentFactory {
             return super.createAttribute( owner, qname, value );
         }
         else {
-            return new SchemaAttribute( qname, dataType, value );
+            return new DatatypeAttribute( qname, dataType, value );
         }
     }
 }
@@ -148,5 +148,5 @@ public class SchemaElementFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElementFactory.java,v 1.5 2001/08/14 13:21:10 jstrachan Exp $
+ * $Id: DatatypeElementFactory.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
  */

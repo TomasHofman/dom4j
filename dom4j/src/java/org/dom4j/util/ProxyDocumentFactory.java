@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ProxyDocumentFactory.java,v 1.5 2001/08/08 14:00:47 jstrachan Exp $
+ * $Id: ProxyDocumentFactory.java,v 1.6 2001/08/30 19:05:43 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -34,11 +34,11 @@ import org.xml.sax.Attributes;
   * which is useful for implementation inheritence, allowing the pipelining
   * of various factory implementations. For example an EncodingDocumentFactory 
   * which takes care of encoding strings outside of allowable XML ranges
-  * could be used with a SchemaDocumentFactory which is XML Schema Data Type 
+  * could be used with a DatatypeDocumentFactory which is XML Schema Data Type 
   * aware.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public abstract class ProxyDocumentFactory {
 
@@ -211,5 +211,5 @@ public abstract class ProxyDocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ProxyDocumentFactory.java,v 1.5 2001/08/08 14:00:47 jstrachan Exp $
+ * $Id: ProxyDocumentFactory.java,v 1.6 2001/08/30 19:05:43 jstrachan Exp $
  */
