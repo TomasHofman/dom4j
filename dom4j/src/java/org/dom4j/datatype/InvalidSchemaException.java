@@ -1,21 +1,23 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: InvalidSchemaException.java,v 1.4 2004/06/25 08:03:34 maartenc Exp $
+ *
+ * $Id: InvalidSchemaException.java,v 1.5 2004/12/17 19:57:26 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
-/** <p><code>InvalidSchemaException</code> is thrown when an invalid
-  * XML Schema document is used</p>
-  *
-  * @version $Revision: 1.4 $
-  */
+/**
+ * <p>
+ * <code>InvalidSchemaException</code> is thrown when an invalid XML Schema
+ * document is used
+ * </p>
+ *
+ * @version $Revision: 1.5 $
+ */
 public class InvalidSchemaException extends IllegalArgumentException {
-
     public InvalidSchemaException(String reason) {
         super(reason);
     }
@@ -48,7 +50,7 @@ public class InvalidSchemaException extends IllegalArgumentException {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -66,5 +68,5 @@ public class InvalidSchemaException extends IllegalArgumentException {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: InvalidSchemaException.java,v 1.4 2004/06/25 08:03:34 maartenc Exp $
+ * $Id: InvalidSchemaException.java,v 1.5 2004/12/17 19:57:26 maartenc Exp $
  */

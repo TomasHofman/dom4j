@@ -1,56 +1,54 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: ElementByIDTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
+ *
+ * $Id: ElementByIDTest.java,v 1.3 2004/12/17 19:57:39 maartenc Exp $
  */
 
 package org.dom4j;
 
 import junit.textui.TestRunner;
 
-
-/** 
+/**
  * Tests the elementByID() method
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class ElementByIDTest extends AbstractTestCase {
-
     /** Input XML file to read */
-    protected static String INPUT_XML_FILE = "xml/test/elementByID.xml";
-    
-	public static void main(String[] args) {
-		TestRunner.run(ElementByIDTest.class);
-	}
+    protected static final String INPUT_XML_FILE = "xml/test/elementByID.xml";
+
+    public static void main(String[] args) {
+        TestRunner.run(ElementByIDTest.class);
+    }
 
     // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testElementByID() throws Exception {        
+    //-------------------------------------------------------------------------
+    public void testElementByID() throws Exception {
         String id = "message";
         Document document = getDocument(INPUT_XML_FILE);
-        
+
         // test XPath
-        Element element = (Element) document.selectSingleNode( "//*[@ID='" + id + "']" );
-        assertTrue( "Found element by ID: " + id, element != null );        
-        assertEquals( "ID is equal", id, element.attributeValue( "ID" ) );
-        
+        Element element =
+            (Element) document.selectSingleNode("//*[@ID='" + id + "']");
+        assertTrue("Found element by ID: " + id, element != null);
+        assertEquals("ID is equal", id, element.attributeValue("ID"));
+
         // test with elementByID
-        element = document.elementByID( id );
-        
-        assertTrue( "Found element by ID: " + id, element != null );        
-        assertEquals( "ID is equal", id, element.attributeValue( "ID" ) );
-        
-        log( "Found element: " + element.getText() );
-        
-        element = document.elementByID( "DoesNotExist" );
-        
-        assertTrue( "Found no element", element == null );
+        element = document.elementByID(id);
+
+        assertTrue("Found element by ID: " + id, element != null);
+        assertEquals("ID is equal", id, element.attributeValue("ID"));
+
+        log("Found element: " + element.getText());
+
+        element = document.elementByID("DoesNotExist");
+
+        assertTrue("Found no element", element == null);
     }
-    
 }
 
 
@@ -80,7 +78,7 @@ public class ElementByIDTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -98,5 +96,5 @@ public class ElementByIDTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementByIDTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
+ * $Id: ElementByIDTest.java,v 1.3 2004/12/17 19:57:39 maartenc Exp $
  */

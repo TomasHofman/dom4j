@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: AbstractDataTypeTestCase.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ *
+ * $Id: AbstractDataTypeTestCase.java,v 1.2 2004/12/17 19:57:40 maartenc Exp $
  */
 
 package org.dom4j.datatype;
@@ -17,65 +17,44 @@ import org.dom4j.Attribute;
 import org.dom4j.Element;
 import org.dom4j.Node;
 
-
-/** 
- * Abstract base class useful for implementation inheritence
- * for testing XML Schema Data Type integration. 
+/**
+ * Abstract base class useful for implementation inheritence for testing XML
+ * Schema Data Type integration.
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class AbstractDataTypeTestCase extends AbstractTestCase {
-
-    protected boolean VERBOSE = true;
-
     // Implementation methods
     //-------------------------------------------------------------------------
     protected void testNodes(String xpath, Class type) {
-        List list = document.selectNodes( xpath );
-        
-        log( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
-        
-        if ( VERBOSE ) {
-            log( "" );
-            log( "xpath: " + xpath );
-            log( "" );
-            log( "results: " + list );
-            log( "" );
-        }
-        
-        assertTrue( "Results are not empty", ! list.isEmpty() );
-        
-        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+        List list = document.selectNodes(xpath);
+
+        assertTrue("Results are not empty", !list.isEmpty());
+
+        for (Iterator iter = list.iterator(); iter.hasNext();) {
             Node node = (Node) iter.next();
-            if ( node instanceof Element ) {
+
+            if (node instanceof Element) {
                 Element element = (Element) node;
-                testDataType( element, element.getData(), type );
-            }
-            else if ( node instanceof Attribute ) {
+                testDataType(element, element.getData(), type);
+            } else if (node instanceof Attribute) {
                 Attribute attribute = (Attribute) node;
-                testDataType( attribute, attribute.getData(), type );
-            }
-            else {
-                assertTrue( "Did not find an attribute or element: " + node, false );
+                testDataType(attribute, attribute.getData(), type);
+            } else {
+                assertTrue("Did not find an attribute or element: " + node,
+                           false);
             }
         }
     }
-    
+
     protected void testDataType(Node node, Object data, Class type) {
-        assertTrue( "Data object is not null", data != null );
-        
-        if ( VERBOSE ) {
-            log( "found: " + data + " type: " + data.getClass().getName() + " required type: " + type.getName() );
-            log( "node: " + node );
-        }
-        
-        assertTrue( 
-            "Data object is of the correct type. Expected: " 
-                + type.getName() 
-                + " and found: " + data.getClass().getName(), 
-            type.isAssignableFrom( data.getClass() ) 
-        );
+        assertTrue("Data object is not null", data != null);
+
+        assertTrue("Data object is of the correct type. Expected: "
+                   + type.getName() + " and found: "
+                   + data.getClass().getName(),
+                   type.isAssignableFrom(data.getClass()));
     }
 }
 
@@ -106,7 +85,7 @@ public class AbstractDataTypeTestCase extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -124,5 +103,5 @@ public class AbstractDataTypeTestCase extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDataTypeTestCase.java,v 1.1 2004/11/12 21:33:19 maartenc Exp $
+ * $Id: AbstractDataTypeTestCase.java,v 1.2 2004/12/17 19:57:40 maartenc Exp $
  */

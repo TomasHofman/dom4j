@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: AbstractAttribute.java,v 1.19 2004/06/25 08:03:40 maartenc Exp $
+ *
+ * $Id: AbstractAttribute.java,v 1.20 2004/12/17 19:57:35 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -18,23 +18,26 @@ import org.dom4j.Namespace;
 import org.dom4j.Node;
 import org.dom4j.Visitor;
 
-/** <p><code>AbstractNamespace</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.19 $
-  */
-public abstract class AbstractAttribute extends AbstractNode implements Attribute {
-
+/**
+ * <p>
+ * <code>AbstractNamespace</code> is an abstract base class for  tree
+ * implementors to use for implementation inheritence.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.20 $
+ */
+public abstract class AbstractAttribute extends AbstractNode
+    implements Attribute {
     public short getNodeType() {
         return ATTRIBUTE_NODE;
     }
 
-    
     public void setNamespace(Namespace namespace) {
-        throw new UnsupportedOperationException("This Attribute is read only and cannot be changed" );
+        String msg = "This Attribute is read only and cannot be changed";
+        throw new UnsupportedOperationException(msg);
     }
-    
+
     public String getText() {
         return getValue();
     }
@@ -44,47 +47,47 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
     }
 
     public void setValue(String value) {
-        throw new UnsupportedOperationException("This Attribute is read only and cannot be changed" );
+        String msg = "This Attribute is read only and cannot be changed";
+        throw new UnsupportedOperationException(msg);
     }
-    
+
     public Object getData() {
         return getValue();
     }
-    
+
     public void setData(Object data) {
-        setValue( data == null ? null : data.toString() );
+        setValue((data == null) ? null : data.toString());
     }
-    
+
     public String toString() {
-        return super.toString() + " [Attribute: name " + getQualifiedName() 
-            + " value \"" + getValue() + "\"]";
+        return super.toString() + " [Attribute: name " + getQualifiedName()
+               + " value \"" + getValue() + "\"]";
     }
 
     public String asXML() {
         return getQualifiedName() + "=\"" + getValue() + "\"";
     }
-    
+
     public void write(Writer writer) throws IOException {
-        writer.write( getQualifiedName() );
-        writer.write( "=\"" );
-        writer.write( getValue() );
-        writer.write( "\"" );
+        writer.write(getQualifiedName());
+        writer.write("=\"");
+        writer.write(getValue());
+        writer.write("\"");
     }
-        
+
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
-    
+
     // QName methods
-    
     public Namespace getNamespace() {
         return getQName().getNamespace();
     }
-    
+
     public String getName() {
         return getQName().getName();
     }
-    
+
     public String getNamespacePrefix() {
         return getQName().getNamespacePrefix();
     }
@@ -96,20 +99,24 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
     public String getQualifiedName() {
         return getQName().getQualifiedName();
     }
-    
+
     public String getPath(Element context) {
         StringBuffer result = new StringBuffer();
 
         Element parent = getParent();
+
         if ((parent != null) && (parent != context)) {
             result.append(parent.getPath(context));
             result.append("/");
         }
+
         result.append("@");
-        
+
         String uri = getNamespaceURI();
         String prefix = getNamespacePrefix();
-        if (uri == null || uri.length() == 0 || prefix == null || prefix.length() == 0) {
+
+        if ((uri == null) || (uri.length() == 0) || (prefix == null)
+                || (prefix.length() == 0)) {
             result.append(getName());
         } else {
             result.append(getQualifiedName());
@@ -117,20 +124,24 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
 
         return result.toString();
     }
-    
+
     public String getUniquePath(Element context) {
         StringBuffer result = new StringBuffer();
 
         Element parent = getParent();
+
         if ((parent != null) && (parent != context)) {
             result.append(parent.getUniquePath(context));
             result.append("/");
         }
+
         result.append("@");
-        
+
         String uri = getNamespaceURI();
         String prefix = getNamespacePrefix();
-        if (uri == null || uri.length() == 0 || prefix == null || prefix.length() == 0) {
+
+        if ((uri == null) || (uri.length() == 0) || (prefix == null)
+                || (prefix.length() == 0)) {
             result.append(getName());
         } else {
             result.append(getQualifiedName());
@@ -143,8 +154,6 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
         return new DefaultAttribute(parent, getQName(), getValue());
     }
 }
-    
- 
 
 
 
@@ -173,7 +182,7 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -191,5 +200,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.19 2004/06/25 08:03:40 maartenc Exp $
+ * $Id: AbstractAttribute.java,v 1.20 2004/12/17 19:57:35 maartenc Exp $
  */

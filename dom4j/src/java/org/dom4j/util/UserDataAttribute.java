@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: UserDataAttribute.java,v 1.6 2004/06/25 08:03:41 maartenc Exp $
+ *
+ * $Id: UserDataAttribute.java,v 1.7 2004/12/17 19:57:38 maartenc Exp $
  */
 
 package org.dom4j.util;
@@ -12,38 +12,37 @@ package org.dom4j.util;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultAttribute;
 
-/** <p><code>UserDataAttribute</code> support the adornment of a user 
-  * data object on an Element or Attribute instance such that the 
-  * methods {@link #getData} {@link #setData(Object)}
-  * will get and set the values of a user data object.
-  * This can be useful for developers wishing to create XML trees and
-  * adorn the trees with user defined objects.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
-  */
+/**
+ * <p>
+ * <code>UserDataAttribute</code> support the adornment of a user  data object
+ * on an Element or Attribute instance such that the  methods {@link
+ * #getData}{@link #setData(Object)} will get and set the values of a user
+ * data object. This can be useful for developers wishing to create XML trees
+ * and adorn the trees with user defined objects.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.7 $
+ */
 public class UserDataAttribute extends DefaultAttribute {
-
     /** The user data object */
     private Object data;
 
-    
     public UserDataAttribute(QName qname) {
         super(qname);
     }
 
-    public UserDataAttribute(QName qname, String text) { 
+    public UserDataAttribute(QName qname, String text) {
         super(qname, text);
     }
-    
-    
+
     public Object getData() {
         return data;
     }
-    
+
     public void setData(Object data) {
         this.data = data;
-    }    
+    }
 }
 
 
@@ -73,7 +72,7 @@ public class UserDataAttribute extends DefaultAttribute {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -91,5 +90,5 @@ public class UserDataAttribute extends DefaultAttribute {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataAttribute.java,v 1.6 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: UserDataAttribute.java,v 1.7 2004/12/17 19:57:38 maartenc Exp $
  */

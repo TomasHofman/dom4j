@@ -1,58 +1,59 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: DocTypeTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
+ *
+ * $Id: DocTypeTest.java,v 1.3 2004/12/17 19:57:39 maartenc Exp $
  */
 
 package org.dom4j;
 
-import java.util.List;
-
 import junit.textui.TestRunner;
+
+import java.util.List;
 
 import org.dom4j.dtd.ElementDecl;
 import org.dom4j.io.SAXReader;
 
-/** 
+/**
  * Tests the DocType functionality
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DocTypeTest extends AbstractTestCase {
-
     /** Input XML file to read */
-    protected static String INPUT_XML_FILE = "/xml/dtd/internal.xml";
-    
-	public static void main(String[] args) {
-		TestRunner.run(DocTypeTest.class);
-	}
+    protected static final String INPUT_XML_FILE = "/xml/dtd/internal.xml";
+
+    public static void main(String[] args) {
+        TestRunner.run(DocTypeTest.class);
+    }
 
     // Test case(s)
-    //-------------------------------------------------------------------------                    
+    //-------------------------------------------------------------------------
     public void testDocType() throws Exception {
         SAXReader reader = new SAXReader();
         reader.setIncludeInternalDTDDeclarations(true);
-    	Document document = getDocument(INPUT_XML_FILE, reader);
 
-    	DocumentType docType = document.getDocType();
-        assertTrue("Has DOCTYPE", docType!= null);
-        
+        Document document = getDocument(INPUT_XML_FILE, reader);
+
+        DocumentType docType = document.getDocType();
+        assertTrue("Has DOCTYPE", docType != null);
+
         List declarations = docType.getInternalDeclarations();
-        assertTrue("DOCTYPE has declarations", declarations != null && !declarations.isEmpty());
-        
+        assertTrue("DOCTYPE has declarations",
+                   (declarations != null) && !declarations.isEmpty());
+
         ElementDecl decl = (ElementDecl) declarations.get(0);
-        
-        assertEquals("name is correct", "greeting", decl.getName() );
+
+        assertEquals("name is correct", "greeting", decl.getName());
         assertEquals("model is correct", "(#PCDATA)", decl.getModel());
-        
-        String expected = "<!ELEMENT " + decl.getName() + " " + decl.getModel() + ">";
+
+        String expected =
+            "<!ELEMENT " + decl.getName() + " " + decl.getModel() + ">";
         assertEquals("toString() is correct", expected, decl.toString());
     }
-    
 }
 
 
@@ -82,7 +83,7 @@ public class DocTypeTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -100,5 +101,5 @@ public class DocTypeTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocTypeTest.java,v 1.2 2004/11/20 12:47:50 maartenc Exp $
+ * $Id: DocTypeTest.java,v 1.3 2004/12/17 19:57:39 maartenc Exp $
  */

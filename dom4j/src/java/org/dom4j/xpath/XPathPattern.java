@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: XPathPattern.java,v 1.16 2004/06/25 08:03:42 maartenc Exp $
+ *
+ * $Id: XPathPattern.java,v 1.17 2004/12/17 19:57:38 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import org.dom4j.InvalidXPathException;
 import org.dom4j.Node;
 import org.dom4j.XPathException;
+
 import org.jaxen.Context;
 import org.jaxen.ContextSupport;
 import org.jaxen.JaxenException;
@@ -26,71 +27,75 @@ import org.jaxen.pattern.Pattern;
 import org.jaxen.pattern.PatternParser;
 import org.jaxen.saxpath.SAXPathException;
 
-/** <p><code>XPathPattern</code> is an implementation of Pattern
-  * which uses an XPath xpath.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.16 $
-  */
+/**
+ * <p>
+ * <code>XPathPattern</code> is an implementation of Pattern which uses an
+ * XPath xpath.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.17 $
+ */
 public class XPathPattern implements org.dom4j.rule.Pattern {
-    
     private String text;
     private Pattern pattern;
     private Context context;
 
-    
     public XPathPattern(Pattern pattern) {
         this.pattern = pattern;
         this.text = pattern.getText();
-        this.context = new Context( getContextSupport() );
+        this.context = new Context(getContextSupport());
     }
 
     public XPathPattern(String text) {
         this.text = text;
-        this.context = new Context( getContextSupport() );
+        this.context = new Context(getContextSupport());
+
         try {
-            this.pattern = PatternParser.parse( text );
-        }
-        catch (SAXPathException e) {
-            throw new InvalidXPathException( text, e.getMessage() );
-        }
-        catch (RuntimeException e) {
-            throw new InvalidXPathException( text );
+            this.pattern = PatternParser.parse(text);
+        } catch (SAXPathException e) {
+            throw new InvalidXPathException(text, e.getMessage());
+        } catch (RuntimeException e) {
+            throw new InvalidXPathException(text);
         }
     }
 
-    public boolean matches( Node node ) {
+    public boolean matches(Node node) {
         try {
             ArrayList list = new ArrayList(1);
-            list.add( node );
-            context.setNodeSet( list );
-            return pattern.matches( node, context );
-        }
-        catch (JaxenException e) {
+            list.add(node);
+            context.setNodeSet(list);
+
+            return pattern.matches(node, context);
+        } catch (JaxenException e) {
             handleJaxenException(e);
+
             return false;
         }
     }
-    
+
     public String getText() {
         return text;
     }
 
-    
-    public double getPriority()  {
+    public double getPriority() {
         return pattern.getPriority();
     }
-    
+
     public org.dom4j.rule.Pattern[] getUnionPatterns() {
         Pattern[] patterns = pattern.getUnionPatterns();
-        if ( patterns != null ) {
+
+        if (patterns != null) {
             int size = patterns.length;
             XPathPattern[] answer = new XPathPattern[size];
-            for ( int i = 0; i < size; i++ ) {
-                answer[i] = new XPathPattern( patterns[i] );
+
+            for (int i = 0; i < size; i++) {
+                answer[i] = new XPathPattern(patterns[i]);
             }
+
             return answer;
         }
+
         return null;
     }
 
@@ -100,27 +105,25 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
 
     public String getMatchesNodeName() {
         return pattern.getMatchesNodeName();
-    }    
-    
-    public void setVariableContext(VariableContext variableContext) {
-        context.getContextSupport().setVariableContext( variableContext );
     }
-    
-    
+
+    public void setVariableContext(VariableContext variableContext) {
+        context.getContextSupport().setVariableContext(variableContext);
+    }
+
     public String toString() {
         return "[XPathPattern: text: " + text + " Pattern: " + pattern + "]";
     }
-    
+
     protected ContextSupport getContextSupport() {
-        return new ContextSupport( 
-            new SimpleNamespaceContext(),
-            XPathFunctionContext.getInstance(),
-            new SimpleVariableContext(),
-            DocumentNavigator.getInstance() 
-        );
+        return new ContextSupport(new SimpleNamespaceContext(),
+                                  XPathFunctionContext.getInstance(),
+                                  new SimpleVariableContext(),
+                                  DocumentNavigator.getInstance());
     }
-    
-    protected void handleJaxenException(JaxenException e) throws XPathException {
+
+    protected void handleJaxenException(JaxenException e)
+                                 throws XPathException {
         throw new XPathException(text, e);
     }
 }
@@ -152,7 +155,7 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -170,5 +173,5 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.16 2004/06/25 08:03:42 maartenc Exp $
+ * $Id: XPathPattern.java,v 1.17 2004/12/17 19:57:38 maartenc Exp $
  */

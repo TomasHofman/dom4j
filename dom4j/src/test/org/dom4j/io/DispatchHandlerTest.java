@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: DispatchHandlerTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
+ *
+ * $Id: DispatchHandlerTest.java,v 1.3 2004/12/17 19:57:42 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -14,47 +14,43 @@ import junit.textui.TestRunner;
 import org.dom4j.AbstractTestCase;
 import org.dom4j.ElementHandler;
 
-
 /**
+ * DOCUMENT ME!
  *
  * @author Maarten Coene
  */
 public class DispatchHandlerTest extends AbstractTestCase {
-    
-	public static void main(String[] args) {
-		TestRunner.run(DispatchHandlerTest.class);
-	}
+    public static void main(String[] args) {
+        TestRunner.run(DispatchHandlerTest.class);
+    }
 
     public void testBug611445() throws Exception {
         MyHandler handler = new MyHandler();
-        
+
         SAXReader reader = new SAXReader();
         reader.addHandler("/products/product/colour", handler);
         reader.read(getFile("/xml/test/sample.xml"));
-        
+
         assertEquals(3, handler.getCount());
-        
+
         reader.read(getFile("/xml/test/sample.xml"));
         assertEquals(6, handler.getCount());
     }
-    
+
     private static class MyHandler implements ElementHandler {
-        
-        int count = 0;
-        
+        private int count = 0;
+
         public void onEnd(org.dom4j.ElementPath elementPath) {
         }
-        
+
         public void onStart(org.dom4j.ElementPath elementPath) {
             count++;
         }
-        
+
         int getCount() {
             return count;
         }
-        
     }
-    
 }
 
 
@@ -84,7 +80,7 @@ public class DispatchHandlerTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -102,5 +98,5 @@ public class DispatchHandlerTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DispatchHandlerTest.java,v 1.2 2004/11/20 12:47:51 maartenc Exp $
+ * $Id: DispatchHandlerTest.java,v 1.3 2004/12/17 19:57:42 maartenc Exp $
  */

@@ -1,41 +1,39 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: IsTextOnlyTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ *
+ * $Id: IsTextOnlyTest.java,v 1.2 2004/12/17 19:57:39 maartenc Exp $
  */
 
 package org.dom4j;
 
 import junit.textui.TestRunner;
 
-/** 
- * A test harness to test the parent relationship and use of the
- * {@link Node#asXPathResult} method.
+/**
+ * A test harness to test the parent relationship and use of the {@link
+ * Node#asXPathResult} method.
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class IsTextOnlyTest extends AbstractTestCase {
-    
-	public static void main(String[] args) {
-		TestRunner.run(IsTextOnlyTest.class);
-	}
+    public static void main(String[] args) {
+        TestRunner.run(IsTextOnlyTest.class);
+    }
 
     // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testDocument() throws Exception {        
+    //-------------------------------------------------------------------------
+    public void testDocument() throws Exception {
         DocumentFactory factory = new DocumentFactory();
-        Element root = factory.createElement( "root" );
-        Element first = root.addElement( "child" );
-        first.addText( "This is some text" );
-        
-        assertTrue( "Root node is not text only: " + root, ! root.isTextOnly() );
-        assertTrue( "First child is text only: " + first, first.isTextOnly() );
+        Element root = factory.createElement("root");
+        Element first = root.addElement("child");
+        first.addText("This is some text");
+
+        assertTrue("Root node is not text only: " + root, !root.isTextOnly());
+        assertTrue("First child is text only: " + first, first.isTextOnly());
     }
-        
 }
 
 
@@ -65,7 +63,7 @@ public class IsTextOnlyTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -83,5 +81,5 @@ public class IsTextOnlyTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IsTextOnlyTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: IsTextOnlyTest.java,v 1.2 2004/12/17 19:57:39 maartenc Exp $
  */

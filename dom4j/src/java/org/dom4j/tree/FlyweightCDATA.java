@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: FlyweightCDATA.java,v 1.6 2004/09/24 12:24:41 maartenc Exp $
+ *
+ * $Id: FlyweightCDATA.java,v 1.7 2004/12/17 19:57:36 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -13,32 +13,39 @@ import org.dom4j.CDATA;
 import org.dom4j.Element;
 import org.dom4j.Node;
 
-/** <p><code>FlyweightCDATA</code> is a Flyweight pattern implementation
-  * of a singly linked, read-only XML CDATA.</p>
-  *
-  * <p>This node could be shared across documents and elements though 
-  * it does not support the parent relationship.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
-  */
+/**
+ * <p>
+ * <code>FlyweightCDATA</code> is a Flyweight pattern implementation of a
+ * singly linked, read-only XML CDATA.
+ * </p>
+ * 
+ * <p>
+ * This node could be shared across documents and elements though  it does not
+ * support the parent relationship.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.7 $
+ */
 public class FlyweightCDATA extends AbstractCDATA implements CDATA {
-
     /** Text of the <code>CDATA</code> node */
     protected String text;
 
-    /** @param text is the CDATA text
-      */
+    /**
+     * DOCUMENT ME!
+     *
+     * @param text is the CDATA text
+     */
     public FlyweightCDATA(String text) {
-    	this.text = text;
+        this.text = text;
     }
 
     public String getText() {
-    	return text;
+        return text;
     }
-    
+
     protected Node createXPathResult(Element parent) {
-        return new DefaultCDATA( parent, getText() );
+        return new DefaultCDATA(parent, getText());
     }
 }
 
@@ -69,7 +76,7 @@ public class FlyweightCDATA extends AbstractCDATA implements CDATA {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -87,5 +94,5 @@ public class FlyweightCDATA extends AbstractCDATA implements CDATA {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FlyweightCDATA.java,v 1.6 2004/09/24 12:24:41 maartenc Exp $
+ * $Id: FlyweightCDATA.java,v 1.7 2004/12/17 19:57:36 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathGrep.java,v 1.3 2004/06/25 08:03:43 maartenc Exp $
+ * $Id: XPathGrep.java,v 1.4 2004/12/17 19:57:39 maartenc Exp $
  */
 
 package org.dom4j.samples;
@@ -21,7 +21,7 @@ import org.dom4j.XPath;
   * command on Unix but uses XPath expressions for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathGrep extends SAXDemo {
     
@@ -70,7 +70,7 @@ public class XPathGrep extends SAXDemo {
             println( "Results:" );
         }
         
-        Object object = xpath.selectObject( document );
+        Object object = xpath.evaluate( document );
 
         if ( object instanceof List ) {
             List list = (List) object;
@@ -137,5 +137,5 @@ public class XPathGrep extends SAXDemo {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathGrep.java,v 1.3 2004/06/25 08:03:43 maartenc Exp $
+ * $Id: XPathGrep.java,v 1.4 2004/12/17 19:57:39 maartenc Exp $
  */

@@ -1,41 +1,48 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: XPathException.java,v 1.4 2004/06/25 08:03:33 maartenc Exp $
+ *
+ * $Id: XPathException.java,v 1.5 2004/12/17 19:57:26 maartenc Exp $
  */
 
 package org.dom4j;
 
-/** <p><code>XPathException</code> is thrown when an exception
-  * occurs while evaluating an XPath expression, usually due to some function 
-  * throwing an exception.</p>
-  *
-  * @version $Revision: 1.4 $
-  */
+/**
+ * <p>
+ * <code>XPathException</code> is thrown when an exception occurs while
+ * evaluating an XPath expression, usually due to some function  throwing an
+ * exception.
+ * </p>
+ *
+ * @version $Revision: 1.5 $
+ */
 public class XPathException extends RuntimeException {
-
     /** The XPath expression that caused the exception */
     private String xpath;
-    
+
     public XPathException(String xpath) {
-        super( "Exception occurred evaluting XPath: " + xpath );
+        super("Exception occurred evaluting XPath: " + xpath);
         this.xpath = xpath;
     }
-    
+
     public XPathException(String xpath, String reason) {
-        super( "Exception occurred evaluting XPath: " + xpath + " " + reason );
+        super("Exception occurred evaluting XPath: " + xpath + " " + reason);
         this.xpath = xpath;
     }
-    
+
     public XPathException(String xpath, Exception e) {
-        super( "Exception occurred evaluting XPath: " + xpath + ". Exception: " + e.getMessage() );
+        super("Exception occurred evaluting XPath: " + xpath + ". Exception: "
+              + e.getMessage());
         this.xpath = xpath;
     }
-    
-    /** Returns the XPath expression that caused the problem */
+
+    /**
+     * Returns the XPath expression that caused the problem
+     *
+     * @return DOCUMENT ME!
+     */
     public String getXPath() {
         return xpath;
     }
@@ -68,7 +75,7 @@ public class XPathException extends RuntimeException {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -86,5 +93,5 @@ public class XPathException extends RuntimeException {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathException.java,v 1.4 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: XPathException.java,v 1.5 2004/12/17 19:57:26 maartenc Exp $
  */

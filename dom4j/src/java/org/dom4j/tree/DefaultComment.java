@@ -1,46 +1,54 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: DefaultComment.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ *
+ * $Id: DefaultComment.java,v 1.10 2004/12/17 19:57:36 maartenc Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.Element;
 
-/** <p><code>DefaultComment</code> is the default Comment implementation.
-  * It is a doubly linked node which supports the parent relationship 
-  * and can be modified in place.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
-  */
+/**
+ * <p>
+ * <code>DefaultComment</code> is the default Comment implementation. It is a
+ * doubly linked node which supports the parent relationship  and can be
+ * modified in place.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.10 $
+ */
 public class DefaultComment extends FlyweightComment {
-
     /** The parent of this node */
     private Element parent;
 
-    /** @param text is the Comment text
-      */
+    /**
+     * DOCUMENT ME!
+     *
+     * @param text is the Comment text
+     */
     public DefaultComment(String text) {
-    super(text);
+        super(text);
     }
 
-    /** @param parent is the parent element
-      * @param text is the Comment text
-      */
-    public DefaultComment(Element parent,String text) {
-    super(text);
+    /**
+     * DOCUMENT ME!
+     *
+     * @param parent is the parent element
+     * @param text is the Comment text
+     */
+    public DefaultComment(Element parent, String text) {
+        super(text);
         this.parent = parent;
     }
 
     public void setText(String text) {
-    this.text = text;
+        this.text = text;
     }
-    
+
     public Element getParent() {
         return parent;
     }
@@ -48,7 +56,7 @@ public class DefaultComment extends FlyweightComment {
     public void setParent(Element parent) {
         this.parent = parent;
     }
-    
+
     public boolean supportsParent() {
         return true;
     }
@@ -85,7 +93,7 @@ public class DefaultComment extends FlyweightComment {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -103,5 +111,5 @@ public class DefaultComment extends FlyweightComment {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultComment.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: DefaultComment.java,v 1.10 2004/12/17 19:57:36 maartenc Exp $
  */

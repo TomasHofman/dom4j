@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: StylesheetTest.java,v 1.1 2004/11/12 21:33:21 maartenc Exp $
+ *
+ * $Id: StylesheetTest.java,v 1.2 2004/12/17 19:57:43 maartenc Exp $
  */
 
 package org.dom4j.rule;
@@ -15,88 +15,85 @@ import org.dom4j.AbstractTestCase;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
 
-/** 
- * A test harness to test the use of the Stylesheet and the
- * XSLT rule engine.
+/**
+ * A test harness to test the use of the Stylesheet and the XSLT rule engine.
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class StylesheetTest extends AbstractTestCase {
-
-    protected String[] templates = {
-        "/",
-        "*",
-        "root",
-        "author",
-        "@name",
-        "root/author",
-        "author[@location='UK']",
-        "root/author[@location='UK']",
-        "root//author[@location='UK']",
-    };
-    
+    protected String[] templates =
+        {
+            "/",
+            "*",
+            "root",
+            "author",
+            "@name",
+            "root/author",
+            "author[@location='UK']",
+            "root/author[@location='UK']",
+            "root//author[@location='UK']",
+        };
     protected Stylesheet stylesheet;
-    
-	public static void main(String[] args) {
-		TestRunner.run(StylesheetTest.class);
-	}
+
+    public static void main(String[] args) {
+        TestRunner.run(StylesheetTest.class);
+    }
 
     // Test case(s)
-    //-------------------------------------------------------------------------                    
+    //-------------------------------------------------------------------------
     public void testRules() throws Exception {
-        for ( int i = 0, size = templates.length; i < size; i++ ) {
-            addTemplate( templates[i] );
+        for (int i = 0, size = templates.length; i < size; i++) {
+            addTemplate(templates[i]);
         }
-        
-        log( "" );
-        log( "........................................" );
-        log( "" );
-        log( "Running stylesheet" );
-        
-        stylesheet.run( document );
-        
-        log( "Finished" );
+
+        log("");
+        log("........................................");
+        log("");
+        log("Running stylesheet");
+
+        stylesheet.run(document);
+
+        log("Finished");
     }
-        
-        
+
     // Implementation methods
-    //-------------------------------------------------------------------------                    
+    //-------------------------------------------------------------------------
     protected void setUp() throws Exception {
         super.setUp();
-        
+
         stylesheet = new Stylesheet();
-        stylesheet.setValueOfAction(
-            new Action() {
+        stylesheet.setValueOfAction(new Action() {
                 public void run(Node node) {
-                    log( "Default ValueOf action on node: " + node );
-                    log( "........................................" );
+                    log("Default ValueOf action on node: " + node);
+                    log("........................................");
                 }
-            }
-        );
+            });
     }
-    protected void addTemplate( final String match ) {
-        log( "Adding template match: " + match );
-        
-        Pattern pattern = DocumentHelper.createPattern( match );
-        
-        log( "Pattern: " + pattern );
-        log( "........................................" );
-        
-        Action action = new Action() {
-            public void run(Node node) throws Exception {
-                log( "Matched pattern: " + match );
-                log( "Node: " + node.asXML() );
-                log( "........................................" );
-                
-                // apply any child templates
-                stylesheet.applyTemplates(node);
-            }
-        };
-        Rule rule = new Rule( pattern, action );
-        stylesheet.addRule( rule );
+
+    protected void addTemplate(final String match) {
+        log("Adding template match: " + match);
+
+        Pattern pattern = DocumentHelper.createPattern(match);
+
+        log("Pattern: " + pattern);
+        log("........................................");
+
+        Action action =
+            new Action() {
+                public void run(Node node) throws Exception {
+                    log("Matched pattern: " + match);
+                    log("Node: " + node.asXML());
+                    log("........................................");
+
+                    // apply any child templates
+                    stylesheet.applyTemplates(node);
+                }
+            };
+
+        Rule rule = new Rule(pattern, action);
+        stylesheet.addRule(rule);
     }
-    
 }
 
 
@@ -126,7 +123,7 @@ public class StylesheetTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -144,5 +141,5 @@ public class StylesheetTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: StylesheetTest.java,v 1.1 2004/11/12 21:33:21 maartenc Exp $
+ * $Id: StylesheetTest.java,v 1.2 2004/12/17 19:57:43 maartenc Exp $
  */

@@ -1,29 +1,34 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: CharacterData.java,v 1.7 2004/06/25 08:03:33 maartenc Exp $
+ *
+ * $Id: CharacterData.java,v 1.8 2004/12/17 19:57:25 maartenc Exp $
  */
 
 package org.dom4j;
 
-/**<p><code>CharacterData</code> is a marker interface for
-  * character based nodes such as the <code>CDATA</code>, <code>Comment</code> 
-  * and <code>Text</code> nodes.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
-  */
+/**
+ * <p>
+ * <code>CharacterData</code> is a marker interface for character based nodes
+ * such as the <code>CDATA</code>, <code>Comment</code>  and <code>Text</code>
+ * nodes.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.8 $
+ */
 public interface CharacterData extends Node {
-
-    /** Appends the given text to this nodes text value. Calling this
-      * method is equivalent of the code <code>node.setText( node.getText() + text )</code>
-      * but allows for possible implementation optimisations (such as a text based node
-      * storing a StringBuffer internally
-      */
-    public void appendText(String text);
+    /**
+     * Appends the given text to this nodes text value. Calling this method is
+     * equivalent of the code <code>node.setText(node.getText() + text)</code>
+     * but allows for possible implementation optimisations (such as a text
+     * based node storing a StringBuffer internally
+     *
+     * @param text the text to append
+     */
+    void appendText(String text);
 }
 
 
@@ -53,7 +58,7 @@ public interface CharacterData extends Node {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -71,5 +76,5 @@ public interface CharacterData extends Node {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CharacterData.java,v 1.7 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: CharacterData.java,v 1.8 2004/12/17 19:57:25 maartenc Exp $
  */

@@ -1,73 +1,68 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: TextTest.java,v 1.1 2004/11/12 21:33:22 maartenc Exp $
+ *
+ * $Id: TextTest.java,v 1.2 2004/12/17 19:57:44 maartenc Exp $
  */
 
 package org.dom4j.xpath;
 
+import junit.textui.TestRunner;
+
 import java.util.Iterator;
 import java.util.List;
-
-import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Text;
 
-/** 
+/**
  * Test harness for the text() function
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class TextTest extends AbstractTestCase {
-
-    protected static boolean VERBOSE = true;
-    
     protected static String[] paths = {
-        "text()",
-        "//author/text()"
-    };
-    
-	public static void main(String[] args) {
-		TestRunner.run(TextTest.class);
-	}
+                                          "text()",
+                                          "//author/text()"
+                                      };
+
+    public static void main(String[] args) {
+        TestRunner.run(TextTest.class);
+    }
 
     // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testXPaths() throws Exception {        
+    //-------------------------------------------------------------------------
+    public void testXPaths() throws Exception {
         int size = paths.length;
-        for ( int i = 0; i < size; i++ ) {
-            testXPath( paths[i] );
+
+        for (int i = 0; i < size; i++) {
+            testXPath(paths[i]);
         }
     }
-        
+
     // Implementation methods
-    //-------------------------------------------------------------------------                    
+    //-------------------------------------------------------------------------
     protected void testXPath(String xpath) {
         List list = document.selectNodes(xpath);
-        
-        log( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
-        
-        if ( VERBOSE ) {
-            System.out.println( list );
-        }
-        
-        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+
+        for (Iterator iter = list.iterator(); iter.hasNext();) {
             Object object = iter.next();
-            
-            log( "Found Result: " + object );
-            
-            assertTrue( "Results should be Text objects", object instanceof Text );
-            
+
+            log("Found Result: " + object);
+
+            assertTrue("Results not Text objects", object instanceof Text);
+
             Text text = (Text) object;
-            
-            assertTrue( "Results should support the parent relationship", text.supportsParent() );
-            assertTrue( "Results should contain reference to the parent element", text.getParent() != null );
-            assertTrue( "Results should contain reference to the owning document", text.getDocument() != null );
+
+            assertTrue("Results should support the parent relationship",
+                       text.supportsParent());
+            assertTrue("Results should contain reference to the parent element",
+                       text.getParent() != null);
+            assertTrue("Results should not reference to the owning document",
+                       text.getDocument() != null);
         }
     }
 }
@@ -99,7 +94,7 @@ public class TextTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -117,5 +112,5 @@ public class TextTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TextTest.java,v 1.1 2004/11/12 21:33:22 maartenc Exp $
+ * $Id: TextTest.java,v 1.2 2004/12/17 19:57:44 maartenc Exp $
  */

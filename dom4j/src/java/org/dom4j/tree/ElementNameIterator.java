@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: ElementNameIterator.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ *
+ * $Id: ElementNameIterator.java,v 1.10 2004/12/17 19:57:36 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -13,32 +13,41 @@ import java.util.Iterator;
 
 import org.dom4j.Element;
 
-
-/** <p><code>ElementNameIterator</code> is a filtering {@link Iterator} which 
-  * filters out objects which do not implement the {@link Element} 
-  * interface and are not of the correct element name.</p>
-  *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
-  * @deprecated  THIS CLASS WILL BE REMOVED IN dom4j-1.6 !!
-  */
+/**
+ * <p>
+ * <code>ElementNameIterator</code> is a filtering {@link Iterator} which
+ * filters out objects which do not implement the {@link Element}  interface
+ * and are not of the correct element name.
+ * </p>
+ *
+ * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+ * @version $Revision: 1.10 $
+ *
+ * @deprecated THIS CLASS WILL BE REMOVED IN dom4j-1.6 !!
+ */
 public class ElementNameIterator extends FilterIterator {
-    
     private String name;
-        
+
     public ElementNameIterator(Iterator proxy, String name) {
         super(proxy);
         this.name = name;
     }
 
-    /** @return true if the given element implements the {@link Element} 
-      * interface
-      */
+    /**
+     * DOCUMENT ME!
+     *
+     * @param object DOCUMENT ME!
+     *
+     * @return true if the given element implements the {@link Element}
+     *         interface
+     */
     protected boolean matches(Object object) {
         if (object instanceof Element) {
             Element element = (Element) object;
-            return name.equals( element.getName() );
+
+            return name.equals(element.getName());
         }
+
         return false;
     }
 }
@@ -70,7 +79,7 @@ public class ElementNameIterator extends FilterIterator {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -88,5 +97,5 @@ public class ElementNameIterator extends FilterIterator {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementNameIterator.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: ElementNameIterator.java,v 1.10 2004/12/17 19:57:36 maartenc Exp $
  */

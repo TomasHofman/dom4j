@@ -1,30 +1,36 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: NodeFilter.java,v 1.5 2004/06/25 08:03:33 maartenc Exp $
+ *
+ * $Id: NodeFilter.java,v 1.6 2004/12/17 19:57:26 maartenc Exp $
  */
 
 package org.dom4j;
 
-/** <p><code>NodeFilter</code> defines the behavior for
-  * a filter or predicate which acts on a DOM4J Node.
-  * Instances can be generated from an {@link DocumentFactory}.</p>
-  *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
-  */
+/**
+ * <p>
+ * <code>NodeFilter</code> defines the behavior for a filter or predicate which
+ * acts on a DOM4J Node. Instances can be generated from an {@link
+ * DocumentFactory}.
+ * </p>
+ *
+ * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+ * @version $Revision: 1.6 $
+ */
 public interface NodeFilter {
-
-    /** <p><code>matches</code> returns true if the given node matches 
-      * the filter condition.</p>
-      *
-      * @return true if this filter matches the given node
-      */
-    public boolean matches(Node node);
-
+    /**
+     * <p>
+     * <code>matches</code> returns true if the given node matches  the filter
+     * condition.
+     * </p>
+     *
+     * @param node DOCUMENT ME!
+     *
+     * @return true if this filter matches the given node
+     */
+    boolean matches(Node node);
 }
 
 
@@ -54,7 +60,7 @@ public interface NodeFilter {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -72,5 +78,5 @@ public interface NodeFilter {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NodeFilter.java,v 1.5 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: NodeFilter.java,v 1.6 2004/12/17 19:57:26 maartenc Exp $
  */

@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: AbstractCharacterData.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
+ *
+ * $Id: AbstractCharacterData.java,v 1.11 2004/12/17 19:57:35 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -12,33 +12,36 @@ package org.dom4j.tree;
 import org.dom4j.CharacterData;
 import org.dom4j.Element;
 
-/** <p><code>AbstractCharacterData</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
-  *
-  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.10 $
-  */
-public abstract class AbstractCharacterData extends AbstractNode implements CharacterData {
-
+/**
+ * <p>
+ * <code>AbstractCharacterData</code> is an abstract base class for  tree
+ * implementors to use for implementation inheritence.
+ * </p>
+ *
+ * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+ * @version $Revision: 1.11 $
+ */
+public abstract class AbstractCharacterData extends AbstractNode
+    implements CharacterData {
     public AbstractCharacterData() {
     }
-    
+
     public String getPath(Element context) {
         Element parent = getParent();
-        return ( parent != null && parent != context ) 
-            ? parent.getPath( context ) + "/text()"
-            : "text()";
+
+        return ((parent != null) && (parent != context))
+               ? (parent.getPath(context) + "/text()") : "text()";
     }
-    
+
     public String getUniquePath(Element context) {
         Element parent = getParent();
-        return ( parent != null && parent != context ) 
-            ? parent.getUniquePath( context ) + "/text()"
-            : "text()";
+
+        return ((parent != null) && (parent != context))
+               ? (parent.getUniquePath(context) + "/text()") : "text()";
     }
 
     public void appendText(String text) {
-        setText( getText() + text );
+        setText(getText() + text);
     }
 }
 
@@ -69,7 +72,7 @@ public abstract class AbstractCharacterData extends AbstractNode implements Char
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -87,5 +90,5 @@ public abstract class AbstractCharacterData extends AbstractNode implements Char
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractCharacterData.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: AbstractCharacterData.java,v 1.11 2004/12/17 19:57:35 maartenc Exp $
  */

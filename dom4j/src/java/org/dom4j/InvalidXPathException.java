@@ -1,27 +1,29 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: InvalidXPathException.java,v 1.4 2004/06/25 08:03:33 maartenc Exp $
+ *
+ * $Id: InvalidXPathException.java,v 1.5 2004/12/17 19:57:25 maartenc Exp $
  */
 
 package org.dom4j;
 
-/** <p><code>InvalidXPathException</code> is thrown when an invalid
-  * XPath expression is used to traverse an XML document</p>
-  *
-  * @version $Revision: 1.4 $
-  */
+/**
+ * <p>
+ * <code>InvalidXPathException</code> is thrown when an invalid XPath
+ * expression is used to traverse an XML document
+ * </p>
+ *
+ * @version $Revision: 1.5 $
+ */
 public class InvalidXPathException extends IllegalArgumentException {
-
     public InvalidXPathException(String xpath) {
-        super( "Invalid XPath expression: " + xpath );
+        super("Invalid XPath expression: " + xpath);
     }
-    
+
     public InvalidXPathException(String xpath, String reason) {
-        super( "Invalid XPath expression: " + xpath + " " + reason );
+        super("Invalid XPath expression: " + xpath + " " + reason);
     }
 }
 
@@ -52,7 +54,7 @@ public class InvalidXPathException extends IllegalArgumentException {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -70,5 +72,5 @@ public class InvalidXPathException extends IllegalArgumentException {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: InvalidXPathException.java,v 1.4 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: InvalidXPathException.java,v 1.5 2004/12/17 19:57:25 maartenc Exp $
  */

@@ -1,59 +1,58 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: ParseTextTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ *
+ * $Id: ParseTextTest.java,v 1.2 2004/12/17 19:57:39 maartenc Exp $
  */
 
 package org.dom4j;
 
 import junit.textui.TestRunner;
 
-/** 
+/**
  * Tests the {@link DocumentHelper#parseText(String)} method.
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class ParseTextTest extends AbstractTestCase {
+    protected String xmlText =
+        "<root><author name='James'><location>Paris</location></author></root>";
 
-    protected String xmlText = "<root> <author name='James'> <location>London</location> </author> </root>";
-    
-	public static void main(String[] args) {
-		TestRunner.run(ParseTextTest.class);
-	}
+    public static void main(String[] args) {
+        TestRunner.run(ParseTextTest.class);
+    }
 
     // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testDocument() throws Exception {        
-        assertTrue( "Document is not null", document != null );
-        
+    //-------------------------------------------------------------------------
+    public void testDocument() throws Exception {
+        assertTrue("Document is not null", document != null);
+
         Element root = document.getRootElement();
-        
-        assertTrue( "Root element is not null", root != null );
-        
-        Element author = root.element( "author" );
-        
-        assertTrue( "Author element is not null", author != null );
-        
-        String name = author.attributeValue( "name");
-        
-        assertEquals( "Name attribute matches", name, "James" );
-        
-        String location = document.valueOf( "/root/author/location" );
-        
-        assertEquals( "Location element matches", location, "London" );
+
+        assertTrue("Root element is not null", root != null);
+
+        Element author = root.element("author");
+
+        assertTrue("Author element is not null", author != null);
+
+        String name = author.attributeValue("name");
+
+        assertEquals("Name attribute matches", name, "James");
+
+        String location = document.valueOf("/root/author/location");
+
+        assertEquals("Location element matches", location, "Paris");
     }
-        
+
     // Implementation methods
-    //-------------------------------------------------------------------------                    
+    //-------------------------------------------------------------------------
     protected void setUp() throws Exception {
-    	super.setUp();
-        document = DocumentHelper.parseText( xmlText );
+        super.setUp();
+        document = DocumentHelper.parseText(xmlText);
     }
-        
 }
 
 
@@ -83,7 +82,7 @@ public class ParseTextTest extends AbstractTestCase {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -101,5 +100,5 @@ public class ParseTextTest extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ParseTextTest.java,v 1.1 2004/11/12 21:33:18 maartenc Exp $
+ * $Id: ParseTextTest.java,v 1.2 2004/12/17 19:57:39 maartenc Exp $
  */

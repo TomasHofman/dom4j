@@ -1,10 +1,10 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: AbstractText.java,v 1.8 2004/06/25 08:03:41 maartenc Exp $
+ *
+ * $Id: AbstractText.java,v 1.9 2004/12/17 19:57:36 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -12,20 +12,22 @@ package org.dom4j.tree;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.dom4j.Text;
 import org.dom4j.Visitor;
 
-/** <p><code>AbstractText</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
-  *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
-  */
-public abstract class AbstractText extends AbstractCharacterData implements Text {
-
+/**
+ * <p>
+ * <code>AbstractText</code> is an abstract base class for  tree implementors
+ * to use for implementation inheritence.
+ * </p>
+ *
+ * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+ * @version $Revision: 1.9 $
+ */
+public abstract class AbstractText extends AbstractCharacterData
+    implements org.dom4j.Text {
     public AbstractText() {
     }
-    
+
     public short getNodeType() {
         return TEXT_NODE;
     }
@@ -37,11 +39,11 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
     public String asXML() {
         return getText();
     }
-    
+
     public void write(Writer writer) throws IOException {
-        writer.write( getText() );
+        writer.write(getText());
     }
-    
+
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -74,7 +76,7 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -92,5 +94,5 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractText.java,v 1.8 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: AbstractText.java,v 1.9 2004/12/17 19:57:36 maartenc Exp $
  */

@@ -1,26 +1,27 @@
 /*
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: Action.java,v 1.5 2004/06/25 08:03:39 maartenc Exp $
+ *
+ * $Id: Action.java,v 1.6 2004/12/17 19:57:34 maartenc Exp $
  */
 
 package org.dom4j.rule;
 
 import org.dom4j.Node;
 
-
-/** <p><code>Action</code> represents some default action which should occur
-  * when a rule matches a node in the XSLT processing model.</p>
-  *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
-  */
+/**
+ * <p>
+ * <code>Action</code> represents some default action which should occur when a
+ * rule matches a node in the XSLT processing model.
+ * </p>
+ *
+ * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+ * @version $Revision: 1.6 $
+ */
 public interface Action {
-
-    public void run(Node node) throws Exception;
+    void run(Node node) throws Exception;
 }
 
 
@@ -50,7 +51,7 @@ public interface Action {
  *    permission of MetaStuff, Ltd. DOM4J is a registered
  *    trademark of MetaStuff, Ltd.
  *
- * 5. Due credit should be given to the DOM4J Project - 
+ * 5. Due credit should be given to the DOM4J Project -
  *    http://www.dom4j.org
  *
  * THIS SOFTWARE IS PROVIDED BY METASTUFF, LTD. AND CONTRIBUTORS
@@ -68,5 +69,5 @@ public interface Action {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Action.java,v 1.5 2004/06/25 08:03:39 maartenc Exp $
+ * $Id: Action.java,v 1.6 2004/12/17 19:57:34 maartenc Exp $
  */
