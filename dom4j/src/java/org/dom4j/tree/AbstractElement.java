@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.71 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.72 2004/06/16 13:35:42 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.71 $
+  * @version $Revision: 1.72 $
   */
 
 public abstract class AbstractElement
@@ -1960,6 +1960,38 @@ public abstract class AbstractElement
 
     }
 
+    public List getNamespacesForURI(String uri) {
+
+        BackedList answer = createResultList();
+
+        if (getNamespaceURI().equals(uri)) {
+
+            answer.addLocal(getNamespace());
+
+        }
+
+        List list = contentList();
+
+        int size = list.size();
+
+        for (int i = 0; i < size; i++) {
+
+            Object object = list.get(i);
+
+            if ((object instanceof Namespace) 
+
+                && ((Namespace) object).getURI().equals(uri)) {
+                
+                    answer.addLocal(object);
+                    
+            }
+
+        }
+
+        return answer;
+        
+    }
+
     public List declaredNamespaces() {
 
         BackedList answer = createResultList();
@@ -2286,5 +2318,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.71 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.72 2004/06/16 13:35:42 maartenc Exp $
  */
