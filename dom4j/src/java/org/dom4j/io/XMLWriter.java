@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.56 2003/02/13 22:20:38 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.57 2003/02/13 23:06:53 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.56 $
+  * @version $Revision: 1.57 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -756,6 +756,9 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
             else if ( node instanceof Element) {
                 textOnly = false;
             }
+            else if ( node instanceof Comment) {
+                textOnly = false;
+            }
         }
 
         writeAttributes(element);
@@ -1060,16 +1063,12 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
     protected void writeComment(String text) throws IOException {
         if (format.isNewlines()) {
-            if ( lastOutputNodeType != Node.COMMENT_NODE ) {
-                println();
-            }
+            println();
             indent();
         }
         writer.write( "<!--" );
         writer.write( text );
         writer.write( "-->" );
-
-        writePrintln();
 
         lastOutputNodeType = Node.COMMENT_NODE;
     }
@@ -1436,5 +1435,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.56 2003/02/13 22:20:38 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.57 2003/02/13 23:06:53 maartenc Exp $
  */

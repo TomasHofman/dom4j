@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.10 2003/02/13 23:10:48 maartenc Exp $
  */
 
 package org.dom4j;
@@ -31,7 +31,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -214,6 +214,21 @@ public class TestXMLWriter extends AbstractTestCase {
         assertEquals( "getText() returns the correct text padding", expected, doc2.getRootElement().element("meaning").getText() );
     }
     
+    /*
+     * This must be tested manually to see if the layout is correct.
+     */
+    public void testPrettyPrinting() throws Exception {
+        Document doc = DocumentFactory.getInstance().createDocument(); 
+        doc.addElement("summary").addAttribute("date", "6/7/8").addElement("orderline").addText("puffins").addElement("ranjit").addComment("Ranjit is a happy Puffin"); 
+        XMLWriter writer = new XMLWriter(System.out, OutputFormat.createPrettyPrint()); 
+        writer.write(doc);
+
+        doc = DocumentFactory.getInstance().createDocument(); 
+        doc.addElement("summary").addAttribute("date", "6/7/8").addElement("orderline").addText("puffins").addElement("ranjit").addComment("Ranjit is a happy Puffin").addComment("another comment").addElement("anotherElement"); 
+        writer.write(doc);
+    }
+
+    
     protected void generateXML(ContentHandler handler) throws SAXException {
     handler.startDocument();
     AttributesImpl attrs = new AttributesImpl();
@@ -273,5 +288,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.10 2003/02/13 23:10:48 maartenc Exp $
  */
