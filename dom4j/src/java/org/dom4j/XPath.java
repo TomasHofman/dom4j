@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.4 2001/01/26 19:07:53 jstrachan Exp $
+ * $Id: XPath.java,v 1.5 2001/02/02 18:36:33 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,9 +16,9 @@ import java.util.List;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
-public interface XPath {
+public interface XPath extends NodeFilter {
 
     /** <p><code>getText</code> will return the textual version of 
       * the XPath expression.</p>
@@ -27,6 +27,13 @@ public interface XPath {
       */
     public String getText();
         
+    /** <p><code>matches</code> returns true if the given node matches 
+      * the XPath expression.</p>
+      *
+      * @return true if the given node matches this XPath expression
+      */
+    public boolean matches(Node node);
+
     /** <p><code>selectNodes</code> performs this XPath expression
       * on the given {@link Node} or {@link List} of {@link Node}s 
       * instances appending all the results together into a single list.</p>
@@ -150,5 +157,5 @@ public interface XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.4 2001/01/26 19:07:53 jstrachan Exp $
+ * $Id: XPath.java,v 1.5 2001/02/02 18:36:33 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathHelper.java,v 1.5 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: XPathHelper.java,v 1.6 2001/02/02 18:36:33 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -17,7 +17,7 @@ import java.util.List;
   * and creating {@link XPathEngine} instances.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class XPathHelper {
 
@@ -55,7 +55,7 @@ public class XPathHelper {
     public static XPathEngine createXPathEngine() {
         String className = System.getProperty( 
             "org.dom4j.xpath.driver", 
-            "com.werken.xpath.DOM4JXPathEngine" 
+            "org.dom4j.xpath.DefaultXPathEngine" 
         );
         return createXPathEngine( className );
     }
@@ -215,5 +215,5 @@ public class XPathHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathHelper.java,v 1.5 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: XPathHelper.java,v 1.6 2001/02/02 18:36:33 jstrachan Exp $
  */

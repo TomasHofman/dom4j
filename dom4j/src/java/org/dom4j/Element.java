@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.20 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: Element.java,v 1.21 2001/02/02 18:36:33 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public interface Element extends Branch {
 
@@ -164,15 +164,30 @@ public interface Element extends Branch {
       */    
     public List getAttributes();
     
-    /** @returns an iterator over the attributes of this element
-      */
-    public Iterator attributeIterator();
-    
     /** Sets the attributes that this element contains
       */
     public void setAttributes(List attributes);
 
-    /** @return the attribute for the given local name in any namespace.
+    /** @return the number of attributes this element contains
+      */
+    public int getAttributeCount();
+    
+    /** @returns an iterator over the attributes of this element
+      */
+    public Iterator attributeIterator();
+    
+    /** Returns the attribute at the specified indexGets the 
+      *
+      * @return the attribute at the specified index where 
+      * index >= 0 and index < number of attributes or throws
+      * an IndexOutOfBoundsException if the index is not within the 
+      * allowable range
+      */
+    public Attribute getAttribute(int index);
+            
+    /** Returns the attribute with the given name
+      *
+      * @return the attribute for the given local name in any namespace.
       * If there are more than one attributes with the given local name 
       * in different namespaces then the first one is returned.
       */
@@ -554,5 +569,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.20 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: Element.java,v 1.21 2001/02/02 18:36:33 jstrachan Exp $
  */
