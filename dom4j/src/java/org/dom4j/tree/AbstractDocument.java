@@ -33,7 +33,7 @@ import org.dom4j.io.XMLWriter;
  * </p>
  * 
  * @author <a href="mailto:jstrachan@apache.org">James Strachan </a>
- * @version $Revision: 1.31 $
+ * @version $Revision: 1.32 $
  */
 public abstract class AbstractDocument extends AbstractBranch implements
         Document {
@@ -72,7 +72,7 @@ public abstract class AbstractDocument extends AbstractBranch implements
             XMLWriter writer = new XMLWriter(out, outputFormat);
             writer.write(this);
 
-            return out.toString();
+            return out.toString(outputFormat.getEncoding());
         } catch (IOException e) {
             throw new RuntimeException("IOException while generating textual "
                     + "representation: " + e.getMessage());
