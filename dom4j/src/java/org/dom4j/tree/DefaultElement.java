@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.32 2001/05/28 14:38:00 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.33 2001/05/30 17:58:55 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -41,7 +41,7 @@ import org.xml.sax.Attributes;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.32 $
+  * @version $Revision: 1.33 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -798,11 +798,27 @@ public class DefaultElement extends AbstractElement {
         if ( attributes instanceof List ) {
             List list = (List) attributes;            
             answer = list.remove(attribute);
+            if ( ! answer ) {
+                // we may have a copy of the attribute
+                Attribute copy = attribute( attribute.getQName() );
+                if ( copy != null ) {
+                    list.remove( copy );
+                    answer = true;
+                }
+            }
         }
         else if ( attributes != null ) {
             if ( attribute.equals( attributes ) ) {
                 attributes = null;
                 answer = true;
+            }
+            else {
+                // we may have a copy of the attribute
+                Attribute other = (Attribute) attributes;
+                if ( attribute.getQName().equals( other.getQName() ) ) {
+                    attributes = null;
+                    answer = true;
+                }
             }
         }
         
@@ -986,5 +1002,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.32 2001/05/28 14:38:00 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.33 2001/05/30 17:58:55 jstrachan Exp $
  */
