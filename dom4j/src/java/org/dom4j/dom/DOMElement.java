@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMElement.java,v 1.18 2004/04/08 19:09:50 maartenc Exp $
+ * $Id: DOMElement.java,v 1.19 2004/06/10 20:20:16 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -27,7 +27,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
@@ -353,20 +353,19 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
         return null;
     }
 
-    protected Attribute createAttribute( org.w3c.dom.Attr newAttr ) {
+    protected Attribute createAttribute(org.w3c.dom.Attr newAttr) {
         QName qname = null;
         String name = newAttr.getLocalName();
-        String uri = newAttr.getNamespaceURI();
-        if ( uri != null && uri.length() > 0 ) {
-            Namespace namespace = getNamespaceForURI( uri );
-            if ( namespace != null ) {
-                qname = DOCUMENT_FACTORY.createQName( name, namespace );
-            }
+        if (name != null) {
+            String prefix = newAttr.getPrefix();
+            String uri = newAttr.getNamespaceURI();
+            qname = getDocumentFactory().createQName(name, prefix, uri);
+        } else {
+            name = newAttr.getName();
+            qname = getDocumentFactory().createQName(name);
         }
-        if ( qname == null ) {
-            qname = DOCUMENT_FACTORY.createQName( name );
-        }
-        return new DOMAttribute( qname, newAttr.getValue() );
+
+        return new DOMAttribute(qname, newAttr.getValue());
     }
 
     protected QName getQName( String namespaceURI, String qualifiedName ) {
@@ -377,7 +376,7 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
             prefix = qualifiedName.substring(0, index);
             localName = qualifiedName.substring(index+1);
         }
-        return DOCUMENT_FACTORY.createQName( localName, prefix, namespaceURI );
+        return getDocumentFactory().createQName( localName, prefix, namespaceURI );
     }
 }
 
@@ -426,5 +425,5 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMElement.java,v 1.18 2004/04/08 19:09:50 maartenc Exp $
+ * $Id: DOMElement.java,v 1.19 2004/06/10 20:20:16 maartenc Exp $
  */
