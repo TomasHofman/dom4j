@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedElement.java,v 1.5 2003/04/07 22:13:56 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.6 2004/03/24 17:03:50 maartenc Exp $
  */
 
 package org.dom4j.util;
@@ -27,7 +27,7 @@ import org.dom4j.tree.DefaultElement;
   * optimise lookups via name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class IndexedElement extends DefaultElement {
 
@@ -74,14 +74,6 @@ public class IndexedElement extends DefaultElement {
         return asElementList( elementIndex().get(qName) );
     }
         
-    public Iterator elementIterator(String name) {
-        return asElementIterator( elementIndex().get(name) );
-    }
-    
-    public Iterator elementIterator(QName qName) {
-        return asElementIterator( elementIndex().get(qName) );
-    }
-    
     
     // Implementation methods
     //-------------------------------------------------------------------------    
@@ -114,15 +106,11 @@ public class IndexedElement extends DefaultElement {
         return createEmptyList();
     }
     
+    /**
+     * @deprecated  WILL BE REMOVED IN dom4j-1.6 !!
+     */
     protected Iterator asElementIterator(Object object) {
-        if ( object instanceof Element ) {
-            return createSingleIterator( object );
-        }
-        else if ( object != null ) {
-            List list = (List) object;
-            return list.iterator();
-        }
-        return EMPTY_ITERATOR;
+        return asElementList(object).iterator();
     }
     
     
@@ -316,5 +304,5 @@ public class IndexedElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedElement.java,v 1.5 2003/04/07 22:13:56 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.6 2004/03/24 17:03:50 maartenc Exp $
  */

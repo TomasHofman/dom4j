@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.70 2004/03/24 10:03:07 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.71 2004/03/24 17:03:49 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.70 $
+  * @version $Revision: 1.71 $
   */
 
 public abstract class AbstractElement
@@ -585,25 +585,25 @@ public abstract class AbstractElement
 
     public Iterator elementIterator() {
 
-        List list = contentList();
+        List list = elements();
 
-        return new ElementIterator(list.iterator());
+        return list.iterator();
 
     }
 
     public Iterator elementIterator(String name) {
 
-        List list = contentList();
+        List list = elements(name);
 
-        return new ElementNameIterator(list.iterator(), name);
+        return list.iterator();
 
     }
 
     public Iterator elementIterator(QName qName) {
 
-        List list = contentList();
+        List list = elements(qName);
 
-        return new ElementQNameIterator(list.iterator(), qName);
+        return list.iterator();
 
     }
 
@@ -2286,5 +2286,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.70 2004/03/24 10:03:07 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.71 2004/03/24 17:03:49 maartenc Exp $
  */

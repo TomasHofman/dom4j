@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementIterator.java,v 1.3 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: ElementIterator.java,v 1.4 2004/03/24 17:03:49 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,8 @@ import org.dom4j.Element;
   * interface.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
+  * @deprecated  THIS CLASS WILL BE REMOVED IN dom4j-1.6 !!
   */
 public class ElementIterator extends FilterIterator {
     
@@ -80,5 +81,5 @@ public class ElementIterator extends FilterIterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementIterator.java,v 1.3 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: ElementIterator.java,v 1.4 2004/03/24 17:03:49 maartenc Exp $
  */

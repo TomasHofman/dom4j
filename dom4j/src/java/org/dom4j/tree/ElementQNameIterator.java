@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementQNameIterator.java,v 1.2 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: ElementQNameIterator.java,v 1.3 2004/03/24 17:03:49 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,8 @@ import org.dom4j.QName;
   * interface and are not of the correct fully qualified element name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
+  * @deprecated  THIS CLASS WILL BE REMOVED IN dom4j-1.6 !!
   */
 public class ElementQNameIterator extends FilterIterator {
     
@@ -89,5 +90,5 @@ public class ElementQNameIterator extends FilterIterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementQNameIterator.java,v 1.2 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: ElementQNameIterator.java,v 1.3 2004/03/24 17:03:49 maartenc Exp $
  */
