@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.26 2003/04/07 22:14:45 jstrachan Exp $
+ * $Id: Branch.java,v 1.27 2003/05/15 22:49:19 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.List;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public interface Branch extends Node {
 
@@ -163,7 +163,7 @@ public interface Branch extends Node {
     
     /** Adds the given <code>Comment</code> to this branch.
       * If the given node already has a parent defined then an
-      * <code>InvalidAddNodeException</code> will be thrown.
+      * <code>IllegalAddException</code> will be thrown.
       *
       * @param comment is the comment to be added
       */
@@ -171,7 +171,7 @@ public interface Branch extends Node {
     
     /** Adds the given <code>Element</code> to this branch.
       * If the given node already has a parent defined then an
-      * <code>InvalidAddNodeException</code> will be thrown.
+      * <code>IllegalAddException</code> will be thrown.
       *
       * @param element is the element to be added
       */
@@ -179,7 +179,7 @@ public interface Branch extends Node {
     
     /** Adds the given <code>ProcessingInstruction</code> to this branch.
       * If the given node already has a parent defined then an
-      * <code>InvalidAddNodeException</code> will be thrown.
+      * <code>IllegalAddException</code> will be thrown.
       *
       * @param pi is the processing instruction to be added
       */
@@ -297,5 +297,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.26 2003/04/07 22:14:45 jstrachan Exp $
+ * $Id: Branch.java,v 1.27 2003/05/15 22:49:19 maartenc Exp $
  */
