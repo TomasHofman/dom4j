@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDOM.java,v 1.8 2004/06/25 08:03:49 maartenc Exp $
+ * $Id: TestDOM.java,v 1.9 2004/10/28 20:20:10 maartenc Exp $
  */
 
 package org.dom4j.dom;
 
 import java.io.File;
 import java.io.InputStream;
+import java.io.StringReader;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -27,7 +28,7 @@ import org.w3c.dom.NodeList;
 /** A test harness to test the native DOM implementation of dom4j
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestDOM extends AbstractTestCase {
 
@@ -73,6 +74,17 @@ public class TestDOM extends AbstractTestCase {
             + " attributes: " + attributes 
             + " characters: " + characters 
         );
+    }
+    
+    public void testNamespace() throws Exception {
+    	String xml = "<prefix:root xmlns:prefix=\"myuri\" />";
+    	SAXReader xmlReader = new SAXReader(DOMDocumentFactory.getInstance());
+    	DOMDocument d = (DOMDocument) xmlReader.read(new StringReader(xml));
+    	
+    	assertEquals("namespace prefix not correct", "prefix", d.getRootElement().getNamespace().getPrefix());
+    	assertEquals("namespace uri not correct", "myuri", d.getRootElement().getNamespace().getURI());
+    	
+    	System.out.println(d.asXML());
     }
 
     /** Tests the bug found by Soumanjoy */
@@ -236,5 +248,5 @@ public class TestDOM extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDOM.java,v 1.8 2004/06/25 08:03:49 maartenc Exp $
+ * $Id: TestDOM.java,v 1.9 2004/10/28 20:20:10 maartenc Exp $
  */

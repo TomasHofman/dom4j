@@ -4,59 +4,28 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractCDATA.java,v 1.10 2004/10/28 20:20:09 maartenc Exp $
+ * $Id: TestCData.java,v 1.1 2004/10/28 20:20:11 maartenc Exp $
  */
 
 package org.dom4j.tree;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.io.Writer;
+import junit.framework.TestCase;
 
-import org.dom4j.CDATA;
-import org.dom4j.Visitor;
+/**
+ * @author Maarten Coene
+ */
+public class TestCData extends TestCase {
 
-/** <p><code>AbstractCDATA</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
-  *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
-  */
-public abstract class AbstractCDATA extends AbstractCharacterData implements CDATA {
-
-    public AbstractCDATA() {
-    }
-    
-    public short getNodeType() {
-        return CDATA_SECTION_NODE;
-    }
-
-    public String toString() {
-        return super.toString() + " [CDATA: \"" + getText() + "\"]";
-    }
-
-    public String asXML() {
-        StringWriter writer = new StringWriter();
-        try {
-        	write(writer);
-        } catch (IOException e) {
-        	// will not happen since we are using a StringWriter!
-        }
-        	
-        return writer.toString();
-    }
-    
-    public void write(Writer writer) throws IOException {
-        writer.write( "<![CDATA[" );
-        if (getText() != null) {
-        	writer.write(getText());
-        }
-        writer.write( "]]>" );
-    }
-    
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
+	public void testNullTest() {
+		DefaultCDATA cdata = new DefaultCDATA(null);
+		assertEquals("CData not correct", "<![CDATA[]]>", cdata.asXML());
+	}
+	
+	public void testNormal() {
+		DefaultCDATA cdata = new DefaultCDATA("sample");
+		assertEquals("CData not correct", "<![CDATA[sample]]>", cdata.asXML());
+	}
+	
 }
 
 
@@ -104,5 +73,5 @@ public abstract class AbstractCDATA extends AbstractCharacterData implements CDA
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractCDATA.java,v 1.10 2004/10/28 20:20:09 maartenc Exp $
+ * $Id: TestCData.java,v 1.1 2004/10/28 20:20:11 maartenc Exp $
  */
