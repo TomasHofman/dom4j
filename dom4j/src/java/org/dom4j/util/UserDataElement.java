@@ -4,12 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UserDataElement.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: UserDataElement.java,v 1.10 2004/08/04 18:22:40 maartenc Exp $
  */
 
 package org.dom4j.util;
 
-import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
@@ -22,7 +21,7 @@ import org.dom4j.tree.DefaultElement;
   * adorn the trees with user defined objects.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class UserDataElement extends DefaultElement {
 
@@ -133,5 +132,5 @@ public class UserDataElement extends DefaultElement {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataElement.java,v 1.9 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: UserDataElement.java,v 1.10 2004/08/04 18:22:40 maartenc Exp $
  */

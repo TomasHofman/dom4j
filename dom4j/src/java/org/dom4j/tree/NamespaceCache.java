@@ -4,14 +4,12 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: NamespaceCache.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: NamespaceCache.java,v 1.11 2004/08/04 18:22:39 maartenc Exp $
  */
 
 package org.dom4j.tree;
 
 import java.lang.reflect.Constructor;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.dom4j.Namespace;
@@ -23,7 +21,7 @@ import org.dom4j.Namespace;
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
  * @author Maarten Coene
  * @author Brett Finnell
- * @version $Revision: 1.10 $
+ * @version $Revision: 1.11 $
  */
 public class NamespaceCache {
 
@@ -165,5 +163,5 @@ public class NamespaceCache {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceCache.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: NamespaceCache.java,v 1.11 2004/08/04 18:22:39 maartenc Exp $
  */
