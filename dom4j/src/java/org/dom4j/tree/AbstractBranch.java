@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.34 2001/07/12 16:42:48 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.35 2001/07/16 17:32:20 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.34 $
+  * @version $Revision: 1.35 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -316,10 +316,7 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     /** A Factory Method pattern which creates 
       * a BackedList implementation used to store results of 
-      * a filtered content query such as 
-      * {@link #processingInstructions} or
-      * {@link #elements} which changes are reflected in the content
-      */
+      * a filtered content query.     */
     protected BackedList createResultList() {
         return new BackedList( this, contentList() );
     }
@@ -427,5 +424,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.34 2001/07/12 16:42:48 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.35 2001/07/16 17:32:20 jstrachan Exp $
  */
