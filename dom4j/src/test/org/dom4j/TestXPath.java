@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.10 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.11 2001/01/30 15:56:27 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,11 +18,11 @@ import junit.textui.TestRunner;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestXPath extends AbstractTestCase {
 
-    protected static boolean VERBOSE = true;
+    protected static boolean VERBOSE = false;
     
     protected static String[] paths = {
         "root",
@@ -129,5 +129,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.10 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.11 2001/01/30 15:56:27 jstrachan Exp $
  */
