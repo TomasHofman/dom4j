@@ -1,10 +1,10 @@
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: PositionFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ *
+ * $Id: PositionFunction.java,v 1.3 2001/07/04 09:13:03 uid32867 Exp $
  */
 
 
@@ -15,31 +15,27 @@ import org.dom4j.xpath.impl.Context;
 import java.util.List;
 
 /**
-   <p><b>4.1</b> <code><i>number</i> position()</code> 
-   
-   @author bob mcwhirter (bob @ werken.com)
-*/
-public class PositionFunction implements Function
-{
-
-  public Object call(Context context,
-                     List args)
-  {
-    System.err.println("*******************************");
-    System.err.println("position(" + context + ", " + args + ")");
-    if (args.size() == 0)
+ * <p><b>4.1</b> <code><i>number</i> position()</code>
+ *
+ * @author bob mcwhirter (bob @ werken.com)
+ */
+public class PositionFunction implements Function {
+    
+    public Object call(Context context, List args)
     {
-      return evaluate( context );
+        //System.err.println("*******************************");
+        //System.err.println("position(" + context + ", " + args + ")");
+        if (args.size() == 0) {
+            return evaluate( context );
+        }
+        
+        // FIXME: Toss exception
+        return null;
     }
-
-    // FIXME: Toss exception
-    return null;
-  }
-
-  public static Double evaluate(Context context)
-  {
-    return new Double( context.getPosition() );
-  }
+    
+    public static Double evaluate(Context context) {
+        return new Double( context.getPosition() );
+    }
 }
 
 
@@ -88,5 +84,5 @@ public class PositionFunction implements Function
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PositionFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: PositionFunction.java,v 1.3 2001/07/04 09:13:03 uid32867 Exp $
  */
