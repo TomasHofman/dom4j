@@ -4,13 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.4 2001/07/16 08:47:40 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
-
-import org.antlr.CharBuffer;
-import org.antlr.*;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
@@ -42,7 +39,7 @@ import java.util.Map;
   * which uses an XPath expression.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathPattern implements Pattern {
     
@@ -186,5 +183,5 @@ public class XPathPattern implements Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.3 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.4 2001/07/16 08:47:40 jstrachan Exp $
  */
