@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.37 2001/08/06 12:55:06 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.38 2001/08/06 18:18:22 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -45,6 +45,7 @@ import org.dom4j.tree.NamespaceStack;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.DTDHandler;
+import org.xml.sax.InputSource;
 import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
@@ -72,7 +73,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   * </p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.37 $
+  * @version $Revision: 1.38 $
   */
 public class XMLWriter extends XMLFilterImpl implements ContentHandler, LexicalHandler {
 
@@ -520,29 +521,14 @@ public class XMLWriter extends XMLFilterImpl implements ContentHandler, LexicalH
     
     // XMLFilterImpl methods
     //-------------------------------------------------------------------------
-    public void setParent(XMLReader parent) {
-        super.setParent(parent);
-        
-        // set the lexical handler
-        try {
-            setProperty(
-                "http://xml.org/sax/handlers/LexicalHandler", 
-                this
-            );
-        }
-        catch (Exception e) {
-            System.out.println( "Caught: " + e );
-        }
-        try {
-            // try alternate property just in case
-            setProperty(
-                "http://xml.org/sax/properties/lexical-handler", 
-                this
-            );
-        }
-        catch (Exception e) {
-            System.out.println( "Caught: " + e );
-        }
+    public void parse(InputSource source) throws IOException, SAXException {
+        installLexicalHandler();
+        super.parse(source);
+    }
+    
+    public void parse(String uri) throws IOException, SAXException {
+        installLexicalHandler();
+        super.parse(uri);
     }
     
     // ContentHandler interface
@@ -723,6 +709,14 @@ public class XMLWriter extends XMLFilterImpl implements ContentHandler, LexicalH
     
     // Implementation methods
     //-------------------------------------------------------------------------
+    protected void installLexicalHandler() throws SAXException {
+        // set the lexical handler
+        setProperty( "http://xml.org/sax/handlers/LexicalHandler",  this );
+        
+        // try alternate property just in case
+        setProperty( "http://xml.org/sax/properties/lexical-handler", this );
+    }
+    
     
     protected void writeDocType(String name, String publicID, String systemID) throws IOException {
         boolean hasPublic = false;
@@ -1063,5 +1057,5 @@ public class XMLWriter extends XMLFilterImpl implements ContentHandler, LexicalH
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.37 2001/08/06 12:55:06 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.38 2001/08/06 18:18:22 jstrachan Exp $
  */
