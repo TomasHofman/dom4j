@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: OutputFormat.java,v 1.5 2001/08/06 15:10:33 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.6 2001/08/14 08:33:44 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -13,7 +13,7 @@ package org.dom4j.io;
   * used by {@link XMLWriter} and its base classes to format the XML output
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class OutputFormat implements Cloneable {
 
@@ -46,8 +46,6 @@ public class OutputFormat implements Cloneable {
 
     /** pad string-element boundaries with whitespace **/
     private boolean padText = false;
-
-    protected String padTextString = " ";
 
     /** Creates an <code>OutputFormat</code> with
       * no additional whitespace (indent or new lines) added.
@@ -388,5 +386,5 @@ public class OutputFormat implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OutputFormat.java,v 1.5 2001/08/06 15:10:33 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.6 2001/08/14 08:33:44 jstrachan Exp $
  */
