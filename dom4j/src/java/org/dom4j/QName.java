@@ -4,10 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: QName.java,v 1.5 2001/05/08 10:02:56 jstrachan Exp $
  */
 
 package org.dom4j;
+
+import java.io.Serializable;
 
 import org.dom4j.tree.QNameCache;
 
@@ -16,11 +18,11 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
-public class QName {
+public class QName implements Serializable {
 
-    protected static QNameCache cache = new QNameCache();
+    protected transient static QNameCache cache = new QNameCache();
     
     
     /** The local name of the element or attribute */
@@ -201,5 +203,5 @@ public class QName {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: QName.java,v 1.5 2001/05/08 10:02:56 jstrachan Exp $
  */
