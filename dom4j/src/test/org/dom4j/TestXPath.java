@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.7 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.8 2001/01/24 19:21:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,11 +18,11 @@ import junit.textui.TestRunner;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestXPath extends AbstractTestCase {
 
-    protected static boolean VERBOSE = true;
+    protected static boolean VERBOSE = false;
     
     protected static String[] paths = {
         "root",
@@ -37,7 +37,8 @@ public class TestXPath extends AbstractTestCase {
         "normalize-space(/root)",
         "normalize-space(/root/author)",
         "normalize-space(' a  b  c  d ')",
-        "root|author"
+        "root|author",
+        "//root|//author"
     };
     
     
@@ -64,14 +65,18 @@ public class TestXPath extends AbstractTestCase {
         return new TestSuite( TestXPath.class );
     }
     
-    protected void testXPath(String xpath) {
+    protected void testXPath(String xpathExpression) {
+        XPath xpath = XPathHelper.createXPath(xpathExpression);
+        
         List list = document.selectNodes(xpath);
         
-        System.out.println( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
+        log( "Searched path: " + xpathExpression + " found: " + list.size() + " result(s)" );
         
         if ( VERBOSE ) {
-            System.out.println( list );
+            log( "XPath:   " + xpath );
         }
+        
+        log( "Results: "+ list );
     }
 
 }
@@ -121,5 +126,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.7 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.8 2001/01/24 19:21:48 jstrachan Exp $
  */
