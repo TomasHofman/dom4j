@@ -4,44 +4,56 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.46 2003/04/07 22:14:02 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.47 2004/03/04 10:44:42 maartenc Exp $
  */
 
 package org.dom4j.io;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
+import org.dom4j.Attribute;
 import org.dom4j.Branch;
+import org.dom4j.CDATA;
+import org.dom4j.Comment;
 import org.dom4j.Document;
-import org.dom4j.DocumentFactory;
 import org.dom4j.DocumentType;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.ElementHandler;
+import org.dom4j.Entity;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
+import org.dom4j.ProcessingInstruction;
+import org.dom4j.DocumentException;
+
 import org.dom4j.dtd.AttributeDecl;
 import org.dom4j.dtd.ElementDecl;
 import org.dom4j.dtd.ExternalEntityDecl;
 import org.dom4j.dtd.InternalEntityDecl;
+
 import org.dom4j.tree.AbstractElement;
 import org.dom4j.tree.NamespaceStack;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.DTDHandler;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
-import org.xml.sax.ext.DeclHandler;
 import org.xml.sax.ext.LexicalHandler;
+import org.xml.sax.ext.DeclHandler;
 import org.xml.sax.helpers.DefaultHandler;
 
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.46 $
+  * @version $Revision: 1.47 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -358,6 +370,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
         if ( entityLevel == 0 ) {
             internalDTDsubset = true;
         }
+
     }
 
     public void startCDATA() throws SAXException {
@@ -620,7 +633,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
     /** Sets whether DTD external declarations should be expanded into the DocumentType
       * object or not.
       *
-      * @param includeInternalDTDDeclarations whether or not DTD declarations should be expanded
+      * @param includeExternalDTDDeclarations whether or not DTD declarations should be expanded
       * and included into the DocumentType object.
       */
     public void setIncludeExternalDTDDeclarations(boolean includeExternalDTDDeclarations) {
@@ -838,5 +851,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.46 2003/04/07 22:14:02 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.47 2004/03/04 10:44:42 maartenc Exp $
  */
