@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SchemaParser.java,v 1.9 2001/11/22 12:54:09 jstrachan Exp $
+ * $Id: SchemaParser.java,v 1.10 2001/11/30 12:12:32 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -32,7 +32,7 @@ import org.relaxng.datatype.ValidationContext;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class SchemaParser {
 
@@ -112,10 +112,11 @@ public class SchemaParser {
 
         if ( type != null ) {
             // register type with this element name
-            XSDatatype dataType=getTypeByName(type);
+            XSDatatype dataType = getTypeByName(type);
             if (dataType!=null) {
                 elementFactory.setChildElementXSDatatype( qname, dataType );
-            } else {
+            } 
+            else {
                 QName typeQName=getQName(type);
                 namedTypeResolver.registerTypedElement(xsdElement,typeQName,parentFactory);
             }
@@ -311,7 +312,7 @@ public class SchemaParser {
                 boolean fixed = AttributeHelper.booleanValue( element, "fixed" );
 
                 // add facet
-                incubator.add( name, value, fixed, context );
+                incubator.addFacet( name, value, fixed, context );
             }
             // derive a new type by those facets
             String newTypeName = null;
@@ -341,20 +342,26 @@ public class SchemaParser {
     protected XSDatatype getTypeByName( String type ) {
         XSDatatype dataType = (XSDatatype) dataTypeCache.get( type );
         if ( dataType == null ) {
-            dataType = DatatypeFactory.getTypeByName( type );
-            if ( dataType == null ) {
+            try {
                 // maybe a prefix is being used
                 int idx = type.indexOf(':');
                 if (idx >= 0 ) {
                     String localName = type.substring(idx + 1);
                     dataType = DatatypeFactory.getTypeByName( localName );
                 }
+                if ( dataType == null ) {
+                    dataType = DatatypeFactory.getTypeByName( type );
+                }
             }
-            // store in cache for later
-            dataTypeCache.put( type, dataType );
+            catch (DatatypeException e) {
+            }
+            if ( dataType != null ) {
+                // store in cache for later
+                dataTypeCache.put( type, dataType );
+            }
         }
         return dataType;
-    }
+    }    
 
     protected QName getQName( String name ) {
         return documentFactory.createQName(name);
@@ -417,5 +424,5 @@ public class SchemaParser {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaParser.java,v 1.9 2001/11/22 12:54:09 jstrachan Exp $
+ * $Id: SchemaParser.java,v 1.10 2001/11/30 12:12:32 jstrachan Exp $
  */
