@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DispatchHandler.java,v 1.3 2002/05/20 08:14:16 jstrachan Exp $
+ * $Id: DispatchHandler.java,v 1.4 2003/05/07 04:24:51 ddlucas Exp $
  */
 
 package org.dom4j.io;
@@ -25,7 +25,7 @@ import org.dom4j.ElementPath;
   * registered with it to process the elements encountered.
   *
   * @author <a href="mailto:dwhite@equipecom.com">Dave White</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 
 class DispatchHandler implements ElementHandler
@@ -91,6 +91,19 @@ class DispatchHandler implements ElementHandler
         defaultHandler = handler;
     }
     
+    /**
+     * Used to remove all the Element Handlers and return things back to the way
+     * they were when object was created.
+     */
+    public void resetHandlers() {
+        atRoot          = true;
+        path            = "/";
+        pathStack.clear();
+        handlerStack.clear();
+        handlers.clear();
+	defaultHandler=null;
+    }
+
     /** @return the current path for the parse */
     public String getPath() { return path; }
     
@@ -202,5 +215,5 @@ class DispatchHandler implements ElementHandler
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DispatchHandler.java,v 1.3 2002/05/20 08:14:16 jstrachan Exp $
+ * $Id: DispatchHandler.java,v 1.4 2003/05/07 04:24:51 ddlucas Exp $
  */

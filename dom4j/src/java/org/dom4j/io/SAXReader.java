@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.44 2003/04/07 22:14:00 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.45 2003/05/07 04:24:51 ddlucas Exp $
  */
 
 package org.dom4j.io;
@@ -65,7 +65,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.44 $
+  * @version $Revision: 1.45 $
   */
 public class SAXReader {
 
@@ -571,6 +571,14 @@ public class SAXReader {
         getDispatchHandler().setDefaultHandler(handler);   
     }
     
+    /**
+    * This method clears out all the existing handlers and default handler
+    * setting things back as if no handler existed.  Useful when reusing an
+    * object instance.
+    */
+    public void resetHandlers() {
+        getDispatchHandler().resetHandlers();   
+    }
     
     /** Returns the SAX filter being used to filter SAX events.
       *
@@ -805,5 +813,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.44 2003/04/07 22:14:00 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.45 2003/05/07 04:24:51 ddlucas Exp $
  */
