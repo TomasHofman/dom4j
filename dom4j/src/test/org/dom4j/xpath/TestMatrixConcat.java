@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestMatrixConcat.java,v 1.3 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: TestMatrixConcat.java,v 1.4 2001/08/08 21:51:31 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the matrix-concat extension function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestMatrixConcat extends AbstractTestCase {
 
@@ -46,7 +46,6 @@ public class TestMatrixConcat extends AbstractTestCase {
     public void testDummy() throws Exception {
     }
     
-/*    
     public void testMatrixConcat() throws Exception {          
         String[] results1 = {
             "EQUITY_CF1",
@@ -65,7 +64,6 @@ public class TestMatrixConcat extends AbstractTestCase {
         testMatrixConcat( "matrix-concat(/product/equity/IDENTIFIER,/product/cashflows/CashFlow/XREF)", results1 );
     }
  
-*/
     
     // Implementation methods
     //-------------------------------------------------------------------------                    
@@ -137,5 +135,5 @@ public class TestMatrixConcat extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestMatrixConcat.java,v 1.3 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: TestMatrixConcat.java,v 1.4 2001/08/08 21:51:31 jstrachan Exp $
  */
