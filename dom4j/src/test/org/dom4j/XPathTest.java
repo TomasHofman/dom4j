@@ -18,17 +18,37 @@ import org.dom4j.xpath.DefaultXPath;
  * A test harness to test XPath expression evaluation in DOM4J
  * 
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan </a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class XPathTest extends AbstractTestCase {
-    protected static String[] paths = {".", "*", "/", "/.", "/*", "/node()",
-            "/child::node()", "/self::node()", "root", "/root", "/root/author",
-            "text()", "//author", "//author/text()", "//@location",
-            "//attribute::*", "//namespace::*", "normalize-space(/root)",
-            "//author[@location]", "//author[@location='UK']", "root|author",
-            "//*[.='James Strachan']", "//root/author[1]",
-            "normalize-space(/root/author)", "normalize-space(' a  b  c  d ')",
-            "//root|//author[1]|//author[2]", "//root/author[2]",
+    protected static String[] paths = {
+            ".",
+            "*",
+            "/",
+            "/.",
+            "/*",
+            "/node()",
+            "/child::node()",
+            "/self::node()",
+            "root",
+            "/root",
+            "/root/author",
+            "text()",
+            "//author",
+            "//author/text()",
+            "//@location",
+            "//attribute::*",
+            "//namespace::*",
+            "normalize-space(/root)",
+            "//author[@location]",
+            "//author[@location='UK']",
+            "root|author",
+            "//*[.='James Strachan']",
+            "//root/author[1]",
+            "normalize-space(/root/author)",
+            "normalize-space(' a  b  c  d ')",
+            "//root|//author[1]|//author[2]",
+            "//root/author[2]",
             "//root/author[3]"};
 
     public static void main(String[] args) {
@@ -37,6 +57,21 @@ public class XPathTest extends AbstractTestCase {
 
     // Test case(s)
     // -------------------------------------------------------------------------
+    public void testBug1116471() throws Exception {
+        String xml = "<a><b>Water T &amp; D-46816</b></a>";
+        String expected = "Water T & D-46816";
+
+        Document doc = DocumentHelper.parseText(xml);
+        String result = (String) doc.selectObject("string(a/b[1])");
+        
+        assertEquals("xpath result not correct", expected, result);
+        
+        Node node = doc.selectSingleNode("a/b");
+        String result2 = node.getStringValue();
+        
+        assertEquals("xpath result not correct", expected, result2);        
+    }
+    
     public void testXPaths() throws Exception {
         int size = paths.length;
 
