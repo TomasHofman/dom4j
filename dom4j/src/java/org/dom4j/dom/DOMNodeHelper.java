@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMNodeHelper.java,v 1.15 2004/04/08 19:09:50 maartenc Exp $
+ * $Id: DOMNodeHelper.java,v 1.16 2004/04/14 16:03:51 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class DOMNodeHelper {
 
@@ -208,7 +208,11 @@ public class DOMNodeHelper {
     }
 
     public static boolean hasAttributes(Node node) {
-        return false;
+        if (node != null && node instanceof Element) {
+            return ((Element) node).attributeCount() > 0;
+        } else {
+            return false;
+        }
     }
 
 
@@ -569,5 +573,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.15 2004/04/08 19:09:50 maartenc Exp $
+ * $Id: DOMNodeHelper.java,v 1.16 2004/04/14 16:03:51 maartenc Exp $
  */
