@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.12 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.13 2001/07/18 09:09:28 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -26,7 +26,7 @@ import org.saxpath.XPathReader;
 import org.saxpath.SAXPathException;
 import org.saxpath.helpers.XPathReaderFactory;
 
-import org.jaxen.JAXPathHandler;
+import org.jaxen.JaxenHandler;
 
 import java.io.StringReader;
 
@@ -339,7 +339,7 @@ public class DefaultXPath implements org.dom4j.XPath {
         try {
             XPathReader reader = XPathReaderFactory.createReader();
             
-            JAXPathHandler handler = new JAXPathHandler();
+            JaxenHandler handler = new JaxenHandler();
             
             handler.setXPathFactory( new DefaultXPathFactory() );
             
@@ -457,5 +457,5 @@ public class DefaultXPath implements org.dom4j.XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.12 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.13 2001/07/18 09:09:28 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.6 2001/07/18 09:09:28 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,7 +22,7 @@ import org.saxpath.XPathReader;
 import org.saxpath.SAXPathException;
 import org.saxpath.helpers.XPathReaderFactory;
 
-import org.jaxen.JAXPathHandler;
+import org.jaxen.JaxenHandler;
 
 import java.io.StringReader;
 
@@ -39,7 +39,7 @@ import java.util.Map;
   * which uses an XPath expression.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class XPathPattern implements Pattern {
     
@@ -156,5 +156,5 @@ public class XPathPattern implements Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.5 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.6 2001/07/18 09:09:28 jstrachan Exp $
  */
