@@ -4,12 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.7 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: QName.java,v 1.8 2001/08/01 10:15:32 jstrachan Exp $
  */
 
 package org.dom4j;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import org.dom4j.tree.QNameCache;
 
@@ -18,7 +21,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class QName implements Serializable {
 
@@ -32,7 +35,7 @@ public class QName implements Serializable {
     private String qualifiedName;
     
     /** The Namespace of this element or attribute */
-    private Namespace namespace;
+    private transient Namespace namespace;
     
     /** A cached version of the hashcode for efficiency */
     private int hashCode;
@@ -165,6 +168,28 @@ public class QName implements Serializable {
     public void setDocumentFactory(DocumentFactory documentFactory) {
         this.documentFactory = documentFactory;
     }
+    
+    private void writeObject(ObjectOutputStream out) throws IOException {
+
+        // We use writeObject() and not writeUTF() to minimize space
+        // This allows for writing pointers to already written strings
+        out.writeObject(namespace.getPrefix());
+        out.writeObject(namespace.getURI());
+        
+        out.defaultWriteObject();
+    }
+        
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        
+        String prefix = (String) in.readObject();
+        String uri = (String) in.readObject();
+        
+        in.defaultReadObject();
+
+        namespace = Namespace.get( prefix, uri );
+    }
+
+
 }
 
 
@@ -212,5 +237,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.7 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: QName.java,v 1.8 2001/08/01 10:15:32 jstrachan Exp $
  */

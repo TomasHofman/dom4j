@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.41 2001/07/30 19:21:07 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.42 2001/08/01 10:15:32 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,12 +40,12 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.41 $
+  * @version $Revision: 1.42 $
   */
 public class DefaultElement extends AbstractElement {
     
     /** The <code>DocumentFactory</code> instance used by default */
-    private static final DocumentFactory DOCUMENT_FACTORY = DocumentFactory.getInstance();
+    private static transient final DocumentFactory DOCUMENT_FACTORY = DocumentFactory.getInstance();
 
     
     /** The <code>QName</code> for this element */
@@ -875,7 +875,7 @@ public class DefaultElement extends AbstractElement {
     
     // Implementation methods
     //-------------------------------------------------------------------------    
-
+    
     protected void addNewNode(Node node) {
         if (content == null) {
             content = node;
@@ -1018,5 +1018,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.41 2001/07/30 19:21:07 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.42 2001/08/01 10:15:32 jstrachan Exp $
  */
