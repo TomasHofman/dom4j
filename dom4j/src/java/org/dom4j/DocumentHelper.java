@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.1 2001/02/26 09:50:56 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.2 2001/02/26 12:44:40 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import org.dom4j.rule.Pattern;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DocumentHelper {
 
@@ -95,7 +95,7 @@ public class DocumentHelper {
     
     /** <p><code>createXPath</code> parses an XPath expression
       * and creates a new XPath <code>XPath</code> instance
-      * using the singleton {@link XPathEngine}.</p>
+      * using the singleton {@link DocumentFactory}.</p>
       *
       * @param xpathExpression is the XPath expression to create
       * @return a new <code>XPath</code> instance
@@ -104,9 +104,22 @@ public class DocumentHelper {
         return DocumentFactory.getInstance().createXPath(xpathExpression);
     }
     
+    /** <p><code>createXPath</code> parses an XPath expression
+      * and creates a new XPath <code>XPath</code> instance
+      * using the singleton {@link DocumentFactory}.</p>
+      *
+      * @param xpathExpression is the XPath expression to create
+      * @param variableContext is the variable context to use when evaluating the XPath
+      * @return a new <code>XPath</code> instance
+      */
+    public static XPath createXPath(String xpathExpression, VariableContext variableContext) {
+        return DocumentFactory.getInstance().createXPath(xpathExpression, variableContext);
+    }
+    
+    
     /** <p><code>createXPathFilter</code> parses a NodeFilter
       * from the given XPath filter expression using the singleton
-      * {@link XPathEngine}.
+      * {@link DocumentFactory}.
       * XPath filter expressions occur within XPath expressions such as
       * <code>self::node()[ filterExpression ]</code></p>
       *
@@ -230,5 +243,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.1 2001/02/26 09:50:56 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.2 2001/02/26 12:44:40 jstrachan Exp $
  */

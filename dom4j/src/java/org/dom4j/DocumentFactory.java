@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.9 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.10 2001/02/26 12:44:40 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -33,7 +33,7 @@ import org.dom4j.xpath.XPathPattern;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DocumentFactory {
 
@@ -144,6 +144,19 @@ public class DocumentFactory {
         return new DefaultXPath( xpathExpression );
     }
 
+    /** <p><code>createXPath</code> parses an XPath expression
+      * and creates a new XPath <code>XPath</code> instance.</p>
+      *
+      * @param xpathExpression is the XPath expression to create
+      * @param variableContext is the variable context to use when evaluating the XPath
+      * @return a new <code>XPath</code> instance
+      */
+    public XPath createXPath(String xpathExpression, VariableContext variableContext) {
+        XPath xpath = createXPath( xpathExpression );
+        xpath.setVariableContext( variableContext );
+        return xpath;
+    }
+
     /** <p><code>createXPathFilter</code> parses a NodeFilter
       * from the given XPath filter expression.
       * XPath filter expressions occur within XPath expressions such as
@@ -242,5 +255,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.9 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.10 2001/02/26 12:44:40 jstrachan Exp $
  */
