@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedElement.java,v 1.2 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.1 2001/05/28 14:38:00 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j.util;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -33,13 +33,17 @@ import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
+import org.dom4j.tree.BackedList;
+import org.dom4j.tree.DefaultElement;
+
+import org.xml.sax.Attributes;
 
 /** <p><code>IndexedElement</code> is an implementation of {@link Element}
   * which maintains an index of the attributes and elements it contains to
   * optimise lookups via name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
 public class IndexedElement extends DefaultElement {
 
@@ -58,6 +62,10 @@ public class IndexedElement extends DefaultElement {
         super(qname);
     }
 
+    public IndexedElement(QName qname, Attributes attributes) { 
+        super(qname, attributes);
+    }
+    
     public Attribute getAttribute(String name) {
         return (Attribute) getAttributeIndex().get(name);
     }
@@ -324,5 +332,5 @@ public class IndexedElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedElement.java,v 1.2 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.1 2001/05/28 14:38:00 jstrachan Exp $
  */
