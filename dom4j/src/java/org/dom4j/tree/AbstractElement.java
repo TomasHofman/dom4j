@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.36 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.37 2001/05/28 08:50:32 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.36 $
+  * @version $Revision: 1.37 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -143,28 +143,15 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         visitor.visit(this);
         
         // visit attributes
-        List attributes = attributeList();
-        if (attributes != null) {
-            for ( Iterator iter = attributes.iterator(); iter.hasNext(); ) {
-                Attribute attribute = (Attribute) iter.next();
-                visitor.visit(attribute);
-            }            
+        for ( int i = 0, size = attributeCount(); i < size; i++ ) {
+            Attribute attribute = attribute(i);
+            visitor.visit(attribute);
         }
         
         // visit content
-        List content = getContentList();
-        if (content != null) {
-            for ( Iterator iter = content.iterator(); iter.hasNext(); ) {
-                Object object = iter.next();
-                if (object instanceof String) {
-                    DefaultText text = new DefaultText((String) object);
-                    visitor.visit(text);
-                } 
-                else {
-                    Node node = (Node) object;
-                    node.accept(visitor);
-                }
-            }            
+        for ( int i = 0, size = nodeCount(); i < size; i++ ) {
+            Node node = node(i);
+            node.accept(visitor);
         }
     }
     
@@ -634,5 +621,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.36 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.37 2001/05/28 08:50:32 jstrachan Exp $
  */
