@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.5 2001/06/18 08:10:02 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.6 2001/06/20 11:54:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DocumentHelper {
 
@@ -207,7 +207,7 @@ public class DocumentHelper {
       *
       * @param text is the XML text to be parsed
       * @return a newly parsed Document
-      * @throws SAXException if the document could not be parsed
+      * @throws DocumentException if the document could not be parsed
       */
     public static Document parseText(String text) throws DocumentException {
         SAXReader reader = new SAXReader();
@@ -261,5 +261,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.5 2001/06/18 08:10:02 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.6 2001/06/20 11:54:19 jstrachan Exp $
  */
