@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.11 2002/12/02 09:07:46 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.12 2002/12/03 10:46:56 slehmann Exp $
  */
 
 package org.dom4j;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -61,6 +61,8 @@ public class TestNamespaces extends AbstractTestCase {
         Element root = doc2.getRootElement();
         assertNamespace( root.getNamespace(), "", "http://www.w3.org/2001/XMLSchema" );
         assertEquals( "xmlns=\"http://www.w3.org/2001/XMLSchema\"", root.getNamespace().asXML());
+        assertEquals( "namespace::*[name()='']", root.getNamespace().getPath());
+        assertEquals( "namespace::*[name()='']", root.getNamespace().getUniquePath());
 
         List additionalNS = root.additionalNamespaces();
         assertTrue( "at least one additional namespace", additionalNS != null && additionalNS.size() > 0 );
@@ -68,6 +70,8 @@ public class TestNamespaces extends AbstractTestCase {
         Namespace ns = (Namespace) additionalNS.get(0);
         assertNamespace( ns, "t", "http://www.w3.org/namespace/" );
         assertEquals( "xmlns:t=\"http://www.w3.org/namespace/\"", ns.asXML());
+        assertEquals( "namespace::t", ns.getPath());
+        assertEquals( "namespace::t", ns.getUniquePath());
 
         Node node = root.node(0);
         assertTrue( "First node is a namespace", node instanceof Namespace );
@@ -355,5 +359,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.11 2002/12/02 09:07:46 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.12 2002/12/03 10:46:56 slehmann Exp $
  */
