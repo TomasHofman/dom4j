@@ -4,14 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.7 2002/02/10 15:56:04 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.8 2002/04/29 17:44:33 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-
 import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +31,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -71,6 +70,24 @@ public class TestXMLWriter extends AbstractTestCase {
         
         assertTrue( "Output text is bigger than 10 characters", text.length() > 10 );
     }        
+    
+    public void testEncodingFormats() throws Exception {
+        testEncoding( "UTF-8" );
+        testEncoding( "UTF-16" );
+        testEncoding( "ISO-8859-1" );
+    }
+
+    protected void testEncoding(String encoding) throws Exception {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        
+        OutputFormat format = OutputFormat.createPrettyPrint();
+        format.setEncoding( encoding );
+        XMLWriter writer = new XMLWriter( out, format );
+        writer.write( document );
+        writer.close();
+        
+        log( "Wrote to encoding: " + encoding );
+    }
     
     public void testWriterBug() throws Exception {        
         Element project = new BaseElement("project"); 
@@ -256,5 +273,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.7 2002/02/10 15:56:04 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.8 2002/04/29 17:44:33 jstrachan Exp $
  */
