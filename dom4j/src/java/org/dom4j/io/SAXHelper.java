@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXHelper.java,v 1.4 2001/05/14 12:42:56 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.5 2001/05/14 15:44:13 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -24,10 +24,12 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * SAX and XMLReader objects.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 class SAXHelper {
 
+    private static boolean loggedWarning = false;
+    
     public static boolean setParserProperty(XMLReader reader, String propertyName, Object value) {    
         try {
             reader.setProperty(propertyName, value);
@@ -78,24 +80,27 @@ class SAXHelper {
             return JAXPHelper.createXMLReader( validating );
         }
         catch (Throwable e) {
-            if ( isVerboseErrorReporting() ) {
-                // log all exceptions as warnings and carry
-                // on as we have a default SAX parser we can use
-                System.out.println( 
-                    "Warning: Caught exception attempting to use JAXP to "
-                     + "load a SAX XMLReader " 
-                );
-                System.out.println( "Warning: Exception was: " + e );
-                System.out.println( 
-                    "Warning: I will print the stack trace then carry on "
-                     + "using the default SAX parser" 
-                 );
-                e.printStackTrace();
-            }
-            else {
-                System.out.println( 
-                    "Warning: Error occurred using JAXP to load a SAXParser. Will use Aelfred instead" 
-                );
+            if ( ! loggedWarning ) {                    
+                loggedWarning = true;
+                if ( isVerboseErrorReporting() ) {
+                    // log all exceptions as warnings and carry
+                    // on as we have a default SAX parser we can use
+                    System.out.println( 
+                        "Warning: Caught exception attempting to use JAXP to "
+                         + "load a SAX XMLReader " 
+                    );
+                    System.out.println( "Warning: Exception was: " + e );
+                    System.out.println( 
+                        "Warning: I will print the stack trace then carry on "
+                         + "using the default SAX parser" 
+                     );
+                    e.printStackTrace();
+                }
+                else {
+                    System.out.println( 
+                        "Warning: Error occurred using JAXP to load a SAXParser. Will use Aelfred instead" 
+                    );
+                }
             }
         }
         return null;
@@ -161,5 +166,5 @@ class SAXHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXHelper.java,v 1.4 2001/05/14 12:42:56 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.5 2001/05/14 15:44:13 jstrachan Exp $
  */
