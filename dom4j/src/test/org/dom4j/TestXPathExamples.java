@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.2 2001/07/12 16:42:48 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.3 2001/07/12 18:02:32 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestXPathExamples extends TestCase {
 
@@ -151,6 +151,9 @@ public class TestXPathExamples extends TestCase {
         log( description );
         log( "\texpected: " + expected + " result: " + result );
 
+        if ( VERBOSE ) {
+            log( "XPath: " + testContext.createXPath( xpath ) );
+        }
         assertEquals( description, expected, result );
     }
 }
@@ -200,5 +203,5 @@ public class TestXPathExamples extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.2 2001/07/12 16:42:48 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.3 2001/07/12 18:02:32 jstrachan Exp $
  */
