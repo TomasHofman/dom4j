@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNumber.java,v 1.7 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.8 2001/07/17 11:47:55 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,7 +22,7 @@ import org.dom4j.XPath;
 /** Test harness for numeric XPath expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestNumber extends AbstractTestCase {
 
@@ -45,11 +45,9 @@ public class TestNumber extends AbstractTestCase {
         "count(ancestor::author)",
         "count(descendant::*)",
         "count(descendant::author)+1",
-/*        
         "2 + number(1) * 2",
         "10 + count(descendant::author) * 5",
         "10 + (count(descendant::author) * 5)",
-*/
     };
     
     
@@ -147,5 +145,5 @@ public class TestNumber extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNumber.java,v 1.7 2001/07/17 10:31:41 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.8 2001/07/17 11:47:55 jstrachan Exp $
  */
