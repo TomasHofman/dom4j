@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.15 2001/03/01 23:49:02 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.16 2001/03/21 18:05:57 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -59,13 +59,21 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <p>If the <code>org.xml.sax.driver</code> system property is not defined 
   * then JAXP is used via reflection (so that DOM4J is not explicitly dependent 
   * on the JAXP classes) to load the JAXP configured SAXParser. 
-  * If there is any error creating a JAXP SAXParser a warning is output and 
-  * then the default SAX parser is used instead.
+  * If there is any error creating a JAXP SAXParser an informational message is 
+  * output and  then the default (Aelfred) SAX parser is used instead.</p>
+  *
+  * <p>If you are trying to use JAXP to explicitly set your SAX parser 
+  * and are experiencing problems, you can turn on verbose error reporting 
+  * by defining the system property <code>org.dom4j.verbose</code> to be "true"
+  * which will output a more detailed description of why JAXP could not find a 
+  * SAX parser</p>
+  *
+  * <p>
   * For more information on JAXP please go to 
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class SAXReader {
 
@@ -552,27 +560,48 @@ public class SAXReader {
             }
         }
         catch (Throwable e) {
-            // log all exceptions as warnings and carry
-            // on as we have a default SAX parser we can use
-            System.out.println( 
-                "Warning: Caught exception attempting to use JAXP to "
-                 + "load a SAX XMLReader " 
-            );
-            
-            // extract the real exception if its wrapped in 
-            // a reflection exception wrapper
-            if ( e instanceof InvocationTargetException ) {
-                InvocationTargetException ie = (InvocationTargetException) e;
-                e = ie.getTargetException();
+            if ( isVerboseErrorReporting() ) {
+                // log all exceptions as warnings and carry
+                // on as we have a default SAX parser we can use
+                System.out.println( 
+                    "Warning: Caught exception attempting to use JAXP to "
+                     + "load a SAX XMLReader " 
+                );
+
+                // extract the real exception if its wrapped in 
+                // a reflection exception wrapper
+                if ( e instanceof InvocationTargetException ) {
+                    InvocationTargetException ie = (InvocationTargetException) e;
+                    e = ie.getTargetException();
+                }
+                System.out.println( "Warning: Exception was: " + e );
+                System.out.println( 
+                    "Warning: I will print the stack trace then carry on "
+                     + "using the default SAX parser" 
+                 );
+                e.printStackTrace();
             }
-            System.out.println( "Warning: Exception was: " + e );
-            System.out.println( 
-                "Warning: I will print the stack trace then carry on "
-                 + "using the default SAX parser" 
-             );
-            e.printStackTrace();
+            else {
+                System.out.println( 
+                    "Info: Could not use JAXP to load a SAXParser. Will use Aelfred instead" 
+                );
+            }
         }
         return null;
+    }
+    
+    protected boolean isVerboseErrorReporting() {
+        try {
+            String flag = System.getProperty( "org.dom4j.verbose" );
+            if ( flag != null && flag.equalsIgnoreCase( "true" ) ) {
+                return true;
+            }
+        }
+        catch (Exception e) {
+            // in case a security exception
+            // happens in an applet or similar JVM
+        }
+        return false;
     }
 }
 
@@ -621,5 +650,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.15 2001/03/01 23:49:02 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.16 2001/03/21 18:05:57 jstrachan Exp $
  */
