@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.8 2003/06/02 21:11:45 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.9 2004/03/19 20:17:54 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -27,7 +27,7 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class DOMWriter {
 
@@ -326,12 +326,6 @@ public class DOMWriter {
     }
     
     protected org.w3c.dom.Document createDomDocumentViaJAXP() throws DocumentException {
-        if ( ! SAXHelper.classNameAvailable( "javax.xml.parsers.DocumentBuilderFactory" ) ) {
-            // don't attempt to use JAXP if it is not in the ClassPath
-            return null;
-        }
-        
-        // try use JAXP to load the XMLReader...
         try {
             return JAXPHelper.createDocument( false, true );
         }
@@ -434,5 +428,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.8 2003/06/02 21:11:45 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.9 2004/03/19 20:17:54 maartenc Exp $
  */

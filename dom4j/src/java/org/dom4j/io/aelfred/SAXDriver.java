@@ -121,6 +121,7 @@ import org.xml.sax.helpers.NamespaceSupport;
  * @author Updated by David Brownell &lt;david-b@pacbell.net&gt;
  * @version $Date: 2002/05/24 14:41:55 $
  * @see org.xml.sax.Parser
+ * @deprecated Use Aelfred2 instead!
  */
 final public class SAXDriver
     implements Locator, Attributes, XMLReader, Parser, AttributeList

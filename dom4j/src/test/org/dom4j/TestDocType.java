@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDocType.java,v 1.6 2004/03/04 21:38:00 maartenc Exp $
+ * $Id: TestDocType.java,v 1.7 2004/03/19 20:17:55 maartenc Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the DocType functionality
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestDocType extends AbstractTestCase {
 
@@ -52,9 +52,21 @@ public class TestDocType extends AbstractTestCase {
         ElementDecl decl = (ElementDecl) declarations.get(0);
         
         assertEquals( "name is correct", "greeting", decl.getName() );
-        assertEquals( "model is correct", "(#PCDATA)", decl.getModel() );
+        assertEquals( "model is correct", "(#PCDATA)", normalize(decl.getModel()));
         
         assertEquals( "getText() is correct", "<!ELEMENT greeting (#PCDATA)>", decl.toString() );
+    }
+    
+    /**
+     * Removes the optional * at the end of (#PCDATA)
+     */
+    private String normalize(String model) {
+        if (model.endsWith("*")) {
+            return model.substring(0, model.length() - 1);
+        } else {
+            return model;
+        }
+        
     }
         
     // Implementation methods
@@ -111,5 +123,5 @@ public class TestDocType extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDocType.java,v 1.6 2004/03/04 21:38:00 maartenc Exp $
+ * $Id: TestDocType.java,v 1.7 2004/03/19 20:17:55 maartenc Exp $
  */
