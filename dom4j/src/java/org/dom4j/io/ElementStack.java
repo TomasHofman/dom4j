@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementStack.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: ElementStack.java,v 1.4 2001/05/03 17:18:29 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -20,9 +20,9 @@ import org.dom4j.Element;
   * when a node is complete.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
-class ElementStack {
+public class ElementStack {
 
     /** stack of <code>Element</code> objects */
     protected Element[] stack;
@@ -138,5 +138,5 @@ class ElementStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementStack.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: ElementStack.java,v 1.4 2001/05/03 17:18:29 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PruningElementStack.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: PruningElementStack.java,v 1.4 2001/05/03 17:18:29 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -21,9 +21,9 @@ import org.dom4j.ElementHandler;
   * in memory at the same time.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
-class PruningElementStack extends ElementStack {
+public class PruningElementStack extends ElementStack {
 
     /** ElementHandler to call when pruning occurs */
     private ElementHandler elementHandler;
@@ -157,5 +157,5 @@ class PruningElementStack extends ElementStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PruningElementStack.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: PruningElementStack.java,v 1.4 2001/05/03 17:18:29 jstrachan Exp $
  */

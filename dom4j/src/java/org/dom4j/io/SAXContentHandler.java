@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.16 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.17 2001/05/03 17:18:29 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -40,7 +40,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -250,6 +250,15 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
 
     
+    // Properties
+    public ElementStack getElementStack() {
+        return elementStack;
+    }
+    
+    public void setElementStack(ElementStack elementStack) {
+        this.elementStack = elementStack;
+    }
+    
     // Implementation methods
     
 
@@ -359,5 +368,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.16 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.17 2001/05/03 17:18:29 jstrachan Exp $
  */
