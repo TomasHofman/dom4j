@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentSource.java,v 1.1 2001/04/06 18:05:20 jstrachan Exp $
+ * $Id: DocumentSource.java,v 1.2 2001/04/09 12:09:06 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -23,12 +23,12 @@ import org.xml.sax.XMLReader;
   * for a {@link Document}.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DocumentSource extends SAXSource {
 
     /** The XMLReader to use */
-    private SAXWriter saxWriter = new SAXWriter();
+    private XMLReader xmlReader = new SAXWriter();
 
     
     /** Creates a JAXP {@link Source} for the given 
@@ -70,7 +70,7 @@ public class DocumentSource extends SAXSource {
     /** @return the XMLReader to be used for the JAXP {@link Source}.
      */
     public XMLReader getXMLReader() {
-        return saxWriter;
+        return xmlReader;
     }
 
     /** This method is not supported as this source is always a 
@@ -92,17 +92,27 @@ public class DocumentSource extends SAXSource {
       */
     public void setXMLReader(XMLReader reader)
             throws UnsupportedOperationException {
-/*
-        if (reader instanceof XMLFilter) {
+        if (reader instanceof SAXWriter) {
+            this.xmlReader = (SAXWriter) reader;
+        }
+        else if (reader instanceof XMLFilter) {
             XMLFilter filter = (XMLFilter) reader;
-            while (filter.getParent() instanceof XMLFilter) {
-                filter = (XMLFilter) filter.getParent();
+            while (true) {
+                XMLReader parent = filter.getParent();
+                if ( parent instanceof XMLFilter ) {
+                    filter = (XMLFilter) parent;
+                }
+                else {
+                    break;
+                }
             }
             // install filter in SAXWriter....
-            saxWriter.setParent(xmlReader);
+            filter.setParent(xmlReader);
+            xmlReader = filter;
         }
-*/        
-        throw new UnsupportedOperationException();
+        else {
+            throw new UnsupportedOperationException();
+        }
     }
 
 }
@@ -155,5 +165,5 @@ public class DocumentSource extends SAXSource {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentSource.java,v 1.1 2001/04/06 18:05:20 jstrachan Exp $
+ * $Id: DocumentSource.java,v 1.2 2001/04/09 12:09:06 jstrachan Exp $
  */
