@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.63 2004/02/28 14:00:32 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.64 2004/03/04 10:02:54 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -66,7 +66,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.63 $
+  * @version $Revision: 1.64 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -1150,13 +1150,32 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
                 }
             }
 
-            char quote = format.getAttributeQuoteCharacter();
-            writer.write(" ");
-            writer.write(attribute.getQualifiedName());
-            writer.write("=");
-            writer.write(quote);
-            writeEscapeAttributeEntities(attribute.getValue());
-            writer.write(quote);
+            // If the attribute is a namespace declaration, check if we have already
+            // written that declaration elsewhere (if that's the case, it must be 
+            // in the namespace stack
+            String attName = attribute.getName();
+            if (attName.startsWith("xmlns:")) {
+                String prefix = attName.substring(6);
+                if (namespaceStack.getNamespaceForPrefix(prefix) == null) {
+                    String uri = attribute.getValue();
+                    namespaceStack.push(prefix, uri);
+                    writeNamespace(prefix, uri);
+                }
+            } else if (attName.startsWith("xmlns=")) {
+                if (namespaceStack.getDefaultNamespace() == null) {
+                    String uri = attribute.getValue();
+                    namespaceStack.push(null, uri);
+                    writeNamespace(null, uri);
+                }
+            } else {
+                char quote = format.getAttributeQuoteCharacter();
+                writer.write(" ");
+                writer.write(attribute.getQualifiedName());
+                writer.write("=");
+                writer.write(quote);
+                writeEscapeAttributeEntities(attribute.getValue());
+                writer.write(quote);
+            }
         }
     }
 
@@ -1513,5 +1532,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.63 2004/02/28 14:00:32 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.64 2004/03/04 10:02:54 maartenc Exp $
  */
