@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Stylesheet.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -25,14 +25,14 @@ import org.dom4j.XPath;
   * stylesheet can be applied to a source document or node.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class Stylesheet {
 
     private RuleManager ruleManager = new RuleManager();
     
     /** Holds value of property mode. */
-    private String mode;    
+    private String modeName;    
 
     
     public Stylesheet() {
@@ -68,9 +68,9 @@ public class Stylesheet {
     }
     
     public void run( Node node ) {
-        RuleSetManager ruleManager = getRuleSetManager();
-        if ( ruleManager != null ) {
-            ruleManager.fireRule( node );
+        Mode mode = getMode();
+        if ( mode != null ) {
+            mode.fireRule( node );
         }
     }
     
@@ -82,23 +82,23 @@ public class Stylesheet {
     
     public void applyTemplates( Object input ) {
         // iterate through all children
-        RuleSetManager ruleManager = getRuleSetManager();
-        if ( ruleManager != null ) {
+        Mode mode = getMode();
+        if ( mode != null ) {
             if ( input instanceof Element ) {
-                ruleManager.applyTemplates( (Element) input );
+                mode.applyTemplates( (Element) input );
             }
             else if ( input instanceof Document ) { 
-                ruleManager.applyTemplates( (Document) input );
+                mode.applyTemplates( (Document) input );
             }
             else if ( input instanceof List ) {
                 List list = (List) input;
                 for ( int i = 0, size = list.size(); i < size; i++ ) {
                     Object object = list.get(i);
                     if ( object instanceof Element ) {
-                        ruleManager.applyTemplates( (Element) object );
+                        mode.applyTemplates( (Element) object );
                     }
                     else if ( object instanceof Document ) { 
-                        ruleManager.applyTemplates( (Document) object );
+                        mode.applyTemplates( (Document) object );
                     }
                 }
             }
@@ -113,18 +113,16 @@ public class Stylesheet {
     // Properties
     //-------------------------------------------------------------------------                
     
-    /** Getter for property mode.
-     * @return Value of property mode.
-     */
-    public String getMode() {
-        return mode;
+    /** @return the name of the mode the stylesheet uses by default
+      */
+    public String getModeName() {
+        return modeName;
     }
     
-    /** Setter for property mode.
-     * @param mode New value of property mode.
-     */
-    public void setMode(String mode) {
-        this.mode = mode;
+    /** Sets the name of the mode that the stylesheet uses by default.
+      */
+    public void setModeName(String modeName) {
+        this.modeName = modeName;
     }
     
     /** @return the default value-of action which is used 
@@ -144,8 +142,8 @@ public class Stylesheet {
 
     // Implementation methods
     //------------------------------------------------------------------------- 
-    protected RuleSetManager getRuleSetManager() {
-        return ruleManager.getRuleSetManager( mode );
+    protected Mode getMode() {
+        return ruleManager.getMode( modeName );
     }
     
     
@@ -196,5 +194,5 @@ public class Stylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Stylesheet.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */

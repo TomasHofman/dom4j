@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NodeTypePattern.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: NodeTypePattern.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */
 
 package org.dom4j.rule.pattern;
@@ -17,7 +17,7 @@ import org.dom4j.rule.Pattern;
   * any node of the given node type.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class NodeTypePattern implements Pattern {
     
@@ -28,6 +28,10 @@ public class NodeTypePattern implements Pattern {
     /** A pattern which matches any Comment  node  */
     public static final NodeTypePattern ANY_COMMENT
         = new NodeTypePattern( Node.COMMENT_NODE );
+    
+    /** A pattern which matches any Document node  */
+    public static final NodeTypePattern ANY_DOCUMENT
+        = new NodeTypePattern( Node.DOCUMENT_NODE );
     
     /** A pattern which matches any Element node  */
     public static final NodeTypePattern ANY_ELEMENT 
@@ -115,5 +119,5 @@ public class NodeTypePattern implements Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NodeTypePattern.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: NodeTypePattern.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */

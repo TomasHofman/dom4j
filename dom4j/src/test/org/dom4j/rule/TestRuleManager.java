@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRuleManager.java,v 1.1 2001/02/07 14:51:19 jstrachan Exp $
+ * $Id: TestRuleManager.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -21,7 +21,7 @@ import org.dom4j.*;
 /** A test harness to test the use of RuleManager
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestRuleManager extends AbstractTestCase {
 
@@ -34,10 +34,10 @@ public class TestRuleManager extends AbstractTestCase {
         "author[@location='UK']",
         "root/author[@location='UK']",
         "root//author[@location='UK']",
-        "text()"
+        "text()[.='James Strachan']"
     };
     
-    protected Stylesheet stylesheet = new Stylesheet();
+    protected Stylesheet stylesheet;
     
     // JUnit stuff
     //-------------------------------------------------------------------------                    
@@ -60,6 +60,10 @@ public class TestRuleManager extends AbstractTestCase {
             addTemplate( templates[i] );
         }
         
+        log( "........................................" );
+        log( "" );
+        log( "........................................" );
+        
         log( "Running stylesheet" );
         
         stylesheet.run( document );
@@ -70,6 +74,19 @@ public class TestRuleManager extends AbstractTestCase {
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
+    protected void setUp() throws Exception {
+        super.setUp();
+        
+        stylesheet = new Stylesheet();
+        stylesheet.setValueOfAction(
+            new Action() {
+                public void run(Node node) {
+                    log( "Default ValueOf action on node: " + node );
+                    log( "........................................" );
+                }
+            }
+        );
+    }
     protected void addTemplate( final String match ) {
         log( "Adding template match: " + match );
         
@@ -83,6 +100,9 @@ public class TestRuleManager extends AbstractTestCase {
                 log( "Matched pattern: " + match );
                 log( "Node: " + node.asXML() );
                 log( "........................................" );
+                
+                // apply any child templates
+                stylesheet.applyTemplates(node);
             }
         };
         Rule rule = new Rule( pattern, action );
@@ -136,5 +156,5 @@ public class TestRuleManager extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRuleManager.java,v 1.1 2001/02/07 14:51:19 jstrachan Exp $
+ * $Id: TestRuleManager.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */

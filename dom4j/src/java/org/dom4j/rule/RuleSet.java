@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RuleSet.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: RuleSet.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -20,7 +20,7 @@ import org.dom4j.Node;
   * rules can be evaluated in order of priority.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class RuleSet {
 
@@ -32,6 +32,11 @@ public class RuleSet {
     
     public RuleSet() {
     }
+    
+    public String toString() {
+        return super.toString() + " [RuleSet: " + ruleTree + " ]";
+    }
+    
     
     /** Performs an XSLT processing model match for the rule
       * which matches the given Node the best.
@@ -58,6 +63,13 @@ public class RuleSet {
     
     public void removeRule(Rule rule) {
         ruleTree.remove( rule );
+        ruleArray = null;
+    }
+    
+    /** Adds all the rules to this RuleSet from the given other rule set. 
+      */
+    public void addAll(RuleSet that) {
+        ruleTree.addAll( that.ruleTree );
         ruleArray = null;
     }
     
@@ -121,5 +133,5 @@ public class RuleSet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RuleSet.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: RuleSet.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
  */
