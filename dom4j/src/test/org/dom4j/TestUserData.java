@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestUserData.java,v 1.1 2001/07/24 08:46:17 jstrachan Exp $
+ * $Id: TestUserData.java,v 1.2 2002/02/01 10:14:30 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -17,13 +17,14 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.SAXReader;
+import org.dom4j.util.UserDataAttribute;
 import org.dom4j.util.UserDataDocumentFactory;
 import org.dom4j.util.UserDataElement;
 
 /** Tests the UserDataDocumentFactory
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestUserData extends AbstractTestCase {
 
@@ -67,6 +68,36 @@ public class TestUserData extends AbstractTestCase {
         cloned = root.createCopy();
         assertTrue( "Cloned new instance", cloned != root );
         assertUserData( cloned, userData );
+    }
+        
+    public void testNewAdditions() throws Exception {
+        Element root = getRootElement();
+        
+        Element newElement = root.addElement( "foo1234" );        
+        assertTrue( "New Element is a UserDataElement", newElement instanceof UserDataElement );
+        
+        root.addAttribute( "bar456", "123" );
+        
+        Attribute newAttribute = root.attribute( "bar456" );
+        
+        assertTrue( "New Attribute is a UserDataAttribute", newAttribute instanceof UserDataAttribute );
+    }
+        
+    public void testNewDocument() throws Exception {
+        DocumentFactory factory = UserDataDocumentFactory.getInstance();
+        Document document = factory.createDocument();
+        
+        Element root = document.addElement( "root" );
+        assertTrue( "Root Element is a UserDataElement", root instanceof UserDataElement );
+        
+        Element newElement = root.addElement( "foo1234" );        
+        assertTrue( "New Element is a UserDataElement", newElement instanceof UserDataElement );
+        
+        root.addAttribute( "bar456", "123" );
+        
+        Attribute newAttribute = root.attribute( "bar456" );
+        
+        assertTrue( "New Attribute is a UserDataAttribute", newAttribute instanceof UserDataAttribute );
     }
         
         
@@ -131,5 +162,5 @@ public class TestUserData extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestUserData.java,v 1.1 2001/07/24 08:46:17 jstrachan Exp $
+ * $Id: TestUserData.java,v 1.2 2002/02/01 10:14:30 jstrachan Exp $
  */
