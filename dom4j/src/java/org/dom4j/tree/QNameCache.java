@@ -4,21 +4,17 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: QNameCache.java,v 1.14 2004/12/17 19:57:36 maartenc Exp $
+ * $Id: QNameCache.java,v 1.15 2005/01/05 08:36:03 ddlucas Exp $
  */
 
 package org.dom4j.tree;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 import org.dom4j.DocumentFactory;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
+
+import java.util.*;
+
 
 /**
  * <p>
@@ -27,17 +23,17 @@ import org.dom4j.QName;
  * </p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.14 $
+ * @version $Revision: 1.15 $
  */
 public class QNameCache {
     /** Cache of {@link QName} instances with no namespace */
-    protected Map noNamespaceCache = Collections.synchronizedMap(new HashMap());
+    protected Map noNamespaceCache = Collections.synchronizedMap(new WeakHashMap());
 
     /**
      * Cache of {@link Map} instances indexed by namespace which contain caches
      * of {@link QName} for each name
      */
-    protected Map namespaceCache = Collections.synchronizedMap(new HashMap());
+    protected Map namespaceCache = Collections.synchronizedMap(new WeakHashMap());
 
     /**
      * The document factory associated with new QNames instances in this cache
@@ -298,5 +294,5 @@ public class QNameCache {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.14 2004/12/17 19:57:36 maartenc Exp $
+ * $Id: QNameCache.java,v 1.15 2005/01/05 08:36:03 ddlucas Exp $
  */
