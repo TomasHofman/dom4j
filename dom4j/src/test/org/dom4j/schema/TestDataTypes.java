@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDataTypes.java,v 1.3 2001/08/14 15:17:25 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.4 2001/08/20 12:41:27 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -33,7 +33,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestDataTypes extends AbstractDataTypeTest {
 
@@ -167,7 +167,7 @@ public class TestDataTypes extends AbstractDataTypeTest {
     protected void setUp() throws Exception {
         DocumentFactory factory = SchemaDocumentFactory.getInstance();
         SAXReader reader = new SAXReader( factory );
-        document = reader.read( "xml/schema/test.xml" );
+        document = reader.read( "xml/test/schema/test.xml" );
     }
 }
 
@@ -216,5 +216,5 @@ public class TestDataTypes extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDataTypes.java,v 1.3 2001/08/14 15:17:25 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.4 2001/08/20 12:41:27 jstrachan Exp $
  */

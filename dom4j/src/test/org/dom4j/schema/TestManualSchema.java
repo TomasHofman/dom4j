@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchema.java,v 1.6 2001/07/05 13:37:02 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.7 2001/08/20 12:41:27 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -30,7 +30,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * manually load the schemas
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestManualSchema extends TestAutoSchema {
 
@@ -52,14 +52,14 @@ public class TestManualSchema extends TestAutoSchema {
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected String getDocumentURI() {
-        return "xml/schema/personal.xml";
+        return "xml/test/schema/personal.xml";
     }
     
     protected DocumentFactory loadDocumentFactory() throws Exception {
         SchemaDocumentFactory factory = new SchemaDocumentFactory();
         
         SAXReader reader = new SAXReader();
-        Document schemaDocument = reader.read( "xml/schema/personal.xsd" );
+        Document schemaDocument = reader.read( "xml/test/schema/personal.xsd" );
         factory.loadSchema( schemaDocument );
         return factory;
     }
@@ -110,5 +110,5 @@ public class TestManualSchema extends TestAutoSchema {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchema.java,v 1.6 2001/07/05 13:37:02 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.7 2001/08/20 12:41:27 jstrachan Exp $
  */

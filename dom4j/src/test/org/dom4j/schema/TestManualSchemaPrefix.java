@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchemaPrefix.java,v 1.1 2001/07/04 14:01:01 uid32867 Exp $
+ * $Id: TestManualSchemaPrefix.java,v 1.2 2001/08/20 12:41:27 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -30,7 +30,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * manually load the schemas using prefixes in the XSD file.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestManualSchemaPrefix extends TestAutoSchema {
 
@@ -53,7 +53,7 @@ public class TestManualSchemaPrefix extends TestAutoSchema {
         SchemaDocumentFactory factory = new SchemaDocumentFactory();
         
         SAXReader reader = new SAXReader();
-        Document schemaDocument = reader.read( "xml/schema/personal-prefix.xsd" );
+        Document schemaDocument = reader.read( "xml/test/schema/personal-prefix.xsd" );
         factory.loadSchema( schemaDocument );
         return factory;
     }
@@ -104,5 +104,5 @@ public class TestManualSchemaPrefix extends TestAutoSchema {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchemaPrefix.java,v 1.1 2001/07/04 14:01:01 uid32867 Exp $
+ * $Id: TestManualSchemaPrefix.java,v 1.2 2001/08/20 12:41:27 jstrachan Exp $
  */
