@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.9 2001/11/16 16:30:34 jstrachan Exp $
+ * $Id: XPath.java,v 1.10 2001/12/14 11:32:09 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.jaxen.VariableContext;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public interface XPath extends NodeFilter {
 
@@ -40,6 +40,21 @@ public interface XPath extends NodeFilter {
       */
     public boolean matches(Node node);
 
+    /** <p><code>evaluate</code> evaluates an XPath expression and returns 
+      * the result as an {@link Object}. The object returned can
+      * either be a {@link List} of {@link Node} instances, a {@link Node} 
+      * instance, a {@link String} or a {@link Number} instance depending on 
+      * the XPath expression. 
+      *
+      * @param context is either a node or a list of nodes on which to 
+      *    evalute the XPath
+      * @return the value of the XPath expression as a
+      * {@link List} of {@link Node} instances, a {@link Node} 
+      * instance, a {@link String} or a {@link Number} instance depending on 
+      * the XPath expression. 
+      */
+    public Object evaluate(Object context);
+
     /** <p><code>selectObject</code> evaluates an XPath expression and returns 
       * the result as an {@link Object}. The object returned can
       * either be a {@link List} of {@link Node} instances, a {@link Node} 
@@ -52,6 +67,8 @@ public interface XPath extends NodeFilter {
       * {@link List} of {@link Node} instances, a {@link Node} 
       * instance, a {@link String} or a {@link Number} instance depending on 
       * the XPath expression. 
+      *
+      * @deprecated please use evaluate(Object) instead.
       */
     public Object selectObject(Object context);
 
@@ -234,5 +251,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.9 2001/11/16 16:30:34 jstrachan Exp $
+ * $Id: XPath.java,v 1.10 2001/12/14 11:32:09 jstrachan Exp $
  */
