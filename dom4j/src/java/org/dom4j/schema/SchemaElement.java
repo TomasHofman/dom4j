@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElement.java,v 1.4 2001/08/14 13:21:10 jstrachan Exp $
+ * $Id: SchemaElement.java,v 1.5 2001/08/14 16:39:27 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -26,7 +26,7 @@ import org.xml.sax.Attributes;
   * specification.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class SchemaElement extends DefaultElement implements ValidationContext {
 
@@ -80,12 +80,15 @@ public class SchemaElement extends DefaultElement implements ValidationContext {
     //-------------------------------------------------------------------------
     public Object getData() {
         if ( data == null ) {
-            if ( datatype instanceof DatabindableDatatype ) {
-                DatabindableDatatype bindable = (DatabindableDatatype) datatype;
-                data = bindable.createJavaObject( getTextTrim(), this );
-            }
-            else {
-                data = datatype.createValue( getTextTrim(), this );
+            String text = getTextTrim();
+            if ( text != null && text.length() > 0 ) {
+                if ( datatype instanceof DatabindableDatatype ) {
+                    DatabindableDatatype bindable = (DatabindableDatatype) datatype;
+                    data = bindable.createJavaObject( text, this );
+                }
+                else {
+                    data = datatype.createValue( text, this );
+                }
             }
         }
         return data;
@@ -147,5 +150,5 @@ public class SchemaElement extends DefaultElement implements ValidationContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElement.java,v 1.4 2001/08/14 13:21:10 jstrachan Exp $
+ * $Id: SchemaElement.java,v 1.5 2001/08/14 16:39:27 jstrachan Exp $
  */

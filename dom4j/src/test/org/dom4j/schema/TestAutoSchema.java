@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAutoSchema.java,v 1.4 2001/08/14 15:17:25 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.5 2001/08/14 16:39:27 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -32,7 +32,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * use auto-loading of the XML Schema document
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestAutoSchema extends AbstractDataTypeTest {
 
@@ -73,11 +73,6 @@ public class TestAutoSchema extends AbstractDataTypeTest {
     public void testInteger() throws Exception {        
         testNodes( "//person/@age", BigInteger.class );
     }
-/*
- * these don't yet work due to a bug in Sun's xsdlib 
- *
- 
-*/
 
     
     // Implementation methods
@@ -148,5 +143,5 @@ public class TestAutoSchema extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAutoSchema.java,v 1.4 2001/08/14 15:17:25 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.5 2001/08/14 16:39:27 jstrachan Exp $
  */
