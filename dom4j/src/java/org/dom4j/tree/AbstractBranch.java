@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.16 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.17 2001/01/26 11:21:54 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -74,8 +74,8 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
                         if ( first instanceof String) {
                             return (String) first;
                         }
-                        else if ( first instanceof CharacterData ) {
-                            CharacterData text = (CharacterData) first;
+                        else if ( first instanceof Text ) {
+                            Text text = (Text) first;
                             return text.getText();
                         }
                         else {
@@ -84,17 +84,18 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
                     }
                     
                     // Else build String up
-                    StringBuffer textContent = new StringBuffer();
-                    boolean hasText = false;
+                    StringBuffer buffer = new StringBuffer();
                     for ( Iterator i = content.iterator(); i.hasNext(); ) {
-                        Object obj = i.next();
-                        if (obj instanceof String) {
-                            textContent.append((String)obj);
-                        } else if (obj instanceof CharacterData) {
-                            textContent.append(((CharacterData)obj).getText());
+                        Object node = i.next();
+                        if ( node instanceof String ) {
+                            buffer.append( (String) node );
+                        } 
+                        else if ( node instanceof Text ) {
+                            Text text = (Text) first;
+                            buffer.append( text.getText() );
                         }
                     }
-                    return textContent.toString();
+                    return buffer.toString();
                 }
             }
         }
@@ -330,5 +331,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.16 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.17 2001/01/26 11:21:54 jstrachan Exp $
  */

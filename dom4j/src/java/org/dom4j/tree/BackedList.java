@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BackedList.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: BackedList.java,v 1.3 2001/01/26 11:21:54 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -31,7 +31,7 @@ import org.dom4j.Text;
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class BackedList extends ArrayList {
 
@@ -65,7 +65,10 @@ public class BackedList extends ArrayList {
     
     public void add(int index, Object object) {
         int realIndex = branchContent.indexOf( get(index) );
-        if ( realIndex >= 0 || index == 0) {
+        if ( realIndex < 0 ) {
+            realIndex = ( index == 0 ) ? 0 : Integer.MAX_VALUE;
+        }
+        if ( realIndex < branchContent.size() ) {
             branchContent.add(realIndex, object);
         }
         else {
@@ -77,7 +80,10 @@ public class BackedList extends ArrayList {
     
     public Object set(int index, Object object) {
         int realIndex = branchContent.indexOf( get(index) );
-        if ( realIndex >= 0 || index == 0) {
+        if ( realIndex < 0 ) {
+            realIndex = ( index == 0 ) ? 0 : Integer.MAX_VALUE;
+        }
+        if ( realIndex < branchContent.size() ) {
             branchContent.set(realIndex, object);
         }
         else {
@@ -191,5 +197,5 @@ public class BackedList extends ArrayList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BackedList.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: BackedList.java,v 1.3 2001/01/26 11:21:54 jstrachan Exp $
  */

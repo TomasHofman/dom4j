@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.17 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.18 2001/01/26 11:21:54 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -93,7 +93,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         visitor.visit(this);
         
         // visit attributes
-        List attributes = getAttributes();
+        List attributes = getAttributeList();
         if (attributes != null) {
             for ( Iterator iter = attributes.iterator(); iter.hasNext(); ) {
                 Attribute attribute = (Attribute) iter.next();
@@ -165,7 +165,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     // Attribute methods
         
     public Iterator attributeIterator() {
-        return getAttributes().iterator();
+        return getAttributeList().iterator();
     }
     
     public String getAttributeValue(String name) {
@@ -234,7 +234,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             
             throw new IllegalAddException( this, attribute, message );
         }        
-        getAttributes().add(attribute);
+        getAttributeList().add(attribute);
         childAdded(attribute);
     }
     
@@ -424,7 +424,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     // add to me content from another element
     // analagous to the addAll(collection) methods in Java 2 collections
     public void appendAttributes(Element element) {
-        for (Iterator i = getAttributes().iterator(); i.hasNext(); ) {
+        for (Iterator i = attributeIterator(); i.hasNext(); ) {
             Attribute attribute = (Attribute) i.next();
             if ( attribute.supportsParent() ) {
                 Namespace namespace = attribute.getNamespace();
@@ -535,6 +535,9 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         }
     }
 
+    /** @return the internal List used to store attributes
+      */
+    protected abstract List getAttributeList();
 }
 
 
@@ -582,5 +585,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.17 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.18 2001/01/26 11:21:54 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.17 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: Element.java,v 1.18 2001/01/26 11:21:54 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public interface Element extends Branch {
 
@@ -121,11 +121,30 @@ public interface Element extends Branch {
     
     // Text API
     
-    /** Returns the textual format of this Element.
+    /** Returns the text value of this element contains without recursing through
+      * child elements. 
+      * This method iterates through all {@link Text} nodes that this element 
+      * contains and appending the text values together.
+      * 
+      * @return the textual content of this Element. Child elements are not navigated.
       */
     public String getText();    
+    
     public String getTextTrim();
 
+    
+    /** Returns the XPath string-value of this node. 
+      * The behaviour of this method is defined in the 
+      * <a href="http://www.w3.org/TR/xpath">XPath specification</a>.
+      *
+      * This method returns the string-value of all the contained 
+      * {@link Text} nodes and {@link Element} nodes 
+      * all appended together.
+      * 
+      * @return the text from all the child Text and Element nodes appended 
+      * together.
+      */
+    public String getString();    
     
     // Content API
     
@@ -502,5 +521,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.17 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: Element.java,v 1.18 2001/01/26 11:21:54 jstrachan Exp $
  */
