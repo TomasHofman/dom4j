@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.7 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.8 2001/05/23 15:11:29 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -346,6 +346,9 @@ public class DefaultXPath implements org.dom4j.XPath {
         catch (TokenStreamException e) {
             e.printStackTrace();
         }
+        if ( _expr == null ) {
+            throw new RuntimeException( "Invalid XPath expression: " + _xpath );
+        }
     }
     
     protected List applyTo(Object context) {
@@ -374,10 +377,16 @@ public class DefaultXPath implements org.dom4j.XPath {
     /** Perform the string() function on the return values of an XPath
      */
     public String valueOf(Node node) {
+        if ( _expr == null ) {
+            return "";
+        }
         return _expr.valueOf( new Context( node, _contextSupport ) );
     }
 
     public String valueOf(List nodes) {
+        if ( _expr == null ) {
+            return "";
+        }
         return _expr.valueOf( new Context( nodes, _contextSupport ) );
     }
 
@@ -441,5 +450,5 @@ public class DefaultXPath implements org.dom4j.XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.7 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.8 2001/05/23 15:11:29 jstrachan Exp $
  */
