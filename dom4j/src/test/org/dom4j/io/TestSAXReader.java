@@ -96,6 +96,19 @@ public class TestSAXReader extends TestCase {
         }
     }
     
+    public void testBug833765() {
+        try {
+            URL location = TestSAXReader.class.getResource("/xml/dtd/external.xml");
+            File file = new File(location.getPath()); 
+            SAXReader xmlReader = new SAXReader("org.dom4j.io.aelfred2.SAXDriver");
+            xmlReader.setIncludeExternalDTDDeclarations(true);
+            Document doc = xmlReader.read(file);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
+    
 }
 
 
@@ -143,5 +156,5 @@ public class TestSAXReader extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSAXReader.java,v 1.4 2004/02/25 22:27:56 maartenc Exp $
+ * $Id: TestSAXReader.java,v 1.5 2004/03/24 20:41:40 maartenc Exp $
  */
