@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FunctionExpr.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: FunctionExpr.java,v 1.3 2001/04/20 09:23:14 jstrachan Exp $
  */
 
 
@@ -47,17 +47,12 @@ public class FunctionExpr extends Expr {
         }
         
         List resolved = new ArrayList(_args.size());
-        
-        Iterator exprIter = _args.iterator();
-        Expr each = null;
-        
-        while (exprIter.hasNext())
-        {
-            each = (Expr) exprIter.next();
-            
-            resolved.add( each.evaluate( context ) );
+
+        for ( Iterator iter = _args.iterator(); iter.hasNext(); ) {
+            Expr each = (Expr) iter.next();
+            Context newContext = context.duplicate();
+            resolved.add( each.evaluate( newContext ) );
         }
-        
         return resolved;
     }
     
@@ -112,5 +107,5 @@ public class FunctionExpr extends Expr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FunctionExpr.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: FunctionExpr.java,v 1.3 2001/04/20 09:23:14 jstrachan Exp $
  */

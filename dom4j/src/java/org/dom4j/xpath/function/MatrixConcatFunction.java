@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: MatrixConcatFunction.java,v 1.1 2001/04/19 17:47:09 jstrachan Exp $
+ * $Id: MatrixConcatFunction.java,v 1.2 2001/04/20 09:23:14 jstrachan Exp $
  */
 
 
@@ -37,7 +37,7 @@ public class MatrixConcatFunction implements Function {
         ArrayList matrix = new ArrayList();       
         
         Iterator argIter = list.iterator();
-        
+
         while (argIter.hasNext()) {
             ArrayList v = new ArrayList();
             Object obj = argIter.next();
@@ -52,8 +52,6 @@ public class MatrixConcatFunction implements Function {
             }
             matrix.add(v);
         }
-        
-        System.out.println( "Evaluating matrix: " + matrix );
         
         ArrayList result = new ArrayList();
         Enumeration elemList = new MatrixEnum( matrix );
@@ -173,5 +171,5 @@ public class MatrixConcatFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: MatrixConcatFunction.java,v 1.1 2001/04/19 17:47:09 jstrachan Exp $
+ * $Id: MatrixConcatFunction.java,v 1.2 2001/04/20 09:23:14 jstrachan Exp $
  */
