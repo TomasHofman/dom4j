@@ -14,7 +14,7 @@ package org.dom4j.io;
  * </p>
  * 
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan </a>
- * @version $Revision: 1.16 $
+ * @version $Revision: 1.17 $
  */
 public class OutputFormat implements Cloneable {
     /** standard value to indent by, if we are indenting */
@@ -180,7 +180,9 @@ public class OutputFormat implements Cloneable {
      *            encoding format
      */
     public void setEncoding(String encoding) {
-        this.encoding = encoding;
+        if (encoding != null) {
+            this.encoding = encoding;
+        }
     }
 
     public boolean isOmitEncoding() {
