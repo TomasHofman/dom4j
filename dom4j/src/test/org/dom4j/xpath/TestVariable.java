@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestVariable.java,v 1.1 2001/02/26 12:44:41 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.2 2001/02/26 14:31:25 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -19,18 +19,18 @@ import junit.textui.TestRunner;
 import org.dom4j.AbstractTestCase;
 import org.dom4j.DefaultVariableContext;
 import org.dom4j.DocumentHelper;
-import org.dom4j.Namespace;
+import org.dom4j.Node;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestVariable extends AbstractTestCase {
 
-    protected static boolean VERBOSE = false;
+    protected static boolean VERBOSE = true;
     
     protected static String[] paths = {
         "$root/author[1]",
@@ -40,6 +40,8 @@ public class TestVariable extends AbstractTestCase {
     };
     
     private DefaultVariableContext variableContext = new DefaultVariableContext();
+    private Node rootNode;
+    private Node authorNode;
 
     
     public static void main( String[] args ) {
@@ -63,11 +65,18 @@ public class TestVariable extends AbstractTestCase {
         }
     }
         
-    protected void testXPath(String xpathExpression) {
-        XPath xpath = createXPath( xpathExpression );
-        String value = xpath.valueOf( document );
+    protected void testXPath(String xpathText) {
+        XPath xpath = createXPath( xpathText );
+        List list = xpath.selectNodes( document );
         
-        log( "valueOf: " + xpath.getText() + " is: " + value );
+        log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
+        
+        if ( VERBOSE ) {
+            log( "xpath: " + xpath );
+            log( "results: " + list );
+        }
+        
+        assert( "Results should not contain the root node", ! list.contains( rootNode ) );
     }
     
     protected XPath createXPath( String xpath ) {
@@ -76,8 +85,12 @@ public class TestVariable extends AbstractTestCase {
     
     protected void setUp() throws Exception {
         super.setUp();
-        variableContext.setVariableValue( "root", document.selectSingleNode( "/root" ) );
-        variableContext.setVariableValue( "author", document.selectSingleNode( "/root/author[1]" ) );
+
+        rootNode = document.selectSingleNode( "/root" );
+        authorNode = document.selectSingleNode( "/root/author[1]" );
+        
+        variableContext.setVariableValue( "root", rootNode );
+        variableContext.setVariableValue( "author", authorNode );
     }
 }
 
@@ -126,5 +139,5 @@ public class TestVariable extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestVariable.java,v 1.1 2001/02/26 12:44:41 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.2 2001/02/26 14:31:25 jstrachan Exp $
  */
