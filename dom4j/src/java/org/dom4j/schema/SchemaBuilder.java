@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaBuilder.java,v 1.3 2001/05/30 22:25:06 jstrachan Exp $
+ * $Id: SchemaBuilder.java,v 1.4 2001/07/05 13:37:02 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -28,7 +28,7 @@ import org.dom4j.util.AttributeHelper;
 /** <p><code>SchemaBuilder</code> reads an XML Schema Document.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SchemaBuilder {
     
@@ -255,6 +255,14 @@ public class SchemaBuilder {
         DataType dataType = (DataType) dataTypeCache.get( type );
         if ( dataType == null ) {
             dataType = DataTypeFactory.getTypeByName( type );
+            if ( dataType == null ) {
+                // maybe a prefix is being used
+                int idx = type.indexOf(':');
+                if (idx >= 0 ) {
+                    String localName = type.substring(idx + 1);
+                    dataType = DataTypeFactory.getTypeByName( localName );
+                }
+            }
             // store in cache for later
             dataTypeCache.put( type, dataType );
         }
@@ -322,5 +330,5 @@ public class SchemaBuilder {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaBuilder.java,v 1.3 2001/05/30 22:25:06 jstrachan Exp $
+ * $Id: SchemaBuilder.java,v 1.4 2001/07/05 13:37:02 jstrachan Exp $
  */

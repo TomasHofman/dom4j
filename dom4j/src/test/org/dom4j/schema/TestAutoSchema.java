@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAutoSchema.java,v 1.2 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.3 2001/07/05 13:37:02 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -30,7 +30,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * use auto-loading of the XML Schema document
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestAutoSchema extends AbstractDataTypeTest {
 
@@ -81,9 +81,22 @@ public class TestAutoSchema extends AbstractDataTypeTest {
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
-        DocumentFactory factory = SchemaDocumentFactory.getInstance();
+        DocumentFactory factory = loadDocumentFactory();
+        
         SAXReader reader = new SAXReader( factory );
-        document = reader.read( "xml/schema/personal-schema.xml" );
+        String uri = getDocumentURI();
+        
+        log( "Parsing: " + uri );
+        
+        document = reader.read( uri );
+    }
+    
+    protected String getDocumentURI() {
+        return "xml/schema/personal-schema.xml";
+    }
+    
+    protected DocumentFactory loadDocumentFactory() throws Exception {
+        return SchemaDocumentFactory.getInstance();
     }
     
 }
@@ -133,5 +146,5 @@ public class TestAutoSchema extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAutoSchema.java,v 1.2 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.3 2001/07/05 13:37:02 jstrachan Exp $
  */
