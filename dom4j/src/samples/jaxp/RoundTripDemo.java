@@ -4,27 +4,46 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JAXPRoundTripDemo.java,v 1.1 2001/08/06 10:46:13 jstrachan Exp $
+ * $Id: RoundTripDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
  */
 
-import java.io.*;
-import javax.xml.transform.*;
-import javax.xml.transform.stream.*;
-import org.dom4j.*;
-import org.dom4j.io.*;
+package jaxp;
 
-/** A simple program demonstrating a round trip from XML to dom4j to text to dom4j again
+import SAXDemo;
+
+import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.io.Writer;
+
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
+
+import org.dom4j.Document;
+import org.dom4j.io.DocumentResult;
+import org.dom4j.io.DocumentSource;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLResult;
+import org.dom4j.io.XMLWriter;
+
+/** A program demonstrating a round trip from XML to dom4j to text to dom4j 
+  * again using JAXP to convert the XML.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @version $Revision: 1.1 $
   */
-public class JAXPRoundTripDemo extends SAXDemo {
+public class RoundTripDemo extends SAXDemo {
     
     public static void main(String[] args) {
-        run( new JAXPRoundTripDemo(), args );
+        run( new RoundTripDemo(), args );
     }    
     
-    public JAXPRoundTripDemo() {
+    public RoundTripDemo() {
     }
 
     protected void outputDocument(Document document, Writer out) {
@@ -37,7 +56,8 @@ public class JAXPRoundTripDemo extends SAXDemo {
             DocumentSource source = new DocumentSource(document);
         
             transformer.transform(source, result);
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             ex.printStackTrace();
         }
         
@@ -55,7 +75,8 @@ public class JAXPRoundTripDemo extends SAXDemo {
             transformer.transform(source, result);
             
             return result.getDocument();
-        } catch (Exception ex) {
+        } 
+        catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }
@@ -71,8 +92,6 @@ public class JAXPRoundTripDemo extends SAXDemo {
         StringWriter out = new StringWriter();        
         outputDocument(document, out);
         
-
-
         Document doc2 = parseDocument(new StringReader(out.toString()));
 
         System.out.println( "parsed back again: " + doc2 );
@@ -130,5 +149,5 @@ public class JAXPRoundTripDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JAXPRoundTripDemo.java,v 1.1 2001/08/06 10:46:13 jstrachan Exp $
+ * $Id: RoundTripDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
  */

@@ -4,8 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JAXPWriterDemo.java,v 1.1 2001/07/30 10:22:24 jstrachan Exp $
+ * $Id: PrettyPrintDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
  */
+
+package jaxp;
+
+import SAXDemo;
 
 import java.io.StringWriter;
 
@@ -13,42 +17,44 @@ import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamResult;
 
 import org.dom4j.Document;
-import org.dom4j.io.DocumentResult;
 import org.dom4j.io.DocumentSource;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLResult;
 import org.dom4j.io.XMLWriter;
 
-/** A sample program which uses JAXP to write a dom4j Document to a Stream.
+/** A sample program which uses JAXP to write a dom4j Document to a stream
+  * using dom4j's pretty printing output format.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @version $Revision: 1.1 $
   */
-public class JAXPWriterDemo extends SAXDemo {
-    
-    protected String xsl;
-    
+public class PrettyPrintDemo extends SAXDemo {
     
     public static void main(String[] args) {
-        run( new JAXPWriterDemo(), args );
+        run( new PrettyPrintDemo(), args );
     }    
     
-    public JAXPWriterDemo() {
+    public PrettyPrintDemo() {
     }
     
     /** Outputs the document using JAXP */
     protected void process(Document document) throws Exception {
-        // load the transformer
+        // load a default transformer
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer();
         
-        // now lets create the TrAX source and result
-        // objects and do the transformation
+        // use dom4j document as the source
         Source source = new DocumentSource( document );
+        
+        // use pretty print format and a buffer for the result
+        OutputFormat format = OutputFormat.createPrettyPrint();
         StringWriter buffer = new StringWriter();
-        StreamResult result = new StreamResult( buffer );
+        Result result = new XMLResult( buffer, format );
+        
+        // now lets transform
         transformer.transform( source, result );
 
         String text = buffer.toString();
@@ -102,5 +108,5 @@ public class JAXPWriterDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JAXPWriterDemo.java,v 1.1 2001/07/30 10:22:24 jstrachan Exp $
+ * $Id: PrettyPrintDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
  */
