@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: HTMLWriter.java,v 1.10 2002/04/09 02:13:11 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.11 2002/04/09 02:20:09 laramiec Exp $
  */
 
 package org.dom4j.io;
@@ -184,7 +184,7 @@ import org.xml.sax.SAXException;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Laramie Crocker
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -295,7 +295,6 @@ public class HTMLWriter extends XMLWriter {
     protected void writeDeclaration() throws IOException {
     }
 
-       //COPIED FROM XMLWRITER, Laramie 4/7/2002 10:44AM
     protected void writeString(String text) throws IOException {
         //DOM stores \n at the end of text nodes that are newlines.  This is significant if
         // we are in a PRE section.  However, we only want to output the system line.separator, not \n.
@@ -738,5 +737,5 @@ entities: &#160; &amp; &quot; &lt; &gt; %23
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.10 2002/04/09 02:13:11 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.11 2002/04/09 02:20:09 laramiec Exp $
  */
