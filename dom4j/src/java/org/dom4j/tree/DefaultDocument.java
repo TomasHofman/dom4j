@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.26 2003/04/07 22:14:37 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.27 2003/05/27 22:17:58 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -26,7 +26,7 @@ import org.xml.sax.EntityResolver;
   * of an XML document.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -253,7 +253,20 @@ public class DefaultDocument extends AbstractDocument {
             childAdded(node);
         }
     }
-
+    
+    protected void addNode(int index, Node node) {
+        if ( node != null ) {
+            Document document = node.getDocument();
+            if (document != null && document != this) {
+                // XXX: could clone here
+                String message = "The Node already has an existing document: " + document;
+                throw new IllegalAddException(this, node, message);
+            }
+            contentList().add(index, node);
+            childAdded(node);
+        }
+    }
+    
     protected boolean removeNode(Node node) {
         if ( node == rootElement) {
             rootElement = null;
@@ -322,5 +335,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.26 2003/04/07 22:14:37 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.27 2003/05/27 22:17:58 maartenc Exp $
  */
