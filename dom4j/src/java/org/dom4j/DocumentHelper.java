@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.8 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,6 +13,7 @@ import java.io.StringReader;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.dom4j.io.SAXReader;
 import org.dom4j.rule.Pattern;
@@ -23,7 +24,7 @@ import org.xml.sax.SAXException;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class DocumentHelper {
 
@@ -211,7 +212,50 @@ public class DocumentHelper {
         SAXReader reader = new SAXReader();
         return reader.read( new StringReader( text ) );
     }
-      
+
+    /** <p>makeElement</p> a helper method which navigates from the
+      * given Document or Element node to some Element using the path 
+      * expression, creating any necessary elements along the way.
+      * For example the path <code>a/b/c</code> would get the first
+      * child &lt;a&gt; element, which would be created if it did not
+      * exist, then the next child &lt;b&gt; and so on until finally a
+      * &lt;c&gt; element is returned.
+      *
+      * @param source is the Element or Document to start navigating from
+      * @param is a simple path expression, seperated by '/' which denotes
+      * the path from the source to the resulting element such as a/b/c
+      *
+      * @return the first Element on the given path which either already
+      * existed on the path or were created by this method.
+      */
+    public static Element makeElement(Branch source, String path) {
+        StringTokenizer enum = new StringTokenizer( path, "/" );
+        Element parent;
+        if ( source instanceof Document ) {
+            Document document = (Document) source;
+            parent = document.getRootElement();
+            
+            // lets throw a NoSuchElementException 
+            // if we are given an empty path
+            String name = enum.nextToken();
+            if ( parent == null ) {
+                parent = document.addElement( name );
+            }
+        }
+        else {
+            parent = (Element) source;
+        }
+        Element element = null;
+        while ( enum.hasMoreTokens() ) {
+            String name = enum.nextToken();
+            element = parent.element( name );
+            if ( element == null ) {
+                element = parent.addElement( name );
+            }
+            parent = element;
+        }
+        return element;
+    }
 }
 
 
@@ -259,5 +303,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.8 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.8 2001/08/01 10:15:32 jstrachan Exp $
+ * $Id: QName.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class QName implements Serializable {
 
@@ -131,7 +131,7 @@ public class QName implements Serializable {
       */
     public int hashCode() {
         if ( hashCode == 0 ) {
-            hashCode = getQualifiedName().hashCode() 
+            hashCode = getName().hashCode() 
                 ^ getNamespaceURI().hashCode();
             if ( hashCode == 0 ) {
                 hashCode = 0xbabe;
@@ -148,7 +148,7 @@ public class QName implements Serializable {
             QName that = (QName) object;
             // we cache hash codes so this should be quick
             if ( hashCode() == that.hashCode() ) {
-                return getQualifiedName().equals( that.getQualifiedName() )
+                return getName().equals( that.getName() )
                     && getNamespaceURI().equals( that.getNamespaceURI());
             }
         }
@@ -237,5 +237,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.8 2001/08/01 10:15:32 jstrachan Exp $
+ * $Id: QName.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
  */

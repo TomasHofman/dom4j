@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.29 2001/08/14 08:33:44 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.30 2001/08/15 12:02:00 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.29 $
+  * @version $Revision: 1.30 $
   */
 public class SAXReader {
 
@@ -537,10 +537,16 @@ public class SAXReader {
                 "http://xml.org/sax/features/namespace-prefixes", 
                 false
             );
-            reader.setFeature(
-                "http://xml.org/sax/features/string-intern", 
-                isStringInternEnabled()
-            );
+            
+            try {
+                reader.setFeature(
+                    "http://xml.org/sax/features/string-intern", 
+                    isStringInternEnabled()
+                );
+            }
+            catch (SAXException e) {
+                // ignore
+            }
 
             // configure validation support
             reader.setFeature(
@@ -652,5 +658,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.29 2001/08/14 08:33:44 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.30 2001/08/15 12:02:00 jstrachan Exp $
  */

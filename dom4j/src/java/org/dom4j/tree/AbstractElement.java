@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.58 2001/08/09 11:45:27 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.59 2001/08/15 12:02:00 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.58 $
+  * @version $Revision: 1.59 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -286,7 +286,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             Object object = list.get(i);
             if ( object instanceof Element ) {
                 Element element = (Element) object;
-                if ( name.equals( element.getName() ) ) {
+                if ( name.equals( element.getQualifiedName() ) ) {
                     return element;
                 }
             }
@@ -336,7 +336,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             Object object = list.get(i);
             if ( object instanceof Element ) {
                 Element element = (Element) object;
-                if ( name.equals( element.getName() ) ) {
+                if ( name.equals( element.getQualifiedName() ) ) {
                     answer.addLocal( element );
                 }
             }
@@ -414,7 +414,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         int size = list.size();
         for ( int i = 0; i < size; i++ ) {
             Attribute attribute = (Attribute) list.get(i);
-            if ( name.equals( attribute.getName() ) ) {
+            if ( name.equals( attribute.getQualifiedName() ) ) {
                 return attribute;
             }
         }
@@ -678,21 +678,34 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     
     public Element addElement(String name) {
         DocumentFactory factory = getDocumentFactory();
+        int index = name.indexOf(":");
+        String prefix = "";
+        String localName = name;
+        Namespace namespace = null;
+        if (index > 0) {
+            prefix = name.substring(0, index);
+            localName = name.substring(index+1);            
+            namespace = getNamespaceForPrefix( prefix );
+            if ( namespace == null ) {
+                throw new IllegalAddException( 
+                    "No such namespace prefix: " + prefix 
+                    + " is in scope on: " + this 
+                    + " so cannot add element: " + name 
+                );
+            }
+        }
+        else {
+            namespace = getNamespaceForPrefix( "" );
+        }
         
-        // should we inherit the parents namespace?
-/*        
-        
-        String prefix = getPrefix();
-        Element node = null;
-        if ( prefix == null || prefix.length() <= 0 ) {
-            QName qname = factory.createQName( name, getNamespace() );
+        Element node;
+        if ( namespace != null ) {
+            QName qname = factory.createQName( localName, namespace );
             node = factory.createElement( qname );
         }
         else {
             node = factory.createElement( name );
         }
-*/        
-        Element node = factory.createElement( name );
         addNewNode( node );
         return node;
     }
@@ -1295,5 +1308,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.58 2001/08/09 11:45:27 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.59 2001/08/15 12:02:00 jstrachan Exp $
  */
