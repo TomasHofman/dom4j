@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.26 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.27 2001/05/18 09:33:26 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -35,11 +35,13 @@ import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
 
+import org.xml.sax.Attributes;
+
 /** <p><code>DefaultElement</code> is the default DOM4J default implementation
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -72,6 +74,16 @@ public class DefaultElement extends AbstractElement {
 
     public DefaultElement(QName qname) { 
         this.qname = qname;
+    }
+
+    public DefaultElement(QName qname, Attributes attributes) { 
+        this.qname = qname;
+        int size = attributes.getLength();
+        if ( size > 0 ) {
+            // XXXX: may want to use lazy creation such that 
+            // XXXX: no List is created for elements with one attribute
+            this.attributes = new ArrayList( size );
+        }
     }
 
     public DefaultElement(String name, Namespace namespace) { 
@@ -913,5 +925,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.26 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.27 2001/05/18 09:33:26 jstrachan Exp $
  */
