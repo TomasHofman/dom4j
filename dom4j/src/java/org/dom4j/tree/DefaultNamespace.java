@@ -18,7 +18,7 @@ import org.dom4j.Namespace;
  * </p>
  * 
  * @author <a href="mailto:jstrachan@apache.org">James Strachan </a>
- * @version $Revision: 1.15 $
+ * @version $Revision: 1.16 $
  */
 public class DefaultNamespace extends Namespace {
     /** The parent of this node */
@@ -102,6 +102,10 @@ public class DefaultNamespace extends Namespace {
 
     public boolean supportsParent() {
         return true;
+    }
+    
+    public boolean isReadOnly() {
+        return false;
     }
 }
 
