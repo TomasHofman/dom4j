@@ -4,20 +4,21 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDemo.java,v 1.7 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.8 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 
 import java.net.URL;
 
 import org.dom4j.Document;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
 /** A simple test program to demonstrate using SAX to create a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class SAXDemo extends AbstractDemo {
     
@@ -52,17 +53,17 @@ public class SAXDemo extends AbstractDemo {
     
     protected void process(Document document) throws Exception {
         XMLWriter writer = createXMLWriter();
-        writer.write(document, System.out);                
+        writer.write(document);
     }
 
     /** A Factory Method to create an <code>XMLWriter</code>
       * instance allowing derived classes to change this behaviour
       */
-    protected XMLWriter createXMLWriter() {
-        XMLWriter writer = new XMLWriter("  ", true);
-        writer.setTrimText(true);
-        writer.setExpandEmptyElements(true);
-        return writer;
+    protected XMLWriter createXMLWriter() throws Exception {
+        OutputFormat format = new OutputFormat("  ", true);
+        format.setTrimText(true);
+        format.setExpandEmptyElements(true);
+        return new XMLWriter( System.out, format );
     }
     
 }
@@ -112,5 +113,5 @@ public class SAXDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDemo.java,v 1.7 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.8 2001/04/04 18:08:49 jstrachan Exp $
  */

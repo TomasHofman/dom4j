@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LinkChecker.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: LinkChecker.java,v 1.4 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 
@@ -18,7 +18,7 @@ import org.dom4j.io.XMLWriter;
   * all the hypertext links in a source file.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class LinkChecker extends SAXDemo {
     
@@ -48,13 +48,10 @@ public class LinkChecker extends SAXDemo {
         
         for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
             Object object = iter.next();
-            if ( object instanceof Node ) {
-                writer.write( (Node) object, System.out  );
-            }
-            else {
-                writer.write( object.toString(), System.out );
-            }
+            writer.write( object );
         }
+        
+        writer.flush();
     }
 }
 
@@ -103,5 +100,5 @@ public class LinkChecker extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LinkChecker.java,v 1.3 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: LinkChecker.java,v 1.4 2001/04/04 18:08:49 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.24 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.25 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -31,7 +31,7 @@ import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
-import org.dom4j.io.XMLWriter;
+import org.dom4j.io.OutputFormat;
 
 import org.xml.sax.Attributes;
 
@@ -39,12 +39,12 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.24 $
+  * @version $Revision: 1.25 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
-    /** The XML writer used by default */
-    protected static final XMLWriter writer = new XMLWriter( "  ", false );
+    /** The output format used by default */
+    protected static final OutputFormat outputFormat = new OutputFormat( "  ", false );
 
     
     public AbstractBranch() { 
@@ -141,26 +141,6 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
         return textContent.toString();
     }
 
-    public boolean hasMixedContent() {
-        List content = getContentList();
-        if (content == null || content.isEmpty() || content.size() < 2) {
-            return false;
-        }
-
-        Class prevClass = null;
-        for ( Iterator iter = content.iterator(); iter.hasNext(); ) {
-            Object object = iter.next();
-            Class newClass = object.getClass();
-            if (newClass != prevClass) {
-               if (prevClass != null) {
-                  return true;
-               }
-               prevClass = newClass;
-            }
-        }
-        return false;
-    }
-    
     public void setProcessingInstructions(List listOfPIs) {
         for ( Iterator iter = listOfPIs.iterator(); iter.hasNext(); ) {
             ProcessingInstruction pi = (ProcessingInstruction) iter.next();
@@ -270,8 +250,8 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     
     public Element elementByID(String elementID) {
-        for ( int i = 0, size = getNodeCount(); i < size; i++ ) {
-            Node node = getNode(i);
+        for ( int i = 0, size = nodeCount(); i < size; i++ ) {
+            Node node = node(i);
             if ( node instanceof Element ) {
                 Element element = (Element) node;
                 String id = elementID(element);
@@ -373,5 +353,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.24 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.25 2001/04/04 18:08:49 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CreateXMLDemo.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.6 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 
@@ -17,6 +17,7 @@ import java.util.Properties;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
 /** A sample program to demonstrate creating some XML output using DOM4J.
@@ -24,7 +25,7 @@ import org.dom4j.io.XMLWriter;
   * displaying the current system properties.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class CreateXMLDemo extends AbstractDemo {
     
@@ -37,16 +38,18 @@ public class CreateXMLDemo extends AbstractDemo {
     
     public void run(String[] args) throws Exception {    
         Document document = createDocument();
-        XMLWriter writer = new XMLWriter( "  ", true );
+        OutputFormat format = new OutputFormat("  ", true);
         
         if ( args.length < 1 ) {
-            writer.write( document, System.out );
+            XMLWriter writer = new XMLWriter( System.out, format );
+            writer.write( document );
         }
         else {
             String fileName = args[0];
             println( "Writing file: " + fileName );
             FileWriter out = new FileWriter( args[0] );
-            writer.write( document, out );
+            XMLWriter writer = new XMLWriter( out, format );
+            writer.write( document );
             out.close();
         }
     }
@@ -112,5 +115,5 @@ public class CreateXMLDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CreateXMLDemo.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.6 2001/04/04 18:08:49 jstrachan Exp $
  */

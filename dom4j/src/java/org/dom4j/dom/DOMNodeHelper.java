@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.5 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMNodeHelper {
 
@@ -93,7 +93,7 @@ public class DOMNodeHelper {
         if ( parent != null ) {
             int index = parent.indexOf( node );
             if ( index > 0 ) {
-                Node previous = parent.getNode(index - 1);
+                Node previous = parent.node(index - 1);
                 return asDOMNode( previous );
             }
         }
@@ -105,8 +105,8 @@ public class DOMNodeHelper {
         if ( parent != null ) {
             int index = parent.indexOf( node );
             if ( index >= 0 ) {
-                if ( ++index < parent.getNodeCount() ) {
-                    Node next = parent.getNode(index);
+                if ( ++index < parent.nodeCount() ) {
+                    Node next = parent.node(index);
                     return asDOMNode( next );
                 }
             }
@@ -313,8 +313,8 @@ public class DOMNodeHelper {
     public static void appendElementsByTagName(
         List list, Branch parent, String name
     ) {
-        for ( int i = 0, size = parent.getNodeCount(); i < size; i++ ) {
-            Node node = parent.getNode(i);
+        for ( int i = 0, size = parent.nodeCount(); i < size; i++ ) {
+            Node node = parent.node(i);
             if ( node instanceof Element ) {
                 Element element = (Element) node;
                 if ( name.equals( element.getName() ) ) {
@@ -328,8 +328,8 @@ public class DOMNodeHelper {
     public static void appendElementsByTagNameNS(
         List list, Branch parent, String namespaceURI, String localName
     ) {
-        for ( int i = 0, size = parent.getNodeCount(); i < size; i++ ) {
-            Node node = parent.getNode(i);
+        for ( int i = 0, size = parent.nodeCount(); i < size; i++ ) {
+            Node node = parent.node(i);
             if ( node instanceof Element ) {
                 Element element = (Element) node;
                 if ( namespaceURI.equals( element.getNamespaceURI() ) 
@@ -475,5 +475,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.5 2001/04/04 18:08:49 jstrachan Exp $
  */

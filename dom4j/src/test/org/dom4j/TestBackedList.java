@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBackedList.java,v 1.6 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.7 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.io.XMLWriter;
 /** A test harness to test the backed list feature of DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestBackedList extends AbstractTestCase {
 
@@ -58,10 +58,10 @@ public class TestBackedList extends AbstractTestCase {
         
         assert( "Both lists should contain same number of elements", list.size() == list2.size() );
         
-        XMLWriter writer = new XMLWriter( "  ", true );
+        XMLWriter writer = new XMLWriter( System.out );
         
         log( "Element content is now: " + element.content() );
-        writer.write( element, System.out );
+        writer.write( element );
     }
 
 }
@@ -111,5 +111,5 @@ public class TestBackedList extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBackedList.java,v 1.6 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.7 2001/04/04 18:08:49 jstrachan Exp $
  */

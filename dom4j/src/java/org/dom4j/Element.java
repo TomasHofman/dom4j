@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.27 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: Element.java,v 1.28 2001/04/04 18:08:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.27 $
+  * @version $Revision: 1.28 $
   */
 public interface Element extends Branch {
 
@@ -36,6 +36,20 @@ public interface Element extends Branch {
       */
     public boolean isRootElement();
 
+    /** <p>Returns true if this <code>Element</code> has mixed content.
+      * Mixed content means that an element contains both textual data and
+      * child elements.
+      *
+      * @return true if this element contains mixed content.
+      */
+    public boolean hasMixedContent();    
+        
+    /** <p>Returns true if this <code>Element</code> has text only content.
+      *
+      * @return true if this element is empty or only contains text content.
+      */
+    public boolean isTextOnly();    
+        
     /** <p>Returns the <code>QName</code> of this element which represents 
       * the local name, the qualified name and the <code>Namespace</code>.</p>
       *
@@ -284,14 +298,6 @@ public interface Element extends Branch {
     public Node getXPathResult(int index);
     
     
-    /** <p>Returns true if this <code>Element</code> has mixed content.
-      * Mixed content means that an element contains both textual data and
-      * child elements.
-      *
-      * @return true if this element contains mixed content.
-      */
-    public boolean hasMixedContent();    
-        
     /** Returns the first element for the given local name and any namespace.
       * 
       * @return the first element with the given local name 
@@ -562,5 +568,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.27 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: Element.java,v 1.28 2001/04/04 18:08:48 jstrachan Exp $
  */

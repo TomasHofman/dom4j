@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.18 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: Branch.java,v 1.19 2001/04/04 18:08:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 public interface Branch extends Node {
 
@@ -34,9 +34,9 @@ public interface Branch extends Node {
       * @return the <code>Node</code> at the specified position.
       * 
       * @throws IndexOutOfBoundsException if the index is out of range (index
-      * 		  &lt; 0 || index &gt;= {@link #getNodeCount}).
+      * 		  &lt; 0 || index &gt;= {@link #nodeCount}).
       */    
-    public Node getNode(int index);
+    public Node node(int index);
     
     /** Returns the index of the given node if it is a child node of this 
       * branch or -1 if the given node is not a child node.
@@ -52,7 +52,7 @@ public interface Branch extends Node {
       *
       * @return the number of nodes this branch contains
       */    
-    public int getNodeCount();
+    public int nodeCount();
 
     /** Returns the element of the given ID attribute value. If this tree
       * is capable of understanding which attribute value should be used for
@@ -279,5 +279,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.18 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: Branch.java,v 1.19 2001/04/04 18:08:48 jstrachan Exp $
  */

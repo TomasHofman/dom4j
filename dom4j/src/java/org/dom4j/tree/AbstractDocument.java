@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocument.java,v 1.12 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.13 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -28,12 +28,13 @@ import org.dom4j.ProcessingInstruction;
 import org.dom4j.QName;
 import org.dom4j.Text;
 import org.dom4j.Visitor;
+import org.dom4j.io.XMLWriter;
 
 /** <p><code>AbstractDocument</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -52,7 +53,8 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
     public String asXML() {
         try {
             StringWriter out = new StringWriter();
-            writer.write(this, out);
+            XMLWriter writer = new XMLWriter( out, outputFormat );
+            writer.write(this);
             return out.toString();
         } 
         catch (IOException e) {
@@ -62,7 +64,8 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
 
     public void write(PrintWriter out) {
         try {
-            writer.write(this, out);
+            XMLWriter writer = new XMLWriter( out, outputFormat );
+            writer.write(this);
         }
         catch (IOException e) {
             throw new RuntimeException("Wierd IOException while generating textual representation: " + e.getMessage());
@@ -220,5 +223,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocument.java,v 1.12 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.13 2001/04/04 18:08:49 jstrachan Exp $
  */

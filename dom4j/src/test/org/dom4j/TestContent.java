@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.8 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestContent.java,v 1.9 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -74,13 +74,13 @@ public class TestContent extends AbstractTestCase {
         Element root = document.getRootElement();
         assert( "Has root element", root != null );
         
-        int count = root.getNodeCount();
+        int count = root.nodeCount();
         assert( "Root has correct node count", count == 2 );
         
         boolean iterated = false;
         for ( int i = 0; i < count; i++ ) {
-            Node node = root.getNode(i);
-            assert( "Valid node returned from getNode()", node != null );
+            Node node = root.node(i);
+            assert( "Valid node returned from node()", node != null );
             iterated = true;
         }
         
@@ -91,13 +91,13 @@ public class TestContent extends AbstractTestCase {
         Element root = document.getRootElement();
         assert( "Has root element", root != null );
         
-        int count = root.getNodeCount();
+        int count = root.nodeCount();
         assert( "Root has correct node count", count == 2 );
         
         boolean iterated = false;
         for ( int i = 0; i < count; i++ ) {
             Node node = root.getXPathResult(i);
-            assert( "Valid node returned from getNode()", node != null );
+            assert( "Valid node returned from node()", node != null );
             assert( "Node supports the parent relationship", node.supportsParent() );
             iterated = true;
         }
@@ -167,5 +167,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.8 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestContent.java,v 1.9 2001/04/04 18:08:49 jstrachan Exp $
  */

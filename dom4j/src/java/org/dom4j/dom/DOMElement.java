@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMElement.java,v 1.5 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.6 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -28,7 +28,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
@@ -92,11 +92,11 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
     }
 
     public org.w3c.dom.Node getFirstChild() {
-        return DOMNodeHelper.asDOMNode( getNode(0) );
+        return DOMNodeHelper.asDOMNode( node(0) );
     }
 
     public org.w3c.dom.Node getLastChild() {
-        return DOMNodeHelper.asDOMNode( getNode( getNodeCount() - 1 ) );
+        return DOMNodeHelper.asDOMNode( node( nodeCount() - 1 ) );
     }
 
     public org.w3c.dom.Node getPreviousSibling() {
@@ -385,5 +385,5 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMElement.java,v 1.5 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.6 2001/04/04 18:08:49 jstrachan Exp $
  */

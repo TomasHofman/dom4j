@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathDemo.java,v 1.8 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.9 2001/04/04 18:08:49 jstrachan Exp $
  */
 
 
@@ -17,7 +17,7 @@ import org.dom4j.io.XMLWriter;
 /** A sample program to demonstrate the use of XPath expressions.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class XPathDemo extends SAXDemo {
     
@@ -51,18 +51,15 @@ public class XPathDemo extends SAXDemo {
         println( "Found: " + list.size() + " node(s)" );        
         println( "Results:" );
         
-        XMLWriter writer = createXMLWriter();
+        XMLWriter writer = createXMLWriter();        
         
         for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
             Object object = iter.next();
-            if ( object instanceof Node ) {
-                writer.write( (Node) object, System.out  );
-            }
-            else {
-                writer.write( object.toString(), System.out );
-            }
+            writer.write( object );
         }
-    }
+        
+        writer.flush();
+   }
 }
 
 
@@ -110,5 +107,5 @@ public class XPathDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathDemo.java,v 1.8 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.9 2001/04/04 18:08:49 jstrachan Exp $
  */
