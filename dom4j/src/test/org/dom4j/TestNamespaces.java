@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestNamespaces.java,v 1.10 2002/09/23 14:06:43 slehmann Exp $
  */
 
 package org.dom4j;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -257,6 +257,13 @@ public class TestNamespaces extends AbstractTestCase {
     }
 
     public void testDefaultNamespaceIssue(Document document) throws Exception {
+        // When writing documents using a default namespace with XMLWriter
+        // a redeclaration of the default namespace to "" was dropped in the output.
+        // Test that <xsd:schema><xsd:element><xsd:annotation><xsd:documentation><text> 
+        // is in no namespace.
+        assertNotNull("default namespace redeclaration", (Element)document.selectSingleNode(
+            "/xsd:schema/xsd:element/xsd:annotation/xsd:documentation/text"));
+
         // The test document has a default namespace declaration on the root
         // element ("schema"), but the element itself is not in the default
         // namespace. Test that declaredNamespaces on the root element also
@@ -353,5 +360,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestNamespaces.java,v 1.10 2002/09/23 14:06:43 slehmann Exp $
  */
