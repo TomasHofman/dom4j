@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.22 2002/02/15 16:51:52 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.23 2002/02/20 02:42:27 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -111,7 +111,7 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
         try {
             setNSContext(context);
             List answer = xpath.selectNodes( context );
-            if ( answer != null && answer.size() == 0 ) {
+            if ( answer != null && answer.size() == 1 ) {
                 return answer.get(0);
             }
             return answer;
@@ -376,5 +376,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.22 2002/02/15 16:51:52 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.23 2002/02/20 02:42:27 jstrachan Exp $
  */
