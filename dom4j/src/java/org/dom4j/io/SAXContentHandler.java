@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.29 2001/07/30 11:43:28 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.30 2001/08/06 08:17:46 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -45,7 +45,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.29 $
+  * @version $Revision: 1.30 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -223,14 +223,28 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
         }
     }
 
+    // ErrorHandler interface
+    //-------------------------------------------------------------------------
+    
+    /** This method is called when a warning occurs during the parsing
+      * of the document. 
+      * This method does nothing.
+      */
+    public void warning(SAXParseException exception) throws SAXException {
+        // ignore warnings by default
+    }
+
+    /** This method is called when an error is detected during parsing
+      * such as a validation error.
+      * This method rethrows the exception
+      */
     public void error(SAXParseException exception) throws SAXException {
         throw exception;
     }
 
-    public void warning(SAXParseException exception) throws SAXException {
-        throw exception;
-    }
-
+    /** This method is called when a fatal error occurs during parsing.
+      * This method rethrows the exception
+      */
     public void fatalError(SAXParseException exception) throws SAXException {
         throw exception;
     }
@@ -447,5 +461,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.29 2001/07/30 11:43:28 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.30 2001/08/06 08:17:46 jstrachan Exp $
  */
