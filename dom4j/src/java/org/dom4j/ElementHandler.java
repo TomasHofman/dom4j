@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementHandler.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ElementHandler.java,v 1.3 2001/05/18 19:18:53 drwhite Exp $
  */
 
 package org.dom4j;
@@ -16,17 +16,25 @@ package org.dom4j;
   * waiting until the whole document is parsed.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface ElementHandler {
-
- 
-    /** Called by an event based processor to process the element
-      * in some way.
+    
+    /** Called by an event based processor when an elements openning
+      * tag is encountered.
       *
-      * @param element is the element to process
+      * @param elementPath is the current <code>ElementPath</code> 
+      * to process
       */
-    public void handle(Element element);
+    public void onStart(ElementPath elementPath);
+    
+    /** Called by an event based processor when an elements closing
+      * tag is encountered.
+      *
+      * @param elementPath is the current <code>ElementPath</code>
+      * to process
+      */
+    public void onEnd(ElementPath elementPath);
 
 }
 
@@ -75,5 +83,5 @@ public interface ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementHandler.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ElementHandler.java,v 1.3 2001/05/18 19:18:53 drwhite Exp $
  */
