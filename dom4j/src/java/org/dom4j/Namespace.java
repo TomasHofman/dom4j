@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Namespace.java,v 1.11 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: Namespace.java,v 1.12 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import org.dom4j.tree.DefaultNamespace;
 /** <p><code>Namespace</code> is a Flyweight Namespace that can be shared amongst nodes.</p>
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class Namespace extends AbstractNode {
     
@@ -124,19 +124,19 @@ public class Namespace extends AbstractNode {
     }
 
 
-    public String getPath() {
+    public String getPath(Element context) {
         String match = ( prefix != null ) ? prefix : "*";
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/namespace::" + match
+        return ( parent != null && parent != context ) 
+            ? parent.getPath( context ) + "/namespace::" + match
             : "namespace::" + match;
     }
     
-    public String getUniquePath() {
+    public String getUniquePath(Element context) {
         String match = ( prefix != null ) ? prefix : "*";
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/namespace::" + match
+        return ( parent != null && parent != context ) 
+            ? parent.getUniquePath( context ) + "/namespace::" + match
             : "namespace::" + match;
     }
     
@@ -204,5 +204,5 @@ public class Namespace extends AbstractNode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Namespace.java,v 1.11 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: Namespace.java,v 1.12 2001/07/25 10:51:11 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttribute.java,v 1.13 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.14 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -22,7 +22,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
@@ -97,20 +97,20 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
         return getQName().getQualifiedName();
     }
     
-    public String getPath() {
+    public String getPath(Element context) {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/@" + getName() 
+        return ( parent != null && parent != context ) 
+            ? parent.getPath( context ) + "/@" + getName() 
             : "@" + getName();
     }
     
-    public String getUniquePath() {
+    public String getUniquePath(Element context) {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/@" + getName() 
+        return ( parent != null && parent != context ) 
+            ? parent.getUniquePath( context ) + "/@" + getName() 
             : "@" + getName();
     }
-    
+
     protected Node createXPathResult(Element parent) {
         return new DefaultAttribute(parent, getQName(), getValue());
     }
@@ -163,5 +163,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.13 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.14 2001/07/25 10:51:11 jstrachan Exp $
  */

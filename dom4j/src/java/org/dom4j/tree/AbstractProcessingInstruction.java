@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractProcessingInstruction.java,v 1.9 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.10 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -25,7 +25,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public abstract class AbstractProcessingInstruction extends AbstractNode implements ProcessingInstruction {
 
@@ -36,17 +36,17 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
         return PROCESSING_INSTRUCTION_NODE;
     }
 
-    public String getPath() {
+    public String getPath(Element context) {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/processing-instruction()"
+        return ( parent != null && parent != context ) 
+            ? parent.getPath( context ) + "/processing-instruction()"
             : "processing-instruction()";
     }
     
-    public String getUniquePath() {
+    public String getUniquePath(Element context) {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/processing-instruction()"
+        return ( parent != null && parent != context ) 
+            ? parent.getUniquePath( context ) + "/processing-instruction()"
             : "processing-instruction()";
     }
     
@@ -194,5 +194,5 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractProcessingInstruction.java,v 1.9 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.10 2001/07/25 10:51:11 jstrachan Exp $
  */

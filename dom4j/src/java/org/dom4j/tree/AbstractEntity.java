@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractEntity.java,v 1.9 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractEntity.java,v 1.10 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,7 +21,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public abstract class AbstractEntity extends AbstractNode implements Entity {
 
@@ -32,19 +32,19 @@ public abstract class AbstractEntity extends AbstractNode implements Entity {
         return ENTITY_REFERENCE_NODE;
     }
 
-    public String getPath() {
+    public String getPath(Element context) {
         // From XPaths perspective, entities are included in text
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/text()"
+        return ( parent != null && parent != context ) 
+            ? parent.getPath( context ) + "/text()"
             : "text()";
     }
     
-    public String getUniquePath() {
+    public String getUniquePath(Element context) {
         // From XPaths perspective, entities are included in text
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/text()"
+        return ( parent != null && parent != context ) 
+            ? parent.getUniquePath( context ) + "/text()"
             : "text()";
     }
     
@@ -117,5 +117,5 @@ public abstract class AbstractEntity extends AbstractNode implements Entity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractEntity.java,v 1.9 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractEntity.java,v 1.10 2001/07/25 10:51:11 jstrachan Exp $
  */

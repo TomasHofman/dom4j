@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractComment.java,v 1.7 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractComment.java,v 1.8 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public abstract class AbstractComment extends AbstractCharacterData implements Comment {
 
@@ -31,19 +31,20 @@ public abstract class AbstractComment extends AbstractCharacterData implements C
         return COMMENT_NODE;
     }
 
-    public String getPath() {
+    public String getPath(Element context) {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/comment()"
+        return ( parent != null && parent != context ) 
+            ? parent.getPath( context ) + "/comment()"
             : "comment()";
     }
 
-    public String getUniquePath() {
+    public String getUniquePath(Element context) {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/comment()"
+        return ( parent != null && parent != context ) 
+            ? parent.getUniquePath( context ) + "/comment()"
             : "comment()";
     }
+
 
     public String toString() {
         return super.toString() + " [Comment: \"" + getText() + "\"]";
@@ -109,5 +110,5 @@ public abstract class AbstractComment extends AbstractCharacterData implements C
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractComment.java,v 1.7 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: AbstractComment.java,v 1.8 2001/07/25 10:51:11 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.5 2001/07/06 19:06:18 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.6 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.Node;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -61,18 +61,23 @@ public class TestGetPath extends AbstractTestCase {
         for ( int i = 0, size = elements.size(); i < size; i++ ) {
             String path = "/root/author";
             String uniquePath = "/root/author";
+            String pathRel = "author";
+            String uniquePathRel = "author";
             if ( size > 1 ) {
                 uniquePath = "/root/author[" + (i + 1) + "]";                
+                uniquePathRel = "author[" + (i + 1) + "]";                
             }
-
             Element element = (Element) elements.get(i);
             testPath( element, path, uniquePath );
+            testRelativePath( root, element, pathRel, uniquePathRel );
             
             Attribute attribute = element.attribute( "name" );
             testPath( attribute, path + "/@name", uniquePath + "/@name" );
+            testRelativePath( root, attribute, pathRel + "/@name", uniquePathRel + "/@name" );
             
             Element child = element.element( "url" );
             testPath( child, path + "/url", uniquePath + "/url" );
+            testRelativePath( root, child, pathRel + "/url", uniquePathRel + "/url" );
         }
     }
         
@@ -85,6 +90,12 @@ public class TestGetPath extends AbstractTestCase {
         assertEquals( "getUniquePath expression should be what is expected", uniquePath, node.getUniquePath() );
     }
     
+    protected void testRelativePath( Element context, Node node, String pathRel, String uniquePathRel ) {
+        assertEquals( "relative getPath expression should be what is expected", pathRel, node.getPath( context ) );
+        assertEquals( "relative getUniquePath expression should be what is expected", uniquePathRel, node.getUniquePath( context ) );
+    }
+        
+        
     protected void testBranchPath(Branch branch) {
         testNodePath( branch );
         
@@ -160,5 +171,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.5 2001/07/06 19:06:18 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.6 2001/07/25 10:51:11 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.18 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: Node.java,v 1.19 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 public interface Node extends Cloneable {
 
@@ -141,6 +141,16 @@ public interface Node extends Cloneable {
       */
     public boolean isReadOnly();
 
+    /** <p><code>hasContent</code> returns true if this node is a Branch
+      * (either an Element or a Document) and it contains at least one
+      * content node such as a child Element or Text node.</p>
+      *
+      * @return true if this <code>Node</code> is a Branch
+      * with a nodeCount() of one or more.
+      */
+    public boolean hasContent();
+    
+
     
     /** <p><code>getName</code> returns the name of this node.
       * This is the XML local name of the element, attribute, entity or 
@@ -193,6 +203,21 @@ public interface Node extends Cloneable {
       */
     public String getPath();
     
+    /** <p>Returns the relative XPath expression which will return a node set
+      * containing the given node such as a/b/@c. No indexing will
+      * be used to restrict the path if multiple elements with the
+      * same name occur on the path.
+      *
+      * @param context is the parent context from which the relative path should 
+      * start. If the context is null or the context is not an ancestor of
+      * this node then the path will be absolute and start from the document and so 
+      * begin with the '/' character.
+      *
+      * @return the XPath expression relative to the given context 
+      * which will return a nodeset containing at least this node.
+      */
+    public String getPath(Element context);
+    
     /** <p>Returns the XPath expression which will return a nodeset
       * of one node which is the current node. This method will use
       * the XPath index operator to restrict the path if
@@ -202,6 +227,23 @@ public interface Node extends Cloneable {
       * containing just this node.
       */
     public String getUniquePath();
+    
+    /** <p>Returns the relative unique XPath expression from the given context
+      * which will return a nodeset
+      * of one node which is the current node. 
+      * This method will use the XPath index operator to restrict the 
+      * path if multiple elements with the same name occur on the path.
+      * </p>
+      *
+      * @param context is the parent context from which the path should 
+      * start. If the context is null or the context is not an ancestor of
+      * this node then the path will start from the document and so 
+      * begin with the '/' character.
+      *
+      * @return the XPath expression relative to the given context 
+      * which will return a nodeset containing just this node.
+      */
+    public String getUniquePath(Element context);
     
     
     /** <p><code>asXML</code> returns the textual XML representation of this 
@@ -426,5 +468,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.18 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: Node.java,v 1.19 2001/07/25 10:51:11 jstrachan Exp $
  */

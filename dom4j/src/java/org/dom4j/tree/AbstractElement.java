@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.51 2001/07/24 08:46:17 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.52 2001/07/25 10:51:11 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.51 $
+  * @version $Revision: 1.52 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -84,21 +84,27 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         throw new UnsupportedOperationException("The name and namespace of this Element cannot be changed" );
     }
         
-    public String getPath() {
+    public String getPath(Element context) {
         Element parent = getParent();
         if ( parent == null ) {
             return "/" + getQualifiedName();
         }
-        return parent.getPath() + "/" + getQualifiedName();
+        else if ( parent == context ) {
+            return getQualifiedName();
+        }
+        return parent.getPath( context ) + "/" + getQualifiedName();
     }
     
-    public String getUniquePath() {
+    public String getUniquePath(Element context) {
         Element parent = getParent();
         if ( parent == null ) {
             return "/" + getQualifiedName();
         }
-        StringBuffer buffer = new StringBuffer( parent.getUniquePath() );
-        buffer.append( "/" );
+        StringBuffer buffer = new StringBuffer();
+        if ( parent != context ) {
+            buffer.append( parent.getUniquePath(context) );
+            buffer.append( "/" );
+        }
         buffer.append( getQualifiedName() );
         List mySiblings = parent.elements( getQName() );
         if ( mySiblings.size() > 1 ) {
@@ -1231,5 +1237,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.51 2001/07/24 08:46:17 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.52 2001/07/25 10:51:11 jstrachan Exp $
  */
