@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMReader.java,v 1.10 2003/04/07 22:14:01 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.11 2004/03/07 14:45:06 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.dom4j.tree.NamespaceStack;
   * a DOM4J tree from it.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class DOMReader {
 
@@ -167,7 +167,7 @@ public class DOMReader {
 
         String namespaceUri = node.getNamespaceURI();
         org.w3c.dom.NamedNodeMap attributeList = node.getAttributes();
-        if ( namespaceUri == null ) {
+        if (( attributeList != null ) && ( namespaceUri == null )) {
             // test if we have an "xmlns" attribute
             org.w3c.dom.Node attribute = attributeList.getNamedItem( "xmlns" );
             if ( attribute != null ) {
@@ -293,5 +293,5 @@ public class DOMReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMReader.java,v 1.10 2003/04/07 22:14:01 jstrachan Exp $
+ * $Id: DOMReader.java,v 1.11 2004/03/07 14:45:06 maartenc Exp $
  */
