@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: HTMLWriter.java,v 1.12 2002/04/09 18:14:37 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.13 2002/04/13 04:03:12 laramiec Exp $
  */
 
 package org.dom4j.io;
@@ -184,7 +184,7 @@ import org.xml.sax.SAXException;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Laramie Crocker
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -299,7 +299,7 @@ public class HTMLWriter extends XMLWriter {
         //DOM stores \n at the end of text nodes that are newlines.  This is significant if
         // we are in a PRE section.  However, we only want to output the system line.separator, not \n.
         // This is a little brittle, but this function appears to be called with these lineseparators
-        // as a separate TEXT_NODE.  If we are in a preformatted section, output the rigxzht line.separator,
+        // as a separate TEXT_NODE.  If we are in a preformatted section, output the right line.separator,
         // otherwise ditch.  If the single \n character is not the text, then do the super thing
         // to output the text.
         // Also, we store the last text that was not a \n since it may be used by writeElement in this class to
@@ -311,7 +311,11 @@ public class HTMLWriter extends XMLWriter {
             return;
         }
         m_lastText = text;
-        super.writeString(text);
+        if ( m_formatStack.empty() ) {
+            super.writeString(text.trim());
+        } else {
+            super.writeString(text);
+        }
     }
 
     /** Overriden method to not close certain element names to avoid
@@ -736,5 +740,5 @@ entities: &#160; &amp; &quot; &lt; &gt; %23
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.12 2002/04/09 18:14:37 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.13 2002/04/13 04:03:12 laramiec Exp $
  */
