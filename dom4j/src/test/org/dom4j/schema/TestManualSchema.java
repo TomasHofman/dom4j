@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchema.java,v 1.3 2001/05/30 14:17:14 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.4 2001/05/30 19:15:15 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -30,7 +30,7 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * manually load the schemas
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestManualSchema extends AbstractTestCase {
 
@@ -68,6 +68,10 @@ public class TestManualSchema extends AbstractTestCase {
  
     public void testDate() throws Exception {        
         testSchema( "//person/@d", Date.class );
+    }
+    
+    public void testDateTime() throws Exception {        
+        testSchema( "//person/@dt", Date.class );
     }
     
     public void testInteger() throws Exception {        
@@ -189,5 +193,5 @@ public class TestManualSchema extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchema.java,v 1.3 2001/05/30 14:17:14 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.4 2001/05/30 19:15:15 jstrachan Exp $
  */
