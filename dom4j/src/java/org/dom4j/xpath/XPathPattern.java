@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.13 2003/04/07 22:15:46 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.14 2004/02/28 12:36:25 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -24,13 +24,13 @@ import org.jaxen.XPathFunctionContext;
 import org.jaxen.dom4j.DocumentNavigator;
 import org.jaxen.pattern.Pattern;
 import org.jaxen.pattern.PatternParser;
-import org.saxpath.SAXPathException;
+import org.jaxen.saxpath.SAXPathException;
 
 /** <p><code>XPathPattern</code> is an implementation of Pattern
   * which uses an XPath xpath.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class XPathPattern implements org.dom4j.rule.Pattern {
     
@@ -170,5 +170,5 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.13 2003/04/07 22:15:46 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.14 2004/02/28 12:36:25 maartenc Exp $
  */
