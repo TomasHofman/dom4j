@@ -4,14 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo2.java,v 1.4 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.5 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 
 import java.net.URL;
 
 import org.dom4j.*;
-import org.dom4j.io.TreeReader;
+import org.dom4j.io.DocumentReader;
 import org.dom4j.io.SAXReader;
 
 /** This demo uses the Visitor Pattern in DOM4J to display the effect
@@ -19,7 +19,7 @@ import org.dom4j.io.SAXReader;
   * object model from a {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class VisitorDemo2 extends VisitorDemo {
     
@@ -52,15 +52,15 @@ public class VisitorDemo2 extends VisitorDemo {
     }
     
     protected void parse( URL url ) throws Exception {
-        TreeReader reader = createTreeReader();
+        DocumentReader reader = createDocumentReader();
         Document document = reader.read(url);
         process(document);
     }
     
-    protected TreeReader createTreeReader() throws Exception {
+    protected DocumentReader createDocumentReader() throws Exception {
         println( "Using SAX parser: " + System.getProperty( "org.xml.sax.driver", "default" ) );
         
-        TreeReader answer = new SAXReader();        
+        DocumentReader answer = new SAXReader();        
         if ( documentFactoryClassName != null ) {
             try {
                 Class theClass = Class.forName( documentFactoryClassName );
@@ -125,5 +125,5 @@ public class VisitorDemo2 extends VisitorDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo2.java,v 1.4 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: VisitorDemo2.java,v 1.5 2001/01/19 05:58:39 jstrachan Exp $
  */

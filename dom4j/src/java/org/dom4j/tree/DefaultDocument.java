@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.8 2001/01/18 17:54:51 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.9 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,7 @@ import org.dom4j.Comment;
 import org.dom4j.Document;
 import org.dom4j.DocumentType;
 import org.dom4j.Element;
-import org.dom4j.IllegalAddNodeException;
+import org.dom4j.IllegalAddException;
 import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.XPathEngine;
@@ -28,7 +28,7 @@ import org.dom4j.XPathHelper;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -234,7 +234,7 @@ public class DefaultDocument extends AbstractDocument {
             // XXX: could clone here
             String message = "The Node already has an existing document of \"" 
                 + node.getDocument().getName() + "\"";
-            throw new IllegalAddNodeException(this, node, message);
+            throw new IllegalAddException(this, node, message);
         }
         if (contents == null) {
             contents = createContentList();
@@ -327,5 +327,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.8 2001/01/18 17:54:51 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.9 2001/01/19 05:58:39 jstrachan Exp $
  */

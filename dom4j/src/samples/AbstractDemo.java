@@ -4,15 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDemo.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
  */
 
-import org.dom4j.TreeException;
+import org.dom4j.DocumentException;
 
 /** An abstract base class for the demo programs.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class AbstractDemo {
 
@@ -26,7 +26,7 @@ public abstract class AbstractDemo {
         try {
             demo.run(args);
         }
-        catch (TreeException e) {
+        catch (DocumentException e) {
             System.out.println( "Exception occurred: " + e );
             Exception nestedException = e.getNestedException();
             if ( nestedException != null ) {
@@ -98,5 +98,5 @@ public abstract class AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDemo.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
  */

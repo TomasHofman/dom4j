@@ -4,35 +4,57 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractText.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: LinkChecker.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */
 
-package org.dom4j.tree;
 
-import org.dom4j.Text;
-import org.dom4j.Visitor;
+import java.util.Iterator;
+import java.util.List;
 
-/** <p><code>AbstractText</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+import org.dom4j.*;
+import org.dom4j.io.XMLWriter;
+
+/** A sample program to demonstrate the use of XPath in DOM4J to find
+  * all the hypertext links in a source file.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public abstract class AbstractText extends AbstractCharacterData implements Text {
-
-    public AbstractText() {
+public class LinkChecker extends SAXDemo {
+    
+    public LinkChecker() {
+    }
+        
+    public static void main(String[] args) {
+        run( new LinkChecker(), args );
+    }    
+    
+    public void run(String[] args) throws Exception {    
+        if ( args.length < 1 ) {
+            printUsage( "<XML document URL>" );
+            return;
+        }
+        parse( args[0] );
     }
     
-    public String toString() {
-        return super.toString() + " [Text: \"" + getText() + "\"]";
-    }
-
-    public String asXML() {
-        return getText();
-    }
-    
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    protected void process(Document document) throws Exception {
+        
+        List list = document.selectNodes( "//a" );
+        
+        println( "Found: " + list.size() + " links(s)" );        
+        println( "Results:" );
+        
+        XMLWriter writer = createXMLWriter();
+        
+        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+            Object object = iter.next();
+            if ( object instanceof Node ) {
+                writer.outputNode( (Node) object, System.out  );
+            }
+            else {
+                writer.output( object.toString(), System.out );
+            }
+        }
     }
 }
 
@@ -81,5 +103,5 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractText.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: LinkChecker.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */

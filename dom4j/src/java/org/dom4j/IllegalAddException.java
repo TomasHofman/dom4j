@@ -4,35 +4,34 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractText.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: IllegalAddException.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j;
 
-import org.dom4j.Text;
-import org.dom4j.Visitor;
-
-/** <p><code>AbstractText</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+/** <p><code>IllegalAddException</code> is thrown when a node
+  * is added incorrectly to an <code>{@link Element}</code></p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public abstract class AbstractText extends AbstractCharacterData implements Text {
+public class IllegalAddException extends IllegalArgumentException {
 
-    public AbstractText() {
+    public IllegalAddException(String reason) {
+        super(reason);
     }
     
-    public String toString() {
-        return super.toString() + " [Text: \"" + getText() + "\"]";
-    }
-
-    public String asXML() {
-        return getText();
+    public IllegalAddException(Element parent,Node node,String reason) {
+        super( "The node \"" + node.toString() 
+            + "\" could not be added to the element \"" 
+            + parent.getQualifiedName() + "\" because: " + reason 
+        );
     }
     
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public IllegalAddException(Branch parent,Node node,String reason) {
+        super( "The node \"" + node.toString() 
+            + "\" could not be added to the branch \"" 
+            + parent.getName() + "\" because: " + reason 
+        );
     }
 }
 
@@ -81,5 +80,5 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractText.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: IllegalAddException.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */

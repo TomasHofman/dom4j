@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocument.java,v 1.5 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,18 +21,18 @@ import org.dom4j.Comment;
 import org.dom4j.Document;
 import org.dom4j.DocumentType;
 import org.dom4j.Element;
-import org.dom4j.IllegalAddNodeException;
+import org.dom4j.IllegalAddException;
 import org.dom4j.Node;
 import org.dom4j.Namespace;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
-import org.dom4j.TreeVisitor;
+import org.dom4j.Visitor;
 
 /** <p><code>AbstractDocument</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -62,9 +62,9 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
     /** <p><code>accept</code> method is the <code>Visitor Pattern</code> method.
       * </p>
       *
-      * @param visitor <code>TreeVisitor</code> is the visitor.
+      * @param visitor <code>Visitor</code> is the visitor.
       */
-    public void accept(TreeVisitor visitor) {
+    public void accept(Visitor visitor) {
         visitor.visit(this);
 
         DocumentType docType = getDocType();
@@ -158,7 +158,7 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
     protected void checkAddElementAllowed() {
         Element root = getRootElement();
         if ( root != null ) {
-            throw new IllegalAddNodeException(  
+            throw new IllegalAddException(  
                 this, 
                 root, 
                 "Cannot add another element to this Document as it already has "
@@ -217,5 +217,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocument.java,v 1.5 2001/01/10 19:00:14 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
  */

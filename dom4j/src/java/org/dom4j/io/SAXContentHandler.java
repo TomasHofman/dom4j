@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.9 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -21,15 +21,15 @@ import org.dom4j.Attribute;
 import org.dom4j.Branch;
 import org.dom4j.CDATA;
 import org.dom4j.Comment;
-import org.dom4j.ContentFactory;
 import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.ElementHandler;
 import org.dom4j.Entity;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.ProcessingInstruction;
-import org.dom4j.TreeException;
+import org.dom4j.DocumentException;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -40,7 +40,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -341,7 +341,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
     
     protected Namespace getNamespace(String prefix, String uri) {
-        return ContentFactory.getNamespace(prefix, uri);
+        return DocumentFactory.newNamespace(prefix, uri);
     }
 
     protected Element createElement(String localName, Namespace namespace) {
@@ -413,5 +413,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.9 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
  */

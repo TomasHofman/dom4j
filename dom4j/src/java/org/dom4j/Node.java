@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Node.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface Node extends Cloneable {
 
@@ -203,7 +203,7 @@ public interface Node extends Cloneable {
       *
       * @param visitor is the visitor in the Visitor Pattern
       */
-    public void accept(TreeVisitor visitor);
+    public void accept(Visitor visitor);
 
     
     
@@ -260,5 +260,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Node.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
  */

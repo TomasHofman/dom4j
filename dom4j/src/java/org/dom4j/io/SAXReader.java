@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.9 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -23,7 +23,7 @@ import java.util.StringTokenizer;
 import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
 import org.dom4j.ElementHandler;
-import org.dom4j.TreeException;
+import org.dom4j.DocumentException;
 import org.dom4j.io.aelfred.SAXDriver;
 
 import org.xml.sax.ContentHandler;
@@ -41,9 +41,9 @@ import org.xml.sax.helpers.XMLReaderFactory;
 /** <p><code>SAXReader</code> creates a DOM4J tree from SAX parsing events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
-public class SAXReader extends TreeReader {
+public class SAXReader extends DocumentReader {
 
     /** <code>XMLReader</code> used to parse the SAX events */
     private XMLReader xmlReader;
@@ -225,16 +225,16 @@ public class SAXReader extends TreeReader {
 
     
     
-    // TreeReader API
+    // DocumentReader API
     
     /** <p>Reads a Document from the given <code>File</code></p>
       *
       * @param file is the <code>File</code> to read from.
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       * @throws FileNotFoundException if the file could not be found
       */
-    public Document read(File file) throws TreeException, FileNotFoundException {
+    public Document read(File file) throws DocumentException, FileNotFoundException {
         Document document = read(new BufferedReader(new FileReader(file)));
         //Document document = read(file.getAbsolutePath());
         document.setName( file.getAbsolutePath() );
@@ -245,9 +245,9 @@ public class SAXReader extends TreeReader {
       *
       * @param url <code>URL</code> to read from.
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(URL url) throws TreeException {
+    public Document read(URL url) throws DocumentException {
         String systemID = url.toExternalForm();
         Document document = read(new InputSource(systemID));
         document.setName( url.toString() );
@@ -258,9 +258,9 @@ public class SAXReader extends TreeReader {
       *
       * @param systemId is the URI for the input
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(String systemId) throws TreeException {
+    public Document read(String systemId) throws DocumentException {
         return read(new InputSource(systemId));
     }
 
@@ -268,9 +268,9 @@ public class SAXReader extends TreeReader {
       *
       * @param in <code>InputStream</code> to read from.
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(InputStream in) throws TreeException {
+    public Document read(InputStream in) throws DocumentException {
         return read(new InputSource(in));
     }
 
@@ -278,9 +278,9 @@ public class SAXReader extends TreeReader {
       *
       * @param reader is the reader for the input
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(Reader reader) throws TreeException {
+    public Document read(Reader reader) throws DocumentException {
         return read(new InputSource(reader));
     }
 
@@ -289,9 +289,9 @@ public class SAXReader extends TreeReader {
       * @param in <code>InputStream</code> to read from.
       * @param systemId is the URI for the input
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(InputStream in, String systemId) throws TreeException {
+    public Document read(InputStream in, String systemId) throws DocumentException {
         InputSource source = new InputSource(in);
         source.setSystemId(systemId);
         return read(source);
@@ -302,9 +302,9 @@ public class SAXReader extends TreeReader {
       * @param reader is the reader for the input
       * @param systemId is the URI for the input
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(Reader reader, String SystemId) throws TreeException {
+    public Document read(Reader reader, String SystemId) throws DocumentException {
         InputSource source = new InputSource(reader);
         source.setSystemId(SystemId);
         return read(source);
@@ -315,9 +315,9 @@ public class SAXReader extends TreeReader {
       * @param in <code>InputSource</code> to read from.
       * @param systemId is the URI for the input
       * @return the newly created Document instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public Document read(InputSource in) throws TreeException {
+    public Document read(InputSource in) throws DocumentException {
         try {
             XMLReader reader = getXMLReader();
 
@@ -342,10 +342,10 @@ public class SAXReader extends TreeReader {
                     + " of document "  + systemId
                     + " : " + parseException.getMessage();
                 
-                throw new TreeException(message, e);
+                throw new DocumentException(message, e);
             }
             else {
-                throw new TreeException(e.getMessage(), e);
+                throw new DocumentException(e.getMessage(), e);
             }
         }
     }
@@ -354,7 +354,7 @@ public class SAXReader extends TreeReader {
     
     // Implementation methods    
     
-    protected void configureReader(XMLReader reader, DefaultHandler contentHandler) throws TreeException {                
+    protected void configureReader(XMLReader reader, DefaultHandler contentHandler) throws DocumentException {                
         // configure lexical handling
         setParserProperty(
             reader,
@@ -393,7 +393,7 @@ public class SAXReader extends TreeReader {
         } 
         catch (Exception e) {
             if (isValidating()) {
-                throw new TreeException( 
+                throw new DocumentException( 
                     "Validation not supported for XMLReader: " + reader, 
                     e
                 );
@@ -500,5 +500,5 @@ public class SAXReader extends TreeReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.9 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
  */

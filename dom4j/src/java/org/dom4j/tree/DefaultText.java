@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultText.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultText.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -12,13 +12,13 @@ package org.dom4j.tree;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.Text;
-import org.dom4j.TreeVisitor;
+import org.dom4j.Visitor;
 
 /** <p><code>DefaultText</code> is the default DOM4J implementation of a 
   * singly linked read only XML Text.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DefaultText extends AbstractText implements Text {
 
@@ -85,5 +85,5 @@ public class DefaultText extends AbstractText implements Text {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultText.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultText.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
  */

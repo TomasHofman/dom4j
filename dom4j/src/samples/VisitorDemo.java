@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VisitorDemo.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: VisitorDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 
@@ -13,7 +13,7 @@ import org.dom4j.*;
 /** A sample program to demonstrate the use of the Visitor Pattern in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class VisitorDemo extends SAXDemo {
     
@@ -29,7 +29,7 @@ public class VisitorDemo extends SAXDemo {
     }    
     
     protected void process(Document document) throws Exception {
-        TreeVisitor visitor = new TreeVisitorSupport() {
+        Visitor visitor = new VisitorSupport() {
             
             public void visit(Document document) {
                 println( document.toString() );
@@ -121,5 +121,5 @@ public class VisitorDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VisitorDemo.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: VisitorDemo.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
  */

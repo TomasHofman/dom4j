@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: CreateXMLDemo.java,v 1.1 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 
@@ -24,7 +24,7 @@ import org.dom4j.io.XMLWriter;
   * displaying the current system properties.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class CreateXMLDemo extends AbstractDemo {
     
@@ -48,7 +48,7 @@ public class CreateXMLDemo extends AbstractDemo {
     }
     
     protected Document createDocument() throws Exception {
-        Document document = DocumentFactory.create();
+        Document document = DocumentFactory.newDocument();
         Element root = document.addElement( "system" );
         
         Properties properties = System.getProperties();
@@ -117,5 +117,5 @@ public class CreateXMLDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: CreateXMLDemo.java,v 1.1 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: CreateXMLDemo.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
  */

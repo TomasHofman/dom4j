@@ -4,35 +4,54 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IllegalAddNodeException.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: VisitorSupport.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j;
 
-/** <p><code>IllegalAddNodeException</code> is thrown when a node
-  * is added incorrectly to an <code>{@link Element}</code></p>
+/** <p><code>VisitorSupport</code> is an abstract base class
+  * which is useful for implementation inheritence or when using anonymous 
+  * inner classes to create simple <code>Visitor</code>
+  * implementations.</p>
   *
-  * @version $Revision: 1.2 $
+  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public class IllegalAddNodeException extends IllegalArgumentException {
+public abstract class VisitorSupport implements Visitor {
+    
+    public VisitorSupport() {
+    }
 
-    public IllegalAddNodeException(String reason) {
-        super(reason);
+    public void visit(Document document) {
+    }
+
+    public void visit(DocumentType documentType) {
     }
     
-    public IllegalAddNodeException(Element parent, Node node, String reason) {
-        super( "The node \"" + node.toString() 
-            + "\" could not be added to the element \"" 
-            + parent.getQualifiedName() + "\" because: " + reason 
-        );
+    public void visit(Element node) {
     }
-    
-    public IllegalAddNodeException(Branch parent, Node node, String reason) {
-        super( "The node \"" + node.toString() 
-            + "\" could not be added to the branch \"" 
-            + parent.getName() + "\" because: " + reason 
-        );
+
+    public void visit(Attribute node) {
     }
+
+    public void visit(CDATA node) {
+    }
+
+    public void visit(Comment node) {
+    }
+
+    public void visit(Entity node) {
+    }
+
+    public void visit(Namespace namespace) {
+    }
+
+    public void visit(ProcessingInstruction node) {
+    }
+
+    public void visit(Text node) {
+    }
+
 }
 
 
@@ -80,5 +99,5 @@ public class IllegalAddNodeException extends IllegalArgumentException {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IllegalAddNodeException.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: VisitorSupport.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */

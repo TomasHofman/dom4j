@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BackedList.java,v 1.1 2001/01/18 17:54:51 jstrachan Exp $
+ * $Id: BackedList.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Comment;
 import org.dom4j.CDATA;
 import org.dom4j.Element;
 import org.dom4j.Entity;
-import org.dom4j.IllegalAddNodeException;
+import org.dom4j.IllegalAddException;
 import org.dom4j.Namespace;
 import org.dom4j.Node;
 import org.dom4j.Text;
@@ -31,7 +31,7 @@ import org.dom4j.Text;
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BackedList extends ArrayList {
 
@@ -141,7 +141,7 @@ public class BackedList extends ArrayList {
             return (Node) object;
         }
         else {
-            throw new IllegalAddNodeException( "This list must contain instances of Node. Invalid type: "+ object );
+            throw new IllegalAddException( "This list must contain instances of Node. Invalid type: "+ object );
         }
     }    
 }
@@ -191,5 +191,5 @@ public class BackedList extends ArrayList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BackedList.java,v 1.1 2001/01/18 17:54:51 jstrachan Exp $
+ * $Id: BackedList.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
  */

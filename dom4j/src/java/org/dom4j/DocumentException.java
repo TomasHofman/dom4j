@@ -4,35 +4,78 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractText.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DocumentException.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j;
 
-import org.dom4j.Text;
-import org.dom4j.Visitor;
+import java.io.PrintStream;
+import java.io.PrintWriter;
 
-/** <p><code>AbstractText</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+/** <p><code>DocumentException</code> is a nested Exception which may be thrown
+  * during the processing of a DOM4J document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public abstract class AbstractText extends AbstractCharacterData implements Text {
+public class DocumentException extends Exception {
 
-    public AbstractText() {
+    /** A wrapped <code>Exception</code> */
+    private Exception nestedException;
+    
+
+    public DocumentException() {
+        super("Error occurred in DOM4J application.");
+    }
+
+    public DocumentException(String message) {
+        super(message);
     }
     
-    public String toString() {
-        return super.toString() + " [Text: \"" + getText() + "\"]";
-    }
+    public DocumentException(Exception nestedException) {
+        super(nestedException.getMessage());    
+        this.nestedException = nestedException;
+    }    
 
-    public String asXML() {
-        return getText();
+    public DocumentException(String message,Exception nestedException) {
+        super(message);    
+        this.nestedException = nestedException;
+    }    
+
+    public Exception getNestedException() {
+        return nestedException;
     }
     
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public String getMessage() {
+        if (nestedException != null) {
+            return super.getMessage() + " Nested exception: " + nestedException.getMessage();
+        } else {
+            return super.getMessage();
+        }
+    }
+
+    public void printStackTrace() {
+        super.printStackTrace();
+        if (nestedException != null) {
+            System.err.print("Nested exception: ");
+            nestedException.printStackTrace();
+        }
+    }
+
+    public void printStackTrace(PrintStream out) {
+        super.printStackTrace(out);
+        if (nestedException != null) {
+            out.println("Nested exception: ");
+            nestedException.printStackTrace(out);
+        }
+    }
+
+    public void printStackTrace(PrintWriter writer) {
+        super.printStackTrace(writer);
+        if (nestedException != null) {
+            writer.println("Nested exception: ");
+            nestedException.printStackTrace(writer);
+        }
     }
 }
 
@@ -81,5 +124,5 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractText.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DocumentException.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractTestCase.java,v 1.3 2001/01/10 15:22:33 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** An abstract base class for some DOM4J test cases
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class AbstractTestCase extends TestCase {
 
@@ -32,7 +32,7 @@ public class AbstractTestCase extends TestCase {
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
-        document = DocumentFactory.create();
+        document = DocumentFactory.newDocument();
         
         Element root = document.addElement( "root" );
         Element author1 = root.addElement( "author" );
@@ -97,5 +97,5 @@ public class AbstractTestCase extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractTestCase.java,v 1.3 2001/01/10 15:22:33 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.3 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: TestParent.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import junit.textui.TestRunner;
   * {@link Node#asXPathNode} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -35,7 +35,7 @@ public class TestParent extends AbstractTestCase {
         
     public void testFragment() throws Exception {        
         
-        ContentFactory factory = new ContentFactory();
+        DocumentFactory factory = new DocumentFactory();
         Element root = factory.createElement( "root" );
         Element first = root.addElement( "child" );
         Element second = root.addElement( "child" );
@@ -134,5 +134,5 @@ public class TestParent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.3 2001/01/15 16:33:56 jstrachan Exp $
+ * $Id: TestParent.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
  */
