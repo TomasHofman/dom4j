@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.11 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: Element.java,v 1.12 2001/01/17 14:49:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public interface Element extends Branch {
 
@@ -74,6 +74,14 @@ public interface Element extends Branch {
       * @return a list of any additional namespace declarations.
       */
     public List getAdditionalNamespaces();
+    
+   /** <p>Returns all the namespaces declared by this element. 
+      * If no namespaces are declared for this element then 
+      * {@link Collections.EMPTY_LIST} will be returned.
+      *
+      * @return a list of namespaces declared for this element.
+      */
+    public List getDeclaredNamespaces();
     
     /** <p>Returns the namespace prefix of this element if one exists 
       * otherwise an empty <code>String</code> is returned.</p>
@@ -427,5 +435,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.11 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: Element.java,v 1.12 2001/01/17 14:49:11 jstrachan Exp $
  */

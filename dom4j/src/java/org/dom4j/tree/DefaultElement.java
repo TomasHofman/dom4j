@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.7 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.8 2001/01/17 14:49:11 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -196,6 +196,29 @@ public class DefaultElement extends AbstractElement {
             }
             return null;
         }
+    }
+    
+    public List getDeclaredNamespaces() {
+        List answer = createResultList();
+        if ( getNamespaceURI().length() > 0 ) {
+            answer.add( getNamespace() );
+        }
+        List source = contents;
+        if ( source == null ) {
+            if ( firstNode instanceof Namespace ) {
+                answer.add( firstNode );
+            }
+        }
+        else {
+            int size = source.size();
+            for ( int i = 0; i < size; i++ ) {
+                Object object = source.get(i);
+                if ( object instanceof Namespace ) {
+                    answer.add( object );
+                }
+            }
+        }
+        return answer;
     }
     
     public List getAdditionalNamespaces() {
@@ -733,5 +756,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.7 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.8 2001/01/17 14:49:11 jstrachan Exp $
  */
