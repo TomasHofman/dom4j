@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.27 2001/05/18 09:33:26 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.28 2001/05/18 16:49:36 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -41,10 +41,12 @@ import org.xml.sax.Attributes;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.27 $
+  * @version $Revision: 1.28 $
   */
 public class DefaultElement extends AbstractElement {
 
+    private static final int DEFAULT_CONTENT_LIST_SIZE = 5;
+    
     protected static final List EMPTY_LIST = Collections.EMPTY_LIST;
     protected static final Iterator EMPTY_ITERATOR = EMPTY_LIST.iterator();
     
@@ -837,14 +839,14 @@ public class DefaultElement extends AbstractElement {
       * a List implementation used to store content
       */
     protected List createContentList() {
-        return new ArrayList();
+        return new ArrayList( DEFAULT_CONTENT_LIST_SIZE );
     }
     
     /** A Factory Method pattern which lazily creates 
       * a List implementation used to store attributes
       */
     protected List createAttributeList() {
-        return new ArrayList();
+        return new ArrayList( DEFAULT_CONTENT_LIST_SIZE );
     }
     
     /** A Factory Method pattern which creates 
@@ -925,5 +927,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.27 2001/05/18 09:33:26 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.28 2001/05/18 16:49:36 jstrachan Exp $
  */
