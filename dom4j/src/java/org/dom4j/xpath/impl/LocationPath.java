@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LocationPath.java,v 1.3 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: LocationPath.java,v 1.4 2001/04/12 16:55:42 jstrachan Exp $
  */
 
 
@@ -86,13 +86,14 @@ public class LocationPath extends PathExpr {
         boolean stepped = false;       
         while ( stepIter.hasNext() )  {
             Step eachStep = (Step) stepIter.next();
-            
-            if ( (!stepped) && isAbsolute() ) {
-                eachStep.setIsAbsolute(true);
+            if ( eachStep != null ) {
+                if ( (!stepped) && isAbsolute() ) {
+                    eachStep.setIsAbsolute(true);
+                }
+                stepped = true;
+
+                context = eachStep.applyTo( context );
             }
-            stepped = true;
-            
-            context = eachStep.applyTo( context );
         }
         
         if (stepped) {
@@ -219,5 +220,5 @@ public class LocationPath extends PathExpr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LocationPath.java,v 1.3 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: LocationPath.java,v 1.4 2001/04/12 16:55:42 jstrachan Exp $
  */

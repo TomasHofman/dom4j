@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Context.java,v 1.3 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: Context.java,v 1.4 2001/04/12 16:55:42 jstrachan Exp $
  */
 
 
@@ -163,6 +163,18 @@ public class Context implements Cloneable {
         return dupe;
     }
 
+    public Context duplicate( List nodeSet ) {
+        Context dupe = null;
+        try {
+            dupe = (Context) this.clone();
+            dupe._nodeSet = nodeSet;
+        }
+        catch (CloneNotSupportedException e) {
+            dupe = null;
+        }
+        return dupe;
+    }
+
     public String toString() {
         return ("[Context " + _nodeSet + "]");
     }
@@ -213,5 +225,5 @@ public class Context implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Context.java,v 1.3 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: Context.java,v 1.4 2001/04/12 16:55:42 jstrachan Exp $
  */
