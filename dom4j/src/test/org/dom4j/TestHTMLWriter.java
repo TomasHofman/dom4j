@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestHTMLWriter.java,v 1.3 2003/04/07 22:24:29 jstrachan Exp $
+ * $Id: TestHTMLWriter.java,v 1.4 2004/03/28 21:50:51 maartenc Exp $
  */
 
 package org.dom4j;
@@ -16,11 +16,12 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.HTMLWriter;
+import org.dom4j.io.OutputFormat;
 
 /** Test harness for the HTMLWriter
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestHTMLWriter extends AbstractTestCase {
 
@@ -54,6 +55,39 @@ public class TestHTMLWriter extends AbstractTestCase {
         String expects = "\n<html>\n  <body>First&nbsp;test</body>\n</html>\n";
         
         assertEquals( "Output is correct", expects, output );
+    }
+    
+    public void testBug923882() throws Exception {
+        Document doc = DocumentFactory.getInstance().createDocument();
+        Element root = doc.addElement("root");
+        root.addText("this is ");
+        root.addText(" sim");
+        root.addText("ple text ");
+        root.addElement("child");
+        root.addText(" contai");
+        root.addText("ning spaces and");
+        root.addText(" multiple textnodes");
+        OutputFormat format = new OutputFormat();
+        format.setEncoding("UTF-8");
+        format.setIndentSize(4);
+        format.setNewlines(true);
+        format.setTrimText(true);
+        format.setExpandEmptyElements(true);
+        StringWriter buffer = new StringWriter();
+        HTMLWriter writer = new HTMLWriter(buffer, format);
+        writer.write( doc );
+        String xml = buffer.toString();
+        log( xml );
+        int start = xml.indexOf("<root"),
+                end = xml.indexOf("/root>")+6;
+        String eol = "\n"; //System.getProperty("line.separator");
+        String expected = 
+                "<root>this is simple text" + eol +
+                "    <child></child>containing spaces and multiple textnodes" + eol +
+                "</root>";
+        System.out.println("Expected:"); System.out.println(expected);
+        System.out.println("Obtained:"); System.out.println(xml.substring(start, end));
+        assertEquals(expected, xml.substring(start, end));
     }
 }
 
@@ -102,5 +136,5 @@ public class TestHTMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestHTMLWriter.java,v 1.3 2003/04/07 22:24:29 jstrachan Exp $
+ * $Id: TestHTMLWriter.java,v 1.4 2004/03/28 21:50:51 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.13 2004/03/07 21:57:50 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.14 2004/03/28 21:50:51 maartenc Exp $
  */
 
 package org.dom4j;
@@ -29,7 +29,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -242,6 +242,40 @@ public class TestXMLWriter extends AbstractTestCase {
         assertEquals(doc.asXML(), doc2.asXML());
     }
     
+    public void testBug923882() throws Exception {
+        Document doc = DocumentFactory.getInstance().createDocument();
+        Element root = doc.addElement("root");
+        root.addText("this is ");
+        root.addText(" sim");
+        root.addText("ple text ");
+        root.addElement("child");
+        root.addText(" contai");
+        root.addText("ning spaces and");
+        root.addText(" multiple textnodes");
+        OutputFormat format = new OutputFormat();
+        format.setEncoding("UTF-8");
+        format.setIndentSize(4);
+        format.setNewlines(true);
+        format.setTrimText(true);
+        format.setExpandEmptyElements(true);
+        StringWriter buffer = new StringWriter();
+        XMLWriter writer = new XMLWriter(buffer, format);
+        writer.write( doc );
+        String xml = buffer.toString();
+        log( xml );
+        int start = xml.indexOf("<root"),
+                end = xml.indexOf("/root>")+6;
+        String eol = "\n"; //System.getProperty("line.separator");
+        String expected = 
+                "<root>this is simple text" + eol +
+                "    <child></child>containing spaces and multiple textnodes" + eol +
+                "</root>";
+        System.out.println("Expected:"); System.out.println(expected);
+        System.out.println("Obtained:"); System.out.println(xml.substring(start, end));
+        assertEquals(expected, xml.substring(start, end));
+    }
+
+    
     protected org.dom4j.Document parseDocument(String file) throws Exception {
         SAXReader reader = new SAXReader();
         return reader.read( file );
@@ -307,5 +341,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.13 2004/03/07 21:57:50 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.14 2004/03/28 21:50:51 maartenc Exp $
  */
