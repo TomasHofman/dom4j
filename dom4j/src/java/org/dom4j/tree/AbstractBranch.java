@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.18 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.19 2001/02/01 23:19:19 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -184,34 +184,32 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     // polymorphic node methods    
 
     public void add(Node node) {
-        if ( node instanceof Element ) {
-            add((Element) node);
-        }
-        else if ( node instanceof Comment ) {
-            add((Comment) node);
-        }
-        else if ( node instanceof ProcessingInstruction ) {
-            add((ProcessingInstruction) node);
-        }
-        else {
-            invalidNodeTypeAddException(node);
+        switch ( node.getNodeType() ) {
+            case ELEMENT_NODE:
+                add((Element) node);
+                break;
+            case COMMENT_NODE:
+                add((Comment) node);
+                break;
+            case PROCESSING_INSTRUCTION_NODE:
+                add((ProcessingInstruction) node);
+                break;
+            default:
+                invalidNodeTypeAddException(node);
         }
     }
     
     public boolean remove(Node node) {
-        if ( node instanceof Element ) {
-            return remove((Element) node);
-        }
-        else
-        if ( node instanceof Comment ) {
-            return remove((Comment) node);
-        }
-        else
-        if ( node instanceof ProcessingInstruction ) {
-            return remove((ProcessingInstruction) node);
-        }
-        else {
-            return false;
+        switch ( node.getNodeType() ) {
+            case ELEMENT_NODE:
+                return remove((Element) node);
+            case COMMENT_NODE:
+                return remove((Comment) node);
+            case PROCESSING_INSTRUCTION_NODE:
+                return remove((ProcessingInstruction) node);
+            default:
+                invalidNodeTypeAddException(node);
+                return false;
         }
     }
     
@@ -325,5 +323,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.18 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.19 2001/02/01 23:19:19 jstrachan Exp $
  */

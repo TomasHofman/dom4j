@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttribute.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.7 2001/02/01 23:19:19 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -19,11 +19,15 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
+    public short getNodeType() {
+        return ATTRIBUTE_NODE;
+    }
 
+    
     public void setNamespace(Namespace namespace) {
         throw new UnsupportedOperationException("This Attribute is read only and cannot be changed" );
     }
@@ -127,5 +131,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.7 2001/02/01 23:19:19 jstrachan Exp $
  */

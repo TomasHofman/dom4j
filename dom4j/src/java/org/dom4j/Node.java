@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.7 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: Node.java,v 1.8 2001/02/01 23:19:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,10 +22,42 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public interface Node extends Cloneable {
 
+    // W3C DOM complient node type codes
+    
+    /** Matches Element nodes */
+    public static final short ELEMENT_NODE = 1;
+    /** Matches elements nodes */
+    public static final short ATTRIBUTE_NODE = 2;
+    /** Matches elements nodes */
+    public static final short TEXT_NODE = 3;
+    /** Matches elements nodes */
+    public static final short CDATA_SECTION_NODE = 4;
+    /** Matches elements nodes */
+    public static final short ENTITY_REFERENCE_NODE = 5;
+    /** Matches elements nodes */
+    //public static final short ENTITY_NODE = 6;
+    /** Matches ProcessingInstruction */
+    public static final short PROCESSING_INSTRUCTION_NODE = 7;
+    /** Matches Comments nodes */
+    public static final short COMMENT_NODE = 8;
+    /** Matches Document nodes */
+    public static final short DOCUMENT_NODE = 9;
+    /** Matches DocumentType nodes */
+    public static final short DOCUMENT_TYPE_NODE = 10;
+    //public static final short DOCUMENT_FRAGMENT_NODE = 11;
+    //public static final short NOTATION_NODE = 12;
+    
+    /** Matchs a Namespace Node - NOTE this differs from DOM */
+    // XXXX: ????
+    public static final short NAMESPACE_NODE = 13;
+    
+    /** Does not match any valid node */
+    public static final short UNKNOWN_NODE = 14;
+    
     
     /** <p><code>supportsParent</code> returns true if this node supports the 
       * parent relationship.</p>
@@ -161,7 +193,18 @@ public interface Node extends Cloneable {
       */
     public void write(PrintWriter writer);    
 
+    
+    /** Returns the code according to the type of node. 
+      * This makes processing nodes polymorphically much easier as the
+      * switch statement can be used instead of multiple if (instanceof) 
+      * statements.
+      *
+      * @return a W3C DOM complient code for the node type such as 
+      * ELEMENT_NODE or ATTRIBUTE_NODE
+      */
+    public short getNodeType();
 
+    
     /** <p>Removes this node from its parent if there is one. 
       * If this node is the root element of a document then it is removed
       * from the document as well.</p>
@@ -291,5 +334,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.7 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: Node.java,v 1.8 2001/02/01 23:19:19 jstrachan Exp $
  */

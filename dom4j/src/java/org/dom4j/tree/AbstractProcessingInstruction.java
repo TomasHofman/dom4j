@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractProcessingInstruction.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.6 2001/02/01 23:19:19 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -21,13 +21,17 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public abstract class AbstractProcessingInstruction extends AbstractNode implements ProcessingInstruction {
 
     public AbstractProcessingInstruction() {
     }
     
+    public short getNodeType() {
+        return PROCESSING_INSTRUCTION_NODE;
+    }
+
     public String toString() {
         return super.toString() + " [ProcessingInstruction: &" + getName() + ";]";
     }
@@ -164,5 +168,5 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractProcessingInstruction.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.6 2001/02/01 23:19:19 jstrachan Exp $
  */
