@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.32 2001/08/16 09:41:21 jstrachan Exp $
+ * $Id: Element.java,v 1.33 2001/10/24 09:41:15 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.32 $
+  * @version $Revision: 1.33 $
   */
 public interface Element extends Branch {
 
@@ -150,7 +150,7 @@ public interface Element extends Branch {
       */
     public Element addAttribute(QName qName, String value);
     
-    /** Adds a new <code>Comment</code> node with the given text to this branch.
+    /** Adds a new <code>Comment</code> node with the given text to this element.
       *
       * @param comment is the text for the <code>Comment</code> node.
       * @return this <code>Element</code> instance.
@@ -259,28 +259,44 @@ public interface Element extends Branch {
       */
     public boolean remove(Attribute attribute);
     
-    /** Removes the given <code>CDATA</code> from this element.
+    /** Removes the given <code>CDATA</code> if the node is 
+      * an immediate child of this element. 
+      *
+      * If the given node is not an immediate child of this element
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param cdata is the CDATA to be removed
       * @return true if the cdata was removed
       */
     public boolean remove(CDATA cdata);
     
-    /** Removes the given <code>Entity</code> from this element.
+    /** Removes the given <code>Entity</code> if the node is 
+      * an immediate child of this element. 
+      *
+      * If the given node is not an immediate child of this element
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param entity is the entity to be removed
       * @return true if the entity was removed
       */
     public boolean remove(Entity entity);
     
-    /** Removes the given <code>Namespace</code> from this element.
+    /** Removes the given <code>Namespace</code> if the node is 
+      * an immediate child of this element. 
+      *
+      * If the given node is not an immediate child of this element
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param namespace is the namespace to be removed
       * @return true if the namespace was removed
       */
     public boolean remove(Namespace namespace);
     
-    /** Removes the given <code>Text</code> from this element.
+    /** Removes the given <code>Text</code> if the node is 
+      * an immediate child of this element. 
+      *
+      * If the given node is not an immediate child of this element
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param text is the text to be removed
       * @return true if the text was removed
@@ -645,5 +661,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.32 2001/08/16 09:41:21 jstrachan Exp $
+ * $Id: Element.java,v 1.33 2001/10/24 09:41:15 jstrachan Exp $
  */

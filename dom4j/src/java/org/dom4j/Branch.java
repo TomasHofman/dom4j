@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.23 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: Branch.java,v 1.24 2001/10/24 09:41:15 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.23 $
+  * @version $Revision: 1.24 $
   */
 public interface Branch extends Node {
 
@@ -189,7 +189,12 @@ public interface Branch extends Node {
       */
     public void add(ProcessingInstruction pi);
         
-    /** Removes the given <code>Node</code> if the node is in this branch.
+    /** Removes the given <code>Node</code> if the node is 
+      * an immediate child of this branch. 
+      *
+      * If the given node is not an immediate child of this branch
+      * then the {@link Node#detach()} method should be used instead.
+      *
       * This is a polymorphic method which will call the typesafe method 
       * for the node type such as remove(Element) or remove(Comment).
       *
@@ -198,21 +203,33 @@ public interface Branch extends Node {
       */    
     public boolean remove(Node node);
     
-    /** Removes the given <code>Comment</code> from this branch.
+    /** Removes the given <code>Comment</code> if the node is 
+      * an immediate child of this branch. 
+      *
+      * If the given node is not an immediate child of this branch
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param comment is the comment to be removed
       * @return true if the comment was removed
       */
     public boolean remove(Comment comment);
     
-    /** Removes the given <code>Element</code> from this branch.
+    /** Removes the given <code>Element</code> if the node is 
+      * an immediate child of this branch. 
+      *
+      * If the given node is not an immediate child of this branch
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param element is the element to be removed
       * @return true if the element was removed
       */
     public boolean remove(Element element);
     
-    /** Removes the given <code>ProcessingInstruction</code> from this branch.
+    /** Removes the given <code>ProcessingInstruction</code> if the node is 
+      * an immediate child of this branch. 
+      *
+      * If the given node is not an immediate child of this branch
+      * then the {@link Node#detach()} method should be used instead.
       *
       * @param pi is the processing instruction to be removed
       * @return true if the processing instruction was removed
@@ -284,5 +301,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.23 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: Branch.java,v 1.24 2001/10/24 09:41:15 jstrachan Exp $
  */
