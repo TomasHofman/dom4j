@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.19 2001/04/04 18:08:48 jstrachan Exp $
+ * $Id: Branch.java,v 1.20 2001/05/30 10:06:43 jstrachan Exp $
  */
 
 package org.dom4j;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +25,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public interface Branch extends Node {
 
@@ -84,6 +85,14 @@ public interface Branch extends Node {
       *   branch.
       */    
     public void setContent(List content);    
+    
+    /** Appends the content of the given branch to this branch instance.
+      * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
+      * method.
+      *
+      * @param element is the element whose content will be added to me.
+      */
+    public void appendContent(Branch branch);
     
     /** Clears the content for this branch, removing any <code>Node</code> 
       * instances this branch may contain.
@@ -279,5 +288,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.19 2001/04/04 18:08:48 jstrachan Exp $
+ * $Id: Branch.java,v 1.20 2001/05/30 10:06:43 jstrachan Exp $
  */

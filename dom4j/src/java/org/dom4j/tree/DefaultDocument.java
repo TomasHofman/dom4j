@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.18 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.19 2001/05/30 10:06:43 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -29,7 +29,7 @@ import org.xml.sax.EntityResolver;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -117,6 +117,14 @@ public class DefaultDocument extends AbstractDocument {
     public void setEntityResolver(EntityResolver entityResolver) {
         this.entityResolver = entityResolver;
     }
+    
+    public Object clone() {
+        DefaultDocument document = (DefaultDocument) super.clone();
+        document.rootElement = null;
+        document.contents = null;
+        document.appendContent(this);
+        return document;
+    }    
     
     public List processingInstructions() {
         List source = contents;
@@ -352,5 +360,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.18 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.19 2001/05/30 10:06:43 jstrachan Exp $
  */
