@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: OutputFormat.java,v 1.9 2002/05/20 08:14:16 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.10 2004/02/28 14:00:32 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -13,7 +13,7 @@ package org.dom4j.io;
   * used by {@link XMLWriter} and its base classes to format the XML output
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class OutputFormat implements Cloneable {
 
@@ -52,6 +52,9 @@ public class OutputFormat implements Cloneable {
 
     /** Controls when to output a line.separtor every so many tags in case of no lines and total text trimming.*/
     private int newLineAfterNTags = 0;  //zero means don't bother.
+    
+    /** Quote character to use when writing attributes. */
+    private char attributeQuoteChar = '\"';
 
 
     /** Creates an <code>OutputFormat</code> with
@@ -310,6 +313,28 @@ public class OutputFormat implements Cloneable {
         newLineAfterNTags = tagCount;
     }
 
+    public char getAttributeQuoteCharacter() {
+        return attributeQuoteChar;
+    }
+
+    /**
+     * Sets the character used to quote attribute values. The specified
+     * character must be a valid XML attribute quote character, otherwise an
+     * <code>IllegalArgumentException</code> will be thrown.
+     * 
+     * @param quoteChar The character to use when quoting attribute values.
+     * @throws IllegalArgumentException If the specified character is not a
+     *         valid XML attribute quote character.
+     */
+    public void setAttributeQuoteCharacter(char quoteChar) {
+        if (quoteChar == '\'' || quoteChar == '"') {
+            attributeQuoteChar = quoteChar;
+        } else {
+            throw new IllegalArgumentException(
+                    "Invalid attribute quote character (" + quoteChar + ")");
+        }
+    }
+
     /** Parses command line arguments of the form
       * <code>-omitEncoding -indentSize 3 -newlines -trimText</code>
       *
@@ -431,5 +456,5 @@ public class OutputFormat implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: OutputFormat.java,v 1.9 2002/05/20 08:14:16 jstrachan Exp $
+ * $Id: OutputFormat.java,v 1.10 2004/02/28 14:00:32 maartenc Exp $
  */
