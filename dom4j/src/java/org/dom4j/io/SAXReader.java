@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.34 2001/08/28 06:47:21 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.35 2001/08/29 17:58:16 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.34 $
+  * @version $Revision: 1.35 $
   */
 public class SAXReader {
 
@@ -284,7 +284,12 @@ public class SAXReader {
                 if ( entityResolver == null ) {
                     entityResolver = createDefaultEntityResolver( in.getSystemId() );
                 }
-                //xmlReader.setEntityResolver( entityResolver );
+                xmlReader.setEntityResolver( entityResolver );
+            }
+            else {
+                if ( this.entityResolver != null ) {
+                    xmlReader.setEntityResolver( this.entityResolver );
+                }
             }
             
             SAXContentHandler contentHandler = createContentHandler(xmlReader);
@@ -612,7 +617,7 @@ public class SAXReader {
         public InputSource resolveEntity(String publicId, String systemId) {            
             // try create a relative URI reader...
             if ( systemId != null && systemId.length() > 0 ) {
-                if ( uriPrefix != null ) {
+                if ( uriPrefix != null && systemId.indexOf( ':' ) <= 0 ) {
                     systemId = uriPrefix + systemId;
                 }                    
             }
@@ -669,5 +674,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.34 2001/08/28 06:47:21 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.35 2001/08/29 17:58:16 jstrachan Exp $
  */
