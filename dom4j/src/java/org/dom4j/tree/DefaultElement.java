@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.52 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: DefaultElement.java,v 1.53 2004/06/22 11:42:43 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -63,7 +63,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.52 $
+  * @version $Revision: 1.53 $
   */
 
 public class DefaultElement extends AbstractElement {
@@ -464,11 +464,11 @@ public class DefaultElement extends AbstractElement {
 
         BackedList answer = createResultList();
 
-        if (getNamespaceURI().length() > 0) {
-
-            answer.addLocal(getNamespace());
-
-        }
+//        if (getNamespaceURI().length() > 0) {
+//
+//            answer.addLocal(getNamespace());
+//
+//        }
 
         final Object contentShadow = content;
         if (contentShadow instanceof List) {
@@ -523,8 +523,11 @@ public class DefaultElement extends AbstractElement {
                 if (object instanceof Namespace) {
 
                     Namespace namespace = (Namespace) object;
+                    
+                    if (!namespace.equals(getNamespace())) {
 
-                    answer.addLocal(namespace);
+                        answer.addLocal(namespace);
+                    }
 
                 }
 
@@ -539,6 +542,12 @@ public class DefaultElement extends AbstractElement {
             if (contentShadow instanceof Namespace) {
 
                 Namespace namespace = (Namespace) contentShadow;
+                
+                if (namespace.equals(getNamespace())) {
+                    
+                    return createEmptyList();
+                    
+                }
 
                 return createSingleResultList(namespace);
 
@@ -1857,5 +1866,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.52 2004/03/24 17:03:49 maartenc Exp $
+ * $Id: DefaultElement.java,v 1.53 2004/06/22 11:42:43 maartenc Exp $
  */

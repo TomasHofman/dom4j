@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.73 2004/06/17 18:56:30 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.74 2004/06/22 11:42:37 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.73 $
+  * @version $Revision: 1.74 $
   */
 
 public abstract class AbstractElement
@@ -1968,11 +1968,11 @@ public abstract class AbstractElement
 
         BackedList answer = createResultList();
 
-        if (getNamespaceURI().equals(uri)) {
-
-            answer.addLocal(getNamespace());
-
-        }
+//        if (getNamespaceURI().equals(uri)) {
+//
+//            answer.addLocal(getNamespace());
+//
+//        }
 
         List list = contentList();
 
@@ -2000,12 +2000,12 @@ public abstract class AbstractElement
 
         BackedList answer = createResultList();
 
-        if (getNamespaceURI().length() > 0) {
-
-            answer.addLocal(getNamespace());
-
-        }
-
+//        if (getNamespaceURI().length() > 0) {
+//
+//            answer.addLocal(getNamespace());
+//
+//        }
+//
         List list = contentList();
 
         int size = list.size();
@@ -2041,8 +2041,11 @@ public abstract class AbstractElement
             if (object instanceof Namespace) {
 
                 Namespace namespace = (Namespace) object;
+                
+                if (! namespace.equals(getNamespace())) {
 
-                answer.addLocal(namespace);
+                    answer.addLocal(namespace);
+                }
 
             }
 
@@ -2322,5 +2325,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.73 2004/06/17 18:56:30 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.74 2004/06/22 11:42:37 maartenc Exp $
  */

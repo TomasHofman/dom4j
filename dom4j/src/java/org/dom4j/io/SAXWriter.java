@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXWriter.java,v 1.18 2003/04/07 22:14:05 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.19 2004/06/22 11:42:35 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -46,7 +46,7 @@ import org.xml.sax.helpers.LocatorImpl;
 /** <p><code>SAXWriter</code> writes a DOM4J tree to a SAX ContentHandler.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 public class SAXWriter implements XMLReader {
 
@@ -587,6 +587,16 @@ public class SAXWriter implements XMLReader {
       */
     protected AttributesImpl startPrefixMapping( Element element, NamespaceStack namespaceStack ) throws SAXException {
         AttributesImpl namespaceAttributes = null;
+        
+        // start with the namespace of the element
+        Namespace elementNamespace = element.getNamespace();
+        if ((elementNamespace != null) && !isIgnoreableNamespace(elementNamespace, namespaceStack)) {
+            namespaceStack.push(elementNamespace);
+            contentHandler.startPrefixMapping(
+                    elementNamespace.getPrefix(), elementNamespace.getURI());
+            namespaceAttributes = addNamespaceAttribute(namespaceAttributes, elementNamespace);
+        }
+        
         List declaredNamespaces = element.declaredNamespaces();
         for ( int i = 0, size = declaredNamespaces.size(); i < size ; i++ ) {
             Namespace namespace = (Namespace) declaredNamespaces.get(i);
@@ -742,5 +752,5 @@ public class SAXWriter implements XMLReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXWriter.java,v 1.18 2003/04/07 22:14:05 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.19 2004/06/22 11:42:35 maartenc Exp $
  */

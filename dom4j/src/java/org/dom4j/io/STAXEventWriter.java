@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: STAXEventWriter.java,v 1.2 2004/06/08 19:38:52 maartenc Exp $
+ * $Id: STAXEventWriter.java,v 1.3 2004/06/22 11:42:36 maartenc Exp $
  */
 package org.dom4j.io;
 
@@ -199,7 +199,7 @@ public class STAXEventWriter {
         // create attribute & namespace iterators
         Iterator attrIter = new AttributeIterator(elem.attributeIterator());
         Iterator nsIter = new NamespaceIterator(
-        elem.declaredNamespaces().iterator());
+                elem.declaredNamespaces().iterator());
         
         // create start event
         return factory.createStartElement(tagName, attrIter, nsIter);
@@ -563,5 +563,5 @@ public class STAXEventWriter {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: STAXEventWriter.java,v 1.2 2004/06/08 19:38:52 maartenc Exp $
+ * $Id: STAXEventWriter.java,v 1.3 2004/06/22 11:42:36 maartenc Exp $
  */

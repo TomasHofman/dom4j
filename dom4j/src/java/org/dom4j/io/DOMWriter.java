@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.10 2004/03/24 16:26:44 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.11 2004/06/22 11:42:35 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -27,7 +27,7 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class DOMWriter {
 
@@ -183,6 +183,15 @@ public class DOMWriter {
         org.w3c.dom.Element domElement = domDocument.createElementNS(elUri, elName);
         
         int stackSize = namespaceStack.size();
+        
+        // add the namespace of the element first
+        Namespace elementNamespace = element.getNamespace();
+        if (isNamespaceDeclaration(elementNamespace)) {
+            namespaceStack.push(elementNamespace);
+            writeNamespace(domElement, elementNamespace);
+        }
+        
+        // add the additional declared namespaces
         List declaredNamespaces = element.declaredNamespaces();
         for ( int i = 0, size = declaredNamespaces.size(); i < size ; i++ ) {
             Namespace namespace = (Namespace) declaredNamespaces.get(i);
@@ -420,5 +429,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.10 2004/03/24 16:26:44 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.11 2004/06/22 11:42:35 maartenc Exp $
  */
