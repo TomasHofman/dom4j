@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBackedList.java,v 1.14 2004/06/25 08:03:47 maartenc Exp $
+ * $Id: TestBackedList.java,v 1.15 2004/07/02 19:12:05 maartenc Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
 /** A test harness to test the backed list feature of DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class TestBackedList extends AbstractTestCase {
 
@@ -94,24 +94,6 @@ public class TestBackedList extends AbstractTestCase {
         children.add(children.size(), factory.createElement("dummy4"));
     }
     
-    public void testSort() {
-//        DocumentFactory factory = DocumentFactory.getInstance();
-//        Element root = (Element) document.selectSingleNode( "/root" );
-//        root.elements().add(factory.createElement("aaa"));
-//        
-//        List elements = root.elements();
-//        Collections.sort(elements, new Comparator() {
-//            public int compare(Object obj1, Object obj2) {
-//                Node node1 = (Node) obj1;
-//                Node node2 = (Node) obj2;
-//                return node1.getName().compareTo(node2.getName());
-//            }
-//        }); 
-//        
-//        List sortedElements = root.elements();
-//        assertEquals("aaa", ((Node) sortedElements.get(0)).getName());
-    }
-        
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void mutate(Element element) throws Exception {
@@ -178,5 +160,5 @@ public class TestBackedList extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBackedList.java,v 1.14 2004/06/25 08:03:47 maartenc Exp $
+ * $Id: TestBackedList.java,v 1.15 2004/07/02 19:12:05 maartenc Exp $
  */
