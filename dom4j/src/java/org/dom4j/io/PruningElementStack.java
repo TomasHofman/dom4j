@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PruningElementStack.java,v 1.4 2001/05/03 17:18:29 jstrachan Exp $
+ * $Id: PruningElementStack.java,v 1.5 2001/05/18 18:38:21 drwhite Exp $
  */
 
 package org.dom4j.io;
@@ -21,9 +21,9 @@ import org.dom4j.ElementHandler;
   * in memory at the same time.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
-public class PruningElementStack extends ElementStack {
+class PruningElementStack extends ElementStack {
 
     /** ElementHandler to call when pruning occurs */
     private ElementHandler elementHandler;
@@ -85,7 +85,8 @@ public class PruningElementStack extends ElementStack {
     protected void pathMatches(Element parent, Element selectedNode) {
         //System.out.println( "Matched: " + selectedNode + " about to call handler" );
         
-        elementHandler.handle( selectedNode );
+        //elementHandler.handle( selectedNode );
+        elementHandler.onEnd(this);
         
         //System.out.println( "Pruning: removing " + selectedNode + " from parent: " + parent );
         parent.remove( selectedNode );
@@ -157,5 +158,5 @@ public class PruningElementStack extends ElementStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PruningElementStack.java,v 1.4 2001/05/03 17:18:29 jstrachan Exp $
+ * $Id: PruningElementStack.java,v 1.5 2001/05/18 18:38:21 drwhite Exp $
  */
