@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RoundTripDemo.java,v 1.3 2003/04/07 22:24:48 jstrachan Exp $
+ * $Id: RoundTripDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package jaxp;
+package samples.jaxp;
 
-import SAXDemo;
+import samples.SAXDemo;
 
 import java.io.Reader;
 import java.io.StringReader;
@@ -30,7 +30,7 @@ import org.dom4j.io.XMLWriter;
   * again using JAXP to convert the XML.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class RoundTripDemo extends SAXDemo {
     
@@ -144,5 +144,5 @@ public class RoundTripDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RoundTripDemo.java,v 1.3 2003/04/07 22:24:48 jstrachan Exp $
+ * $Id: RoundTripDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

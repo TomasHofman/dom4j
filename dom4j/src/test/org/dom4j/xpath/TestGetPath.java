@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.9 2003/04/07 22:24:39 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.10 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -85,7 +85,7 @@ public class TestGetPath extends AbstractTestCase {
 
     public void testDefaultNamespace() throws Exception {
         SAXReader reader = new SAXReader();
-        Document doc = reader.read( "xml/test/defaultNamespace.xml" );
+        Document doc = reader.read(getClass().getResource("/xml/test/defaultNamespace.xml"));
         Element root = doc.getRootElement();
         testPath( root, "/*[name()='a']" ); 
         
@@ -189,5 +189,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.9 2003/04/07 22:24:39 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.10 2004/04/20 11:46:31 maartenc Exp $
  */

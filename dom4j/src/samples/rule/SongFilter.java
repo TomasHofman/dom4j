@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SongFilter.java,v 1.3 2003/04/07 22:25:16 jstrachan Exp $
+ * $Id: SongFilter.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package rule;
+package samples.rule;
 
 import java.io.File;
 
@@ -144,5 +144,5 @@ public class SongFilter {
  *
  * Copyright 2002 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SongFilter.java,v 1.3 2003/04/07 22:25:16 jstrachan Exp $
+ * $Id: SongFilter.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

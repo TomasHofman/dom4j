@@ -5,7 +5,7 @@ package samples;
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LinkChecker.java,v 1.9 2004/04/20 08:38:17 maartenc Exp $
+ * $Id: LinkChecker.java,v 1.10 2004/04/20 11:46:30 maartenc Exp $
  */
 
 
@@ -19,7 +19,7 @@ import org.dom4j.Document;
   * all the hypertext links in a source file.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class LinkChecker extends SAXDemo {
     
@@ -32,7 +32,7 @@ public class LinkChecker extends SAXDemo {
         
     protected void process(Document document) throws Exception {
         
-        List list = document.selectNodes( "//a/@href" );
+        List list = document.selectNodes( "//*[local-name()='a']/@href" );
         
         System.out.println( "Found: " + list.size() + " links(s)" );        
         
@@ -88,5 +88,5 @@ public class LinkChecker extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LinkChecker.java,v 1.9 2004/04/20 08:38:17 maartenc Exp $
+ * $Id: LinkChecker.java,v 1.10 2004/04/20 11:46:30 maartenc Exp $
  */

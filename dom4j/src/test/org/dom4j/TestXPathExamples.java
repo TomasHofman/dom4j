@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathExamples.java,v 1.8 2003/04/07 22:24:30 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.9 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.dom4j.rule.Pattern;
 /** Performs a number of unit test cases on the XPath engine
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestXPathExamples extends TestCase {
 
@@ -61,7 +61,7 @@ public class TestXPathExamples extends TestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testXPaths() throws Exception {
-        Document document = xmlReader.read( "xml/test/xpath/tests.xml" );
+        Document document = xmlReader.read(getClass().getResource("/xml/test/xpath/tests.xml"));
         Element root = document.getRootElement();
         for ( Iterator iter = root.elementIterator( "document" ); iter.hasNext(); ) {
             Element documentTest = (Element) iter.next();
@@ -73,7 +73,7 @@ public class TestXPathExamples extends TestCase {
     //-------------------------------------------------------------------------                    
     protected void testDocument(Element documentTest) throws Exception {
         String url = documentTest.attributeValue( "url" );
-        testDocument = xmlReader.read( url );
+        testDocument = xmlReader.read(getClass().getResource("/" + url));
         assertTrue( "Loaded test document: " + url, testDocument != null );
         
         log( "Loaded document: " + url );
@@ -256,5 +256,5 @@ public class TestXPathExamples extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathExamples.java,v 1.8 2003/04/07 22:24:30 jstrachan Exp $
+ * $Id: TestXPathExamples.java,v 1.9 2004/04/20 11:46:31 maartenc Exp $
  */

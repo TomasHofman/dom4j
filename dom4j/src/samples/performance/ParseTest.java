@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ParseTest.java,v 1.3 2003/04/07 22:25:15 jstrachan Exp $
+ * $Id: ParseTest.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package performance;
+package samples.performance;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -19,7 +19,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the performance of parsing a Document
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class ParseTest extends PerformanceSupport {
     
@@ -109,5 +109,5 @@ public class ParseTest extends PerformanceSupport {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ParseTest.java,v 1.3 2003/04/07 22:25:15 jstrachan Exp $
+ * $Id: ParseTest.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

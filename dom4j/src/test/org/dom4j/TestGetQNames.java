@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetQNames.java,v 1.4 2003/04/07 22:24:29 jstrachan Exp $
+ * $Id: TestGetQNames.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
 
+import java.net.URL;
 import java.util.List;
 
 import junit.framework.Test;
@@ -20,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the DocumentFactory.getQNames() method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestGetQNames extends AbstractTestCase {
     
@@ -71,7 +72,8 @@ public class TestGetQNames extends AbstractTestCase {
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
         reader.setDocumentFactory( factory );
-        document = reader.read( "xml/test/soap2.xml" );
+        URL url = getClass().getResource("/xml/test/soap2.xml");
+        document = reader.read(url);
     }
 }
 
@@ -120,5 +122,5 @@ public class TestGetQNames extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetQNames.java,v 1.4 2003/04/07 22:24:29 jstrachan Exp $
+ * $Id: TestGetQNames.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

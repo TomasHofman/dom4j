@@ -4,13 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDemo.java,v 1.4 2003/04/07 22:24:51 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
 
-package dom;
+package samples.dom;
 
-import AbstractDemo;
+import samples.AbstractDemo;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -22,7 +22,7 @@ import org.dom4j.io.DOMReader;
   * XML tree then converting it to a DOM4J tree.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMDemo extends AbstractDemo {
     
@@ -103,5 +103,5 @@ public class DOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDemo.java,v 1.4 2003/04/07 22:24:51 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

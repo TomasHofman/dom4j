@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDOMDemo.java,v 1.4 2003/04/07 22:24:52 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package dom;
+package samples.dom;
 
-import AbstractDemo;
+import samples.AbstractDemo;
 
 import org.dom4j.Document;
 import org.dom4j.io.DOMReader;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXWriter;
   * SAX <-> DOM4J and DOM4J <-> DOM and DOM4J <-> text
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class SAXDOMDemo extends AbstractDemo {
     
@@ -115,5 +115,5 @@ public class SAXDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDOMDemo.java,v 1.4 2003/04/07 22:24:52 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

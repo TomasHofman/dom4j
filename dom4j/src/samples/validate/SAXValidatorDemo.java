@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXValidatorDemo.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
+ * $Id: SAXValidatorDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package validate;
+package samples.validate;
 
-import AbstractDemo;
+import samples.AbstractDemo;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -25,7 +25,7 @@ import org.xml.sax.SAXException;
 /** A sample program demonstrating the use of validation using SAXValidator
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SAXValidatorDemo extends AbstractDemo {
     
@@ -155,5 +155,5 @@ public class SAXValidatorDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXValidatorDemo.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
+ * $Id: SAXValidatorDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

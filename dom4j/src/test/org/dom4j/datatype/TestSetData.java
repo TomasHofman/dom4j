@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSetData.java,v 1.5 2003/09/26 06:13:33 werken Exp $
+ * $Id: TestSetData.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
 import java.math.BigInteger;
+import java.net.URL;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -27,7 +28,7 @@ import org.dom4j.io.SAXReader;
 /** Tests setting the value of datatype aware element or attribute value
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestSetData extends AbstractTestCase {
 
@@ -181,8 +182,10 @@ public class TestSetData extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
-        Document schema = reader.read( "xml/test/schema/personal.xsd" );
-        factory.loadSchema( schema );
+        
+        URL url = getClass().getResource("/xml/test/schema/personal.xsd");
+        Document schema = reader.read(url);
+        factory.loadSchema(schema);
         Namespace ns = new Namespace( "t", "urn://testing" );
         factory.loadSchema( schema, ns );
     }
@@ -233,5 +236,5 @@ public class TestSetData extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSetData.java,v 1.5 2003/09/26 06:13:33 werken Exp $
+ * $Id: TestSetData.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
  */

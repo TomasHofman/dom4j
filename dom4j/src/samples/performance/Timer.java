@@ -4,15 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Timer.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: Timer.java,v 1.3 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package performance;
+package samples.performance;
 
 /** A timer for use in performance monitoring 
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class Timer {
     
@@ -190,5 +190,5 @@ public class Timer {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Timer.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: Timer.java,v 1.3 2004/04/20 11:46:31 maartenc Exp $
  */

@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XercesDemo.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package validate;
+package samples.validate;
 
-import AbstractDemo;
+import samples.AbstractDemo;
 
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
@@ -20,7 +20,7 @@ import org.dom4j.util.XMLErrorHandler;
 /** Validates a document using Xerces and an XML Schema.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XercesDemo extends AbstractDemo {
     
@@ -110,5 +110,5 @@ public class XercesDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XercesDemo.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

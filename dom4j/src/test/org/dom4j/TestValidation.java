@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestValidation.java,v 1.3 2003/04/07 22:24:31 jstrachan Exp $
+ * $Id: TestValidation.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
@@ -14,11 +14,12 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.io.SAXReader;
+import org.xml.sax.SAXException;
 
 /** A test harness for validation when using SAXReader
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestValidation extends AbstractTestCase {
 
@@ -37,11 +38,13 @@ public class TestValidation extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testValidation() throws Exception {
-        SAXReader reader = new SAXReader( true );
-        Document document = reader.read( "xml/nitf/valid.xml" );
-        assertTrue( "Found valid document", document != null );
-        
-        log( "Validated document: " + document );
+        try {
+            SAXReader reader = new SAXReader("org.dom4j.io.aelfred2.SAXDriver", true);
+            reader.read("test");
+            fail();
+        } catch (DocumentException e) {
+            ; // internal parser is non validating, so OK
+        }
     }
 }
 
@@ -90,5 +93,5 @@ public class TestValidation extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestValidation.java,v 1.3 2003/04/07 22:24:31 jstrachan Exp $
+ * $Id: TestValidation.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

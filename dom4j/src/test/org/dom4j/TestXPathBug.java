@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPathBug.java,v 1.5 2003/04/07 22:24:32 jstrachan Exp $
+ * $Id: TestXPathBug.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestXPathBug extends AbstractTestCase {
     
@@ -40,7 +40,7 @@ public class TestXPathBug extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     public void testXPaths() throws Exception {        
         SAXReader reader = new SAXReader();
-        Document document = reader.read( "xml/rabo1ae.xml" );
+        Document document = reader.read(getClass().getResource("/xml/rabo1ae.xml"));
         Element root = (Element) document.selectSingleNode( "/m:Msg/m:Contents/m:Content" );
         
         assertTrue( "root is not null", root != null );
@@ -50,15 +50,14 @@ public class TestXPathBug extends AbstractTestCase {
         assertTrue( "Found namespace", ns != null );
         
         System.out.println( "Found: " + ns.getURI() );
-/*        
-        Element element = (Element) root.selectSingleNode( "ab:RaboPayLoad" );
+
+        Element element = (Element) root.selectSingleNode( "ab:RaboPayLoad[@id='1234123']" );
         
         assertTrue( "element is not null", element != null );
         
-        String value = element.valueOf( "ab:RateType" );
+        String value = element.valueOf( "ab:AccountingEntry/ab:RateType" );
         
         assertEquals( "RateType is correct", "CRRNT", value );
-*/
     }
     
     /** A bug found by Rob Lebowitz
@@ -175,5 +174,5 @@ public class TestXPathBug extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPathBug.java,v 1.5 2003/04/07 22:24:32 jstrachan Exp $
+ * $Id: TestXPathBug.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
  */

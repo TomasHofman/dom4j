@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAutoSchema.java,v 1.3 2003/04/07 22:24:36 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
 import java.math.BigInteger;
+import java.net.URL;
 import java.util.Calendar;
 
 import junit.framework.Test;
@@ -24,7 +25,7 @@ import org.dom4j.io.SAXReader;
   * use auto-loading of the XML Schema document
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestAutoSchema extends AbstractDataTypeTest {
 
@@ -72,16 +73,15 @@ public class TestAutoSchema extends AbstractDataTypeTest {
     protected void setUp() throws Exception {
         DocumentFactory factory = loadDocumentFactory();
         
-        SAXReader reader = new SAXReader( factory );
+        SAXReader reader = new SAXReader(factory);
         String uri = getDocumentURI();
         
-        log( "Parsing: " + uri );
-        
-        document = reader.read( uri );
+        URL url = getClass().getResource(uri);
+        document = reader.read(url);
     }
     
     protected String getDocumentURI() {
-        return "xml/test/schema/personal-schema.xml";
+        return "/xml/test/schema/personal-schema.xml";
     }
     
     protected DocumentFactory loadDocumentFactory() throws Exception {
@@ -135,5 +135,5 @@ public class TestAutoSchema extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAutoSchema.java,v 1.3 2003/04/07 22:24:36 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

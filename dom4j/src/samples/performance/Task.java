@@ -4,15 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Task.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: Task.java,v 1.3 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package performance;
+package samples.performance;
 
 /** An interface for some task which may throw an exception
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface Task {
 
@@ -65,5 +65,5 @@ public interface Task {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Task.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: Task.java,v 1.3 2004/04/20 11:46:31 maartenc Exp $
  */

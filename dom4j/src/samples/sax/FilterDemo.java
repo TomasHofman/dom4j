@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FilterDemo.java,v 1.3 2003/04/07 22:25:16 jstrachan Exp $
+ * $Id: FilterDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package sax;
+package samples.sax;
 
-import SAXDemo;
+import samples.SAXDemo;
 
 import org.dom4j.Document;
 import org.dom4j.io.SAXReader;
@@ -18,7 +18,7 @@ import org.dom4j.io.SAXReader;
   * use a SAX XMLFilter when parsing an XML document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class FilterDemo extends SAXDemo {
     
@@ -81,5 +81,5 @@ public class FilterDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FilterDemo.java,v 1.3 2003/04/07 22:25:16 jstrachan Exp $
+ * $Id: FilterDemo.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

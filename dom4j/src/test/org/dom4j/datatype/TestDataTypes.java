@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDataTypes.java,v 1.3 2003/04/07 22:24:36 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.net.URL;
 import java.util.Calendar;
 
 import junit.framework.Test;
@@ -25,7 +26,7 @@ import org.dom4j.io.SAXReader;
   * XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestDataTypes extends AbstractDataTypeTest {
 
@@ -44,10 +45,6 @@ public class TestDataTypes extends AbstractDataTypeTest {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     
-/*    
-    public void testDuration() throws Exception {        
-        testNodes( "//durationTag", Calendar.class );
-    }
     public void testgMonthDay() throws Exception {        
         testNodes( "//gMonthDayTag", Calendar.class );
     }
@@ -57,7 +54,7 @@ public class TestDataTypes extends AbstractDataTypeTest {
     public void testgMonth() throws Exception {        
         testNodes( "//gMonthTag", Calendar.class );
     }
-*/
+
     
     public void testDate() throws Exception {        
         testNodes( "//dateTag", Calendar.class );
@@ -159,7 +156,8 @@ public class TestDataTypes extends AbstractDataTypeTest {
     protected void setUp() throws Exception {
         DocumentFactory factory = DatatypeDocumentFactory.getInstance();
         SAXReader reader = new SAXReader( factory );
-        document = reader.read( "xml/test/schema/test.xml" );
+        URL url = getClass().getResource("/xml/test/schema/test.xml");
+        document = reader.read(url);
     }
 }
 
@@ -208,5 +206,5 @@ public class TestDataTypes extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDataTypes.java,v 1.3 2003/04/07 22:24:36 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

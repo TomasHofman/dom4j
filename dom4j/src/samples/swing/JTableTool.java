@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTableTool.java,v 1.4 2003/04/07 22:25:07 jstrachan Exp $
+ * $Id: JTableTool.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package swing;
+package samples.swing;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -23,7 +23,7 @@ import org.dom4j.swing.XMLTableModel;
   * such as in xml/swing/.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class JTableTool {
     
@@ -111,5 +111,5 @@ public class JTableTool {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTableTool.java,v 1.4 2003/04/07 22:25:07 jstrachan Exp $
+ * $Id: JTableTool.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

@@ -4,13 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDemo.java,v 1.6 2003/04/07 22:25:21 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.7 2004/04/20 11:46:30 maartenc Exp $
  */
 
 
-package bean;
+package samples.bean;
 
-import SAXDemo;
+import samples.SAXDemo;
 
 import java.awt.Component;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
   * inside a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class BeanDemo extends SAXDemo {
     
@@ -126,5 +126,5 @@ public class BeanDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDemo.java,v 1.6 2003/04/07 22:25:21 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.7 2004/04/20 11:46:30 maartenc Exp $
  */

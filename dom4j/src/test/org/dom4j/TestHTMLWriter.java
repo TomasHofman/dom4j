@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestHTMLWriter.java,v 1.4 2004/03/28 21:50:51 maartenc Exp $
+ * $Id: TestHTMLWriter.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.OutputFormat;
 /** Test harness for the HTMLWriter
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestHTMLWriter extends AbstractTestCase {
 
@@ -53,6 +53,9 @@ public class TestHTMLWriter extends AbstractTestCase {
         String output = buffer.toString();
         
         String expects = "\n<html>\n  <body>First&nbsp;test</body>\n</html>\n";
+        
+        System.out.println("expects: " + expects);
+        System.out.println("output: " + output);
         
         assertEquals( "Output is correct", expects, output );
     }
@@ -136,5 +139,5 @@ public class TestHTMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestHTMLWriter.java,v 1.4 2004/03/28 21:50:51 maartenc Exp $
+ * $Id: TestHTMLWriter.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

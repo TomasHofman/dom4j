@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ToTextTest.java,v 1.3 2003/04/07 22:25:14 jstrachan Exp $
+ * $Id: ToTextTest.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package performance;
+package samples.performance;
 
 import java.io.StringWriter;
 
@@ -18,7 +18,7 @@ import org.dom4j.io.XMLWriter;
 /** Tests the performance of turning a Document into text
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class ToTextTest extends PerformanceSupport {
     
@@ -100,5 +100,5 @@ public class ToTextTest extends PerformanceSupport {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ToTextTest.java,v 1.3 2003/04/07 22:25:14 jstrachan Exp $
+ * $Id: ToTextTest.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXSLT.java,v 1.5 2003/04/07 22:24:20 jstrachan Exp $
+ * $Id: TestXSLT.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that XSLT works correctly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestXSLT extends AbstractTestCase {
 
@@ -46,7 +46,7 @@ public class TestXSLT extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testTransform() throws Exception {   
-        Document transformedDoc = transform( "xml/nitf/ashtml.xsl" );
+        Document transformedDoc = transform( "/xml/nitf/ashtml.xsl" );
         
         //log( transformedDoc.asXML() );
         
@@ -65,7 +65,7 @@ public class TestXSLT extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
-        document = reader.read( "xml/nitf/sample.xml" );
+        document = reader.read(getClass().getResource("/xml/nitf/sample.xml"));
     }
         
     protected Document transform(String xsl) throws Exception {   
@@ -74,7 +74,7 @@ public class TestXSLT extends AbstractTestCase {
         // load the transformer
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer( 
-            new StreamSource( xsl ) 
+            new StreamSource(getClass().getResourceAsStream(xsl))
         );
         
         // now lets create the TrAX source and result
@@ -133,5 +133,5 @@ public class TestXSLT extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXSLT.java,v 1.5 2003/04/07 22:24:20 jstrachan Exp $
+ * $Id: TestXSLT.java,v 1.6 2004/04/20 11:46:31 maartenc Exp $
  */

@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.11 2003/04/07 22:24:26 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.12 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.File;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,12 +25,12 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the use of Namespaces.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestNamespace extends AbstractTestCase {
 
     /** Input XML file to read */
-    protected static String INPUT_XML_FILE = "xml/namespaces.xml";
+    protected static String INPUT_XML_FILE = "/xml/namespaces.xml";
     
     /** Namespace to use in tests */
     protected static Namespace XSL_NAMESPACE = Namespace.get( 
@@ -110,7 +111,8 @@ public class TestNamespace extends AbstractTestCase {
         // parse or create a document
         SAXReader reader = new SAXReader();
         reader.setDocumentFactory( factory );
-        Document doc = reader.read( "xml/test/nestedNamespaces.xml" );
+        URL url = getClass().getResource("/xml/test/nestedNamespaces.xml");
+        Document doc = reader.read(url);
         
         // evaluate XPath using registered namespace prefixes
         // which do not appear in the document (though the URIs do!)
@@ -125,7 +127,8 @@ public class TestNamespace extends AbstractTestCase {
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
-        document = reader.read( new File( INPUT_XML_FILE ) );
+        URL url = getClass().getResource(INPUT_XML_FILE);
+        document = reader.read(url);
     }
 
     /** @return the root element of the document */
@@ -181,5 +184,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.11 2003/04/07 22:24:26 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.12 2004/04/20 11:46:31 maartenc Exp $
  */

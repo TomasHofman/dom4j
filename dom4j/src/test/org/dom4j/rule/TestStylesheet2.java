@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestStylesheet2.java,v 1.4 2003/04/07 22:25:10 jstrachan Exp $
+ * $Id: TestStylesheet2.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.rule;
 
+import java.net.URL;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
@@ -20,7 +21,7 @@ import org.dom4j.io.SAXReader;
   * XSLT rule engine.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestStylesheet2 extends TestStylesheet {
 
@@ -67,7 +68,8 @@ public class TestStylesheet2 extends TestStylesheet {
     //-------------------------------------------------------------------------                    
     public void setUp() throws Exception {
         SAXReader reader = new SAXReader();
-        document = reader.read( "xml/test/littledoc.xml" );
+        URL url = getClass().getResource("/xml/test/littledoc.xml");
+        document = reader.read(url);
         
         stylesheet = new Stylesheet();
         stylesheet.setValueOfAction(
@@ -126,5 +128,5 @@ public class TestStylesheet2 extends TestStylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestStylesheet2.java,v 1.4 2003/04/07 22:25:10 jstrachan Exp $
+ * $Id: TestStylesheet2.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

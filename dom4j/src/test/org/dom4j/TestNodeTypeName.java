@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNodeTypeName.java,v 1.4 2003/04/07 22:24:21 jstrachan Exp $
+ * $Id: TestNodeTypeName.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j;
 
+import java.net.URL;
 import java.util.Iterator;
 
 import junit.framework.Test;
@@ -20,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the getNodeNameType() method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestNodeTypeName extends AbstractTestCase {
     
@@ -43,26 +44,27 @@ public class TestNodeTypeName extends AbstractTestCase {
     }
     
     public void testCDATA() throws Exception {
-        testDocument( "xml/cdata.xml" );
+        testDocument( "/xml/cdata.xml" );
     }
     
     public void testNamespaces() throws Exception {
-        testDocument( "xml/namespaces.xml" );
-        testDocument( "xml/testNamespaces.xml" );
+        testDocument( "/xml/namespaces.xml" );
+        testDocument( "/xml/testNamespaces.xml" );
     }
     public void testPI() throws Exception {
-        testDocument( "xml/testPI.xml" );
+        testDocument( "/xml/testPI.xml" );
     }
 
     public void testInline() throws Exception {
-        testDocument( "xml/inline.xml" );
+        testDocument( "/xml/inline.xml" );
     }
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void testDocument(String fileName) throws Exception {
         SAXReader reader = new SAXReader();
-        Document document = reader.read( fileName );
+        URL url = getClass().getResource(fileName);
+        Document document = reader.read(url);
         testDocument(document);
     }
 
@@ -168,5 +170,5 @@ public class TestNodeTypeName extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNodeTypeName.java,v 1.4 2003/04/07 22:24:21 jstrachan Exp $
+ * $Id: TestNodeTypeName.java,v 1.5 2004/04/20 11:46:31 maartenc Exp $
  */

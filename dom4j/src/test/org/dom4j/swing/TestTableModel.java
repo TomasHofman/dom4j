@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestTableModel.java,v 1.2 2003/04/07 22:25:20 jstrachan Exp $
+ * $Id: TestTableModel.java,v 1.3 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.swing;
@@ -22,7 +22,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the Swing TableModel using a dom4j document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestTableModel extends TestCase
 {
@@ -40,7 +40,7 @@ public class TestTableModel extends TestCase
     
     public void testServletTable() throws Exception {
         SAXReader reader = new SAXReader();
-        Document document = reader.read( "xml/web.xml" );
+        Document document = reader.read(getClass().getResource("/xml/web.xml"));
         
         XMLTableDefinition tableDefinition = new XMLTableDefinition();
         tableDefinition.setRowExpression( "/web-app/servlet" );
@@ -68,8 +68,8 @@ public class TestTableModel extends TestCase
     
     public void testServletTableViaXMLDescription() throws Exception {
         SAXReader reader = new SAXReader();
-        Document definition = reader.read( "xml/swing/tableForWeb.xml" );
-        Document document = reader.read( "xml/web.xml" );
+        Document definition = reader.read(getClass().getResource("/xml/swing/tableForWeb.xml"));
+        Document document = reader.read(getClass().getResource("/xml/web.xml"));
         
         XMLTableModel tableModel = new XMLTableModel( definition, document );
         

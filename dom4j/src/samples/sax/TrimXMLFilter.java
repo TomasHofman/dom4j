@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TrimXMLFilter.java,v 1.3 2003/04/07 22:25:18 jstrachan Exp $
+ * $Id: TrimXMLFilter.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package sax;
+package samples.sax;
 
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
@@ -16,7 +16,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
 /** An example XMLFilter which trims all text content, removing whitespace
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TrimXMLFilter extends XMLFilterImpl {
     
@@ -86,5 +86,5 @@ public class TrimXMLFilter extends XMLFilterImpl {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TrimXMLFilter.java,v 1.3 2003/04/07 22:25:18 jstrachan Exp $
+ * $Id: TrimXMLFilter.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JARVDemo2.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
+ * $Id: JARVDemo2.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
-package validate;
+package samples.validate;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -24,7 +24,7 @@ import org.xml.sax.SAXParseException;
   * with Sun's MSV library implementation.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class JARVDemo2 {
     
@@ -144,5 +144,5 @@ public class JARVDemo2 {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JARVDemo2.java,v 1.3 2003/04/07 22:24:49 jstrachan Exp $
+ * $Id: JARVDemo2.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */

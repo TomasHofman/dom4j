@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSchemaParse.java,v 1.3 2003/04/07 22:24:37 jstrachan Exp $
+ * $Id: TestSchemaParse.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
+import java.net.URL;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
@@ -22,7 +23,7 @@ import org.dom4j.io.SAXReader;
   * Luis Peña Sánchez
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestSchemaParse extends AbstractTestCase {
 
@@ -45,8 +46,10 @@ public class TestSchemaParse extends AbstractTestCase {
 
         SAXReader reader = new SAXReader();
         reader.setDocumentFactory( factory );
-        Document schema = reader.read( "xml/test/LuisSchema.xsd" );
-        factory.loadSchema( schema );
+        
+        URL url = getClass().getResource("/xml/test/LuisSchema.xsd");
+        Document schema = reader.read(url);
+        factory.loadSchema(schema);
      
         log( "Loaded the schema" );
         
@@ -99,5 +102,5 @@ public class TestSchemaParse extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSchemaParse.java,v 1.3 2003/04/07 22:24:37 jstrachan Exp $
+ * $Id: TestSchemaParse.java,v 1.4 2004/04/20 11:46:31 maartenc Exp $
  */
