@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.18 2003/04/07 22:24:29 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.19 2004/03/11 22:00:39 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.tree.DefaultElement;
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.18 $
+  * @version $Revision: 1.19 $
   */
 
 public class TestXPath extends AbstractTestCase {
@@ -98,6 +98,11 @@ public class TestXPath extends AbstractTestCase {
         XPath xpath = element.createXPath( "//bar" );        
 
         assertTrue("created a valid XPath: " + xpath != null );
+    }
+    
+    public void testBug857704() throws Exception {
+        Document doc = DocumentHelper.parseText("<foo xmlns:bar='http://blort'/>");
+        doc.selectNodes("//*[preceding-sibling::*]");       // shouldn't throw NPE
     }
 
     // Implementation methods
@@ -212,5 +217,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.18 2003/04/07 22:24:29 jstrachan Exp $
+ * $Id: TestXPath.java,v 1.19 2004/03/11 22:00:39 maartenc Exp $
  */
