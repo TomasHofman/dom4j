@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.17 2004/04/29 09:42:23 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.18 2004/05/05 14:52:31 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.ByteArrayInputStream;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,7 @@ import org.jaxen.VariableContext;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class DocumentHelper {
 
@@ -209,7 +210,7 @@ public class DocumentHelper {
       */
     public static Document parseText(String text) throws DocumentException {
         SAXReader reader = new SAXReader();
-        return reader.read(new ByteArrayInputStream(text.getBytes()));
+        return reader.read(new StringReader(text));
     }
 
     /** <p><code>parseText</code> parses the given text as an XML document
@@ -323,5 +324,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.17 2004/04/29 09:42:23 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.18 2004/05/05 14:52:31 maartenc Exp $
  */
