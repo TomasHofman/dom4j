@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestClone.java,v 1.1 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: TestClone.java,v 1.2 2001/05/30 10:12:50 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.dom4j.util.NodeComparator;
 /** A test harness to test the clone() methods on Nodes
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestClone extends AbstractTestCase {
 
@@ -68,6 +68,14 @@ public class TestClone extends AbstractTestCase {
         assert( "Documents are equal", comparator.compare( document, doc2 ) == 0 );
     }
     
+    public void testRootElementClone() throws Exception {
+        testElementClone( document.getRootElement() );
+    }
+    
+    public void testAuthorElementClone() throws Exception {
+        testElementClone( (Element) document.selectSingleNode( "//author" ) );
+    }
+    
     public void testRootCompare1() throws Exception {                
         Document doc2 = (Document) document.clone();
         Element author = doc2.getRootElement();
@@ -101,6 +109,18 @@ public class TestClone extends AbstractTestCase {
         
         assert( "Documents are not equal", comparator.compare( document, doc2 ) != 0 );
     }
+    
+    
+    protected void testElementClone( Element element ) throws Exception {        
+        Element element2 = (Element) element.clone();
+        
+        assert( "Returned a new Element", element2 != element );
+        assert( "New element has no parent", element2.getParent() == null );
+        assert( "New element has no Document", element2.getDocument() == null );
+        
+        assert( "Element fragments are equal", comparator.compare( element, element2 ) == 0 );
+    }
+    
 }
 
 
@@ -148,5 +168,5 @@ public class TestClone extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestClone.java,v 1.1 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: TestClone.java,v 1.2 2001/05/30 10:12:50 jstrachan Exp $
  */
