@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.59 2003/02/25 01:36:56 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.60 2003/02/25 23:28:52 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.59 $
+  * @version $Revision: 1.60 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -90,7 +90,7 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     protected static final OutputFormat DEFAULT_FORMAT = new OutputFormat();
 
     /** Should entityRefs by resolved when writing ? */
-    private boolean resolveEntityRefs = false;
+    private boolean resolveEntityRefs = true;
 
     /** Stores the last type of node written so algorithms can refer to the
       * previous node type */
@@ -1456,5 +1456,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.59 2003/02/25 01:36:56 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.60 2003/02/25 23:28:52 maartenc Exp $
  */
