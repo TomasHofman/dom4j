@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathGrep.java,v 1.8 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.9 2001/04/12 16:36:01 jstrachan Exp $
  */
 
 
@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
   * command on Unix but uses XPath expressions for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class XPathGrep extends SAXDemo {
     
@@ -72,18 +72,19 @@ public class XPathGrep extends SAXDemo {
             println( "Results:" );
         }
         
-        List list = xpath.selectNodes( document );
-        
-        if ( verbose ) {
-            println( ": " + list );
+        Object object = xpath.selectObject( document );
+
+        if ( object instanceof List ) {
+            List list = (List) object;
+            for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
+                getXMLWriter().write( iter.next() );
+                getXMLWriter().println();
+            }        
+            getXMLWriter().flush();
         }
-        
-        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
-            Object object = iter.next();
-            writer.write( object );
-            writer.println();
-        }        
-        writer.flush();
+        else {
+            println( (object != null) ? object.toString() : "null" );
+        }
     }
     
     protected void readOptions( String arg ) {
@@ -138,5 +139,5 @@ public class XPathGrep extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathGrep.java,v 1.8 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.9 2001/04/12 16:36:01 jstrachan Exp $
  */
