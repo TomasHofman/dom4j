@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RuleManager.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
+ * $Id: RuleManager.java,v 1.3 2001/02/15 12:06:49 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -22,7 +22,7 @@ import org.dom4j.rule.pattern.NodeTypePattern;
   * can be found for a given DOM4J Node using the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class RuleManager {
 
@@ -140,7 +140,7 @@ public class RuleManager {
     protected void addDefaultRules(final Mode mode) {
         // add an apply templates rule
         Action applyTemplates = new Action() {
-            public void run( Node node ) {
+            public void run( Node node ) throws Exception {
                 if ( node instanceof Element ) {
                     mode.applyTemplates( (Element) node );
                 }
@@ -219,5 +219,5 @@ public class RuleManager {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RuleManager.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
+ * $Id: RuleManager.java,v 1.3 2001/02/15 12:06:49 jstrachan Exp $
  */

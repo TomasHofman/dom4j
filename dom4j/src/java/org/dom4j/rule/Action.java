@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Action.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: Action.java,v 1.2 2001/02/15 12:06:49 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -16,16 +16,11 @@ import org.dom4j.Node;
   * when a rule matches a node in the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public interface Action {
 
-    public void run(Node node);
-
-
-    /** An action which does nothing.
-      */
-    public static final Action NULL_ACTION = NullAction.SINGLETON;
+    public void run(Node node) throws Exception;
 }
 
 
@@ -73,5 +68,5 @@ public interface Action {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Action.java,v 1.1 2001/02/07 14:51:18 jstrachan Exp $
+ * $Id: Action.java,v 1.2 2001/02/15 12:06:49 jstrachan Exp $
  */
