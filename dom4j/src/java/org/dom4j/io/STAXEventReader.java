@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: STAXEventReader.java,v 1.3 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: STAXEventReader.java,v 1.4 2004/07/14 19:32:23 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -25,6 +25,7 @@ import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.EntityReference;
 import javax.xml.stream.events.Namespace;
 import javax.xml.stream.events.ProcessingInstruction;
+import javax.xml.stream.events.StartDocument;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
@@ -200,19 +201,43 @@ public class STAXEventReader {
      * 		stream.
      */
     public Document readDocument(XMLEventReader reader) throws XMLStreamException {
-        Document doc = factory.createDocument();
+        Document doc = null;
 
         while (reader.hasNext()) {
             XMLEvent nextEvent = reader.peek();
             int type = nextEvent.getEventType();
             switch (type) {
                 case XMLStreamConstants.START_DOCUMENT :
+                    StartDocument startDoc = (StartDocument)reader.nextEvent();
+                    if (doc == null) {
+                        // create document
+                        if (startDoc.encodingSet()) {
+                            String encodingScheme = 
+                                startDoc.getCharacterEncodingScheme();
+                            doc = factory.createDocument(encodingScheme);
+                        } else {
+                            doc = factory.createDocument();
+                        }
+                    } else {
+                        // duplicate or misplaced xml declaration
+                        throw new XMLStreamException(
+                                "Unexpected StartDocument event",
+                                startDoc.getLocation());
+                    }
+                    break;
+
                 case XMLStreamConstants.END_DOCUMENT :
-                    // skip document events
+                case XMLStreamConstants.SPACE :
+                case XMLStreamConstants.CHARACTERS :
+                    // skip end document and space outside the root element
                     reader.nextEvent();
                     break;
                     
                 default :
+                    if (doc == null) {
+                        // create document
+                        doc = factory.createDocument();
+                    }
                     Node n = readNode(reader);
                     doc.add(n);
             }
@@ -568,6 +593,6 @@ public class STAXEventReader {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: STAXEventReader.java,v 1.3 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: STAXEventReader.java,v 1.4 2004/07/14 19:32:23 maartenc Exp $
  */
 
