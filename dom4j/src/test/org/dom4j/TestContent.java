@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.13 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestContent.java,v 1.14 2002/05/30 12:26:41 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -151,6 +151,35 @@ public class TestContent extends AbstractTestCase {
         assertTrue( list.get(1) == foo );
         assertTrue( list.get(2) == footer );
     }
+    
+    public void testAddAtIndex() throws Exception {
+        Document doc = factory.createDocument();
+        Element root = doc.addElement( "html" );
+        Element header = root.addElement( "header" );
+        Element body = root.addElement( "body" );
+        
+        Element foo = factory.createElement( "foo" );
+        Element bar = factory.createElement( "bar" );
+        
+        List content = header.content();
+        content.add(0, foo);
+        content.add(0, bar);
+        
+        assertEquals( "foo", header.node(1).getName() );
+        assertEquals( "bar", header.node(0).getName() );
+        
+        foo = factory.createElement( "foo" );
+        bar = factory.createElement( "bar" );
+        
+        content = body.content();
+        content.add(0, foo);
+        content.add(1, bar);
+        
+        assertEquals( "foo", body.node(0).getName() );
+        assertEquals( "bar", body.node(1).getName() );
+    }
+        
+    
         
     // Implementation methods
     //-------------------------------------------------------------------------                    
@@ -214,5 +243,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.13 2002/05/20 08:14:08 jstrachan Exp $
+ * $Id: TestContent.java,v 1.14 2002/05/30 12:26:41 jstrachan Exp $
  */
