@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.8 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: Branch.java,v 1.9 2001/01/18 17:54:51 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public interface Branch extends Node {
 
@@ -41,9 +41,10 @@ public interface Branch extends Node {
       */    
     public int getNodeCount();
     
-    /** Returns the content nodes of this branch as a <code>List</code>. 
+    /** <p>Returns the content nodes of this branch as a <code>List</code>. 
       * The <code>List</code> is backed by the <code>Branch</code> so that
-      * changes to the list are reflected in the branch and vice-versa
+      * changes to the list are reflected in the branch though the reverse 
+      * is not true.</p>
       *
       * @return the nodes that this branch contains as a <code>List</code>
       */    
@@ -68,8 +69,22 @@ public interface Branch extends Node {
       */    
     public void clearContent();
     
+    /** <p>Returns a list of all the processing instructions in this branch.
+      * The list is backed by this branch so that changes to the list will
+      * be reflected in the branch but the reverse is not the case.</p>
+      *
+      * @return a backed list of the processing instructions
+      */
     public List getProcessingInstructions();
+    
+    /** <p>Returns a list of the processing instructions for the given target.
+      * The list is backed by this branch so that changes to the list will
+      * be reflected in the branch but the reverse is not the case.</p>
+      *
+      * @return a backed list of the processing instructions
+      */
     public List getProcessingInstructions(String target);
+    
     public ProcessingInstruction getProcessingInstruction(String target);    
     public void setProcessingInstructions(List listOfPIs);
     
@@ -219,5 +234,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.8 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: Branch.java,v 1.9 2001/01/18 17:54:51 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.10 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.11 2001/01/18 17:54:51 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -54,7 +54,7 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
 
     
     public String getText() {
-        List content = getContent();
+        List content = getContentList();
         if (content != null) {
             int size = content.size();
             if (size >= 1) {
@@ -109,7 +109,7 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     }
 
     public boolean hasMixedContent() {
-        List content = getContent();
+        List content = getContentList();
         if (content == null || content.isEmpty() || content.size() < 2) {
             return false;
         }
@@ -214,6 +214,9 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
         return CONTENT_FACTORY;
     }
 
+    /** @return the internal List used to manage the content */
+    protected abstract List getContentList();
+    
     protected abstract void addNode(Node node);
     
     protected abstract boolean removeNode(Node node);
@@ -278,5 +281,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.10 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.11 2001/01/18 17:54:51 jstrachan Exp $
  */

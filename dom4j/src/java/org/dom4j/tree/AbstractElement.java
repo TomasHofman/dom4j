@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.12 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.13 2001/01/18 17:54:51 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -37,7 +37,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -101,7 +101,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         }
         
         // visit content
-        List content = getContent();
+        List content = getContentList();
         if (content != null) {
             for ( Iterator iter = content.iterator(); iter.hasNext(); ) {
                 Object object = iter.next();
@@ -369,7 +369,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
         
     public void appendContent(Element element) {
-        for (Iterator iter = element.getContent().iterator(); iter.hasNext(); ) {
+        for (Iterator iter = element.nodeIterator(); iter.hasNext(); ) {
             Object object = iter.next();
             if (object instanceof String) {
                 element.addText((String) object);
@@ -510,5 +510,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.12 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.13 2001/01/18 17:54:51 jstrachan Exp $
  */
