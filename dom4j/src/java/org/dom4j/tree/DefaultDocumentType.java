@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocumentType.java,v 1.4 2001/10/12 11:05:01 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.5 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -17,7 +17,7 @@ import org.dom4j.DocumentType;
   * of an XML document type.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DefaultDocumentType extends AbstractDocumentType {
 
@@ -160,5 +160,5 @@ public class DefaultDocumentType extends AbstractDocumentType {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocumentType.java,v 1.4 2001/10/12 11:05:01 jstrachan Exp $
+ * $Id: DefaultDocumentType.java,v 1.5 2002/05/20 08:14:10 jstrachan Exp $
  */

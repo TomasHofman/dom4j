@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTNativeDOMDemo.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.6 2002/05/20 08:14:17 jstrachan Exp $
  */
 
 package dom;
@@ -31,7 +31,7 @@ import XSLTDemo;
   * dom4j.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class XSLTNativeDOMDemo extends XSLTDemo {
     
@@ -119,5 +119,5 @@ public class XSLTNativeDOMDemo extends XSLTDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTNativeDOMDemo.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.6 2002/05/20 08:14:17 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathPattern.java,v 1.11 2001/08/31 08:58:53 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.12 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -42,7 +42,7 @@ import java.util.Map;
   * which uses an XPath xpath.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class XPathPattern implements org.dom4j.rule.Pattern {
     
@@ -182,5 +182,5 @@ public class XPathPattern implements org.dom4j.rule.Pattern {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathPattern.java,v 1.11 2001/08/31 08:58:53 jstrachan Exp $
+ * $Id: XPathPattern.java,v 1.12 2002/05/20 08:14:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestStylesheet.java,v 1.5 2001/08/17 08:16:03 jstrachan Exp $
+ * $Id: TestStylesheet.java,v 1.6 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -22,7 +22,7 @@ import org.dom4j.*;
   * XSLT rule engine.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestStylesheet extends AbstractTestCase {
 
@@ -159,5 +159,5 @@ public class TestStylesheet extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestStylesheet.java,v 1.5 2001/08/17 08:16:03 jstrachan Exp $
+ * $Id: TestStylesheet.java,v 1.6 2002/05/20 08:14:13 jstrachan Exp $
  */

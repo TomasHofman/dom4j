@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.8 2002/03/02 14:43:00 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -353,5 +353,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.8 2002/03/02 14:43:00 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLResult.java,v 1.2 2001/08/06 18:18:22 jstrachan Exp $
+ * $Id: XMLResult.java,v 1.3 2002/05/20 08:14:16 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -25,7 +25,7 @@ import org.xml.sax.ext.LexicalHandler;
   * and control over how the XML is formatted.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XMLResult extends SAXResult {
 
@@ -125,5 +125,5 @@ public class XMLResult extends SAXResult {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLResult.java,v 1.2 2001/08/06 18:18:22 jstrachan Exp $
+ * $Id: XMLResult.java,v 1.3 2002/05/20 08:14:16 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: WriterDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
+ * $Id: WriterDemo.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package jaxp;
@@ -28,7 +28,7 @@ import org.dom4j.io.XMLWriter;
 /** A sample program which uses JAXP to write a dom4j Document to a Stream.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class WriterDemo extends SAXDemo {
     
@@ -103,5 +103,5 @@ public class WriterDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: WriterDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
+ * $Id: WriterDemo.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SongFilter.java,v 1.1 2002/05/13 19:25:32 tradem Exp $
+ * $Id: SongFilter.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package rule;
@@ -148,5 +148,5 @@ public class SongFilter {
  *
  * Copyright 2002 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SongFilter.java,v 1.1 2002/05/13 19:25:32 tradem Exp $
+ * $Id: SongFilter.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeDemo.java,v 1.2 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: DatatypeDemo.java,v 1.3 2002/05/20 08:14:12 jstrachan Exp $
  */
 
 import org.dom4j.Document;
@@ -16,7 +16,7 @@ import org.dom4j.datatype.DatatypeDocumentFactory;
 /** A simple test program to demonstrate using XML Schema Data Types
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DatatypeDemo extends AbstractDemo {
     
@@ -83,5 +83,5 @@ public class DatatypeDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeDemo.java,v 1.2 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: DatatypeDemo.java,v 1.3 2002/05/20 08:14:12 jstrachan Exp $
  */

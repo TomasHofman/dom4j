@@ -2,7 +2,7 @@
 // http://www.saxproject.org
 // Written by David Megginson
 // NO WARRANTY!  This class is in the Public Domain.
-// $Id: SAXNotRecognizedException.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: SAXNotRecognizedException.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax;
 
@@ -34,7 +34,7 @@ public class SAXNotRecognizedException extends SAXException
      */
     public SAXNotRecognizedException ()
     {
-	super();
+    super();
     }
 
 
@@ -45,7 +45,7 @@ public class SAXNotRecognizedException extends SAXException
      */
     public SAXNotRecognizedException (String message)
     {
-	super(message);
+    super(message);
     }
 
 }

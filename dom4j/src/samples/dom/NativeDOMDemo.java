@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NativeDOMDemo.java,v 1.3 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.4 2002/05/20 08:14:17 jstrachan Exp $
  */
 
 
@@ -19,7 +19,7 @@ import AbstractDemo;
 /** A simple test program to demonstrate the use of native DOM support.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class NativeDOMDemo extends AbstractDemo {
     
@@ -107,5 +107,5 @@ public class NativeDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NativeDOMDemo.java,v 1.3 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.4 2002/05/20 08:14:17 jstrachan Exp $
  */

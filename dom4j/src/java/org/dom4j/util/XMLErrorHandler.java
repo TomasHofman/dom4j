@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLErrorHandler.java,v 1.1 2001/08/20 14:57:20 jstrachan Exp $
+ * $Id: XMLErrorHandler.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -21,7 +21,7 @@ import org.xml.sax.SAXParseException;
   * using XSLT or the errors can be included in a SOAP message.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class XMLErrorHandler implements ErrorHandler {
      
@@ -164,5 +164,5 @@ public class XMLErrorHandler implements ErrorHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLErrorHandler.java,v 1.1 2001/08/20 14:57:20 jstrachan Exp $
+ * $Id: XMLErrorHandler.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */

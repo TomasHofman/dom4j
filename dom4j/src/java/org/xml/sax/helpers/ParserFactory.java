@@ -1,7 +1,7 @@
 // SAX parser factory.
 // http://www.saxproject.org
 // No warranty; no copyright -- use this as you will.
-// $Id: ParserFactory.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: ParserFactory.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
 
 package org.xml.sax.helpers;
 
@@ -79,18 +79,18 @@ public class ParserFactory {
      * @see org.xml.sax.Parser
      */
     public static Parser makeParser ()
-	throws ClassNotFoundException,
-	IllegalAccessException, 
-	InstantiationException,
-	NullPointerException,
-	ClassCastException
+    throws ClassNotFoundException,
+    IllegalAccessException, 
+    InstantiationException,
+    NullPointerException,
+    ClassCastException
     {
-	String className = System.getProperty("org.xml.sax.parser");
-	if (className == null) {
-	    throw new NullPointerException("No value for sax.parser property");
-	} else {
-	    return makeParser(className);
-	}
+    String className = System.getProperty("org.xml.sax.parser");
+    if (className == null) {
+        throw new NullPointerException("No value for sax.parser property");
+    } else {
+        return makeParser(className);
+    }
     }
     
     
@@ -116,13 +116,13 @@ public class ParserFactory {
      * @see org.xml.sax.Parser
      */
     public static Parser makeParser (String className)
-	throws ClassNotFoundException,
-	IllegalAccessException, 
-	InstantiationException,
-	ClassCastException
+    throws ClassNotFoundException,
+    IllegalAccessException, 
+    InstantiationException,
+    ClassCastException
     {
-	return (Parser) NewInstance.newInstance (
-		NewInstance.getClassLoader (), className);
+    return (Parser) NewInstance.newInstance (
+        NewInstance.getClassLoader (), className);
     }
     
 }

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.8 2002/04/29 17:44:33 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -31,7 +31,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -136,12 +136,12 @@ public class TestXMLWriter extends AbstractTestCase {
     /** This test harness was supplied by Lari Hotari */
     public void testContentHandler() throws Exception {
         StringWriter out = new StringWriter();
-	OutputFormat format = OutputFormat.createPrettyPrint();
-	format.setEncoding("iso-8859-1");
-	XMLWriter writer = new XMLWriter(out, format);
+    OutputFormat format = OutputFormat.createPrettyPrint();
+    format.setEncoding("iso-8859-1");
+    XMLWriter writer = new XMLWriter(out, format);
         generateXML(writer);
-	writer.close();
-	String text = out.toString();
+    writer.close();
+    String text = out.toString();
 
         if ( VERBOSE ) {
             log( "Created XML" );
@@ -215,16 +215,16 @@ public class TestXMLWriter extends AbstractTestCase {
     }
     
     protected void generateXML(ContentHandler handler) throws SAXException {
-	handler.startDocument();
-	AttributesImpl attrs = new AttributesImpl();
-	attrs.clear();
-	attrs.addAttribute("","","name","CDATA", "arvojoo");
-	handler.startElement("","","processes",attrs);
-	String text="jeejee";
-	char textch[] = text.toCharArray();
-	handler.characters(textch,0,textch.length);
-	handler.endElement("","","processes" );
-	handler.endDocument();
+    handler.startDocument();
+    AttributesImpl attrs = new AttributesImpl();
+    attrs.clear();
+    attrs.addAttribute("","","name","CDATA", "arvojoo");
+    handler.startElement("","","processes",attrs);
+    String text="jeejee";
+    char textch[] = text.toCharArray();
+    handler.characters(textch,0,textch.length);
+    handler.endElement("","","processes" );
+    handler.endDocument();
     }
 }
 
@@ -273,5 +273,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.8 2002/04/29 17:44:33 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.9 2002/05/20 08:14:08 jstrachan Exp $
  */

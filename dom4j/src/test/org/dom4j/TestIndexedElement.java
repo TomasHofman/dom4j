@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestIndexedElement.java,v 1.2 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestIndexedElement.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.util.IndexedDocumentFactory;
 /** A test harness for the IndexedElement implementation
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestIndexedElement extends AbstractTestCase {
 
@@ -128,5 +128,5 @@ public class TestIndexedElement extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestIndexedElement.java,v 1.2 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestIndexedElement.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */

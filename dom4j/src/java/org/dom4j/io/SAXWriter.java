@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXWriter.java,v 1.13 2002/04/30 12:24:45 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.14 2002/05/20 08:14:15 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -49,7 +49,7 @@ import org.xml.sax.helpers.LocatorImpl;
 /** <p><code>SAXWriter</code> writes a DOM4J tree to a SAX ContentHandler.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class SAXWriter implements XMLReader {
 
@@ -418,7 +418,7 @@ public class SAXWriter implements XMLReader {
                     write( (Comment) object );
                 }
                 else {
-                    throw new SAXException( "Invalid Node in DOM4J content: " + object );
+                    throw new SAXException( "Invalid Node in DOM4J content: " + object + " of type: " + object.getClass() );
                 }
             }
             else if ( object instanceof String ) { 
@@ -674,5 +674,5 @@ public class SAXWriter implements XMLReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXWriter.java,v 1.13 2002/04/30 12:24:45 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.14 2002/05/20 08:14:15 jstrachan Exp $
  */

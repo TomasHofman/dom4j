@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestFilter.java,v 1.6 2001/08/09 08:22:59 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.7 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -24,7 +24,7 @@ import org.dom4j.XPath;
 /** Test harness for XPath filters
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestFilter extends AbstractTestCase {
 
@@ -131,5 +131,5 @@ public class TestFilter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestFilter.java,v 1.6 2001/08/09 08:22:59 jstrachan Exp $
+ * $Id: TestFilter.java,v 1.7 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNodeTypeName.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestNodeTypeName.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import junit.textui.TestRunner;
 /** Tests the getNodeNameType() method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestNodeTypeName extends AbstractTestCase {
     
@@ -168,5 +168,5 @@ public class TestNodeTypeName extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNodeTypeName.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestNodeTypeName.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */

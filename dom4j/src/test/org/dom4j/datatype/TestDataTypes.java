@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDataTypes.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -33,7 +33,7 @@ import org.dom4j.datatype.DatatypeDocumentFactory;
   * XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestDataTypes extends AbstractDataTypeTest {
 
@@ -216,5 +216,5 @@ public class TestDataTypes extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDataTypes.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */

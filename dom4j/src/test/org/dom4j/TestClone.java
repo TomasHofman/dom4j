@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestClone.java,v 1.4 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestClone.java,v 1.5 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.dom4j.util.NodeComparator;
 /** A test harness to test the clone() methods on Nodes
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestClone extends AbstractTestCase {
 
@@ -168,5 +168,5 @@ public class TestClone extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestClone.java,v 1.4 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestClone.java,v 1.5 2002/05/20 08:14:08 jstrachan Exp $
  */

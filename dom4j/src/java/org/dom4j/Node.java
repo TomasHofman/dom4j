@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.24 2002/04/23 14:11:12 jstrachan Exp $
+ * $Id: Node.java,v 1.25 2002/05/20 08:14:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -27,7 +27,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.24 $
+  * @version $Revision: 1.25 $
   */
 public interface Node extends Cloneable {
 
@@ -487,5 +487,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.24 2002/04/23 14:11:12 jstrachan Exp $
+ * $Id: Node.java,v 1.25 2002/05/20 08:14:11 jstrachan Exp $
  */

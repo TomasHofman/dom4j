@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTableDemo.java,v 1.1 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: JTableDemo.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
  */
 
 package swing;
@@ -22,7 +22,7 @@ import org.dom4j.swing.XMLTableModel;
 /** A sample program to build a JTable GUI from a dom4j Document
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class JTableDemo {
     
@@ -109,5 +109,5 @@ public class JTableDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTableDemo.java,v 1.1 2001/12/14 11:32:09 jstrachan Exp $
+ * $Id: JTableDemo.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
  */

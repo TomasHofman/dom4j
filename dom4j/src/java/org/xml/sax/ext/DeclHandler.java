@@ -1,7 +1,7 @@
 // DeclHandler.java - Optional handler for DTD declaration events.
 // http://www.saxproject.org
 // Public Domain: no warranty.
-// $Id: DeclHandler.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: DeclHandler.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax.ext;
 
@@ -65,7 +65,7 @@ public interface DeclHandler
      * @exception SAXException The application may raise an exception.
      */
     public abstract void elementDecl (String name, String model)
-	throws SAXException;
+    throws SAXException;
 
 
     /**
@@ -94,11 +94,11 @@ public interface DeclHandler
      * @exception SAXException The application may raise an exception.
      */
     public abstract void attributeDecl (String eName,
-					String aName,
-					String type,
-					String mode,
-					String value)
-	throws SAXException;
+                    String aName,
+                    String type,
+                    String mode,
+                    String value)
+    throws SAXException;
 
 
     /**
@@ -116,7 +116,7 @@ public interface DeclHandler
      * @see org.xml.sax.DTDHandler#unparsedEntityDecl
      */
     public abstract void internalEntityDecl (String name, String value)
-	throws SAXException;
+    throws SAXException;
 
 
     /**
@@ -135,8 +135,8 @@ public interface DeclHandler
      * @see org.xml.sax.DTDHandler#unparsedEntityDecl
      */
     public abstract void externalEntityDecl (String name, String publicId,
-					     String systemId)
-	throws SAXException;
+                         String systemId)
+    throws SAXException;
 
 }
 

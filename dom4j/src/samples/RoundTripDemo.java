@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RoundTripDemo.java,v 1.1 2001/08/03 11:00:34 jstrachan Exp $
+ * $Id: RoundTripDemo.java,v 1.2 2002/05/20 08:14:12 jstrachan Exp $
  */
 
 import java.io.StringReader;
@@ -18,7 +18,7 @@ import org.dom4j.io.XMLWriter;
 /** A simple program demonstrating a round trip from XML to dom4j to text to dom4j again
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class RoundTripDemo extends SAXDemo {
     
@@ -98,5 +98,5 @@ public class RoundTripDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RoundTripDemo.java,v 1.1 2001/08/03 11:00:34 jstrachan Exp $
+ * $Id: RoundTripDemo.java,v 1.2 2002/05/20 08:14:12 jstrachan Exp $
  */

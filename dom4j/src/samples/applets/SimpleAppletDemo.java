@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SimpleAppletDemo.java,v 1.1 2001/09/20 14:21:30 jstrachan Exp $
+ * $Id: SimpleAppletDemo.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
  */
 import java.applet.Applet;
 import java.awt.Graphics;
@@ -21,7 +21,7 @@ import org.dom4j.io.XMLWriter;
  * not allowed to read files from client disk, if unsigned.
  *
  * @author <a href="toby-wan-kenobi@gmx.de">Tobias Rademacher</a>
- * @version $Revision: 1.1 $
+ * @version $Revision: 1.2 $
  */
 public class SimpleAppletDemo extends Applet {
     
@@ -125,6 +125,6 @@ public class SimpleAppletDemo extends Applet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SimpleAppletDemo.java,v 1.1 2001/09/20 14:21:30 jstrachan Exp $
+ * $Id: SimpleAppletDemo.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
  */
 

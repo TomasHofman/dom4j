@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamedTypeResolver.java,v 1.2 2001/11/13 12:27:44 jstrachan Exp $
+ * $Id: NamedTypeResolver.java,v 1.3 2002/05/20 08:14:12 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -26,7 +26,7 @@ import org.dom4j.QName;
 /** <p><code>NamedTypeResolver</code> resolves named types for a given QName.</p>
  *
  * @author Yuxin Ruan
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 class NamedTypeResolver {
 
@@ -136,5 +136,5 @@ class NamedTypeResolver {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamedTypeResolver.java,v 1.2 2001/11/13 12:27:44 jstrachan Exp $
+ * $Id: NamedTypeResolver.java,v 1.3 2002/05/20 08:14:12 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNullAttributes.java,v 1.2 2002/04/18 10:37:18 jstrachan Exp $
+ * $Id: TestNullAttributes.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** Tests the use of null attribute values
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestNullAttributes extends AbstractTestCase {
 
@@ -141,5 +141,5 @@ public class TestNullAttributes extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNullAttributes.java,v 1.2 2002/04/18 10:37:18 jstrachan Exp $
+ * $Id: TestNullAttributes.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */

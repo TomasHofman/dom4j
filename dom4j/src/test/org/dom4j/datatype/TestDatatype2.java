@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestDatatype2.java,v 1.6 2001/11/08 21:35:46 yruan2 Exp $
+ * $Id: TestDatatype2.java,v 1.7 2002/05/20 08:14:09 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -30,7 +30,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for XML Schema Datatypes support
   *
   * @author Yuxin Ruan
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestDatatype2 extends TestCase {
 

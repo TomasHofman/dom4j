@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMCDATA.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMCDATA.java,v 1.5 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -24,16 +24,16 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMCDATA extends DefaultCDATA implements org.w3c.dom.CDATASection {
 
     public DOMCDATA(String text) {
-	super(text);
+    super(text);
     }
 
     public DOMCDATA(Element parent,String text) {
-	super(parent, text);
+    super(parent, text);
     }
 
 
@@ -269,5 +269,5 @@ public class DOMCDATA extends DefaultCDATA implements org.w3c.dom.CDATASection {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMCDATA.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMCDATA.java,v 1.5 2002/05/20 08:14:13 jstrachan Exp $
  */

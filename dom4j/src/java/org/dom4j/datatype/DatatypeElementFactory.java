@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DatatypeElementFactory.java,v 1.3 2001/11/02 10:30:22 jstrachan Exp $
+ * $Id: DatatypeElementFactory.java,v 1.4 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class DatatypeElementFactory extends DocumentFactory {
     
@@ -157,5 +157,5 @@ public class DatatypeElementFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeElementFactory.java,v 1.3 2001/11/02 10:30:22 jstrachan Exp $
+ * $Id: DatatypeElementFactory.java,v 1.4 2002/05/20 08:14:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: QName.java,v 1.10 2002/05/20 08:14:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.tree.QNameCache;
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class QName implements Serializable {
 
@@ -237,5 +237,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: QName.java,v 1.10 2002/05/20 08:14:11 jstrachan Exp $
  */

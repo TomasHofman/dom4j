@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QNameCache.java,v 1.6 2001/08/28 06:43:18 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class QNameCache {
 
@@ -209,5 +209,5 @@ public class QNameCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.6 2001/08/28 06:43:18 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
  */

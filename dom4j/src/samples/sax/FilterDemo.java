@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FilterDemo.java,v 1.1 2001/08/14 08:32:03 jstrachan Exp $
+ * $Id: FilterDemo.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
  */
 
 package sax;
@@ -29,7 +29,7 @@ import org.dom4j.io.XMLWriter;
   * use a SAX XMLFilter when parsing an XML document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class FilterDemo extends SAXDemo {
     
@@ -92,5 +92,5 @@ public class FilterDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FilterDemo.java,v 1.1 2001/08/14 08:32:03 jstrachan Exp $
+ * $Id: FilterDemo.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
  */

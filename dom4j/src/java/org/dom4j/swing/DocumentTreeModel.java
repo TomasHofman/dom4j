@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentTreeModel.java,v 1.1 2001/04/10 19:12:08 jstrachan Exp $
+ * $Id: DocumentTreeModel.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.swing;
@@ -18,7 +18,7 @@ import org.dom4j.Document;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Jakob Jenkov
-  * @version $Revision: 1.1 $ 
+  * @version $Revision: 1.2 $ 
   */
 public class DocumentTreeModel extends DefaultTreeModel {
 
@@ -98,5 +98,5 @@ public class DocumentTreeModel extends DefaultTreeModel {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentTreeModel.java,v 1.1 2001/04/10 19:12:08 jstrachan Exp $
+ * $Id: DocumentTreeModel.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FilterIterator.java,v 1.3 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: FilterIterator.java,v 1.4 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
   * for implementors of {@link Iterator} which filter an existing iterator.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public abstract class FilterIterator implements Iterator {
     
@@ -119,5 +119,5 @@ public abstract class FilterIterator implements Iterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FilterIterator.java,v 1.3 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: FilterIterator.java,v 1.4 2002/05/20 08:14:10 jstrachan Exp $
  */

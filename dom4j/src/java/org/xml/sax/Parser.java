@@ -1,7 +1,7 @@
 // SAX parser interface.
 // http://www.saxproject.org
 // No warranty; no copyright -- use this as you will.
-// $Id: Parser.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: Parser.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax;
 
@@ -68,7 +68,7 @@ public interface Parser
      * @see org.xml.sax.SAXParseException
      */
     public abstract void setLocale (Locale locale)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -176,7 +176,7 @@ public interface Parser
      * @see #setErrorHandler
      */
     public abstract void parse (InputSource source)
-	throws SAXException, IOException;
+    throws SAXException, IOException;
     
     
     /**
@@ -202,7 +202,7 @@ public interface Parser
      * @see #parse(org.xml.sax.InputSource)
      */
     public abstract void parse (String systemId)
-	throws SAXException, IOException;
+    throws SAXException, IOException;
     
 }
 

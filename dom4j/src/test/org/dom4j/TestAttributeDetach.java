@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAttributeDetach.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestAttributeDetach.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the detach() method on attributes
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestAttributeDetach extends AbstractTestCase {
 
@@ -116,5 +116,5 @@ public class TestAttributeDetach extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAttributeDetach.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
+ * $Id: TestAttributeDetach.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */

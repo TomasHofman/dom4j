@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ParseLoop.java,v 1.1 2001/07/03 10:15:44 jstrachan Exp $
+ * $Id: ParseLoop.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package performance;
@@ -23,7 +23,7 @@ import org.dom4j.io.SAXReader;
 /** A simple parsing program that loops which makes it easier to profile
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class ParseLoop {
     
@@ -113,5 +113,5 @@ public class ParseLoop {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ParseLoop.java,v 1.1 2001/07/03 10:15:44 jstrachan Exp $
+ * $Id: ParseLoop.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

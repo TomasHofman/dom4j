@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PullParseTest.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
+ * $Id: PullParseTest.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package performance;
@@ -23,7 +23,7 @@ import org.dom4j.io.XPPReader;
 /** Tests the performance of parsing a Document with the XML Pull Parser
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class PullParseTest extends PerformanceSupport {
     
@@ -113,5 +113,5 @@ public class PullParseTest extends PerformanceSupport {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PullParseTest.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
+ * $Id: PullParseTest.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */

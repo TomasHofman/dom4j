@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UserDataElement.java,v 1.4 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: UserDataElement.java,v 1.5 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -46,7 +46,7 @@ import org.xml.sax.Attributes;
   * adorn the trees with user defined objects.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class UserDataElement extends DefaultElement {
 
@@ -151,5 +151,5 @@ public class UserDataElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataElement.java,v 1.4 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: UserDataElement.java,v 1.5 2002/05/20 08:14:13 jstrachan Exp $
  */

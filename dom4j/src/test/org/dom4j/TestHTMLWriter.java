@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestHTMLWriter.java,v 1.1 2002/02/14 11:55:46 jstrachan Exp $
+ * $Id: TestHTMLWriter.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** Test harness for the HTMLWriter
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestHTMLWriter extends AbstractTestCase {
 
@@ -108,5 +108,5 @@ public class TestHTMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestHTMLWriter.java,v 1.1 2002/02/14 11:55:46 jstrachan Exp $
+ * $Id: TestHTMLWriter.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

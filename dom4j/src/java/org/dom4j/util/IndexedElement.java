@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedElement.java,v 1.3 2001/06/29 12:33:02 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.4 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.util;
@@ -41,7 +41,7 @@ import org.dom4j.tree.DefaultElement;
   * optimise lookups via name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class IndexedElement extends DefaultElement {
 
@@ -330,5 +330,5 @@ public class IndexedElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedElement.java,v 1.3 2001/06/29 12:33:02 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.4 2002/05/20 08:14:13 jstrachan Exp $
  */

@@ -20,7 +20,7 @@ import org.xml.sax.AttributeList;
 /**
  * <p>Saxon extension element for inserting text
  *
- * <p>$Id: Text.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: Text.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000 Norman Walsh.</p>
  *
@@ -37,7 +37,7 @@ import org.xml.sax.AttributeList;
  * @author Norman Walsh
  * <a href="mailto:ndw@nwalsh.com">ndw@nwalsh.com</a>
  *
- * @version $Id: Text.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: Text.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  *
  */
 public class Text extends StyleElement {
@@ -106,14 +106,14 @@ public class Text extends StyleElement {
 
     try {
       try {
-	fileURL = new URL(href);
+    fileURL = new URL(href);
       } catch (MalformedURLException e1) {
-	try {
-	  fileURL = new URL("file:" + href);
-	} catch (MalformedURLException e2) {
-	  System.out.println("Cannot open " + href);
-	  return;
-	}
+    try {
+      fileURL = new URL("file:" + href);
+    } catch (MalformedURLException e2) {
+      System.out.println("Cannot open " + href);
+      return;
+    }
       }
 
       InputStreamReader isr = new InputStreamReader(fileURL.openStream());
@@ -122,7 +122,7 @@ public class Text extends StyleElement {
       char chars[] = new char[4096];
       int len = 0;
       while ((len = is.read(chars)) > 0) {
-	out.writeContent(chars, 0, len);
+    out.writeContent(chars, 0, len);
       }
       is.close();
     } catch (Exception e) {

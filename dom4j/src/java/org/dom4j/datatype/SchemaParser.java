@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SchemaParser.java,v 1.11 2002/02/01 10:54:30 jstrachan Exp $
+ * $Id: SchemaParser.java,v 1.12 2002/05/20 08:14:12 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -36,7 +36,7 @@ import org.xml.sax.InputSource;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.11 $
+ * @version $Revision: 1.12 $
  */
 public class SchemaParser {
 
@@ -467,5 +467,5 @@ public class SchemaParser {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaParser.java,v 1.11 2002/02/01 10:54:30 jstrachan Exp $
+ * $Id: SchemaParser.java,v 1.12 2002/05/20 08:14:12 jstrachan Exp $
  */

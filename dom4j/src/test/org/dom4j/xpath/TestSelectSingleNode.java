@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSelectSingleNode.java,v 1.2 2001/11/11 09:27:03 jstrachan Exp $
+ * $Id: TestSelectSingleNode.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the selectSingleNode method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestSelectSingleNode extends AbstractTestCase {
 
@@ -127,5 +127,5 @@ public class TestSelectSingleNode extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSelectSingleNode.java,v 1.2 2001/11/11 09:27:03 jstrachan Exp $
+ * $Id: TestSelectSingleNode.java,v 1.3 2002/05/20 08:14:08 jstrachan Exp $
  */

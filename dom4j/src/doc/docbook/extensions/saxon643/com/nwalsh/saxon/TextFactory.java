@@ -8,7 +8,7 @@ import org.xml.sax.SAXException;
 /**
  * <p>Saxon extension element factory
  *
- * <p>$Id: TextFactory.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: TextFactory.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000 Norman Walsh.</p>
  *
@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
  * @author Norman Walsh
  * <a href="mailto:ndw@nwalsh.com">ndw@nwalsh.com</a>
  *
- * @version $Id: TextFactory.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: TextFactory.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  *
  * @see Text
  *
@@ -52,9 +52,9 @@ public class TextFactory implements ExtensionElementFactory {
   public Class getExtensionClass(String localname) {
     if (localname.equals("insertfile")) {
       try {
-	return Class.forName("com.nwalsh.saxon.Text");
+    return Class.forName("com.nwalsh.saxon.Text");
       } catch (ClassNotFoundException e) {
-	return null;
+    return null;
       }
     }
     return null;

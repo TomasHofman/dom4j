@@ -20,7 +20,7 @@ import com.nwalsh.saxon.CalloutEmitter;
 /**
  * <p>Saxon extensions supporting DocBook verbatim environments</p>
  *
- * <p>$Id: Verbatim.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: Verbatim.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000 Norman Walsh.</p>
  *
@@ -53,7 +53,7 @@ import com.nwalsh.saxon.CalloutEmitter;
  * @author Norman Walsh
  * <a href="mailto:ndw@nwalsh.com">ndw@nwalsh.com</a>
  *
- * @version $Id: Verbatim.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: Verbatim.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  *
  */
 public class Verbatim {
@@ -222,7 +222,7 @@ public class Verbatim {
    * @return The modified result tree fragment.
    */
   public static NodeSetValue numberLines (Context context,
-					  NodeSetValue rtf_ns) {
+                      NodeSetValue rtf_ns) {
 
     FragmentValue rtf = (FragmentValue) rtf_ns;
 
@@ -238,17 +238,17 @@ public class Verbatim {
       double log10numLines = Math.log(numLines) / Math.log(10);
 
       int listingWidth = width < log10numLines+1
-	? (int) Math.floor(log10numLines + 1)
-	: width;
+    ? (int) Math.floor(log10numLines + 1)
+    : width;
 
       Controller controller = context.getController();
       NamePool namePool = controller.getNamePool();
       NumberLinesEmitter nlEmitter = new NumberLinesEmitter(controller,
-							    namePool,
-							    listingModulus,
-							    listingWidth,
-							    separator,
-							    foStylesheet);
+                                namePool,
+                                listingModulus,
+                                listingWidth,
+                                separator,
+                                foStylesheet);
       rtf.replay(nlEmitter);
       return nlEmitter.getResultTreeFragment();
     } catch (TransformerException e) {
@@ -325,7 +325,7 @@ public class Verbatim {
       defaultColumn = Integer.parseInt(varString);
     } catch (NumberFormatException nfe) {
       System.out.println("$callout.defaultcolumn is not a number: "
-			 + varString);
+             + varString);
     }
 
     // Use graphics at all?
@@ -348,50 +348,50 @@ public class Verbatim {
       // Get the number limit
       varString = getVariable(context, "callout.graphics.number.limit");
       try {
-	graphicsMax = Integer.parseInt(varString);
+    graphicsMax = Integer.parseInt(varString);
       } catch (NumberFormatException nfe) {
-	System.out.println("$callout.graphics.number.limit is not a number: "
-			   + varString);
-	graphicsMax = 0;
+    System.out.println("$callout.graphics.number.limit is not a number: "
+               + varString);
+    graphicsMax = 0;
       }
 
       fCallout = new FormatGraphicCallout(namePool,
-					  graphicsPath,
-					  graphicsExt,
-					  graphicsMax,
-					  foStylesheet);
+                      graphicsPath,
+                      graphicsExt,
+                      graphicsMax,
+                      foStylesheet);
     } else if (useUnicode) {
       // Get the starting character
       varString = getVariable(context, "callout.unicode.start.character");
       try {
-	unicodeStart = Integer.parseInt(varString);
+    unicodeStart = Integer.parseInt(varString);
       } catch (NumberFormatException nfe) {
-	System.out.println("$callout.unicode.start.character is not a number: "
-			   + varString);
-	unicodeStart = 48;
+    System.out.println("$callout.unicode.start.character is not a number: "
+               + varString);
+    unicodeStart = 48;
       }
 
       // Get the number limit
       varString = getVariable(context, "callout.unicode.number.limit");
       try {
-	unicodeMax = Integer.parseInt(varString);
+    unicodeMax = Integer.parseInt(varString);
       } catch (NumberFormatException nfe) {
-	System.out.println("$callout.unicode.number.limit is not a number: "
-			   + varString);
-	unicodeStart = 0;
+    System.out.println("$callout.unicode.number.limit is not a number: "
+               + varString);
+    unicodeStart = 0;
       }
 
       // Get the font
       unicodeFont = getVariable(context, "callout.unicode.font");
       if (unicodeFont == null) {
-	unicodeFont = "";
+    unicodeFont = "";
       }
 
       fCallout = new FormatUnicodeCallout(namePool,
-					  unicodeFont,
-					  unicodeStart,
-					  unicodeMax,
-					  foStylesheet);
+                      unicodeFont,
+                      unicodeStart,
+                      unicodeMax,
+                      foStylesheet);
     } else {
       fCallout = new FormatTextCallout(namePool, foStylesheet);
     }
@@ -449,8 +449,8 @@ public class Verbatim {
    */
 
   public static NodeSetValue insertCallouts (Context context,
-					     NodeList areaspecNodeList,
-					     NodeSetValue rtf_ns) {
+                         NodeList areaspecNodeList,
+                         NodeSetValue rtf_ns) {
 
     FragmentValue rtf = (FragmentValue) rtf_ns;
 
@@ -460,10 +460,10 @@ public class Verbatim {
       Controller controller = context.getController();
       NamePool namePool = controller.getNamePool();
       CalloutEmitter cEmitter = new CalloutEmitter(controller,
-						   namePool,
-						   defaultColumn,
-						   foStylesheet,
-						   fCallout);
+                           namePool,
+                           defaultColumn,
+                           foStylesheet,
+                           fCallout);
       cEmitter.setupCallouts(areaspecNodeList);
       rtf.replay(cEmitter);
       return cEmitter.getResultTreeFragment();

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNormalize.java,v 1.1 2001/07/12 11:33:30 jstrachan Exp $
+ * $Id: TestNormalize.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness for the normalize() method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestNormalize extends AbstractTestCase {
 
@@ -108,5 +108,5 @@ public class TestNormalize extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNormalize.java,v 1.1 2001/07/12 11:33:30 jstrachan Exp $
+ * $Id: TestNormalize.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

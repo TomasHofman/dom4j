@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.35 2002/04/18 10:37:18 jstrachan Exp $
+ * $Id: Element.java,v 1.36 2002/05/20 08:14:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.35 $
+  * @version $Revision: 1.36 $
   */
 public interface Element extends Branch {
 
@@ -677,5 +677,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.35 2002/04/18 10:37:18 jstrachan Exp $
+ * $Id: Element.java,v 1.36 2002/05/20 08:14:11 jstrachan Exp $
  */

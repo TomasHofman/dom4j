@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeDocumentFactory.java,v 1.2 2001/11/22 12:54:09 jstrachan Exp $
+ * $Id: DatatypeDocumentFactory.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DatatypeDocumentFactory extends DocumentFactory {
 
@@ -191,5 +191,5 @@ public class DatatypeDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeDocumentFactory.java,v 1.2 2001/11/22 12:54:09 jstrachan Exp $
+ * $Id: DatatypeDocumentFactory.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
  */

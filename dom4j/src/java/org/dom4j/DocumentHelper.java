@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.11 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.12 2002/05/20 08:14:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import org.xml.sax.SAXException;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class DocumentHelper {
 
@@ -310,5 +310,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.11 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.12 2002/05/20 08:14:11 jstrachan Exp $
  */

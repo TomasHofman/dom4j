@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMComment.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMComment.java,v 1.5 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -23,16 +23,16 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMComment extends DefaultComment implements org.w3c.dom.Comment {
 
     public DOMComment(String text) {
-	super(text);
+    super(text);
     }
 
     public DOMComment(Element parent,String text) {
-	super(parent, text);
+    super(parent, text);
     }
 
 
@@ -230,5 +230,5 @@ public class DOMComment extends DefaultComment implements org.w3c.dom.Comment {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMComment.java,v 1.4 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DOMComment.java,v 1.5 2002/05/20 08:14:13 jstrachan Exp $
  */

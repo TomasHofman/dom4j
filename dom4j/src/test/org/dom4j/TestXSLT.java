@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXSLT.java,v 1.3 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestXSLT.java,v 1.4 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -28,7 +28,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that XSLT works correctly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestXSLT extends AbstractTestCase {
 
@@ -134,5 +134,5 @@ public class TestXSLT extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXSLT.java,v 1.3 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestXSLT.java,v 1.4 2002/05/20 08:14:08 jstrachan Exp $
  */

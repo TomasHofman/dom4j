@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ContentListFacade.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: ContentListFacade.java,v 1.4 2002/05/20 08:14:09 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -34,7 +34,7 @@ import org.dom4j.Text;
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class ContentListFacade extends AbstractList {
 
@@ -205,5 +205,5 @@ public class ContentListFacade extends AbstractList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ContentListFacade.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: ContentListFacade.java,v 1.4 2002/05/20 08:14:09 jstrachan Exp $
  */

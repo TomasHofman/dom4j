@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.24 2001/10/24 09:41:15 jstrachan Exp $
+ * $Id: Branch.java,v 1.25 2002/05/20 08:14:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.24 $
+  * @version $Revision: 1.25 $
   */
 public interface Branch extends Node {
 
@@ -34,7 +34,7 @@ public interface Branch extends Node {
       * @return the <code>Node</code> at the specified position.
       * 
       * @throws IndexOutOfBoundsException if the index is out of range (index
-      * 		  &lt; 0 || index &gt;= {@link #nodeCount}).
+      *           &lt; 0 || index &gt;= {@link #nodeCount}).
       */    
     public Node node(int index);
     
@@ -301,5 +301,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.24 2001/10/24 09:41:15 jstrachan Exp $
+ * $Id: Branch.java,v 1.25 2002/05/20 08:14:11 jstrachan Exp $
  */

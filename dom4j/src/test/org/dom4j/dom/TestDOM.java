@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDOM.java,v 1.3 2002/04/23 15:49:37 jstrachan Exp $
+ * $Id: TestDOM.java,v 1.4 2002/05/20 08:14:17 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -32,7 +32,7 @@ import org.w3c.dom.NodeList;
 /** A test harness to test the native DOM implementation of dom4j
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestDOM extends AbstractTestCase {
 
@@ -202,5 +202,5 @@ public class TestDOM extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDOM.java,v 1.3 2002/04/23 15:49:37 jstrachan Exp $
+ * $Id: TestDOM.java,v 1.4 2002/05/20 08:14:17 jstrachan Exp $
  */

@@ -1,7 +1,7 @@
 // SAX document handler.
 // http://www.saxproject.org
 // No warranty; no copyright -- use this as you will.
-// $Id: DocumentHandler.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: DocumentHandler.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax;
 
@@ -86,7 +86,7 @@ public interface DocumentHandler {
      *            wrapping another exception.
      */
     public abstract void startDocument ()
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -102,7 +102,7 @@ public interface DocumentHandler {
      *            wrapping another exception.
      */
     public abstract void endDocument ()
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -128,7 +128,7 @@ public interface DocumentHandler {
      * @see org.xml.sax.AttributeList 
      */
     public abstract void startElement (String name, AttributeList atts)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -147,7 +147,7 @@ public interface DocumentHandler {
      *            wrapping another exception.
      */
     public abstract void endElement (String name)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -176,7 +176,7 @@ public interface DocumentHandler {
      * @see org.xml.sax.Locator
      */
     public abstract void characters (char ch[], int start, int length)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -204,7 +204,7 @@ public interface DocumentHandler {
      * @see #characters
      */
     public abstract void ignorableWhitespace (char ch[], int start, int length)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -225,7 +225,7 @@ public interface DocumentHandler {
      *            wrapping another exception.
      */
     public abstract void processingInstruction (String target, String data)
-	throws SAXException;
+    throws SAXException;
     
 }
 

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestMakeElement.java,v 1.1 2001/08/15 14:38:16 jstrachan Exp $
+ * $Id: TestMakeElement.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the DocumentHelper.makeElement() methodt
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestMakeElement extends AbstractTestCase {
 
@@ -138,5 +138,5 @@ public class TestMakeElement extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestMakeElement.java,v 1.1 2001/08/15 14:38:16 jstrachan Exp $
+ * $Id: TestMakeElement.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

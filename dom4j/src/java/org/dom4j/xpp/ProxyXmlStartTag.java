@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ProxyXmlStartTag.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
+ * $Id: ProxyXmlStartTag.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
  */
 
 package org.dom4j.xpp;
@@ -25,7 +25,7 @@ import org.gjt.xpp.XmlStartTag;
   * interface while creating a dom4j Element underneath.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class ProxyXmlStartTag implements XmlStartTag {
 
@@ -266,5 +266,5 @@ public class ProxyXmlStartTag implements XmlStartTag {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ProxyXmlStartTag.java,v 1.2 2001/12/19 09:51:39 jstrachan Exp $
+ * $Id: ProxyXmlStartTag.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
  */

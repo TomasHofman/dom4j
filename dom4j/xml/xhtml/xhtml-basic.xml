@@ -760,7 +760,7 @@ Basic <acronym title="Formal Public Identifier">FPI</acronym>.</p>
 
 --  XHTML Basic Catalog Data File
 
-    Revision:  $Id: xhtml-basic.xml,v 1.1 2000/12/29 08:47:07 jstrachan Exp $ SMI
+    Revision:  $Id: xhtml-basic.xml,v 1.2 2002/05/20 08:14:17 jstrachan Exp $ SMI
 
     See "Entity Management", SGML Open Technical Resolution 9401 for detailed
     information on supplying and using catalog data. This document is available
@@ -827,7 +827,7 @@ implementations defined in [<a href="#ref_xhtmlmod">XHTMLMOD</a>].</p>
 
         Editors:    Murray M. Altheim &lt;mailto:altheim@eng.sun.com>
                     Peter Stark       &lt;mailto:Peter.Stark@ecs.ericsson.se>
-        Revision:   $Id: xhtml-basic.xml,v 1.1 2000/12/29 08:47:07 jstrachan Exp $ SMI
+        Revision:   $Id: xhtml-basic.xml,v 1.2 2002/05/20 08:14:17 jstrachan Exp $ SMI
 
 -->
 &lt;!-- This is the driver file for version 1.0 of the XHTML Basic DTD.
@@ -1013,7 +1013,7 @@ is defined below:</p>
 
      This is XHTML Basic, a proper subset of XHTML.
      Copyright 1998-2000 W3C (MIT, INRIA, Keio), All Rights Reserved.
-     Revision: $Id: xhtml-basic.xml,v 1.1 2000/12/29 08:47:07 jstrachan Exp $ SMI
+     Revision: $Id: xhtml-basic.xml,v 1.2 2002/05/20 08:14:17 jstrachan Exp $ SMI
 
      This DTD module is identified by the PUBLIC and SYSTEM identifiers:
 

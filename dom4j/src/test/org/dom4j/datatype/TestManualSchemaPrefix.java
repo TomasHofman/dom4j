@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchemaPrefix.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: TestManualSchemaPrefix.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -30,7 +30,7 @@ import org.dom4j.datatype.DatatypeDocumentFactory;
   * manually load the schemas using prefixes in the XSD file.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestManualSchemaPrefix extends TestAutoSchema {
 
@@ -104,5 +104,5 @@ public class TestManualSchemaPrefix extends TestAutoSchema {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchemaPrefix.java,v 1.1 2001/08/30 19:05:43 jstrachan Exp $
+ * $Id: TestManualSchemaPrefix.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */

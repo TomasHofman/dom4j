@@ -14,7 +14,7 @@ import com.nwalsh.saxon.Callout;
 /**
  * <p>Utility class for the Verbatim extension (ignore this).</p>
  *
- * <p>$Id: FormatUnicodeCallout.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: FormatUnicodeCallout.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000, 2001 Norman Walsh.</p>
  *
@@ -29,7 +29,7 @@ import com.nwalsh.saxon.Callout;
  *
  * @see Verbatim
  *
- * @version $Id: FormatUnicodeCallout.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: FormatUnicodeCallout.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  **/
 
 public class FormatUnicodeCallout extends FormatCallout {
@@ -38,10 +38,10 @@ public class FormatUnicodeCallout extends FormatCallout {
   String unicodeFont = "";
 
   public FormatUnicodeCallout(NamePool nPool,
-			      String font,
-			      int start,
-			      int max,
-			      boolean fo) {
+                  String font,
+                  int start,
+                  int max,
+                  boolean fo) {
     super(nPool, fo);
     unicodeFont = font;
     unicodeMax = max;
@@ -49,7 +49,7 @@ public class FormatUnicodeCallout extends FormatCallout {
   }
 
   public void formatCallout(Emitter rtfEmitter,
-			    Callout callout) {
+                Callout callout) {
     Element area = callout.getArea();
     int num = callout.getCallout();
     String userLabel = areaLabel(area);
@@ -61,35 +61,35 @@ public class FormatUnicodeCallout extends FormatCallout {
 
     try {
       if (userLabel == null && num <= unicodeMax) {
-	int inName = 0;
-	AttributeCollection inAttr = null;
-	int namespaces[] = new int[1];
+    int inName = 0;
+    AttributeCollection inAttr = null;
+    int namespaces[] = new int[1];
 
-	if (!unicodeFont.equals("")) {
-	  if (foStylesheet) {
-	    inName = namePool.allocate("fo", foURI, "inline");
-	    inAttr = new AttributeCollection(namePool);
-	    inAttr.addAttribute("", "", "font-family", "CDATA", unicodeFont);
-	  } else {
-	    inName = namePool.allocate("", "", "font");
-	    inAttr = new AttributeCollection(namePool);
-	    inAttr.addAttribute("", "", "face", "CDATA", unicodeFont);
-	  }
-
-	  startSpan(rtfEmitter);
-	  rtfEmitter.startElement(inName, inAttr, namespaces, 0);
-	}
-
-	char chars[] = new char[1];
-	chars[0] = (char) (unicodeStart + num - 1);
-	rtfEmitter.characters(chars, 0, 1);
-
-	if (!unicodeFont.equals("")) {
-	  rtfEmitter.endElement(inName);
-	  endSpan(rtfEmitter);
-	}
+    if (!unicodeFont.equals("")) {
+      if (foStylesheet) {
+        inName = namePool.allocate("fo", foURI, "inline");
+        inAttr = new AttributeCollection(namePool);
+        inAttr.addAttribute("", "", "font-family", "CDATA", unicodeFont);
       } else {
-	formatTextCallout(rtfEmitter, callout);
+        inName = namePool.allocate("", "", "font");
+        inAttr = new AttributeCollection(namePool);
+        inAttr.addAttribute("", "", "face", "CDATA", unicodeFont);
+      }
+
+      startSpan(rtfEmitter);
+      rtfEmitter.startElement(inName, inAttr, namespaces, 0);
+    }
+
+    char chars[] = new char[1];
+    chars[0] = (char) (unicodeStart + num - 1);
+    rtfEmitter.characters(chars, 0, 1);
+
+    if (!unicodeFont.equals("")) {
+      rtfEmitter.endElement(inName);
+      endSpan(rtfEmitter);
+    }
+      } else {
+    formatTextCallout(rtfEmitter, callout);
       }
     } catch (TransformerException e) {
       System.out.println("Transformer Exception in graphic formatCallout");

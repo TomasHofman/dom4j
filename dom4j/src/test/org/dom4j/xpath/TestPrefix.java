@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestPrefix.java,v 1.5 2001/11/16 16:40:21 jstrachan Exp $
+ * $Id: TestPrefix.java,v 1.6 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -27,7 +27,7 @@ import org.jaxen.SimpleNamespaceContext;
 /** Tests finding items using a namespace prefix
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestPrefix extends AbstractTestCase {
 
@@ -134,5 +134,5 @@ public class TestPrefix extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestPrefix.java,v 1.5 2001/11/16 16:40:21 jstrachan Exp $
+ * $Id: TestPrefix.java,v 1.6 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceCache.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: NamespaceCache.java,v 1.5 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class NamespaceCache {
 
@@ -142,5 +142,5 @@ public class NamespaceCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceCache.java,v 1.4 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: NamespaceCache.java,v 1.5 2002/05/20 08:14:10 jstrachan Exp $
  */

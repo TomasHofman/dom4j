@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentResult.java,v 1.1 2001/04/09 07:47:58 jstrachan Exp $
+ * $Id: DocumentResult.java,v 1.2 2002/05/20 08:14:15 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -22,7 +22,7 @@ import org.xml.sax.ext.LexicalHandler;
   * for a {@link Document}.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DocumentResult extends SAXResult {
 
@@ -112,5 +112,5 @@ public class DocumentResult extends SAXResult {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentResult.java,v 1.1 2001/04/09 07:47:58 jstrachan Exp $
+ * $Id: DocumentResult.java,v 1.2 2002/05/20 08:14:15 jstrachan Exp $
  */

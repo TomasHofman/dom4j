@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPPReader.java,v 1.1 2001/12/19 09:51:39 jstrachan Exp $
+ * $Id: XPPReader.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -45,7 +45,7 @@ import org.gjt.xpp.XmlStartTag;
   * validation but it is very fast for use in SOAP style environments.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class XPPReader {
 
@@ -365,5 +365,5 @@ public class XPPReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPPReader.java,v 1.1 2001/12/19 09:51:39 jstrachan Exp $
+ * $Id: XPPReader.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
  */

@@ -14,7 +14,7 @@ import com.nwalsh.saxon.Callout;
 /**
  * <p>Utility class for the Verbatim extension (ignore this).</p>
  *
- * <p>$Id: FormatCallout.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: FormatCallout.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000, 2001 Norman Walsh.</p>
  *
@@ -29,7 +29,7 @@ import com.nwalsh.saxon.Callout;
  *
  * @see Verbatim
  *
- * @version $Id: FormatCallout.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: FormatCallout.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  **/
 
 public abstract class FormatCallout {
@@ -53,9 +53,9 @@ public abstract class FormatCallout {
       // Otherwise, if its parent is an areaset and it has a label, use that
       Element parent = (Element) area.getParentNode();
       if (parent != null
-	  && parent.getLocalName().equalsIgnoreCase("areaset")
-	  && parent.hasAttribute("label")) {
-	label = parent.getAttribute("label");
+      && parent.getLocalName().equalsIgnoreCase("areaset")
+      && parent.hasAttribute("label")) {
+    label = parent.getAttribute("label");
       }
     }
 
@@ -84,7 +84,7 @@ public abstract class FormatCallout {
   }
 
   public void formatTextCallout(Emitter rtfEmitter,
-				Callout callout) {
+                Callout callout) {
     Element area = callout.getArea();
     int num = callout.getCallout();
     String userLabel = areaLabel(area);
@@ -106,6 +106,6 @@ public abstract class FormatCallout {
   }
 
   public abstract void formatCallout(Emitter rtfEmitter,
-				     Callout callout);
+                     Callout callout);
 }
 

@@ -9,7 +9,7 @@ import com.icl.saxon.expr.FragmentValue;
 /**
  * <p>Saxon extension to scan the column widthsin a result tree fragment.</p>
  *
- * <p>$Id: ColumnScanEmitter.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: ColumnScanEmitter.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000 Norman Walsh.</p>
  *
@@ -33,7 +33,7 @@ import com.icl.saxon.expr.FragmentValue;
  * @author Norman Walsh
  * <a href="mailto:ndw@nwalsh.com">ndw@nwalsh.com</a>
  *
- * @version $Id: ColumnScanEmitter.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: ColumnScanEmitter.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  *
  */
 public class ColumnScanEmitter extends com.icl.saxon.output.Emitter {
@@ -87,7 +87,7 @@ public class ColumnScanEmitter extends com.icl.saxon.output.Emitter {
 
   /** Discarded. */
   public void processingInstruction(java.lang.String name,
-				    java.lang.String data)
+                    java.lang.String data)
     throws TransformerException {
     // nop
   }
@@ -127,8 +127,8 @@ public class ColumnScanEmitter extends com.icl.saxon.output.Emitter {
 
   /** Examine for column info. */
   public void startElement(int nameCode,
-		    org.xml.sax.Attributes attributes,
-		    int[] namespaces, int nscount)
+            org.xml.sax.Attributes attributes,
+            int[] namespaces, int nscount)
     throws TransformerException {
 
     int thisFingerprint = namePool.getFingerprint(nameCode);
@@ -136,27 +136,27 @@ public class ColumnScanEmitter extends com.icl.saxon.output.Emitter {
     int foColFingerprint = namePool.getFingerprint(foURI, "table-column");
 
     if (thisFingerprint == colFingerprint
-	|| thisFingerprint == foColFingerprint) {
+    || thisFingerprint == foColFingerprint) {
       if (numColumns >= width.length) {
-	String newWidth[] = new String[width.length+10];
-	for (int count = 0; count < width.length; count++) {
-	  newWidth[count] = width[count];
-	}
-	width = newWidth;
+    String newWidth[] = new String[width.length+10];
+    for (int count = 0; count < width.length; count++) {
+      newWidth[count] = width[count];
+    }
+    width = newWidth;
       }
 
       if (thisFingerprint == colFingerprint) {
-	if (attributes.getValue("width") == null) {
-	  width[numColumns++] = "1*";
-	} else {
-	  width[numColumns++] = attributes.getValue("width");
-	}
+    if (attributes.getValue("width") == null) {
+      width[numColumns++] = "1*";
+    } else {
+      width[numColumns++] = attributes.getValue("width");
+    }
       } else {
-	if (attributes.getValue("column-width") == null) {
-	  width[numColumns++] = "1*";
-	} else {
-	  width[numColumns++] = attributes.getValue("column-width");
-	}
+    if (attributes.getValue("column-width") == null) {
+      width[numColumns++] = "1*";
+    } else {
+      width[numColumns++] = attributes.getValue("column-width");
+    }
       }
     }
   }

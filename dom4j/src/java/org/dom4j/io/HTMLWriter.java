@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: HTMLWriter.java,v 1.13 2002/04/13 04:03:12 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.14 2002/05/20 08:14:14 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -184,7 +184,7 @@ import org.xml.sax.SAXException;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Laramie Crocker
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -740,5 +740,5 @@ entities: &#160; &amp; &quot; &lt; &gt; %23
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.13 2002/04/13 04:03:12 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.14 2002/05/20 08:14:14 jstrachan Exp $
  */

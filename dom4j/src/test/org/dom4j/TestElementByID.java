@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestElementByID.java,v 1.1 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestElementByID.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the elementByID() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestElementByID extends AbstractTestCase {
 
@@ -116,5 +116,5 @@ public class TestElementByID extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestElementByID.java,v 1.1 2001/07/03 08:07:21 jstrachan Exp $
+ * $Id: TestElementByID.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

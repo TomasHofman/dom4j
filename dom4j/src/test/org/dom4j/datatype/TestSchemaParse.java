@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSchemaParse.java,v 1.1 2001/11/16 10:06:59 jstrachan Exp $
+ * $Id: TestSchemaParse.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -32,7 +32,7 @@ import org.dom4j.datatype.DatatypeDocumentFactory;
   * Luis Peña Sánchez
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestSchemaParse extends AbstractTestCase {
 
@@ -109,5 +109,5 @@ public class TestSchemaParse extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSchemaParse.java,v 1.1 2001/11/16 10:06:59 jstrachan Exp $
+ * $Id: TestSchemaParse.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */

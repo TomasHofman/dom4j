@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.7 2001/07/27 12:33:51 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.8 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -27,7 +27,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -189,5 +189,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.7 2001/07/27 12:33:51 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.8 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocumentType.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMDocumentType.java,v 1.4 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMDocumentType extends DefaultDocumentType implements org.w3c.dom.DocumentType {
 
@@ -220,5 +220,5 @@ public class DOMDocumentType extends DefaultDocumentType implements org.w3c.dom.
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentType.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMDocumentType.java,v 1.4 2002/05/20 08:14:13 jstrachan Exp $
  */

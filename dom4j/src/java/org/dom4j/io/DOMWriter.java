@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.5 2001/08/09 13:35:14 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.6 2002/05/20 08:14:14 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -32,7 +32,7 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DOMWriter {
 
@@ -421,5 +421,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.5 2001/08/09 13:35:14 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.6 2002/05/20 08:14:14 jstrachan Exp $
  */

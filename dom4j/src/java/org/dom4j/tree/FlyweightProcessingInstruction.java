@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: FlyweightProcessingInstruction.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: FlyweightProcessingInstruction.java,v 1.2 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,7 @@ import org.dom4j.ProcessingInstruction;
   * it does not support the parent relationship.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class FlyweightProcessingInstruction extends AbstractProcessingInstruction {
 
@@ -139,5 +139,5 @@ public class FlyweightProcessingInstruction extends AbstractProcessingInstructio
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: FlyweightProcessingInstruction.java,v 1.1 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: FlyweightProcessingInstruction.java,v 1.2 2002/05/20 08:14:10 jstrachan Exp $
  */

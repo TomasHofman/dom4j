@@ -1,7 +1,7 @@
 // SAX error handler.
 // http://www.saxproject.org
 // No warranty; no copyright -- use this as you will.
-// $Id: ErrorHandler.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: ErrorHandler.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax;
 
@@ -65,7 +65,7 @@ public interface ErrorHandler {
      * @see org.xml.sax.SAXParseException 
      */
     public abstract void warning (SAXParseException exception)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -94,7 +94,7 @@ public interface ErrorHandler {
      * @see org.xml.sax.SAXParseException 
      */
     public abstract void error (SAXParseException exception)
-	throws SAXException;
+    throws SAXException;
     
     
     /**
@@ -118,7 +118,7 @@ public interface ErrorHandler {
      * @see org.xml.sax.SAXParseException
      */
     public abstract void fatalError (SAXParseException exception)
-	throws SAXException;
+    throws SAXException;
     
 }
 

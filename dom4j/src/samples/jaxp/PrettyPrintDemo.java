@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PrettyPrintDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
+ * $Id: PrettyPrintDemo.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package jaxp;
@@ -29,7 +29,7 @@ import org.dom4j.io.XMLWriter;
   * using dom4j's pretty printing output format.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class PrettyPrintDemo extends SAXDemo {
     
@@ -108,5 +108,5 @@ public class PrettyPrintDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PrettyPrintDemo.java,v 1.1 2001/08/06 12:55:06 jstrachan Exp $
+ * $Id: PrettyPrintDemo.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */

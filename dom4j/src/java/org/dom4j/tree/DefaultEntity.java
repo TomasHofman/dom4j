@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultEntity.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DefaultEntity.java,v 1.6 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -17,7 +17,7 @@ import org.dom4j.Element;
   * and can be modified in place.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DefaultEntity extends FlyweightEntity {
 
@@ -129,5 +129,5 @@ public class DefaultEntity extends FlyweightEntity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultEntity.java,v 1.5 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DefaultEntity.java,v 1.6 2002/05/20 08:14:10 jstrachan Exp $
  */

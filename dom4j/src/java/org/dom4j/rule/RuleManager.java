@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RuleManager.java,v 1.3 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: RuleManager.java,v 1.4 2002/05/20 08:14:12 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -22,7 +22,7 @@ import org.dom4j.rule.pattern.NodeTypePattern;
   * can be found for a given DOM4J Node using the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class RuleManager {
 
@@ -219,5 +219,5 @@ public class RuleManager {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RuleManager.java,v 1.3 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: RuleManager.java,v 1.4 2002/05/20 08:14:12 jstrachan Exp $
  */

@@ -1,7 +1,7 @@
 // Attributes2.java - extended Attributes
 // http://www.saxproject.org
 // Public Domain: no warranty.
-// $Id: Attributes2.java,v 1.1 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: Attributes2.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax.ext;
 
@@ -37,7 +37,7 @@ public interface Attributes2 extends Attributes
      *
      * @param index The attribute index (zero-based).
      * @return true if the value was found in the XML text,
-     *		false if the value was provided by DTD defaulting.
+     *      false if the value was provided by DTD defaulting.
      * @exception java.lang.ArrayIndexOutOfBoundsException When the
      *            supplied index does not identify an attribute.
      */
@@ -51,7 +51,7 @@ public interface Attributes2 extends Attributes
      *        the name has no Namespace URI.
      * @param localName The attribute's local name.
      * @return true if the value was found in the XML text,
-     *		false if the value was provided by DTD defaulting.
+     *      false if the value was provided by DTD defaulting.
      * @exception java.lang.IllegalArgumentException When the
      *            supplied names do not identify an attribute.
      */
@@ -63,7 +63,7 @@ public interface Attributes2 extends Attributes
      *
      * @param qName The XML 1.0 qualified name.
      * @return true if the value was found in the XML text,
-     *		false if the value was provided by DTD defaulting.
+     *      false if the value was provided by DTD defaulting.
      * @exception java.lang.IllegalArgumentException When the
      *            supplied name does not identify an attribute.
      */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.12 2002/04/23 14:43:30 jstrachan Exp $
+ * $Id: TestContent.java,v 1.13 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -214,5 +214,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.12 2002/04/23 14:43:30 jstrachan Exp $
+ * $Id: TestContent.java,v 1.13 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JARVDemo2.java,v 1.1 2002/02/20 04:27:21 jstrachan Exp $
+ * $Id: JARVDemo2.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
  */
 
 package validate;
@@ -32,7 +32,7 @@ import org.iso_relax.verifier.VerifierFilter;
   * with Sun's MSV library implementation.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class JARVDemo2 {
     
@@ -152,5 +152,5 @@ public class JARVDemo2 {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JARVDemo2.java,v 1.1 2002/02/20 04:27:21 jstrachan Exp $
+ * $Id: JARVDemo2.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
  */

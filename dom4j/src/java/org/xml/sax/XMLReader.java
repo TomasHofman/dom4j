@@ -2,7 +2,7 @@
 // http://www.saxproject.org
 // Written by David Megginson
 // NO WARRANTY!  This class is in the Public Domain.
-// $Id: XMLReader.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: XMLReader.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax;
 
@@ -150,7 +150,7 @@ public interface XMLReader
      * @see #getFeature
      */
     public void setFeature (String name, boolean value)
-	throws SAXNotRecognizedException, SAXNotSupportedException;
+    throws SAXNotRecognizedException, SAXNotSupportedException;
 
 
     /**
@@ -179,7 +179,7 @@ public interface XMLReader
      * @see #setProperty
      */
     public Object getProperty (String name)
-	throws SAXNotRecognizedException, SAXNotSupportedException;
+    throws SAXNotRecognizedException, SAXNotSupportedException;
 
 
     /**
@@ -208,7 +208,7 @@ public interface XMLReader
      *            cannot set the requested value.
      */
     public void setProperty (String name, Object value)
-	throws SAXNotRecognizedException, SAXNotSupportedException;
+    throws SAXNotRecognizedException, SAXNotSupportedException;
 
 
 
@@ -366,7 +366,7 @@ public interface XMLReader
      * @see #setErrorHandler 
      */
     public void parse (InputSource input)
-	throws IOException, SAXException;
+    throws IOException, SAXException;
 
 
     /**
@@ -392,6 +392,6 @@ public interface XMLReader
      * @see #parse(org.xml.sax.InputSource)
      */
     public void parse (String systemId)
-	throws IOException, SAXException;
+    throws IOException, SAXException;
 
 }

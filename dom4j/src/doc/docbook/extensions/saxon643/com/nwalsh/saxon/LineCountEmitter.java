@@ -9,7 +9,7 @@ import com.icl.saxon.expr.FragmentValue;
 /**
  * <p>Saxon extension to count the lines in a result tree fragment.</p>
  *
- * <p>$Id: LineCountEmitter.java,v 1.1 2002/05/13 19:16:42 tradem Exp $</p>
+ * <p>$Id: LineCountEmitter.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $</p>
  *
  * <p>Copyright (C) 2000 Norman Walsh.</p>
  *
@@ -35,7 +35,7 @@ import com.icl.saxon.expr.FragmentValue;
  * @author Norman Walsh
  * <a href="mailto:ndw@nwalsh.com">ndw@nwalsh.com</a>
  *
- * @version $Id: LineCountEmitter.java,v 1.1 2002/05/13 19:16:42 tradem Exp $
+ * @version $Id: LineCountEmitter.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  *
  */
 public class LineCountEmitter extends com.icl.saxon.output.Emitter {
@@ -68,7 +68,7 @@ public class LineCountEmitter extends com.icl.saxon.output.Emitter {
 
     for (int count = start; count < start+len; count++) {
       if (chars[count] == '\n') {
-	numLines++;
+    numLines++;
       }
     }
   }
@@ -93,7 +93,7 @@ public class LineCountEmitter extends com.icl.saxon.output.Emitter {
 
   /** Discarded. */
   public void processingInstruction(java.lang.String name,
-				    java.lang.String data)
+                    java.lang.String data)
     throws javax.xml.transform.TransformerException {
     // nop
   }
@@ -133,8 +133,8 @@ public class LineCountEmitter extends com.icl.saxon.output.Emitter {
 
   /** Discarded. */
   public void startElement(int nameCode,
-		    org.xml.sax.Attributes attributes,
-		    int[] namespaces, int nscount)
+            org.xml.sax.Attributes attributes,
+            int[] namespaces, int nscount)
     throws javax.xml.transform.TransformerException {
     // nop
   }

@@ -10,7 +10,7 @@
 <xsl:output method="html"/>
 
 <!-- ********************************************************************
-     $Id: docbook.xsl,v 1.1 2001/08/03 15:24:03 jstrachan Exp $
+     $Id: docbook.xsl,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

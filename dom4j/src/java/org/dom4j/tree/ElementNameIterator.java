@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementNameIterator.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: ElementNameIterator.java,v 1.5 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Namespace;
   * interface and are not of the correct element name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class ElementNameIterator extends FilterIterator {
     
@@ -88,5 +88,5 @@ public class ElementNameIterator extends FilterIterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementNameIterator.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
+ * $Id: ElementNameIterator.java,v 1.5 2002/05/20 08:14:10 jstrachan Exp $
  */

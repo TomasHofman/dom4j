@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.36 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.37 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.36 $
+  * @version $Revision: 1.37 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -428,5 +428,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.36 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.37 2002/05/20 08:14:10 jstrachan Exp $
  */

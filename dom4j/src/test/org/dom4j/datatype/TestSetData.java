@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSetData.java,v 1.1 2001/11/22 12:57:45 jstrachan Exp $
+ * $Id: TestSetData.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -32,7 +32,7 @@ import org.dom4j.datatype.DatatypeDocumentFactory;
 /** Tests setting the value of datatype aware element or attribute value
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestSetData extends AbstractTestCase {
 
@@ -198,5 +198,5 @@ public class TestSetData extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSetData.java,v 1.1 2001/11/22 12:57:45 jstrachan Exp $
+ * $Id: TestSetData.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
  */

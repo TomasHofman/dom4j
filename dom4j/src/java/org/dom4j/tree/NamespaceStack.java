@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.6 2001/09/20 10:48:18 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -24,7 +24,7 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class NamespaceStack {
  
@@ -364,5 +364,5 @@ public class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.6 2001/09/20 10:48:18 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSetContent.java,v 1.1 2001/07/12 16:42:48 jstrachan Exp $
+ * $Id: TestSetContent.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** Tests the setContent method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestSetContent extends AbstractTestCase {
 
@@ -148,5 +148,5 @@ public class TestSetContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSetContent.java,v 1.1 2001/07/12 16:42:48 jstrachan Exp $
+ * $Id: TestSetContent.java,v 1.2 2002/05/20 08:14:08 jstrachan Exp $
  */

@@ -1,7 +1,7 @@
 // Locator2.java - extended Locator
 // http://www.saxproject.org
 // Public Domain: no warranty.
-// $Id: Locator2.java,v 1.1 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: Locator2.java,v 1.2 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax.ext;
 
@@ -43,7 +43,7 @@ public interface Locator2 extends Locator
      * different rules about which characters are legal in XML names.
      *
      * @return Identifier for the XML version being used to interpret
-     *	the entity's text.
+     *  the entity's text.
      */
     public String getXMLVersion ();
 
@@ -70,8 +70,8 @@ public interface Locator2 extends Locator
      * and comparisons should be case-insensitive.
      *
      * @return Name of the character encoding being used to interpret
-     *	the entity's text, or null if this was not provided for a
-     *	character stream passed through an InputSource.
+     *  the entity's text, or null if this was not provided for a
+     *  character stream passed through an InputSource.
      */
     public String getEncoding ();
 }

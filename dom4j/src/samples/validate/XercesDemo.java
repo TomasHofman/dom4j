@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XercesDemo.java,v 1.1 2001/08/30 07:54:10 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
  */
 
 package validate;
@@ -24,7 +24,7 @@ import org.xml.sax.SAXParseException;
 /** Validates a document using Xerces and an XML Schema.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class XercesDemo extends AbstractDemo {
     
@@ -114,5 +114,5 @@ public class XercesDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XercesDemo.java,v 1.1 2001/08/30 07:54:10 jstrachan Exp $
+ * $Id: XercesDemo.java,v 1.2 2002/05/20 08:14:14 jstrachan Exp $
  */

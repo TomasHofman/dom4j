@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Namespace.java,v 1.13 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: Namespace.java,v 1.14 2002/05/20 08:14:11 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,7 +16,7 @@ import org.dom4j.tree.DefaultNamespace;
 /** <p><code>Namespace</code> is a Flyweight Namespace that can be shared amongst nodes.</p>
   * 
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class Namespace extends AbstractNode {
     
@@ -210,5 +210,5 @@ public class Namespace extends AbstractNode {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Namespace.java,v 1.13 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: Namespace.java,v 1.14 2002/05/20 08:14:11 jstrachan Exp $
  */

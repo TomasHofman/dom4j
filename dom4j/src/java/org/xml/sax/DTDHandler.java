@@ -1,7 +1,7 @@
 // SAX DTD handler.
 // http://www.saxproject.org
 // No warranty; no copyright -- use this as you will.
-// $Id: DTDHandler.java,v 1.2 2002/04/19 22:40:13 jstrachan Exp $
+// $Id: DTDHandler.java,v 1.3 2002/05/20 08:14:09 jstrachan Exp $
 
 package org.xml.sax;
 
@@ -78,9 +78,9 @@ public interface DTDHandler {
      * @see org.xml.sax.Attributes
      */
     public abstract void notationDecl (String name,
-				       String publicId,
-				       String systemId)
-	throws SAXException;
+                       String publicId,
+                       String systemId)
+    throws SAXException;
     
     
     /**
@@ -107,10 +107,10 @@ public interface DTDHandler {
      * @see org.xml.sax.Attributes
      */
     public abstract void unparsedEntityDecl (String name,
-					     String publicId,
-					     String systemId,
-					     String notationName)
-	throws SAXException;
+                         String publicId,
+                         String systemId,
+                         String notationName)
+    throws SAXException;
     
 }
 

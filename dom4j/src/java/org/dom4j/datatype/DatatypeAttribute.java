@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeAttribute.java,v 1.3 2001/11/30 12:12:32 jstrachan Exp $
+ * $Id: DatatypeAttribute.java,v 1.4 2002/05/20 08:14:12 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -26,7 +26,7 @@ import org.relaxng.datatype.ValidationContext;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DatatypeAttribute extends AbstractAttribute implements SerializationContext, ValidationContext {
 
@@ -233,5 +233,5 @@ public class DatatypeAttribute extends AbstractAttribute implements Serializatio
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeAttribute.java,v 1.3 2001/11/30 12:12:32 jstrachan Exp $
+ * $Id: DatatypeAttribute.java,v 1.4 2002/05/20 08:14:12 jstrachan Exp $
  */

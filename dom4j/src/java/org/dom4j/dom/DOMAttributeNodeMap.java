@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMAttributeNodeMap.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMAttributeNodeMap.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -20,7 +20,7 @@ import org.w3c.dom.Node;
   * for the attributes of an element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DOMAttributeNodeMap implements org.w3c.dom.NamedNodeMap {
 
@@ -134,5 +134,5 @@ public class DOMAttributeNodeMap implements org.w3c.dom.NamedNodeMap {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMAttributeNodeMap.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMAttributeNodeMap.java,v 1.2 2002/05/20 08:14:13 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentSource.java,v 1.3 2001/08/08 13:43:24 jstrachan Exp $
+ * $Id: DocumentSource.java,v 1.4 2002/05/20 08:14:15 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.xml.sax.XMLReader;
   * for a {@link Document}.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DocumentSource extends SAXSource {
     
@@ -172,5 +172,5 @@ public class DocumentSource extends SAXSource {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentSource.java,v 1.3 2001/08/08 13:43:24 jstrachan Exp $
+ * $Id: DocumentSource.java,v 1.4 2002/05/20 08:14:15 jstrachan Exp $
  */
