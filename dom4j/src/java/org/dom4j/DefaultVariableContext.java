@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultVariableContext.java,v 1.1 2001/02/26 12:44:40 jstrachan Exp $
+ * $Id: DefaultVariableContext.java,v 1.2 2001/08/01 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.VariableContext;
  *  @author bob mcwhirter (bob @ werken.com)
  */
 
-public class DefaultVariableContext implements VariableContext {
+public class DefaultVariableContext implements VariableContext, org.jaxen.VariableContext {
 
     /** The map used to resolve variable values */
     private Map map;
@@ -48,6 +48,10 @@ public class DefaultVariableContext implements VariableContext {
     *  @see org.dom4j.xpath.ContextSupport#setVariableContext
     */
     public Object getVariableValue(String name) {
+        return map.get(name);
+    }
+
+    public Object getVariableValue(String prefix, String name) {
         return map.get(name);
     }
 
@@ -119,5 +123,5 @@ public class DefaultVariableContext implements VariableContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultVariableContext.java,v 1.1 2001/02/26 12:44:40 jstrachan Exp $
+ * $Id: DefaultVariableContext.java,v 1.2 2001/08/01 09:17:21 jstrachan Exp $
  */

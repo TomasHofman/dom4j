@@ -4,53 +4,41 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SubstringAfterFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: XPathException.java,v 1.1 2001/08/01 09:17:21 jstrachan Exp $
  */
 
+package org.dom4j;
 
-package org.dom4j.xpath.function;
+/** <p><code>XPathException</code> is thrown when an exception
+  * occurs while evaluating an XPath expression, usually due to some function 
+  * throwing an exception.</p>
+  *
+  * @version $Revision: 1.1 $
+  */
+public class XPathException extends RuntimeException {
 
-import org.dom4j.xpath.impl.Context;
-
-import java.util.List;
-
-/**
-   <p><b>4.2</b> <code><i>string</i> substring-after(<i>string</i>,<i>string</i>)</code> 
-   
-   @author bob mcwhirter (bob @ werken.com)
-*/
-
-public class SubstringAfterFunction implements Function
-{
-
-  public Object call(Context context,
-                     List args)
-  {
-    if (args.size() == 2)
-    {
-      return evaluate(args.get(0), args.get(1));
-    }
-
-    // FIXME: Toss exception
-    return null;
-  }
-
-  public static String evaluate(Object strArg,
-                                Object matchArg)
-  {
-    String str = StringFunction.evaluate(strArg);
-    String match = StringFunction.evaluate(matchArg);
+    /** The XPath expression that caused the exception */
+    private String xpath;
     
-    int loc = str.indexOf(match);
-
-    if ( loc < 0 )
-    {
-      return "";
+    public XPathException(String xpath) {
+        super( "Exception occurred evaluting XPath: " + xpath );
+        this.xpath = xpath;
     }
-
-    return str.substring(loc+1);
-
-  }
+    
+    public XPathException(String xpath, String reason) {
+        super( "Exception occurred evaluting XPath: " + xpath + " " + reason );
+        this.xpath = xpath;
+    }
+    
+    public XPathException(String xpath, Exception e) {
+        super( "Exception occurred evaluting XPath: " + xpath + ". Exception: " + e.getMessage() );
+        this.xpath = xpath;
+    }
+    
+    /** Returns the XPath expression that caused the problem */
+    public String getXPath() {
+        return xpath;
+    }
 }
 
 
@@ -98,5 +86,5 @@ public class SubstringAfterFunction implements Function
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SubstringAfterFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: XPathException.java,v 1.1 2001/08/01 09:17:21 jstrachan Exp $
  */

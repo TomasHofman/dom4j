@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSerialize.java,v 1.3 2001/07/30 19:01:39 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.4 2001/08/01 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that a dom4j document is Serializable
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestSerialize extends AbstractTestCase {
 
@@ -47,7 +47,23 @@ public class TestSerialize extends AbstractTestCase {
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testSerialize() throws Exception {
+    public void testSerializePeriodicTable() throws Exception {
+        testSerialize( "xml/periodic_table.xml" );
+    }
+    
+    public void testSerializeMuchAdo() throws Exception {
+        testSerialize( "xml/much_ado.xml" );
+    }
+    
+    public void testSerializeTestSchema() throws Exception {
+        testSerialize( "xml/schema/personal.xsd" );
+    }
+    
+    // Implementation methods
+    //-------------------------------------------------------------------------                    
+    protected void testSerialize(String xmlFile) throws Exception {
+        SAXReader reader = new SAXReader();
+        Document document = reader.read( xmlFile );
         String text = document.asXML();
         
         ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
@@ -71,8 +87,6 @@ public class TestSerialize extends AbstractTestCase {
     }            
     
     protected void setUp() throws Exception {
-        SAXReader reader = new SAXReader();
-        document = reader.read( "xml/schema/personal.xsd" );
     }
 }
 
@@ -121,5 +135,5 @@ public class TestSerialize extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSerialize.java,v 1.3 2001/07/30 19:01:39 jstrachan Exp $
+ * $Id: TestSerialize.java,v 1.4 2001/08/01 09:17:21 jstrachan Exp $
  */

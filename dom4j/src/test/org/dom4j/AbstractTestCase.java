@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractTestCase.java,v 1.11 2001/07/24 08:46:17 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.12 2001/08/01 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.util.NodeComparator;
 /** An abstract base class for some DOM4J test cases
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class AbstractTestCase extends TestCase {
 
@@ -47,6 +47,13 @@ public class AbstractTestCase extends TestCase {
         
         NodeComparator comparator = new NodeComparator();
         assertTrue( "Documents are equal", comparator.compare( doc1, doc2 ) == 0 );
+        
+/*        
+        String text1 = doc1.asXML();
+        String text2 = doc2.asXML();
+        
+        assertEquals( "Text of documents is equal", text1, text2 );
+*/
     }
 
     
@@ -283,5 +290,5 @@ public class AbstractTestCase extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractTestCase.java,v 1.11 2001/07/24 08:46:17 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.12 2001/08/01 09:17:21 jstrachan Exp $
  */
