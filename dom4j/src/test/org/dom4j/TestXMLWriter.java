@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.11 2003/04/07 22:24:26 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.12 2004/02/28 14:01:30 maartenc Exp $
  */
 
 package org.dom4j;
@@ -29,7 +29,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -226,18 +226,27 @@ public class TestXMLWriter extends AbstractTestCase {
         writer.write(doc);
     }
 
+    public void testAttributeQuotes() throws Exception {
+        Document doc = DocumentFactory.getInstance().createDocument();
+        doc.addElement("root").addAttribute("test", "text with ' in it");
+        StringWriter out = new StringWriter();
+        XMLWriter writer = new XMLWriter(out, OutputFormat.createCompactFormat());
+        writer.write(doc);
+        System.out.println(out.toString());
+        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<root test=\"text with ' in it\"/>", out.toString());
+    }
     
     protected void generateXML(ContentHandler handler) throws SAXException {
-    handler.startDocument();
-    AttributesImpl attrs = new AttributesImpl();
-    attrs.clear();
-    attrs.addAttribute("","","name","CDATA", "arvojoo");
-    handler.startElement("","","processes",attrs);
-    String text="jeejee";
-    char textch[] = text.toCharArray();
-    handler.characters(textch,0,textch.length);
-    handler.endElement("","","processes" );
-    handler.endDocument();
+        handler.startDocument();
+        AttributesImpl attrs = new AttributesImpl();
+        attrs.clear();
+        attrs.addAttribute("","","name","CDATA", "arvojoo");
+        handler.startElement("","","processes",attrs);
+        String text="jeejee";
+        char textch[] = text.toCharArray();
+        handler.characters(textch,0,textch.length);
+        handler.endElement("","","processes" );
+        handler.endDocument();
     }
 }
 
@@ -286,5 +295,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.11 2003/04/07 22:24:26 jstrachan Exp $
+ * $Id: TestXMLWriter.java,v 1.12 2004/02/28 14:01:30 maartenc Exp $
  */
