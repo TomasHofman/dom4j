@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.45 2002/02/10 15:56:04 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.46 2002/02/14 11:55:46 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.45 $
+  * @version $Revision: 1.46 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -295,7 +295,7 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
       * @param entity <code>Entity</code> to output.
       */
     public void write(Entity entity) throws IOException {
-        writeEntityRef( entity.getName() );
+        writeEntity( entity );
         
         if ( autoFlush ) {
             flush();
@@ -884,7 +884,7 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
                 writeCDATA(node.getText());
                 break;
             case Node.ENTITY_REFERENCE_NODE:
-                writeEntityRef( node.getName() );
+                writeEntity((Entity) node);
                 break;
             case Node.PROCESSING_INSTRUCTION_NODE:
                 writeProcessingInstruction((ProcessingInstruction) node);
@@ -953,6 +953,10 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
         writePrintln();
     }
 
+    protected void writeEntity(Entity entity) throws IOException {
+        writeEntityRef( entity.getName() );
+    }
+    
     protected void writeEntityRef(String name) throws IOException {
         writer.write( "&" );
         writer.write( name );
@@ -1282,5 +1286,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.45 2002/02/10 15:56:04 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.46 2002/02/14 11:55:46 jstrachan Exp $
  */
