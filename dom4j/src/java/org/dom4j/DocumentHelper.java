@@ -4,12 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.15 2004/04/20 21:37:51 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.16 2004/04/23 06:50:07 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.ByteArrayInputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -22,7 +23,7 @@ import org.jaxen.VariableContext;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class DocumentHelper {
 
@@ -322,5 +323,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.15 2004/04/20 21:37:51 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.16 2004/04/23 06:50:07 maartenc Exp $
  */
