@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.7 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.8 2001/01/25 17:34:07 jstrachan Exp $
  */
 
 // This is a port of a file from the JDOM project
@@ -131,7 +131,7 @@ import org.dom4j.Text;
  * @author David &amp; Will (from Post Tool Design)
  * @author Dan Schaffer
  * @author Alex Chaffee (alex@jguru.com)
- * @version $Revision: 1.7 $ 
+ * @version $Revision: 1.8 $ 
  */
 public class XMLWriter implements Cloneable {
 
@@ -324,6 +324,13 @@ public class XMLWriter implements Cloneable {
         this.suppressDeclaration = suppressDeclaration;
     }
 
+    /** @return true if the output of the XML declaration
+      * (<code>&lt;?xml version="1.0"?&gt;</code>) should be suppressed else false.
+      */
+    public boolean isSuppressDeclaration() {
+        return suppressDeclaration;
+    }
+    
     /**
      * <p>
      *  This will set whether empty elements are expanded from <code>&lt;tagName&gt;</code> to
@@ -873,7 +880,7 @@ public class XMLWriter implements Cloneable {
                                     String encoding)  throws IOException {
 
         // Only print of declaration is not suppressed
-        if (!suppressDeclaration) {
+        if (!isSuppressDeclaration()) {
             // Assume 1.0 version
             if (encoding.equals("UTF8")) {
                 out.write("<?xml version=\"1.0\"");
@@ -1514,5 +1521,5 @@ public class XMLWriter implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.7 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.8 2001/01/25 17:34:07 jstrachan Exp $
  */

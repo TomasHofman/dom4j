@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: HTMLWriter.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.3 2001/01/25 17:34:07 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -27,7 +27,7 @@ import org.dom4j.Entity;
   * as for &lt;BR&gt; and &lt;P&gt;.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
-  * @version $Revision: 1.2 $ 
+  * @version $Revision: 1.3 $ 
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -55,6 +55,11 @@ public class HTMLWriter extends XMLWriter {
         super( that );
     }
 
+    /** @return true to suppress the output of the XML declaration 
+      */
+    public boolean isSuppressDeclaration() {
+        return true;
+    }
  
     /** Overriden method to only output the text of CDATA sections
       * rather than the XML format
@@ -153,5 +158,5 @@ public class HTMLWriter extends XMLWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.3 2001/01/25 17:34:07 jstrachan Exp $
  */
