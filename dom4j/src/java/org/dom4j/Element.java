@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.39 2003/12/03 14:28:06 jstrachan Exp $
+ * $Id: Element.java,v 1.40 2004/03/24 10:03:06 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.39 $
+  * @version $Revision: 1.40 $
   */
 public interface Element extends Branch {
 
@@ -465,7 +465,8 @@ public interface Element extends Branch {
       * @param value is the attribute's value
       *
       * @deprecated As of version 0.5. Please use 
-      *    {@link #addAttribute(String,String)} instead.
+      *    {@link #addAttribute(String,String)} instead. 
+      *    WILL BE REMOVED IN dom4j-1.6 !!
       */
     public void setAttributeValue(String name, String value);
     
@@ -477,6 +478,7 @@ public interface Element extends Branch {
       *
       * @deprecated As of version 0.5. Please use 
       *    {@link #addAttribute(QName,String)} instead.
+      *    WILL BE REMOVED IN dom4j-1.6 !!
       */
     public void setAttributeValue(QName qName, String value);
 
@@ -676,5 +678,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.39 2003/12/03 14:28:06 jstrachan Exp $
+ * $Id: Element.java,v 1.40 2004/03/24 10:03:06 maartenc Exp $
  */

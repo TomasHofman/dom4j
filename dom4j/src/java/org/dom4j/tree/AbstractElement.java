@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.69 2003/05/15 22:48:02 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.70 2004/03/24 10:03:07 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.69 $
+  * @version $Revision: 1.70 $
   */
 
 public abstract class AbstractElement
@@ -834,6 +834,7 @@ public abstract class AbstractElement
     /**
      * @deprecated As of version 0.5. Please use 
      *    {@link #addAttribute(String,String)} instead.
+     *    WILL BE REMOVED IN dom4j-1.6 !!
      **/
     public void setAttributeValue(String name, String value) {
 
@@ -844,6 +845,7 @@ public abstract class AbstractElement
     /**
      * @deprecated As of version 0.5. Please use 
      *    {@link #addAttribute(String,String)} instead.
+     *    WILL BE REMOVED IN dom4j-1.6 !!
      **/
     public void setAttributeValue(QName qName, String value) {
 
@@ -2284,5 +2286,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.69 2003/05/15 22:48:02 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.70 2004/03/24 10:03:07 maartenc Exp $
  */
