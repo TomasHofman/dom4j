@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonDocumentFactory.java,v 1.3 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: SaxonDocumentFactory.java,v 1.4 2001/05/28 17:58:02 jstrachan Exp $
  */
 
 package org.dom4j.saxon;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * which implement the SAXON document object model.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SaxonDocumentFactory extends DocumentFactory {
 
@@ -43,7 +43,7 @@ public class SaxonDocumentFactory extends DocumentFactory {
     // Factory methods
     
 /*    
-    public Attribute createAttribute(QName qname, String value) {
+    public Attribute createAttribute(Element owner, QName qname, String value) {
         return new SaxonAttribute(qname, value);
     }
 */
@@ -98,5 +98,5 @@ public class SaxonDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonDocumentFactory.java,v 1.3 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: SaxonDocumentFactory.java,v 1.4 2001/05/28 17:58:02 jstrachan Exp $
  */

@@ -4,53 +4,55 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Document.java,v 1.6 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.1 2001/05/28 17:58:02 jstrachan Exp $
  */
 
-package org.dom4j;
+package org.dom4j.schema;
 
-import org.xml.sax.EntityResolver;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
-/** <p><code>Document</code> defines an XML Document.</p>
+import junit.framework.*;
+import junit.textui.TestRunner;
+
+import org.dom4j.AbstractTestCase;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
+import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
+import org.dom4j.schema.SchemaDocumentFactory;
+
+
+/** Test harness for the XML Schema Data Type integration. These tests
+  * use auto-loading of the XML Schema document
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public interface Document extends Branch {
+public class TestAutoSchema extends TestManualSchema {
 
-    /** Returns the root {@link Element} for this document.
-      *
-      * @return the root element for this document
-      */
-    public Element getRootElement();
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
+    }
     
-    /** Sets the root element for this document
-      *
-      * @param rootElement the new root element for this document
-      */    
-    public void setRootElement(Element rootElement);
+    public static Test suite() {
+        return new TestSuite( TestAutoSchema.class );
+    }
+    
+    public TestAutoSchema(String name) {
+        super(name);
+    }
 
-    public DocumentType getDocType();
-    public void setDocType(DocumentType docType);
-    
-    public void setDocType(String name, String publicId, String systemId);    
-    public DocumentType createDocType(String name, String publicId, String systemId);
-
-    
-    /** @return the EntityResolver used to find resolve URIs such as for DTDs,
-      * or XML Schema documents 
-      */
-    public EntityResolver getEntityResolver();
-    
-    /** Sets the EntityResolver used to find resolve URIs such as for DTDs,
-      * or XML Schema documents 
-      */
-    public void setEntityResolver(EntityResolver entityResolver);
+    protected void setUp() throws Exception {
+        DocumentFactory factory = SchemaDocumentFactory.getInstance();
+        SAXReader reader = new SAXReader( factory );
+        document = reader.read( "xml/schema/personal-schema.xml" );
+    }
     
 }
-
-
-
 
 
 
@@ -97,5 +99,5 @@ public interface Document extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Document.java,v 1.6 2001/05/28 17:58:02 jstrachan Exp $
+ * $Id: TestAutoSchema.java,v 1.1 2001/05/28 17:58:02 jstrachan Exp $
  */

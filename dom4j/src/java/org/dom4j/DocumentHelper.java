@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.3 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.4 2001/05/28 17:58:02 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import org.dom4j.rule.Pattern;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DocumentHelper {
 
@@ -44,12 +44,12 @@ public class DocumentHelper {
     }
     
     
-    public static Attribute createAttribute(QName qname, String value) {
-        return DocumentFactory.getInstance().createAttribute(qname, value);
+    public static Attribute createAttribute(Element owner, QName qname, String value) {
+        return DocumentFactory.getInstance().createAttribute(owner, qname, value);
     }
     
-    public static Attribute createAttribute(String name, String value) {
-        return DocumentFactory.getInstance().createAttribute(name, value);
+    public static Attribute createAttribute(Element owner, String name, String value) {
+        return DocumentFactory.getInstance().createAttribute(owner, name, value);
     }
     
     public static CDATA createCDATA(String text) {
@@ -244,5 +244,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.3 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.4 2001/05/28 17:58:02 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchema.java,v 1.1 2001/05/24 08:43:59 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.2 2001/05/28 17:58:03 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -29,8 +29,8 @@ import org.dom4j.schema.SchemaDocumentFactory;
 /** Test harness for the XML Schema Data Type integration. These tests
   * manually load the schemas
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.2 $
   */
 public class TestManualSchema extends AbstractTestCase {
 
@@ -50,8 +50,12 @@ public class TestManualSchema extends AbstractTestCase {
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testInt() throws Exception {        
+    public void testIntAttribute() throws Exception {        
         testSchema( "//person/@x", Integer.class );
+    }
+    
+    public void testIntElement() throws Exception {        
+        testSchema( "//person/salary", Integer.class );
     }
     
 /*        
@@ -178,5 +182,5 @@ public class TestManualSchema extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchema.java,v 1.1 2001/05/24 08:43:59 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.2 2001/05/28 17:58:03 jstrachan Exp $
  */

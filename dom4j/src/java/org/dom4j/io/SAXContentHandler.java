@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.20 2001/05/18 18:45:22 drwhite Exp $
+ * $Id: SAXContentHandler.java,v 1.21 2001/05/28 17:58:02 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -32,6 +32,8 @@ import org.dom4j.ProcessingInstruction;
 import org.dom4j.DocumentException;
 
 import org.xml.sax.Attributes;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.ext.LexicalHandler;
@@ -40,7 +42,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -83,6 +85,10 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     /** The number of namespaces that are declared in the current scope */
     private int declaredNamespaceIndex;
     
+    private EntityResolver entityResolver;
+    
+    private InputSource inputSource;
+    
     
     public SAXContentHandler() {
         this( DocumentFactory.getInstance() );
@@ -116,6 +122,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
     
     // ContentHandler interface
+    //-------------------------------------------------------------------------
     
     public void processingInstruction(String target, String data) throws SAXException {
         peekBranch().addProcessingInstruction(target, data);
@@ -220,6 +227,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
 
     // LexicalHandler interface
+    //-------------------------------------------------------------------------
     
     public void startDTD(String name, String publicId, String systemId) throws SAXException {
         Document document = getDocument();
@@ -264,6 +272,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
 
     
     // Properties
+    //-------------------------------------------------------------------------
     public ElementStack getElementStack() {
         return elementStack;
     }
@@ -272,13 +281,36 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
         this.elementStack = elementStack;
     }
     
-    // Implementation methods
+    public EntityResolver getEntityResolver() {
+        return entityResolver;
+    }
     
+    public void setEntityResolver(EntityResolver entityResolver) {
+        this.entityResolver = entityResolver;
+    }
+
+    public InputSource getInputSource() {
+        return inputSource;
+    }
+    
+    public void setInputSource(InputSource inputSource) {
+        this.inputSource = inputSource;
+    }
+
+    
+    // Implementation methods
+    //-------------------------------------------------------------------------
 
     /** @return the current document 
       */
     protected Document createDocument() {
-        return documentFactory.createDocument();
+        Document document = documentFactory.createDocument();
+        
+        // set the EntityResolver
+        document.setEntityResolver(entityResolver);
+        document.setName( inputSource.getSystemId() );
+            
+        return document;
     }
     
     /** @return the set of entity names which are ignored
@@ -333,7 +365,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
         }
         return branch;
     }
-
+    
 }
 
 
@@ -381,5 +413,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.20 2001/05/18 18:45:22 drwhite Exp $
+ * $Id: SAXContentHandler.java,v 1.21 2001/05/28 17:58:02 jstrachan Exp $
  */

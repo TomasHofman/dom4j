@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElementFactory.java,v 1.2 2001/05/28 15:31:37 jstrachan Exp $
+ * $Id: SchemaElementFactory.java,v 1.3 2001/05/28 17:58:02 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
   * in an XML Schema.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class SchemaElementFactory extends DocumentFactory {
     
@@ -65,9 +65,6 @@ public class SchemaElementFactory extends DocumentFactory {
       * &lt;attribute&gt; QNames
       */
     public void setAttributeDataType( QName attributeQName, DataType dataType ) {
-        System.out.println( "==== Creating DataType for element: " + elementQName.getQualifiedName() + " and attribute: " + attributeQName.getQualifiedName() );
-        System.out.println( "### DataType: " + dataType );
-        
         attributeDataTypes.put( attributeQName, dataType );
     }
     
@@ -80,9 +77,6 @@ public class SchemaElementFactory extends DocumentFactory {
     }
     
    public void setChildElementDataType( QName qname, DataType dataType ) {
-        System.out.println( "==== Creating DataType for child element: " + qname.getQualifiedName()  );
-        System.out.println( "### DataType: " + dataType );
-        
         childrenDataTypes.put( qname, dataType );
     }
 
@@ -109,16 +103,12 @@ public class SchemaElementFactory extends DocumentFactory {
         }
     }
     
-    public Attribute createAttribute(QName qname, String value) {
-        System.out.println( "### Creating Attribute for element: " + elementQName.getQualifiedName() + " and attribute: " + qname.getQualifiedName() );
-        
+    public Attribute createAttribute(Element owner, QName qname, String value) {
         DataType dataType = getAttributeDataType(qname);
         if ( dataType == null ) {
-            System.out.println( "no DataType!" );
-            return super.createAttribute( qname, value );
+            return super.createAttribute( owner, qname, value );
         }
         else {
-            System.out.println( "### FOUND " + dataType );
             return new SchemaAttribute( qname, dataType, value );
         }
     }
@@ -172,5 +162,5 @@ public class SchemaElementFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElementFactory.java,v 1.2 2001/05/28 15:31:37 jstrachan Exp $
+ * $Id: SchemaElementFactory.java,v 1.3 2001/05/28 17:58:02 jstrachan Exp $
  */

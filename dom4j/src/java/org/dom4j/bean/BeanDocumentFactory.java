@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDocumentFactory.java,v 1.6 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.7 2001/05/28 17:58:02 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class BeanDocumentFactory extends DocumentFactory {
 
@@ -66,14 +66,10 @@ public class BeanDocumentFactory extends DocumentFactory {
         }
     }
     
-    public Attribute createAttribute(QName qname, String value) {
+    public Attribute createAttribute(Element owner, QName qname, String value) {
         return new DefaultAttribute(qname, value);
     }
     
-    public Attribute createAttribute(String name, String value) {
-        return createAttribute(createQName(name), value);
-    }
-
     
     // Implementation methods
     
@@ -146,5 +142,5 @@ public class BeanDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDocumentFactory.java,v 1.6 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.7 2001/05/28 17:58:02 jstrachan Exp $
  */
