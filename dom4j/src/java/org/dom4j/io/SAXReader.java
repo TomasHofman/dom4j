@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.30 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.31 2001/08/15 14:38:16 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.30 $
+  * @version $Revision: 1.31 $
   */
 public class SAXReader {
 
@@ -95,6 +95,9 @@ public class SAXReader {
     /** ErrorHandler class to use */
     private ErrorHandler errorHandler;
 
+    /** The entity resolver */
+    private EntityResolver entityResolver;
+    
     /** Should element & attribute names and namespace URIs be interned? */
     private boolean stringInternEnabled = true;
     
@@ -214,6 +217,7 @@ public class SAXReader {
       * @throws MalformedURLException if a URL could not be made for the given File
       */
     public Document read(String systemId) throws DocumentException, MalformedURLException {
+        /*
         if ( systemId.indexOf( ':' ) >= 0 ) {
             // lets assume its a URL
             return read(new InputSource(systemId));
@@ -222,6 +226,8 @@ public class SAXReader {
             // lets assume that we are given a file name
             return read( new File(systemId) );
         }
+         */
+        return read(new InputSource(systemId));        
     }
 
     /** <p>Reads a Document from the given stream using SAX</p>
@@ -285,7 +291,11 @@ public class SAXReader {
             
             EntityResolver entityResolver = xmlReader.getEntityResolver();
             if ( entityResolver == null ) {
-                entityResolver = createDefaultEntityResolver( in.getSystemId() );
+                entityResolver = this.entityResolver;
+                if ( entityResolver == null ) {
+                    entityResolver = createDefaultEntityResolver( in.getSystemId() );
+                }
+                //xmlReader.setEntityResolver( entityResolver );
             }
             
             SAXContentHandler contentHandler = createContentHandler(xmlReader);
@@ -388,7 +398,19 @@ public class SAXReader {
         this.errorHandler = errorHandler;
     }
 
-    /** @return the <code>XMLReader</code> used to parse SAX events
+    /** Returns the current entity resolver used to resolve entities
+     */
+    public EntityResolver getEntityResolver() {
+        return entityResolver;
+    }
+    
+    /** Sets the entity resolver used to resolve entities. 
+     */
+    public void setEntityResolver(EntityResolver entityResolver) {
+        this.entityResolver = entityResolver;
+    }
+
+        /** @return the <code>XMLReader</code> used to parse SAX events
       */
     public XMLReader getXMLReader() throws SAXException {
         if (xmlReader == null) {
@@ -658,5 +680,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.30 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.31 2001/08/15 14:38:16 jstrachan Exp $
  */
