@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.68 2003/04/07 22:14:16 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.69 2003/05/15 22:48:02 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.68 $
+  * @version $Revision: 1.69 $
   */
 
 public abstract class AbstractElement
@@ -831,12 +831,20 @@ public abstract class AbstractElement
 
     }
 
+    /**
+     * @deprecated As of version 0.5. Please use 
+     *    {@link #addAttribute(String,String)} instead.
+     **/
     public void setAttributeValue(String name, String value) {
 
         addAttribute(name, value);
 
     }
 
+    /**
+     * @deprecated As of version 0.5. Please use 
+     *    {@link #addAttribute(String,String)} instead.
+     **/
     public void setAttributeValue(QName qName, String value) {
 
         addAttribute(qName, value);
@@ -2094,12 +2102,39 @@ public abstract class AbstractElement
         addNewNode(node);
 
     }
+    
+    protected void addNode(int index, Node node) {
+        
+        if (node.getParent() != null) {
+
+            // XXX: could clone here
+
+            String message =
+                "The Node already has an existing parent of \""
+                    + node.getParent().getQualifiedName()
+                    + "\"";
+
+            throw new IllegalAddException(this, node, message);
+
+        }
+
+        addNewNode(index, node);
+
+    }
 
     /** Like addNode() but does not require a parent check */
 
     protected void addNewNode(Node node) {
 
         contentList().add(node);
+
+        childAdded(node);
+
+    }
+
+    protected void addNewNode(int index, Node node) {
+
+        contentList().add(index, node);
 
         childAdded(node);
 
@@ -2249,5 +2284,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.68 2003/04/07 22:14:16 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.69 2003/05/15 22:48:02 maartenc Exp $
  */
