@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.8 2001/06/22 10:19:12 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -23,7 +23,7 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 class NamespaceStack {
  
@@ -120,6 +120,12 @@ class NamespaceStack {
     }
     
     public QName getQName( String namespaceURI, String localName, String qualifiedName ) {
+        if ( localName == null ) {
+            localName = qualifiedName;
+        }
+        else if ( qualifiedName == null ) {
+            qualifiedName = localName;
+        }
         QName qName = (QName) qNameMap.get( qualifiedName );
         if ( qName == null ) {
             String prefix = "";
@@ -145,7 +151,9 @@ class NamespaceStack {
             push( namespace );
         }
         else {
-            System.out.println( "Warning: duplicate namespace prefix ignored: " + prefix );
+            if ( prefix != null && prefix.length() > 0 ) {
+                System.out.println( "Warning: duplicate namespace prefix ignored: " + prefix );
+            }
         }
     }
     
@@ -276,5 +284,5 @@ class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.8 2001/06/22 10:19:12 jstrachan Exp $
  */
