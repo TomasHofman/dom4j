@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractTestCase.java,v 1.9 2001/07/03 14:42:43 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.10 2001/07/06 19:06:18 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.util.NodeComparator;
 /** An abstract base class for some DOM4J test cases
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class AbstractTestCase extends TestCase {
 
@@ -211,11 +211,17 @@ public class AbstractTestCase extends TestCase {
             .addAttribute( "name", "James" )
             .addAttribute( "location", "UK" )
             .addText("James Strachan");
+
+        Element url1 = author1.addElement( "url" )
+            .addText( "http://sourceforge.net/users/jstrachan/" );
         
         Element author2 = root.addElement( "author" )
             .addAttribute( "name", "Bob" )
             .addAttribute( "location", "Canada" )
             .addText("Bob McWhirter");
+        
+        Element url2 = author2.addElement( "url" )
+            .addText( "http://sourceforge.net/users/werken/" );
     }
 
     protected Document createDocument() {
@@ -269,5 +275,5 @@ public class AbstractTestCase extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractTestCase.java,v 1.9 2001/07/03 14:42:43 jstrachan Exp $
+ * $Id: AbstractTestCase.java,v 1.10 2001/07/06 19:06:18 jstrachan Exp $
  */

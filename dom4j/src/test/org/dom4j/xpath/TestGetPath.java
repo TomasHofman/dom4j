@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.4 2001/06/26 17:35:02 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.5 2001/07/06 19:06:18 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.Node;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -68,11 +68,11 @@ public class TestGetPath extends AbstractTestCase {
             Element element = (Element) elements.get(i);
             testPath( element, path, uniquePath );
             
-            path += "/@name";
-            uniquePath += "/@name";
-            
             Attribute attribute = element.attribute( "name" );
-            testPath( attribute, path, uniquePath );
+            testPath( attribute, path + "/@name", uniquePath + "/@name" );
+            
+            Element child = element.element( "url" );
+            testPath( child, path + "/url", uniquePath + "/url" );
         }
     }
         
@@ -81,8 +81,8 @@ public class TestGetPath extends AbstractTestCase {
     }
     
     protected void testPath(Node node, String path, String uniquePath) {
-        assertEquals( "getPath expression should be what is expected", node.getPath(), path );
-        assertEquals( "getUniquePath expression should be what is expected", node.getUniquePath(), uniquePath );
+        assertEquals( "getPath expression should be what is expected", path, node.getPath() );
+        assertEquals( "getUniquePath expression should be what is expected", uniquePath, node.getUniquePath() );
     }
     
     protected void testBranchPath(Branch branch) {
@@ -160,5 +160,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.4 2001/06/26 17:35:02 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.5 2001/07/06 19:06:18 jstrachan Exp $
  */
