@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.13 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.14 2001/04/04 18:23:08 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -66,7 +66,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -87,16 +87,8 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
 
     
 
-    public XMLWriter() {
-        this( DEFAULT_FORMAT );
-    }
-
     public XMLWriter(Writer writer) {
         this( writer, DEFAULT_FORMAT );
-    }
-    
-    public XMLWriter(OutputStream out) throws UnsupportedEncodingException {
-        this( out, DEFAULT_FORMAT );
     }
     
     public XMLWriter(Writer writer, OutputFormat format) {
@@ -104,15 +96,25 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
         this.format = format;
     }
     
+    public XMLWriter() throws UnsupportedEncodingException {
+        this( DEFAULT_FORMAT );
+    }
+
+    public XMLWriter(OutputStream out) throws UnsupportedEncodingException {
+        this( out, DEFAULT_FORMAT );
+    }
+    
     public XMLWriter(OutputStream out, OutputFormat format) throws UnsupportedEncodingException {
         this.format = format;
         this.writer = createWriter(out, format.getEncoding());
     }
     
-    public XMLWriter(OutputFormat format) {
+    public XMLWriter(OutputFormat format) throws UnsupportedEncodingException {
         this.format = format;
+        this.writer = createWriter( System.out, format.getEncoding() );
     }
 
+    
     public void setWriter(Writer writer) {
         this.writer = writer;
     }
@@ -997,5 +999,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.13 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.14 2001/04/04 18:23:08 jstrachan Exp $
  */
