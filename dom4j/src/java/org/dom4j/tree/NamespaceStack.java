@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.4 2001/08/09 11:45:27 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.5 2001/08/17 17:19:22 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -24,7 +24,7 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class NamespaceStack {
  
@@ -166,15 +166,11 @@ public class NamespaceStack {
         int index = qualifiedName.indexOf(":");
         if (index > 0) {
             prefix = qualifiedName.substring(0, index);
+            namespace = createNamespace( prefix, namespaceURI );
         }
         else {
-            // patch for namespaceURI not being passed through for attributes
-            if ( namespaceURI.length() == 0 ) {
-                namespace = getDefaultNamespace();
-            }
-        }
-        if ( namespace == null ) {
-            namespace = createNamespace( prefix, namespaceURI );
+            // attributes with no prefix have no namespace
+            namespace = Namespace.NO_NAMESPACE;
         }
         answer = pushQName( localName, qualifiedName, namespace, prefix );
         map.put( qualifiedName, answer );
@@ -350,5 +346,5 @@ public class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.4 2001/08/09 11:45:27 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.5 2001/08/17 17:19:22 jstrachan Exp $
  */
