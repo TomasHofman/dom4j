@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NameTestStep.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: NameTestStep.java,v 1.4 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 
@@ -97,7 +97,7 @@ public class NameTestStep extends UnAbbrStep {
                 
                 if ( attr != null ) {
                     if ( ! attr.supportsParent() ) {
-                        attr = (Attribute) attr.asXPathNode(element);
+                        attr = (Attribute) attr.asXPathResult(element);
                     }
                     List results = new ArrayList();
                     results.add( attr );
@@ -119,7 +119,7 @@ public class NameTestStep extends UnAbbrStep {
                 Namespace namespace = element.getNamespaceForPrefix( _localName );
                 if ( namespace != null ) {
                     if ( ! namespace.supportsParent() ) {
-                        namespace = (Namespace) namespace.asXPathNode( element );
+                        namespace = (Namespace) namespace.asXPathResult( element );
                     }
                     List results = new ArrayList();
                     results.add( namespace );
@@ -286,5 +286,5 @@ public class NameTestStep extends UnAbbrStep {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NameTestStep.java,v 1.3 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: NameTestStep.java,v 1.4 2001/03/20 23:00:44 jstrachan Exp $
  */

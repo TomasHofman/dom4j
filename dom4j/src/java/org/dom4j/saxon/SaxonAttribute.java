@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonAttribute.java,v 1.2 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: SaxonAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.saxon;
@@ -32,7 +32,7 @@ import org.dom4j.dom.DOMAttribute;
   * supports the SAXON tree API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class SaxonAttribute extends DOMAttribute implements AttributeInfo {
 
@@ -80,7 +80,7 @@ public abstract class SaxonAttribute extends DOMAttribute implements AttributeIn
  */
     
 
-    // delegate common functionality to SaxonNodeHelper
+    
     
     public boolean isSameNode(NodeInfo other) {
         return SaxonNodeHelper.isSameNode(this, other);
@@ -220,5 +220,5 @@ public abstract class SaxonAttribute extends DOMAttribute implements AttributeIn
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonAttribute.java,v 1.2 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: SaxonAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: TestParent.java,v 1.6 2001/03/20 23:00:45 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,10 +16,10 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 /** A test harness to test the parent relationship and use of the
-  * {@link Node#asXPathNode} method.
+  * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -68,7 +68,7 @@ public class TestParent extends AbstractTestCase {
     
     protected void testParentRelationship( Element element ) {
         testParentRelationship( element, element.attributes() );
-        testParentRelationship( element, element.getContent() );
+        testParentRelationship( element, element.content() );
     }    
     
     
@@ -82,7 +82,7 @@ public class TestParent extends AbstractTestCase {
         }
         else {
             // lets create an XPath node
-            Node xpathNode = node.asXPathNode( parent );
+            Node xpathNode = node.asXPathResult( parent );
             assert( "XPath Node supports parent for: " + xpathNode, xpathNode.supportsParent() );
             assert( "getParent() returns parent for: " + xpathNode, xpathNode.getParent() == parent );
         }
@@ -134,5 +134,5 @@ public class TestParent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: TestParent.java,v 1.6 2001/03/20 23:00:45 jstrachan Exp $
  */

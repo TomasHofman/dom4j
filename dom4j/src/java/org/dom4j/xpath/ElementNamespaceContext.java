@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementNamespaceContext.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: ElementNamespaceContext.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 
@@ -87,7 +87,7 @@ public class ElementNamespaceContext implements NamespaceContext
             {
                 elem = (Element) lineage.pop();
 
-                nsList = elem.getAdditionalNamespaces();
+                nsList = elem.additionalNamespaces();
 
                 if ( ! nsList.isEmpty() )
                 {
@@ -158,5 +158,5 @@ public class ElementNamespaceContext implements NamespaceContext
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementNamespaceContext.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: ElementNamespaceContext.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.13 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.14 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -27,7 +27,7 @@ import org.dom4j.ProcessingInstruction;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -101,7 +101,7 @@ public class DefaultDocument extends AbstractDocument {
         return new DefaultDocumentType( name, publicId, systemId );
     }
     
-    public List getProcessingInstructions() {
+    public List processingInstructions() {
         List source = contents;
         if ( source == null ) {
             return createEmptyList();
@@ -117,7 +117,7 @@ public class DefaultDocument extends AbstractDocument {
         return answer;
     }
     
-    public List getProcessingInstructions(String target) {
+    public List processingInstructions(String target) {
         List source = contents;
         if ( source == null ) {
             return createEmptyList();
@@ -136,7 +136,7 @@ public class DefaultDocument extends AbstractDocument {
         return answer;
     }
     
-    public ProcessingInstruction getProcessingInstruction(String target) {
+    public ProcessingInstruction processingInstruction(String target) {
         List source = contents;
         if ( source != null ) {
             int size = source.size();
@@ -256,7 +256,7 @@ public class DefaultDocument extends AbstractDocument {
     /** A Factory Method pattern which creates 
       * a BackedList implementation used to store results of 
       * a filtered content query such as 
-      * {@link #getProcessingInstructions}
+      * {@link #processingInstructions}
       */
     protected BackedList createResultList() {
         return new BackedList( this, getContentList() );
@@ -323,5 +323,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.13 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.14 2001/03/20 23:00:44 jstrachan Exp $
  */

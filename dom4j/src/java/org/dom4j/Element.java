@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.25 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: Element.java,v 1.26 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public interface Element extends Branch {
 
@@ -66,29 +66,6 @@ public interface Element extends Branch {
       */
     public Namespace getNamespaceForURI(String uri);
     
-   /** <p>Returns any additional namespaces declarations for this element 
-      * other than namespace returned via the {@link #getNamespace()} method. 
-      * If no additional namespace declarations are present for this
-      * element then an empty list will be returned.
-      * 
-      * The list is backed by the element such that changes to the list will
-      * be reflected in the element though the reverse is not the case.</p>
-      *
-      * @return a list of any additional namespace declarations.
-      */
-    public List getAdditionalNamespaces();
-    
-   /** <p>Returns all the namespaces declared by this element. 
-      * If no namespaces are declared for this element then 
-      * an empty list will be returned.
-      * 
-      * The list is backed by the element such that changes to the list will
-      * be reflected in the element though the reverse is not the case.</p>
-      *
-      * @return a list of namespaces declared for this element.
-      */
-    public List getDeclaredNamespaces();
-    
     /** <p>Returns the namespace prefix of this element if one exists 
       * otherwise an empty <code>String</code> is returned.</p>
       *
@@ -119,6 +96,29 @@ public interface Element extends Branch {
     public String getQualifiedName();
     
     
+   /** <p>Returns any additional namespaces declarations for this element 
+      * other than namespace returned via the {@link #getNamespace()} method. 
+      * If no additional namespace declarations are present for this
+      * element then an empty list will be returned.
+      * 
+      * The list is backed by the element such that changes to the list will
+      * be reflected in the element though the reverse is not the case.</p>
+      *
+      * @return a list of any additional namespace declarations.
+      */
+    public List additionalNamespaces();
+    
+   /** <p>Returns all the namespaces declared by this element. 
+      * If no namespaces are declared for this element then 
+      * an empty list will be returned.
+      * 
+      * The list is backed by the element such that changes to the list will
+      * be reflected in the element though the reverse is not the case.</p>
+      *
+      * @return a list of namespaces declared for this element.
+      */
+    public List declaredNamespaces();
+    
     // Text API
     
     /** Returns the text value of this element without recursing through
@@ -148,7 +148,7 @@ public interface Element extends Branch {
       * @return the text from all the child Text and Element nodes appended 
       * together.
       */
-    public String getString();    
+    public String getStringValue();    
 
 
     /** Accesses the data of this element which may implement data typing 
@@ -281,7 +281,7 @@ public interface Element extends Branch {
       * @return the Node for the given index which will support the parent 
       * relationship or null if there is not a node at the given index.
       */
-    public Node getXPathNode(int index);
+    public Node getXPathResult(int index);
     
     
     /** <p>Returns true if this <code>Element</code> has mixed content.
@@ -409,6 +409,7 @@ public interface Element extends Branch {
     
     public Namespace addNamespace(String prefix, String uri);
 
+    
     // typesafe versions using node classes
     
     
@@ -565,5 +566,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.25 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: Element.java,v 1.26 2001/03/20 23:00:44 jstrachan Exp $
  */

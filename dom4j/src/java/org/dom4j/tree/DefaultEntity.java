@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultEntity.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultEntity.java,v 1.4 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Node;
   * {@link #setText} providing the entity has no text already.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DefaultEntity extends AbstractEntity {
 
@@ -81,7 +81,7 @@ public class DefaultEntity extends AbstractEntity {
         }
     }
     
-    protected Node createXPathNode(Element parent) {
+    protected Node createXPathResult(Element parent) {
         return new XPathEntity( parent, getName(), getText() );
     }
 }
@@ -131,5 +131,5 @@ public class DefaultEntity extends AbstractEntity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultEntity.java,v 1.3 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultEntity.java,v 1.4 2001/03/20 23:00:44 jstrachan Exp $
  */

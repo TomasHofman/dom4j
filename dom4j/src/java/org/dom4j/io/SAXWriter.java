@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXWriter.java,v 1.2 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -39,7 +39,7 @@ import org.xml.sax.helpers.LocatorImpl;
 /** <p><code>SAXWriter</code> writes a DOM4J tree to a SAX ContentHandler.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class SAXWriter {
 
@@ -339,7 +339,7 @@ public class SAXWriter {
       * which have just come into scope
       */
     protected void startPrefixMapping( Element element, NamespaceStack namespaces ) throws SAXException {
-        List declaredNamespaces = element.getDeclaredNamespaces();
+        List declaredNamespaces = element.declaredNamespaces();
         for ( int i = 0, size = declaredNamespaces.size(); i < size ; i++ ) {
             Namespace namespace = (Namespace) declaredNamespaces.get(i);
             if ( ! isIgnoreableNamespace( namespace, namespaces ) ) {
@@ -455,5 +455,5 @@ public class SAXWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXWriter.java,v 1.2 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */

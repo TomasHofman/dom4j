@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultProcessingInstruction.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: DefaultProcessingInstruction.java,v 1.6 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.ProcessingInstruction;
   * of a singly linked, read-only XML Processing Instruction.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DefaultProcessingInstruction extends AbstractProcessingInstruction {
 
@@ -84,7 +84,7 @@ public class DefaultProcessingInstruction extends AbstractProcessingInstruction 
         return Collections.unmodifiableMap( values );
     }
     
-    protected Node createXPathNode(Element parent) {
+    protected Node createXPathResult(Element parent) {
         return new XPathProcessingInstruction( parent, getTarget(), getText() );
     }
 }
@@ -136,5 +136,5 @@ public class DefaultProcessingInstruction extends AbstractProcessingInstruction 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultProcessingInstruction.java,v 1.5 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: DefaultProcessingInstruction.java,v 1.6 2001/03/20 23:00:44 jstrachan Exp $
  */

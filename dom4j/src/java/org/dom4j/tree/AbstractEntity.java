@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractEntity.java,v 1.6 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractEntity.java,v 1.7 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public abstract class AbstractEntity extends AbstractNode implements Entity {
 
@@ -41,7 +41,7 @@ public abstract class AbstractEntity extends AbstractNode implements Entity {
         return super.toString() + " [Entity: &" + getName() + ";]";
     }
 
-    public String getString() {
+    public String getStringValue() {
         return "&" + getName() + ";";
     }
     
@@ -100,5 +100,5 @@ public abstract class AbstractEntity extends AbstractNode implements Entity {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractEntity.java,v 1.6 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractEntity.java,v 1.7 2001/03/20 23:00:44 jstrachan Exp $
  */

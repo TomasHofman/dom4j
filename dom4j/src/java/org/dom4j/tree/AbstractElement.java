@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.29 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.30 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.29 $
+  * @version $Revision: 1.30 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -268,10 +268,10 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     
     // Content Model methods
     
-    public Node getXPathNode(int index) {
+    public Node getXPathResult(int index) {
         Node answer = getNode(index);
         if (answer != null && !answer.supportsParent()) {
-            return answer.asXPathNode(this);
+            return answer.asXPathResult(this);
         }
         return answer;
     }
@@ -487,7 +487,7 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
         
     public void appendAddtionalNamespaces(Element element) {
-        for (Iterator i = element.getAdditionalNamespaces().iterator(); i.hasNext(); ) {
+        for (Iterator i = element.additionalNamespaces().iterator(); i.hasNext(); ) {
             Namespace namespace = (Namespace) i.next();
             add( namespace );
         }
@@ -611,5 +611,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.29 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.30 2001/03/20 23:00:44 jstrachan Exp $
  */

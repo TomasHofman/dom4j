@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: TestContent.java,v 1.7 2001/03/20 23:00:45 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -28,7 +28,7 @@ public class TestContent extends AbstractTestCase {
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testContent() throws Exception {
+    public void testRoot() throws Exception {
         Element root = document.getRootElement();
         assert( "Has root element", root != null );
         
@@ -45,11 +45,11 @@ public class TestContent extends AbstractTestCase {
         testGetAttributes(author2);
     }
         
-    public void testGetContents() throws Exception {
+    public void testContent() throws Exception {
         Element root = document.getRootElement();
         assert( "Has root element", root != null );
         
-        List content = root.getContent();
+        List content = root.content();
         assert( "Root has content", content != null && content.size() >= 2 );
 
         boolean iterated = false;
@@ -88,7 +88,7 @@ public class TestContent extends AbstractTestCase {
         
         boolean iterated = false;
         for ( int i = 0; i < count; i++ ) {
-            Node node = root.getXPathNode(i);
+            Node node = root.getXPathResult(i);
             assert( "Valid node returned from getNode()", node != null );
             assert( "Node supports the parent relationship", node.supportsParent() );
             iterated = true;
@@ -169,5 +169,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
+ * $Id: TestContent.java,v 1.7 2001/03/20 23:00:45 jstrachan Exp $
  */

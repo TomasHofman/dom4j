@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMText.java,v 1.1 2001/03/05 22:57:17 jstrachan Exp $
+ * $Id: DOMText.java,v 1.2 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -23,7 +23,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DOMText extends XPathText implements org.w3c.dom.Text {
 
@@ -64,7 +64,7 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
     //public short getNodeType();
     
 
-    // delegate common functionality to SaxonNodeHelper
+    
     public String getNodeValue() throws DOMException {
         return DOMNodeHelper.getNodeValue(this);
     }
@@ -268,5 +268,5 @@ public class DOMText extends XPathText implements org.w3c.dom.Text {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMText.java,v 1.1 2001/03/05 22:57:17 jstrachan Exp $
+ * $Id: DOMText.java,v 1.2 2001/03/20 23:00:44 jstrachan Exp $
  */

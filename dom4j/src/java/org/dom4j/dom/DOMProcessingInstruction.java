@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMProcessingInstruction.java,v 1.1 2001/03/06 00:35:32 jstrachan Exp $
+ * $Id: DOMProcessingInstruction.java,v 1.2 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -25,7 +25,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DOMProcessingInstruction extends XPathProcessingInstruction implements org.w3c.dom.ProcessingInstruction {
 
@@ -69,7 +69,7 @@ public class DOMProcessingInstruction extends XPathProcessingInstruction impleme
     //public short getNodeType();
     
 
-    // delegate common functionality to SaxonNodeHelper
+    
     public String getNodeValue() throws DOMException {
         return DOMNodeHelper.getNodeValue(this);
     }
@@ -223,5 +223,5 @@ public class DOMProcessingInstruction extends XPathProcessingInstruction impleme
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMProcessingInstruction.java,v 1.1 2001/03/06 00:35:32 jstrachan Exp $
+ * $Id: DOMProcessingInstruction.java,v 1.2 2001/03/20 23:00:44 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultComment.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DefaultComment.java,v 1.5 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -18,7 +18,7 @@ import org.dom4j.Visitor;
   * singly linked read only XML Comment.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DefaultComment extends AbstractComment implements Comment {
 
@@ -35,7 +35,7 @@ public class DefaultComment extends AbstractComment implements Comment {
 	return text;
     }
     
-    protected Node createXPathNode(Element parent) {
+    protected Node createXPathResult(Element parent) {
         return new XPathComment( parent, getText() );
     }
 }
@@ -85,5 +85,5 @@ public class DefaultComment extends AbstractComment implements Comment {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultComment.java,v 1.4 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DefaultComment.java,v 1.5 2001/03/20 23:00:44 jstrachan Exp $
  */

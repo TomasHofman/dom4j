@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMAttribute.java,v 1.2 2001/03/06 00:35:32 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
 
@@ -63,7 +63,7 @@ public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
     //public short getNodeType();
     
 
-    // delegate common functionality to SaxonNodeHelper
+    
     public String getNodeValue() throws DOMException {
         return DOMNodeHelper.getNodeValue(this);
     }
@@ -212,5 +212,5 @@ public class DOMAttribute extends XPathAttribute implements org.w3c.dom.Attr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMAttribute.java,v 1.2 2001/03/06 00:35:32 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */

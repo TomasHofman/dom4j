@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.2 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -31,7 +31,7 @@ import org.dom4j.Text;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DOMWriter {
 
@@ -111,7 +111,7 @@ public class DOMWriter {
             return (org.w3c.dom.Document) document;
         }
         org.w3c.dom.Document domDocument = createDomDocument(document);
-        appendDOMTree(domDocument, domDocument, document.getContent(), getDefaultNamespaces());
+        appendDOMTree(domDocument, domDocument, document.content(), getDefaultNamespaces());
         return domDocument;
     }
     
@@ -123,7 +123,7 @@ public class DOMWriter {
             return (org.w3c.dom.Document) document;
         }
         org.w3c.dom.Document domDocument = createDomDocument(document, domImplementation);
-        appendDOMTree(domDocument, domDocument, document.getContent(), getDefaultNamespaces());
+        appendDOMTree(domDocument, domDocument, document.content(), getDefaultNamespaces());
         return domDocument;
     }
     
@@ -172,7 +172,7 @@ public class DOMWriter {
         
         // add namespaces
         HashSet localNamespaces = declaredNamespaces;        
-        List namespaces = element.getDeclaredNamespaces();
+        List namespaces = element.declaredNamespaces();
         int size = namespaces.size();
         for ( int i = 0; i < size ; i++ ) {
             Namespace namespace = (Namespace) namespaces.get(i);
@@ -195,7 +195,7 @@ public class DOMWriter {
         }
 
         // add content
-        appendDOMTree( domDocument, domElement, element.getContent(), localNamespaces );
+        appendDOMTree( domDocument, domElement, element.content(), localNamespaces );
         
         domCurrent.appendChild( domElement );
     }
@@ -368,5 +368,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.2 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: DOMWriter.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */

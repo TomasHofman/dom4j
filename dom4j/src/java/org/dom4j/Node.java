@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.11 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: Node.java,v 1.12 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public interface Node extends Cloneable {
 
@@ -176,7 +176,7 @@ public interface Node extends Cloneable {
       * @return the text from all the child Text and Element nodes appended 
       * together.
       */
-    public String getString();    
+    public String getStringValue();    
     
     /** <p>Returns the String of the XPath expression to reach this node from 
       * the root node.</p>
@@ -312,14 +312,16 @@ public interface Node extends Cloneable {
       */
     public XPath createXPath(String xpathExpression);
 
-    /** <p><code>asXPathNode</code> returns an XPath compatable version
-      * of itself. If it supports the parent relationship it will return 
-      * itself otherwise it will create a new node which is linked to its 
-      * parent.
+    /** <p><code>asXPathResult</code> returns a version of this node which is
+      * capable of being an XPath result. 
+      * The result of an XPath expression should always support the parent 
+      * relationship, whether the original XML tree was singly or doubly linked.
+      * If the node does not support the parent relationship then a new node
+      * will be created which is linked to its parent and returned.
       *
       * @return a <code>Node<code> which supports the parent relationship
       */
-    public Node asXPathNode(Element parent);
+    public Node asXPathResult(Element parent);
 
     
     /** <p><code>accept</code> is the method used in the Visitor Pattern.</p>
@@ -383,5 +385,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.11 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: Node.java,v 1.12 2001/03/20 23:00:44 jstrachan Exp $
  */

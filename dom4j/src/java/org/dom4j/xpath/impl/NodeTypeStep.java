@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NodeTypeStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: NodeTypeStep.java,v 1.3 2001/03/20 23:00:45 jstrachan Exp $
  */
 
 
@@ -57,7 +57,7 @@ public class NodeTypeStep extends UnAbbrStep {
             List results = new ArrayList(1);
             if ( node instanceof Node ) {
                 Node aNode = (Node) node;
-                results.add( aNode.asXPathNode( null ) );
+                results.add( aNode.asXPathResult( null ) );
             }
             return results;
         }
@@ -74,7 +74,7 @@ public class NodeTypeStep extends UnAbbrStep {
                 Node node = (Node) each;
                 Element parent = (owner instanceof Element)
                     ? (Element) owner : null;
-                results.add( node.asXPathNode( parent ) );
+                results.add( node.asXPathResult( parent ) );
             }
         }
     }
@@ -179,5 +179,5 @@ public class NodeTypeStep extends UnAbbrStep {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NodeTypeStep.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: NodeTypeStep.java,v 1.3 2001/03/20 23:00:45 jstrachan Exp $
  */

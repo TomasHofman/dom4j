@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.11 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.12 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 // This is a port of a file from the JDOM project
@@ -131,7 +131,7 @@ import org.dom4j.Text;
  * @author David &amp; Will (from Post Tool Design)
  * @author Dan Schaffer
  * @author Alex Chaffee (alex@jguru.com)
- * @version $Revision: 1.11 $ 
+ * @version $Revision: 1.12 $ 
  */
 public class XMLWriter implements Cloneable {
 
@@ -538,9 +538,8 @@ public class XMLWriter implements Cloneable {
         // Print out root element, as well as any root level
         // comments and processing instructions, 
         // starting with no indentation
-        Iterator i = doc.getContent().iterator();
-        while (i.hasNext()) {
-            Object obj = i.next();
+        for ( Iterator iter = doc.nodeIterator(); iter.hasNext(); ) {
+            Object obj = iter.next();
             if (obj instanceof Element) {
                 write(doc.getRootElement(), writer);   // outputs at initial indentLevel
             } else if (obj instanceof Comment) {
@@ -604,7 +603,7 @@ public class XMLWriter implements Cloneable {
     public void writeElementContent(Element element, Writer out)
         throws IOException
     {
-        List mixedContent = element.getContent();
+        List mixedContent = element.content();
         printElementContent(element, out, indentLevel,
                             new NamespaceStack(),
                             mixedContent);
@@ -1041,7 +1040,7 @@ public class XMLWriter implements Cloneable {
       * which is a string
       */
     protected boolean isStringOnly(Element element) {
-        List mixedContent = element.getContent();
+        List mixedContent = element.content();
         int size = mixedContent.size();
         if ( mixedContent.size() == 1 ) {
             Object first = mixedContent.get(0);
@@ -1066,7 +1065,7 @@ public class XMLWriter implements Cloneable {
     protected void printElement(Element element, Writer out,
                                 int indentLevel, NamespaceStack namespaces)  throws IOException {
 
-        List mixedContent = element.getContent();
+        List mixedContent = element.content();
 
         boolean empty = mixedContent.size() == 0;
         boolean stringOnly = isStringOnly(element);
@@ -1094,7 +1093,7 @@ public class XMLWriter implements Cloneable {
         }
 
         // Print out additional namespace declarations
-        List additionalNamespaces = element.getAdditionalNamespaces();
+        List additionalNamespaces = element.additionalNamespaces();
         if (additionalNamespaces != null) {
             for (int i=0; i<additionalNamespaces.size(); i++) {
                 Namespace additional = (Namespace)additionalNamespaces.get(i);
@@ -1566,5 +1565,5 @@ public class XMLWriter implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.11 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.12 2001/03/20 23:00:44 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: StringFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: StringFunction.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
 
 
@@ -44,7 +44,7 @@ public class StringFunction implements Function {
         }
         else if (obj instanceof Node) {
             Node node = (Node) obj;
-            return node.getString();
+            return node.getStringValue();
         }
         else if (obj instanceof List) {
             List list = (List) obj;
@@ -107,5 +107,5 @@ public class StringFunction implements Function {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: StringFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: StringFunction.java,v 1.3 2001/03/20 23:00:44 jstrachan Exp $
  */
