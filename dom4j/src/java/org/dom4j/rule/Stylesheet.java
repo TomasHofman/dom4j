@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Stylesheet.java,v 1.5 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.6 2002/05/25 18:17:29 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -25,7 +25,7 @@ import org.dom4j.XPath;
   * stylesheet can be applied to a source document or node.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class Stylesheet {
 
@@ -76,6 +76,16 @@ public class Stylesheet {
     
     
     public void applyTemplates( Object input, XPath xpath ) throws Exception {
+        List list = xpath.selectNodes( input );
+        for ( int i = 0, size = list.size(); i < size; i++ ) {
+            Object object = list.get(i);
+            if ( object != input && object instanceof Node ) {
+                run( (Node) object );
+            }
+        }
+    }
+    
+    public void applyTemplates( Object input, org.jaxen.XPath xpath ) throws Exception {
         List list = xpath.selectNodes( input );
         for ( int i = 0, size = list.size(); i < size; i++ ) {
             Object object = list.get(i);
@@ -201,5 +211,5 @@ public class Stylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Stylesheet.java,v 1.5 2002/05/20 08:14:12 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.6 2002/05/25 18:17:29 jstrachan Exp $
  */
