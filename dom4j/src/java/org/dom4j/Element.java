@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.16 2001/01/25 19:27:33 jstrachan Exp $
+ * $Id: Element.java,v 1.17 2001/01/26 08:08:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public interface Element extends Branch {
 
@@ -418,6 +418,13 @@ public interface Element extends Branch {
       */
     public boolean remove(Namespace namespace);
     
+    /** Removes the given <code>Text</code> from this element.
+      *
+      * @param text is the text to be removed
+      * @return true if the text was removed
+      */
+    public boolean remove(Text text);
+    
     
     /** Appends the attributes of the given element to me.
       * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
@@ -448,22 +455,6 @@ public interface Element extends Branch {
     public Element createCopy(String name);
     public Element createCopy(String name, Namespace namespace);
     
-    
-    /** <p>Removes this element from its parent if there is one. 
-      * If this element is the root element of a document then it is removed
-      * from the document as well.</p>
-      *
-      * <p>This method is useful if you want to remove
-      * an element from its source document and add it to another document.
-      * For example</p>
-      *
-      * <code>
-      *     Element element = ...;
-      *     element.detach();
-      *     Document document = DocumentFactory.newDocument( element );
-      * </code>
-      */
-    public void detach();
 }
 
 
@@ -511,5 +502,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.16 2001/01/25 19:27:33 jstrachan Exp $
+ * $Id: Element.java,v 1.17 2001/01/26 08:08:21 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: Node.java,v 1.4 2001/01/26 08:08:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public interface Node extends Cloneable {
 
@@ -144,13 +144,33 @@ public interface Node extends Cloneable {
       */
     public String asXML();    
 
-    /** <p><code>writeXML</code> writes this node as XML which is 
-      * equivalent to the <code>string()<code> function in XPath.</p>
+    /** <p><code>write</code> writes this node as the default XML 
+      * notation for this node. If you wish to control the XML output
+      * (such as for pretty printing, changing the indentation policy etc.) 
+      * then please use {@link org.dom4j.io.XMLWriter} or its derivations.
       *
       * @param writer is the <code>PrintWriter</code> to output the XML to
       */
-    public void writeXML(PrintWriter writer);    
+    public void write(PrintWriter writer);    
 
+
+    /** <p>Removes this node from its parent if there is one. 
+      * If this node is the root element of a document then it is removed
+      * from the document as well.</p>
+      *
+      * <p>This method is useful if you want to remove
+      * a node from its source document and add it to another document.
+      * For example</p>
+      *
+      * <code>
+      *     Node node = ...;
+      *     node.detach();
+      *     Element someOtherElement = ...;
+      *     someOtherElement.add( node );
+      * </code>
+      */
+    public void detach();
+    
     
     
     /** <p><code>selectNodes</code> evaluates an XPath expression and returns 
@@ -188,6 +208,24 @@ public interface Node extends Cloneable {
       * @return the <code>Node<code> matching the XPath expression
       */
     public Node selectSingleNode(XPath xpath);
+
+    /** <p><code>valueOf</code> evaluates an XPath expression
+      * and returns the textual representation of the results using the 
+      * XPath string() function.</p>
+      *
+      * @param xpathExpression is the XPath expression to be evaluated
+      * @return the string representation of the results of the XPath expression
+      */
+    public String valueOf(String xpathExpression);
+
+    /** <p><code>valueOf</code> evaluates an XPath expression
+      * and returns the textual representation of the results using the 
+      * XPath string() function.</p>
+      *
+      * @param xpath is the XPath expression to be evaluated
+      * @return the string representation of the results of the XPath expression
+      */
+    public String valueOf(XPath xpath);
 
     /** <p><code>asXPathNode</code> returns an XPath compatable version
       * of iteself. If it supports the parent relationship it will return 
@@ -260,5 +298,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: Node.java,v 1.4 2001/01/26 08:08:21 jstrachan Exp $
  */
