@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.4 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.5 2001/05/28 12:06:28 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -23,7 +23,7 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 class NamespaceStack {
  
@@ -70,7 +70,7 @@ class NamespaceStack {
       */
     public Namespace pop() {
         Namespace namespace = (Namespace) namespaceStack.remove( namespaceStack.size() - 1 );
-        remove( namespace );
+        remove( namespace );        
         return namespace;
     }
     
@@ -258,5 +258,5 @@ class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.4 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.5 2001/05/28 12:06:28 jstrachan Exp $
  */
