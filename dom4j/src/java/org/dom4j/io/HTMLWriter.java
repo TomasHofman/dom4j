@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: HTMLWriter.java,v 1.11 2002/04/09 02:20:09 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.12 2002/04/09 18:14:37 laramiec Exp $
  */
 
 package org.dom4j.io;
@@ -184,7 +184,7 @@ import org.xml.sax.SAXException;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Laramie Crocker
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -516,7 +516,6 @@ public class HTMLWriter extends XMLWriter {
 
         String qualifiedName = element.getQualifiedName();
         String saveLastText = m_lastText;
-        String seq = ""+vestek.util.VesTools.now();
         int size = element.nodeCount();
         if (  isPreformattedTag(qualifiedName)  ) {
             OutputFormat currentFormat = getOutputFormat();
@@ -737,5 +736,5 @@ entities: &#160; &amp; &quot; &lt; &gt; %23
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.11 2002/04/09 02:20:09 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.12 2002/04/09 18:14:37 laramiec Exp $
  */
