@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSelectSingleNode.java,v 1.1 2001/11/11 09:04:43 jstrachan Exp $
+ * $Id: TestSelectSingleNode.java,v 1.2 2001/11/11 09:27:03 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -18,6 +18,7 @@ import junit.textui.TestRunner;
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Element;
 import org.dom4j.Node;
+import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
@@ -25,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the selectSingleNode method
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestSelectSingleNode extends AbstractTestCase {
 
@@ -51,6 +52,9 @@ public class TestSelectSingleNode extends AbstractTestCase {
         Element server = (Element) document.selectSingleNode( "/properties/server" );
         assertTrue( "Found a valid server", server != null );
 
+        server = (Element) document.getRootElement().selectSingleNode( "/properties/server" );
+        assertTrue( "Found a valid server", server != null );
+
         // try finding it via a relative path
         server = (Element) document.selectSingleNode( "properties/server" );
         assertTrue( "Found a valid server", server != null );
@@ -59,7 +63,18 @@ public class TestSelectSingleNode extends AbstractTestCase {
         Element connection = (Element) server.selectSingleNode( "db/connection" );
         assertTrue( "Found a valid connection", connection != null );
     }
+
+    /** Test out Steen's bug */
+    public void testSteensBug() throws Exception {        
+        Document document = new SAXReader().read( "xml/schema/personal.xsd" );
         
+        assertNotNull( document.selectSingleNode( "/xs:schema/xs:element[@name='person']" ) );
+        
+        Element root = document.getRootElement();
+        
+        assertNotNull( root.selectSingleNode( "/xs:schema/xs:element[@name='person']" ) );        
+    }
+    
     // Implementation methods
     //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
@@ -112,5 +127,5 @@ public class TestSelectSingleNode extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSelectSingleNode.java,v 1.1 2001/11/11 09:04:43 jstrachan Exp $
+ * $Id: TestSelectSingleNode.java,v 1.2 2001/11/11 09:27:03 jstrachan Exp $
  */
