@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.15 2001/05/18 09:33:26 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.16 2001/05/23 11:53:15 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,9 +20,9 @@ import org.dom4j.tree.DefaultDocumentType;
 import org.dom4j.tree.DefaultElement;
 import org.dom4j.tree.DefaultEntity;
 import org.dom4j.tree.DefaultProcessingInstruction;
-import org.dom4j.tree.DefaultText;
 import org.dom4j.tree.QNameCache;
 import org.dom4j.tree.XPathEntity;
+import org.dom4j.tree.XPathText;
 import org.dom4j.xpath.DefaultXPath;
 import org.dom4j.xpath.XPathPattern;
 
@@ -36,7 +36,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class DocumentFactory {
 
@@ -115,12 +115,13 @@ public class DocumentFactory {
     }
     
     public Text createText(String text) {
-        return new DefaultText(text);
+        // allow editing in place by default
+        return new XPathText(text);
     }
     
     
     public Entity createEntity(String name) {
-        // allow this entity to be modified in place
+        // allow editing in place by default
         return new XPathEntity(name);
     }
     
@@ -293,5 +294,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.15 2001/05/18 09:33:26 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.16 2001/05/23 11:53:15 jstrachan Exp $
  */
