@@ -4,53 +4,38 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonDocumentFactory.java,v 1.3 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: SchemaDemo.java,v 1.1 2001/05/24 00:46:18 jstrachan Exp $
  */
 
-package org.dom4j.saxon;
+import org.dom4j.Document;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
+import org.dom4j.schema.SchemaDocumentFactory;
 
-import java.util.Map;
-
-import org.dom4j.DocumentFactory;
-import org.dom4j.Attribute;
-import org.dom4j.Element;
-import org.dom4j.QName;
-import org.dom4j.tree.DefaultAttribute;
-import org.dom4j.tree.DefaultElement;
-
-import org.xml.sax.Attributes;
-
-/** <p><code>SaxonDocumentFactory</code> is a factory of DOM4J objects
-  * which implement the SAXON document object model.</p>
+/** A simple test program to demonstrate using XML Schema Data Types
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.1 $
   */
-public class SaxonDocumentFactory extends DocumentFactory {
-
-    /** The Singleton instance */
-    private static SaxonDocumentFactory singleton = new SaxonDocumentFactory();
-
-    /** <p>Access to the singleton instance of this factory.</p>
-      *
-      * @return the default singleon instance
-      */
-    public static DocumentFactory getInstance() {
-        return singleton;
+public class SchemaDemo extends AbstractDemo {
+    
+    public static void main(String[] args) {
+        run( new SchemaDemo(), args );
+    }    
+    
+    public SchemaDemo() {
     }
     
-    
-    // Factory methods
-    
-/*    
-    public Attribute createAttribute(QName qname, String value) {
-        return new SaxonAttribute(qname, value);
+    protected Document parse( String xmlFile ) throws Exception {
+        SAXReader reader = new SAXReader();
+        reader.setDocumentFactory( SchemaDocumentFactory.getInstance() );
+        return reader.read(xmlFile);
     }
-*/
-    // SAXON helper methods
     
-    // Implementation methods
-    
+    protected void process(Document document) throws Exception {
+        getXMLWriter().write(document);
+    }
 }
 
 
@@ -98,5 +83,5 @@ public class SaxonDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonDocumentFactory.java,v 1.3 2001/05/24 00:46:17 jstrachan Exp $
+ * $Id: SchemaDemo.java,v 1.1 2001/05/24 00:46:18 jstrachan Exp $
  */

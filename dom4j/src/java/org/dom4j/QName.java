@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QName.java,v 1.6 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: QName.java,v 1.7 2001/05/24 00:46:17 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -17,8 +17,8 @@ import org.dom4j.tree.QNameCache;
   * or attribute. It consists of a local name and a {@link Namespace} 
   * instance. This object is immutable.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.7 $
   */
 public class QName implements Serializable {
 
@@ -152,6 +152,11 @@ public class QName implements Serializable {
         return false;
     }
     
+    public String toString() {
+        return super.toString() + " [name: " + getName() 
+            + " namespace: \"" + getNamespace() + "\"]";
+    }
+
     /** @return the factory that should be used for Elements of this QName */
     public DocumentFactory getDocumentFactory() {
         return documentFactory;
@@ -207,5 +212,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.6 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: QName.java,v 1.7 2001/05/24 00:46:17 jstrachan Exp $
  */

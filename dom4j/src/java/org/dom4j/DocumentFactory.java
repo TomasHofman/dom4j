@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.16 2001/05/23 11:53:15 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.17 2001/05/24 00:46:17 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -36,7 +36,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class DocumentFactory {
 
@@ -247,6 +247,13 @@ public class DocumentFactory {
             return new DocumentFactory();
         }
     }        
+    
+    /** @return the cached QName instance if there is one or adds the given
+      * qname to the cache if not 
+       */
+    protected QName intern(QName qname) {
+        return cache.intern(qname);
+    }
 }
 
 
@@ -294,5 +301,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.16 2001/05/23 11:53:15 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.17 2001/05/24 00:46:17 jstrachan Exp $
  */

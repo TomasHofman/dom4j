@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocumentFactory.java,v 1.6 2001/05/18 12:01:55 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.7 2001/05/24 00:46:17 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -29,8 +29,8 @@ import org.xml.sax.Attributes;
 /** <p><code>DOMDocumentFactory</code> is a factory of DOM4J objects
   * which implement the W3C DOM API.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.7 $
   */
 public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.DOMImplementation {
 
@@ -189,5 +189,5 @@ public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.D
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentFactory.java,v 1.6 2001/05/18 12:01:55 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.7 2001/05/24 00:46:17 jstrachan Exp $
  */

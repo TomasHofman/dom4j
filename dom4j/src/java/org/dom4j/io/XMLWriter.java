@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.25 2001/05/23 11:38:26 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.26 2001/05/24 00:46:17 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -67,7 +67,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -487,7 +487,8 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
                 write((DocumentType) node);
                 break;
             case Node.NAMESPACE_NODE:
-                write((Namespace) node);
+                // Will be output with attributes
+                //write((Namespace) node);
                 break;
             default:
                 throw new IOException( "Invalid node type: " + node );
@@ -1036,5 +1037,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.25 2001/05/23 11:38:26 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.26 2001/05/24 00:46:17 jstrachan Exp $
  */

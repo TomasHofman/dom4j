@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QNameCache.java,v 1.3 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.4 2001/05/24 00:46:18 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class QNameCache {
 
@@ -96,6 +96,12 @@ public class QNameCache {
     }
     
     
+    /** @return the cached QName instance if there is one or adds the given
+      * qname to the cache if not 
+       */
+    public QName intern(QName qname) {
+        return get(qname.getName(), qname.getNamespace(), qname.getQualifiedName());
+    }
 
     /** @return the cache for the given namespace. If one does not
       * currently exist it is created.
@@ -165,5 +171,5 @@ public class QNameCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.3 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.4 2001/05/24 00:46:18 jstrachan Exp $
  */

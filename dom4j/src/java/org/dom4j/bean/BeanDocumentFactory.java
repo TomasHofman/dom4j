@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDocumentFactory.java,v 1.5 2001/03/02 10:34:11 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.6 2001/05/24 00:46:17 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -27,8 +27,8 @@ import org.xml.sax.Attributes;
   * <p>The tree built allows full XPath expressions from anywhere on the 
   * tree.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.6 $
   */
 public class BeanDocumentFactory extends DocumentFactory {
 
@@ -146,5 +146,5 @@ public class BeanDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDocumentFactory.java,v 1.5 2001/03/02 10:34:11 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.6 2001/05/24 00:46:17 jstrachan Exp $
  */

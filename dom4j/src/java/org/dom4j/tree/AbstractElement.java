@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.35 2001/05/21 16:06:06 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.36 2001/05/24 00:46:17 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,8 +39,8 @@ import org.dom4j.io.XMLWriter;
 /** <p><code>AbstractElement</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.35 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.36 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -634,5 +634,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.35 2001/05/21 16:06:06 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.36 2001/05/24 00:46:17 jstrachan Exp $
  */
