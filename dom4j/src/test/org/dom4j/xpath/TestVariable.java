@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestVariable.java,v 1.6 2001/07/16 17:20:16 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.7 2001/08/18 22:32:45 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -17,16 +17,17 @@ import junit.framework.*;
 import junit.textui.TestRunner;
 
 import org.dom4j.AbstractTestCase;
-import org.dom4j.DefaultVariableContext;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
 import org.dom4j.XPath;
 import org.dom4j.io.SAXReader;
 
+import org.jaxen.SimpleVariableContext;
+
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestVariable extends AbstractTestCase {
 
@@ -42,7 +43,7 @@ public class TestVariable extends AbstractTestCase {
 */
     };
     
-    private DefaultVariableContext variableContext = new DefaultVariableContext();
+    private SimpleVariableContext variableContext = new SimpleVariableContext();
     private Node rootNode;
     private Node authorNode;
 
@@ -94,8 +95,8 @@ public class TestVariable extends AbstractTestCase {
         rootNode = document.selectSingleNode( "/root" );
         authorNode = document.selectSingleNode( "/root/author[1]" );
         
-        variableContext.setVariableValue( "root", rootNode );
-        variableContext.setVariableValue( "author", authorNode );
+        variableContext.setVariableValue( "", "root", rootNode );
+        variableContext.setVariableValue( "", "author", authorNode );
     }
 }
 
@@ -144,5 +145,5 @@ public class TestVariable extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestVariable.java,v 1.6 2001/07/16 17:20:16 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.7 2001/08/18 22:32:45 jstrachan Exp $
  */

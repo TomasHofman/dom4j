@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.7 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: XPath.java,v 1.8 2001/08/18 22:32:45 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -12,11 +12,15 @@ package org.dom4j;
 import java.util.Comparator;
 import java.util.List;
 
+import org.jaxen.FunctionContext;
+import org.jaxen.NamespaceContext;
+import org.jaxen.VariableContext;
+
 /** <p><code>XPath</code> represents an XPath expression after 
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public interface XPath extends NodeFilter {
 
@@ -27,15 +31,6 @@ public interface XPath extends NodeFilter {
       */
     public String getText();
 
-    
-    /** @return the current variable context
-      */
-    public VariableContext getVariableContext();
-    
-    /** Sets the variable context to be used when evaluating XPath
-      * expressions
-      */
-    public void setVariableContext(VariableContext variableContext);
     
     /** <p><code>matches</code> returns true if the given node matches 
       * the XPath expression.</p>
@@ -146,6 +141,35 @@ public interface XPath extends NodeFilter {
       *     comparisions) will be removed from the List
       */
     public void sort( List list, boolean distinct );
+    
+    
+    /** @return the current function context
+      */
+    public FunctionContext getFunctionContext();
+    
+    /** Sets the function context to be used when evaluating XPath
+      * expressions
+      */
+    public void setFunctionContext(FunctionContext functionContext);
+    
+    /** @return the current namespace context
+      */
+    public NamespaceContext getNamespaceContext();
+    
+    /** Sets the namespace context to be used when evaluating XPath
+      * expressions
+      */
+    public void setNamespaceContext(NamespaceContext namespaceContext);
+    
+    /** @return the current variable context
+      */
+    public VariableContext getVariableContext();
+    
+    /** Sets the variable context to be used when evaluating XPath
+      * expressions
+      */
+    public void setVariableContext(VariableContext variableContext);
+    
 }
 
 
@@ -193,5 +217,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.7 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: XPath.java,v 1.8 2001/08/18 22:32:45 jstrachan Exp $
  */

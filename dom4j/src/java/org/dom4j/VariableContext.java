@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: VariableContext.java,v 1.2 2001/08/08 21:51:31 jstrachan Exp $
+ * $Id: VariableContext.java,v 1.3 2001/08/18 22:32:45 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -12,11 +12,13 @@ package org.dom4j;
 /** <p><code>VariableContext</code> represents the current variable context
   * which is used by an {@link XPath} instance to resolve variable values.</p>
   *
-  *  @author bob mcwhirter (bob @ werken.com)
+  * @author bob mcwhirter (bob @ werken.com)
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  *
+  * @deprecated Please use the org.jaxen.VariableContext interface instead
   */
 
-public interface VariableContext {
+public interface VariableContext extends org.jaxen.VariableContext {
 
     /** Resolve a variable binding
       *
@@ -90,5 +92,5 @@ public interface VariableContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: VariableContext.java,v 1.2 2001/08/08 21:51:31 jstrachan Exp $
+ * $Id: VariableContext.java,v 1.3 2001/08/18 22:32:45 jstrachan Exp $
  */
