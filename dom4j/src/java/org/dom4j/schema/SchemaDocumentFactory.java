@@ -4,12 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaDocumentFactory.java,v 1.6 2001/07/03 14:42:42 jstrachan Exp $
+ * $Id: SchemaDocumentFactory.java,v 1.7 2001/08/14 13:21:10 jstrachan Exp $
  */
 
 package org.dom4j.schema;
 
-import com.sun.tranquilo.datatype.DataType;
+import com.sun.msv.datatype.xsd.XSDatatype;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class SchemaDocumentFactory extends DocumentFactory {
 
@@ -183,5 +183,5 @@ public class SchemaDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaDocumentFactory.java,v 1.6 2001/07/03 14:42:42 jstrachan Exp $
+ * $Id: SchemaDocumentFactory.java,v 1.7 2001/08/14 13:21:10 jstrachan Exp $
  */

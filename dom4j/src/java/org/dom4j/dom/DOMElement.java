@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMElement.java,v 1.12 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.13 2001/08/14 13:21:10 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
@@ -170,7 +170,8 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
     }
 
     public String getAttribute(String name) {
-        return attributeValue(name);
+        String answer = attributeValue(name);
+        return (answer != null) ? answer : "";
     }
 
     public void setAttribute(String name, String value) throws DOMException {
@@ -217,9 +218,12 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
     public String getAttributeNS(String namespaceURI,  String localName) {
         Attribute attribute = attribute( namespaceURI, localName );
         if ( attribute != null ) {
-            return attribute.getValue();
+            String answer = attribute.getValue();
+            if ( answer != null ) {
+                return answer;
+            }
         }
-        return null;
+        return "";
     }
 
     public void setAttributeNS(
@@ -394,5 +398,5 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMElement.java,v 1.12 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.13 2001/08/14 13:21:10 jstrachan Exp $
  */

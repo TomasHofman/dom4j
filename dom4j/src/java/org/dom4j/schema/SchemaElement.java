@@ -4,18 +4,20 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaElement.java,v 1.3 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: SchemaElement.java,v 1.4 2001/08/14 13:21:10 jstrachan Exp $
  */
 
 package org.dom4j.schema;
 
-import com.sun.tranquilo.datatype.DataType;
-import com.sun.tranquilo.datatype.ValidationContextProvider;
+import com.sun.msv.datatype.DatabindableDatatype;
 
 import org.dom4j.Element;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
+
+import com.sun.msv.datatype.xsd.XSDatatype;
+import org.relaxng.datatype.ValidationContext;
 
 import org.xml.sax.Attributes;
 
@@ -24,26 +26,26 @@ import org.xml.sax.Attributes;
   * specification.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
-public class SchemaElement extends DefaultElement implements ValidationContextProvider {
+public class SchemaElement extends DefaultElement implements ValidationContext {
 
-    /** The <code>DataType</code> of the <code>Attribute</code> */
-    private DataType dataType;
+    /** The <code>XSDatatype</code> of the <code>Attribute</code> */
+    private XSDatatype datatype;
     
     /** The data (Object) value of the <code>Attribute</code> */
     private Object data;
 
 
     
-    public SchemaElement(QName qname, DataType dataType) {
+    public SchemaElement(QName qname, XSDatatype datatype) {
         super(qname);
-        this.dataType = dataType;
+        this.datatype = datatype;
     }
 
-    public SchemaElement(QName qname, int attributeCount, DataType dataType) { 
+    public SchemaElement(QName qname, int attributeCount, XSDatatype datatype) { 
         super(qname, attributeCount);
-        this.dataType = dataType;
+        this.datatype = datatype;
     }
 
     public String toString() {
@@ -53,8 +55,13 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
             + " data: " + getData() + " />]";
     }
     
-    // ValidationContextProvider interface
+    // ValidationContext interface
     //-------------------------------------------------------------------------    
+    public boolean isNotation(String notationName) {
+        // XXXX: no way to do this yet in dom4j so assume false
+        return false;
+    }
+        
     public boolean isUnparsedEntity(String entityName) {
         // XXXX: no way to do this yet in dom4j so assume valid
         return true;
@@ -63,7 +70,7 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
     public String resolveNamespacePrefix(String prefix) {
         Namespace namespace = getNamespaceForPrefix( prefix );
         if ( namespace != null ) {
-            return namespace.getPrefix();
+            return namespace.getURI();
         }
         return null;
     }
@@ -73,7 +80,13 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
     //-------------------------------------------------------------------------
     public Object getData() {
         if ( data == null ) {
-            data = dataType.convertToValueObject( getTextTrim(), this );
+            if ( datatype instanceof DatabindableDatatype ) {
+                DatabindableDatatype bindable = (DatabindableDatatype) datatype;
+                data = bindable.createJavaObject( getTextTrim(), this );
+            }
+            else {
+                data = datatype.createValue( getTextTrim(), this );
+            }
         }
         return data;
     }
@@ -82,7 +95,7 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
         this.data = data;
         
         // XXXX: when the library supports this
-        // dataType.convertToText( data, this );
+        // datatype.convertToText( data, this );
         if ( data != null ) {
             setText( data.toString() );
         }
@@ -134,5 +147,5 @@ public class SchemaElement extends DefaultElement implements ValidationContextPr
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaElement.java,v 1.3 2001/06/25 15:57:32 jstrachan Exp $
+ * $Id: SchemaElement.java,v 1.4 2001/08/14 13:21:10 jstrachan Exp $
  */
