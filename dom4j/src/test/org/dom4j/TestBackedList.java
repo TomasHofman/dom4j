@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestBackedList.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.3 2001/01/19 07:25:12 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.dom4j.io.XMLWriter;
 /** A test harness to test the backed list feature of DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestBackedList extends AbstractTestCase {
 
@@ -61,7 +61,7 @@ public class TestBackedList extends AbstractTestCase {
         XMLWriter writer = new XMLWriter( "  ", true );
         
         log( "Element content is now: " + element.getContent() );
-        writer.output( element, System.out );
+        writer.write( element, System.out );
     }
 
 }
@@ -111,5 +111,5 @@ public class TestBackedList extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestBackedList.java,v 1.2 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: TestBackedList.java,v 1.3 2001/01/19 07:25:12 jstrachan Exp $
  */

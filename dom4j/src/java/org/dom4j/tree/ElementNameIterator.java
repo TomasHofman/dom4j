@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementNameIterator.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ElementNameIterator.java,v 1.3 2001/01/19 07:25:12 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Namespace;
   * interface and are not of the correct element name and namespace.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class ElementNameIterator extends FilterIterator {
     
@@ -39,6 +39,11 @@ public class ElementNameIterator extends FilterIterator {
         this(proxy, name, namespace.getPrefix(), namespace.getURI());
     }
 
+    public ElementNameIterator(Iterator proxy, String name) {
+        super(proxy);
+        this.name = name;
+    }
+
 
     /** @return true if the given element implements the {@link Element} 
       * interface
@@ -47,6 +52,9 @@ public class ElementNameIterator extends FilterIterator {
         if (object instanceof Element) {
             Element element = (Element) object;
             if ( name.equals( element.getName() ) ) {
+                if ( namespaceURI == null ) {
+                    return true;
+                }
                 if ( namespaceURI.equals( element.getNamespaceURI() ) 
                     && namespacePrefix.equals( element.getNamespacePrefix() ) ) {
                     return true;
@@ -102,5 +110,5 @@ public class ElementNameIterator extends FilterIterator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementNameIterator.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: ElementNameIterator.java,v 1.3 2001/01/19 07:25:12 jstrachan Exp $
  */

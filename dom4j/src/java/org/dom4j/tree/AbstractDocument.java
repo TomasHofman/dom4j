@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocument.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.7 2001/01/19 07:25:12 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -32,7 +32,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -42,7 +42,7 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
     public String asXML() {
         try {
             StringWriter out = new StringWriter();
-            writer.output(this, out);
+            writer.write(this, out);
             return out.toString();
         } 
         catch (IOException e) {
@@ -52,7 +52,7 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
 
     public void writeXML(PrintWriter out) {
         try {
-            writer.output(this, out);
+            writer.write(this, out);
         }
         catch (IOException e) {
             throw new RuntimeException("Wierd IOException while generating textual representation: " + e.getMessage());
@@ -217,5 +217,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocument.java,v 1.6 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.7 2001/01/19 07:25:12 jstrachan Exp $
  */
