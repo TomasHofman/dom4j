@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.8 2001/07/12 11:02:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.xml.sax.SAXException;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class DocumentHelper {
 
@@ -100,8 +100,9 @@ public class DocumentHelper {
       *
       * @param xpathExpression is the XPath expression to create
       * @return a new <code>XPath</code> instance
+      * @throws InvalidXPathException if the XPath expression is invalid
       */
-    public static XPath createXPath(String xpathExpression) {
+    public static XPath createXPath(String xpathExpression) throws InvalidXPathException {
         return DocumentFactory.getInstance().createXPath(xpathExpression);
     }
     
@@ -112,8 +113,9 @@ public class DocumentHelper {
       * @param xpathExpression is the XPath expression to create
       * @param variableContext is the variable context to use when evaluating the XPath
       * @return a new <code>XPath</code> instance
+      * @throws InvalidXPathException if the XPath expression is invalid
       */
-    public static XPath createXPath(String xpathExpression, VariableContext variableContext) {
+    public static XPath createXPath(String xpathExpression, VariableContext variableContext) throws InvalidXPathException {
         return DocumentFactory.getInstance().createXPath(xpathExpression, variableContext);
     }
     
@@ -257,5 +259,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.7 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.8 2001/07/12 11:02:19 jstrachan Exp $
  */

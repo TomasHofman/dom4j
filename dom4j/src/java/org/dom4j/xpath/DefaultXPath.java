@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.9 2001/05/23 16:40:24 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.10 2001/07/12 11:02:19 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
 
 import org.dom4j.Document;
 import org.dom4j.Element;
+import org.dom4j.InvalidXPathException;
 import org.dom4j.Node;
 import org.dom4j.VariableContext;
 import org.dom4j.XPath;
@@ -76,7 +77,7 @@ public class DefaultXPath implements org.dom4j.XPath {
 
     /** Construct an XPath
      */
-    public DefaultXPath(String xpath) {
+    public DefaultXPath(String xpath) throws InvalidXPathException {
         _xpath = xpath;
         parse();
     }
@@ -341,16 +342,21 @@ public class DefaultXPath implements org.dom4j.XPath {
             _expr = recog.xpath();
         }
         catch (RecognitionException e) {
-            System.err.println( "Caught: " + e );
-            e.printStackTrace();
+            String message = e.toString() + " at column " + e.getColumn();
+            throw new InvalidXPathException( _xpath, message );
         }
         catch (TokenStreamException e) {
-            System.err.println( "Caught: " + e );
-            e.printStackTrace();
+            throw new InvalidXPathException( _xpath, e.getMessage() );
         }
         if ( _expr == null ) {
-            System.err.println( "Invalid XPath expression: " + _xpath );
-            throw new RuntimeException( "Invalid XPath expression: " + _xpath );
+            throw new InvalidXPathException( _xpath );
+        }
+        else {            
+            RecognitionException e = recog.getRecognitionException();
+            if ( e != null )  {
+                String message = e.toString() + " at column " + e.getColumn();
+                throw new InvalidXPathException( _xpath, message );
+            }
         }
     }
     
@@ -453,5 +459,5 @@ public class DefaultXPath implements org.dom4j.XPath {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.9 2001/05/23 16:40:24 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.10 2001/07/12 11:02:19 jstrachan Exp $
  */

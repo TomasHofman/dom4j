@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.23 2001/07/03 14:42:42 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.24 2001/07/12 11:02:19 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -38,7 +38,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.23 $
+  * @version $Revision: 1.24 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -158,8 +158,9 @@ public class DocumentFactory implements Serializable {
       *
       * @param xpathExpression is the XPath expression to create
       * @return a new <code>XPath</code> instance
+      * @throws InvalidXPathException if the XPath expression is invalid
       */
-    public XPath createXPath(String xpathExpression) {
+    public XPath createXPath(String xpathExpression) throws InvalidXPathException {
         return new DefaultXPath( xpathExpression );
     }
 
@@ -169,6 +170,7 @@ public class DocumentFactory implements Serializable {
       * @param xpathExpression is the XPath expression to create
       * @param variableContext is the variable context to use when evaluating the XPath
       * @return a new <code>XPath</code> instance
+      * @throws InvalidXPathException if the XPath expression is invalid
       */
     public XPath createXPath(String xpathExpression, VariableContext variableContext) {
         XPath xpath = createXPath( xpathExpression );
@@ -297,5 +299,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.23 2001/07/03 14:42:42 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.24 2001/07/12 11:02:19 jstrachan Exp $
  */

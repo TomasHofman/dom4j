@@ -4,71 +4,24 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestObject.java,v 1.2 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: InvalidXPathException.java,v 1.1 2001/07/12 11:02:19 jstrachan Exp $
  */
 
-package org.dom4j.xpath;
+package org.dom4j;
 
-import java.util.Iterator;
-import java.util.List;
-
-import junit.framework.*;
-import junit.textui.TestRunner;
-
-import org.dom4j.AbstractTestCase;
-import org.dom4j.Node;
-import org.dom4j.XPath;
-
-/** Test harness for numeric XPath expressions
+/** <p><code>InvalidXPathException</code> is thrown when an invalid
+  * XPath expression is used to traverse an XML document</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class TestObject extends AbstractTestCase {
+public class InvalidXPathException extends IllegalArgumentException {
 
-    protected static boolean VERBOSE = true;
-    
-    protected static String[] paths = {
-        "name(/.)",
-        "name()"
-    };
-    
-    
-    public static void main( String[] args ) {
-        TestRunner.run( suite() );
+    public InvalidXPathException(String xpath) {
+        super( "Invalid XPath expression: " + xpath );
     }
     
-    public static Test suite() {
-        return new TestSuite( TestObject.class );
-    }
-    
-    public TestObject(String name) {
-        super(name);
-    }
-
-    // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testXPaths() throws Exception {        
-        Node element = document.selectSingleNode( "//author" );
-        int size = paths.length;
-        for ( int i = 0; i < size; i++ ) {
-            testXPath( document, paths[i] );
-            testXPath( element, paths[i] );
-        }
-    }
-        
-    // Implementation methods
-    //-------------------------------------------------------------------------                    
-    protected void testXPath(Node node, String xpathText) {
-        XPath xpath = node.createXPath( xpathText );
-        Object object = xpath.selectObject( node );
-
-        log( "Searched path: " + xpath + " found: " + object );
-
-        if ( VERBOSE ) {
-            log( "    xpath: " + xpath );        
-            log( "    for: " + node );        
-        }
+    public InvalidXPathException(String xpath, String reason) {
+        super( "Invalid XPath expression: " + xpath + " " + reason );
     }
 }
 
@@ -117,5 +70,5 @@ public class TestObject extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestObject.java,v 1.2 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: InvalidXPathException.java,v 1.1 2001/07/12 11:02:19 jstrachan Exp $
  */
