@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.55 2002/11/13 11:40:39 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.56 2003/02/13 22:20:38 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.55 $
+  * @version $Revision: 1.56 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -872,17 +872,7 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
     protected void writeNamespace(Namespace namespace) throws IOException {
         if ( namespace != null ) {
-            String prefix = namespace.getPrefix();
-            if ( prefix != null && prefix.length() > 0 ) {
-                writer.write(" xmlns:");
-                writer.write(prefix);
-                writer.write("=\"");
-            }
-            else {
-                writer.write(" xmlns=\"");
-            }
-            writer.write(namespace.getURI());
-            writer.write("\"");
+            writeNamespace(namespace.getPrefix(), namespace.getURI());
         }
     }
 
@@ -895,18 +885,26 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
                 Map.Entry entry = (Map.Entry) iter.next();
                 String prefix = (String) entry.getKey();
                 String uri = (String) entry.getValue();
-                if ( prefix != null && prefix.length() > 0 ) {
-                    writer.write(" xmlns:");
-                    writer.write(prefix);
-                    writer.write("=\"");
-                }
-                else {
-                    writer.write(" xmlns=\"");
-                }
-                writer.write(uri);
+                writeNamespace(prefix, uri);
             }
             namespacesMap = null;
         }
+    }
+
+    /**
+     * Writes the SAX namepsaces
+     */
+    protected void writeNamespace(String prefix, String uri) throws IOException {
+        if ( prefix != null && prefix.length() > 0 ) {
+            writer.write(" xmlns:");
+            writer.write(prefix);
+            writer.write("=\"");
+        }
+        else {
+            writer.write(" xmlns=\"");
+        }
+        writer.write(uri);
+        writer.write("\"");
     }
 
     protected void writeProcessingInstruction(ProcessingInstruction processingInstruction) throws IOException {
@@ -1438,5 +1436,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.55 2002/11/13 11:40:39 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.56 2003/02/13 22:20:38 maartenc Exp $
  */
