@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.21 2004/08/22 12:20:09 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.22 2004/09/01 19:37:58 maartenc Exp $
  */
 
 package org.dom4j;
@@ -30,7 +30,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @version $Revision: 1.22 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -361,6 +361,22 @@ public class TestXMLWriter extends AbstractTestCase {
     	String xml = strWriter.toString();
     }
     
+    public void testEscapeText() throws SAXException {
+    	StringWriter writer = new StringWriter();
+    	XMLWriter xmlWriter = new XMLWriter(writer);
+    	xmlWriter.setEscapeText(false);
+    	
+    	String txt = "<test></test>";
+    	
+    	xmlWriter.startDocument();
+    	xmlWriter.characters(txt.toCharArray(), 0, txt.length());
+    	xmlWriter.endDocument();
+    	
+    	String output = writer.toString();
+    	System.out.println(output);
+    	assertTrue(output.indexOf("<test>") != -1);
+    }
+    
     protected org.dom4j.Document parseDocument(String file) throws Exception {
         SAXReader reader = new SAXReader();
         return reader.read(getClass().getResource(file));
@@ -426,5 +442,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.21 2004/08/22 12:20:09 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.22 2004/09/01 19:37:58 maartenc Exp $
  */
