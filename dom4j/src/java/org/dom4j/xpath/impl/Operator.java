@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Operator.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: Operator.java,v 1.3 2001/03/19 17:12:13 jstrachan Exp $
  */
 
 
@@ -91,7 +91,7 @@ class Operator {
             return node.getString();
         }
         else {
-            return obj.toString();
+            return (obj != null ) ? obj.toString() : "";
         }
     }
     
@@ -160,5 +160,5 @@ class Operator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Operator.java,v 1.2 2001/03/01 20:48:14 jstrachan Exp $
+ * $Id: Operator.java,v 1.3 2001/03/19 17:12:13 jstrachan Exp $
  */
