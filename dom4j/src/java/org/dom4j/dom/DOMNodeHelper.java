@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.9 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.10 2002/05/24 14:41:55 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DOMNodeHelper {
 
@@ -47,6 +47,9 @@ public class DOMNodeHelper {
     
     // Node API
     //-------------------------------------------------------------------------        
+    public static boolean supports(Node node, String feature, String version) {
+        return false;
+    }
 
     public static String getNamespaceURI(Node node) {
         return null;
@@ -512,5 +515,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.9 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.10 2002/05/24 14:41:55 jstrachan Exp $
  */

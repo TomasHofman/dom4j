@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMAttribute.java,v 1.7 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.8 2002/05/24 14:41:55 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -22,7 +22,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
     
@@ -41,6 +41,10 @@ public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
     
     // org.w3c.dom.Node interface
     //-------------------------------------------------------------------------        
+    public boolean supports(String feature, String version) {
+        return DOMNodeHelper.supports(this, feature, version);
+    }
+        
     public String getNamespaceURI() {
         return getQName().getNamespaceURI();
     }
@@ -218,5 +222,5 @@ public class DOMAttribute extends DefaultAttribute implements org.w3c.dom.Attr {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMAttribute.java,v 1.7 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: DOMAttribute.java,v 1.8 2002/05/24 14:41:55 jstrachan Exp $
  */
