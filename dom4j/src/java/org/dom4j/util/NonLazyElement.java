@@ -4,64 +4,60 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractComment.java,v 1.7 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyElement.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j.util;
 
-import java.io.IOException;
-import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
-import org.dom4j.Comment;
+import org.dom4j.Attribute;
+import org.dom4j.Branch;
 import org.dom4j.Element;
-import org.dom4j.Visitor;
+import org.dom4j.Entity;
+import org.dom4j.Node;
+import org.dom4j.Namespace;
+import org.dom4j.QName;
+import org.dom4j.tree.BaseElement;
 
-/** <p><code>AbstractComment</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+import org.xml.sax.Attributes;
+
+/** <p><code>NonLazyElement</code> is the default DOM4J default implementation
+  * of an XML element.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public abstract class AbstractComment extends AbstractCharacterData implements Comment {
+public class NonLazyElement extends BaseElement {
 
-    public AbstractComment() {
-    }
-
-    public short getNodeType() {
-        return COMMENT_NODE;
-    }
-
-    public String getPath() {
-        Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/comment()"
-            : "comment()";
+    public NonLazyElement(String name) { 
+        super(name);
+        this.attributes = createAttributeList();
+        this.content = createContentList();
     }
 
-    public String getUniquePath() {
-        Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/comment()"
-            : "comment()";
+    public NonLazyElement(QName qname) { 
+        super(qname);
+        this.attributes = createAttributeList();
+        this.content = createContentList();
     }
 
-    public String toString() {
-        return super.toString() + " [Comment: \"" + getText() + "\"]";
+    public NonLazyElement(String name, Namespace namespace) { 
+        super(name, namespace);
+        this.attributes = createAttributeList();
+        this.content = createContentList();
     }
 
-    public String asXML() {
-        return "<!--" + getText() + "-->";
+    public NonLazyElement(QName qname, Attributes attributes) { 
+        super(qname, attributes);
+        int size = attributes.getLength();
+        this.attributes = createAttributeList( size );
+        this.content = createContentList();
     }
-    
-    public void write(Writer writer) throws IOException {
-        writer.write( "<!--" );
-        writer.write( getText() );
-        writer.write( "-->" );
-    }
-    
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
-    }
+
 }
 
 
@@ -109,5 +105,5 @@ public abstract class AbstractComment extends AbstractCharacterData implements C
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractComment.java,v 1.7 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyElement.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
  */

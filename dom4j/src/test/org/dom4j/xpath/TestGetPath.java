@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.2 2001/06/09 13:29:38 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.3 2001/06/12 10:17:07 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.Node;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -60,24 +60,29 @@ public class TestGetPath extends AbstractTestCase {
         
         for ( int i = 0, size = elements.size(); i < size; i++ ) {
             String path = "/root/author";
-/*
+            String uniquePath = "/root/author";
             if ( i > 0 ) {
-                path += "[" + (i + 1) + "]";
+                uniquePath = "/root/author[" + (i + 1) + "]";
             }
-*/
+
             Element element = (Element) elements.get(i);
-            testPath( element, path );
+            testPath( element, path, uniquePath );
             
             path += "/@name";
+            uniquePath += "/@name";
             
             Attribute attribute = element.attribute( "name" );
-            testPath( attribute, path );
+            testPath( attribute, path, uniquePath );
         }
     }
         
     protected void testPath(Node node, String value) {
-        String path = node.getPath();
-        assertEquals( "Path expression should be what is expected", path, value );
+        testPath( node, value, value );
+    }
+    
+    protected void testPath(Node node, String path, String uniquePath) {
+        assertEquals( "getPath expression should be what is expected", node.getPath(), path );
+        assertEquals( "getUniquePath expression should be what is expected", node.getUniquePath(), uniquePath );
     }
     
     protected void testBranchPath(Branch branch) {
@@ -155,5 +160,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.2 2001/06/09 13:29:38 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.3 2001/06/12 10:17:07 jstrachan Exp $
  */

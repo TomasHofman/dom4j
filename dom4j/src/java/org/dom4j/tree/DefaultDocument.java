@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.19 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.20 2001/06/12 10:17:07 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -29,7 +29,7 @@ import org.xml.sax.EntityResolver;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -242,7 +242,7 @@ public class DefaultDocument extends AbstractDocument {
     
     // Implementation methods
     //-------------------------------------------------------------------------
-    protected List getContentList() {
+    protected List contentList() {
         if (contents == null) {
             contents = createContentList();
             if (rootElement != null) {
@@ -299,14 +299,14 @@ public class DefaultDocument extends AbstractDocument {
       * {@link #processingInstructions}
       */
     protected BackedList createResultList() {
-        return new BackedList( this, getContentList() );
+        return new BackedList( this, contentList() );
     }
     
     /** A Factory Method pattern which lazily creates an empty
       * a BackedList implementation
       */
     protected BackedList createEmptyList() {
-        return new BackedList( this, getContentList(), 0 );
+        return new BackedList( this, contentList(), 0 );
     }
     
     protected DocumentFactory getDocumentFactory() {
@@ -360,5 +360,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.19 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.20 2001/06/12 10:17:07 jstrachan Exp $
  */

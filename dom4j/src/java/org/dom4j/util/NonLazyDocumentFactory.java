@@ -4,63 +4,53 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractComment.java,v 1.7 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyDocumentFactory.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j.util;
 
-import java.io.IOException;
-import java.io.Writer;
-
-import org.dom4j.Comment;
+import org.dom4j.Attribute;
+import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
-import org.dom4j.Visitor;
+import org.dom4j.Namespace;
+import org.dom4j.QName;
 
-/** <p><code>AbstractComment</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+import org.xml.sax.Attributes;
+
+/** <p><code>NonLazyDocumentFactory</code> is a factory of XML objects which 
+  * avoid using the lazy creation pattern. This results in a slower
+  * creation of a Document and uses more memory but it means that the
+  * same Document instance can be shared across threads provided it is not
+  * modified.</p>
   *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
+  * @version $Revision: 1.1 $
   */
-public abstract class AbstractComment extends AbstractCharacterData implements Comment {
-
-    public AbstractComment() {
-    }
-
-    public short getNodeType() {
-        return COMMENT_NODE;
-    }
-
-    public String getPath() {
-        Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/comment()"
-            : "comment()";
-    }
-
-    public String getUniquePath() {
-        Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getUniquePath() + "/comment()"
-            : "comment()";
-    }
-
-    public String toString() {
-        return super.toString() + " [Comment: \"" + getText() + "\"]";
-    }
-
-    public String asXML() {
-        return "<!--" + getText() + "-->";
+public class NonLazyDocumentFactory extends DocumentFactory {
+    
+    /** The Singleton instance */
+    static NonLazyDocumentFactory singleton = new NonLazyDocumentFactory();
+    
+    
+    /** <p>Access to the singleton instance of this factory.</p>
+      *
+      * @return the default singleon instance
+      */
+    public static DocumentFactory getInstance() {
+        return singleton;
     }
     
-    public void write(Writer writer) throws IOException {
-        writer.write( "<!--" );
-        writer.write( getText() );
-        writer.write( "-->" );
+        
+    // DocumentFactory methods
+    //-------------------------------------------------------------------------
+    
+    public Element createElement(QName qname) {
+        return new NonLazyElement(qname);
     }
     
-    public void accept(Visitor visitor) {
-        visitor.visit(this);
+    public Element createElement(QName qname, Attributes attributes) {
+        return new NonLazyElement(qname, attributes);
     }
 }
 
@@ -109,5 +99,5 @@ public abstract class AbstractComment extends AbstractCharacterData implements C
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractComment.java,v 1.7 2001/06/12 10:17:07 jstrachan Exp $
+ * $Id: NonLazyDocumentFactory.java,v 1.1 2001/06/12 10:17:07 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.16 2001/06/09 13:29:38 jstrachan Exp $
+ * $Id: Node.java,v 1.17 2001/06/12 10:17:07 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public interface Node extends Cloneable {
 
@@ -183,12 +183,25 @@ public interface Node extends Cloneable {
       */
     public String getStringValue();    
     
-    /** <p>Returns the String of the XPath expression to reach this node from 
-      * the root node.</p>
+    /** <p>Returns the XPath expression which will return a node set
+      * containing the given node such as /a/b/@c. No indexing will
+      * be used to restrict the path if multiple elements with the
+      * same name occur on the path.</p>
       *
-      * @return the XPath text expression for this node.
+      * @return the XPath expression which will return a nodeset
+      * containing at least this node.
       */
     public String getPath();
+    
+    /** <p>Returns the XPath expression which will return a nodeset
+      * of one node which is the current node. This method will use
+      * the XPath index operator to restrict the path if
+      * multiple elements with the same name occur on the path.</p>
+      *
+      * @return the XPath expression which will return a nodeset
+      * containing just this node.
+      */
+    public String getUniquePath();
     
     
     /** <p><code>asXML</code> returns the textual XML representation of this 
@@ -412,5 +425,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.16 2001/06/09 13:29:38 jstrachan Exp $
+ * $Id: Node.java,v 1.17 2001/06/12 10:17:07 jstrachan Exp $
  */
