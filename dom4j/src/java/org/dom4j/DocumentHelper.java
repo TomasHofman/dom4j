@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.10 2001/08/16 09:41:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.xml.sax.SAXException;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DocumentHelper {
 
@@ -248,7 +248,12 @@ public class DocumentHelper {
         Element element = null;
         while ( enum.hasMoreTokens() ) {
             String name = enum.nextToken();
-            element = parent.element( name );
+            if ( name.indexOf( ':' ) > 0 ) {
+                element = parent.element( parent.getQName( name ) );
+            }
+            else {
+                element = parent.element( name );
+            }
             if ( element == null ) {
                 element = parent.addElement( name );
             }
@@ -303,5 +308,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.9 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: DocumentHelper.java,v 1.10 2001/08/16 09:41:21 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.31 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: Element.java,v 1.32 2001/08/16 09:41:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.31 $
+  * @version $Revision: 1.32 $
   */
 public interface Element extends Branch {
 
@@ -48,6 +48,15 @@ public interface Element extends Branch {
     public Namespace getNamespace();
 
     
+ 
+    /** <p>Returns the <code>QName</code> for the given qualified name, using
+      * the namespace URI in scope for the given prefix of the qualified name
+      * or the default namespace if the qualified name has no prefix.</p>
+      *
+      * @return the <code>QName</code> for the given qualified name
+      */
+    public QName getQName(String qualifiedName);
+
  
     /** <p>Returns the <code>Namespace</code> which is mapped to the given
       * prefix or null if it could not be found.</p>
@@ -636,5 +645,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.31 2001/06/20 18:59:23 jstrachan Exp $
+ * $Id: Element.java,v 1.32 2001/08/16 09:41:21 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.43 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.44 2001/08/16 09:41:21 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.43 $
+  * @version $Revision: 1.44 $
   */
 public class DefaultElement extends AbstractElement {
     
@@ -446,7 +446,7 @@ public class DefaultElement extends AbstractElement {
                 Object object = list.get(i);
                 if ( object instanceof Element ) {
                     Element element = (Element) object;
-                    if ( name.equals( element.getQualifiedName() ) ) {
+                    if ( name.equals( element.getName() ) ) {
                         return element;
                     }
                 }
@@ -455,7 +455,7 @@ public class DefaultElement extends AbstractElement {
         else {
             if ( content instanceof Element ) {
                 Element element = (Element) content;
-                if ( name.equals( element.getQualifiedName() ) ) {
+                if ( name.equals( element.getName() ) ) {
                     return element;
                 }
             }
@@ -525,7 +525,7 @@ public class DefaultElement extends AbstractElement {
                 Object object = list.get(i);
                 if ( object instanceof Element ) {
                     Element element = (Element) object;
-                    if ( name.equals( element.getQualifiedName() ) ) {
+                    if ( name.equals( element.getName() ) ) {
                         answer.addLocal( element );
                     }
                 }
@@ -535,7 +535,7 @@ public class DefaultElement extends AbstractElement {
         else {
             if ( content instanceof Element ) {
                 Element element = (Element) content;
-                if ( name.equals( element.getQualifiedName() ) ) {
+                if ( name.equals( element.getName() ) ) {
                     return createSingleResultList( element );
                 }
             }
@@ -596,7 +596,7 @@ public class DefaultElement extends AbstractElement {
         else {
             if ( content instanceof Element ) {
                 Element element = (Element) content;
-                if ( name.equals( element.getQualifiedName() ) ) {
+                if ( name.equals( element.getName() ) ) {
                     return createSingleIterator( element );
                 }
             }
@@ -776,14 +776,14 @@ public class DefaultElement extends AbstractElement {
             int size = list.size();
             for ( int i = 0; i < size; i++ ) {
                 Attribute attribute = (Attribute) list.get(i);
-                if ( name.equals( attribute.getQualifiedName() ) ) {
+                if ( name.equals( attribute.getName() ) ) {
                     return attribute;
                 }
             }
         }
         else if ( attributes != null ) {
             Attribute attribute = (Attribute) attributes;
-            if ( name.equals( attribute.getQualifiedName() ) ) {
+            if ( name.equals( attribute.getName() ) ) {
                 return attribute;
             }
         }
@@ -1018,5 +1018,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.43 2001/08/15 12:02:00 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.44 2001/08/16 09:41:21 jstrachan Exp $
  */
