@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.17 2004/07/06 16:58:17 maartenc Exp $
+ * $Id: TestNamespaces.java,v 1.18 2004/08/22 12:19:23 maartenc Exp $
  */
 
 package org.dom4j;
@@ -28,7 +28,7 @@ import org.xml.sax.InputSource;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -278,13 +278,29 @@ public class TestNamespaces extends AbstractTestCase {
             }
         fail("Default namespace declaration not present on root element");
     }
+    
+    public void testDefaultNamespace() throws Exception {
+    	Document doc = DocumentHelper.createDocument(); 	
+    	Element processDef = doc.addElement("process-definition", "http://jbpm.org/statedefinition-2.0-beta3");
+    	Element startState = processDef.addElement("start-state");
+    	startState.addAttribute("name", "start");
+    	Element transition = startState.addElement("transition");
+    	transition.addAttribute("to", "first");
+    	
+    	assertEquals("http://jbpm.org/statedefinition-2.0-beta3", startState.getNamespace().getURI());
+    	assertEquals("", startState.getNamespace().getPrefix());
+    	
+    	System.out.println(doc.asXML());
+    }
 
     // Implementation methods
     //-------------------------------------------------------------------------
     protected void setUp() throws Exception {
         SAXReader reader = new SAXReader();
         URL url = getClass().getResource("/xml/test/test_schema.xml");
-        document = reader.read(url);
+        if (url != null) {
+        	document = reader.read(url);
+        }
     }
 
     protected Document saxRoundTrip(Document document) throws Exception {
@@ -361,5 +377,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.17 2004/07/06 16:58:17 maartenc Exp $
+ * $Id: TestNamespaces.java,v 1.18 2004/08/22 12:19:23 maartenc Exp $
  */
