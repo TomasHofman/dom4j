@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.24 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.25 2001/07/25 13:15:14 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -38,7 +38,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.24 $
+  * @version $Revision: 1.25 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -66,8 +66,9 @@ public class DocumentFactory implements Serializable {
     }
 
     public DocumentFactory() {
-        cache = new QNameCache(this);
+        cache = createQNameCache();
     }
+    
     
     // Factory methods
     
@@ -252,6 +253,14 @@ public class DocumentFactory implements Serializable {
     protected QName intern(QName qname) {
         return cache.intern(qname);
     }
+
+    /** Factory method to create the QNameCache. This method should be overloaded 
+      * if you wish to use your own derivation of QName.
+      */
+    protected QNameCache createQNameCache() {
+        return new QNameCache(this);
+    }
+
 }
 
 
@@ -299,5 +308,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.24 2001/07/12 11:02:19 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.25 2001/07/25 13:15:14 jstrachan Exp $
  */

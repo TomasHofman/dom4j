@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: QNameCache.java,v 1.4 2001/05/24 00:46:18 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.5 2001/07/25 13:15:14 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -20,7 +20,7 @@ import org.dom4j.Namespace;
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class QNameCache {
 
@@ -32,7 +32,9 @@ public class QNameCache {
       */ 
     protected Map namespaceCache = new HashMap();
 
-    /** The document factory used for new QNames in this cache by default */
+    /** The document factory associated with new QNames instances in this cache
+      * or null if no instances should be associated by default 
+      */
     private DocumentFactory documentFactory;
     
     
@@ -48,7 +50,7 @@ public class QNameCache {
     public QName get(String name) {
         QName answer = (QName) noNamespaceCache.get(name);
         if (answer == null) {
-            answer = new QName(name);
+            answer = createQName(name);
             answer.setDocumentFactory( documentFactory );
             noNamespaceCache.put(name, answer);
         }
@@ -61,7 +63,7 @@ public class QNameCache {
         Map cache = getNamespaceCache(namespace);
         QName answer = (QName) cache.get(name);
         if (answer == null) {
-            answer = new QName(name, namespace);
+            answer = createQName(name, namespace);
             answer.setDocumentFactory( documentFactory );
             cache.put(name, answer);
         }
@@ -75,7 +77,7 @@ public class QNameCache {
         Map cache = getNamespaceCache(namespace);
         QName answer = (QName) cache.get(localName);
         if (answer == null) {
-            answer = new QName(localName, namespace, qualifiedName);
+            answer = createQName(localName, namespace, qualifiedName);
             answer.setDocumentFactory( documentFactory );
             cache.put(localName, answer);
         }
@@ -124,6 +126,27 @@ public class QNameCache {
     protected Map createMap() {
         return new HashMap();
     }
+    
+    /** Factory method to create a new QName object
+      * which can be overloaded to create derived QName instances
+      */
+    protected QName createQName(String name) {
+        return new QName(name);
+    }
+    
+    /** Factory method to create a new QName object
+      * which can be overloaded to create derived QName instances
+      */
+    protected QName createQName(String name, Namespace namespace) {
+        return new QName(name, namespace);
+    }
+    
+    /** Factory method to create a new QName object
+      * which can be overloaded to create derived QName instances
+      */
+    protected QName createQName(String name, Namespace namespace, String qualifiedName) {
+        return new QName(name, namespace, qualifiedName);
+    }
 }
 
 
@@ -171,5 +194,5 @@ public class QNameCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.4 2001/05/24 00:46:18 jstrachan Exp $
+ * $Id: QNameCache.java,v 1.5 2001/07/25 13:15:14 jstrachan Exp $
  */
