@@ -8,6 +8,7 @@ import java.util.Map;
 import org.dom4j.Attribute;
 import org.dom4j.CDATA;
 import org.dom4j.Comment;
+import org.dom4j.ContentFactory;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.Node;
@@ -20,7 +21,7 @@ import org.dom4j.Text;
   * resusable units.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public interface ContentModel {
 

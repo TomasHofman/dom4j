@@ -7,13 +7,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.dom4j.Attribute;
+import org.dom4j.ContentFactory;
 import org.dom4j.Namespace;
 
 /** <p><code>DefaultAttributeModel</code> is a default implementation of 
   * <code>AttributeModel</code>.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultAttributeModel extends AbstractAttributeModel {
 

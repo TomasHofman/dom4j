@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.dom4j.Element;
-import org.dom4j.tree.ContentFactory;
+import org.dom4j.ContentFactory;
 
 import org.metastuff.coder.*;
 
@@ -12,7 +12,7 @@ import org.metastuff.coder.*;
   * implementations from a DTD declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class ContentFactoryGenerator extends AbstractGenerator {
     

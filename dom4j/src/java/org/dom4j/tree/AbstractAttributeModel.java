@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.dom4j.Attribute;
+import org.dom4j.ContentFactory;
 import org.dom4j.Namespace;
 
 /** <p><code>AbstractAttributeModel</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class AbstractAttributeModel implements AttributeModel {
     

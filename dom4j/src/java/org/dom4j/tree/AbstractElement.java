@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 import org.dom4j.Attribute;
 import org.dom4j.CDATA;
 import org.dom4j.Comment;
+import org.dom4j.ContentFactory;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Entity;
@@ -27,7 +28,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 

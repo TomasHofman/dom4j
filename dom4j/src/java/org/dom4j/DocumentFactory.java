@@ -10,7 +10,7 @@ import org.dom4j.tree.DefaultDocument;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DocumentFactory {
 
@@ -22,7 +22,7 @@ public class DocumentFactory {
     
     // Some static helper methods
     public static Document create() {
-        return getInstance().createDocument();
+        return singleton.createDocument();
     }
     
     /** <p>Access to singleton implementation of DocumentFactory which 
