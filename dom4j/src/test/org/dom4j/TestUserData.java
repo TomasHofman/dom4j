@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestUserData.java,v 1.4 2003/04/07 22:24:14 jstrachan Exp $
+ * $Id: TestUserData.java,v 1.5 2004/02/25 22:43:14 maartenc Exp $
  */
 
 package org.dom4j;
@@ -23,7 +23,7 @@ import org.dom4j.util.UserDataElement;
 /** Tests the UserDataDocumentFactory
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestUserData extends AbstractTestCase {
 
@@ -67,6 +67,17 @@ public class TestUserData extends AbstractTestCase {
         cloned = root.createCopy();
         assertTrue( "Cloned new instance", cloned != root );
         assertUserData( cloned, userData );
+    }
+    
+    public void testCloneAttribute() throws Exception {
+        Element root = getRootElement();
+        root.addAttribute("name", "value");
+        Attribute attribute = root.attribute("name");
+        assertTrue(attribute instanceof UserDataAttribute);
+        
+        Element cloned = (Element) root.clone();
+        Attribute clonedAttribute = cloned.attribute("name");
+        assertTrue(clonedAttribute instanceof UserDataAttribute);
     }
         
     public void testNewAdditions() throws Exception {
@@ -161,5 +172,5 @@ public class TestUserData extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestUserData.java,v 1.4 2003/04/07 22:24:14 jstrachan Exp $
+ * $Id: TestUserData.java,v 1.5 2004/02/25 22:43:14 maartenc Exp $
  */
