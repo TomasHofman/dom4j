@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JAXBDemo.java,v 1.1 2004/08/02 18:44:09 maartenc Exp $
+ * $Id: JAXBDemo.java,v 1.2 2004/11/17 18:22:11 maartenc Exp $
  */
 
 package org.dom4j.samples.jaxb;
@@ -17,7 +17,6 @@ import java.util.Iterator;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.OutputFormat;
-import org.dom4j.io.XMLWriter;
 import org.dom4j.jaxb.JAXBModifier;
 import org.dom4j.jaxb.JAXBReader;
 import org.dom4j.jaxb.JAXBWriter;
@@ -265,5 +264,5 @@ public class JAXBDemo {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JAXBDemo.java,v 1.1 2004/08/02 18:44:09 maartenc Exp $
+ * $Id: JAXBDemo.java,v 1.2 2004/11/17 18:22:11 maartenc Exp $
  */

@@ -4,13 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PurchaseOrderHandler.java,v 1.1 2004/08/02 18:44:09 maartenc Exp $
+ * $Id: PurchaseOrderHandler.java,v 1.2 2004/11/17 18:22:11 maartenc Exp $
  */
 
 package org.dom4j.samples.jaxb;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import javax.xml.bind.Element;
 
@@ -76,5 +75,5 @@ public class PurchaseOrderHandler implements JAXBObjectHandler {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PurchaseOrderHandler.java,v 1.1 2004/08/02 18:44:09 maartenc Exp $
+ * $Id: PurchaseOrderHandler.java,v 1.2 2004/11/17 18:22:11 maartenc Exp $
  */
