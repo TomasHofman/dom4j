@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DispatchHandler.java,v 1.8 2004/06/28 08:21:03 maartenc Exp $
+ * $Id: DispatchHandler.java,v 1.9 2004/08/02 18:44:07 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -25,7 +25,7 @@ import org.dom4j.ElementPath;
   * registered with it to process the elements encountered.
   *
   * @author <a href="mailto:dwhite@equipecom.com">Dave White</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 
 class DispatchHandler implements ElementHandler
@@ -82,9 +82,27 @@ class DispatchHandler implements ElementHandler
      /** @return true when an <code>ElementHandler</code> is registered for
        * the specified path.
        */
-     public boolean containsHandler(String path) {
+    public boolean containsHandler(String path) {
         return handlers.containsKey(path);
-     }
+    }
+     
+    /**
+     * Get the registered {@link ElementHandler} for the specified path.
+     * @param path XML path to get the handler for
+     * @return the registered handler
+     */
+    public ElementHandler getHandler(String path){
+        return (ElementHandler)handlers.get(path);
+    }
+    
+    /**
+     * Returns the number of {@link ElementHandler} objects that are waiting for their elements
+     * closing tag.
+     * @return number of active handlers
+     */
+    public int getActiveHandlerCount(){
+       return handlerStack.size();
+    }
 
     /** When multiple <code>ElementHandler</code> instances have been 
       * registered, this will set a default <code>ElementHandler</code>
@@ -227,5 +245,5 @@ class DispatchHandler implements ElementHandler
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DispatchHandler.java,v 1.8 2004/06/28 08:21:03 maartenc Exp $
+ * $Id: DispatchHandler.java,v 1.9 2004/08/02 18:44:07 maartenc Exp $
  */

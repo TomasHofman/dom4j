@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementStack.java,v 1.11 2004/06/28 08:21:03 maartenc Exp $
+ * $Id: ElementStack.java,v 1.12 2004/08/02 18:44:07 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -20,9 +20,9 @@ import org.dom4j.ElementPath;
   * when a node is complete.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
-public class ElementStack implements ElementPath {
+class ElementStack implements ElementPath {
 
     /** stack of <code>Element</code> objects */
     protected Element[] stack;
@@ -44,6 +44,10 @@ public class ElementStack implements ElementPath {
     public void setDispatchHandler(DispatchHandler handler)
     {
         this.handler = handler;   
+    }
+    
+    public DispatchHandler getDispatchHandler(){
+       return this.handler;
     }
     
     /** Peeks at the top element on the stack without changing the contents
@@ -210,5 +214,5 @@ public class ElementStack implements ElementPath {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementStack.java,v 1.11 2004/06/28 08:21:03 maartenc Exp $
+ * $Id: ElementStack.java,v 1.12 2004/08/02 18:44:07 maartenc Exp $
  */
