@@ -4,11 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocumentType.java,v 1.5 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.6 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
+import java.io.IOException;
+import java.io.Writer;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,7 +23,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public abstract class AbstractDocumentType extends AbstractNode implements DocumentType {
 
@@ -76,6 +78,32 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
         return buffer.toString();
     }
     
+    public void write(Writer writer) throws IOException {
+        writer.write( "<!DOCTYPE " );
+        writer.write( getElementName() );
+        
+        boolean hasPublicID = false;
+        String publicID = getPublicID();
+        
+        if ( publicID != null && publicID.length() > 0 ) {
+            writer.write( " PUBLIC \"" );
+            writer.write( publicID );
+            writer.write( "\"" );
+            hasPublicID = true;
+        }
+        
+        String systemID = getSystemID();
+        if ( systemID != null && systemID.length() > 0 ) {
+            if (!hasPublicID) {
+                writer.write(" SYSTEM");
+            }
+            writer.write( " \"" );
+            writer.write( systemID );
+            writer.write( "\"" );
+        }
+        writer.write(">");
+    }
+    
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -128,5 +156,5 @@ public abstract class AbstractDocumentType extends AbstractNode implements Docum
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocumentType.java,v 1.5 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractDocumentType.java,v 1.6 2001/05/11 14:01:34 jstrachan Exp $
  */

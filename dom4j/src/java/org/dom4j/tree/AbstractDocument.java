@@ -4,14 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDocument.java,v 1.15 2001/05/09 15:30:28 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.16 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.Iterator;
 import java.util.List;
 
@@ -34,7 +34,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public abstract class AbstractDocument extends AbstractBranch implements Document {
     
@@ -65,14 +65,9 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
         }
     }
 
-    public void write(PrintWriter out) {
-        try {
-            XMLWriter writer = new XMLWriter( out, outputFormat );
-            writer.write(this);
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Wierd IOException while generating textual representation: " + e.getMessage());
-        }
+    public void write(Writer out) throws IOException {
+        XMLWriter writer = new XMLWriter( out, outputFormat );
+        writer.write(this);
     }
         
     /** <p><code>accept</code> method is the <code>Visitor Pattern</code> method.
@@ -226,5 +221,5 @@ public abstract class AbstractDocument extends AbstractBranch implements Documen
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDocument.java,v 1.15 2001/05/09 15:30:28 jstrachan Exp $
+ * $Id: AbstractDocument.java,v 1.16 2001/05/11 14:01:34 jstrachan Exp $
  */

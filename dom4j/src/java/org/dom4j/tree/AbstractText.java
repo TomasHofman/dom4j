@@ -4,10 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractText.java,v 1.4 2001/02/01 23:19:19 jstrachan Exp $
+ * $Id: AbstractText.java,v 1.5 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
+
+import java.io.IOException;
+import java.io.Writer;
 
 import org.dom4j.Text;
 import org.dom4j.Visitor;
@@ -16,7 +19,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractText extends AbstractCharacterData implements Text {
 
@@ -33,6 +36,10 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
 
     public String asXML() {
         return getText();
+    }
+    
+    public void write(Writer writer) throws IOException {
+        writer.write( getText() );
     }
     
     public void accept(Visitor visitor) {
@@ -85,5 +92,5 @@ public abstract class AbstractText extends AbstractCharacterData implements Text
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractText.java,v 1.4 2001/02/01 23:19:19 jstrachan Exp $
+ * $Id: AbstractText.java,v 1.5 2001/05/11 14:01:34 jstrachan Exp $
  */

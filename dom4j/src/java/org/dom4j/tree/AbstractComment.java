@@ -4,10 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractComment.java,v 1.5 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractComment.java,v 1.6 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
+
+import java.io.IOException;
+import java.io.Writer;
 
 import org.dom4j.Comment;
 import org.dom4j.Element;
@@ -17,7 +20,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public abstract class AbstractComment extends AbstractCharacterData implements Comment {
 
@@ -41,6 +44,12 @@ public abstract class AbstractComment extends AbstractCharacterData implements C
 
     public String asXML() {
         return "<!--" + getText() + "-->";
+    }
+    
+    public void write(Writer writer) throws IOException {
+        writer.write( "<!--" );
+        writer.write( getText() );
+        writer.write( "-->" );
     }
     
     public void accept(Visitor visitor) {
@@ -93,5 +102,5 @@ public abstract class AbstractComment extends AbstractCharacterData implements C
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractComment.java,v 1.5 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractComment.java,v 1.6 2001/05/11 14:01:34 jstrachan Exp $
  */

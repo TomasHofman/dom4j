@@ -4,10 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttribute.java,v 1.10 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.11 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
+
+import java.io.IOException;
+import java.io.Writer;
 
 import org.dom4j.Attribute;
 import org.dom4j.Element;
@@ -19,7 +22,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public abstract class AbstractAttribute extends AbstractNode implements Attribute {
 
@@ -61,6 +64,13 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
         return getQualifiedName() + "=\"" + getValue() + "\"";
     }
     
+    public void write(Writer writer) throws IOException {
+        writer.write( getQualifiedName() );
+        writer.write( "=\"" );
+        writer.write( getValue() );
+        writer.write( "\"" );
+    }
+        
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -146,5 +156,5 @@ public abstract class AbstractAttribute extends AbstractNode implements Attribut
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttribute.java,v 1.10 2001/03/20 23:00:44 jstrachan Exp $
+ * $Id: AbstractAttribute.java,v 1.11 2001/05/11 14:01:34 jstrachan Exp $
  */

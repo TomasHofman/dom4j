@@ -4,12 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.13 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: Node.java,v 1.14 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.Writer;
+
 import java.util.List;
 
 /** <p><code>Node</code> defines the polymorphic behavior 
@@ -22,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public interface Node extends Cloneable {
 
@@ -198,9 +200,9 @@ public interface Node extends Cloneable {
       * (such as for pretty printing, changing the indentation policy etc.) 
       * then please use {@link org.dom4j.io.XMLWriter} or its derivations.
       *
-      * @param writer is the <code>PrintWriter</code> to output the XML to
+      * @param writer is the <code>Writer</code> to output the XML to
       */
-    public void write(PrintWriter writer);    
+    public void write(Writer writer) throws IOException;
 
     
     /** Returns the code according to the type of node. 
@@ -409,5 +411,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.13 2001/03/30 16:42:54 jstrachan Exp $
+ * $Id: Node.java,v 1.14 2001/05/11 14:01:34 jstrachan Exp $
  */

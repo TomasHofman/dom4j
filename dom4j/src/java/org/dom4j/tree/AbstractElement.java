@@ -4,14 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.32 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.33 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import java.io.IOException;
 import java.io.StringWriter;
-import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -40,7 +40,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.32 $
+  * @version $Revision: 1.33 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -126,14 +126,9 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         }
     }
 
-    public void write(PrintWriter out) {
-        try {
-            XMLWriter writer = new XMLWriter( out, outputFormat );
-            writer.write(this);
-        }
-        catch (IOException e) {
-            throw new RuntimeException("Wierd IOException while generating textual representation: " + e.getMessage());
-        }
+    public void write(Writer out) throws IOException {
+        XMLWriter writer = new XMLWriter( out, outputFormat );
+        writer.write(this);
     }
         
     /** <p><code>accept</code> method is the <code>Visitor Pattern</code> method.
@@ -648,5 +643,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.32 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.33 2001/05/11 14:01:34 jstrachan Exp $
  */

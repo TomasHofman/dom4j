@@ -4,10 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractProcessingInstruction.java,v 1.7 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.8 2001/05/11 14:01:34 jstrachan Exp $
  */
 
 package org.dom4j.tree;
+
+import java.io.IOException;
+import java.io.Writer;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -22,7 +25,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public abstract class AbstractProcessingInstruction extends AbstractNode implements ProcessingInstruction {
 
@@ -46,6 +49,14 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
 
     public String asXML() {
         return "<?" + getName() + " " + getText() + "?>";
+    }
+    
+    public void write(Writer writer) throws IOException {
+        writer.write( "<?" );
+        writer.write( getName() );
+        writer.write( " " );
+        writer.write( getText() );
+        writer.write( "?>" );
     }
     
     public void accept(Visitor visitor) {
@@ -176,5 +187,5 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractProcessingInstruction.java,v 1.7 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: AbstractProcessingInstruction.java,v 1.8 2001/05/11 14:01:34 jstrachan Exp $
  */
