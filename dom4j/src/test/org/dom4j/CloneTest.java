@@ -11,6 +11,9 @@ import junit.textui.TestRunner;
 
 import java.util.Comparator;
 
+import org.dom4j.dom.DOMDocument;
+import org.dom4j.dom.DOMDocumentFactory;
+import org.dom4j.dom.DOMNamespace;
 import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 import org.dom4j.util.NodeComparator;
@@ -19,7 +22,7 @@ import org.dom4j.util.NodeComparator;
  * A test harness to test the clone() methods on Nodes
  * 
  * @author <a href="mailto:jstrachan@apache.org">James Strachan </a>
- * @version $Revision: 1.3 $
+ * @version $Revision: 1.4 $
  */
 public class CloneTest extends AbstractTestCase {
     private static final boolean VERBOSE = false;
@@ -32,6 +35,23 @@ public class CloneTest extends AbstractTestCase {
 
     // Test case(s)
     // -------------------------------------------------------------------------
+    public void testBug1148333() {
+        DOMDocumentFactory factory = (DOMDocumentFactory) DOMDocumentFactory.getInstance();
+        DOMDocument doc = (DOMDocument) factory.createDocument();
+        Element el = doc.addElement("root");
+        el.addNamespace("pref2", "uri2");
+        
+        doc.cloneNode(true);
+    }
+    
+    public void testElementWithNamespaceClone() {
+        Element element = DocumentFactory.getInstance().createElement("element");
+        element.addNamespace("prefix", "uri");
+        Element clone = (Element) element.clone();
+        
+        assertNodesEqual(element, clone);
+    }
+    
     public void testDocumentClone() throws Exception {
         document.setName("doc1");
 
