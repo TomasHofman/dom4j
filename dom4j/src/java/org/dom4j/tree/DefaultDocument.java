@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.16 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.17 2001/05/18 12:01:55 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -27,7 +27,7 @@ import org.dom4j.ProcessingInstruction;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -226,20 +226,25 @@ public class DefaultDocument extends AbstractDocument {
     
     
     protected void addNode(Node node) {
-        if (node.getDocument() != null) {
-            // XXX: could clone here
-            String message = "The Node already has an existing document of \"" 
-                + node.getDocument().getName() + "\"";
-            throw new IllegalAddException(this, node, message);
+        if ( node != null ) {
+            Document document = node.getDocument();
+            if (document != null && document != this) {
+                // XXX: could clone here
+                String message = "The Node already has an existing document: " + document;
+                throw new IllegalAddException(this, node, message);
+            }
+            if (contents == null) {
+                contents = createContentList();
+            }
+            contents.add(node);
+            childAdded(node);
         }
-        if (contents == null) {
-            contents = createContentList();
-        }
-        contents.add(node);
-        childAdded(node);
     }
 
     protected boolean removeNode(Node node) {
+        if ( node == rootElement) {
+            rootElement = null;
+        }
         if (contents != null && contents.remove(node)) {
             childRemoved(node);
             return true;
@@ -330,5 +335,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.16 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.17 2001/05/18 12:01:55 jstrachan Exp $
  */
