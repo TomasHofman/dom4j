@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.53 2001/07/26 16:22:29 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.54 2001/07/27 12:33:51 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.53 $
+  * @version $Revision: 1.54 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -83,29 +83,46 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     public void setNamespace(Namespace namespace) {
         throw new UnsupportedOperationException("The name and namespace of this Element cannot be changed" );
     }
-        
+
+    /** Returns the XPath expression to match this Elements name
+     * which is getQualifiedName() if there is a namespace prefix defined or
+     * if no namespace is present then it is getName() or if a namespace is defined
+     * with no prefix then the expression is *[name()='X'] where X = getName().    
+     */    
+    public String getXPathNameStep() {
+        String uri = getNamespaceURI();
+        if ( uri == null || uri.length() == 0 ) {
+            return getName();
+        }
+        String prefix = getNamespacePrefix();
+        if ( prefix == null || prefix.length() == 0 ) {
+            return "*[name()='" + getName() + "']";
+        }
+        return getQualifiedName();
+    }
+    
     public String getPath(Element context) {
         Element parent = getParent();
         if ( parent == null ) {
-            return "/" + getQualifiedName();
+            return "/" + getXPathNameStep();
         }
         else if ( parent == context ) {
-            return getQualifiedName();
+            return getXPathNameStep();
         }
-        return parent.getPath( context ) + "/" + getQualifiedName();
+        return parent.getPath( context ) + "/" + getXPathNameStep();
     }
     
     public String getUniquePath(Element context) {
         Element parent = getParent();
         if ( parent == null ) {
-            return "/" + getQualifiedName();
+            return "/" + getXPathNameStep();
         }
         StringBuffer buffer = new StringBuffer();
         if ( parent != context ) {
             buffer.append( parent.getUniquePath(context) );
             buffer.append( "/" );
         }
-        buffer.append( getQualifiedName() );
+        buffer.append( getXPathNameStep() );
         List mySiblings = parent.elements( getQName() );
         if ( mySiblings.size() > 1 ) {
             int idx = mySiblings.indexOf( this );
@@ -1264,5 +1281,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.53 2001/07/26 16:22:29 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.54 2001/07/27 12:33:51 jstrachan Exp $
  */

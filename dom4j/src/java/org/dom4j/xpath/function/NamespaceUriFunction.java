@@ -1,10 +1,10 @@
 /*
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
- * 
- * This software is open source. 
+ *
+ * This software is open source.
  * See the bottom of this file for the licence.
- * 
- * $Id: NamespaceUriFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ *
+ * $Id: NamespaceUriFunction.java,v 1.3 2001/07/27 12:33:51 jstrachan Exp $
  */
 
 
@@ -18,45 +18,36 @@ import org.dom4j.Element;
 import java.util.List;
 
 /**
-   <p><b>4.1</b> <code><i>string</i> namespace-uri(<i>node-set?</i>)</code> 
-   
-   @author bob mcwhirter (bob @ werken.com)
-*/
-public class NamespaceUriFunction implements Function
-{
-
-  public Object call(Context context,
-                     List args)
-  {
-    if (args.size() == 0)
-    {
-      return evaluate( context );
-    }
-
-    // FIXME: Toss exception
-    return null;
-  }
-
-  public static String evaluate(Context context)
-  {
-    List list = context.getNodeSet();
+ * <p><b>4.1</b> <code><i>string</i> namespace-uri(<i>node-set?</i>)</code>
+ *
+ * @author bob mcwhirter (bob @ werken.com)
+ */
+public class NamespaceUriFunction implements Function {
     
-    if ( ! list.isEmpty() )
-    {
-      Object first = list.get(0);
-      
-      if (first instanceof Element)
-      {
-        return ((Element)first).getNamespaceURI();
-      }
-      else if (first instanceof Attribute)
-      {
-        return ((Attribute)first).getNamespaceURI();
-      }
+    public Object call(Context context, List args) {
+        if (args.size() == 0) {
+            return evaluate( context );
+        }
+        return evaluate( args );
     }
-
-    return "";
-  }
+    
+    public static String evaluate(Context context){
+        return evaluate( context.getNodeSet() );
+    }
+    
+    public static String evaluate(List list) {
+        String answer = "";
+        if ( ! list.isEmpty() ){
+            Object first = list.get(0);            
+            if (first instanceof Element) {
+                answer = ((Element)first).getNamespaceURI();
+            }
+            else if (first instanceof Attribute) {
+                answer = ((Attribute)first).getNamespaceURI();
+            }
+        }        
+        return answer;
+    }
 }
 
 
@@ -104,5 +95,5 @@ public class NamespaceUriFunction implements Function
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceUriFunction.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: NamespaceUriFunction.java,v 1.3 2001/07/27 12:33:51 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.6 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.7 2001/07/27 12:33:51 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -19,13 +19,15 @@ import junit.textui.TestRunner;
 import org.dom4j.Attribute;
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Branch;
+import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
 
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -80,6 +82,18 @@ public class TestGetPath extends AbstractTestCase {
             testRelativePath( root, child, pathRel + "/url", uniquePathRel + "/url" );
         }
     }
+
+    public void testDefaultNamespace() throws Exception {
+        SAXReader reader = new SAXReader();
+        Document doc = reader.read( "xml/test/defaultNamespace.xml" );
+        Element root = doc.getRootElement();
+        testPath( root, "/*[name()='a']" ); 
+        
+        Element child = (Element) root.elements().get(0);
+        testPath( child, "/*[name()='a']/*[name()='b']" ); 
+        testRelativePath( root, child, "*[name()='b']" ); 
+    }
+    
         
     protected void testPath(Node node, String value) {
         testPath( node, value, value );
@@ -88,6 +102,10 @@ public class TestGetPath extends AbstractTestCase {
     protected void testPath(Node node, String path, String uniquePath) {
         assertEquals( "getPath expression should be what is expected", path, node.getPath() );
         assertEquals( "getUniquePath expression should be what is expected", uniquePath, node.getUniquePath() );
+    }
+    
+    protected void testRelativePath( Element context, Node node, String pathRel ) {
+        testRelativePath( context, node, pathRel, pathRel );
     }
     
     protected void testRelativePath( Element context, Node node, String pathRel, String uniquePathRel ) {
@@ -171,5 +189,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.6 2001/07/25 10:51:11 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.7 2001/07/27 12:33:51 jstrachan Exp $
  */
