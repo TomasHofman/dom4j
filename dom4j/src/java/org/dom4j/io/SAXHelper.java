@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXHelper.java,v 1.6 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.7 2001/07/25 09:35:07 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -24,7 +24,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * SAX and XMLReader objects.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 class SAXHelper {
 
@@ -46,20 +46,22 @@ class SAXHelper {
       * or JAXP if the system property is not set.
       */
     public static XMLReader createXMLReader(boolean validating) throws SAXException {
-        String className = null;
-        try {
-            className = System.getProperty( "org.xml.sax.driver" );
-        }
-        catch (Exception e) {
-        }
-        if (className == null || className.trim().length() <= 0) {
-            XMLReader reader = createXMLReaderViaJAXP( validating );
-            if ( reader != null ) {
-                return reader;
+        XMLReader reader = createXMLReaderViaJAXP( validating );
+        if ( reader == null ) {
+            String className = null;
+            try {
+                className = System.getProperty( "org.xml.sax.driver" );
             }
-            return new SAXDriver();
+            catch (Exception e) {
+            }
+            if ( className != null && className.trim().length() > 0 && classNameAvailable( className ) ) {
+                reader = XMLReaderFactory.createXMLReader();
+            }
+            if ( reader == null ) {
+                reader = new SAXDriver();
+            }
         }
-        return XMLReaderFactory.createXMLReader();
+        return reader;
     }
 
     /** This method attempts to use JAXP to locate the  
@@ -68,11 +70,8 @@ class SAXHelper {
       * on the JAXP classes.
       */
     protected static XMLReader createXMLReaderViaJAXP(boolean validating) {
-        try {
-            Class.forName("javax.xml.parsers.SAXParserFactory");
-        }
-        catch (Exception e) {
-            // JAXP is not loaded so continue, its probably not in the CLASSPATH
+        if ( ! classNameAvailable( "javax.xml.parsers.SAXParserFactory" ) ) {
+            // don't attempt to use JAXP if it is not in the ClassPath
             return null;
         }
         
@@ -105,6 +104,19 @@ class SAXHelper {
             }
         }
         return null;
+    }
+
+    /** @return true if the given class could be found using the class loader which loaded this 
+      * class
+      */
+    protected static boolean classNameAvailable( String className ) {
+        try {            
+            Class.forName( className, true, SAXHelper.class.getClassLoader() );
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
     
     protected static boolean isVerboseErrorReporting() {
@@ -167,5 +179,5 @@ class SAXHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXHelper.java,v 1.6 2001/07/16 08:36:13 jstrachan Exp $
+ * $Id: SAXHelper.java,v 1.7 2001/07/25 09:35:07 jstrachan Exp $
  */
