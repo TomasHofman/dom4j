@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: InternalEntityDecl.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: InternalEntityDecl.java,v 1.4 2004/03/01 21:15:26 maartenc Exp $
  */
 
 package org.dom4j.dtd;
@@ -12,7 +12,7 @@ package org.dom4j.dtd;
 /** <p><code>InternalEntityDecl</code> represents an internal entity declaration in a DTD.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class InternalEntityDecl {
 
@@ -60,7 +60,21 @@ public class InternalEntityDecl {
     }
     
     public String toString() {
-        return "<!ENTITY " + name + " \"" + value + "\">";
+        StringBuffer buffer = new StringBuffer( "<!ENTITY " );
+        
+        if (name.startsWith("%")) {
+            buffer.append("% ");
+            buffer.append(name.substring(1));
+        } 
+        else {
+            buffer.append(name);
+        }
+
+        buffer.append(" \"");
+        buffer.append(value);
+        buffer.append("\">");
+        
+        return buffer.toString();
     }
 }
 
@@ -109,5 +123,5 @@ public class InternalEntityDecl {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: InternalEntityDecl.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: InternalEntityDecl.java,v 1.4 2004/03/01 21:15:26 maartenc Exp $
  */

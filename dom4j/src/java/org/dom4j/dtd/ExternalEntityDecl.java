@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ExternalEntityDecl.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: ExternalEntityDecl.java,v 1.4 2004/03/01 21:15:26 maartenc Exp $
  */
 
 package org.dom4j.dtd;
@@ -12,7 +12,7 @@ package org.dom4j.dtd;
 /** <p><code>ExternalEntityDecl</code> represents an external entity declaration in a DTD.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class ExternalEntityDecl {
 
@@ -78,7 +78,15 @@ public class ExternalEntityDecl {
 
     public String toString() {
         StringBuffer buffer = new StringBuffer( "<!ENTITY " );
-        buffer.append( name );
+        
+        if (name.startsWith("%")) {
+            buffer.append("% ");
+            buffer.append(name.substring(1));
+        } 
+        else {
+            buffer.append(name);
+        }
+        
         if (publicID != null) {
             buffer.append(" PUBLIC \"");
             buffer.append(publicID);
@@ -144,5 +152,5 @@ public class ExternalEntityDecl {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ExternalEntityDecl.java,v 1.3 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: ExternalEntityDecl.java,v 1.4 2004/03/01 21:15:26 maartenc Exp $
  */
