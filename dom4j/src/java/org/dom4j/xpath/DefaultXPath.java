@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.17 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.18 2001/09/10 11:04:34 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -138,7 +138,18 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
     
     public Node selectSingleNode(Object context) {
         try {
-            return (Node) xpath.selectSingleNode( context );
+            Object answer = xpath.selectSingleNode( context );
+            if ( answer instanceof Node ) {
+                return (Node) answer;
+            }
+            if ( answer == null ) {
+                return null;
+            }
+            throw new XPathException( 
+                "The result of the XPath expression is not a Node. It was: " 
+                + answer + " of type: " + answer.getClass().getName() 
+                + ". You might want to use a different method such as selectObject() to evaluate this XPath expression" 
+            );
         }
         catch (JaxenException e) {
             handleJaxenException(e);
@@ -341,5 +352,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.17 2001/08/18 22:32:45 jstrachan Exp $
+ * $Id: DefaultXPath.java,v 1.18 2001/09/10 11:04:34 jstrachan Exp $
  */
