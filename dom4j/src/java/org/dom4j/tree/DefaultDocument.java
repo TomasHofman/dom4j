@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.12 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.13 2001/03/05 21:40:05 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -27,7 +27,7 @@ import org.dom4j.ProcessingInstruction;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -199,6 +199,10 @@ public class DefaultDocument extends AbstractDocument {
         return ( contents == null ) ? 0 : contents.size();
     }
     
+    public int indexOf(Node node) {
+        return ( contents == null ) ? -1 : contents.indexOf( node );
+    }
+    
     public Iterator nodeIterator() {
         if (contents != null) {
             return contents.iterator();
@@ -319,5 +323,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.12 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.13 2001/03/05 21:40:05 jstrachan Exp $
  */

@@ -4,10 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SaxonDocumentFactory.java,v 1.2 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.1 2001/03/05 21:40:05 jstrachan Exp $
  */
 
-package org.dom4j.saxon;
+package org.dom4j.dom;
 
 import java.util.Map;
 
@@ -20,16 +20,16 @@ import org.dom4j.tree.DefaultElement;
 
 import org.xml.sax.Attributes;
 
-/** <p><code>SaxonDocumentFactory</code> is a factory of DOM4J objects
-  * which implement the SAXON document object model.</p>
+/** <p><code>DOMDocumentFactory</code> is a factory of DOM4J objects
+  * which implement the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class SaxonDocumentFactory extends DocumentFactory {
+public class DOMDocumentFactory extends DocumentFactory {
 
     /** The Singleton instance */
-    private static SaxonDocumentFactory singleton = new SaxonDocumentFactory();
+    private static DOMDocumentFactory singleton = new DOMDocumentFactory();
 
     /** <p>Access to the singleton instance of this factory.</p>
       *
@@ -41,12 +41,12 @@ public class SaxonDocumentFactory extends DocumentFactory {
     
     
     // Factory methods
-    
 /*    
     public Attribute createAttribute(QName qname, String value) {
         return new SaxonAttribute(qname, value);
     }
 */
+
     // SAXON helper methods
     
     // Implementation methods
@@ -98,5 +98,5 @@ public class SaxonDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SaxonDocumentFactory.java,v 1.2 2001/03/05 21:40:05 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.1 2001/03/05 21:40:05 jstrachan Exp $
  */

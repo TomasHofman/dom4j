@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.15 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: Branch.java,v 1.16 2001/03/05 21:40:05 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.xml.sax.Attributes;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public interface Branch extends Node {
 
@@ -37,6 +37,15 @@ public interface Branch extends Node {
       * 		  &lt; 0 || index &gt;= {@link #getNodeCount}).
       */    
     public Node getNode(int index);
+    
+    /** Returns the index of the given node if it is a child node of this 
+      * branch or -1 if the given node is not a child node.
+      *
+      * @param node the content child node to find.
+      * @return the index of the given node starting at 0 or -1 if the node 
+      *     is not a child node of this branch
+      */    
+    public int indexOf(Node node);
     
     /** Returns the number of <code>Node</code> instances that this branch 
       * contains.
@@ -263,5 +272,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.15 2001/03/01 23:37:46 jstrachan Exp $
+ * $Id: Branch.java,v 1.16 2001/03/05 21:40:05 jstrachan Exp $
  */

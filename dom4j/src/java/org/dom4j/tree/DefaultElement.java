@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.17 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.18 2001/03/05 21:40:05 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -636,6 +636,15 @@ public class DefaultElement extends AbstractElement {
         return null;
     }
     
+    public int indexOf(Node node) {
+        if (contents == null) {
+            return ( firstNode != null && firstNode.equals( node ) ) ? 0 : -1;
+        }
+        else {
+            return contents.indexOf( node );
+        }
+    }
+    
     public int getNodeCount() {
         if ( contents == null ) {
             return ( firstNode != null ) ? 1 : 0;
@@ -904,5 +913,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.17 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.18 2001/03/05 21:40:05 jstrachan Exp $
  */

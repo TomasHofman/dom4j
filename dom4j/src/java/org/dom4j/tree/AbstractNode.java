@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractNode.java,v 1.12 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.13 2001/03/05 21:40:05 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -25,9 +25,14 @@ import org.dom4j.XPath;
   * tree implementors to use for implementation inheritence.</p>
  *
  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
- * @version $Revision: 1.12 $
+ * @version $Revision: 1.13 $
  */
 public abstract class AbstractNode implements Node, Cloneable, Serializable {
+    
+    protected static final String[] NODE_TYPE_NAMES ={
+        "Node", "Element", "Attribute", "Text", "Root", "", "", 
+	"Processing Instruction", "Comment", "Namespace"
+    };
     
     /** The <code>DocumentFactory</code> instance used by default */
     private static final DocumentFactory DOCUMENT_FACTORY = DocumentFactory.getInstance();
@@ -40,6 +45,14 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
         return UNKNOWN_NODE;
     }
 
+    public String getNodeName() {
+        int type = getNodeType();
+        if ( type < 0 || type >= NODE_TYPE_NAMES.length ) {
+            return "Unknown";
+        }
+        return NODE_TYPE_NAMES[type];
+    }
+    
     public Document getDocument() {
         Element element = getParent();
         return ( element != null ) ? element.getDocument() : null;
@@ -213,5 +226,5 @@ public abstract class AbstractNode implements Node, Cloneable, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractNode.java,v 1.12 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: AbstractNode.java,v 1.13 2001/03/05 21:40:05 jstrachan Exp $
  */

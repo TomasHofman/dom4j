@@ -4,14 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Context.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: Context.java,v 1.3 2001/03/05 21:40:05 jstrachan Exp $
  */
 
 
 package org.dom4j.xpath.impl;
 
 import org.dom4j.xpath.ContextSupport;
-import org.dom4j.xpath.impl.Context;
 import org.dom4j.xpath.function.Function;
 
 import org.dom4j.Document;
@@ -214,5 +213,5 @@ public class Context implements Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Context.java,v 1.2 2001/03/01 20:48:13 jstrachan Exp $
+ * $Id: Context.java,v 1.3 2001/03/05 21:40:05 jstrachan Exp $
  */

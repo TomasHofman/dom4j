@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.10 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: Node.java,v 1.11 2001/03/05 21:40:05 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,12 +22,14 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public interface Node extends Cloneable {
 
     // W3C DOM complient node type codes
     
+    /** Matches Element nodes */
+    public static final short ANY_NODE = 0;
     /** Matches Element nodes */
     public static final short ELEMENT_NODE = 1;
     /** Matches elements nodes */
@@ -211,6 +213,12 @@ public interface Node extends Cloneable {
       */
     public short getNodeType();
 
+    /** Get the name of this node, following the DOM rules 
+     *
+    *  @return The name of the node. For an element this is the element name, for an attribute
+    * it is the attribute name, as a QName. Other node types return conventional names such
+    * as "#text" or "#comment"
+    */
     
     /** <p>Removes this node from its parent if there is one. 
       * If this node is the root element of a document then it is removed
@@ -375,5 +383,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.10 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: Node.java,v 1.11 2001/03/05 21:40:05 jstrachan Exp $
  */
