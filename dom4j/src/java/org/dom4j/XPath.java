@@ -4,12 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.12 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: XPath.java,v 1.13 2003/04/07 22:14:56 jstrachan Exp $
  */
 
 package org.dom4j;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +20,7 @@ import org.jaxen.VariableContext;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public interface XPath extends NodeFilter {
 
@@ -252,5 +251,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.12 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: XPath.java,v 1.13 2003/04/07 22:14:56 jstrachan Exp $
  */

@@ -4,16 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Stylesheet.java,v 1.6 2002/05/25 18:17:29 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.7 2003/04/07 22:15:30 jstrachan Exp $
  */
 
 package org.dom4j.rule;
 
-import java.util.Iterator;
 import java.util.List;
 
-import org.dom4j.Attribute;
-import org.dom4j.Branch;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.Node;
@@ -25,7 +22,7 @@ import org.dom4j.XPath;
   * stylesheet can be applied to a source document or node.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class Stylesheet {
 
@@ -211,5 +208,5 @@ public class Stylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Stylesheet.java,v 1.6 2002/05/25 18:17:29 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.7 2003/04/07 22:15:30 jstrachan Exp $
  */

@@ -4,72 +4,43 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.67 2003/02/12 23:46:43 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.68 2003/04/07 22:14:16 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import java.io.IOException;
-
 import java.io.StringWriter;
-
 import java.io.Writer;
-
 import java.util.ArrayList;
-
 import java.util.Collections;
-
-import java.util.HashMap;
-
 import java.util.Iterator;
-
-import java.util.LinkedList;
-
 import java.util.List;
-
 import java.util.Map;
 
-import java.util.StringTokenizer;
-
 import org.dom4j.Attribute;
-
 import org.dom4j.CDATA;
-
 import org.dom4j.CharacterData;
-
 import org.dom4j.Comment;
-
-import org.dom4j.DocumentFactory;
-
 import org.dom4j.Document;
-
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
-
 import org.dom4j.Entity;
-
 import org.dom4j.IllegalAddException;
-
-import org.dom4j.Node;
-
 import org.dom4j.Namespace;
-
+import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
-
 import org.dom4j.QName;
-
 import org.dom4j.Text;
-
 import org.dom4j.Visitor;
-
 import org.dom4j.io.XMLWriter;
-
 import org.xml.sax.Attributes;
 
 /** <p><code>AbstractElement</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.67 $
+  * @version $Revision: 1.68 $
   */
 
 public abstract class AbstractElement
@@ -2278,5 +2249,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.67 2003/02/12 23:46:43 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.68 2003/04/07 22:14:16 jstrachan Exp $
  */

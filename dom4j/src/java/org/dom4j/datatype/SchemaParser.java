@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SchemaParser.java,v 1.13 2003/02/25 00:27:54 maartenc Exp $
+ * $Id: SchemaParser.java,v 1.14 2003/04/07 22:15:20 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -19,16 +19,14 @@ import java.util.Map;
 
 import org.dom4j.Attribute;
 import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
 import org.dom4j.Element;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.io.SAXReader;
 import org.dom4j.util.AttributeHelper;
-import org.dom4j.DocumentFactory;
-
 import org.relaxng.datatype.DatatypeException;
 import org.relaxng.datatype.ValidationContext;
-
 import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 
@@ -36,7 +34,7 @@ import org.xml.sax.InputSource;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.13 $
+ * @version $Revision: 1.14 $
  */
 public class SchemaParser {
 
@@ -476,5 +474,5 @@ public class SchemaParser {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaParser.java,v 1.13 2003/02/25 00:27:54 maartenc Exp $
+ * $Id: SchemaParser.java,v 1.14 2003/04/07 22:15:20 jstrachan Exp $
  */

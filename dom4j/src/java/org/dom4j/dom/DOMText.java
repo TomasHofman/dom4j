@@ -4,18 +4,16 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMText.java,v 1.6 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMText.java,v 1.7 2003/04/07 22:15:11 jstrachan Exp $
  */
 
 package org.dom4j.dom;
 
 import org.dom4j.Element;
-import org.dom4j.QName;
 import org.dom4j.Text;
 import org.dom4j.tree.DefaultText;
-
-import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
@@ -23,7 +21,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class DOMText extends DefaultText implements org.w3c.dom.Text {
 
@@ -272,5 +270,5 @@ public class DOMText extends DefaultText implements org.w3c.dom.Text {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMText.java,v 1.6 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMText.java,v 1.7 2003/04/07 22:15:11 jstrachan Exp $
  */

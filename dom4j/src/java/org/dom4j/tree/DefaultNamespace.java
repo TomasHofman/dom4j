@@ -4,13 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultNamespace.java,v 1.10 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.11 2003/04/07 22:14:10 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import org.dom4j.Element;
-import org.dom4j.Node;
 import org.dom4j.Namespace;
 
 /** <p><code>DefaultNamespace</code> implements a doubly linked node which 
@@ -18,7 +17,7 @@ import org.dom4j.Namespace;
   * It is useful when returning results from XPath expressions.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class DefaultNamespace extends Namespace {
 
@@ -124,5 +123,5 @@ public class DefaultNamespace extends Namespace {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultNamespace.java,v 1.10 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: DefaultNamespace.java,v 1.11 2003/04/07 22:14:10 jstrachan Exp $
  */

@@ -4,26 +4,18 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BackedList.java,v 1.5 2002/05/30 07:43:03 jstrachan Exp $
+ * $Id: BackedList.java,v 1.6 2003/04/07 22:14:39 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
-import java.util.Collection;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
-import org.dom4j.Branch;
-import org.dom4j.Comment;
-import org.dom4j.CDATA;
-import org.dom4j.Element;
-import org.dom4j.Entity;
 import org.dom4j.IllegalAddException;
-import org.dom4j.Namespace;
 import org.dom4j.Node;
-import org.dom4j.Text;
 
 /** <p><code>BackedList</code> represents a list of content
   * of a {@link Branch}. Changes to the list will
@@ -31,7 +23,7 @@ import org.dom4j.Text;
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class BackedList extends ArrayList {
 
@@ -207,5 +199,5 @@ public class BackedList extends ArrayList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BackedList.java,v 1.5 2002/05/30 07:43:03 jstrachan Exp $
+ * $Id: BackedList.java,v 1.6 2003/04/07 22:14:39 jstrachan Exp $
  */

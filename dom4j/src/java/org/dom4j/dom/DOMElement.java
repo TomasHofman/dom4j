@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMElement.java,v 1.16 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.17 2003/04/07 22:15:06 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -14,14 +14,11 @@ import java.util.List;
 
 import org.dom4j.Attribute;
 import org.dom4j.DocumentFactory;
-import org.dom4j.Element;
 import org.dom4j.Namespace;
-import org.dom4j.Node;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultElement;
-
-import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
@@ -29,7 +26,7 @@ import org.w3c.dom.NodeList;
   * supports the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
 
@@ -403,5 +400,5 @@ public class DOMElement extends DefaultElement implements org.w3c.dom.Element {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMElement.java,v 1.16 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMElement.java,v 1.17 2003/04/07 22:15:06 jstrachan Exp $
  */

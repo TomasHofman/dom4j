@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DocumentFactory.java,v 1.36 2002/10/25 14:53:09 ddlucas Exp $
+ * $Id: DocumentFactory.java,v 1.37 2003/04/07 22:14:51 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -12,7 +12,6 @@ package org.dom4j;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.Serializable;
-
 import java.util.List;
 import java.util.Map;
 
@@ -25,16 +24,11 @@ import org.dom4j.tree.DefaultDocumentType;
 import org.dom4j.tree.DefaultElement;
 import org.dom4j.tree.DefaultEntity;
 import org.dom4j.tree.DefaultProcessingInstruction;
-import org.dom4j.tree.QNameCache;
-import org.dom4j.tree.DefaultAttribute;
-import org.dom4j.tree.DefaultEntity;
 import org.dom4j.tree.DefaultText;
+import org.dom4j.tree.QNameCache;
 import org.dom4j.xpath.DefaultXPath;
 import org.dom4j.xpath.XPathPattern;
-
 import org.jaxen.VariableContext;
-
-import org.xml.sax.Attributes;
 
 /** <p><code>DocumentFactory</code> is a collection of factory methods to allow
   * easy custom building of DOM4J trees. The default tree that is built uses
@@ -44,7 +38,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.36 $
+  * @version $Revision: 1.37 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -375,5 +369,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.36 2002/10/25 14:53:09 ddlucas Exp $
+ * $Id: DocumentFactory.java,v 1.37 2003/04/07 22:14:51 jstrachan Exp $
  */

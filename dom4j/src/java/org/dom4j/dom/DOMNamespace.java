@@ -4,17 +4,15 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNamespace.java,v 1.4 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMNamespace.java,v 1.5 2003/04/07 22:15:00 jstrachan Exp $
  */
 
 package org.dom4j.dom;
 
 import org.dom4j.Element;
-import org.dom4j.QName;
 import org.dom4j.tree.DefaultNamespace;
-
-import org.w3c.dom.Document;
 import org.w3c.dom.DOMException;
+import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
@@ -22,7 +20,7 @@ import org.w3c.dom.NodeList;
   * with the DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DOMNamespace extends DefaultNamespace implements org.w3c.dom.Node {
     
@@ -197,5 +195,5 @@ public class DOMNamespace extends DefaultNamespace implements org.w3c.dom.Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNamespace.java,v 1.4 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMNamespace.java,v 1.5 2003/04/07 22:15:00 jstrachan Exp $
  */

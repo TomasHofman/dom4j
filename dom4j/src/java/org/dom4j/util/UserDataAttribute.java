@@ -4,13 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: UserDataAttribute.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: UserDataAttribute.java,v 1.4 2003/04/07 22:14:00 jstrachan Exp $
  */
 
 package org.dom4j.util;
 
-import org.dom4j.Element;
-import org.dom4j.Namespace;
 import org.dom4j.QName;
 import org.dom4j.tree.DefaultAttribute;
 
@@ -22,7 +20,7 @@ import org.dom4j.tree.DefaultAttribute;
   * adorn the trees with user defined objects.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class UserDataAttribute extends DefaultAttribute {
 
@@ -93,5 +91,5 @@ public class UserDataAttribute extends DefaultAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: UserDataAttribute.java,v 1.3 2002/05/20 08:14:13 jstrachan Exp $
+ * $Id: UserDataAttribute.java,v 1.4 2003/04/07 22:14:00 jstrachan Exp $
  */

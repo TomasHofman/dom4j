@@ -13,11 +13,9 @@
 
 package org.dom4j.io.aelfred;
 
-import org.xml.sax.AttributeList;
-import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
-import org.xml.sax.ext.LexicalHandler;
 import org.xml.sax.ext.DeclHandler;
+import org.xml.sax.ext.LexicalHandler;
 
 
 // $Id: DefaultHandler.java,v 1.5 2002/05/24 14:41:55 jstrachan dead $

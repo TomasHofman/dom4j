@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.11 2002/06/30 13:57:37 maartenc Exp $
+ * $Id: DOMNodeHelper.java,v 1.12 2003/04/07 22:15:01 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -15,12 +15,8 @@ import org.dom4j.Branch;
 import org.dom4j.CharacterData;
 import org.dom4j.Document;
 import org.dom4j.DocumentType;
-import org.dom4j.Node;
 import org.dom4j.Element;
-import org.dom4j.QName;
-import org.dom4j.Namespace;
-import org.dom4j.Text;
-
+import org.dom4j.Node;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
@@ -29,7 +25,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class DOMNodeHelper {
 
@@ -515,5 +511,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.11 2002/06/30 13:57:37 maartenc Exp $
+ * $Id: DOMNodeHelper.java,v 1.12 2003/04/07 22:15:01 jstrachan Exp $
  */

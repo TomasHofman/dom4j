@@ -4,13 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLTableColumnDefinition.java,v 1.3 2002/05/30 07:54:38 jstrachan Exp $
+ * $Id: XMLTableColumnDefinition.java,v 1.4 2003/04/07 22:14:41 jstrachan Exp $
  */
 
 package org.dom4j.swing;
 
 import java.io.Serializable;
-   
+
 import org.dom4j.DocumentHelper;
 import org.dom4j.Node;
 import org.dom4j.XPath;
@@ -19,7 +19,7 @@ import org.dom4j.XPath;
   * within a table definition.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $ 
+  * @version $Revision: 1.4 $ 
   */
 public class XMLTableColumnDefinition implements Serializable {
 
@@ -220,5 +220,5 @@ public class XMLTableColumnDefinition implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLTableColumnDefinition.java,v 1.3 2002/05/30 07:54:38 jstrachan Exp $
+ * $Id: XMLTableColumnDefinition.java,v 1.4 2003/04/07 22:14:41 jstrachan Exp $
  */

@@ -4,14 +4,13 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.25 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: Node.java,v 1.26 2003/04/07 22:14:54 jstrachan Exp $
  */
 
 package org.dom4j;
 
 import java.io.IOException;
 import java.io.Writer;
-
 import java.util.List;
 
 /** <p><code>Node</code> defines the polymorphic behavior 
@@ -27,7 +26,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public interface Node extends Cloneable {
 
@@ -487,5 +486,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.25 2002/05/20 08:14:11 jstrachan Exp $
+ * $Id: Node.java,v 1.26 2003/04/07 22:14:54 jstrachan Exp $
  */

@@ -4,27 +4,27 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: QNameCache.java,v 1.10 2002/11/12 09:56:04 slehmann Exp $
+ * $Id: QNameCache.java,v 1.11 2003/04/07 22:14:39 jstrachan Exp $
  */
 
 package org.dom4j.tree;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
 
 import org.dom4j.DocumentFactory;
-import org.dom4j.QName;
 import org.dom4j.Namespace;
+import org.dom4j.QName;
 
 /** <p><code>QNameCache</code> caches instances of <code>QName</code>
   * for reuse both across documents and within documents.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class QNameCache {
 
@@ -232,5 +232,5 @@ public class QNameCache {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QNameCache.java,v 1.10 2002/11/12 09:56:04 slehmann Exp $
+ * $Id: QNameCache.java,v 1.11 2003/04/07 22:14:39 jstrachan Exp $
  */

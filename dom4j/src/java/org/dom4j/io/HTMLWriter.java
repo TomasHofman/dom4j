@@ -4,30 +4,25 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: HTMLWriter.java,v 1.15 2002/06/01 14:57:42 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.16 2003/04/07 22:14:04 jstrachan Exp $
  */
 
 package org.dom4j.io;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.io.StringWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Iterator;
+import java.util.Set;
 
-import org.dom4j.CDATA;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.Node;
-
 import org.xml.sax.SAXException;
 
 /** <p><code>HTMLWriter</code> takes a DOM4J tree and formats it to a
@@ -184,7 +179,7 @@ import org.xml.sax.SAXException;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
   * @author Laramie Crocker
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -763,5 +758,5 @@ entities: &#160; &amp; &quot; &lt; &gt; %23
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.15 2002/06/01 14:57:42 laramiec Exp $
+ * $Id: HTMLWriter.java,v 1.16 2003/04/07 22:14:04 jstrachan Exp $
  */

@@ -4,26 +4,25 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: QName.java,v 1.11 2002/10/25 14:50:14 ddlucas Exp $
+ * $Id: QName.java,v 1.12 2003/04/07 22:14:56 jstrachan Exp $
  */
 
 package org.dom4j;
 
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import org.dom4j.tree.QNameCache;
-import java.util.*;
 
 /** <p><code>QName</code> represents a qualified name value of an XML element
   * or attribute. It consists of a local name and a {@link Namespace}
   * instance. This object is immutable.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class QName implements Serializable {
 
@@ -248,5 +247,5 @@ public class QName implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: QName.java,v 1.11 2002/10/25 14:50:14 ddlucas Exp $
+ * $Id: QName.java,v 1.12 2003/04/07 22:14:56 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXWriter.java,v 1.17 2002/07/22 10:50:46 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.18 2003/04/07 22:14:05 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -20,28 +20,24 @@ import org.dom4j.Branch;
 import org.dom4j.CDATA;
 import org.dom4j.CharacterData;
 import org.dom4j.Comment;
-import org.dom4j.DocumentType;
 import org.dom4j.Document;
+import org.dom4j.DocumentType;
 import org.dom4j.Element;
 import org.dom4j.Entity;
 import org.dom4j.Namespace;
 import org.dom4j.Node;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
-
 import org.dom4j.tree.NamespaceStack;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.DTDHandler;
 import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
-import org.xml.sax.Locator;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXNotRecognizedException;
 import org.xml.sax.SAXNotSupportedException;
-import org.xml.sax.XMLFilter;
 import org.xml.sax.XMLReader;
 import org.xml.sax.ext.LexicalHandler;
 import org.xml.sax.helpers.AttributesImpl;
@@ -50,7 +46,7 @@ import org.xml.sax.helpers.LocatorImpl;
 /** <p><code>SAXWriter</code> writes a DOM4J tree to a SAX ContentHandler.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class SAXWriter implements XMLReader {
 
@@ -746,5 +742,5 @@ public class SAXWriter implements XMLReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXWriter.java,v 1.17 2002/07/22 10:50:46 jstrachan Exp $
+ * $Id: SAXWriter.java,v 1.18 2003/04/07 22:14:05 jstrachan Exp $
  */

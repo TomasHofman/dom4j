@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLTableDefinition.java,v 1.3 2002/05/30 07:54:38 jstrachan Exp $
+ * $Id: XMLTableDefinition.java,v 1.4 2003/04/07 22:14:44 jstrachan Exp $
  */
 
 package org.dom4j.swing;
@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-   
+
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -27,7 +27,7 @@ import org.jaxen.VariableContext;
   * on an XML document.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.3 $ 
+  * @version $Revision: 1.4 $ 
   */
 public class XMLTableDefinition implements Serializable, VariableContext {
 
@@ -280,5 +280,5 @@ public class XMLTableDefinition implements Serializable, VariableContext {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLTableDefinition.java,v 1.3 2002/05/30 07:54:38 jstrachan Exp $
+ * $Id: XMLTableDefinition.java,v 1.4 2003/04/07 22:14:44 jstrachan Exp $
  */
