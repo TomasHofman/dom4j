@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Stylesheet.java,v 1.3 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.4 2001/08/09 08:22:59 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -25,7 +25,7 @@ import org.dom4j.XPath;
   * stylesheet can be applied to a source document or node.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class Stylesheet {
 
@@ -77,7 +77,12 @@ public class Stylesheet {
     
     public void applyTemplates( Object input, XPath xpath ) throws Exception {
         List list = xpath.selectNodes( input );
-        run( list );
+        for ( int i = 0, size = list.size(); i < size; i++ ) {
+            Object object = list.get(i);
+            if ( object != input && object instanceof Node ) {
+                run( (Node) object );
+            }
+        }
     }
     
     public void applyTemplates( Object input ) throws Exception {
@@ -94,11 +99,13 @@ public class Stylesheet {
                 List list = (List) input;
                 for ( int i = 0, size = list.size(); i < size; i++ ) {
                     Object object = list.get(i);
-                    if ( object instanceof Element ) {
-                        mode.applyTemplates( (Element) object );
-                    }
-                    else if ( object instanceof Document ) { 
-                        mode.applyTemplates( (Document) object );
+                    if ( object != input ) {
+                        if ( object instanceof Element ) {
+                            mode.applyTemplates( (Element) object );
+                        }
+                        else if ( object instanceof Document ) { 
+                            mode.applyTemplates( (Document) object );
+                        }
                     }
                 }
             }
@@ -194,5 +201,5 @@ public class Stylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Stylesheet.java,v 1.3 2001/02/15 12:06:49 jstrachan Exp $
+ * $Id: Stylesheet.java,v 1.4 2001/08/09 08:22:59 jstrachan Exp $
  */
