@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultVariableContext.java,v 1.2 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: DefaultVariableContext.java,v 1.3 2001/08/03 11:04:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -42,10 +42,6 @@ public class DefaultVariableContext implements VariableContext, org.jaxen.Variab
     *
     *  @param name The name of the variable sought.
     *
-    *  @return The currently bound value of the variable, or null.
-    *
-    *  @see org.dom4j.xpath.ContextSupport#getVariableValue
-    *  @see org.dom4j.xpath.ContextSupport#setVariableContext
     */
     public Object getVariableValue(String name) {
         return map.get(name);
@@ -123,5 +119,5 @@ public class DefaultVariableContext implements VariableContext, org.jaxen.Variab
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultVariableContext.java,v 1.2 2001/08/01 09:17:21 jstrachan Exp $
+ * $Id: DefaultVariableContext.java,v 1.3 2001/08/03 11:04:48 jstrachan Exp $
  */
