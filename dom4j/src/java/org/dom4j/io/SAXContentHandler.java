@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.28 2001/07/30 11:25:50 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.29 2001/07/30 11:43:28 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -45,7 +45,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.28 $
+  * @version $Revision: 1.29 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -358,11 +358,14 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
       * and attributes
       */
     protected void addDeclaredNamespaces(Element element) {        
+        Namespace elementNamespace = element.getNamespace();
         for ( int size = namespaceStack.size(); declaredNamespaceIndex < size; declaredNamespaceIndex++ ) {
             Namespace namespace = namespaceStack.getNamespace(declaredNamespaceIndex);
-            String prefix = namespace.getPrefix();
-            if ( prefix != null && prefix.length() > 0 ) {
-                element.add( namespace );
+            if ( namespace != elementNamespace ) {
+                String prefix = namespace.getPrefix();
+                if ( prefix != null && prefix.length() > 0 ) {
+                    element.add( namespace );
+                }
             }
         }
     }
@@ -444,5 +447,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.28 2001/07/30 11:25:50 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.29 2001/07/30 11:43:28 jstrachan Exp $
  */
