@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AttributeDecl.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: AttributeDecl.java,v 1.3 2004/02/27 17:39:01 maartenc Exp $
  */
 
 package org.dom4j.dtd;
@@ -12,7 +12,7 @@ package org.dom4j.dtd;
 /** <p><code>AttributeDecl</code> represents an attribute declaration in a DTD.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class AttributeDecl {
 
@@ -123,7 +123,7 @@ public class AttributeDecl {
         if (valueDefault != null) {
             buffer.append(valueDefault);
             if (valueDefault.equals("#FIXED")) {
-                buffer.append("\"");
+                buffer.append(" \"");
                 buffer.append(value);
                 buffer.append("\"");
             }
@@ -183,5 +183,5 @@ public class AttributeDecl {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AttributeDecl.java,v 1.2 2002/05/20 08:14:17 jstrachan Exp $
+ * $Id: AttributeDecl.java,v 1.3 2004/02/27 17:39:01 maartenc Exp $
  */
