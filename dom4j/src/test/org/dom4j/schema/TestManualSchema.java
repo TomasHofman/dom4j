@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestManualSchema.java,v 1.4 2001/05/30 19:15:15 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.5 2001/05/30 20:49:31 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -30,9 +30,9 @@ import org.dom4j.schema.SchemaDocumentFactory;
   * manually load the schemas
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
-public class TestManualSchema extends AbstractTestCase {
+public class TestManualSchema extends TestAutoSchema {
 
     protected static boolean VERBOSE = true;
     
@@ -48,87 +48,9 @@ public class TestManualSchema extends AbstractTestCase {
         super(name);
     }
 
-    // Test case(s)
-    //-------------------------------------------------------------------------                    
-    public void testIntAttribute() throws Exception {        
-        testSchema( "//person/@x", Integer.class );
-    }
     
-    public void testIntElement() throws Exception {        
-        testSchema( "//person/salary", Integer.class );
-    }
-    
-    public void testString() throws Exception {        
-        testSchema( "//person/note", String.class );
-    }
-
-/*
- * these don't yet work due to a bug in Sun's xsdlib 
- *
- 
-    public void testDate() throws Exception {        
-        testSchema( "//person/@d", Date.class );
-    }
-    
-    public void testDateTime() throws Exception {        
-        testSchema( "//person/@dt", Date.class );
-    }
-    
-    public void testInteger() throws Exception {        
-        testSchema( "//person/@age", Integer.class );
-    }
-*/
-        
     // Implementation methods
-    //-------------------------------------------------------------------------                        
-    protected void testSchema(String xpath, Class type) {
-        List list = document.selectNodes( xpath );
-        
-        log( "Searched path: " + xpath + " found: " + list.size() + " result(s)" );
-        
-        if ( VERBOSE ) {
-            log( "" );
-            log( "xpath: " + xpath );
-            log( "" );
-            log( "results: " + list );
-            log( "" );
-        }
-        
-        assert( "Results are not empty", ! list.isEmpty() );
-        
-        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
-            Node node = (Node) iter.next();
-            if ( node instanceof Element ) {
-                Element element = (Element) node;
-                testDataType( element, element.getData(), type );
-            }
-            else if ( node instanceof Attribute ) {
-                Attribute attribute = (Attribute) node;
-                testDataType( attribute, attribute.getData(), type );
-            }
-            else {
-                assert( "Did not find an attribute or element: " + node, false );
-            }
-        }
-    }
-    
-    protected void testDataType(Node node, Object data, Class type) {
-        assert( "Data object is not null", data != null );
-        
-        if ( VERBOSE ) {
-            log( "found: " + data + " type: " + data.getClass().getName() + " required type: " + type.getName() );
-            log( "node: " + node );
-        }
-        
-        assert( 
-            "Data object is of the correct type. Expected: " 
-                + type.getName() 
-                + " and found: " + data.getClass().getName(), 
-            type.isAssignableFrom( data.getClass() ) 
-        );
-    }
-
-    
+    //-------------------------------------------------------------------------                    
     protected void setUp() throws Exception {
         super.setUp();
 
@@ -193,5 +115,5 @@ public class TestManualSchema extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestManualSchema.java,v 1.4 2001/05/30 19:15:15 jstrachan Exp $
+ * $Id: TestManualSchema.java,v 1.5 2001/05/30 20:49:31 jstrachan Exp $
  */

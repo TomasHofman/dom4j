@@ -4,11 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAutoSchema.java,v 1.2 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.1 2001/05/30 20:49:31 jstrachan Exp $
  */
 
 package org.dom4j.schema;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -26,66 +27,104 @@ import org.dom4j.io.SAXReader;
 import org.dom4j.schema.SchemaDocumentFactory;
 
 
-/** Test harness for the XML Schema Data Type integration. These tests
-  * use auto-loading of the XML Schema document
+/** Test harness to test the various data types supported in the 
+  * XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class TestAutoSchema extends AbstractDataTypeTest {
+public class TestDataTypes extends AbstractDataTypeTest {
 
     public static void main( String[] args ) {
         TestRunner.run( suite() );
     }
     
     public static Test suite() {
-        return new TestSuite( TestAutoSchema.class );
+        return new TestSuite( TestDataTypes.class );
     }
     
-    public TestAutoSchema(String name) {
+    public TestDataTypes(String name) {
         super(name);
     }
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testIntAttribute() throws Exception {        
-        testNodes( "//person/@x", Integer.class );
-    }
     
-    public void testIntElement() throws Exception {        
-        testNodes( "//person/salary", Integer.class );
-    }
+/** The commented tests below are commented out due to current limitations
+  * with Sun's xsdlib
+  */
     
-    public void testString() throws Exception {        
-        testNodes( "//person/note", String.class );
+    public void testFloat() throws Exception {        
+        testNodes( "//floatTag", Float.class );
+    }
+    public void testDouble() throws Exception {        
+        testNodes( "//doubleTag", Double.class );
     }
 
-/*
- * these don't yet work due to a bug in Sun's xsdlib 
- *
- 
-    public void testDate() throws Exception {        
-        testNodes( "//person/@d", Date.class );
-    }
     
-    public void testDateTime() throws Exception {        
-        testNodes( "//person/@dt", Date.class );
+    public void testDecimal() throws Exception {        
+        testNodes( "//decimalTag", BigDecimal.class );
     }
-    
+/*    
     public void testInteger() throws Exception {        
-        testNodes( "//person/@age", Integer.class );
+        testNodes( "//integerTag", Integer.class );
     }
-*/
 
     
+    public void testNonPositiveInteger() throws Exception {        
+        testNodes( "//nonPositiveIntegerTag", Integer.class );
+    }
+    
+    public void testNegativeInteger() throws Exception {        
+        testNodes( "//negativeIntegerTag", Integer.class );
+    }
+*/    
+    
+    public void testLong() throws Exception {        
+        testNodes( "//longTag", Long.class );
+    }
+    public void testInt() throws Exception {        
+        testNodes( "//intTag", Integer.class );
+    }
+    public void testShort() throws Exception {        
+        testNodes( "//shortTag", Short.class );
+    }
+    public void testByte() throws Exception {        
+        testNodes( "//byteTag", Byte.class );
+    }
+    
+/*    
+    public void testNonNegativeInteger() throws Exception {        
+        testNodes( "//nonNegativeIntegerTag", Integer.class );
+    }
+    
+    public void testUnsignedLong() throws Exception {        
+        testNodes( "//unsignedLongTag", Long.class );
+    }
+*/    
+    public void testUnsignedInt() throws Exception {        
+        testNodes( "//unsignedIntTag", Long.class );
+    }
+    public void testUnsignedShort() throws Exception {        
+        testNodes( "//unsignedShortTag", Integer.class );
+    }
+    public void testUnsignedByte() throws Exception {        
+        testNodes( "//unsignedByteTag", Short.class );
+    }
+    
+/*    
+    public void testPositiveInteger() throws Exception {        
+        testNodes( "//positiveIntegerTag", Integer.class );
+    }
+*/    
+
     // Implementation methods
-    //-------------------------------------------------------------------------                    
+    //-------------------------------------------------------------------------                        
     protected void setUp() throws Exception {
         DocumentFactory factory = SchemaDocumentFactory.getInstance();
         SAXReader reader = new SAXReader( factory );
-        document = reader.read( "xml/schema/personal-schema.xml" );
+        document = reader.read( "xml/schema/test.xml" );
     }
-    
 }
 
 
@@ -133,5 +172,5 @@ public class TestAutoSchema extends AbstractDataTypeTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAutoSchema.java,v 1.2 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: TestDataTypes.java,v 1.1 2001/05/30 20:49:31 jstrachan Exp $
  */
