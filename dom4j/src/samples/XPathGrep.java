@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathGrep.java,v 1.3 2001/01/30 15:56:27 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.4 2001/02/06 17:24:48 jstrachan Exp $
  */
 
 
@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
   * command on Unix but uses XPath expressions for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathGrep extends AbstractDemo {
     
@@ -74,19 +74,19 @@ public class XPathGrep extends AbstractDemo {
             println( "About to evalute: " + xpath );
             println( "Results:" );
         }
+        
         List list = xpath.selectNodes( document );
+        
+        if ( verbose ) {
+            println( ": " + list );
+        }
         
         XMLWriter writer = createXMLWriter();
         
         for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
             Object object = iter.next();
-            if ( object instanceof Node ) {
-                writer.write( (Node) object, System.out  );
-            }
-            else {
-                writer.write( object.toString(), System.out );
-            }
-        }
+            writer.write( object, System.out  );
+        }        
     }
     
     /** @return the given file or url as a URL
@@ -162,5 +162,5 @@ public class XPathGrep extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathGrep.java,v 1.3 2001/01/30 15:56:27 jstrachan Exp $
+ * $Id: XPathGrep.java,v 1.4 2001/02/06 17:24:48 jstrachan Exp $
  */
