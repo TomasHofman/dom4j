@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.32 2001/08/15 15:00:23 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.33 2001/08/20 08:18:24 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.32 $
+  * @version $Revision: 1.33 $
   */
 public class SAXReader {
 
@@ -216,17 +216,7 @@ public class SAXReader {
       * @throws DocumentException if an error occurs during parsing.
       * @throws MalformedURLException if a URL could not be made for the given File
       */
-    public Document read(String systemId) throws DocumentException, MalformedURLException {
-        /*
-        if ( systemId.indexOf( ':' ) >= 0 ) {
-            // lets assume its a URL
-            return read(new InputSource(systemId));
-        }
-        else {
-            // lets assume that we are given a file name
-            return read( new File(systemId) );
-        }
-         */
+    public Document read(String systemId) throws DocumentException {
         return read(new InputSource(systemId));        
     }
 
@@ -680,5 +670,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.32 2001/08/15 15:00:23 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.33 2001/08/20 08:18:24 jstrachan Exp $
  */
