@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.10 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.11 2002/06/30 13:57:37 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class DOMNodeHelper {
 
@@ -157,10 +157,10 @@ public class DOMNodeHelper {
             List list = branch.content();
             int index = list.indexOf(oldChild);
             if ( index < 0 ) {
-                index = 0;
+                throw new DOMException( DOMException.NOT_FOUND_ERR, "Tried to replace a non existing child for node: " + node );
             }
             list.set(index, newChild);
-            return newChild;
+            return oldChild;
         }
         else {        
             throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
@@ -515,5 +515,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.10 2002/05/24 14:41:55 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.11 2002/06/30 13:57:37 maartenc Exp $
  */
