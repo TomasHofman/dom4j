@@ -12,7 +12,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class AbstractProcessingInstruction extends AbstractNode implements ProcessingInstruction {
 
@@ -41,6 +41,14 @@ public abstract class AbstractProcessingInstruction extends AbstractNode impleme
         throw new UnsupportedOperationException( 
             "This PI is read-only and cannot be modified" 
         );
+    }
+    
+    public String getName() {
+        return getTarget();
+    }
+    
+    public void setName(String name) {
+        setTarget(name);
     }
     
     public boolean removeValue(String name) {

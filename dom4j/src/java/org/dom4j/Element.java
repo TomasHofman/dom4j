@@ -16,7 +16,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public interface Element extends Branch {
 
@@ -175,6 +175,7 @@ public interface Element extends Branch {
     public Element getElement(String name);
     public Element getElement(String name, Namespace namespace);
     
+    public List getElements();
     public List getElements(String name);
     public List getElements(String name, Namespace namespace);
     

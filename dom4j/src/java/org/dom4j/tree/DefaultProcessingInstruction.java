@@ -8,7 +8,7 @@ import org.dom4j.ProcessingInstruction;
   * of a singly linked, read-only XML Processing Instruction.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultProcessingInstruction extends AbstractProcessingInstruction {
 
@@ -46,8 +46,12 @@ public class DefaultProcessingInstruction extends AbstractProcessingInstruction 
         this.mapData = parseData(data);
     }
 
-    public String getName() {
+    public String getTarget() {
         return target;
+    }
+
+    public void setTarget(String target) {
+        throw new UnsupportedOperationException( "This PI is read-only and cannot be modified" );
     }
 
     public String getText() {

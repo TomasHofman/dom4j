@@ -21,7 +21,7 @@ import org.dom4j.Text;
   * <code>ContentModel</code>.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultContentModel extends AbstractContentModel {
 
@@ -174,7 +174,20 @@ public class DefaultContentModel extends AbstractContentModel {
         return answer;
     }
     
-    
+    public List getElements() {
+        List answer = createResultList();
+        List source = contents;
+        if ( source != null ) {
+            int size = source.size();
+            for ( int i = 0; i < size; i++ ) {
+                Object object = source.get(i);
+                if ( object instanceof Element ) {
+                    answer.add( object );
+                }
+            }
+        }
+        return answer;
+    }
     
     
     public List getContent() {
