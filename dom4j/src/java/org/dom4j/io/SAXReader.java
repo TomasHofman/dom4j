@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.20 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.21 2001/05/18 18:47:17 drwhite Exp $
  */
 
 package org.dom4j.io;
@@ -73,7 +73,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public class SAXReader {
 
@@ -85,12 +85,9 @@ public class SAXReader {
     
     /** Whether validation should occur */
     private boolean validating;
-
-    /** ElementHandler to call when each <code>Element</code> is complete */
-    private ElementHandler elementHandler;
- 
-    /** ElementHandler to call before pruning occurs */
-    private ElementHandler pruningElementHandler;
+    
+    /** DispatchHandler to call when each <code>Element</code> is encountered */
+    private DispatchHandler dispatchHandler;
  
     /** ErrorHandler class to use */
     private ErrorHandler errorHandler;
@@ -364,71 +361,53 @@ public class SAXReader {
         setXMLReader( XMLReaderFactory.createXMLReader(xmlReaderClassName) );
     }
 
-    /** Returns the <code>ElementHandler</code> which is called as 
-      * <code>Element</code> objects are built.
-      *
-      * @return the handler of elements 
-      */
-    public ElementHandler getElementHandler() {
-        return elementHandler;
+    private void initDispatchMode() {
+        if (dispatchHandler == null) {
+            setDispatchHandler(new DispatchHandler());   
+        }
     }
-
-    /** Sets the <code>ElementHandler</code> which is called as 
-      * <code>Element</code> objects are built.
-      *
-      * @param elementHandler is the handler of elements 
-      */
-    public void setElementHandler(ElementHandler elementHandler) {
-        this.elementHandler = elementHandler;
+    
+    private DispatchHandler getDispatchHandler() {
+        return dispatchHandler;   
     }
-
-    /** Returns the <code>ElementHandler</code> called when pruning 
-      * large documents.
-      *
-      * @return the handler of elements which are about to be pruned
-      */
-    public ElementHandler getPruningElementHandler() {
-        return pruningElementHandler;
+    
+    private void setDispatchHandler(DispatchHandler dispatchHandler) {
+        this.dispatchHandler = dispatchHandler;
     }
-
-    /** Sets the <code>ElementHandler</code> called when pruning 
-      * large documents.
+    
+    /** Adds the <code>ElementHandler</code> to be called when the 
+      * specified path is encounted.
       *
-      * @param elementHandler is the handler of elements to use when pruning
+      * @param path is the path to be handled
+      * @param handler is the <code>ElementHandler</code> to be called
+      * by the event based processor.
       */
-    public void getPruningElementHandler(ElementHandler pruningElementHandler) {
-        this.pruningElementHandler = pruningElementHandler;
+    public void addHandler(String path, ElementHandler handler) {
+        initDispatchMode();
+        getDispatchHandler().addHandler(path, handler);   
     }
-
-    /** Returns the pruning patch used when parsing SAX events. The pruning path
-      * allows large documents to be parsed.
+    
+    /** Removes the <code>ElementHandler</code> from the event based
+      * processor, for the specified path.
       *
-      * @return the pruningPath to use when reading documents
+      * @param path is the path to remove the <code>ElementHandler</code> for.
       */
-    public String getPruningPath() {
-        return pruningPath;
+    public void removeHandler(String path) {
+        initDispatchMode();
+        getDispatchHandler().removeHandler(path);   
     }
-
-    /** Sets the pruning patch used when parsing SAX events. The pruning path
-      * allows large documents to be parsed.
-      *
-      * @param pruningPath is the pruningPath to use
+    
+    /** When multiple <code>ElementHandler</code> instances have been 
+      * registered, this will set a default <code>ElementHandler</code>
+      * to be called for any path which does <b>NOT</b> have a handler
+      * registered.
+      * @param handler is the <code>ElementHandler</code> to be called
+      * by the event based processor.
       */
-    public void setPruningPath(String pruningPath) {
-        this.pruningPath = pruningPath;
+    public void setDefaultHandler(ElementHandler handler) {
+        initDispatchMode();
+        getDispatchHandler().setDefaultHandler(handler);   
     }
-
-    /** Sets the pruning patch used when parsing SAX events. The pruning path
-      * allows large documents to be parsed. It should contain the '/' character
-      * to seperate paths such as "A/B/C".
-      *
-      * @param pruningPath is the path expression for the nodes to call the handler and to prune 
-      */
-    public void setPruningMode(String pruningPath, ElementHandler pruningElementHandler) {
-        this.pruningPath = pruningPath;
-        this.pruningElementHandler = pruningElementHandler;
-    }
-
     
     // Implementation methods    
     //-------------------------------------------------------------------------                
@@ -492,30 +471,8 @@ public class SAXReader {
     /** Factory Method to allow user derived SAXContentHandler objects to be used
       */
     protected SAXContentHandler createContentHandler() {
-        if ( pruningPath != null ) {
-            // NOTE: should handle full XPath patterns sometime
-            String[] path = tokenizePath( pruningPath );
-            ElementStack stack = new PruningElementStack( path, getPruningElementHandler() );
-            return new SAXContentHandler( getDocumentFactory(), getElementHandler(), stack );
-        }
-        else {
-            return new SAXContentHandler( getDocumentFactory(), getElementHandler() );
-        }
+        return new SAXContentHandler( getDocumentFactory(), getDispatchHandler() );
     }
-    
-    protected String[] tokenizePath(String path) {
-        ArrayList list = new ArrayList();
-        if ( path.charAt(0) == '/' ) {
-            path = path.substring(1);
-        }
-        for ( StringTokenizer enum = new StringTokenizer( path, "/" ); enum.hasMoreTokens(); ) {
-            list.add( enum.nextToken() );
-        }
-        String[] answer = new String[ list.size() ];
-        list.toArray( answer );
-        return answer;
-    }
-
 }
 
 
@@ -563,5 +520,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.20 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.21 2001/05/18 18:47:17 drwhite Exp $
  */
