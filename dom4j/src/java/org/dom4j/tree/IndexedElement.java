@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: IndexedElement.java,v 1.1 2001/03/02 15:06:45 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.2 2001/03/17 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Text;
   * optimise lookups via name.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class IndexedElement extends DefaultElement {
 
@@ -66,28 +66,28 @@ public class IndexedElement extends DefaultElement {
         return (Attribute) getAttributeIndex().get(qName);
     }
 
-    public Element getElement(String name) {
-        return asElement( getElementIndex().get(name) );
+    public Element element(String name) {
+        return asElement( elementIndex().get(name) );
     }
     
-    public Element getElement(QName qName) {
-        return asElement( getElementIndex().get(qName) );
+    public Element element(QName qName) {
+        return asElement( elementIndex().get(qName) );
     }
         
-    public List getElements(String name) {
-        return asElementList( getElementIndex().get(name) );
+    public List elements(String name) {
+        return asElementList( elementIndex().get(name) );
     }
     
-    public List getElements(QName qName) {
-        return asElementList( getElementIndex().get(qName) );
+    public List elements(QName qName) {
+        return asElementList( elementIndex().get(qName) );
     }
         
     public Iterator elementIterator(String name) {
-        return asElementIterator( getElementIndex().get(name) );
+        return asElementIterator( elementIndex().get(name) );
     }
     
     public Iterator elementIterator(QName qName) {
-        return asElementIterator( getElementIndex().get(qName) );
+        return asElementIterator( elementIndex().get(qName) );
     }
     
     
@@ -166,7 +166,7 @@ public class IndexedElement extends DefaultElement {
         return attributeIndex;
     }
     
-    protected Map getElementIndex() {
+    protected Map elementIndex() {
         if ( elementIndex == null ) {
             elementIndex = createElementIndex();
         }
@@ -324,5 +324,5 @@ public class IndexedElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: IndexedElement.java,v 1.1 2001/03/02 15:06:45 jstrachan Exp $
+ * $Id: IndexedElement.java,v 1.2 2001/03/17 09:17:21 jstrachan Exp $
  */

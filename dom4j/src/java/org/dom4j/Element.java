@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.24 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: Element.java,v 1.25 2001/03/17 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.24 $
+  * @version $Revision: 1.25 $
   */
 public interface Element extends Branch {
 
@@ -293,21 +293,21 @@ public interface Element extends Branch {
     public boolean hasMixedContent();    
     
     // return the child elements
-    public Element getElementByID(String elementID);
+    public Element elementByID(String elementID);
     
     
     /** Returns the first element for the given local name and any namespace.
       * 
       * @return the first element with the given local name 
       */
-    public Element getElement(String name);
+    public Element element(String name);
     
     /** Returns the first element for the given fully qualified name.
       * 
       * @param qName is the fully qualified name to search for
       * @return the first element with the given fully qualified name
       */
-    public Element getElement(QName qname);
+    public Element element(QName qname);
 
     /** <p>Returns the elements contained in this element. 
       * If this element does not contain any elements then this method returns
@@ -318,7 +318,7 @@ public interface Element extends Branch {
       *
       * @return a list of all the elements in this element.
       */
-    public List getElements();
+    public List elements();
     
     /** <p>Returns the elements contained in this element with the given 
       * local name and any namespace.
@@ -330,7 +330,7 @@ public interface Element extends Branch {
       * @return a list of all the elements in this element for the given 
       * local name
       */
-    public List getElements(String name);
+    public List elements(String name);
     
     /** <p>Returns the elements contained in this element with the given 
       * fully qualified name.
@@ -343,7 +343,7 @@ public interface Element extends Branch {
       * @return a list of all the elements in this element for the 
       * given fully qualified name.
       */
-    public List getElements(QName qName);
+    public List elements(QName qName);
     
     /** Returns an iterator over all this elements child elements.
       *
@@ -370,10 +370,10 @@ public interface Element extends Branch {
         
     
     // helper methods
-    public String getElementText(String name);
-    public String getElementText(QName qname);
-    public String getElementTextTrim(String name);
-    public String getElementTextTrim(QName qname);
+    public String elementText(String name);
+    public String elementText(QName qname);
+    public String elementTextTrim(String name);
+    public String elementTextTrim(QName qname);
     
 
     // builder methods 
@@ -565,5 +565,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.24 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: Element.java,v 1.25 2001/03/17 09:17:21 jstrachan Exp $
  */

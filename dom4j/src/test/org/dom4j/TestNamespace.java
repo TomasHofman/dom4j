@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the use of Namespaces.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -59,7 +59,7 @@ public class TestNamespace extends AbstractTestCase {
         Element root = getRootElement();
         
         
-        Element firstTemplate = root.getElement( XSL_TEMPLATE );
+        Element firstTemplate = root.element( XSL_TEMPLATE );
         assert( "Root element contains at least one <xsl:template/> element", firstTemplate != null );
         
         log( "Found element: " + firstTemplate );
@@ -68,7 +68,7 @@ public class TestNamespace extends AbstractTestCase {
     public void testGetElements() throws Exception {
         Element root = getRootElement();
         
-        List list = root.getElements( XSL_TEMPLATE );
+        List list = root.elements( XSL_TEMPLATE );
         assert( "Root element contains at least one <xsl:template/> element", list.size() > 0 );
         
         log( "Found elements: " + list );
@@ -156,5 +156,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.5 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
  */

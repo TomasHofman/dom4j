@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: TestContent.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -32,7 +32,7 @@ public class TestContent extends AbstractTestCase {
         Element root = document.getRootElement();
         assert( "Has root element", root != null );
         
-        List authors = root.getElements( "author" );
+        List authors = root.elements( "author" );
         assert( "Root has children", authors != null && authors.size() == 2 );
         
         Element author1 = (Element) authors.get(0);
@@ -169,5 +169,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.5 2001/03/06 16:40:19 jstrachan Exp $
+ * $Id: TestContent.java,v 1.6 2001/03/17 09:17:21 jstrachan Exp $
  */
