@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.63 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.64 2002/04/18 10:37:18 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.63 $
+  * @version $Revision: 1.64 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -532,10 +532,21 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
             
             throw new IllegalAddException( this, attribute, message );
         }        
-        attributeList().add(attribute);
-        childAdded(attribute);
+        if ( attribute.getValue() == null ) {
+            // try remove a previous attribute with the same
+            // name since adding an attribute with a null value
+            // is equivalent to removing it.
+            Attribute oldAttribute = attribute( attribute.getQName() );
+            if ( oldAttribute != null ) {                
+                remove(oldAttribute);
+            }
+        }
+        else {
+            attributeList().add(attribute);
+            childAdded(attribute);
+        }
     }
-    
+        
 
     public boolean remove(Attribute attribute) {
         List list = attributeList();
@@ -635,31 +646,43 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
        
     
     public Element addAttribute(String name, String value) {
+        // adding a null value is equivalent to removing the attribute
         Attribute attribute = attribute(name);
-        if (attribute == null ) {
-            add(getDocumentFactory().createAttribute(this, name, value));
+        if ( value != null ) {
+            if (attribute == null ) {
+                add(getDocumentFactory().createAttribute(this, name, value));
+            }
+            else if (attribute.isReadOnly()) {
+                remove(attribute);
+                add(getDocumentFactory().createAttribute(this, name, value));
+            }
+            else {
+                attribute.setValue(value);
+            }
         }
-        else if (attribute.isReadOnly()) {
+        else if (attribute != null ) {
             remove(attribute);
-            add(getDocumentFactory().createAttribute(this, name, value));
-        }
-        else {
-            attribute.setValue(value);
         }
         return this;
     }
 
     public Element addAttribute(QName qName, String value) {
+        // adding a null value is equivalent to removing the attribute
         Attribute attribute = attribute(qName);
-        if (attribute == null ) {
-            add(getDocumentFactory().createAttribute(this, qName, value));
+        if ( value != null ) {
+            if (attribute == null ) {
+                add(getDocumentFactory().createAttribute(this, qName, value));
+            }
+            else if (attribute.isReadOnly()) {
+                remove(attribute);
+                add(getDocumentFactory().createAttribute(this, qName, value));
+            }
+            else {
+                attribute.setValue(value);
+            }
         }
-        else if (attribute.isReadOnly()) {
+        else if (attribute != null ) {
             remove(attribute);
-            add(getDocumentFactory().createAttribute(this, qName, value));
-        }
-        else {
-            attribute.setValue(value);
         }
         return this;
     }
@@ -1341,5 +1364,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.63 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.64 2002/04/18 10:37:18 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.46 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.47 2002/04/18 10:37:18 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.46 $
+  * @version $Revision: 1.47 $
   */
 public class DefaultElement extends AbstractElement {
     
@@ -828,14 +828,25 @@ public class DefaultElement extends AbstractElement {
             throw new IllegalAddException( this, attribute, message );
         }
         
-        if ( attributes == null ) {
-            attributes = attribute;
+        if ( attribute.getValue() == null ) {
+            // try remove a previous attribute with the same
+            // name since adding an attribute with a null value
+            // is equivalent to removing it.
+            Attribute oldAttribute = attribute( attribute.getQName() );
+            if ( oldAttribute != null ) {                
+                remove(oldAttribute);
+            }
         }
         else {
-            attributeList().add(attribute);
+            if ( attributes == null ) {
+                attributes = attribute;
+            }
+            else {
+                attributeList().add(attribute);
+            }
+
+            childAdded(attribute);
         }
-        
-        childAdded(attribute);
     }
     
 
@@ -1023,5 +1034,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.46 2002/02/01 13:04:32 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.47 2002/04/18 10:37:18 jstrachan Exp $
  */
