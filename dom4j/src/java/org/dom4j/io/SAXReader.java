@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXReader.java,v 1.49 2004/03/24 20:41:09 maartenc Exp $
+ * $Id: SAXReader.java,v 1.50 2004/06/07 20:39:25 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -22,6 +22,7 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.DocumentFactory;
 import org.dom4j.ElementHandler;
+
 import org.xml.sax.EntityResolver;
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
@@ -65,7 +66,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.49 $
+  * @version $Revision: 1.50 $
   */
 public class SAXReader {
 
@@ -205,9 +206,20 @@ public class SAXReader {
              * Thanks to Christian Oetterli
              */
             InputSource source = new InputSource(new FileInputStream(file));
-            String systemId = file.getAbsolutePath();
-            if (systemId != null) {
-                source.setSystemId("file:/" + systemId.replace('\\', '/'));
+            String path = file.getAbsolutePath();
+            if (path != null) {
+                // Code taken from Ant FileUtils
+
+                StringBuffer sb = new StringBuffer("file://");
+                // add an extra slash for filesystems with drive-specifiers
+                if (!path.startsWith(File.separator)) {
+                    sb.append("/");
+                }
+
+                path = path.replace('\\', '/');
+                sb.append(path);
+                
+                source.setSystemId(sb.toString());
             }
             return read(source);
         } catch (FileNotFoundException e) {
@@ -810,5 +822,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.49 2004/03/24 20:41:09 maartenc Exp $
+ * $Id: SAXReader.java,v 1.50 2004/06/07 20:39:25 maartenc Exp $
  */
