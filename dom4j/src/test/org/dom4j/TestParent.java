@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: TestParent.java,v 1.3 2001/01/15 16:33:56 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import junit.textui.TestRunner;
   * {@link Node#asXPathNode} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -29,8 +29,19 @@ public class TestParent extends AbstractTestCase {
 
     // Test case(s)
     //-------------------------------------------------------------------------                    
-    public void testParentRelationship() throws Exception {        
+    public void testDocument() throws Exception {        
         testParentRelationship( document.getRootElement() );
+    }
+        
+    public void testFragment() throws Exception {        
+        
+        ContentFactory factory = new ContentFactory();
+        Element root = factory.createElement( "root" );
+        Element first = root.addElement( "child" );
+        Element second = root.addElement( "child" );
+        
+        testXPathNode( root, first );
+        testXPathNode( root, second );
     }
         
     // JUnit stuff
@@ -63,13 +74,17 @@ public class TestParent extends AbstractTestCase {
     
     protected void testXPathNode( Element parent, Node node ) {
         if ( node.supportsParent() ) {
-            assert( "getParent() returns parent", node.getParent() == parent );
+            log( "Node: " + node );
+            log( "Parent: " + parent );
+            log( "getParent(): " + node.getParent() );
+            
+            assert( "getParent() returns parent for: " + node, node.getParent() == parent );
         }
         else {
             // lets create an XPath node
             Node xpathNode = node.asXPathNode( parent );
-            assert( "XPath Node supports parent", xpathNode.supportsParent() );
-            assert( "getParent() returns parent", xpathNode.getParent() == parent );
+            assert( "XPath Node supports parent for: " + xpathNode, xpathNode.supportsParent() );
+            assert( "getParent() returns parent for: " + xpathNode, xpathNode.getParent() == parent );
         }
     }    
 }
@@ -119,5 +134,5 @@ public class TestParent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.2 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: TestParent.java,v 1.3 2001/01/15 16:33:56 jstrachan Exp $
  */

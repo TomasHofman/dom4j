@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.8 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Element.java,v 1.9 2001/01/15 16:33:56 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public interface Element extends Branch {
 
@@ -357,7 +357,7 @@ public interface Element extends Branch {
       *
       * @param element is the element whose attributes will be added to me.
       */
-    public void addAttributes(Element element);
+    public void appendAttributes(Element element);
     
     /** Appends the content of the given element to me.
       * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
@@ -365,7 +365,7 @@ public interface Element extends Branch {
       *
       * @param element is the element whose content will be added to me.
       */
-    public void addContent(Element element);
+    public void appendContent(Element element);
     
     /** Appends the additional namespace declarations of the given element to me.
       * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
@@ -373,7 +373,7 @@ public interface Element extends Branch {
       *
       * @param element is the element whose additional namespaces will be added to me.
       */
-    public void addAddtionalNamespaces(Element element);
+    public void appendAddtionalNamespaces(Element element);
 
     // creates a copy
     public Element createCopy();
@@ -426,5 +426,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.8 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: Element.java,v 1.9 2001/01/15 16:33:56 jstrachan Exp $
  */
