@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.5 2001/01/10 15:22:33 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -35,12 +35,15 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DefaultElement extends AbstractElement {
 
     /** The parent of this node */
     private Element parent;
+
+    /** The document of this node */
+    private Document document;
 
     /** The <code>NameModel</code> for this element */
     private NameModel nameModel;
@@ -82,6 +85,20 @@ public class DefaultElement extends AbstractElement {
 
     public void setParent(Element parent) {
         this.parent = parent;
+    }
+
+    public Document getDocument() {
+        if ( document != null ) {
+            return document;
+        }
+        if ( parent != null ) {
+            return parent.getDocument();
+        }
+        return null;
+    }
+    
+    public void setDocument(Document document) {
+        this.document = document;
     }
     
     public boolean supportsParent() {
@@ -186,5 +203,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.4 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.5 2001/01/10 15:22:33 jstrachan Exp $
  */
