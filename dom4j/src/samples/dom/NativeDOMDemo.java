@@ -4,14 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NativeDOMDemo.java,v 1.2 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.3 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 
 package dom;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import org.dom4j.Document;
 import org.dom4j.dom.DOMDocumentFactory;
@@ -22,7 +19,7 @@ import AbstractDemo;
 /** A simple test program to demonstrate the use of native DOM support.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class NativeDOMDemo extends AbstractDemo {
     
@@ -47,7 +44,7 @@ public class NativeDOMDemo extends AbstractDemo {
         println( "Loading document: " + xmlFile );
         
         SAXReader reader = new SAXReader( DOMDocumentFactory.getInstance() );
-        Document document = reader.read( getURL( xmlFile ) );
+        Document document = reader.read( xmlFile );
         
         println( "Created <dom4j> document: " + document );
         
@@ -110,5 +107,5 @@ public class NativeDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NativeDOMDemo.java,v 1.2 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: NativeDOMDemo.java,v 1.3 2001/04/20 12:21:11 jstrachan Exp $
  */

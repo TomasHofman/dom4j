@@ -4,14 +4,12 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: JTreeDemo.java,v 1.1 2001/04/10 19:12:08 jstrachan Exp $
+ * $Id: JTreeDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 package swing;
 
 import SAXDemo;
-
-import java.net.URL;
 
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -27,7 +25,7 @@ import org.xml.sax.InputSource;
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
   * @author Jakob Jenkov
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class JTreeDemo extends SAXDemo {
     
@@ -99,5 +97,5 @@ public class JTreeDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: JTreeDemo.java,v 1.1 2001/04/10 19:12:08 jstrachan Exp $
+ * $Id: JTreeDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
  */

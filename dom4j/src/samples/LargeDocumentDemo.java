@@ -4,11 +4,8 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: LargeDocumentDemo.java,v 1.8 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.9 2001/04/20 12:21:11 jstrachan Exp $
  */
-
-
-import java.net.URL;
 
 import org.dom4j.*;
 import org.dom4j.io.SAXReader;
@@ -17,7 +14,7 @@ import org.dom4j.io.SAXReader;
   * {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
     
@@ -50,7 +47,7 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
         );
     }
     
-    protected Document parse( URL url ) throws Exception {
+    protected Document parse( String url ) throws Exception {
         SAXReader reader = new SAXReader();        
 
         println( "Parsing document:   " + url );
@@ -115,5 +112,5 @@ public class LargeDocumentDemo extends SAXDemo implements ElementHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: LargeDocumentDemo.java,v 1.8 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: LargeDocumentDemo.java,v 1.9 2001/04/20 12:21:11 jstrachan Exp $
  */

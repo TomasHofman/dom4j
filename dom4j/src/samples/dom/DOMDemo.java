@@ -4,14 +4,11 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 
 package dom;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -26,7 +23,7 @@ import AbstractDemo;
   * XML tree then converting it to a DOM4J tree.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DOMDemo extends AbstractDemo {
     
@@ -37,14 +34,14 @@ public class DOMDemo extends AbstractDemo {
     public DOMDemo() {
     }
     
-    protected Document parse( URL url ) throws Exception {
+    protected Document parse( String url ) throws Exception {
         // parse a DOM tree
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         
         println( "Loading document with JAXP builder: " + builder );
         
-        org.w3c.dom.Document domDocument = builder.parse( url.toExternalForm() );
+        org.w3c.dom.Document domDocument = builder.parse( url );
         
         println( "Created W3C DOM document: " + domDocument );
         
@@ -107,5 +104,5 @@ public class DOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
  */

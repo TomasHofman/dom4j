@@ -4,11 +4,8 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDemo.java,v 1.10 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.11 2001/04/20 12:21:11 jstrachan Exp $
  */
-
-
-import java.net.URL;
 
 import org.dom4j.Document;
 import org.dom4j.io.OutputFormat;
@@ -18,7 +15,7 @@ import org.dom4j.io.XMLWriter;
 /** A simple test program to demonstrate using SAX to create a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class SAXDemo extends AbstractDemo {
     
@@ -29,9 +26,9 @@ public class SAXDemo extends AbstractDemo {
     public SAXDemo() {
     }
     
-    protected Document parse( URL url ) throws Exception {
+    protected Document parse( String xmlFile ) throws Exception {
         SAXReader reader = new SAXReader();
-        return reader.read(url);
+        return reader.read(xmlFile);
     }
     
 }
@@ -81,5 +78,5 @@ public class SAXDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDemo.java,v 1.10 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.11 2001/04/20 12:21:11 jstrachan Exp $
  */

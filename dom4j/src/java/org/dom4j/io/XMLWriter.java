@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.16 2001/04/06 14:44:34 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.17 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -66,7 +66,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -410,6 +410,27 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
     }
     
     
+    /** <p>Writes the opening tag of an {@link Element}, 
+      * including its {@link Attribute}s
+      * but without its content.</p>
+      *
+      * @param element <code>Element</code> to output.
+      */
+    public void writeOpen(Element element) throws IOException {
+        writer.write("<");
+        writer.write( element.getQualifiedName() );
+        writeAttributes(element, new NamespaceStack());
+        writer.write(">");
+    }
+    
+    /** <p>Writes the closing tag of an {@link Element}</p>
+      *
+      * @param element <code>Element</code> to output.
+      */
+    public void writeClose(Element element) throws IOException {
+        writeClose( element.getQualifiedName() );
+    }
+
     
     // ContentHandler interface
     //-------------------------------------------------------------------------
@@ -797,14 +818,6 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
         }
     }
     
-    /** Writes the close of an {@link Element}.
-      *
-      * @param element <code>Element</code> to close.
-      */
-    protected void writeClose(Element element) throws IOException {
-        writeClose( element.getQualifiedName() );
-    }
-
     /** Writes the empty close of an {@link Element}.
       *
       * @param element <code>Element</code> to close.
@@ -986,5 +999,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.16 2001/04/06 14:44:34 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.17 2001/04/20 12:21:11 jstrachan Exp $
  */

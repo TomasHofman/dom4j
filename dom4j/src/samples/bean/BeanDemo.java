@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDemo.java,v 1.3 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.4 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 
@@ -13,7 +13,6 @@ package bean;
 import SAXDemo;
 
 import java.awt.Component;
-import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,7 +27,7 @@ import org.dom4j.io.SAXReader;
   * inside a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class BeanDemo extends SAXDemo {
     
@@ -50,7 +49,7 @@ public class BeanDemo extends SAXDemo {
     }
     
     
-    protected Document parse( URL url ) throws Exception {
+    protected Document parse( String url ) throws Exception {
         SAXReader reader = new SAXReader( BeanDocumentFactory.getInstance() );
         return reader.read(url);
     }
@@ -128,5 +127,5 @@ public class BeanDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDemo.java,v 1.3 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: BeanDemo.java,v 1.4 2001/04/20 12:21:11 jstrachan Exp $
  */

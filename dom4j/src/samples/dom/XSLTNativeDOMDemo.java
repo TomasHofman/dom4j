@@ -4,12 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTNativeDOMDemo.java,v 1.2 2001/04/11 17:42:42 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.3 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 package dom;
-
-import java.net.URL;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -33,7 +31,7 @@ import XSLTDemo;
   * dom4j.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class XSLTNativeDOMDemo extends XSLTDemo {
     
@@ -45,7 +43,7 @@ public class XSLTNativeDOMDemo extends XSLTDemo {
     public XSLTNativeDOMDemo() {
     }
     
-    protected Document parse( URL url ) throws Exception {
+    protected Document parse( String url ) throws Exception {
         SAXReader reader = new SAXReader( DOMDocumentFactory.getInstance() );
         return reader.read(url);
     }
@@ -121,5 +119,5 @@ public class XSLTNativeDOMDemo extends XSLTDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTNativeDOMDemo.java,v 1.2 2001/04/11 17:42:42 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.3 2001/04/20 12:21:11 jstrachan Exp $
  */

@@ -4,10 +4,8 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ValidateDemo.java,v 1.1 2001/04/12 10:54:45 jstrachan Exp $
+ * $Id: ValidateDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
  */
-
-import java.net.URL;
 
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
@@ -20,7 +18,7 @@ import org.xml.sax.SAXException;
 /** A sample program demonstrating the use of validation using SAXValidator
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class ValidateDemo extends AbstractDemo {
     
@@ -45,13 +43,11 @@ public class ValidateDemo extends AbstractDemo {
             }
         }
         
-        URL url = getURL( fileName );
-        
-        validate( url, validateOnParse );
+        validate( fileName, validateOnParse );
     }
     
     
-    protected void validate( URL url, boolean validateOnParse ) throws Exception {        
+    protected void validate( String url, boolean validateOnParse ) throws Exception {        
         println( "Parsing: " + url + " with validation mode: " + validateOnParse );
         
         if ( validateOnParse ) {
@@ -140,5 +136,5 @@ public class ValidateDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ValidateDemo.java,v 1.1 2001/04/12 10:54:45 jstrachan Exp $
+ * $Id: ValidateDemo.java,v 1.2 2001/04/20 12:21:11 jstrachan Exp $
  */

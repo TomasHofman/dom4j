@@ -4,10 +4,9 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceTest.java,v 1.12 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.13 2001/04/20 12:21:11 jstrachan Exp $
  */
 
-import java.net.URL;
 import java.io.IOException;
 
 import org.dom4j.Document;
@@ -18,7 +17,7 @@ import org.dom4j.io.SAXReader;
 /** Perform some DOM4J parsing peformance test cases.
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public class PerformanceTest extends SAXDemo {
     
@@ -59,15 +58,15 @@ public class PerformanceTest extends SAXDemo {
             loopCount = Integer.parseInt(args[2]);
         }        
 
-        loopParse( getURL( xmlFile ) );
+        loopParse( xmlFile );
     }
     
     /** Parses the XML document at the given <code>URL</code> 
       * a number of times and outputs the timing results
       *
-      * @param url is the <code>URL</code> to read 
+      * @param url is the URL or filename to read 
       */
-    protected void loopParse( URL url ) throws Exception {
+    protected void loopParse( String url ) throws Exception {
         SAXReader reader = createSAXReader();
                     
         println( "Parsing url:      " + url );
@@ -138,7 +137,7 @@ public class PerformanceTest extends SAXDemo {
       * @param reader is the <code>SAXReader</code> to use for the parsing
       * @return the time taken in milliseconds
       */
-    protected long timeParse(URL url, SAXReader reader) 
+    protected long timeParse(String url, SAXReader reader) 
         throws IOException, DocumentException {
 
         // Build the DOM4J Document
@@ -215,5 +214,5 @@ public class PerformanceTest extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceTest.java,v 1.12 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.13 2001/04/20 12:21:11 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.19 2001/04/12 10:54:45 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.20 2001/04/20 12:21:11 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -73,7 +73,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public class SAXReader {
 
@@ -147,7 +147,7 @@ public class SAXReader {
       * @param file is the <code>File</code> to read from.
       * @return the newly created Document instance
       * @throws DocumentException if an error occurs during parsing.
-      * @throws FileNotFoundException if the file could not be found
+      * @throws MalformedURLException if a URL could not be made for the given File
       */
     public Document read(File file) throws DocumentException, MalformedURLException {
         return read( file.toURL() );
@@ -172,14 +172,30 @@ public class SAXReader {
         return document;
     }
     
-    /** <p>Reads a Document from the given URI using SAX</p>
+    /** <p>Reads a Document from the given URL or filename using SAX.</p>
       *
-      * @param systemId is the URI for the input
+      * <p>
+      * If the systemId contains a <code>':'</code> character then it is
+      * assumed to be a URL otherwise its assumed to be a file name.
+      * If you want finer grained control over this mechansim then please
+      * explicitly pass in either a {@link URL} or a {@link File} instance
+      * instead of a {@link String} to denote the source of the document.
+      * </p>
+      *
+      * @param systemId is a URL for a document or a file name.
       * @return the newly created Document instance
       * @throws DocumentException if an error occurs during parsing.
+      * @throws MalformedURLException if a URL could not be made for the given File
       */
-    public Document read(String systemId) throws DocumentException {
-        return read(new InputSource(systemId));
+    public Document read(String systemId) throws DocumentException, MalformedURLException {
+        if ( systemId.indexOf( ':' ) >= 0 ) {
+            // lets assume its a URL
+            return read(new InputSource(systemId));
+        }
+        else {
+            // lets assume that we are given a file name
+            return read( new File(systemId) );
+        }
     }
 
     /** <p>Reads a Document from the given stream using SAX</p>
@@ -547,5 +563,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.19 2001/04/12 10:54:45 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.20 2001/04/20 12:21:11 jstrachan Exp $
  */

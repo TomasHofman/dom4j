@@ -4,10 +4,8 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.5 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.6 2001/04/20 12:21:11 jstrachan Exp $
  */
-
-import java.net.URL;
 
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
@@ -24,11 +22,11 @@ import org.dom4j.io.XMLWriter;
 /** A sample program to demonstrate using XSLT to transform a dom4j Document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class XSLTDemo extends SAXDemo {
     
-    protected URL xsl;
+    protected String xsl;
     
     
     public static void main(String[] args) {
@@ -54,7 +52,7 @@ public class XSLTDemo extends SAXDemo {
             
             Document document = parse( args[idx++] );
             
-            xsl = getURL( args[idx++] );
+            xsl = args[idx++];
             
             process(document);
         }
@@ -70,7 +68,7 @@ public class XSLTDemo extends SAXDemo {
         // load the transformer
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer( 
-            new StreamSource( xsl.toString() ) 
+            new StreamSource( xsl ) 
         );
         
         // now lets create the TRaX source and result
@@ -131,5 +129,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.5 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: XSLTDemo.java,v 1.6 2001/04/20 12:21:11 jstrachan Exp $
  */
