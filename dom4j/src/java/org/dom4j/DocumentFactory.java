@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.32 2001/10/25 11:18:18 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.33 2001/10/26 10:00:12 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -44,7 +44,7 @@ import org.xml.sax.Attributes;
   * tree.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.32 $
+  * @version $Revision: 1.33 $
   */
 public class DocumentFactory implements Serializable {
 
@@ -130,6 +130,9 @@ public class DocumentFactory implements Serializable {
     }
     
     public Text createText(String text) {
+        if ( text == null ) {
+            throw new IllegalArgumentException( "Adding text to an XML document must not be null" );
+        }
         return new DefaultText(text);
     }
     
@@ -340,5 +343,5 @@ public class DocumentFactory implements Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.32 2001/10/25 11:18:18 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.33 2001/10/26 10:00:12 jstrachan Exp $
  */
