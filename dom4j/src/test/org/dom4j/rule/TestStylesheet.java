@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestRuleManager.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
+ * $Id: TestStylesheet.java,v 1.1 2001/02/07 16:52:10 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -18,12 +18,13 @@ import junit.textui.TestRunner;
 
 import org.dom4j.*;
 
-/** A test harness to test the use of RuleManager
+/** A test harness to test the use of the Stylesheet and the
+  * XSLT rule engine.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class TestRuleManager extends AbstractTestCase {
+public class TestStylesheet extends AbstractTestCase {
 
     protected String[] templates = {
         "/",
@@ -46,10 +47,10 @@ public class TestRuleManager extends AbstractTestCase {
     }
     
     public static Test suite() {
-        return new TestSuite( TestRuleManager.class );
+        return new TestSuite( TestStylesheet.class );
     }
     
-    public TestRuleManager(String name) {
+    public TestStylesheet(String name) {
         super(name);
     }
 
@@ -60,10 +61,9 @@ public class TestRuleManager extends AbstractTestCase {
             addTemplate( templates[i] );
         }
         
-        log( "........................................" );
         log( "" );
         log( "........................................" );
-        
+        log( "" );
         log( "Running stylesheet" );
         
         stylesheet.run( document );
@@ -156,5 +156,5 @@ public class TestRuleManager extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestRuleManager.java,v 1.2 2001/02/07 16:44:54 jstrachan Exp $
+ * $Id: TestStylesheet.java,v 1.1 2001/02/07 16:52:10 jstrachan Exp $
  */
