@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.28 2001/04/04 18:08:48 jstrachan Exp $
+ * $Id: Element.java,v 1.29 2001/05/21 16:06:06 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.28 $
+  * @version $Revision: 1.29 $
   */
 public interface Element extends Branch {
 
@@ -508,14 +508,6 @@ public interface Element extends Branch {
       */
     public void appendContent(Element element);
     
-    /** Appends the additional namespace declarations of the given element to me.
-      * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
-      * method.
-      *
-      * @param element is the element whose additional namespaces will be added to me.
-      */
-    public void appendAddtionalNamespaces(Element element);
-
     // creates a copy
     public Element createCopy();
     public Element createCopy(String name);
@@ -568,5 +560,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.28 2001/04/04 18:08:48 jstrachan Exp $
+ * $Id: Element.java,v 1.29 2001/05/21 16:06:06 jstrachan Exp $
  */

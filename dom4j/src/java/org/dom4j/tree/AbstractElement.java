@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.34 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.35 2001/05/21 16:06:06 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.34 $
+  * @version $Revision: 1.35 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -497,8 +497,8 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     // add to me content from another element
     // analagous to the addAll(collection) methods in Java 2 collections
     public void appendAttributes(Element element) {
-        for (Iterator i = attributeIterator(); i.hasNext(); ) {
-            Attribute attribute = (Attribute) i.next();
+        for ( int i = 0, size = element.attributeCount(); i < size; i++ ) {
+            Attribute attribute = element.attribute(i);
             if ( attribute.supportsParent() ) {
                 setAttributeValue(attribute.getQName(), attribute.getValue());
             }
@@ -509,26 +509,12 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     }
         
     public void appendContent(Element element) {
-        for (Iterator iter = element.nodeIterator(); iter.hasNext(); ) {
-            Object object = iter.next();
-            if (object instanceof String) {
-                addText((String) object);
-            } 
-            else if (object instanceof Node) {
-                Node node = (Node) object;
-                add( (Node) node.clone() );
-            }
+        for ( int i = 0, size = element.nodeCount(); i < size; i++ ) {
+            Node node = element.node(i);
+            add( (Node) node.clone() );
         }
     }
         
-    public void appendAddtionalNamespaces(Element element) {
-        for (Iterator i = element.additionalNamespaces().iterator(); i.hasNext(); ) {
-            Namespace namespace = (Namespace) i.next();
-            add( namespace );
-        }
-    }
-
-
     
     // creates a copy
     
@@ -542,7 +528,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         Element clone = createElement(getQName());
         clone.appendAttributes(this);
         clone.appendContent(this);
-        clone.appendAddtionalNamespaces(this);
         return clone;
     }
 
@@ -550,7 +535,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         Element clone = createElement(getQName());
         clone.appendAttributes(this);
         clone.appendContent(this);
-        clone.appendAddtionalNamespaces(this);
         return clone;
     }
     
@@ -558,7 +542,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         Element clone = createElement(name);
         clone.appendAttributes(this);
         clone.appendContent(this);
-        clone.appendAddtionalNamespaces(this);
         return clone;
     }
     
@@ -566,7 +549,6 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         Element clone = createElement(qName);
         clone.appendAttributes(this);
         clone.appendContent(this);
-        clone.appendAddtionalNamespaces(this);
         return clone;
     }
     
@@ -652,5 +634,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.34 2001/05/15 18:17:38 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.35 2001/05/21 16:06:06 jstrachan Exp $
  */
