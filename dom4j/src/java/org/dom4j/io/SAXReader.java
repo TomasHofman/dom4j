@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.26 2001/08/06 08:17:46 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.27 2001/08/06 09:45:23 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -75,7 +75,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.26 $
+  * @version $Revision: 1.27 $
   */
 public class SAXReader {
 
@@ -135,7 +135,41 @@ public class SAXReader {
         this.validating = validating;
     }
 
+
     
+    /** Allows a SAX property to be set on the underlying SAX parser.
+      * This can be useful to set parser-specific properties
+      * such as the location of schema or DTD resources. 
+      * Though use this method with caution as it has the possibility
+      * of breaking the standard behaviour.
+      * An alternative to calling this method is to correctly configure an 
+      * XMLReader object instance and call the {@link #setXMLReader(XMLReader)} method
+      *
+      * @name is the SAX property name
+      * @value is the value of the SAX property
+      * @throws SAXException if the XMLReader could not be created or
+      * the property could not be changed. 
+      */
+    public void setProperty(String name, Object value) throws SAXException {
+        getXMLReader().setProperty(name, value);
+    }
+    
+    
+    /** Allows a SAX featuer on the underlying SAX parser.
+      * This can be useful to set parser-specific features. 
+      * Though use this method with caution as it has the possibility
+      * of breaking the standard behaviour.
+      * An alternative to calling this method is to correctly configure an 
+      * XMLReader object instance and call the {@link #setXMLReader(XMLReader)} method
+      *
+      * @name is the SAX feature name
+      * @value is the value of the SAX feature
+      * @throws SAXException if the XMLReader could not be created or
+      * the feature could not be changed. 
+      */
+    public void setFeature(String name, boolean value) throws SAXException {
+        getXMLReader().setFeature(name, value);
+    }
     
         
     /** <p>Reads a Document from the given <code>File</code></p>
@@ -549,5 +583,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.26 2001/08/06 08:17:46 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.27 2001/08/06 09:45:23 jstrachan Exp $
  */
