@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestNamespaces.java,v 1.7 2002/03/02 14:23:53 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.8 2002/03/02 14:43:00 slehmann Exp $
  */
 
 package org.dom4j;
@@ -31,7 +31,7 @@ import org.xml.sax.InputSource;
 /** Test the use of namespaces
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestNamespaces extends AbstractTestCase {
 
@@ -261,7 +261,6 @@ public class TestNamespaces extends AbstractTestCase {
         // element ("schema"), but the element itself is not in the default
         // namespace. Test that declaredNamespaces on the root element also
         // returns the default namespace declaration.
-        System.out.println("Document: " + document + ", ns: " + document.getRootElement().declaredNamespaces().size());
         Iterator iter = document.getRootElement().declaredNamespaces().iterator();
             while (iter.hasNext()) {
                 Namespace ns = (Namespace)iter.next();
@@ -354,5 +353,5 @@ public class TestNamespaces extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespaces.java,v 1.7 2002/03/02 14:23:53 slehmann Exp $
+ * $Id: TestNamespaces.java,v 1.8 2002/03/02 14:43:00 slehmann Exp $
  */
