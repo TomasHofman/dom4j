@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceTest.java,v 1.10 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.11 2001/01/29 23:53:32 jstrachan Exp $
  */
 
 import java.net.URL;
@@ -14,12 +14,11 @@ import org.dom4j.Document;
 import org.dom4j.DocumentFactory;
 import org.dom4j.DocumentException;
 import org.dom4j.io.SAXReader;
-import org.dom4j.io.DocumentReader;
 
 /** Perform some DOM4J parsing peformance test cases.
   * 
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class PerformanceTest extends SAXDemo {
     
@@ -69,7 +68,7 @@ public class PerformanceTest extends SAXDemo {
       * @param url is the <code>URL</code> to read 
       */
     protected void parse( URL url ) throws Exception {
-        DocumentReader reader = createDocumentReader();
+        SAXReader reader = createSAXReader();
                     
         println( "Parsing url:      " + url );
         println( "Looping:          " + loopCount + " time(s)" );        
@@ -135,10 +134,10 @@ public class PerformanceTest extends SAXDemo {
     /** Parses the XML document at the given URL and times how long it takes.
       *
       * @param url is the <code>URL</code> to read 
-      * @param reader is the <code>DocumentReader</code> to use for the parsing
+      * @param reader is the <code>SAXReader</code> to use for the parsing
       * @return the time taken in milliseconds
       */
-    protected long timeParse(URL url, DocumentReader reader) 
+    protected long timeParse(URL url, SAXReader reader) 
         throws IOException, DocumentException {
 
         // Build the DOM4J Document
@@ -150,8 +149,8 @@ public class PerformanceTest extends SAXDemo {
         return end - start;
     }
 
-    protected DocumentReader createDocumentReader() throws Exception {
-        DocumentReader answer = new SAXReader();        
+    protected SAXReader createSAXReader() throws Exception {
+        SAXReader answer = new SAXReader();        
         if ( documentFactoryClassName != null ) {
             try {
                 Class theClass = Class.forName( documentFactoryClassName );
@@ -215,5 +214,5 @@ public class PerformanceTest extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceTest.java,v 1.10 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: PerformanceTest.java,v 1.11 2001/01/29 23:53:32 jstrachan Exp $
  */

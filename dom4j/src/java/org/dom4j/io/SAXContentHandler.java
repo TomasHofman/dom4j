@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.11 2001/01/29 23:53:31 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -40,9 +40,12 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
+
+    /** The factory used to create new <code>Document</code> instances */
+    private DocumentFactory documentFactory;
 
     /** The document that is being built */
     private Document document;
@@ -73,19 +76,29 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     
     
     public SAXContentHandler() {
+        this.documentFactory = DocumentFactory.getInstance();
     }
     
-    public SAXContentHandler(Document document, ElementHandler elementHandler) {
-        this.document = document;
+    public SAXContentHandler(DocumentFactory documentFactory) {
+        this.documentFactory = documentFactory;
+    }
+
+    public SAXContentHandler(DocumentFactory documentFactory, ElementHandler elementHandler) {
+        this.documentFactory = documentFactory;
         this.elementHandler = elementHandler;
     }
 
-    public SAXContentHandler(Document document, ElementHandler elementHandler, ElementStack elementStack) {
-        this.document = document;
+    public SAXContentHandler(DocumentFactory documentFactory, ElementHandler elementHandler, ElementStack elementStack) {
+        this.documentFactory = documentFactory;
         this.elementHandler = elementHandler;
         this.elementStack = elementStack;
     }
 
+    /** @return the document that has been or is being built 
+      */
+    public Document getDocument() {
+        return document;
+    }
     
     // ContentHandler interface
     
@@ -102,6 +115,8 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
 
     public void startDocument() throws SAXException {
+        document = createDocument();
+        
         if ( elementStack == null ) {
             elementStack = createElementStack();
         }
@@ -254,15 +269,8 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
 
     /** @return the current document 
       */
-    protected Document getDocument() {
-        return document;
-    }
-    
-    protected void setRootElement(Element element) {
-        Document document = getDocument();
-        if (document != null) {
-            document.setRootElement(element);
-        }
+    protected Document createDocument() {
+        return documentFactory.createDocument();
     }
     
     /** @return the set of entity names which are ignored
@@ -413,5 +421,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.10 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.11 2001/01/29 23:53:31 jstrachan Exp $
  */

@@ -4,22 +4,21 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractReaderDemo.java,v 1.5 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractReaderDemo.java,v 1.6 2001/01/29 23:53:32 jstrachan Exp $
  */
 
 
 import java.net.URL;
 
 import org.dom4j.*;
-import org.dom4j.io.DocumentReader;
 import org.dom4j.io.SAXReader;
 
 /** This is an abstract base class for any demo which uses a 
-  * {@link DocumentReader} implementation such as {@link SAXReader} and parses
+  * {@link SAXReader} implementation such as {@link SAXReader} and parses
   * and processes a document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class AbstractReaderDemo extends SAXDemo {
     
@@ -52,17 +51,17 @@ public class AbstractReaderDemo extends SAXDemo {
     }
     
     protected void parse( URL url ) throws Exception {
-        DocumentReader reader = createDocumentReader();
+        SAXReader reader = createSAXReader();
         Document document = reader.read(url);
         process(document);
     }
     
-    protected DocumentReader createDocumentReader() throws Exception {
+    protected SAXReader createSAXReader() throws Exception {
         println( "Using SAX parser: " + System.getProperty( "org.xml.sax.driver", "default" ) );
         
-        DocumentReader answer = new SAXReader();        
+        SAXReader answer = new SAXReader();        
         
-        // allow the DocumentFactory used by the DocumentReader to be configured
+        // allow the DocumentFactory used by the SAXReader to be configured
         DocumentFactory factory = createDocumentFactory();
         if ( factory != null ) {
             println( "DocumentFactory:  " + factory );
@@ -132,5 +131,5 @@ public class AbstractReaderDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractReaderDemo.java,v 1.5 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: AbstractReaderDemo.java,v 1.6 2001/01/29 23:53:32 jstrachan Exp $
  */
