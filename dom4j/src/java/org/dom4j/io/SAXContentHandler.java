@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.19 2001/05/15 15:02:02 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.20 2001/05/18 18:45:22 drwhite Exp $
  */
 
 package org.dom4j.io;
@@ -40,7 +40,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -139,6 +139,10 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
         else {
             elementStack.clear();
         }
+        if ( (elementHandler != null) &&
+             (elementHandler instanceof DispatchHandler) ) {
+            elementStack.setDispatchHandler((DispatchHandler)elementHandler);   
+        }
         
         namespaceStack.clear();
         declaredNamespaceIndex = 0;
@@ -174,13 +178,17 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
         }
 
         elementStack.pushElement(element);
+        if ( element != null && elementHandler != null ) {
+            elementHandler.onStart(elementStack);   
+        }
     }
 
     public void endElement(String namespaceURI, String localName, String qName) {
-        Element element = elementStack.popElement();
-        if ( element != null && elementHandler != null ) {
-            elementHandler.handle( element );
+        if ( (elementStack.peekElement() != null) && elementHandler != null ) {
+        //    elementHandler.handle( element );
+            elementHandler.onEnd(elementStack);
         }
+        Element element = elementStack.popElement();
     }
 
     public void characters(char[] ch, int start, int end) throws SAXException {
@@ -373,5 +381,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.19 2001/05/15 15:02:02 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.20 2001/05/18 18:45:22 drwhite Exp $
  */
