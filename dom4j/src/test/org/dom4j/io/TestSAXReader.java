@@ -52,7 +52,16 @@ public class TestSAXReader extends TestCase {
     public void testReadFile() {
         try {
             URL location = TestSAXReader.class.getResource("/xml/#.xml");
-            File file = new File(location.getPath() + "/#.xml");
+            String fileName = location.getPath();
+            if (fileName.endsWith("%23.xml")) {
+                // since JDK 1.5 beta2 the path contains the #.xml file as "%23.xml"
+                fileName = fileName.substring(0, fileName.indexOf("%23.xml"));
+            }
+            
+            if (!fileName.endsWith("#.xml")) {
+                fileName += "/#.xml";
+            }
+            File file = new File(fileName);
             new SAXReader().read(file);
         } catch (Exception e) {
             e.printStackTrace();
@@ -171,5 +180,5 @@ public class TestSAXReader extends TestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSAXReader.java,v 1.7 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestSAXReader.java,v 1.8 2004/06/04 08:29:25 maartenc Exp $
  */
