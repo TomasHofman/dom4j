@@ -23,12 +23,15 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
     /** The XML writer used by default */
     protected static final XMLWriter writer = new XMLWriter( "  ", true );
+
+    /** The <code>ContentFactory</code> instance used by default */
+    private static final ContentFactory CONTENT_FACTORY = DefaultContentFactory.getInstance();
 
     
     public AbstractBranch() { 
@@ -177,7 +180,7 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     /** Allows derived classes to override the factory behaviour */
     protected ContentFactory getContentFactory() {
-        return DefaultContentFactory.getInstance();
+        return CONTENT_FACTORY;
     }
 
     /** Called when a new child node has been added to me

@@ -27,7 +27,7 @@ import org.dom4j.TreeVisitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -45,6 +45,14 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return false;
     }
 
+    public void setName(String name) {
+        throw new UnsupportedOperationException("The name and namespace of this Element cannot be changed" );
+    }
+    
+    public void setNamespace(Namespace namespace) {
+        throw new UnsupportedOperationException("The name and namespace of this Element cannot be changed" );
+    }
+    
     public Namespace getNamespaceForPrefix(String prefix) {
         if ( prefix == null || prefix.length() <= 0 ) {
             return Namespace.NO_NAMESPACE;

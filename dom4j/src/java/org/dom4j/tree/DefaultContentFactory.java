@@ -15,7 +15,7 @@ import org.dom4j.Text;
   * XML content nodes for an XML elements.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DefaultContentFactory implements ContentFactory {
 
@@ -24,7 +24,7 @@ public class DefaultContentFactory implements ContentFactory {
     
     /** @return the singleton instance
       */
-    public static DefaultContentFactory getInstance() {
+    public static ContentFactory getInstance() {
         return singleton;
     }
     
