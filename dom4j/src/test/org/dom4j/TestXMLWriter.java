@@ -4,13 +4,14 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXMLWriter.java,v 1.17 2004/06/16 12:53:39 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.18 2004/06/21 12:23:18 maartenc Exp $
  */
 
 package org.dom4j;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.StringReader;
 import java.io.StringWriter;
 
 import junit.framework.Test;
@@ -29,7 +30,7 @@ import org.xml.sax.helpers.AttributesImpl;
 /** A simple test harness to check that the XML Writer works
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public class TestXMLWriter extends AbstractTestCase {
 
@@ -318,6 +319,35 @@ public class TestXMLWriter extends AbstractTestCase {
         assertNodesEqual(document, doc2);
     }
     
+    public void testWriteEntities() throws Exception {
+        String xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n" +
+                     "<!DOCTYPE xml [<!ENTITY copy \"&#169;\"> " +
+                                    "<!ENTITY trade \"&#8482;\"> " +
+                                    "<!ENTITY deg \"&#x00b0;\"> " +
+                                    "<!ENTITY gt \"&#62;\"> " +
+                                    "<!ENTITY sup2 \"&#x00b2;\"> " +
+                                    "<!ENTITY frac14 \"&#x00bc;\"> " +
+                                    "<!ENTITY quot \"&#34;\"> " +
+                                    "<!ENTITY frac12 \"&#x00bd;\"> " +
+                                    "<!ENTITY euro \"&#x20ac;\"> " +
+                                    "<!ENTITY Omega \"&#937;\"> ]>\n" +
+                     "<root />";
+        
+        SAXReader reader = new SAXReader("org.apache.xerces.parsers.SAXParser");
+        reader.setIncludeInternalDTDDeclarations(true);
+        
+        Document doc = reader.read(new StringReader(xml));
+        StringWriter wr = new StringWriter();
+        XMLWriter writer = new XMLWriter(wr);
+        writer.write(doc);
+        
+        String xml2 = wr.toString();
+        System.out.println(xml2);
+        Document doc2 = DocumentHelper.parseText(xml2);
+        
+        assertNodesEqual(doc, doc2);
+    }
+    
     protected org.dom4j.Document parseDocument(String file) throws Exception {
         SAXReader reader = new SAXReader();
         return reader.read(getClass().getResource(file));
@@ -383,5 +413,5 @@ public class TestXMLWriter extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXMLWriter.java,v 1.17 2004/06/16 12:53:39 maartenc Exp $
+ * $Id: TestXMLWriter.java,v 1.18 2004/06/21 12:23:18 maartenc Exp $
  */

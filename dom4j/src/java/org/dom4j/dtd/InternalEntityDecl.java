@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: InternalEntityDecl.java,v 1.4 2004/03/01 21:15:26 maartenc Exp $
+ * $Id: InternalEntityDecl.java,v 1.5 2004/06/21 12:23:18 maartenc Exp $
  */
 
 package org.dom4j.dtd;
@@ -12,7 +12,7 @@ package org.dom4j.dtd;
 /** <p><code>InternalEntityDecl</code> represents an internal entity declaration in a DTD.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class InternalEntityDecl {
 
@@ -71,11 +71,45 @@ public class InternalEntityDecl {
         }
 
         buffer.append(" \"");
-        buffer.append(value);
+        buffer.append(escapeEntityValue(value));
         buffer.append("\">");
         
         return buffer.toString();
     }
+    
+    private String escapeEntityValue(String text) {
+        StringBuffer result = new StringBuffer();
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            switch (c) {
+                case '<':
+                    result.append("&#38;#60;");
+                    break;
+                case '>':
+                    result.append("&#62;");
+                    break;
+                case '&':
+                    result.append("&#38;#38;");
+                    break;
+                case '\'':
+                    result.append("&#39;");
+                    break;
+                case '\"':
+                    result.append("&#34;");
+                    break;
+                default:
+                    if (c < 32) {
+                        result.append("&#" + (int) c + ";");
+                    } else {
+                        result.append(c);
+                    }
+                    break;
+            }
+        }
+        
+        return result.toString();
+    }
+    
 }
 
 
@@ -123,5 +157,5 @@ public class InternalEntityDecl {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: InternalEntityDecl.java,v 1.4 2004/03/01 21:15:26 maartenc Exp $
+ * $Id: InternalEntityDecl.java,v 1.5 2004/06/21 12:23:18 maartenc Exp $
  */
