@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.54 2004/06/25 08:03:37 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.55 2004/06/25 12:34:47 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.54 $
+  * @version $Revision: 1.55 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -510,15 +510,15 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
      * @see #internalEntityDecl
      * @see org.xml.sax.DTDHandler#unparsedEntityDecl
      */
-    public void externalEntityDecl(String name, String publicID, String systemID) throws SAXException {
+    public void externalEntityDecl(String name, String publicId, String systemId) throws SAXException {
         if ( internalDTDsubset ) {
             if ( includeInternalDTDDeclarations ) {
-                addDTDDeclaration( new ExternalEntityDecl( name, publicID, systemID ) );
+                addDTDDeclaration( new ExternalEntityDecl( name, publicId, systemId ) );
             }
         }
         else {
             if ( includeExternalDTDDeclarations ) {
-                addExternalDTDDeclaration( new ExternalEntityDecl( name, publicID, systemID ) );
+                addExternalDTDDeclaration( new ExternalEntityDecl( name, publicId, systemId ) );
             }
         }
     }
@@ -572,7 +572,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
      * @param publicId The entity's public identifier, or null if none
      *       was given.
      * @param systemId The entity's system identifier.
-     * @param notation name The name of the associated notation.
+     * @param notationName The name of the associated notation.
      * @see #notationDecl
      * @see org.xml.sax.AttributeList
      */
@@ -852,5 +852,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.54 2004/06/25 08:03:37 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.55 2004/06/25 12:34:47 maartenc Exp $
  */

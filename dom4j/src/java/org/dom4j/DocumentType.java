@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentType.java,v 1.7 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: DocumentType.java,v 1.8 2004/06/25 12:34:46 maartenc Exp $
  */
 
 package org.dom4j;
@@ -14,14 +14,14 @@ import java.util.List;
 /** <p><code>DocumentType</code> defines an XML DOCTYPE declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public interface DocumentType extends Node {
 
     /** This method is the equivalent to the {@link #getName} 
       * method. It is added for clarity.
       *
-      * @returns the root element name for the document type.
+      * @return the root element name for the document type.
       */
     public String getElementName();
     
@@ -113,5 +113,5 @@ public interface DocumentType extends Node {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentType.java,v 1.7 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: DocumentType.java,v 1.8 2004/06/25 12:34:46 maartenc Exp $
  */

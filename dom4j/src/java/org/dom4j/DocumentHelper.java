@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.20 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.21 2004/06/25 12:34:46 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import org.jaxen.VariableContext;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.20 $
+  * @version $Revision: 1.21 $
   */
 public class DocumentHelper {
 
@@ -177,7 +177,7 @@ public class DocumentHelper {
     }
     
     /** <p><code>sort</code> sorts the given List of Nodes
-      * using an XPath expression as a {@link Comparator}.
+      * using an XPath expression as a {@link java.util.Comparator}.
       *
       * @param list is the list of Nodes to sort
       * @param xpathExpression is the XPath expression used for comparison
@@ -188,7 +188,7 @@ public class DocumentHelper {
     }
     
     /** <p><code>sort</code> sorts the given List of Nodes
-      * using an XPath expression as a {@link Comparator}
+      * using an XPath expression as a {@link java.util.Comparator}
       * and optionally removing duplicates.</p>
       *
       * @param list is the list of Nodes to sort
@@ -238,7 +238,7 @@ public class DocumentHelper {
       * &lt;c&gt; element is returned.
       *
       * @param source is the Element or Document to start navigating from
-      * @param is a simple path expression, seperated by '/' which denotes
+      * @param path is a simple path expression, seperated by '/' which denotes
       * the path from the source to the resulting element such as a/b/c
       *
       * @return the first Element on the given path which either already
@@ -324,5 +324,5 @@ public class DocumentHelper {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.20 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.21 2004/06/25 12:34:46 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.44 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: Element.java,v 1.45 2004/06/25 12:34:46 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.44 $
+  * @version $Revision: 1.45 $
   */
 public interface Element extends Branch {
 
@@ -396,7 +396,7 @@ public interface Element extends Branch {
       */
     public int attributeCount();
     
-    /** @returns an iterator over the attributes of this element
+    /** @return an iterator over the attributes of this element
       */
     public Iterator attributeIterator();
     
@@ -421,7 +421,7 @@ public interface Element extends Branch {
       * @return the attribute for the given fully qualified name or null if 
       * it could not be found.
       */
-    public Attribute attribute(QName qname);
+    public Attribute attribute(QName qName);
 
     /** <p>This returns the attribute value for the attribute with the 
       * given name and any namespace or null if there is no such 
@@ -508,7 +508,7 @@ public interface Element extends Branch {
       * @param qName is the fully qualified name to search for
       * @return the first element with the given fully qualified name
       */
-    public Element element(QName qname);
+    public Element element(QName qName);
 
     /** <p>Returns the elements contained in this element. 
       * If this element does not contain any elements then this method returns
@@ -567,7 +567,7 @@ public interface Element extends Branch {
       * @return an iterator over the contained elements matching the given 
       * fully qualified name
       */
-    public Iterator elementIterator(QName qname);
+    public Iterator elementIterator(QName qName);
         
     
 
@@ -595,7 +595,7 @@ public interface Element extends Branch {
         
     
     /** Appends the attributes of the given element to me.
-      * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
+      * This method behaves like the {@link java.util.Collection#addAll(java.util.Collection)} 
       * method.
       *
       * @param element is the element whose attributes will be added to me.
@@ -688,5 +688,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.44 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: Element.java,v 1.45 2004/06/25 12:34:46 maartenc Exp $
  */

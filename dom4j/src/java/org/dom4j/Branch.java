@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.29 2004/06/25 08:03:32 maartenc Exp $
+ * $Id: Branch.java,v 1.30 2004/06/25 12:34:46 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.List;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.29 $
+  * @version $Revision: 1.30 $
   */
 public interface Branch extends Node {
 
@@ -82,10 +82,10 @@ public interface Branch extends Node {
     public void setContent(List content);    
     
     /** Appends the content of the given branch to this branch instance.
-      * This method behaves like the {@link Collection#addAll(java.util.Collection)} 
+      * This method behaves like the {@link java.util.Collection#addAll(java.util.Collection)} 
       * method.
       *
-      * @param element is the element whose content will be added to me.
+      * @param branch is the branch whose content will be added to me.
       */
     public void appendContent(Branch branch);
     
@@ -247,7 +247,7 @@ public interface Branch extends Node {
      * <code>CDATASections</code>, the normalize operation alone may not be 
      * sufficient, since XPointers do not differentiate between 
      * <code>Text</code> nodes and <code>CDATASection</code> nodes.
-     * @version DOM Level 2
+     * @since DOM Level 2
      */
     public void normalize();
 }
@@ -297,5 +297,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.29 2004/06/25 08:03:32 maartenc Exp $
+ * $Id: Branch.java,v 1.30 2004/06/25 12:34:46 maartenc Exp $
  */

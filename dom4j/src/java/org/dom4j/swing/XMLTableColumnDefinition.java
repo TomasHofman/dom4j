@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLTableColumnDefinition.java,v 1.7 2004/06/25 08:03:40 maartenc Exp $
+ * $Id: XMLTableColumnDefinition.java,v 1.8 2004/06/25 12:34:49 maartenc Exp $
  */
 
 package org.dom4j.swing;
@@ -19,7 +19,7 @@ import org.dom4j.XPath;
   * within a table definition.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $ 
+  * @version $Revision: 1.8 $ 
   */
 public class XMLTableColumnDefinition implements Serializable {
 
@@ -155,8 +155,8 @@ public class XMLTableColumnDefinition implements Serializable {
         return columnNameXPath;
     }
     
-    /** Setter for property xpath.
-     * @param xpath New value of property xpath.
+    /** Setter for property columnNameXPath.
+     * @param columnNameXPath New value of property xpath.
      */
     public void setColumnNameXPath(XPath columnNameXPath) {
         this.columnNameXPath = columnNameXPath;
@@ -219,5 +219,5 @@ public class XMLTableColumnDefinition implements Serializable {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLTableColumnDefinition.java,v 1.7 2004/06/25 08:03:40 maartenc Exp $
+ * $Id: XMLTableColumnDefinition.java,v 1.8 2004/06/25 12:34:49 maartenc Exp $
  */

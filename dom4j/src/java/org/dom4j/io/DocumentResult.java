@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentResult.java,v 1.5 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: DocumentResult.java,v 1.6 2004/06/25 12:34:47 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -15,16 +15,16 @@ import org.dom4j.Document;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.ext.LexicalHandler;
 
-/** <p><code>DocumentResult</code> implements a JAXP {@link Result}
-  * for a {@link Document}.</p>
-  *
-  * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
-  */
+/**
+ * <p><code>DocumentResult</code> implements a JAXP {@link SAXResult} 
+ * for a {@link Document}.</p>
+ *
+ * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
+ * @version $Revision: 1.6 $
+ */
 public class DocumentResult extends SAXResult {
 
     private SAXContentHandler contentHandler;
-
     
     public DocumentResult() {
         this( new SAXContentHandler() );
@@ -109,5 +109,5 @@ public class DocumentResult extends SAXResult {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentResult.java,v 1.5 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: DocumentResult.java,v 1.6 2004/06/25 12:34:47 maartenc Exp $
  */

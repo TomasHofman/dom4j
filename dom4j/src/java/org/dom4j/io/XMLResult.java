@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLResult.java,v 1.6 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: XMLResult.java,v 1.7 2004/06/25 12:34:48 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -18,12 +18,12 @@ import javax.xml.transform.sax.SAXResult;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.ext.LexicalHandler;
 
-/** <p><code>XMLResult</code> implements a JAXP {@link Result}
+/** <p><code>XMLResult</code> implements a JAXP {@link SAXResult}
   * for an output stream with support for pretty printing
   * and control over how the XML is formatted.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class XMLResult extends SAXResult {
 
@@ -123,5 +123,5 @@ public class XMLResult extends SAXResult {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLResult.java,v 1.6 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: XMLResult.java,v 1.7 2004/06/25 12:34:48 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.73 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.74 2004/06/25 12:34:48 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -47,7 +47,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
 /**<p><code>XMLWriter</code> takes a DOM4J tree and formats it to a
   * stream as XML.
   * It can also take SAX events too so can be used by SAX clients as this object
-  * implements the {@link ContentHandler} and {@link LexicalHandler} interfaces.
+  * implements the {@link org.xml.sax.ContentHandler} and {@link LexicalHandler} interfaces.
   * as well. This formatter performs typical document
   * formatting.  The XML declaration and processing instructions are
   * always on their own lines. An {@link OutputFormat} object can be
@@ -66,7 +66,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.73 $
+  * @version $Revision: 1.74 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     
@@ -1278,8 +1278,6 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
      * <p>
      * This will print a new line only if the newlines flag was set to true
      * </p>
-     *
-     * @param out <code>Writer</code> to write to
      */
     protected void writePrintln() throws IOException  {
         if (format.isNewlines()) {
@@ -1584,5 +1582,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.73 2004/06/25 08:03:38 maartenc Exp $
+ * $Id: XMLWriter.java,v 1.74 2004/06/25 12:34:48 maartenc Exp $
  */

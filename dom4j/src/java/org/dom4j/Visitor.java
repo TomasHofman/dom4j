@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Visitor.java,v 1.4 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: Visitor.java,v 1.5 2004/06/25 12:34:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -24,19 +24,19 @@ package org.dom4j;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public interface Visitor {
 
     /** <p>Visits the given <code>Document</code></p>
       *
-      * @param node is the <code>Document</code> node to visit.
+      * @param document is the <code>Document</code> node to visit.
       */
     public void visit(Document document);
 
     /** <p>Visits the given <code>DocumentType</code></p>
       *
-      * @param node is the <code>DocumentType</code> node to visit.
+      * @param documentType is the <code>DocumentType</code> node to visit.
       */
     public void visit(DocumentType documentType);
 
@@ -72,7 +72,7 @@ public interface Visitor {
 
     /** <p>Visits the given <code>Namespace</code></p>
       *
-      * @param node is the <code>Namespace</code> node to visit.
+      * @param namespace is the <code>Namespace</code> node to visit.
       */
     public void visit(Namespace namespace);
 
@@ -137,5 +137,5 @@ public interface Visitor {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Visitor.java,v 1.4 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: Visitor.java,v 1.5 2004/06/25 12:34:47 maartenc Exp $
  */

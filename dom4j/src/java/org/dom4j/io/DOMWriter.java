@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.13 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.14 2004/06/25 12:34:47 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -27,7 +27,7 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class DOMWriter {
 
@@ -269,9 +269,6 @@ public class DOMWriter {
         domCurrent.appendChild(domPI);
     }
     
-    /** @return the new local namespace set which may be different from the input
-      * set if a new namespace is added to the set
-      */
     protected void writeNamespace( 
         org.w3c.dom.Element domElement, 
         Namespace namespace
@@ -429,5 +426,5 @@ public class DOMWriter {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.13 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.14 2004/06/25 12:34:47 maartenc Exp $
  */

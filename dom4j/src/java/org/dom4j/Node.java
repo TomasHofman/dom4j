@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.28 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: Node.java,v 1.29 2004/06/25 12:34:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.28 $
+  * @version $Revision: 1.29 $
   */
 public interface Node extends Cloneable {
 
@@ -436,7 +436,7 @@ public interface Node extends Cloneable {
     /** <p><code>clone</code> will return a deep clone or if this node is
       * read-only then clone will return the same instance.
       *
-      * @@return a deep clone of myself or myself if I am read only.
+      * @return a deep clone of myself or myself if I am read only.
       */
     public Object clone();
 }
@@ -486,5 +486,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.28 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: Node.java,v 1.29 2004/06/25 12:34:47 maartenc Exp $
  */

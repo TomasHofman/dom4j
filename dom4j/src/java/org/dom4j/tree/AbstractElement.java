@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.76 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.77 2004/06/25 12:34:49 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.76 $
+  * @version $Revision: 1.77 $
   */
 
 public abstract class AbstractElement
@@ -1635,7 +1635,7 @@ public abstract class AbstractElement
      * <code>CDATASections</code>, the normalize operation alone may not be 
      * sufficient, since XPointers do not differentiate between 
      * <code>Text</code> nodes and <code>CDATASection</code> nodes.
-     * @version DOM Level 2
+     * @since DOM Level 2
      */
 
     public void normalize() {
@@ -2325,5 +2325,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.76 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.77 2004/06/25 12:34:49 maartenc Exp $
  */

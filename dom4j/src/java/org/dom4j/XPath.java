@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPath.java,v 1.17 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: XPath.java,v 1.18 2004/06/25 12:34:47 maartenc Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import org.jaxen.VariableContext;
   * it has been parsed from a String.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.17 $
+  * @version $Revision: 1.18 $
   */
 public interface XPath extends NodeFilter {
 
@@ -164,14 +164,14 @@ public interface XPath extends NodeFilter {
     public boolean booleanValueOf(Object context);
 
     /** <p><code>sort</code> sorts the given List of Nodes
-      * using this XPath expression as a {@link Comparator}.</p>
+      * using this XPath expression as a {@link java.util.Comparator}.</p>
       *
       * @param list is the list of Nodes to sort
       */
     public void sort( List list );
     
     /** <p><code>sort</code> sorts the given List of Nodes
-      * using this XPath expression as a {@link Comparator} 
+      * using this XPath expression as a {@link java.util.Comparator} 
       * and optionally removing duplicates.</p>
       *
       * @param list is the list of Nodes to sort
@@ -271,5 +271,5 @@ public interface XPath extends NodeFilter {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPath.java,v 1.17 2004/06/25 08:03:33 maartenc Exp $
+ * $Id: XPath.java,v 1.18 2004/06/25 12:34:47 maartenc Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BackedList.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: BackedList.java,v 1.11 2004/06/25 12:34:50 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -18,12 +18,12 @@ import org.dom4j.IllegalAddException;
 import org.dom4j.Node;
 
 /** <p><code>BackedList</code> represents a list of content
-  * of a {@link Branch}. Changes to the list will
+  * of a {@link org.dom4j.Branch}. Changes to the list will
   * be reflected in the branch, though changes to the branch will not 
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class BackedList extends ArrayList {
 
@@ -195,5 +195,5 @@ public class BackedList extends ArrayList {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BackedList.java,v 1.10 2004/06/25 08:03:41 maartenc Exp $
+ * $Id: BackedList.java,v 1.11 2004/06/25 12:34:50 maartenc Exp $
  */

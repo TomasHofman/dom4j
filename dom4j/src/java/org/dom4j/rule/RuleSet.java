@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: RuleSet.java,v 1.7 2004/06/25 08:03:39 maartenc Exp $
+ * $Id: RuleSet.java,v 1.8 2004/06/25 12:34:48 maartenc Exp $
  */
 
 package org.dom4j.rule;
@@ -21,7 +21,7 @@ import org.dom4j.Node;
   * rules can be evaluated in order of priority.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class RuleSet {
 
@@ -42,7 +42,6 @@ public class RuleSet {
     /** Performs an XSLT processing model match for the rule
       * which matches the given Node the best.
       *
-      * @param mode is the mode associated with the rule if any
       * @param node is the DOM4J Node to match against
       * @return the matching Rule or no rule if none matched
       */
@@ -136,5 +135,5 @@ public class RuleSet {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: RuleSet.java,v 1.7 2004/06/25 08:03:39 maartenc Exp $
+ * $Id: RuleSet.java,v 1.8 2004/06/25 12:34:48 maartenc Exp $
  */
