@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BackedList.java,v 1.7 2003/05/15 22:48:02 maartenc Exp $
+ * $Id: BackedList.java,v 1.8 2004/02/26 22:25:10 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,7 @@ import org.dom4j.Node;
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class BackedList extends ArrayList {
 
@@ -56,26 +56,21 @@ public class BackedList extends ArrayList {
     }
     
     public void add(int index, Object object) {
-        int size = branchContent.size();
+        int size = size();
         if ( index < 0 ) {
             throw new IndexOutOfBoundsException( "Index value: " + index + " is less than zero" );
         }
         else if ( index > size ) {
             throw new IndexOutOfBoundsException( "Index value: " + index + " cannot be greater than the size: " + size );
         }
-        int realIndex = size;
-        if (index < realIndex) {
-            realIndex = branchContent.indexOf( get(index) );
-        }
-        if ( realIndex < 0 ) {
-            realIndex = ( index == 0 ) ? 0 : Integer.MAX_VALUE;
-        }
-        if ( realIndex < size ) {
-            branch.addNode(realIndex, asNode( object ) );
-        }
-        else {
-            branch.addNode( asNode( object ) );
-        }
+
+        int realIndex = size == 0
+                ? branchContent.size()                   // Insert at the end of branch
+                : index < size
+                ? branchContent.indexOf(get(index))      // Normal case: get position of element in branch
+                : branchContent.indexOf(get(size - 1));  // Insert after last item
+        
+        branch.addNode(realIndex, asNode( object ) );
         super.add(index, object);
     }
     
@@ -200,5 +195,5 @@ public class BackedList extends ArrayList {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BackedList.java,v 1.7 2003/05/15 22:48:02 maartenc Exp $
+ * $Id: BackedList.java,v 1.8 2004/02/26 22:25:10 maartenc Exp $
  */
