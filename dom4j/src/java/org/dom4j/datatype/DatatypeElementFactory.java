@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DatatypeElementFactory.java,v 1.2 2001/11/02 09:57:50 jstrachan Exp $
+ * $Id: DatatypeElementFactory.java,v 1.3 2001/11/02 10:30:22 jstrachan Exp $
  */
 
 package org.dom4j.datatype;
@@ -28,7 +28,7 @@ import org.xml.sax.Attributes;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.2 $
+ * @version $Revision: 1.3 $
  */
 public class DatatypeElementFactory extends DocumentFactory {
     
@@ -86,14 +86,19 @@ public class DatatypeElementFactory extends DocumentFactory {
     public Element createElement(QName qname) {
         //the element may have its own element factory!
         //use factory from the qname for datatype
-        DatatypeElementFactory factory=(DatatypeElementFactory)qname.getDocumentFactory();
-        XSDatatype dataType = factory.getChildElementXSDatatype( qname );
-        if ( dataType == null ) {
-            return super.createElement( qname );
-        }
-        else {
+        XSDatatype dataType = getChildElementXSDatatype( qname );
+        if ( dataType != null ) {
             return new DatatypeElement(qname, dataType);
         }
+        DocumentFactory documentFactory = qname.getDocumentFactory();
+        if ( documentFactory instanceof DatatypeElementFactory ) {
+            DatatypeElementFactory factory = (DatatypeElementFactory) documentFactory;
+            dataType = factory.getChildElementXSDatatype( qname );
+            if ( dataType != null ) {
+                return new DatatypeElement(qname, dataType);
+            }
+        }
+        return super.createElement( qname );
     }
     
     public Attribute createAttribute(Element owner, QName qname, String value) {
@@ -152,5 +157,5 @@ public class DatatypeElementFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeElementFactory.java,v 1.2 2001/11/02 09:57:50 jstrachan Exp $
+ * $Id: DatatypeElementFactory.java,v 1.3 2001/11/02 10:30:22 jstrachan Exp $
  */
