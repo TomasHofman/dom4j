@@ -22,7 +22,7 @@ import org.dom4j.TreeException;
   * multiple processes when performance is important.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BinaryReader extends TreeReader implements BinaryConstants {
 
@@ -115,12 +115,11 @@ public class BinaryReader extends TreeReader implements BinaryConstants {
         String name = readString(in);
         String prefix = readString(in);
         String uri = readString(in);
-        Element element = branch.createElement(name, prefix, uri);
+        Element element = branch.addElement(name, prefix, uri);
         int attributeCount = readAttributeCount(in);
         for (int i = 0; i < attributeCount; i++ ) {
             readAttribute(element, in);
         }
-        branch.add(element);
         readBranchContents(element, in);
     }
     
