@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMWriter.java,v 1.9 2004/03/19 20:17:54 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.10 2004/03/24 16:26:44 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -27,7 +27,7 @@ import org.dom4j.tree.NamespaceStack;
   * it as a W3C DOM object</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class DOMWriter {
 
@@ -37,7 +37,8 @@ public class DOMWriter {
         "org.apache.crimson.tree.XmlDocument", // Crimson
         "com.sun.xml.tree.XmlDocument", // Sun's Project X
         "oracle.xml.parser.v2.XMLDocument", // Oracle V2
-        "oracle.xml.parser.XMLDocument" // Oracle V1
+        "oracle.xml.parser.XMLDocument", // Oracle V1
+        "org.dom4j.dom.DOMDocument" // Internal DOM implementation
     };
 
     // the Class used to create new DOM Document instances
@@ -177,14 +178,9 @@ public class DOMWriter {
         org.w3c.dom.Node domCurrent,
         Element element
     ) {        
-        org.w3c.dom.Element domElement = null;
-        String elementUri = element.getNamespaceURI();
-        if (elementUri != null && elementUri.length() > 0 ) {            
-            domElement = domDocument.createElementNS( elementUri, element.getQualifiedName() );
-        }
-        else {
-            domElement = domDocument.createElement( element.getQualifiedName() );
-        }
+        String elUri = element.getNamespaceURI();
+        String elName = element.getQualifiedName();
+        org.w3c.dom.Element domElement = domDocument.createElementNS(elUri, elName);
         
         int stackSize = namespaceStack.size();
         List declaredNamespaces = element.declaredNamespaces();
@@ -199,14 +195,10 @@ public class DOMWriter {
         // add the attributes
         for ( int i = 0, size = element.attributeCount(); i < size ; i++ ) {
             Attribute attribute = (Attribute) element.attribute(i);
-            String uri = attribute.getNamespaceURI();
-            if ( uri != null && uri.length() > 0 ) {
-                //writeNamespace( domElement, attribute.getNamespace() );
-                domElement.setAttributeNS( uri, attribute.getQualifiedName(), attribute.getValue() );
-            }
-            else {
-                domElement.setAttribute( attribute.getName(), attribute.getValue() );
-            }
+            String attUri = attribute.getNamespaceURI();
+            String attName = attribute.getQualifiedName();
+            String value =  attribute.getValue();
+            domElement.setAttributeNS(attUri, attName, value);
         }
 
         // add content
@@ -428,5 +420,5 @@ public class DOMWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMWriter.java,v 1.9 2004/03/19 20:17:54 maartenc Exp $
+ * $Id: DOMWriter.java,v 1.10 2004/03/24 16:26:44 maartenc Exp $
  */
