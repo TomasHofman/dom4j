@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: HTMLWriter.java,v 1.6 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.7 2001/06/05 08:07:41 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -32,7 +32,7 @@ import org.xml.sax.SAXException;
   * as for &lt;BR&gt; and &lt;P&gt;.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
-  * @version $Revision: 1.6 $ 
+  * @version $Revision: 1.7 $ 
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -88,14 +88,14 @@ public class HTMLWriter extends XMLWriter {
       * @param cdata <code>CDATA</code> to output.
       */
     public void write(CDATA cdata) throws IOException {
-        writer.write(cdata.getText());
+        writer.write( escapeElementEntities( cdata.getText() ) );
         lastOutputNodeType = Node.CDATA_SECTION_NODE;
     }
     
     /** Writes the given {@link Entity}.
       *
       * @param entity <code>Entity</code> to output.
-      */
+      */    
     public void write(Entity entity) throws IOException {
         writer.write(entity.getText());
         lastOutputNodeType = Node.ENTITY_REFERENCE_NODE;
@@ -200,5 +200,5 @@ public class HTMLWriter extends XMLWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.6 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.7 2001/06/05 08:07:41 jstrachan Exp $
  */

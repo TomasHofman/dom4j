@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.14 2001/05/11 14:01:34 jstrachan Exp $
+ * $Id: Node.java,v 1.15 2001/06/05 08:07:41 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public interface Node extends Cloneable {
 
@@ -303,7 +303,7 @@ public interface Node extends Cloneable {
       * and returns the result as a single <code>Node</code> instance.</p>
       *
       * @param xpathExpression is the XPath expression to be evaluated
-      * @return the <code>Node<code> matching the XPath expression
+      * @return the <code>Node</code> matching the XPath expression
       */
     public Node selectSingleNode(String xpathExpression);
 
@@ -345,7 +345,7 @@ public interface Node extends Cloneable {
       * If the node does not support the parent relationship then a new node
       * will be created which is linked to its parent and returned.
       *
-      * @return a <code>Node<code> which supports the parent relationship
+      * @return a <code>Node</code> which supports the parent relationship
       */
     public Node asXPathResult(Element parent);
 
@@ -411,5 +411,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.14 2001/05/11 14:01:34 jstrachan Exp $
+ * $Id: Node.java,v 1.15 2001/06/05 08:07:41 jstrachan Exp $
  */

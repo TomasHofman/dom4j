@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XMLWriter.java,v 1.28 2001/05/28 14:11:17 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.29 2001/06/05 08:07:41 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -68,7 +68,7 @@ import org.xml.sax.ext.LexicalHandler;
   * </p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.28 $
+  * @version $Revision: 1.29 $
   */
 public class XMLWriter implements ContentHandler, LexicalHandler {
 
@@ -207,7 +207,7 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
             write( node );
         }
         writePrintln();
-        flush();
+        //flush();
     }
 
     /** <p>Writes the <code>{@link Element}</code>, including
@@ -1013,5 +1013,5 @@ public class XMLWriter implements ContentHandler, LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.28 2001/05/28 14:11:17 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.29 2001/06/05 08:07:41 jstrachan Exp $
  */
