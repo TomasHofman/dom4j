@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentHelper.java,v 1.14 2004/03/25 15:17:13 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.15 2004/04/20 21:37:51 maartenc Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import org.jaxen.VariableContext;
   * for using DOM4J.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public class DocumentHelper {
 
@@ -211,6 +211,22 @@ public class DocumentHelper {
         return reader.read(new ByteArrayInputStream(text.getBytes()));
     }
 
+    /** <p><code>parseText</code> parses the given text as an XML document
+      * and returns the newly created Document, using the specified encoding.</p>
+      *
+      * @param text is the XML text to be parsed
+      * @param encoding text encoding
+      * @return a newly parsed Document
+      * @throws DocumentException if the document could not be parsed
+      * @throws UnsupportedEncodingException if the specified encoding is not 
+      *         supported.
+      */
+    public static Document parseText(String text, String encoding) 
+        throws DocumentException, UnsupportedEncodingException {
+        SAXReader reader = new SAXReader();
+        return reader.read(new ByteArrayInputStream(text.getBytes(encoding)));
+    }
+
     /** <p>makeElement</p> a helper method which navigates from the
       * given Document or Element node to some Element using the path 
       * expression, creating any necessary elements along the way.
@@ -306,5 +322,5 @@ public class DocumentHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentHelper.java,v 1.14 2004/03/25 15:17:13 maartenc Exp $
+ * $Id: DocumentHelper.java,v 1.15 2004/04/20 21:37:51 maartenc Exp $
  */
