@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: HTMLWriter.java,v 1.7 2001/06/05 08:07:41 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.8 2001/08/03 12:37:41 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -32,7 +32,7 @@ import org.xml.sax.SAXException;
   * as for &lt;BR&gt; and &lt;P&gt;.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
-  * @version $Revision: 1.7 $ 
+  * @version $Revision: 1.8 $ 
  */
 public class HTMLWriter extends XMLWriter {
 
@@ -110,18 +110,22 @@ public class HTMLWriter extends XMLWriter {
       * wierd behaviour from browsers for versions up to 5.x
       */
     protected void writeClose(String qualifiedName) throws IOException {
-        if ( ! getOmitElementCloseSet().contains( qualifiedName ) ) {
+        if ( ! omitElementClose( qualifiedName ) ) {
             super.writeClose(qualifiedName);
         }
     }
 
     protected void writeEmptyElementClose(String qualifiedName) throws IOException {
-        if ( ! getOmitElementCloseSet().contains( qualifiedName ) ) {
+        if ( ! getOmitElementCloseSet().contains( qualifiedName.toUpperCase() ) ) {
             super.writeEmptyElementClose(qualifiedName);
         }
         else {
             writer.write(">");
         }
+    }
+    
+    protected boolean omitElementClose( String qualifiedName ) {
+        return getOmitElementCloseSet().contains( qualifiedName.toUpperCase() );
     }
     
     protected Set getOmitElementCloseSet() {
@@ -133,16 +137,17 @@ public class HTMLWriter extends XMLWriter {
     }
     
     protected void loadOmitElementCloseSet(Set set) {
-        set.add( "p" );
-        set.add( "P" );
-        set.add( "br" );
+        set.add( "AREA" );
+        set.add( "BASE" );
         set.add( "BR" );
-        set.add( "input" );
-        set.add( "INPUT" );
-        set.add( "hr" );
+        set.add( "COL" );
         set.add( "HR" );
-        set.add( "img" );
         set.add( "IMG" );
+        set.add( "INPUT" );
+        set.add( "LINK" );
+        set.add( "META" );
+        set.add( "P" );
+        set.add( "PARAM" );
     }
     
     protected String getPadText() {
@@ -200,5 +205,5 @@ public class HTMLWriter extends XMLWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.7 2001/06/05 08:07:41 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.8 2001/08/03 12:37:41 jstrachan Exp $
  */
