@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DispatchHandler.java,v 1.7 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: DispatchHandler.java,v 1.8 2004/06/28 08:21:03 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -25,7 +25,7 @@ import org.dom4j.ElementPath;
   * registered with it to process the elements encountered.
   *
   * @author <a href="mailto:dwhite@equipecom.com">Dave White</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 
 class DispatchHandler implements ElementHandler
@@ -79,6 +79,13 @@ class DispatchHandler implements ElementHandler
         return (ElementHandler)handlers.remove(path);   
     }
     
+     /** @return true when an <code>ElementHandler</code> is registered for
+       * the specified path.
+       */
+     public boolean containsHandler(String path) {
+        return handlers.containsKey(path);
+     }
+
     /** When multiple <code>ElementHandler</code> instances have been 
       * registered, this will set a default <code>ElementHandler</code>
       * to be called for any path which does <b>NOT</b> have a handler
@@ -220,5 +227,5 @@ class DispatchHandler implements ElementHandler
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DispatchHandler.java,v 1.7 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: DispatchHandler.java,v 1.8 2004/06/28 08:21:03 maartenc Exp $
  */

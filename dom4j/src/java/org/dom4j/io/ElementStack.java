@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: ElementStack.java,v 1.10 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: ElementStack.java,v 1.11 2004/06/28 08:21:03 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -20,9 +20,9 @@ import org.dom4j.ElementPath;
   * when a node is complete.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
-class ElementStack implements ElementPath {
+public class ElementStack implements ElementPath {
 
     /** stack of <code>Element</code> objects */
     protected Element[] stack;
@@ -140,6 +140,13 @@ class ElementStack implements ElementPath {
         this.handler.removeHandler(getHandlerPath(path));
     }
     
+    /** @return true when an <code>ElementHandler</code> is registered for
+      * the specified path.
+      */
+    public boolean containsHandler(String path) {
+        return this.handler.containsHandler(path);
+    }
+
     private String getHandlerPath(String path) {
         String handlerPath;
         if (this.handler == null) {
@@ -203,5 +210,5 @@ class ElementStack implements ElementPath {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: ElementStack.java,v 1.10 2004/06/25 08:03:36 maartenc Exp $
+ * $Id: ElementStack.java,v 1.11 2004/06/28 08:21:03 maartenc Exp $
  */
