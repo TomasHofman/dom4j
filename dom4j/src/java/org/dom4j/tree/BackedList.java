@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BackedList.java,v 1.11 2004/06/25 12:34:50 maartenc Exp $
+ * $Id: BackedList.java,v 1.12 2004/08/10 11:18:49 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -23,7 +23,7 @@ import org.dom4j.Node;
   * be reflected in this list.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class BackedList extends ArrayList {
 
@@ -63,12 +63,12 @@ public class BackedList extends ArrayList {
         else if ( index > size ) {
             throw new IndexOutOfBoundsException( "Index value: " + index + " cannot be greater than the size: " + size );
         }
-
+        
         int realIndex = size == 0
                 ? branchContent.size()                   // Insert at the end of branch
                 : index < size
                 ? branchContent.indexOf(get(index))      // Normal case: get position of element in branch
-                : branchContent.indexOf(get(size - 1));  // Insert after last item
+                : (branchContent.indexOf(get(size - 1)) + 1);  // Insert after last item
         
         branch.addNode(realIndex, asNode( object ) );
         super.add(index, object);
@@ -195,5 +195,5 @@ public class BackedList extends ArrayList {
  *
  * Copyright 2001-2004 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BackedList.java,v 1.11 2004/06/25 12:34:50 maartenc Exp $
+ * $Id: BackedList.java,v 1.12 2004/08/10 11:18:49 maartenc Exp $
  */
