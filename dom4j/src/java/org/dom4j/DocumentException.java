@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentException.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DocumentException.java,v 1.2 2001/06/09 13:29:38 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -16,12 +16,12 @@ import java.io.PrintWriter;
   * during the processing of a DOM4J document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DocumentException extends Exception {
 
-    /** A wrapped <code>Exception</code> */
-    private Exception nestedException;
+    /** A wrapped <code>Throwable</code> */
+    private Throwable nestedException;
     
 
     public DocumentException() {
@@ -32,17 +32,17 @@ public class DocumentException extends Exception {
         super(message);
     }
     
-    public DocumentException(Exception nestedException) {
+    public DocumentException(Throwable nestedException) {
         super(nestedException.getMessage());    
         this.nestedException = nestedException;
     }    
 
-    public DocumentException(String message,Exception nestedException) {
+    public DocumentException(String message, Throwable nestedException) {
         super(message);    
         this.nestedException = nestedException;
     }    
 
-    public Exception getNestedException() {
+    public Throwable getNestedException() {
         return nestedException;
     }
     
@@ -124,5 +124,5 @@ public class DocumentException extends Exception {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentException.java,v 1.1 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: DocumentException.java,v 1.2 2001/06/09 13:29:38 jstrachan Exp $
  */

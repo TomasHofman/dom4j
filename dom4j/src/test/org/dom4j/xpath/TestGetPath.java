@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.1 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.2 2001/06/09 13:29:38 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -16,6 +16,7 @@ import java.util.List;
 import junit.framework.*;
 import junit.textui.TestRunner;
 
+import org.dom4j.Attribute;
 import org.dom4j.AbstractTestCase;
 import org.dom4j.Branch;
 import org.dom4j.Element;
@@ -24,7 +25,7 @@ import org.dom4j.Node;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -45,9 +46,40 @@ public class TestGetPath extends AbstractTestCase {
     public void testGetPath() throws Exception {
         log( "Testing paths" );
         
-        testBranchPath( document );
+        //testBranchPath( document );
+        
+        testPath( document, "/" );
+        
+        Element root = document.getRootElement();
+        
+        testPath( root, "/root" );
+        
+        List elements = root.elements();
+        
+        testPath( (Node) elements.get(0), "/root/author" );
+        
+        for ( int i = 0, size = elements.size(); i < size; i++ ) {
+            String path = "/root/author";
+/*
+            if ( i > 0 ) {
+                path += "[" + (i + 1) + "]";
+            }
+*/
+            Element element = (Element) elements.get(i);
+            testPath( element, path );
+            
+            path += "/@name";
+            
+            Attribute attribute = element.attribute( "name" );
+            testPath( attribute, path );
+        }
     }
         
+    protected void testPath(Node node, String value) {
+        String path = node.getPath();
+        assertEquals( "Path expression should be what is expected", path, value );
+    }
+    
     protected void testBranchPath(Branch branch) {
         testNodePath( branch );
         
@@ -123,5 +155,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.1 2001/03/03 14:46:22 jstrachan Exp $
+ * $Id: TestGetPath.java,v 1.2 2001/06/09 13:29:38 jstrachan Exp $
  */

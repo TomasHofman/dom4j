@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDemo.java,v 1.9 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.10 2001/06/09 13:29:38 jstrachan Exp $
  */
 
 import org.dom4j.Document;
@@ -15,7 +15,7 @@ import org.dom4j.io.XMLWriter;
 /** An abstract base class for the demo programs.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public abstract class AbstractDemo {
 
@@ -34,7 +34,7 @@ public abstract class AbstractDemo {
         }
         catch (DocumentException e) {
             System.out.println( "Exception occurred: " + e );
-            Exception nestedException = e.getNestedException();
+            Throwable nestedException = e.getNestedException();
             if ( nestedException != null ) {
                 System.out.println( "NestedException: " + nestedException );
                 nestedException.printStackTrace();
@@ -76,6 +76,7 @@ public abstract class AbstractDemo {
 
     protected void process(Document document) throws Exception {
         getXMLWriter().write(document);
+        getXMLWriter().flush();
     }
         
     protected void print( String text ) {
@@ -151,5 +152,5 @@ public abstract class AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDemo.java,v 1.9 2001/04/20 12:21:11 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.10 2001/06/09 13:29:38 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.15 2001/06/05 08:07:41 jstrachan Exp $
+ * $Id: Node.java,v 1.16 2001/06/09 13:29:38 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -24,7 +24,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public interface Node extends Cloneable {
 
@@ -61,6 +61,9 @@ public interface Node extends Cloneable {
     
     /** Does not match any valid node */
     public static final short UNKNOWN_NODE = 14;
+    
+    /** The maximum number of node types for sizing purposes */
+    public static final short MAX_NODE_TYPE = 14;
     
     
     /** <p><code>supportsParent</code> returns true if this node supports the 
@@ -215,12 +218,10 @@ public interface Node extends Cloneable {
       */
     public short getNodeType();
 
-    /** Get the name of this node, following the DOM rules 
-     *
-    *  @return The name of the node. For an element this is the element name, for an attribute
-    * it is the attribute name, as a QName. Other node types return conventional names such
-    * as "#text" or "#comment"
-    */
+    /** @return the name of the type of node such as "Document", "Element", "Attribute" or "Text"
+     */
+    public String getNodeTypeName();
+    
     
     /** <p>Removes this node from its parent if there is one. 
       * If this node is the root element of a document then it is removed
@@ -411,5 +412,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.15 2001/06/05 08:07:41 jstrachan Exp $
+ * $Id: Node.java,v 1.16 2001/06/09 13:29:38 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.39 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.40 2001/06/09 13:29:38 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.39 $
+  * @version $Revision: 1.40 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -112,9 +112,26 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         
     public String getPath() {
         Element parent = getParent();
-        return ( parent != null ) 
-            ? parent.getPath() + "/" + getQualifiedName()
-            : getQualifiedName();
+        if ( parent == null ) {
+            return "/" + getQualifiedName();
+        }
+        return parent.getPath() + "/" + getQualifiedName();
+/*        
+        StringBuffer buffer = new StringBuffer( parent.getPath() );
+        buffer.append( "/" );
+        buffer.append( getQualifiedName() );
+        List mySiblings = parent.elements( getQName() );
+        if ( mySiblings.size() > 1 ) {
+            int idx = mySiblings.indexOf( this );
+            if ( idx > 0 ) {
+                buffer.append( "[" );
+                buffer.append( Integer.toString( ++idx ) );
+                buffer.append( "]" );
+            }
+            
+        }
+        return buffer.toString();
+*/
     }
     
     public String asXML() {
@@ -614,5 +631,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.39 2001/05/30 10:06:43 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.40 2001/06/09 13:29:38 jstrachan Exp $
  */
