@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: XMLWriter.java,v 1.50 2002/07/15 14:26:15 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.51 2002/07/26 09:10:15 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
   * @author Joseph Bowbeer
-  * @version $Revision: 1.50 $
+  * @version $Revision: 1.51 $
   */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
@@ -1183,7 +1183,8 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
         int i, last = 0, size = text.length();
         for ( i = 0; i < size; i++ ) {
             String entity = null;
-            switch( text.charAt(i) ) {
+            char c = text.charAt(i);
+            switch( c ) {
                 case '<' :
                     entity = "&lt;";
                     break;
@@ -1192,6 +1193,14 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
                     break;
                 case '&' :
                     entity = "&amp;";
+                    break;
+                case '\t': case '\n': case '\r':
+                    // don't encode standard whitespace characters
+                    break;
+                default:
+                    // encode low and high characters as entities
+                    if ((c < 32) || (c >= 127))
+                        entity = "&#" + (int)c + ";";
                     break;
             }
             if (entity != null) {
@@ -1232,7 +1241,8 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
         int i, last = 0, size = text.length();
         for ( i = 0; i < size; i++ ) {
             String entity = null;
-            switch( text.charAt(i) ) {
+            char c = text.charAt(i);
+            switch( c ) {
                 case '<' :
                     entity = "&lt;";
                     break;
@@ -1247,6 +1257,14 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
                     break;
                 case '&' :
                     entity = "&amp;";
+                    break;
+                case '\t': case '\n': case '\r':
+                    // don't encode standard whitespace characters
+                    break;
+                default:
+                    // encode low and high characters as entities
+                    if ((c < 32) || (c >= 127))
+                        entity = "&#" + (int)c + ";";
                     break;
             }
             if (entity != null) {
@@ -1349,5 +1367,5 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XMLWriter.java,v 1.50 2002/07/15 14:26:15 jstrachan Exp $
+ * $Id: XMLWriter.java,v 1.51 2002/07/26 09:10:15 jstrachan Exp $
  */
