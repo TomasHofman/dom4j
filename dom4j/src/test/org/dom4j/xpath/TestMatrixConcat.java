@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestMatrixConcat.java,v 1.1 2001/04/19 17:47:09 jstrachan Exp $
+ * $Id: TestMatrixConcat.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the matrix-concat extension function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestMatrixConcat extends AbstractTestCase {
 
@@ -74,7 +74,7 @@ public class TestMatrixConcat extends AbstractTestCase {
         //log( "(0) = " + object + " type: " + object.getClass() );
         
         int size = results.length;
-        assert( "List should contain " + size + " results: " + list, list.size() == size );
+        assertTrue( "List should contain " + size + " results: " + list, list.size() == size );
         
         for ( int i = 0; i < size; i++ ) {
             assertEquals( list.get(i), results[i] );
@@ -131,5 +131,5 @@ public class TestMatrixConcat extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestMatrixConcat.java,v 1.1 2001/04/19 17:47:09 jstrachan Exp $
+ * $Id: TestMatrixConcat.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestPrefix.java,v 1.1 2001/06/19 14:14:31 jstrachan Exp $
+ * $Id: TestPrefix.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Tests finding items using a namespace prefix
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestPrefix extends AbstractTestCase {
 
@@ -68,7 +68,7 @@ public class TestPrefix extends AbstractTestCase {
         
         log( "Searched path: " + xpathText + " found: " + list.size() + " result(s)" );
 
-        assert( list.size() > 0 );
+        assertTrue( list.size() > 0 );
         
         if ( VERBOSE ) {
             log( "xpath: " + xpath );
@@ -126,5 +126,5 @@ public class TestPrefix extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestPrefix.java,v 1.1 2001/06/19 14:14:31 jstrachan Exp $
+ * $Id: TestPrefix.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestVariable.java,v 1.3 2001/02/27 14:01:42 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.4 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the valueOf() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestVariable extends AbstractTestCase {
 
@@ -79,7 +79,7 @@ public class TestVariable extends AbstractTestCase {
             log( "results: " + list );
         }
         
-        assert( "Results should not contain the root node", ! list.contains( rootNode ) );
+        assertTrue( "Results should not contain the root node", ! list.contains( rootNode ) );
     }
     
     protected XPath createXPath( String xpath ) {
@@ -142,5 +142,5 @@ public class TestVariable extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestVariable.java,v 1.3 2001/02/27 14:01:42 jstrachan Exp $
+ * $Id: TestVariable.java,v 1.4 2001/07/03 08:13:32 jstrachan Exp $
  */

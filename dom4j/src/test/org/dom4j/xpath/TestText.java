@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestText.java,v 1.2 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestText.java,v 1.3 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -21,7 +21,7 @@ import org.dom4j.Text;
 /** Test harness for the text() function
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestText extends AbstractTestCase {
 
@@ -70,13 +70,13 @@ public class TestText extends AbstractTestCase {
             
             log( "Found Result: " + object );
             
-            assert( "Results should be Text objects", object instanceof Text );
+            assertTrue( "Results should be Text objects", object instanceof Text );
             
             Text text = (Text) object;
             
-            assert( "Results should support the parent relationship", text.supportsParent() );
-            assert( "Results should contain reference to the parent element", text.getParent() != null );
-            assert( "Results should contain reference to the owning document", text.getDocument() != null );
+            assertTrue( "Results should support the parent relationship", text.supportsParent() );
+            assertTrue( "Results should contain reference to the parent element", text.getParent() != null );
+            assertTrue( "Results should contain reference to the owning document", text.getDocument() != null );
         }
     }
 }
@@ -126,5 +126,5 @@ public class TestText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestText.java,v 1.2 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestText.java,v 1.3 2001/07/03 08:13:32 jstrachan Exp $
  */

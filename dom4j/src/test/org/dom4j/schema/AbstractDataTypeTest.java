@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDataTypeTest.java,v 1.1 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: AbstractDataTypeTest.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.schema;
@@ -26,7 +26,7 @@ import org.dom4j.Node;
   * for testing XML Schema Data Type integration. 
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class AbstractDataTypeTest extends AbstractTestCase {
 
@@ -52,7 +52,7 @@ public class AbstractDataTypeTest extends AbstractTestCase {
             log( "" );
         }
         
-        assert( "Results are not empty", ! list.isEmpty() );
+        assertTrue( "Results are not empty", ! list.isEmpty() );
         
         for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
             Node node = (Node) iter.next();
@@ -65,20 +65,20 @@ public class AbstractDataTypeTest extends AbstractTestCase {
                 testDataType( attribute, attribute.getData(), type );
             }
             else {
-                assert( "Did not find an attribute or element: " + node, false );
+                assertTrue( "Did not find an attribute or element: " + node, false );
             }
         }
     }
     
     protected void testDataType(Node node, Object data, Class type) {
-        assert( "Data object is not null", data != null );
+        assertTrue( "Data object is not null", data != null );
         
         if ( VERBOSE ) {
             log( "found: " + data + " type: " + data.getClass().getName() + " required type: " + type.getName() );
             log( "node: " + node );
         }
         
-        assert( 
+        assertTrue( 
             "Data object is of the correct type. Expected: " 
                 + type.getName() 
                 + " and found: " + data.getClass().getName(), 
@@ -132,5 +132,5 @@ public class AbstractDataTypeTest extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDataTypeTest.java,v 1.1 2001/05/30 20:49:31 jstrachan Exp $
+ * $Id: AbstractDataTypeTest.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParent.java,v 1.7 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestParent.java,v 1.8 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import junit.textui.TestRunner;
   * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class TestParent extends AbstractTestCase {
     
@@ -76,13 +76,13 @@ public class TestParent extends AbstractTestCase {
             log( "Parent: " + parent );
             log( "getParent(): " + node.getParent() );
             
-            assert( "getParent() returns parent for: " + node, node.getParent() == parent );
+            assertTrue( "getParent() returns parent for: " + node, node.getParent() == parent );
         }
         else {
             // lets create an XPath node
             Node xpathNode = node.asXPathResult( parent );
-            assert( "XPath Node supports parent for: " + xpathNode, xpathNode.supportsParent() );
-            assert( "getParent() returns parent for: " + xpathNode, xpathNode.getParent() == parent );
+            assertTrue( "XPath Node supports parent for: " + xpathNode, xpathNode.supportsParent() );
+            assertTrue( "getParent() returns parent for: " + xpathNode, xpathNode.getParent() == parent );
         }
     }    
 }
@@ -132,5 +132,5 @@ public class TestParent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParent.java,v 1.7 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestParent.java,v 1.8 2001/07/03 08:13:32 jstrachan Exp $
  */

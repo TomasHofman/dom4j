@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.6 2001/04/19 17:47:09 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.7 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the namespace axis 
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -78,15 +78,15 @@ public class TestNamespace extends AbstractTestCase {
             
             log( "Found Result: " + object );
             
-            assert( "Results should be Namespace objects", object instanceof Namespace );
+            assertTrue( "Results should be Namespace objects", object instanceof Namespace );
             
             Namespace namespace = (Namespace) object;
             
             log( "Parent node: " + namespace.getParent() );
             
-            assert( "Results should support the parent relationship", namespace.supportsParent() );
-            assert( "Results should contain reference to the parent element", namespace.getParent() != null );
-            assert( "Results should contain reference to the owning document", namespace.getDocument() != null );
+            assertTrue( "Results should support the parent relationship", namespace.supportsParent() );
+            assertTrue( "Results should contain reference to the parent element", namespace.getParent() != null );
+            assertTrue( "Results should contain reference to the owning document", namespace.getDocument() != null );
         }
     }
     
@@ -140,5 +140,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.6 2001/04/19 17:47:09 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.7 2001/07/03 08:13:32 jstrachan Exp $
  */

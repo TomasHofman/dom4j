@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAttribute.java,v 1.4 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestAttribute.java,v 1.5 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -25,7 +25,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the attribute axis 
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class TestAttribute extends AbstractTestCase {
 
@@ -78,13 +78,13 @@ public class TestAttribute extends AbstractTestCase {
             
             log( "Found Result: " + object );
             
-            assert( "Results should be Attribute objects", object instanceof Attribute );
+            assertTrue( "Results should be Attribute objects", object instanceof Attribute );
             
             Attribute attribute = (Attribute) object;
             
-            assert( "Results should support the parent relationship", attribute.supportsParent() );
-            assert( "Results should contain reference to the parent element", attribute.getParent() != null );
-            assert( "Results should contain reference to the owning document", attribute.getDocument() != null );
+            assertTrue( "Results should support the parent relationship", attribute.supportsParent() );
+            assertTrue( "Results should contain reference to the parent element", attribute.getParent() != null );
+            assertTrue( "Results should contain reference to the owning document", attribute.getDocument() != null );
         }
     }
 }
@@ -134,5 +134,5 @@ public class TestAttribute extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAttribute.java,v 1.4 2001/03/30 17:19:13 jstrachan Exp $
+ * $Id: TestAttribute.java,v 1.5 2001/07/03 08:13:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestAttributeDetach.java,v 1.1 2001/05/30 17:58:55 jstrachan Exp $
+ * $Id: TestAttributeDetach.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the detach() method on attributes
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestAttributeDetach extends AbstractTestCase {
 
@@ -39,13 +39,13 @@ public class TestAttributeDetach extends AbstractTestCase {
     public void testDetachAttribute() throws Exception {
         List attributes = document.selectNodes( "//@name" );
         
-        assert( "Found more than one attribute: ", attributes.size() > 0 );
+        assertTrue( "Found more than one attribute: ", attributes.size() > 0 );
         
         for ( Iterator iter = attributes.iterator(); iter.hasNext(); ) {
             Attribute attribute = (Attribute) iter.next();
             Element element = attribute.getParent();
             
-            assert( 
+            assertTrue( 
                 "Attribute: " + attribute + " has parent: " + element, 
                 attribute.getParent() == element
             );
@@ -64,8 +64,8 @@ public class TestAttributeDetach extends AbstractTestCase {
             attribute2 = element.attribute( qname );
             value2 = element.attributeValue( qname );
             
-            assert( "Element now has no value: " + value2, value2 == null );
-            assert( "Element now has no attribute: " + attribute2, attribute2 == null );
+            assertTrue( "Element now has no value: " + value2, value2 == null );
+            assertTrue( "Element now has no attribute: " + attribute2, attribute2 == null );
         }
     }
     
@@ -116,5 +116,5 @@ public class TestAttributeDetach extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestAttributeDetach.java,v 1.1 2001/05/30 17:58:55 jstrachan Exp $
+ * $Id: TestAttributeDetach.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
  */

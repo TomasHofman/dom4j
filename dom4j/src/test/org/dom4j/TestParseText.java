@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestParseText.java,v 1.1 2001/06/18 08:10:03 jstrachan Exp $
+ * $Id: TestParseText.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** Tests the {@link DocumentHelper#parseText(String)} method.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestParseText extends AbstractTestCase {
 
@@ -39,15 +39,15 @@ public class TestParseText extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testDocument() throws Exception {        
-        assert( "Document is not null", document != null );
+        assertTrue( "Document is not null", document != null );
         
         Element root = document.getRootElement();
         
-        assert( "Root element is not null", root != null );
+        assertTrue( "Root element is not null", root != null );
         
         Element author = root.element( "author" );
         
-        assert( "Author element is not null", author != null );
+        assertTrue( "Author element is not null", author != null );
         
         String name = author.attributeValue( "name");
         
@@ -111,5 +111,5 @@ public class TestParseText extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestParseText.java,v 1.1 2001/06/18 08:10:03 jstrachan Exp $
+ * $Id: TestParseText.java,v 1.2 2001/07/03 08:13:32 jstrachan Exp $
  */

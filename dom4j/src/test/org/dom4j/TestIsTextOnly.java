@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestIsTextOnly.java,v 1.1 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: TestIsTextOnly.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -19,7 +19,7 @@ import junit.textui.TestRunner;
   * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestIsTextOnly extends AbstractTestCase {
     
@@ -43,8 +43,8 @@ public class TestIsTextOnly extends AbstractTestCase {
         Element first = root.addElement( "child" );
         first.addText( "This is some text" );
         
-        assert( "Root node is not text only: " + root, ! root.isTextOnly() );
-        assert( "First child is text only: " + first, first.isTextOnly() );
+        assertTrue( "Root node is not text only: " + root, ! root.isTextOnly() );
+        assertTrue( "First child is text only: " + first, first.isTextOnly() );
     }
         
     // Implementation methods
@@ -96,5 +96,5 @@ public class TestIsTextOnly extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestIsTextOnly.java,v 1.1 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: TestIsTextOnly.java,v 1.2 2001/07/03 08:13:31 jstrachan Exp $
  */

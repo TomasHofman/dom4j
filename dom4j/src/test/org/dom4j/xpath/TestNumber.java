@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNumber.java,v 1.3 2001/05/23 16:40:24 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.4 2001/07/03 08:13:32 jstrachan Exp $
  */
 
 package org.dom4j.xpath;
@@ -22,7 +22,7 @@ import org.dom4j.XPath;
 /** Test harness for numeric XPath expressions
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestNumber extends AbstractTestCase {
 
@@ -84,7 +84,7 @@ public class TestNumber extends AbstractTestCase {
         catch (Throwable e) {
             log( "Caught exception: " + e );
             e.printStackTrace();
-            assert( "Failed to process:  " + xpathText + " caught exception: " + e, false );
+            assertTrue( "Failed to process:  " + xpathText + " caught exception: " + e, false );
         }
     }
     
@@ -135,5 +135,5 @@ public class TestNumber extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNumber.java,v 1.3 2001/05/23 16:40:24 jstrachan Exp $
+ * $Id: TestNumber.java,v 1.4 2001/07/03 08:13:32 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDetach.java,v 1.2 2001/05/30 17:58:55 jstrachan Exp $
+ * $Id: TestDetach.java,v 1.3 2001/07/03 08:13:31 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the detach() method on root elements
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestDetach extends AbstractTestCase {
 
@@ -40,38 +40,38 @@ public class TestDetach extends AbstractTestCase {
         document.setName( "doc1" );
         
         Element root = document.getRootElement();
-        assert( "Has root element", root != null );
-        assert( "Root has no parent", root.getParent() == null );
+        assertTrue( "Has root element", root != null );
+        assertTrue( "Root has no parent", root.getParent() == null );
         
         root.detach();
         
-        assert( "Detached root now has no document", root.getDocument() == null );
-        assert( "Original doc now has no root element", document.getRootElement() == null );
+        assertTrue( "Detached root now has no document", root.getDocument() == null );
+        assertTrue( "Original doc now has no root element", document.getRootElement() == null );
         
         Document doc2 = DocumentHelper.createDocument();
         doc2.setName( "doc2" );
         
-        assert( "Doc2 has no root element", doc2.getRootElement() == null );
+        assertTrue( "Doc2 has no root element", doc2.getRootElement() == null );
         
         doc2.setRootElement( root );
         
-        assert( "Doc2 has now has root element", doc2.getRootElement() == root );        
-        assert( "Root element now has document", root.getDocument() == doc2 );
+        assertTrue( "Doc2 has now has root element", doc2.getRootElement() == root );        
+        assertTrue( "Root element now has document", root.getDocument() == doc2 );
         
         
         Document doc3 = DocumentHelper.createDocument();
         doc3.setName( "doc3" );
         doc3.addElement( "foo" );
         
-        assert( "Doc3 has root element", doc3.getRootElement() != null );
+        assertTrue( "Doc3 has root element", doc3.getRootElement() != null );
         
         root = doc2.getRootElement();
         root.detach();
         doc3.setRootElement( root );
         
-        assert( "Doc3 now has root element", doc3.getRootElement() == root );        
-        assert( "Root element now has a document", root.getDocument() == doc3 );
-        assert( "Doc2 has no root element", doc2.getRootElement() == null );        
+        assertTrue( "Doc3 now has root element", doc3.getRootElement() == root );        
+        assertTrue( "Root element now has a document", root.getDocument() == doc3 );
+        assertTrue( "Doc2 has no root element", doc2.getRootElement() == null );        
     }
 }
 
@@ -120,5 +120,5 @@ public class TestDetach extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDetach.java,v 1.2 2001/05/30 17:58:55 jstrachan Exp $
+ * $Id: TestDetach.java,v 1.3 2001/07/03 08:13:31 jstrachan Exp $
  */
