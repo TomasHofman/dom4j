@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.48 2004/03/30 15:05:38 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.49 2004/04/01 06:50:44 maartenc Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.48 $
+  * @version $Revision: 1.49 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -80,6 +80,9 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
 
     /** Flag used to indicate that we are inside a CDATA section */
     private boolean insideCDATASection;
+    
+    /** buffer to hold contents of cdata section across multiple characters events */
+    private StringBuffer cdataText;
 
     /** namespaces that are available for use */
     private Map availableNamespaceMap = new HashMap();
@@ -278,7 +281,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
                 if ( mergeAdjacentText && textInTextBuffer ) {
                     completeCurrentTextNode();
                 }
-                currentElement.addCDATA(new String(ch, start, end));
+                cdataText.append(new String(ch, start, end));
             }
             else {
                 if ( mergeAdjacentText ) {
@@ -377,10 +380,12 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
 
     public void startCDATA() throws SAXException {
         insideCDATASection = true;
+        cdataText = new StringBuffer();
     }
 
     public void endCDATA() throws SAXException {
         insideCDATASection = false;
+        currentElement.addCDATA(cdataText.toString());
     }
 
     public void comment(char[] ch, int start, int end) throws SAXException {
@@ -853,5 +858,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.48 2004/03/30 15:05:38 maartenc Exp $
+ * $Id: SAXContentHandler.java,v 1.49 2004/04/01 06:50:44 maartenc Exp $
  */
