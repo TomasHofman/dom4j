@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDocType.java,v 1.1 2001/10/10 13:53:58 jstrachan Exp $
+ * $Id: TestDocType.java,v 1.2 2001/10/10 14:04:57 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** Tests the DocType functionality
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestDocType extends AbstractTestCase {
 
@@ -53,6 +53,8 @@ public class TestDocType extends AbstractTestCase {
         
         assertEquals( "name is correct", "greeting", decl.getName() );
         assertEquals( "model is correct", "(#PCDATA)", decl.getModel() );
+        
+        assertEquals( "getText() is correct", "<!ELEMENT greeting (#PCDATA)>", docType.getText() );
     }
         
     // Implementation methods
@@ -108,5 +110,5 @@ public class TestDocType extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDocType.java,v 1.1 2001/10/10 13:53:58 jstrachan Exp $
+ * $Id: TestDocType.java,v 1.2 2001/10/10 14:04:57 jstrachan Exp $
  */
