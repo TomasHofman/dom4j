@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.12 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: Branch.java,v 1.13 2001/01/30 01:46:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import java.util.Map;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.12 $
+  * @version $Revision: 1.13 $
   */
 public interface Branch extends Node {
 
@@ -86,8 +86,13 @@ public interface Branch extends Node {
       * @return a backed list of the processing instructions
       */
     public List getProcessingInstructions(String target);
-    
+
+    /** @return the processing instruction for the given target
+      */
     public ProcessingInstruction getProcessingInstruction(String target);    
+    
+    /** Sets all the processing instructions for this branch
+      */
     public void setProcessingInstructions(List listOfPIs);
     
     
@@ -135,10 +140,24 @@ public interface Branch extends Node {
       */    
     public Element addElement(String name, Namespace namespace);
     
-    public ProcessingInstruction addProcessingInstruction(String target, String data);
+    /** Adds a processing instruction for the given target
+      *
+      * @param target is the target of the processing instruction
+      * @text is the textual data (key/value pairs) of the processing instruction
+      */
+    public ProcessingInstruction addProcessingInstruction(String target, String text);
     
+    /** Adds a processing instruction for the given target
+      *
+      * @param target is the target of the processing instruction
+      * @data is a Map of the key / value pairs of the processing instruction
+      */
     public ProcessingInstruction addProcessingInstruction(String target, Map data);
 
+    /** Removes the processing instruction for the given target if it exists
+      *
+      * @return true if a processing instruction was removed else false
+      */
     public boolean removeProcessingInstruction(String target);
 
     
@@ -252,5 +271,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.12 2001/01/26 08:08:21 jstrachan Exp $
+ * $Id: Branch.java,v 1.13 2001/01/30 01:46:48 jstrachan Exp $
  */

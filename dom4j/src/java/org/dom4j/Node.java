@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Node.java,v 1.6 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: Node.java,v 1.7 2001/01/30 01:46:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -22,7 +22,7 @@ import java.util.List;
   * @see #isReadOnly
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public interface Node extends Cloneable {
 
@@ -67,7 +67,7 @@ public interface Node extends Cloneable {
     public void setParent(Element parent);
     
 
-    /** <p><code>getDocument</code> returns the <code>Document<code>
+    /** <p><code>getDocument</code> returns the <code>Document</code>
       * that this <code>Node</code> is part of if this node supports
       * the parent relationship.</p>
       *
@@ -145,9 +145,8 @@ public interface Node extends Cloneable {
     public String getString();    
     
     
-    /** <p><code>asXML</code> returns a representation of this node as 
-      * an XML <code>String</code> which is equivalent to the 
-      * <code>string()<code> function in XPath.</p>
+    /** <p><code>asXML</code> returns the textual XML representation of this 
+      * node.</p>
       *
       * @return the XML representation of this node
       */
@@ -201,11 +200,14 @@ public interface Node extends Cloneable {
     public Node selectSingleNode(String xpathExpression);
 
     /** <p><code>valueOf</code> evaluates an XPath expression
-      * and returns the textual representation of the results using the 
-      * XPath string() function.</p>
+      * and returns the textual representation of the results the XPath 
+      * string-value of this node. 
+      * The string-value for a given node type is defined in the 
+      * <a href="http://www.w3.org/TR/xpath">XPath specification</a>.
       *
       * @param xpathExpression is the XPath expression to be evaluated
-      * @return the string representation of the results of the XPath expression
+      * @return the string-value representation of the results of the XPath 
+      * expression
       */
     public String valueOf(String xpathExpression);
 
@@ -219,7 +221,7 @@ public interface Node extends Cloneable {
     public XPath createXPath(String xpathExpression);
 
     /** <p><code>asXPathNode</code> returns an XPath compatable version
-      * of iteself. If it supports the parent relationship it will return 
+      * of itself. If it supports the parent relationship it will return 
       * itself otherwise it will create a new node which is linked to its 
       * parent.
       *
@@ -289,5 +291,5 @@ public interface Node extends Cloneable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Node.java,v 1.6 2001/01/26 16:53:13 jstrachan Exp $
+ * $Id: Node.java,v 1.7 2001/01/30 01:46:48 jstrachan Exp $
  */

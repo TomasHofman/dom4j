@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestNamespace.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -21,7 +21,7 @@ import org.dom4j.io.SAXReader;
 /** A test harness to test the use of Namespaces.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestNamespace extends AbstractTestCase {
 
@@ -32,6 +32,8 @@ public class TestNamespace extends AbstractTestCase {
     protected static Namespace XSL_NAMESPACE = DocumentFactory.newNamespace( 
         "xsl", "http://www.w3.org/1999/XSL/Transform" 
     );
+    
+    protected static QName XSL_TEMPLATE = QName.get( "template", XSL_NAMESPACE );
     
     
     public TestNamespace(String name) {
@@ -56,7 +58,8 @@ public class TestNamespace extends AbstractTestCase {
     public void testGetElement() throws Exception {
         Element root = getRootElement();
         
-        Element firstTemplate = root.getElement( "template", XSL_NAMESPACE );
+        
+        Element firstTemplate = root.getElement( XSL_TEMPLATE );
         assert( "Root element contains at least one <xsl:template/> element", firstTemplate != null );
         
         log( "Found element: " + firstTemplate );
@@ -65,7 +68,7 @@ public class TestNamespace extends AbstractTestCase {
     public void testGetElements() throws Exception {
         Element root = getRootElement();
         
-        List list = root.getElements( "template", XSL_NAMESPACE );
+        List list = root.getElements( XSL_TEMPLATE );
         assert( "Root element contains at least one <xsl:template/> element", list.size() > 0 );
         
         log( "Found elements: " + list );
@@ -73,7 +76,7 @@ public class TestNamespace extends AbstractTestCase {
         
     public void testElementIterator() throws Exception {
         Element root = getRootElement();
-        Iterator iter = root.elementIterator( "template", XSL_NAMESPACE );
+        Iterator iter = root.elementIterator( XSL_TEMPLATE );
         assert( "Root element contains at least one <xsl:template/> element", iter.hasNext() );
 
         do {
@@ -153,5 +156,5 @@ public class TestNamespace extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestNamespace.java,v 1.3 2001/01/19 05:58:39 jstrachan Exp $
+ * $Id: TestNamespace.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestContent.java,v 1.3 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: TestContent.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -18,7 +18,7 @@ import junit.textui.TestRunner;
 /** A test harness to test the content API in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class TestContent extends AbstractTestCase {
 
@@ -83,7 +83,7 @@ public class TestContent extends AbstractTestCase {
         Element root = document.getRootElement();
         assert( "Has root element", root != null );
         
-        int count = root.getXPathNodeCount();
+        int count = root.getNodeCount();
         assert( "Root has correct node count", count == 2 );
         
         boolean iterated = false;
@@ -169,5 +169,5 @@ public class TestContent extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestContent.java,v 1.3 2001/01/09 20:43:12 jstrachan Exp $
+ * $Id: TestContent.java,v 1.4 2001/01/30 01:46:48 jstrachan Exp $
  */
