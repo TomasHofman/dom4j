@@ -4,86 +4,74 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.5 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
  */
+
+
+package dom;
 
 import java.net.URL;
 
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamSource;
-
 import org.dom4j.Document;
-import org.dom4j.io.DocumentResult;
-import org.dom4j.io.DocumentSource;
+import org.dom4j.io.DOMReader;
+import org.dom4j.io.DOMWriter;
+import org.dom4j.io.SAXContentHandler;
 import org.dom4j.io.SAXReader;
+import org.dom4j.io.SAXWriter;
 import org.dom4j.io.XMLWriter;
 
-/** A sample program to demonstrate using XSLT to transform a dom4j Document.
+import AbstractDemo;
+
+/** This sample program parses an XML document as a DOM4J tree using
+  * SAX, it then creates a W3C DOM tree which is then used as input for
+  * creating a new DOM4J tree which is then output to SAX which is then
+  * parsed into another DOM4J tree which is then output as XML.
+  *
+  * This is clearly not terribly useful but demonstrates how to convert from 
+  * SAX <-> DOM4J and DOM4J <-> DOM and DOM4J <-> text
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.1 $
   */
-public class XSLTDemo extends SAXDemo {
-    
-    protected URL xsl;
-    
+public class SAXDOMDemo extends AbstractDemo {
     
     public static void main(String[] args) {
-        run( new XSLTDemo(), args );
+        run( new SAXDOMDemo(), args );
     }    
     
-    public XSLTDemo() {
+    public SAXDOMDemo() {
     }
     
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 2) {
-            printUsage();
-            return;
-        }
+    protected Document parse( URL url ) throws Exception {
+        SAXReader saxReader = new SAXReader();
+        Document document = saxReader.read(url);
         
-        int idx = format.parseOptions( args, 0 );
-        if ( args.length - idx < 2 ) {
-            printUsage();
-            return;
-        }
-        else {
-            writer = createXMLWriter();
-            
-            Document document = parse( args[idx++] );
-            
-            xsl = getURL( args[idx++] );
-            
-            process(document);
-        }
-    }
-    
-    protected void printUsage() {
-        printUsage( "<XML URL> <XSLT URL>" );
-    }
-    
-    
-    /** Perform XSLT on the stylesheet */
-    protected void process(Document document) throws Exception {
-        // load the transformer
-        TransformerFactory factory = TransformerFactory.newInstance();
-        Transformer transformer = factory.newTransformer( 
-            new StreamSource( xsl.toString() ) 
-        );
+        println( "Parsed to DOM4J tree using SAX: " + document );
         
-        // now lets create the TRaX source and result
-        // objects and do the transformation
-        Source source = new DocumentSource( document );
-        DocumentResult result = new DocumentResult();
-        transformer.transform( source, result );
-
-        // output the transformed document
-        Document transformedDoc = result.getDocument();
-        writer.write( transformedDoc );
+        // now lets make a DOM object
+        DOMWriter domWriter = new DOMWriter();
+        org.w3c.dom.Document domDocument = domWriter.write(document);
+        
+        println( "Converted to DOM tree: " + domDocument );
+        
+        // now lets read it back as a DOM4J object
+        DOMReader domReader = new DOMReader();        
+        document = domReader.read( domDocument );
+        
+        println( "Converted to DOM4J tree using DOM: " + document );
+        
+        // now lets write it back as SAX events to
+        // a SAX ContentHandler which should build up a new document
+        SAXContentHandler contentHandler = new SAXContentHandler();
+        SAXWriter saxWriter = new SAXWriter( contentHandler, null, contentHandler );
+        
+        saxWriter.write( document );
+        document = contentHandler.getDocument();
+        
+        println( "Converted DOM4J to SAX events then back to DOM4J: " + document );
+        
+        return document;
     }
-
 }
 
 
@@ -131,5 +119,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.5 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
  */

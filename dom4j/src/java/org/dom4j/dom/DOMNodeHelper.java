@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.5 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.6 2001/04/10 23:43:44 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.6 $
   */
 public class DOMNodeHelper {
 
@@ -362,6 +362,7 @@ public class DOMNodeHelper {
         }
         else {
             // Use DOMWriter?
+            System.out.println( "Cannot convert: " + node + " into a W3C DOM Node");
             notSupported();
             return null;
         }
@@ -475,5 +476,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.5 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.6 2001/04/10 23:43:44 jstrachan Exp $
  */

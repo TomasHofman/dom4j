@@ -4,86 +4,62 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTDemo.java,v 1.5 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
  */
 
+
+package dom;
+
+import java.net.MalformedURLException;
 import java.net.URL;
 
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.stream.StreamSource;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.dom4j.Document;
-import org.dom4j.io.DocumentResult;
-import org.dom4j.io.DocumentSource;
-import org.dom4j.io.SAXReader;
+import org.dom4j.io.DOMReader;
 import org.dom4j.io.XMLWriter;
 
-/** A sample program to demonstrate using XSLT to transform a dom4j Document.
+import AbstractDemo;
+
+/** A simple test program to demonstrate using W3C DOM and JAXP to load a DOM
+  * XML tree then converting it to a DOM4J tree.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.5 $
+  * @version $Revision: 1.1 $
   */
-public class XSLTDemo extends SAXDemo {
-    
-    protected URL xsl;
-    
+public class DOMDemo extends AbstractDemo {
     
     public static void main(String[] args) {
-        run( new XSLTDemo(), args );
+        run( new DOMDemo(), args );
     }    
     
-    public XSLTDemo() {
+    public DOMDemo() {
     }
     
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 2) {
-            printUsage();
-            return;
-        }
+    protected Document parse( URL url ) throws Exception {
+        // parse a DOM tree
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
         
-        int idx = format.parseOptions( args, 0 );
-        if ( args.length - idx < 2 ) {
-            printUsage();
-            return;
-        }
-        else {
-            writer = createXMLWriter();
-            
-            Document document = parse( args[idx++] );
-            
-            xsl = getURL( args[idx++] );
-            
-            process(document);
-        }
+        println( "Loading document with JAXP builder: " + builder );
+        
+        org.w3c.dom.Document domDocument = builder.parse( url.toExternalForm() );
+        
+        println( "Created W3C DOM document: " + domDocument );
+        
+        // now convert to DOM4J model
+        DOMReader reader = new DOMReader();
+        Document document = reader.read(domDocument);
+        
+        println( "Created DOM4J document: " + document );
+        
+        return document;
     }
     
-    protected void printUsage() {
-        printUsage( "<XML URL> <XSLT URL>" );
-    }
-    
-    
-    /** Perform XSLT on the stylesheet */
     protected void process(Document document) throws Exception {
-        // load the transformer
-        TransformerFactory factory = TransformerFactory.newInstance();
-        Transformer transformer = factory.newTransformer( 
-            new StreamSource( xsl.toString() ) 
-        );
-        
-        // now lets create the TRaX source and result
-        // objects and do the transformation
-        Source source = new DocumentSource( document );
-        DocumentResult result = new DocumentResult();
-        transformer.transform( source, result );
-
-        // output the transformed document
-        Document transformedDoc = result.getDocument();
-        writer.write( transformedDoc );
+        writer.write(document);                
     }
-
 }
 
 
@@ -131,5 +107,5 @@ public class XSLTDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTDemo.java,v 1.5 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.4 2001/04/10 23:43:44 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.dom4j.DocumentFactory;
 import org.dom4j.Namespace;
 import org.dom4j.QName;
 
@@ -22,10 +23,13 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 class NamespaceStack {
  
+    /** The factory used to create new <code>Namespace</code> instances */
+    private DocumentFactory documentFactory;
+    
     /** The Stack of namespaces */
     private ArrayList namespaceStack = new ArrayList();
 
@@ -40,6 +44,11 @@ class NamespaceStack {
 
     
     public NamespaceStack() {
+        this.documentFactory = DocumentFactory.getInstance();
+    }
+  
+    public NamespaceStack(DocumentFactory documentFactory) {
+        this.documentFactory = documentFactory;
     }
   
     /** Pushes the given namespace onto the stack so that its prefix
@@ -193,13 +202,14 @@ class NamespaceStack {
       * interns the QName
       */
     protected QName createQName( String localName, String qualifiedName, Namespace namespace ) {
-        return QName.get( localName, namespace, qualifiedName );
+        return documentFactory.createQName( localName, namespace );
     }
+    
     /** Factory method to creeate new Namespace instances. By default this method
       * interns the Namespace
       */
     protected Namespace createNamespace( String prefix, String namespaceURI ) {
-        return Namespace.get( prefix, namespaceURI );
+        return documentFactory.createNamespace( prefix, namespaceURI );
     }
 }
 
@@ -248,5 +258,5 @@ class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.3 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.4 2001/04/10 23:43:44 jstrachan Exp $
  */

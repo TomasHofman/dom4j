@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDocumentFactory.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.4 2001/04/10 23:43:44 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -19,6 +19,7 @@ import org.dom4j.DocumentFactory;
 import org.dom4j.DocumentType;
 import org.dom4j.Element;
 import org.dom4j.Entity;
+import org.dom4j.Namespace;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.QName;
 import org.dom4j.Text;
@@ -29,7 +30,7 @@ import org.xml.sax.Attributes;
   * which implement the W3C DOM API.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.DOMImplementation {
 
@@ -84,6 +85,11 @@ public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.D
     public Entity createEntity(String name, String text) {
         return new DOMEntityReference(name, text);
     }
+
+    public Namespace createNamespace(String prefix, String uri) {
+        return new DOMNamespace(prefix, uri);
+    }
+    
     
     public ProcessingInstruction createProcessingInstruction(String target, String data) {
         return new DOMProcessingInstruction(target, data);
@@ -179,5 +185,5 @@ public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.D
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentFactory.java,v 1.3 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: DOMDocumentFactory.java,v 1.4 2001/04/10 23:43:44 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathDemo.java,v 1.10 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.11 2001/04/10 23:43:44 jstrachan Exp $
  */
 
 
@@ -17,7 +17,7 @@ import org.dom4j.io.XMLWriter;
 /** A sample program to demonstrate the use of XPath expressions.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class XPathDemo extends SAXDemo {
     
@@ -42,7 +42,8 @@ public class XPathDemo extends SAXDemo {
         
         writer = createXMLWriter();        
         
-        parse( xmlFile );
+        Document document = parse( xmlFile );
+        process( document );
     }
     
     protected void process(Document document) throws Exception {
@@ -108,5 +109,5 @@ public class XPathDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathDemo.java,v 1.10 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: XPathDemo.java,v 1.11 2001/04/10 23:43:44 jstrachan Exp $
  */

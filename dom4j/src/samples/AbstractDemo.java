@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDemo.java,v 1.6 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.7 2001/04/10 23:43:44 jstrachan Exp $
  */
 
 import java.io.File;
@@ -19,7 +19,7 @@ import org.dom4j.io.XMLWriter;
 /** An abstract base class for the demo programs.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public abstract class AbstractDemo {
 
@@ -85,6 +85,9 @@ public abstract class AbstractDemo {
     }
 
     protected void process(Document document) throws Exception {
+        if ( writer == null ) {
+            writer = createXMLWriter();
+        }
         writer.write(document);
     }
         
@@ -171,5 +174,5 @@ public abstract class AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDemo.java,v 1.6 2001/04/07 10:56:26 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.7 2001/04/10 23:43:44 jstrachan Exp $
  */

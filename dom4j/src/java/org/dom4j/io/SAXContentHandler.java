@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXContentHandler.java,v 1.15 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.16 2001/04/10 23:43:44 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -40,7 +40,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -54,7 +54,7 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     private ElementStack elementStack;
 
     /** stack of <code>Namespace</code> and <code>QName</code> objects */
-    private NamespaceStack namespaceStack = new NamespaceStack();
+    private NamespaceStack namespaceStack;
 
     /** the <code>ElementHandler</code> called as the elements are complete */
     private ElementHandler elementHandler;
@@ -82,22 +82,25 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     
     
     public SAXContentHandler() {
-        this.documentFactory = DocumentFactory.getInstance();
+        this( DocumentFactory.getInstance() );
     }
     
     public SAXContentHandler(DocumentFactory documentFactory) {
         this.documentFactory = documentFactory;
+        this.namespaceStack = new NamespaceStack(documentFactory);
     }
 
     public SAXContentHandler(DocumentFactory documentFactory, ElementHandler elementHandler) {
         this.documentFactory = documentFactory;
         this.elementHandler = elementHandler;
+        this.namespaceStack = new NamespaceStack(documentFactory);
     }
 
     public SAXContentHandler(DocumentFactory documentFactory, ElementHandler elementHandler, ElementStack elementStack) {
         this.documentFactory = documentFactory;
         this.elementHandler = elementHandler;
         this.elementStack = elementStack;
+        this.namespaceStack = new NamespaceStack(documentFactory);
     }
 
     /** @return the document that has been or is being built 
@@ -356,5 +359,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.15 2001/03/21 00:53:57 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.16 2001/04/10 23:43:44 jstrachan Exp $
  */
