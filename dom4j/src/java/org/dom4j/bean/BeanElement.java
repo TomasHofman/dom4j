@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanElement.java,v 1.10 2003/04/07 22:15:35 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.11 2004/04/20 11:34:58 maartenc Exp $
  */
 
 package org.dom4j.bean;
@@ -21,7 +21,7 @@ import org.dom4j.tree.DefaultElement;
 /** <p><code>BeanElement</code> uses a Java Bean to store its attributes.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class BeanElement extends DefaultElement {
 
@@ -110,6 +110,9 @@ public class BeanElement extends DefaultElement {
     protected List createAttributeList() {
         return new BeanAttributeList(this);
     }    
+    protected List createAttributeList(int size) {
+        return new BeanAttributeList(this);
+    }    
 }
 
 
@@ -157,5 +160,5 @@ public class BeanElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanElement.java,v 1.10 2003/04/07 22:15:35 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.11 2004/04/20 11:34:58 maartenc Exp $
  */
