@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestSerialize.java,v 1.2 2001/07/04 11:22:58 uid32867 Exp $
+ * $Id: TestSerialize.java,v 1.3 2001/07/30 19:01:39 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import org.dom4j.io.SAXReader;
 /** Tests that a dom4j document is Serializable
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestSerialize extends AbstractTestCase {
 
@@ -48,6 +48,8 @@ public class TestSerialize extends AbstractTestCase {
     // Test case(s)
     //-------------------------------------------------------------------------                    
     public void testSerialize() throws Exception {
+        String text = document.asXML();
+        
         ByteArrayOutputStream bytesOut = new ByteArrayOutputStream();
         ObjectOutputStream out = new ObjectOutputStream( bytesOut );
         out.writeObject( document );
@@ -56,12 +58,16 @@ public class TestSerialize extends AbstractTestCase {
         byte[] data = bytesOut.toByteArray();
         
         ObjectInputStream in = new ObjectInputStream( new ByteArrayInputStream( data ) );
-        Object doc2 = in.readObject();
+        Document doc2 = (Document) in.readObject();
         in.close();
         
         assertTrue( "Read back document after serialization", doc2 != null && doc2 instanceof Document );
         
-        assertDocumentsEqual( document, (Document) doc2 );
+        String text2 = doc2.asXML();
+        
+        assertEquals( "Documents text are equal", text, text2 );
+        
+        assertDocumentsEqual( document, (Document) doc2 );        
     }            
     
     protected void setUp() throws Exception {
@@ -115,5 +121,5 @@ public class TestSerialize extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestSerialize.java,v 1.2 2001/07/04 11:22:58 uid32867 Exp $
+ * $Id: TestSerialize.java,v 1.3 2001/07/30 19:01:39 jstrachan Exp $
  */
