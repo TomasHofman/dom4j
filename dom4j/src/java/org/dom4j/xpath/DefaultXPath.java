@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultXPath.java,v 1.28 2004/02/27 16:36:13 maartenc Exp $
+ * $Id: DefaultXPath.java,v 1.29 2004/06/14 18:42:53 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -183,6 +183,17 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
         }
     }
     
+    public boolean booleanValueOf(Object context) {
+        try {
+            setNSContext(context);
+            return xpath.booleanValueOf(context);
+        }
+        catch(JaxenException e) {
+            handleJaxenException(e);
+            return false;
+        }
+    }
+
     /** <p><code>sort</code> sorts the given List of Nodes
       * using this XPath expression as a {@link Comparator}.</p>
       *
@@ -364,5 +375,5 @@ public class DefaultXPath implements org.dom4j.XPath, NodeFilter, Serializable {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultXPath.java,v 1.28 2004/02/27 16:36:13 maartenc Exp $
+ * $Id: DefaultXPath.java,v 1.29 2004/06/14 18:42:53 maartenc Exp $
  */

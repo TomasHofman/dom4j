@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestXPath.java,v 1.19 2004/03/11 22:00:39 maartenc Exp $
+ * $Id: TestXPath.java,v 1.20 2004/06/14 18:42:53 maartenc Exp $
  */
 
 package org.dom4j;
@@ -16,11 +16,12 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.dom4j.tree.DefaultElement;
+import org.dom4j.xpath.DefaultXPath;
 
 /** A test harness to test XPath expression evaluation in DOM4J
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.19 $
+  * @version $Revision: 1.20 $
   */
 
 public class TestXPath extends AbstractTestCase {
@@ -103,6 +104,16 @@ public class TestXPath extends AbstractTestCase {
     public void testBug857704() throws Exception {
         Document doc = DocumentHelper.parseText("<foo xmlns:bar='http://blort'/>");
         doc.selectNodes("//*[preceding-sibling::*]");       // shouldn't throw NPE
+    }
+
+    public void testBooleanValueOf() throws Exception {
+        Document doc = DocumentHelper.parseText("<root><foo>blah</foo></root>");
+        
+        XPath path = new DefaultXPath("//root");
+        assertTrue(path.booleanValueOf(doc));
+        
+        path = new DefaultXPath("//root2");
+        assertFalse(path.booleanValueOf(doc));
     }
 
     // Implementation methods
@@ -217,5 +228,5 @@ public class TestXPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestXPath.java,v 1.19 2004/03/11 22:00:39 maartenc Exp $
+ * $Id: TestXPath.java,v 1.20 2004/06/14 18:42:53 maartenc Exp $
  */
