@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: NamespaceStack.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.8 2002/11/26 15:23:06 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -24,7 +24,7 @@ import org.dom4j.QName;
   * document.
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.7 $
+  * @version $Revision: 1.8 $
   */
 public class NamespaceStack {
  
@@ -159,6 +159,11 @@ public class NamespaceStack {
         int index = qualifiedName.indexOf(":");
         if (index > 0) {
             prefix = qualifiedName.substring(0, index);
+            if (localName.trim().length() == 0) {
+                localName = qualifiedName.substring(index+1);
+            }
+        } else if (localName.trim().length() == 0) {
+            localName = qualifiedName;
         }
         Namespace namespace = createNamespace( prefix, namespaceURI );
         return pushQName( localName, qualifiedName, namespace, prefix );
@@ -185,10 +190,16 @@ public class NamespaceStack {
         if (index > 0) {
             prefix = qualifiedName.substring(0, index);
             namespace = createNamespace( prefix, namespaceURI );
+            if ( localName.trim().length() == 0) {
+                localName = qualifiedName.substring(index+1);
+            }
         }
         else {
             // attributes with no prefix have no namespace
             namespace = Namespace.NO_NAMESPACE;
+            if ( localName.trim().length() == 0) {
+                localName = qualifiedName;
+            }
         }
         answer = pushQName( localName, qualifiedName, namespace, prefix );
         map.put( qualifiedName, answer );
@@ -364,5 +375,5 @@ public class NamespaceStack {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: NamespaceStack.java,v 1.7 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: NamespaceStack.java,v 1.8 2002/11/26 15:23:06 jstrachan Exp $
  */
