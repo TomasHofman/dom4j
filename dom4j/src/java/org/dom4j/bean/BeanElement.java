@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanElement.java,v 1.3 2001/03/02 00:08:04 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.4 2001/03/02 11:43:17 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -22,7 +22,7 @@ import org.dom4j.tree.DefaultElement;
 /** <p><code>BeanElement</code> uses a Java Bean to store its attributes.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class BeanElement extends DefaultElement {
 
@@ -61,6 +61,14 @@ public class BeanElement extends DefaultElement {
         setAttributeList(null);
     }
     
+    public Attribute getAttribute(String name) {
+        return getBeanAttributeList().getAttribute(name);
+    }
+    
+    public Attribute getAttribute(QName qname) {
+        return getBeanAttributeList().getAttribute(qname);
+    }
+    
     public void setAttributeValue(String name, String value) {
         Attribute attribute = getAttribute(name);
         if (attribute != null ) {
@@ -82,7 +90,7 @@ public class BeanElement extends DefaultElement {
     
     
     // Implementation methods
-    
+    //-------------------------------------------------------------------------        
     protected DocumentFactory getDocumentFactory() {
         return DOCUMENT_FACTORY;
     }
@@ -96,8 +104,7 @@ public class BeanElement extends DefaultElement {
       */
     protected List createAttributeList() {
         return new BeanAttributeList(this);
-    }
-    
+    }    
 }
 
 
@@ -145,5 +152,5 @@ public class BeanElement extends DefaultElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanElement.java,v 1.3 2001/03/02 00:08:04 jstrachan Exp $
+ * $Id: BeanElement.java,v 1.4 2001/03/02 11:43:17 jstrachan Exp $
  */

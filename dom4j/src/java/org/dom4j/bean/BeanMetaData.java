@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanMetaData.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanMetaData.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -13,6 +13,7 @@ import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,10 +22,13 @@ import org.dom4j.QName;
 /** <p><code>BeanMetaData</code> contains metadata about a bean class.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BeanMetaData {
 
+    /** Empty arguments for reflection calls */
+    protected static final Object[] NULL_ARGS = {};
+    
     /** Singleton cache */
     private static Map singletonCache = new HashMap();
     
@@ -38,6 +42,16 @@ public class BeanMetaData {
     /** QNames for the attributes */
     private QName[] qNames;
 
+    /** Read methods used for getting properties */
+    private Method[] readMethods;
+    
+    /** Write methods used for setting properties */
+    private Method[] writeMethods;
+
+    /** Index of names and QNames to indices */
+    private Map nameMap = new HashMap();
+    
+    
     /** Static helper method to find and cache meta data objects for bean types 
       */
     public static BeanMetaData get(Class beanClass) {
@@ -55,15 +69,6 @@ public class BeanMetaData {
             try {
                 BeanInfo beanInfo = Introspector.getBeanInfo( beanClass );
                 propertyDescriptors = beanInfo.getPropertyDescriptors();
-                if ( propertyDescriptors != null ) {
-                    int size = propertyDescriptors.length;
-                    qNames = new QName[size];
-                    for ( int i = 0; i < size; i++ ) {
-                        PropertyDescriptor propertyDescriptor = propertyDescriptors[i];
-                        String name = propertyDescriptor.getName();
-                        qNames[i] = QName.get( name );
-                    }
-                }
             }
             catch (IntrospectionException e) {
                 handleException(e);
@@ -71,7 +76,22 @@ public class BeanMetaData {
         }
         if ( propertyDescriptors == null ) {
             propertyDescriptors = new PropertyDescriptor[0];
-            qNames = new QName[0];
+        }
+        int size = propertyDescriptors.length;
+        qNames = new QName[size];
+        readMethods = new Method[size];
+        writeMethods = new Method[size];
+        for ( int i = 0; i < size; i++ ) {
+            PropertyDescriptor propertyDescriptor = propertyDescriptors[i];
+            String name = propertyDescriptor.getName();
+            QName qName = QName.get( name );
+            qNames[i] = qName;
+            readMethods[i] = propertyDescriptor.getReadMethod();
+            writeMethods[i] = propertyDescriptor.getWriteMethod();
+            
+            Integer index = new Integer(i);
+            nameMap.put( name, index );
+            nameMap.put( qName, index );
         }
     }
         
@@ -81,16 +101,48 @@ public class BeanMetaData {
         return propertyDescriptors.length;
     }
     
-    /** Creates a new Attribute for the given parent and attribute index. 
-      * The index should be >= 0 and < {@link #getAttributeCount}
-      */
-    public BeanAttribute createAttribute(BeanElement parent, int index) {
-        PropertyDescriptor descriptor = propertyDescriptors[index];
-        QName qName = qNames[index];
-        return new BeanAttribute(qName, parent, descriptor);
-
+    public BeanAttributeList createAttributeList(BeanElement parent) {
+        return new BeanAttributeList( parent, this );
     }
     
+    public QName getQName(int index) {
+        return qNames[index];
+    }
+
+    public int getIndex(String name) {
+        Integer index = (Integer) nameMap.get(name);
+        return ( index != null ) ? index.intValue() : -1;
+    }
+    
+    public int getIndex(QName qName) {
+        Integer index = (Integer) nameMap.get(qName);
+        return ( index != null ) ? index.intValue() : -1;
+    }
+    
+    public Object getData(int index, Object bean) {
+        try {
+            Method method = readMethods[index];
+            return method.invoke( bean, NULL_ARGS );
+        }
+        catch (Exception e) {
+            handleException(e);
+            return null;
+        }
+    }
+    
+    public void setData(int index, Object bean, Object data) {
+        try {
+            Method method = writeMethods[index];
+            Object[] args = { data };
+            method.invoke( bean, args );
+        }
+        catch (Exception e) {
+            handleException(e);
+        }
+    }
+    
+    // Implementation methods
+    //-------------------------------------------------------------------------    
     protected void handleException(Exception e) {
         // ignore introspection exceptions
     }
@@ -141,5 +193,5 @@ public class BeanMetaData {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanMetaData.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanMetaData.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
  */

@@ -4,13 +4,10 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanAttribute.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanAttribute.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
  */
 
 package org.dom4j.bean;
-
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
 
 import org.dom4j.Element;
 import org.dom4j.QName;
@@ -20,35 +17,28 @@ import org.dom4j.tree.AbstractAttribute;
   * is backed by a property of the JavaBean of its parent element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BeanAttribute extends AbstractAttribute {
 
-    /** Empty arguments for reflection calls */
-    protected static final Object[] NULL_ARGS = {};
+    /** The list of Bean attributes */
+    private final BeanAttributeList beanList;
     
-    /** The <code>QName</code> for this element */
-    private QName qname;
-    
-    /** The BeanElement that this */
-    private BeanElement parent;
+    /** The index in the Bean attribute list */
+    private final int index;
 
-    /** The property this attribute represents */
-    private PropertyDescriptor descriptor;
     
-    
-    public BeanAttribute(QName qname, BeanElement parent, PropertyDescriptor descriptor) {
-        this.qname = qname;
-        this.parent = parent;
-        this.descriptor = descriptor;
+    public BeanAttribute(BeanAttributeList beanList, int index) {
+        this.beanList = beanList;
+        this.index = index;
     }
 
     public QName getQName() {
-        return qname;
+        return beanList.getQName(index);
     }
 
     public Element getParent() {
-        return parent;
+        return beanList.getParent();
     }
     
     public String getValue() {
@@ -56,31 +46,18 @@ public class BeanAttribute extends AbstractAttribute {
         return ( data != null ) ? data.toString() : null;
     }
     
+    public void setValue(String data) {
+        beanList.setData(index, data);
+    }
+    
     public Object getData() {
-        try {
-            Method method = descriptor.getReadMethod();
-            return method.invoke( parent.getData(), NULL_ARGS );
-        }
-        catch (Exception e) {
-            handleException(e);
-            return null;
-        }
+        return beanList.getData(index);
     }
     
     public void setData(Object data) {
-        try {
-            Method method = descriptor.getWriteMethod();
-            Object[] args = { data };
-            method.invoke( parent.getData(), args );
-        }
-        catch (Exception e) {
-            handleException(e);
-        }
+        beanList.setData(index, data);
     }
     
-    protected void handleException(Exception e) {
-        // ignore introspection exceptions
-    }
 }
 
 
@@ -128,5 +105,5 @@ public class BeanAttribute extends AbstractAttribute {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanAttribute.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanAttribute.java,v 1.2 2001/03/02 11:43:17 jstrachan Exp $
  */
