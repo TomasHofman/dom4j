@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DatatypeDocumentFactory.java,v 1.4 2003/04/07 22:15:23 jstrachan Exp $
+ * $Id: DatatypeDocumentFactory.java,v 1.5 2003/06/15 21:14:11 maartenc Exp $
  */
 
 package org.dom4j.datatype;
@@ -25,7 +25,7 @@ import org.xml.sax.InputSource;
   * specification.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class DatatypeDocumentFactory extends DocumentFactory {
 
@@ -81,6 +81,10 @@ public class DatatypeDocumentFactory extends DocumentFactory {
         schemaBuilder.build( schemaDocument );
     }
     
+    public void loadSchema(Document schemaDocument, Namespace targetNamespace) {
+        schemaBuilder.build( schemaDocument, targetNamespace );
+    }
+    
     /** Registers the given <code>DatatypeElementFactory</code> for the given 
       * &lt;element&gt; schema element
       */
@@ -110,6 +114,13 @@ public class DatatypeDocumentFactory extends DocumentFactory {
             Document document = (owner != null) ? owner.getDocument() : null;
             loadSchema( document, value );
         }
+        else if ( autoLoadSchema && qname.equals( XSI_SCHEMA_LOCATION ) ) 
+        { 
+            Document document = (owner != null) ? owner.getDocument() : null; 
+            Namespace namespace = owner.getNamespaceForURI(value.substring(0,value.indexOf(' '))); 
+            loadSchema( document, value.substring (value.indexOf(' ')+1), namespace ); 
+        } 
+
         return super.createAttribute( owner, qname, value );
     }
     
@@ -138,6 +149,26 @@ public class DatatypeDocumentFactory extends DocumentFactory {
         }
     }
     
+    protected void loadSchema( Document document, String schemaInstanceURI, Namespace namespace ) {
+        try {
+            EntityResolver resolver = document.getEntityResolver();
+            if ( resolver == null ) {
+                throw new InvalidSchemaException( "No EntityResolver available so could not resolve the schema URI: " + schemaInstanceURI );
+            }
+            InputSource inputSource = resolver.resolveEntity( null, schemaInstanceURI );
+            if ( resolver == null ) {
+                throw new InvalidSchemaException( "Could not resolve the schema URI: " + schemaInstanceURI );
+            }
+            Document schemaDocument = xmlSchemaReader.read( inputSource );
+            loadSchema( schemaDocument, namespace );
+        }
+        catch (Exception e) {
+            System.out.println( "Failed to load schema: " + schemaInstanceURI );
+            System.out.println( "Caught: " + e );
+            e.printStackTrace();
+            throw new InvalidSchemaException( "Failed to load schema: " + schemaInstanceURI );
+        }
+    }
 }
 
 
@@ -185,5 +216,5 @@ public class DatatypeDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DatatypeDocumentFactory.java,v 1.4 2003/04/07 22:15:23 jstrachan Exp $
+ * $Id: DatatypeDocumentFactory.java,v 1.5 2003/06/15 21:14:11 maartenc Exp $
  */
