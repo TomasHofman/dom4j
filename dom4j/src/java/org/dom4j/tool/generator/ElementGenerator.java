@@ -11,7 +11,7 @@ import org.metastuff.coder.*;
   * implementations from a DTD declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class ElementGenerator extends AbstractGenerator {
 
@@ -53,9 +53,9 @@ public abstract class ElementGenerator extends AbstractGenerator {
     protected void enrich(JClass jclass) {
         super.enrich(jclass);
         
+        jclass.addImportStatement( "org.dom4j.ContentFactory" );
         jclass.addImportStatement( "org.dom4j.Element" );
         jclass.addImportStatement( "org.dom4j.tree.AbstractElement" );
-        jclass.addImportStatement( "org.dom4j.tree.ContentFactory" );
         jclass.addImportStatement( "org.dom4j.tree.NameModel" );
         
         jclass.setComment( createComment() );

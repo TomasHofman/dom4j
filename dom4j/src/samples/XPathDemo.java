@@ -8,7 +8,7 @@ import org.dom4j.io.XMLWriter;
 /** A sample program to demonstrate the use of XPath expressions.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public class XPathDemo extends SAXDemo {
     
@@ -28,14 +28,12 @@ public class XPathDemo extends SAXDemo {
     
     public void run(String[] args) throws Exception {    
         if ( args.length < 2 ) {
-            printUsage( "<XML document URL> <XPath expression> [<SAX XMLReader Class Name>]" );
+            printUsage( "<XML document URL> <XPath expression>" );
             return;
         }
 
         String xmlFile = args[0];
         xpath = args[1];
-        xmlReaderClassName = (args.length > 2) 
-            ? args[2] : null;
         
         parse( xmlFile );
     }

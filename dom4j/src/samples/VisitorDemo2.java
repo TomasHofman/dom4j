@@ -10,7 +10,7 @@ import org.dom4j.io.SAXReader;
   * object model from a {@link SAXReader}.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class VisitorDemo2 extends VisitorDemo {
     
@@ -30,7 +30,7 @@ public class VisitorDemo2 extends VisitorDemo {
     
     public void run(String[] args) throws Exception {    
         if ( args.length < 1 ) {
-            printUsage( "<XML document URL> [<Document Factory Class Name>] [<SAX XMLReader Class Name>]" );
+            printUsage( "<XML document URL> [<Document Factory Class Name>]" );
             return;
         }
 
@@ -39,9 +39,6 @@ public class VisitorDemo2 extends VisitorDemo {
         documentFactoryClassName = (args.length > 1) 
             ? args[1] : null;
             
-        xmlReaderClassName = (args.length > 2) 
-            ? args[2] : null;
-        
         parse( xmlFile );
     }
     
@@ -52,9 +49,9 @@ public class VisitorDemo2 extends VisitorDemo {
     }
     
     protected TreeReader createTreeReader() throws Exception {
-        println( "Using SAX parser: " + xmlReaderClassName );
+        println( "Using SAX parser: " + System.getProperty( "org.xml.sax.driver", "default" ) );
         
-        TreeReader answer = new SAXReader( xmlReaderClassName );        
+        TreeReader answer = new SAXReader();        
         if ( documentFactoryClassName != null ) {
             try {
                 Class theClass = Class.forName( documentFactoryClassName );
