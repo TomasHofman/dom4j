@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: DOMDocumentFactory.java,v 1.13 2002/10/25 14:53:09 ddlucas Exp $
+ * $Id: DOMDocumentFactory.java,v 1.14 2003/02/27 23:06:26 maartenc Exp $
  */
 
 package org.dom4j.dom;
@@ -28,7 +28,7 @@ import org.dom4j.Text;
   * which implement the W3C DOM API.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.13 $
+  * @version $Revision: 1.14 $
   */
 public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.DOMImplementation {
 
@@ -129,8 +129,14 @@ public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.D
         String qualifiedName,
         org.w3c.dom.DocumentType documentType
     ) throws org.w3c.dom.DOMException {
-        DOMDocumentType docType = asDocumentType( documentType );
-        DOMDocument document = new DOMDocument( docType );
+        DOMDocument document;
+        if (documentType != null) {
+            DOMDocumentType docType = asDocumentType( documentType );
+            document = new DOMDocument( docType );
+        } else {
+            document = new DOMDocument();
+        }
+        
         document.addElement( createQName( qualifiedName, namespaceURI ) );
         return document;
    }
@@ -198,5 +204,5 @@ public class DOMDocumentFactory extends DocumentFactory implements org.w3c.dom.D
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDocumentFactory.java,v 1.13 2002/10/25 14:53:09 ddlucas Exp $
+ * $Id: DOMDocumentFactory.java,v 1.14 2003/02/27 23:06:26 maartenc Exp $
  */
