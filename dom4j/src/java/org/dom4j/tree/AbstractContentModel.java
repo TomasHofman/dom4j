@@ -21,7 +21,7 @@ import org.dom4j.Text;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public abstract class AbstractContentModel implements ContentModel {
 
@@ -115,6 +115,10 @@ public abstract class AbstractContentModel implements ContentModel {
     
     public List getElements(String name) {
         return getElements(name, Namespace.NO_NAMESPACE);
+    }
+    
+    public Iterator elementIterator(String name) {
+        return elementIterator(name, Namespace.NO_NAMESPACE);
     }
         
     public CDATA addCDATA(ContentFactory factory, String cdata) {

@@ -12,10 +12,13 @@ import org.dom4j.Namespace;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public abstract class AbstractAttributeModel implements AttributeModel {
     
+    public Iterator attributeIterator() {
+        return getAttributes().iterator();
+    }
     
     public Attribute getAttribute(String name) {
         return getAttribute(name, Namespace.NO_NAMESPACE);

@@ -28,7 +28,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
 /** <p><code>SAXReader</code> creates a DOM4J tree from SAX parsing events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SAXReader extends TreeReader {
 
@@ -135,7 +135,8 @@ public class SAXReader extends TreeReader {
       * @throws FileNotFoundException if the file could not be found
       */
     public Document read(File file) throws TreeException, FileNotFoundException {
-        Document document = read(new BufferedReader(new FileReader(file)));
+        //Document document = read(new BufferedReader(new FileReader(file)));
+        Document document = read(file.getAbsolutePath());
         document.setName( file.getAbsolutePath() );
         return document;
     }

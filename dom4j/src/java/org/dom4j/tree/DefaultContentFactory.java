@@ -15,7 +15,7 @@ import org.dom4j.Text;
   * XML content nodes for an XML elements.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DefaultContentFactory implements ContentFactory {
 
@@ -36,7 +36,7 @@ public class DefaultContentFactory implements ContentFactory {
     }
     
     public Attribute createAttribute(String name, String value, Namespace namespace) {
-        return new DefaultAttribute(name, value);
+        return new DefaultAttribute(name, value, namespace);
     }
 
     public CDATA createCDATA(String text) {
@@ -75,7 +75,7 @@ public class DefaultContentFactory implements ContentFactory {
     }
     
     public Namespace createNamespace(String prefix, String uri) {
-        return new DefaultNamespace(prefix, uri);
+        return DefaultNamespace.get(prefix, uri);
     }
     
     public ProcessingInstruction createProcessingInstruction(String target, String data) {

@@ -1,6 +1,7 @@
 package org.dom4j.tree;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import org.dom4j.Text;
   * resusable units.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public interface ContentModel {
 
@@ -79,6 +80,7 @@ public interface ContentModel {
     // such as Text etc.
     public Node getNode(int index);
     public int getNodeCount();
+    public Iterator nodeIterator();
     
 
     // return the child elements
@@ -89,6 +91,10 @@ public interface ContentModel {
     public List getElements();
     public List getElements(String name);
     public List getElements(String name, Namespace namespace);
+    
+    public Iterator elementIterator();
+    public Iterator elementIterator(String name);
+    public Iterator elementIterator(String name, Namespace namespace);
     
     // add API which avoids explicit use of node classes
 

@@ -27,7 +27,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXHandler</code> builds a DOM4J tree via SAX events.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler {
 
@@ -288,19 +288,27 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler 
     }
 
     protected void addDeclaredNamespace(Namespace namespace) {        
-        declaredNamespaceList.add(namespace);
+        if ( namespace != null ) {
+            declaredNamespaceList.add(namespace);
+        }
     }
 
     protected void removeDeclaredNamespace(Namespace namespace) {        
-        declaredNamespaceList.remove(namespace);
+        if ( namespace != null ) {
+            declaredNamespaceList.remove(namespace);
+        }
     }
 
     protected void addAvailableNamespace(Namespace namespace) {
-        availableNamespaceMap.put(namespace.getPrefix(), namespace);
+        if ( namespace != null ) {
+            availableNamespaceMap.put(namespace.getPrefix(), namespace);
+        }
     }
     
     protected void removeAvailableNamespace(Namespace namespace) {
-        availableNamespaceMap.remove(namespace.getPrefix());
+        if ( namespace != null ) {
+            availableNamespaceMap.remove(namespace.getPrefix());
+        }
     }
     
     protected Namespace getAvailableNamespace(String prefix) {

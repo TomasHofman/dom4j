@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -82,6 +82,10 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     public int getNodeCount() {
         return getContentModel().getNodeCount();
+    }
+    
+    public Iterator nodeIterator() {
+        return getContentModel().nodeIterator();
     }
     
     public Comment addComment(String comment) {
@@ -176,9 +180,6 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
         return DefaultContentFactory.getInstance();
     }
 
-    /** Allows derived classes to override the content model */
-    protected abstract ContentModel getContentModel();
-    
     /** Called when a new child node has been added to me
       * to allow any parent relationships to be created or
       * events to be fired.
@@ -190,5 +191,8 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
       * events to be fired.
       */
     protected abstract void childRemoved(Node node);
+    
+    /** Allows derived classes to override the content model */
+    protected abstract ContentModel getContentModel();
     
 }

@@ -5,11 +5,20 @@ import org.dom4j.XPathEngine;
 /** <p><code>Document</code> defines an XML Document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface Document extends Branch {
 
+    /** Returns the root {@link Element} for this document.
+      *
+      * @return the root element for this document
+      */
     public Element getRootElement();
+    
+    /** Sets the root element for this document
+      *
+      * @param rootElement the new root element for this document
+      */    
     public void setRootElement(Element rootElement);
 
     public DocumentType getDocType();

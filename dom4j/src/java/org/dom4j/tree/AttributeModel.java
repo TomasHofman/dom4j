@@ -1,5 +1,6 @@
 package org.dom4j.tree;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.dom4j.Attribute;
@@ -11,11 +12,12 @@ import org.dom4j.Namespace;
   * resusable units.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public interface AttributeModel {
 
     public List getAttributes();
+    public Iterator attributeIterator();
     public void setAttributes(List attributes);
 
 
