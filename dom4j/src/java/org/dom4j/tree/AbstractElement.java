@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.66 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.67 2003/02/12 23:46:43 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -69,7 +69,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.66 $
+  * @version $Revision: 1.67 $
   */
 
 public abstract class AbstractElement
@@ -1562,7 +1562,21 @@ public abstract class AbstractElement
 
     public void setText(String text) {
 
-        clearContent();
+        /* remove all text nodes */
+        List allContent = contentList();
+        if (allContent != null) {
+            Iterator it = allContent.iterator();
+            while (it.hasNext()) {
+                Node node = (Node) it.next();
+                switch (node.getNodeType()) {
+                    case CDATA_SECTION_NODE:
+                    //case ENTITY_NODE:
+                    case ENTITY_REFERENCE_NODE:
+                    case TEXT_NODE:
+                        it.remove();
+                }
+            }
+        }
 
         addText(text);
 
@@ -2264,5 +2278,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.66 2002/05/20 08:14:10 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.67 2003/02/12 23:46:43 maartenc Exp $
  */
