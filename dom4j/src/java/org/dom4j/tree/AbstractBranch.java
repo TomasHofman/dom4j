@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractBranch.java,v 1.21 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.22 2001/03/01 23:37:46 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -33,11 +33,13 @@ import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
 import org.dom4j.io.XMLWriter;
 
+import org.xml.sax.Attributes;
+
 /** <p><code>AbstractBranch</code> is an abstract base class for 
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.21 $
+  * @version $Revision: 1.22 $
   */
 public abstract class AbstractBranch extends AbstractNode implements Branch {
 
@@ -179,6 +181,12 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
     
     public Element addElement(QName qname) {
         Element node = getDocumentFactory().createElement( qname );
+        add( node );
+        return node;
+    }
+    
+    public Element addElement(QName qname, Attributes attributes) {
+        Element node = getDocumentFactory().createElement( qname, attributes );
         add( node );
         return node;
     }
@@ -340,5 +348,5 @@ public abstract class AbstractBranch extends AbstractNode implements Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractBranch.java,v 1.21 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: AbstractBranch.java,v 1.22 2001/03/01 23:37:46 jstrachan Exp $
  */

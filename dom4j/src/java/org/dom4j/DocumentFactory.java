@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentFactory.java,v 1.10 2001/02/26 12:44:40 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.11 2001/03/01 23:37:46 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -25,6 +25,8 @@ import org.dom4j.tree.XPathEntity;
 import org.dom4j.xpath.DefaultXPath;
 import org.dom4j.xpath.XPathPattern;
 
+import org.xml.sax.Attributes;
+
 /** <p><code>DocumentFactory</code> is a collection of factory methods to allow
   * easy custom building of DOM4J trees. The default tree that is built uses
   * a doubly linked tree. </p>
@@ -33,7 +35,7 @@ import org.dom4j.xpath.XPathPattern;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class DocumentFactory {
 
@@ -62,10 +64,10 @@ public class DocumentFactory {
     // Factory methods
     
     public Document createDocument() {
-        Document answer = new DefaultDocument();
+        DefaultDocument answer = new DefaultDocument();
+        answer.setDocumentFactory( this );
         return answer;
     }
-    
     
     public Document createDocument(Element rootElement) {
         Document answer = createDocument();
@@ -77,6 +79,10 @@ public class DocumentFactory {
     
     public Element createElement(QName qname) {
         return new DefaultElement(qname);
+    }
+    
+    public Element createElement(QName qname, Attributes attributes) {
+        return createElement(qname);
     }
     
     public Element createElement(String name) {
@@ -255,5 +261,5 @@ public class DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentFactory.java,v 1.10 2001/02/26 12:44:40 jstrachan Exp $
+ * $Id: DocumentFactory.java,v 1.11 2001/03/01 23:37:46 jstrachan Exp $
  */

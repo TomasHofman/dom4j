@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.14 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: Branch.java,v 1.15 2001/03/01 23:37:46 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -14,6 +14,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.xml.sax.Attributes;
+
+
 /** <p><code>Branch</code> interface defines the common behaviour 
   * for Nodes which can contain child nodes (content) such as 
   * XML elements and documents. 
@@ -21,7 +24,7 @@ import java.util.Map;
   * polymorphic manner when changing or navigating child nodes (content).</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public interface Branch extends Node {
 
@@ -117,6 +120,17 @@ public interface Branch extends Node {
       * @return the newly added <code>Element</code> node.
       */    
     public Element addElement(QName qname);
+    
+    /** Adds a new <code>Element</code> node with the given {@link QName} 
+      * to this branch and returns a reference to the new node. 
+      * This method is used by {@link org.dom4j.io.SAXReader} to allow
+      * more optimal or more flexible construction of element instances based 
+      * on the available attributes.
+      *
+      * @param qname is the qualified name for the <code>Element</code> node.
+      * @return the newly added <code>Element</code> node.
+      */    
+    public Element addElement(QName qName, Attributes attributes);
     
     /** Adds a processing instruction for the given target
       *
@@ -249,5 +263,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.14 2001/01/30 15:26:09 jstrachan Exp $
+ * $Id: Branch.java,v 1.15 2001/03/01 23:37:46 jstrachan Exp $
  */

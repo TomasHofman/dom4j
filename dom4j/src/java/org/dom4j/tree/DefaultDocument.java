@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultDocument.java,v 1.11 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.12 2001/03/01 23:37:46 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -16,6 +16,7 @@ import java.util.List;
 
 import org.dom4j.Comment;
 import org.dom4j.Document;
+import org.dom4j.DocumentFactory;
 import org.dom4j.DocumentType;
 import org.dom4j.Element;
 import org.dom4j.IllegalAddException;
@@ -26,7 +27,7 @@ import org.dom4j.ProcessingInstruction;
   * of an XML document.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.11 $
+  * @version $Revision: 1.12 $
   */
 public class DefaultDocument extends AbstractDocument {
 
@@ -44,6 +45,9 @@ public class DefaultDocument extends AbstractDocument {
     
     /** The document type for this document */
     private DocumentType docType;
+    
+    /** The document factory used by default */
+    private DocumentFactory documentFactory = DocumentFactory.getInstance();
     
     
     public DefaultDocument() { 
@@ -261,6 +265,13 @@ public class DefaultDocument extends AbstractDocument {
         return new BackedList( this, getContentList(), 0 );
     }
     
+    protected DocumentFactory getDocumentFactory() {
+        return documentFactory;
+    }
+
+    public void setDocumentFactory(DocumentFactory documentFactory) {
+        this.documentFactory = documentFactory;
+    }
 }
 
 
@@ -308,5 +319,5 @@ public class DefaultDocument extends AbstractDocument {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultDocument.java,v 1.11 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: DefaultDocument.java,v 1.12 2001/03/01 23:37:46 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BeanDocumentFactory.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.2 2001/03/01 23:37:46 jstrachan Exp $
  */
 
 package org.dom4j.bean;
@@ -18,6 +18,8 @@ import org.dom4j.QName;
 import org.dom4j.tree.DefaultAttribute;
 import org.dom4j.tree.DefaultElement;
 
+import org.xml.sax.Attributes;
+
 /** <p><code>BeanDocumentFactory</code> is a factory of DOM4J objects
   * which may be BeanElements which are backed by JavaBeans 
   * and their properties. </p>
@@ -26,7 +28,7 @@ import org.dom4j.tree.DefaultElement;
   * tree.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BeanDocumentFactory extends DocumentFactory {
 
@@ -54,6 +56,16 @@ public class BeanDocumentFactory extends DocumentFactory {
         }
     }
     
+    public Element createElement(QName qname, Attributes attributes) {
+        Object bean = createBean( qname, attributes );
+        if ( bean == null ) {
+            return new DefaultElement(qname);
+        }
+        else {
+            return new BeanElement(qname, bean);
+        }
+    }
+    
     public Attribute createAttribute(QName qname, String value) {
         return new DefaultAttribute(qname, value);
     }
@@ -61,11 +73,33 @@ public class BeanDocumentFactory extends DocumentFactory {
     public Attribute createAttribute(String name, String value) {
         return createAttribute(createQName(name), value);
     }
+
+    
+    // Implementation methods
     
     protected Object createBean( QName qname ) {
         return null;
     }
     
+    protected Object createBean( QName qname, Attributes attributes ) {
+        String value = attributes.getValue( "className" );
+        if ( value != null ) {
+            System.out.println( "#### found class: " + value );
+            try {
+                Class beanClass = Class.forName( value );
+                return beanClass.newInstance();
+            }
+            catch (Exception e) {
+                handleException(e);
+            }
+        }
+        return null;
+    }
+    
+    protected void handleException(Exception e) {
+        // ignore introspection exceptions
+        System.out.println( "Warning: couldn't create bean: " + e );
+    }
 }
 
 
@@ -113,5 +147,5 @@ public class BeanDocumentFactory extends DocumentFactory {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BeanDocumentFactory.java,v 1.1 2001/03/01 23:07:46 jstrachan Exp $
+ * $Id: BeanDocumentFactory.java,v 1.2 2001/03/01 23:37:46 jstrachan Exp $
  */
