@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.14 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: Element.java,v 1.15 2001/01/22 15:22:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.14 $
+  * @version $Revision: 1.15 $
   */
 public interface Element extends Branch {
 
@@ -312,21 +312,17 @@ public interface Element extends Branch {
 
     // builder methods 
     
-    /** Adds a new <code>CDATA</code> node with the given text to this element
-      * and returns a reference to the new node.
+    /** Adds a new <code>CDATA</code> node with the given text to this element.
       *
       * @param cdata is the text for the <code>CDATA</code> node.
-      * @return the newly added <code>CDATA</code> node.
       */    
-    public CDATA addCDATA(String cdata);
+    public void addCDATA(String cdata);
     
-    /** Adds a new <code>Text</code> node with the given text to this element
-      * and returns a reference to the new node.
+    /** Adds a new <code>Text</code> node with the given text to this element.
       *
       * @param text is the text for the <code>Text</code> node.
-      * @return the newly added <code>Text</code> node.
       */    
-    public Text addText(String text);    
+    public void addText(String text);    
     
     /** Adds a new <code>Entity</code> node with the given name to this element
       * and returns a reference to the new node.
@@ -512,5 +508,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.14 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: Element.java,v 1.15 2001/01/22 15:22:21 jstrachan Exp $
  */

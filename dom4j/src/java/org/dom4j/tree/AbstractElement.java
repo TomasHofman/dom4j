@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.15 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.16 2001/01/22 15:22:21 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -37,7 +37,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.15 $
+  * @version $Revision: 1.16 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -242,16 +242,14 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
     // Content Model methods
     
     
-    public CDATA addCDATA(String cdata) {
+    public void addCDATA(String cdata) {
         CDATA node = getDocumentFactory().createCDATA(cdata);
         add(node);
-        return node;
     }
     
-    public Text addText(String text) {
+    public void addText(String text) {
         Text node = getDocumentFactory().createText(text);
         add(node);
-        return node;
     }
     
     public Entity addEntity(String name) {
@@ -507,5 +505,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.15 2001/01/19 07:25:12 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.16 2001/01/22 15:22:21 jstrachan Exp $
  */

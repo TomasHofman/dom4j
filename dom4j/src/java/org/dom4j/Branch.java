@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Branch.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
+ * $Id: Branch.java,v 1.11 2001/01/22 15:22:21 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -20,7 +20,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public interface Branch extends Node {
 
@@ -90,13 +90,11 @@ public interface Branch extends Node {
     public void setProcessingInstructions(List listOfPIs);
     
     
-    /** Adds a new <code>Comment</code> node with the given text to this branch
-      * and returns a reference to the new node.
+    /** Adds a new <code>Comment</code> node with the given text to this branch.
       *
       * @param comment is the text for the <code>Comment</code> node.
-      * @return the newly added <code>Comment</code> node.
       */    
-    public Comment addComment(String comment);
+    public void addComment(String comment);
     
     /** Adds a new <code>Element</code> node with the given name to this branch
       * and returns a reference to the new node.
@@ -235,5 +233,5 @@ public interface Branch extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Branch.java,v 1.10 2001/01/22 15:06:38 jstrachan Exp $
+ * $Id: Branch.java,v 1.11 2001/01/22 15:22:21 jstrachan Exp $
  */
