@@ -4,12 +4,14 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: TestDatatype2.java,v 1.9 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestDatatype2.java,v 1.10 2004/06/23 09:54:42 maartenc Exp $
  */
 
 package org.dom4j.datatype;
 
 import java.io.StringReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.SimpleTimeZone;
@@ -28,7 +30,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for XML Schema Datatypes support
   *
   * @author Yuxin Ruan
-  * @version $Revision: 1.9 $
+  * @version $Revision: 1.10 $
   */
 public class TestDatatype2 extends TestCase {
 
@@ -95,8 +97,22 @@ public class TestDatatype2 extends TestCase {
     private void validateDateElement(Element root) throws Exception {
         Element elem = root.element("dateElement");
         Object elemData = elem.getData();
-        validateData("testDateElement", elemData, getDate());
-        System.out.println("retrieved element:" + getDate().getTime());
+        Calendar expected = getDate();
+        
+        System.out.println("retrieved element:" + elemData);
+        
+        // don't compare the Calendar instances, compare their strings instead!
+        assertTrue(elemData instanceof Calendar);
+        Calendar elemCal = (Calendar) elemData;
+
+        DateFormat format = new SimpleDateFormat("MM/dd/yyyyZ");
+        format.setTimeZone(elemCal.getTimeZone());
+        String elemStr = format.format(elemCal.getTime());
+        
+        format.setTimeZone(expected.getTimeZone());
+        String expectedStr = format.format(expected.getTime());
+
+        assertEquals("testDateElement", expectedStr, elemStr);
     }
 
     private void validateData(String testName, Object retrieved, Object expected)
