@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XSLTNativeDOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.2 2001/04/11 17:42:42 jstrachan Exp $
  */
 
 package dom;
@@ -16,6 +16,7 @@ import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.dom4j.Document;
@@ -32,7 +33,7 @@ import XSLTDemo;
   * dom4j.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class XSLTNativeDOMDemo extends XSLTDemo {
     
@@ -69,12 +70,8 @@ public class XSLTNativeDOMDemo extends XSLTDemo {
         // now lets create the TRaX source and result
         // objects and do the transformation
         Source source = new DOMSource( domDocument );
-        DocumentResult result = new DocumentResult();
+        StreamResult result = new StreamResult( System.out );
         transformer.transform( source, result );
-
-        // output the transformed document
-        Document transformedDoc = result.getDocument();
-        writer.write( transformedDoc );
     }
 
 }
@@ -124,5 +121,5 @@ public class XSLTNativeDOMDemo extends XSLTDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XSLTNativeDOMDemo.java,v 1.1 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: XSLTNativeDOMDemo.java,v 1.2 2001/04/11 17:42:42 jstrachan Exp $
  */
