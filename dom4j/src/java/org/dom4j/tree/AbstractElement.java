@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.72 2004/06/16 13:35:42 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.73 2004/06/17 18:56:30 maartenc Exp $
  */
 
 package org.dom4j.tree;
@@ -40,7 +40,7 @@ import org.xml.sax.Attributes;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.72 $
+  * @version $Revision: 1.73 $
   */
 
 public abstract class AbstractElement
@@ -131,6 +131,10 @@ public abstract class AbstractElement
     }
 
     public String getPath(Element context) {
+        
+        if (this == context) {
+            return ".";
+        }
 
         Element parent = getParent();
 
@@ -2318,5 +2322,5 @@ public abstract class AbstractElement
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.72 2004/06/16 13:35:42 maartenc Exp $
+ * $Id: AbstractElement.java,v 1.73 2004/06/17 18:56:30 maartenc Exp $
  */

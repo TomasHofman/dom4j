@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestGetPath.java,v 1.10 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestGetPath.java,v 1.11 2004/06/17 18:56:31 maartenc Exp $
  */
 
 package org.dom4j.xpath;
@@ -20,6 +20,7 @@ import org.dom4j.AbstractTestCase;
 import org.dom4j.Attribute;
 import org.dom4j.Branch;
 import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
@@ -27,7 +28,7 @@ import org.dom4j.io.SAXReader;
 /** Test harness for the GetPath() method
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.11 $
   */
 public class TestGetPath extends AbstractTestCase {
 
@@ -94,6 +95,17 @@ public class TestGetPath extends AbstractTestCase {
         testRelativePath( root, child, "*[name()='b']" ); 
     }
     
+    public void testBug770410() {
+        Document doc = DocumentHelper.createDocument();
+        Element a = doc.addElement("a");
+        Element b = a.addElement("b");
+        Element c = b.addElement("c");
+        
+        b.detach();
+        
+        String relativePath = b.getPath(b);
+        assertSame(b, b.selectSingleNode(relativePath));
+    }
         
     protected void testPath(Node node, String value) {
         testPath( node, value, value );
@@ -189,5 +201,5 @@ public class TestGetPath extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestGetPath.java,v 1.10 2004/04/20 11:46:31 maartenc Exp $
+ * $Id: TestGetPath.java,v 1.11 2004/06/17 18:56:31 maartenc Exp $
  */
