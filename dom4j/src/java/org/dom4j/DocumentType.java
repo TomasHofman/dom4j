@@ -4,15 +4,17 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentType.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DocumentType.java,v 1.3 2001/10/10 14:03:16 jstrachan Exp $
  */
 
 package org.dom4j;
 
+import java.util.List;
+
 /** <p><code>DocumentType</code> defines an XML DOCTYPE declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public interface DocumentType extends Node {
 
@@ -34,6 +36,11 @@ public interface DocumentType extends Node {
     public String getSystemID();
     public void setSystemID(String systemID);
 
+    /** Returns a list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
+    public List getDeclarations();
+    
+    /** Sets the list of declaration objects, defined in the {@link org.dom4j.dtd} package */    
+    public void setDeclarations(List declarations);
 }
 
 
@@ -91,5 +98,5 @@ public interface DocumentType extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentType.java,v 1.2 2001/01/09 20:43:11 jstrachan Exp $
+ * $Id: DocumentType.java,v 1.3 2001/10/10 14:03:16 jstrachan Exp $
  */
