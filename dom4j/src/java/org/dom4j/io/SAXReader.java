@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXReader.java,v 1.41 2002/05/20 08:14:16 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.42 2002/11/27 07:35:33 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -76,7 +76,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * <a href="http://java.sun.com/xml/">Sun's Java &amp; XML site</a></p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.41 $
+  * @version $Revision: 1.42 $
   */
 public class SAXReader {
 
@@ -112,6 +112,9 @@ public class SAXReader {
     
     /** Holds value of property stripWhitespaceText. */
     private boolean stripWhitespaceText = false;
+    
+    /** Should we ignore comments */
+    private boolean ignoreComments = false;
     
     
     //private boolean includeExternalGeneralEntities = false;
@@ -316,6 +319,7 @@ public class SAXReader {
             contentHandler.setIncludeExternalDTDDeclarations( isIncludeExternalDTDDeclarations() );
             contentHandler.setMergeAdjacentText( isMergeAdjacentText() );
             contentHandler.setStripWhitespaceText( isStripWhitespaceText() );
+            contentHandler.setIgnoreComments( isIgnoreComments() );
             xmlReader.setContentHandler(contentHandler);
 
             configureReader(xmlReader, contentHandler);
@@ -444,6 +448,22 @@ public class SAXReader {
         this.stripWhitespaceText = stripWhitespaceText;
     }
     
+    /**
+     * Returns whether we should ignore comments or not.
+     * @return boolean
+     */
+    public boolean isIgnoreComments() {
+        return ignoreComments;
+    }
+
+    /**
+     * Sets whether we should ignore comments or not.
+     * @param ignoreComments whether we should ignore comments or not.
+     */
+    public void setIgnoreComments(boolean ignoreComments) {
+        this.ignoreComments = ignoreComments;
+    }
+
     
     /** @return the <code>DocumentFactory</code> used to create document objects
       */
@@ -784,5 +804,5 @@ public class SAXReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXReader.java,v 1.41 2002/05/20 08:14:16 jstrachan Exp $
+ * $Id: SAXReader.java,v 1.42 2002/11/27 07:35:33 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SAXContentHandler.java,v 1.44 2002/04/25 10:31:50 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.45 2002/11/27 07:35:33 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -53,7 +53,7 @@ import org.xml.sax.helpers.DefaultHandler;
 /** <p><code>SAXContentHandler</code> builds a dom4j tree via SAX events.</p>
   *
   * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
-  * @version $Revision: 1.44 $
+  * @version $Revision: 1.45 $
   */
 public class SAXContentHandler extends DefaultHandler implements LexicalHandler, DeclHandler, DTDHandler {
 
@@ -122,6 +122,9 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
     /** Have we added text to the buffer */
     private boolean textInTextBuffer = false;
 
+    /** Should we ignore comments */
+    private boolean ignoreComments = false;
+    
     /** Buffer used to concatenate text together */
     private StringBuffer textBuffer;
 
@@ -378,16 +381,18 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
     }
 
     public void comment(char[] ch, int start, int end) throws SAXException {
-        if ( mergeAdjacentText && textInTextBuffer ) {
-            completeCurrentTextNode();
-        }
-        String text = new String(ch, start, end);
-        if (!insideDTDSection && text.length() > 0) {
-            if ( currentElement != null ) {
-                currentElement.addComment(text);
+        if (!ignoreComments) {
+            if ( mergeAdjacentText && textInTextBuffer ) {
+                completeCurrentTextNode();
             }
-            else {
-                document.addComment(text);
+            String text = new String(ch, start, end);
+            if (!insideDTDSection && text.length() > 0) {
+                if ( currentElement != null ) {
+                    currentElement.addComment(text);
+                }
+                else {
+                    document.addComment(text);
+                }
             }
         }
     }
@@ -666,6 +671,23 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
         this.stripWhitespaceText = stripWhitespaceText;
     }
 
+    /**
+     * Returns whether we should ignore comments or not.
+     * @return boolean
+     */
+    public boolean isIgnoreComments() {
+        return ignoreComments;
+    }
+
+    /**
+     * Sets whether we should ignore comments or not.
+     * @param ignoreComments whether we should ignore comments or not.
+     */
+    public void setIgnoreComments(boolean ignoreComments) {
+        this.ignoreComments = ignoreComments;
+    }
+
+
     // Implementation methods
     //-------------------------------------------------------------------------
 
@@ -828,5 +850,5 @@ public class SAXContentHandler extends DefaultHandler implements LexicalHandler,
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXContentHandler.java,v 1.44 2002/04/25 10:31:50 jstrachan Exp $
+ * $Id: SAXContentHandler.java,v 1.45 2002/11/27 07:35:33 jstrachan Exp $
  */
