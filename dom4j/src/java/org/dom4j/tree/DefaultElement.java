@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.28 2001/05/18 16:49:36 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.29 2001/05/23 20:27:13 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -41,7 +41,7 @@ import org.xml.sax.Attributes;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.28 $
+  * @version $Revision: 1.29 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -627,8 +627,6 @@ public class DefaultElement extends AbstractElement {
     }
     
     
-    // node navigation API - return content as nodes
-    // such as Text etc.
     public Node node(int index) {
         if ( index >= 0 ) {
             Object node = content;
@@ -927,5 +925,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.28 2001/05/18 16:49:36 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.29 2001/05/23 20:27:13 jstrachan Exp $
  */
