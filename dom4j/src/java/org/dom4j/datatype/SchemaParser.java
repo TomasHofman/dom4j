@@ -4,7 +4,7 @@
  * This software is open source.
  * See the bottom of this file for the licence.
  *
- * $Id: SchemaParser.java,v 1.5 2001/11/06 16:04:26 yruan2 Exp $
+ * $Id: SchemaParser.java,v 1.6 2001/11/07 16:14:00 yruan2 Exp $
  */
 
 package org.dom4j.datatype;
@@ -31,7 +31,7 @@ import org.relaxng.datatype.ValidationContext;
  *
  * @author <a href="mailto:jstrachan@apache.org">James Strachan</a>
  * @author Yuxin Ruan
- * @version $Revision: 1.5 $
+ * @version $Revision: 1.6 $
  */
 public class SchemaParser {
 
@@ -142,6 +142,7 @@ public class SchemaParser {
         if ( schemaComplexType != null ) {
             onSchemaComplexType( schemaComplexType, elementFactory );
         }
+
         Iterator iter = xsdElement.elementIterator( XSD_ATTRIBUTE );
         if ( iter.hasNext() ) {
             do {
@@ -180,7 +181,7 @@ public class SchemaParser {
             if ( dataType != null ) {
                 // register the XSDatatype for the given Attribute
                 // #### should both these be done?
-                elementFactory.setChildElementXSDatatype( qname, dataType );
+                //elementFactory.setChildElementXSDatatype( qname, dataType );
                 elementFactory.setAttributeXSDatatype( qname, dataType );
             }
             else {
@@ -402,5 +403,5 @@ public class SchemaParser {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaParser.java,v 1.5 2001/11/06 16:04:26 yruan2 Exp $
+ * $Id: SchemaParser.java,v 1.6 2001/11/07 16:14:00 yruan2 Exp $
  */
