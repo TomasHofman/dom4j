@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.5 2001/04/04 22:38:41 jstrachan Exp $
  */
 
 import org.dom4j.DocumentException;
@@ -13,18 +13,23 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.XMLWriter;
+
 /** An abstract base class for the demo programs.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.4 $
+  * @version $Revision: 1.5 $
   */
 public abstract class AbstractDemo {
 
+    /** The format of XML / HTML that is output by the demo program */
+    protected OutputFormat format = new OutputFormat();
+    /** The writer of XML */
+    protected XMLWriter writer;
+    
     public AbstractDemo() {
     }
-    
-    public abstract void run(String[] args) throws Exception;
-    
     
     protected static void run(AbstractDemo demo, String[] args) {
         try {
@@ -47,6 +52,37 @@ public abstract class AbstractDemo {
         }
     }
 
+    public void run(String[] args) throws Exception {    
+        if ( args.length < 1) {
+            printUsage( "no XML document URL specified" );
+            return;
+        }
+        
+        int idx = format.parseOptions( args, 0 );
+        if ( idx >= args.length ) {
+            printUsage( "no XML document URL specified" );
+            return;
+        }
+        else {
+            writer = createXMLWriter();
+            
+            parse( args[idx] );
+        }
+    }
+    
+    
+    protected void parse( URL url ) throws Exception {
+        throw new RuntimeException( "parse(URL url) not implemented in this demo" );
+    }
+    
+        
+    protected void parse( String xmlFile ) throws Exception {
+        URL url = getURL( xmlFile );
+        if ( url != null ) {
+            parse( url );
+        }
+    }
+    
     /** @return the {@link URL} for the given file
       * where the given file name can be either a name of a file or a URL
       */
@@ -76,6 +112,13 @@ public abstract class AbstractDemo {
         println( "Usage: java " + getClass().getName() + " " + text );
     }
 
+    /** A Factory Method to create an <code>XMLWriter</code>
+      * instance allowing derived classes to change this behaviour
+      */
+    protected XMLWriter createXMLWriter() throws Exception {
+        return new XMLWriter( System.out, format );
+    }
+    
 }
 
 
@@ -123,5 +166,5 @@ public abstract class AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractDemo.java,v 1.4 2001/01/24 16:52:13 jstrachan Exp $
+ * $Id: AbstractDemo.java,v 1.5 2001/04/04 22:38:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: HTMLWriter.java,v 1.5 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.6 2001/04/04 22:38:41 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -32,39 +32,48 @@ import org.xml.sax.SAXException;
   * as for &lt;BR&gt; and &lt;P&gt;.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a> (james.strachan@metastuff.com)
-  * @version $Revision: 1.5 $ 
+  * @version $Revision: 1.6 $ 
  */
 public class HTMLWriter extends XMLWriter {
 
+    protected static final OutputFormat defaultHtmlFormat;
+    
+    static {
+        defaultHtmlFormat = new OutputFormat( "  ", true );
+        defaultHtmlFormat.setTrimText( true );
+        defaultHtmlFormat.setSuppressDeclaration( true );
+    }
+    
     /** Used to store the qualified element names which 
       * should have no close element tag 
       */
     private Set omitElementCloseSet;
 
     
-    public HTMLWriter() {
-    }
-
     public HTMLWriter(Writer writer) {
-        super( writer );
-    }
-    
-    public HTMLWriter(OutputStream out) throws UnsupportedEncodingException {
-        super( out );
+        super( writer, defaultHtmlFormat );
     }
     
     public HTMLWriter(Writer writer, OutputFormat format) {
         super( writer, format );
     }
     
+    public HTMLWriter() throws UnsupportedEncodingException {
+        super( defaultHtmlFormat );
+    }
+
+    public HTMLWriter(OutputFormat format) throws UnsupportedEncodingException {
+        super( format );
+    }
+
+    public HTMLWriter(OutputStream out) throws UnsupportedEncodingException {
+        super( out, defaultHtmlFormat );
+    }
+    
     public HTMLWriter(OutputStream out, OutputFormat format) throws UnsupportedEncodingException {
         super( out, format );
     }
     
-    public HTMLWriter(OutputFormat format) {
-        super( format );
-    }
-
     
     public void startCDATA() throws SAXException {
     }
@@ -191,5 +200,5 @@ public class HTMLWriter extends XMLWriter {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: HTMLWriter.java,v 1.5 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: HTMLWriter.java,v 1.6 2001/04/04 22:38:41 jstrachan Exp $
  */

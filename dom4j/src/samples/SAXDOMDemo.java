@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDOMDemo.java,v 1.3 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.4 2001/04/04 22:38:41 jstrachan Exp $
  */
 
 
@@ -13,7 +13,6 @@ import java.net.URL;
 import org.dom4j.Document;
 import org.dom4j.io.DOMReader;
 import org.dom4j.io.DOMWriter;
-import org.dom4j.io.OutputFormat;
 import org.dom4j.io.SAXContentHandler;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.SAXWriter;
@@ -28,7 +27,7 @@ import org.dom4j.io.XMLWriter;
   * SAX <-> DOM4J and DOM4J <-> DOM and DOM4J <-> text
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class SAXDOMDemo extends AbstractDemo {
     
@@ -37,22 +36,6 @@ public class SAXDOMDemo extends AbstractDemo {
     }    
     
     public SAXDOMDemo() {
-    }
-    
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 1) {
-            printUsage( "<XML document URL>" );
-            return;
-        }
-        
-        parse( args[0] );
-    }
-    
-    protected void parse( String xmlFile ) throws Exception {
-        URL url = getURL( xmlFile );
-        if ( url != null ) {
-            parse( url );
-        }
     }
     
     protected void parse( URL url ) throws Exception {
@@ -88,20 +71,8 @@ public class SAXDOMDemo extends AbstractDemo {
     
     
     protected void process(Document document) throws Exception {
-        XMLWriter writer = createXMLWriter();
         writer.write(document);
     }
-
-    /** A Factory Method to create an <code>XMLWriter</code>
-      * instance allowing derived classes to change this behaviour
-      */
-    protected XMLWriter createXMLWriter() throws Exception {
-        OutputFormat format = new OutputFormat("  ", true);
-        format.setTrimText(true);
-        format.setExpandEmptyElements(true);
-        return new XMLWriter( System.out, format );
-    }
-    
 }
 
 
@@ -149,5 +120,5 @@ public class SAXDOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDOMDemo.java,v 1.3 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: SAXDOMDemo.java,v 1.4 2001/04/04 22:38:41 jstrachan Exp $
  */

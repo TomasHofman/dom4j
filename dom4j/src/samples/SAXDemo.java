@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SAXDemo.java,v 1.8 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.9 2001/04/04 22:38:41 jstrachan Exp $
  */
 
 
@@ -18,7 +18,7 @@ import org.dom4j.io.XMLWriter;
 /** A simple test program to demonstrate using SAX to create a DOM4J tree
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.8 $
+  * @version $Revision: 1.9 $
   */
 public class SAXDemo extends AbstractDemo {
     
@@ -29,22 +29,6 @@ public class SAXDemo extends AbstractDemo {
     public SAXDemo() {
     }
     
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 1) {
-            printUsage( "<XML document URL>" );
-            return;
-        }
-        
-        parse( args[0] );
-    }
-    
-    protected void parse( String xmlFile ) throws Exception {
-        URL url = getURL( xmlFile );
-        if ( url != null ) {
-            parse( url );
-        }
-    }
-    
     protected void parse( URL url ) throws Exception {
         SAXReader reader = new SAXReader();
         Document document = reader.read(url);
@@ -52,20 +36,9 @@ public class SAXDemo extends AbstractDemo {
     }
     
     protected void process(Document document) throws Exception {
-        XMLWriter writer = createXMLWriter();
         writer.write(document);
     }
 
-    /** A Factory Method to create an <code>XMLWriter</code>
-      * instance allowing derived classes to change this behaviour
-      */
-    protected XMLWriter createXMLWriter() throws Exception {
-        OutputFormat format = new OutputFormat("  ", true);
-        format.setTrimText(true);
-        format.setExpandEmptyElements(true);
-        return new XMLWriter( System.out, format );
-    }
-    
 }
 
 
@@ -113,5 +86,5 @@ public class SAXDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SAXDemo.java,v 1.8 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: SAXDemo.java,v 1.9 2001/04/04 22:38:41 jstrachan Exp $
  */

@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMDemo.java,v 1.2 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.3 2001/04/04 22:38:41 jstrachan Exp $
  */
 
 
@@ -16,14 +16,13 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.dom4j.Document;
 import org.dom4j.io.DOMReader;
-import org.dom4j.io.OutputFormat;
 import org.dom4j.io.XMLWriter;
 
 /** A simple test program to demonstrate using W3C DOM and JAXP to load a DOM
   * XML tree then converting it to a DOM4J tree.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class DOMDemo extends AbstractDemo {
     
@@ -34,23 +33,14 @@ public class DOMDemo extends AbstractDemo {
     public DOMDemo() {
     }
     
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 1) {
-            printUsage( "<XML document URL>" );
-            return;
-        }
-
-        parse( args[0] );
-    }
-    
-    protected void parse( String xmlFile ) throws Exception {
+    protected void parse( URL url ) throws Exception {
         // parse a DOM tree
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         
         println( "Loading document with JAXP builder: " + builder );
         
-        org.w3c.dom.Document domDocument = builder.parse( getURL( xmlFile ).toExternalForm() );
+        org.w3c.dom.Document domDocument = builder.parse( url.toExternalForm() );
         
         println( "Created W3C DOM document: " + domDocument );
         
@@ -64,20 +54,8 @@ public class DOMDemo extends AbstractDemo {
     }
     
     protected void process(Document document) throws Exception {
-        XMLWriter writer = createXMLWriter();
         writer.write(document);                
     }
-
-    /** A Factory Method to create an <code>XMLWriter</code>
-      * instance allowing derived classes to change this behaviour
-      */
-    protected XMLWriter createXMLWriter() throws Exception {
-        OutputFormat format = new OutputFormat("  ", true);
-        format.setTrimText(true);
-        format.setExpandEmptyElements(true);
-        return new XMLWriter( System.out, format );
-    }
-    
 }
 
 
@@ -125,5 +103,5 @@ public class DOMDemo extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMDemo.java,v 1.2 2001/04/04 18:08:49 jstrachan Exp $
+ * $Id: DOMDemo.java,v 1.3 2001/04/04 22:38:41 jstrachan Exp $
  */

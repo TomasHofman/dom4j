@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathValueOf.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: XPathValueOf.java,v 1.4 2001/04/04 22:38:41 jstrachan Exp $
  */
 
 
@@ -23,7 +23,7 @@ import org.dom4j.io.SAXReader;
   * command on Unix but uses XPath valueOf for matching
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public class XPathValueOf extends AbstractDemo {
     
@@ -53,7 +53,7 @@ public class XPathValueOf extends AbstractDemo {
                     setXPath( arg );
                 }
                 else {
-                    processFile( arg );
+                    parse( arg );
                 }
             }
         }
@@ -63,26 +63,13 @@ public class XPathValueOf extends AbstractDemo {
         xpath = DocumentHelper.createXPath( xpathExpression );
     }
     
-    protected void processFile(String fileName) throws Exception {
-        URL url = getFileURL(fileName);
+    protected void parse( URL url ) throws Exception {
         SAXReader reader = new SAXReader();
         Document document = reader.read( url );
         
         String value = xpath.valueOf( document );
         
         println( value );
-    }
-    
-    /** @return the given file or url as a URL
-      */
-    protected URL getFileURL(String fileName) throws Exception {
-        try {
-            return new URL( fileName );
-        }
-        catch (MalformedURLException e) {
-            File file = new File( fileName );
-            return file.toURL();
-        }
     }
     
     protected void readOptions( String arg ) {
@@ -134,5 +121,5 @@ public class XPathValueOf extends AbstractDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathValueOf.java,v 1.3 2001/02/19 12:05:47 jstrachan Exp $
+ * $Id: XPathValueOf.java,v 1.4 2001/04/04 22:38:41 jstrachan Exp $
  */

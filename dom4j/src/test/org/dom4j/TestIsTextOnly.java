@@ -4,63 +4,51 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: XPathDemo.java,v 1.10 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: TestIsTextOnly.java,v 1.1 2001/04/04 22:38:41 jstrachan Exp $
  */
 
+package org.dom4j;
 
 import java.util.Iterator;
 import java.util.List;
 
-import org.dom4j.*;
-import org.dom4j.io.XMLWriter;
+import junit.framework.*;
+import junit.textui.TestRunner;
 
-/** A sample program to demonstrate the use of XPath expressions.
+/** A test harness to test the parent relationship and use of the
+  * {@link Node#asXPathResult} method.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.10 $
+  * @version $Revision: 1.1 $
   */
-public class XPathDemo extends SAXDemo {
+public class TestIsTextOnly extends AbstractTestCase {
     
-    protected String xpath = "*";
-    
-    
-    public static void main(String[] args) {
-        run( new XPathDemo(), args );
-    }    
-    
-    public XPathDemo() {
+    public static void main( String[] args ) {
+        TestRunner.run( suite() );
     }
-        
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 2 ) {
-            printUsage( "<XML document URL> <XPath expression>" );
-            return;
-        }
+    
+    public static Test suite() {
+        return new TestSuite( TestIsTextOnly.class );
+    }
+    
+    public TestIsTextOnly(String name) {
+        super(name);
+    }
 
-        String xmlFile = args[0];
-        xpath = args[1];
+    // Test case(s)
+    //-------------------------------------------------------------------------                    
+    public void testDocument() throws Exception {        
+        DocumentFactory factory = new DocumentFactory();
+        Element root = factory.createElement( "root" );
+        Element first = root.addElement( "child" );
+        first.addText( "This is some text" );
         
-        writer = createXMLWriter();        
-        
-        parse( xmlFile );
+        assert( "Root node is not text only: " + root, ! root.isTextOnly() );
+        assert( "First child is text only: " + first, first.isTextOnly() );
     }
-    
-    protected void process(Document document) throws Exception {
-        println( "Evaluating XPath: " + xpath );
         
-        List list = document.selectNodes( xpath );
-        
-        println( "Found: " + list.size() + " node(s)" );        
-        println( "Results:" );
-        
-        for ( Iterator iter = list.iterator(); iter.hasNext(); ) {
-            Object object = iter.next();
-            writer.write( object );
-            writer.println();
-        }
-        
-        writer.flush();
-   }
+    // Implementation methods
+    //-------------------------------------------------------------------------                    
 }
 
 
@@ -108,5 +96,5 @@ public class XPathDemo extends SAXDemo {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: XPathDemo.java,v 1.10 2001/04/04 22:38:41 jstrachan Exp $
+ * $Id: TestIsTextOnly.java,v 1.1 2001/04/04 22:38:41 jstrachan Exp $
  */
