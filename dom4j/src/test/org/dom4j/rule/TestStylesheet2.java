@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestStylesheet2.java,v 1.1 2001/08/17 08:16:03 jstrachan Exp $
+ * $Id: TestStylesheet2.java,v 1.2 2001/08/17 09:45:19 jstrachan Exp $
  */
 
 package org.dom4j.rule;
@@ -23,15 +23,15 @@ import org.dom4j.io.SAXReader;
   * XSLT rule engine.
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class TestStylesheet2 extends TestStylesheet {
 
     protected String[] templates = {
         "/",
-        "*",
         "title",
         "para",
+        "*",
     };
     
     // JUnit stuff
@@ -129,5 +129,5 @@ public class TestStylesheet2 extends TestStylesheet {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestStylesheet2.java,v 1.1 2001/08/17 08:16:03 jstrachan Exp $
+ * $Id: TestStylesheet2.java,v 1.2 2001/08/17 09:45:19 jstrachan Exp $
  */
