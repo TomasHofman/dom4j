@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractElement.java,v 1.25 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.26 2001/03/01 23:07:46 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -39,7 +39,7 @@ import org.dom4j.Visitor;
   * tree implementors to use for implementation inheritence.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.25 $
+  * @version $Revision: 1.26 $
   */
 public abstract class AbstractElement extends AbstractBranch implements Element {
 
@@ -152,6 +152,14 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
         return getQName().getQualifiedName();
     }
 
+    
+    public Object getData() {
+        return getText();
+    }
+    
+    public void setData(Object data) {
+        // ignore this method
+    }
     
     
     
@@ -587,5 +595,5 @@ public abstract class AbstractElement extends AbstractBranch implements Element 
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractElement.java,v 1.25 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: AbstractElement.java,v 1.26 2001/03/01 23:07:46 jstrachan Exp $
  */

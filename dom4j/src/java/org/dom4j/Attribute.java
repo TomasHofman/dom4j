@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Attribute.java,v 1.3 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: Attribute.java,v 1.4 2001/03/01 23:07:46 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -13,7 +13,7 @@ package org.dom4j;
   * An attribute may have a name, an optional namespace and a value.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.3 $
+  * @version $Revision: 1.4 $
   */
 public interface Attribute extends Node {
     
@@ -84,6 +84,17 @@ public interface Attribute extends Node {
      */
     public void setValue(String value);
     
+    /** Accesses the data of this attribute which may implement data typing 
+      * bindings such as XML Schema or 
+      * Java Bean bindings or will return the same value as {@link #getText}
+      */
+    public Object getData();
+    
+    /** Sets the data value of this attribute if this element supports data 
+      * binding or calls {@link #setText} if it doesn't
+      */
+    public void setData(Object data);
+    
 }
 
 
@@ -131,5 +142,5 @@ public interface Attribute extends Node {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Attribute.java,v 1.3 2001/01/16 18:52:16 jstrachan Exp $
+ * $Id: Attribute.java,v 1.4 2001/03/01 23:07:46 jstrachan Exp $
  */

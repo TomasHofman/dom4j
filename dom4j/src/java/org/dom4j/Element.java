@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: Element.java,v 1.22 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: Element.java,v 1.23 2001/03/01 23:07:46 jstrachan Exp $
  */
 
 package org.dom4j;
@@ -26,7 +26,7 @@ import java.util.Map;
   *
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.22 $
+  * @version $Revision: 1.23 $
   */
 public interface Element extends Branch {
 
@@ -150,7 +150,17 @@ public interface Element extends Branch {
       */
     public String getString();    
 
+
+    /** Accesses the data of this element which may implement data typing 
+      * bindings such as XML Schema or 
+      * Java Bean bindings or will return the same value as {@link #getText}
+      */
+    public Object getData();
     
+    /** Sets the data value of this element if this element supports data 
+      * binding or calls {@link #setText} if it doesn't
+      */
+    public void setData(Object data);
     
     // Attributes API
     
@@ -570,5 +580,5 @@ public interface Element extends Branch {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: Element.java,v 1.22 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: Element.java,v 1.23 2001/03/01 23:07:46 jstrachan Exp $
  */

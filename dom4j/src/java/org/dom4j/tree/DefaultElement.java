@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultElement.java,v 1.16 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.17 2001/03/01 23:07:46 jstrachan Exp $
  */
 
 package org.dom4j.tree;
@@ -38,7 +38,7 @@ import org.dom4j.Text;
   * of an XML element.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.16 $
+  * @version $Revision: 1.17 $
   */
 public class DefaultElement extends AbstractElement {
 
@@ -741,14 +741,6 @@ public class DefaultElement extends AbstractElement {
     }
     
 
-    /** A Factory Method pattern which lazily creates 
-      * a List implementation used to store attributes
-      */
-    protected List createAttributeList() {
-        return new ArrayList();
-    }
-    
-    
     protected void addNode(Node node) {
         if (node.getParent() != null) {
             // XXX: could clone here
@@ -791,11 +783,39 @@ public class DefaultElement extends AbstractElement {
 
     // Implementation methods
     
+    protected List getContentList() {
+        if ( contents == null ) {
+            contents = createContentList();
+            if ( firstNode != null ) {
+                contents.add( firstNode );
+            }
+        }
+        return contents;
+    }
+
+    protected List getAttributeList() {
+        if ( attributes == null ) {
+            attributes = createAttributeList();
+        }
+        return attributes;
+    }
+    
+    protected void setAttributeList(List attributes) {
+        this.attributes = attributes;
+    }
+    
     
     /** A Factory Method pattern which lazily creates 
       * a List implementation used to store content
       */
     protected List createContentList() {
+        return new ArrayList();
+    }
+    
+    /** A Factory Method pattern which lazily creates 
+      * a List implementation used to store attributes
+      */
+    protected List createAttributeList() {
         return new ArrayList();
     }
     
@@ -825,22 +845,6 @@ public class DefaultElement extends AbstractElement {
         return new BackedList( this, getContentList(), 0 );
     }
     
-    protected List getContentList() {
-        if ( contents == null ) {
-            contents = createContentList();
-            if ( firstNode != null ) {
-                contents.add( firstNode );
-            }
-        }
-        return contents;
-    }
-
-    protected List getAttributeList() {
-        if ( attributes == null ) {
-            attributes = createAttributeList();
-        }
-        return attributes;
-    }
     
     protected Iterator createSingleIterator( Object result ) {
         return new SingleIterator( result );
@@ -900,5 +904,5 @@ public class DefaultElement extends AbstractElement {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultElement.java,v 1.16 2001/02/07 11:35:54 jstrachan Exp $
+ * $Id: DefaultElement.java,v 1.17 2001/03/01 23:07:46 jstrachan Exp $
  */
