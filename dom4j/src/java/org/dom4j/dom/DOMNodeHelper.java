@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DOMNodeHelper.java,v 1.6 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.7 2002/04/23 15:49:36 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
   * for use across Node implementations.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.6 $
+  * @version $Revision: 1.7 $
   */
 public class DOMNodeHelper {
 
@@ -127,7 +127,19 @@ public class DOMNodeHelper {
         org.w3c.dom.Node newChild, 
         org.w3c.dom.Node refChild
     ) throws DOMException {
-        throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
+        if ( node instanceof Branch ) {
+            Branch branch = (Branch) node;
+            List list = branch.content();
+            int index = list.indexOf(refChild);
+            if ( index < 0 ) {
+                index = 0;
+            }
+            list.add(index, newChild);
+            return newChild;
+        }
+        else {
+            throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
+        }
     }
 
     public static org.w3c.dom.Node replaceChild(
@@ -135,13 +147,30 @@ public class DOMNodeHelper {
         org.w3c.dom.Node newChild, 
         org.w3c.dom.Node oldChild
     ) throws DOMException {
-        throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
+        if ( node instanceof Branch ) {
+            Branch branch = (Branch) node;
+            List list = branch.content();
+            int index = list.indexOf(oldChild);
+            if ( index < 0 ) {
+                index = 0;
+            }
+            list.set(index, newChild);
+            return newChild;
+        }
+        else {        
+            throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
+        }
     }
 
     public static org.w3c.dom.Node removeChild(
         Node node, 
         org.w3c.dom.Node oldChild
     ) throws DOMException {
+        if ( node instanceof Branch ) {
+            Branch branch = (Branch) node;
+            branch.remove((Node) oldChild);
+            return oldChild;
+        }
         throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
     }
 
@@ -149,6 +178,11 @@ public class DOMNodeHelper {
         Node node, 
         org.w3c.dom.Node newChild
     ) throws DOMException {
+        if ( node instanceof Branch ) {
+            Branch branch = (Branch) node;
+            branch.add( (Node) newChild );
+            return newChild;
+        }
         throw new DOMException( DOMException.HIERARCHY_REQUEST_ERR, "Children not allowed for this node: " + node );
     }
 
@@ -476,5 +510,5 @@ public class DOMNodeHelper {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DOMNodeHelper.java,v 1.6 2001/04/10 23:43:44 jstrachan Exp $
+ * $Id: DOMNodeHelper.java,v 1.7 2002/04/23 15:49:36 jstrachan Exp $
  */

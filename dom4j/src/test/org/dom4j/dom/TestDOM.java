@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: TestDOM.java,v 1.2 2002/04/19 17:45:20 jstrachan Exp $
+ * $Id: TestDOM.java,v 1.3 2002/04/23 15:49:37 jstrachan Exp $
  */
 
 package org.dom4j.dom;
@@ -32,7 +32,7 @@ import org.w3c.dom.NodeList;
 /** A test harness to test the native DOM implementation of dom4j
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.3 $
   */
 public class TestDOM extends AbstractTestCase {
 
@@ -83,8 +83,13 @@ public class TestDOM extends AbstractTestCase {
     /** Tests the bug found by Soumanjoy */
     public void testClassCastBug() throws Exception {
         DOMDocument oDocument = new DOMDocument("Root");
-        oDocument.createElement("Parent"); 
+        org.w3c.dom.Element oParent = oDocument.createElement("Parent"); 
         //<-- Fails here when the code is broken.
+        
+        oParent.setAttribute("name", "N01");
+        oParent.setAttribute("id", "ID01");
+
+        oDocument.appendChild(oParent); //<-- Fails here, Error message is below
     }
         
     // Implementation methods
@@ -197,5 +202,5 @@ public class TestDOM extends AbstractTestCase {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: TestDOM.java,v 1.2 2002/04/19 17:45:20 jstrachan Exp $
+ * $Id: TestDOM.java,v 1.3 2002/04/23 15:49:37 jstrachan Exp $
  */
