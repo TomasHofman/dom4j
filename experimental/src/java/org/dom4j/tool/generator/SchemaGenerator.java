@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: SchemaGenerator.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: SchemaGenerator.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */
 
 package org.dom4j.tool.generator;
@@ -29,7 +29,7 @@ import org.metastuff.util.StringUtils;
   * document type declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class SchemaGenerator {
 
@@ -196,14 +196,14 @@ public class SchemaGenerator {
     }
     
     protected void makeFactories() {
-        makeContentFactory();
         makeDocument();
         makeDocumentFactory();
     }
     
-    protected void makeContentFactory() {
-        ContentFactoryGenerator generator = new ContentFactoryGenerator();
+    protected void makeDocumentFactory() {
+        DocumentFactoryGenerator generator = new DocumentFactoryGenerator();
         
+/*        
         DefaultStringConstantsGenerator elementConstantGenerator 
             = new DefaultStringConstantsGenerator( generator.getElementHelperClassName() );
         
@@ -221,17 +221,13 @@ public class SchemaGenerator {
         
         generator.setAttributeClassNames( attributeClassNames );
         generator.setAttributeIntCodes( attributeConstantGenerator.getIntCodes() );
+*/
         
         runGenerator(generator);
     }
     
     protected void makeDocument() {
         DocumentGenerator generator = new DocumentGenerator();
-        runGenerator(generator);
-    }
-    
-    protected void makeDocumentFactory() {
-        DocumentFactoryGenerator generator = new DocumentFactoryGenerator();
         runGenerator(generator);
     }
     
@@ -367,5 +363,5 @@ public class SchemaGenerator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: SchemaGenerator.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: SchemaGenerator.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */

@@ -4,82 +4,44 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: AbstractAttributeModel.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: Pattern.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
  */
 
-package org.dom4j.tree;
+package org.dom4j.rule;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import org.dom4j.Node;
 
-import org.dom4j.Attribute;
-import org.dom4j.ContentFactory;
-import org.dom4j.Namespace;
 
-/** <p><code>AbstractAttributeModel</code> is an abstract base class for 
-  * tree implementors to use for implementation inheritence.</p>
+/** <p><code>Pattern</code> defines the behaviour for pattern in
+  * the XSLT processing model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
   * @version $Revision: 1.1 $
   */
-public abstract class AbstractAttributeModel implements AttributeModel {
-    
-    public Iterator attributeIterator() {
-        return getAttributes().iterator();
-    }
-    
-    public Attribute getAttribute(String name) {
-        return getAttribute(name, Namespace.NO_NAMESPACE);
-    }
-    
-    public boolean removeAttribute(String name) {
-        return removeAttribute(name, Namespace.NO_NAMESPACE);
-    }
-    
+public interface Pattern {
 
-    public String getAttributeValue(String name) {
-        return getAttributeValue(name, Namespace.NO_NAMESPACE);
-    }
+    /** @return true if the pattern matches the given 
+      * DOM4J node.
+      */
+    public boolean matches( Node node );
     
-    public String getAttributeValue(String name, Namespace ns) {
-        Attribute attrib = getAttribute(name, ns);
-        if (attrib == null) {
-            return null;
-        } 
-        else {
-            return attrib.getValue();
-        }
-    }
+    /** @return the type of node the pattern matches
+      * which by default should return MATCHES_ANY
+      */
+    public short getMatchType();
 
-    public void setAttributeValue(ContentFactory factory, String name, String value) {
-        Attribute attribute = getAttribute(name);
-        if (attribute == null ) {
-            add(factory.createAttribute(name, value));
-        }
-        else if (attribute.isReadOnly()) {
-            remove(attribute);
-            add(factory.createAttribute(name, value));
-        }
-        else {
-            attribute.setValue(value);
-        }
-    }
+    
+    // These node numbers are compatable with DOM4J's Node types
 
-    public void setAttributeValue(ContentFactory factory, String name, String value, Namespace namespace) {
-        Attribute attribute = getAttribute(name, namespace);
-        if (attribute == null ) {
-            add(factory.createAttribute(name, value, namespace));
-        }
-        else if (attribute.isReadOnly()) {
-            remove(attribute);
-            add(factory.createAttribute(name, value, namespace));
-        }
-        else {
-            attribute.setValue(value);
-        }
-    }
+    /** Matches any node */
+    public static final short ANY_NODE = 0;
+    
+    /** Matches no nodes */
+    public static final short NONE = 9999;
+    
+    /** Count of the number of node types */
+    public static final short NUMBER_OF_TYPES = Node.UNKNOWN_NODE;
+    
 }
 
 
@@ -127,5 +89,5 @@ public abstract class AbstractAttributeModel implements AttributeModel {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: AbstractAttributeModel.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: Pattern.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
  */

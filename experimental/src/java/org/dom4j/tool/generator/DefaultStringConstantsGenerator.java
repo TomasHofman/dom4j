@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DefaultStringConstantsGenerator.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: DefaultStringConstantsGenerator.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */
 
 package org.dom4j.tool.generator;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.dom4j.TreeException;
+import org.dom4j.DocumentException;
 import org.dom4j.tool.dtd.ElementDecl;
 import org.dom4j.tool.dtd.AttributeDecl;
 
@@ -24,7 +24,7 @@ import org.metastuff.coder.*;
   * This implementation uses a Map to resolve Strings into Integers</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DefaultStringConstantsGenerator extends StringConstantsGenerator {
 
@@ -138,5 +138,5 @@ public class DefaultStringConstantsGenerator extends StringConstantsGenerator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DefaultStringConstantsGenerator.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: DefaultStringConstantsGenerator.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */

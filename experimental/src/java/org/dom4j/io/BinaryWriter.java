@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: BinaryWriter.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: BinaryWriter.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */
 
 package org.dom4j.io;
@@ -25,14 +25,14 @@ import org.dom4j.Entity;
 import org.dom4j.Namespace;
 import org.dom4j.ProcessingInstruction;
 import org.dom4j.Text;
-import org.dom4j.TreeException;
+import org.dom4j.DocumentException;
 
 /** <p><code>BinaryWriter</code> writes a DOM4J tree to a binary stream.
   * This is useful when communicating DOM4J structures with 
   * multiple processes when performance is important.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class BinaryWriter implements BinaryConstants {
 
@@ -43,9 +43,9 @@ public class BinaryWriter implements BinaryConstants {
       *
       * @param document is the documetn to write
       * @param in <code>OutputStream</code> to write from.
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public void write(Document document, OutputStream in) throws TreeException {
+    public void write(Document document, OutputStream in) throws DocumentException {
         DataOutputStream dataOut = null;
         try {
             dataOut = createDataOutputStream(in);
@@ -53,7 +53,7 @@ public class BinaryWriter implements BinaryConstants {
             writeDocument(document, dataOut);
         }
         catch (IOException e) {
-            throw new TreeException(e);
+            throw new DocumentException(e);
         }
         finally {
             if ( dataOut != null ) {
@@ -69,7 +69,7 @@ public class BinaryWriter implements BinaryConstants {
     
     // Implementation methods
     
-    protected void writeDocument(Document document, DataOutputStream out) throws IOException, TreeException {
+    protected void writeDocument(Document document, DataOutputStream out) throws IOException, DocumentException {
         writeString(out, document.getName());
         
         writeBranchContents(document, out);
@@ -77,7 +77,7 @@ public class BinaryWriter implements BinaryConstants {
         writeOpCode(out, ELEMENT_END);
     }
     
-    protected void writeBranchContents(Branch branch, DataOutputStream out) throws IOException, TreeException {
+    protected void writeBranchContents(Branch branch, DataOutputStream out) throws IOException, DocumentException {
         List list = branch.getContent();
         if ( list != null ) {
             int size = list.size();
@@ -88,7 +88,7 @@ public class BinaryWriter implements BinaryConstants {
         }
     }
     
-    protected void writeObject(Object object, DataOutputStream out) throws IOException, TreeException {
+    protected void writeObject(Object object, DataOutputStream out) throws IOException, DocumentException {
         if ( object instanceof Element ) {
             writeElement( (Element) object, out );
         }
@@ -116,7 +116,7 @@ public class BinaryWriter implements BinaryConstants {
         }
     }
     
-    protected void writeElement(Element element, DataOutputStream out) throws IOException, TreeException {
+    protected void writeElement(Element element, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, ELEMENT_START);
         
         writeString(out, element.getName());
@@ -135,40 +135,40 @@ public class BinaryWriter implements BinaryConstants {
         writeOpCode(out, ELEMENT_END);
     }
     
-    protected void writeAttribute(Attribute attribute, DataOutputStream out) throws IOException, TreeException {
+    protected void writeAttribute(Attribute attribute, DataOutputStream out) throws IOException, DocumentException {
         writeString(out, attribute.getName());
         writeString(out, attribute.getValue());
         writeString(out, attribute.getNamespacePrefix());
     }
     
-    protected void writeCDATA(CDATA node, DataOutputStream out) throws IOException, TreeException {
+    protected void writeCDATA(CDATA node, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, CDATA_START);        
         writeString(out, node.getText());
     }
     
-    protected void writeComment(Comment node, DataOutputStream out) throws IOException, TreeException {
+    protected void writeComment(Comment node, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, COMMENT_START);        
         writeString(out, node.getText());
     }
     
-    protected void writeText(String text, DataOutputStream out) throws IOException, TreeException {
+    protected void writeText(String text, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, TEXT_START);        
         writeString(out, text);
     }
     
-    protected void writeEntity(Entity node, DataOutputStream out) throws IOException, TreeException {
+    protected void writeEntity(Entity node, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, ENTITY_START);        
         writeString(out, node.getName());
         writeString(out, node.getText());
     }
     
-    protected void writeNamespace(Namespace node, DataOutputStream out) throws IOException, TreeException {
+    protected void writeNamespace(Namespace node, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, NAMESPACE_START);        
         writeString(out, node.getPrefix());
         writeString(out, node.getURI());
     }
     
-    protected void writeProcessingInstruction(ProcessingInstruction node, DataOutputStream out) throws IOException, TreeException {
+    protected void writeProcessingInstruction(ProcessingInstruction node, DataOutputStream out) throws IOException, DocumentException {
         writeOpCode(out, PI_START);        
         writeString(out, node.getTarget());
         writeString(out, node.getText());
@@ -186,13 +186,13 @@ public class BinaryWriter implements BinaryConstants {
         out.writeInt(count);
     }
     
-    protected DataOutputStream createDataOutputStream(OutputStream in) throws IOException, TreeException {
+    protected DataOutputStream createDataOutputStream(OutputStream in) throws IOException, DocumentException {
         DataOutputStream dataIn = new DataOutputStream(in);
         writeHeader(dataIn);
         return dataIn;
     }
 
-    protected void writeHeader(DataOutputStream out) throws IOException, TreeException {
+    protected void writeHeader(DataOutputStream out) throws IOException, DocumentException {
         out.writeUTF(HEADER);
     }
     
@@ -243,5 +243,5 @@ public class BinaryWriter implements BinaryConstants {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: BinaryWriter.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: BinaryWriter.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */

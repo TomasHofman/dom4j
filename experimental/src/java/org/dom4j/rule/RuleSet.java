@@ -4,58 +4,75 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: PerformanceTest2.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: RuleSet.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
  */
 
-import java.net.URL;
-import java.io.IOException;
+package org.dom4j.rule;
 
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.io.BinaryReader;
-import org.dom4j.io.TreeReader;
+import java.util.TreeSet;
 
-/** Perform some DOM4J parsing peformance test cases with the binary XML format.
-  * 
+import org.dom4j.Node;
+
+/** <p><code>RuleSet</code> manages a set of rules for a given mode
+  * and kind of Node to match against such that a Rule can be found for a given 
+  * DOM4J Node using the XSLT processing model by sorting the rules in
+  * the XSLT defined precedence order.</p>
+  *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.2 $
+  * @version $Revision: 1.1 $
   */
-public class PerformanceTest2 extends PerformanceTest {
+public class RuleSet {
+
+    /** A sorted set of Rule objects */
+    private TreeSet ruleTree = new TreeSet();
     
-    public PerformanceTest2() {
+    /** A lazily evaluated and cached array of rules sorted */
+    private Rule[] ruleArray;
+    
+    public RuleSet() {
     }
     
-    /** The program entry point.
+    /** Performs an XSLT processing model match for the rule
+      * which matches the given Node the best.
       *
-      * @param args the command line arguments
+      * @param mode is the mode associated with the rule if any
+      * @param node is the DOM4J Node to match against
+      * @return the matching Rule or no rule if none matched
       */
-    public static void main(String[] args) {
-        run( new PerformanceTest2(), args );
-    }    
-    
-    public void run(String[] args) throws Exception {    
-        if ( args.length < 1 ) {
-            printUsage( "<Binary XML document URL> [<loopCount>]" );
-            return;
+    public Rule getMatchingRule( Node node ) {
+        Rule[] rules = getRuleArray();
+        for ( int i = rules.length - 1; i >= 0; i-- ) {
+            Rule rule = rules[i];
+            if ( rule.matches( node ) ) {
+                return rule;
+            }
         }
-
-        String xmlFile = args[0];
-        
-        loopCount = DEFAULT_LOOP_COUNT;
-        if (args.length > 1) {
-            loopCount = Integer.parseInt(args[1]);
-        }        
-
-        parse( xmlFile );
+        return null;
     }
     
-    protected void printParser() {
-        println( "Using BinaryReader" );
+    public void addRule(Rule rule) {
+        ruleTree.add( rule );
+        ruleArray = null;
     }
     
-    protected TreeReader createTreeReader() throws Exception {
-        return new BinaryReader();
+    public void removeRule(Rule rule) {
+        ruleTree.remove( rule );
+        ruleArray = null;
     }
+    
+    /** Returns an array of sorted rules.
+      *
+      * @return the rules as a sorted array in ascending precendence
+      * so that the rules at the end of the array should be used first
+      */
+    protected Rule[] getRuleArray() {
+        if ( ruleArray == null ) {
+            ruleArray = new Rule[ ruleTree.size() ];
+            ruleTree.toArray( ruleArray );
+        }
+        return ruleArray;
+    }
+
 }
 
 
@@ -103,5 +120,5 @@ public class PerformanceTest2 extends PerformanceTest {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: PerformanceTest2.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
+ * $Id: RuleSet.java,v 1.1 2001/02/01 23:32:46 jstrachan Exp $
  */

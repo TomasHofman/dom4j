@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DTDReader.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: DTDReader.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */
 
 package org.dom4j.tool.dtd;
@@ -19,7 +19,7 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.net.URL;
 
-import org.dom4j.TreeException;
+import org.dom4j.DocumentException;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
@@ -34,7 +34,7 @@ import org.xml.sax.helpers.XMLReaderFactory;
   * and generates a document object model.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DTDReader {
 
@@ -127,10 +127,10 @@ public class DTDReader {
       *
       * @param file is the <code>File</code> to read from.
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       * @throws FileNotFoundException if the file could not be found
       */
-    public DocumentDecl read(File file) throws TreeException, FileNotFoundException {
+    public DocumentDecl read(File file) throws DocumentException, FileNotFoundException {
         //return read(new BufferedReader(new FileReader(file)));
         return read(file.getAbsolutePath());
     }
@@ -139,9 +139,9 @@ public class DTDReader {
       *
       * @param url <code>URL</code> to read from.
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(URL url) throws TreeException {
+    public DocumentDecl read(URL url) throws DocumentException {
         String systemID = url.toExternalForm();
         return read(new InputSource(systemID));
     }
@@ -150,9 +150,9 @@ public class DTDReader {
       *
       * @param systemId is the URI for the input
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(String systemId) throws TreeException {
+    public DocumentDecl read(String systemId) throws DocumentException {
         return read(new InputSource(systemId));
     }
 
@@ -160,9 +160,9 @@ public class DTDReader {
       *
       * @param in <code>InputStream</code> to read from.
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(InputStream in) throws TreeException {
+    public DocumentDecl read(InputStream in) throws DocumentException {
         return read(new InputSource(in));
     }
 
@@ -170,9 +170,9 @@ public class DTDReader {
       *
       * @param reader is the reader for the input
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(Reader reader) throws TreeException {
+    public DocumentDecl read(Reader reader) throws DocumentException {
         return read(new InputSource(reader));
     }
 
@@ -181,9 +181,9 @@ public class DTDReader {
       * @param in <code>InputStream</code> to read from.
       * @param systemId is the URI for the input
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(InputStream in, String systemId) throws TreeException {
+    public DocumentDecl read(InputStream in, String systemId) throws DocumentException {
         InputSource source = new InputSource(in);
         source.setSystemId(systemId);
         return read(source);
@@ -194,9 +194,9 @@ public class DTDReader {
       * @param reader is the reader for the input
       * @param systemId is the URI for the input
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(Reader reader, String SystemId) throws TreeException {
+    public DocumentDecl read(Reader reader, String SystemId) throws DocumentException {
         InputSource source = new InputSource(reader);
         source.setSystemId(SystemId);
         return read(source);
@@ -207,9 +207,9 @@ public class DTDReader {
       * @param in <code>InputSource</code> to read from.
       * @param systemId is the URI for the input
       * @return the newly created DocumentDecl instance
-      * @throws TreeException if an error occurs during parsing.
+      * @throws DocumentException if an error occurs during parsing.
       */
-    public DocumentDecl read(InputSource in) throws TreeException {
+    public DocumentDecl read(InputSource in) throws DocumentException {
         try {
             XMLReader reader = getXMLReader();
 
@@ -234,10 +234,10 @@ public class DTDReader {
                     + " of document "  + systemId
                     + " : " + parseException.getMessage();
                 
-                throw new TreeException(message, e);
+                throw new DocumentException(message, e);
             }
             else {
-                throw new TreeException(e.getMessage(), e);
+                throw new DocumentException(e.getMessage(), e);
             }
         }
     }
@@ -296,5 +296,5 @@ public class DTDReader {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DTDReader.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: DTDReader.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */

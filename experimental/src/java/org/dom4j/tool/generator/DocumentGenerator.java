@@ -4,7 +4,7 @@
  * This software is open source. 
  * See the bottom of this file for the licence.
  * 
- * $Id: DocumentGenerator.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: DocumentGenerator.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */
 
 package org.dom4j.tool.generator;
@@ -21,12 +21,12 @@ import org.metastuff.coder.*;
   * implementation from a DTD declaration.</p>
   *
   * @author <a href="mailto:james.strachan@metastuff.com">James Strachan</a>
-  * @version $Revision: 1.1 $
+  * @version $Revision: 1.2 $
   */
 public class DocumentGenerator extends AbstractGenerator {
 
     /** Holds value of property contentFactoryClassName. */
-    private String contentFactoryClassName = "SchemaContentFactory";
+    private String contentFactoryClassName = "SchemaDocumentFactory";
     
     public DocumentGenerator() {
         super( "SchemaDocument" );
@@ -40,14 +40,14 @@ public class DocumentGenerator extends AbstractGenerator {
     /** Getter for property contentFactoryClassName.
      * @return Value of property contentFactoryClassName.
      */
-    public String getContentFactoryClassName() {
+    public String getDocumentFactoryClassName() {
         return contentFactoryClassName;
     }
     
     /** Setter for property contentFactoryClassName.
      * @param contentFactoryClassName New value of property contentFactoryClassName.
      */
-    public void setContentFactoryClassName(String contentFactoryClassName) {
+    public void setDocumentFactoryClassName(String contentFactoryClassName) {
         this.contentFactoryClassName = contentFactoryClassName;
     }
     
@@ -57,7 +57,7 @@ public class DocumentGenerator extends AbstractGenerator {
     protected void enrich(JClass jclass) {
         super.enrich(jclass);
         
-        jclass.addImportStatement( "org.dom4j.ContentFactory" );
+        jclass.addImportStatement( "org.dom4j.DocumentFactory" );
         jclass.addImportStatement( "org.dom4j.Document" );
         jclass.addImportStatement( "org.dom4j.Element" );
         jclass.addImportStatement( "org.dom4j.tree.DefaultDocument" );
@@ -66,7 +66,7 @@ public class DocumentGenerator extends AbstractGenerator {
         jclass.setExtendsClass( "DefaultDocument" );
         
         addConstructors();
-        addContentFactory();
+        addDocumentFactory();
     }
     
     protected void addConstructors() {
@@ -80,22 +80,22 @@ public class DocumentGenerator extends AbstractGenerator {
 */
     }
     
-    protected void addContentFactory() {
+    protected void addDocumentFactory() {
         jclass.addMember( 
             new JMember(
                 "CONTECT_FACTORY", 
-                "ContentFactory", 
+                "DocumentFactory", 
                 JModifier.PROTECTED_STATIC_FINAL, 
-                getContentFactoryClassName() + ".getInstance()",
-                "The <code>ContentFactory</code> instance used by default"
+                getDocumentFactoryClassName() + ".getInstance()",
+                "The <code>DocumentFactory</code> instance used by default"
             )
         );
         
         JMethod method = new JMethod( 
-            "getContentFactory", 
-            "ContentFactory", 
+            "getDocumentFactory", 
+            "DocumentFactory", 
             JModifier.PROTECTED, 
-            "@return the <code>ContentFactory</code> instance to be used for the <code>Element</code>" 
+            "@return the <code>DocumentFactory</code> instance to be used for the <code>Element</code>" 
         );
         method.addStatement( "return CONTECT_FACTORY;" );
         jclass.addMethod( method );
@@ -151,5 +151,5 @@ public class DocumentGenerator extends AbstractGenerator {
  *
  * Copyright 2001 (C) MetaStuff, Ltd. All Rights Reserved.
  *
- * $Id: DocumentGenerator.java,v 1.1 2001/01/16 18:00:01 jstrachan Exp $
+ * $Id: DocumentGenerator.java,v 1.2 2001/02/01 23:32:46 jstrachan Exp $
  */
