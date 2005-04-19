@@ -19,7 +19,7 @@ import org.dom4j.rule.Pattern;
  * Performs a number of unit test cases on the XPath engine
  * 
  * @author <a href="mailto:jstrachan@apache.org">James Strachan </a>
- * @version $Revision: 1.4 $
+ * @version $Revision: 1.5 $
  */
 public class XPathExamplesTest extends AbstractTestCase {
     protected SAXReader xmlReader = new SAXReader();
@@ -119,6 +119,16 @@ public class XPathExamplesTest extends AbstractTestCase {
 
         String description = "Path: " + xpath;
 
+        String exception = test.attributeValue("exception");
+        if ((exception != null) && exception.equals("true")) {
+            try {
+                testContext.selectNodes(xpath);
+                fail("Exception was not thrown");
+            } catch (XPathException e) {
+                return;
+            }
+        }
+        
         String count = test.attributeValue("count");
 
         if (count != null) {
