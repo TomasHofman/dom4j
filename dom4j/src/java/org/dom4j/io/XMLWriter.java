@@ -66,7 +66,7 @@ import org.xml.sax.helpers.XMLFilterImpl;
  * 
  * @author <a href="mailto:jstrachan@apache.org">James Strachan </a>
  * @author Joseph Bowbeer
- * @version $Revision: 1.83.2.1 $
+ * @version $Revision: 1.83.2.2 $
  */
 public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
     private static final String PAD_TEXT = " ";
@@ -1289,6 +1289,7 @@ public class XMLWriter extends XMLFilterImpl implements LexicalHandler {
 
             lastOutputNodeType = Node.TEXT_NODE;
             writer.write(text);
+            lastChar = text.charAt(text.length() - 1);
         }
     }
 
