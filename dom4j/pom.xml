@@ -154,6 +154,22 @@
     </resources>
     <plugins>
       <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Package>org.dom4j</Package>
+              <Extension-Name>${project.name}</Extension-Name>
+              <Specification-Title>${project.description}</Specification-Title>
+              <Specification-Vendor>${project.organization.name}</Specification-Vendor>
+              <Implementation-Title>org.dom4j</Implementation-Title>
+              <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+              <Implementation-Version>${project.version}</Implementation-Version>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
           <includes>
