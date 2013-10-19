@@ -140,8 +140,18 @@
     <url>http://sourceforge.net/projects/dom4j</url>
   </organization>
   <build>
-    <sourceDirectory>src/java</sourceDirectory>
-    <testSourceDirectory>src/test</testSourceDirectory>
+    <sourceDirectory>${project.basedir}/src/java</sourceDirectory>
+    <testSourceDirectory>${project.basedir}/src/test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>${project.basedir}</directory>
+        <filtering>false</filtering>
+        <includes>
+          <include>LICENSE.txt</include>
+        </includes>
+        <targetPath>META-INF</targetPath>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
