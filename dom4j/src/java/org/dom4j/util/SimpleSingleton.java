@@ -35,8 +35,7 @@ public class SimpleSingleton implements SingletonStrategy {
         if (singletonClassName != null) {
             Class clazz = null;
             try {
-                clazz = Thread.currentThread().getContextClassLoader().loadClass(
-                        singletonClassName);
+                clazz = Class.forName(singletonClassName);
                 singletonInstance = clazz.newInstance();
             } catch (Exception ignore) {
                 try {
