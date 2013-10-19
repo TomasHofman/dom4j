@@ -21,6 +21,9 @@ import org.w3c.dom.EntityReference;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.ProcessingInstruction;
+import org.w3c.dom.Node;
+import org.w3c.dom.DOMConfiguration;
+import org.w3c.dom.UserDataHandler;
 
 /**
  * <p>
@@ -300,6 +303,111 @@ public class DOMDocument extends DefaultDocument implements Document {
         } else {
             return super.getDocumentFactory();
         }
+    }
+
+    // JDK6 API methods
+    public String getInputEncoding() {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getXmlEncoding() {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean getXmlStandalone() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setXmlStandalone(boolean xmlStandalone) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getXmlVersion() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setXmlVersion(String xmlVersion) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean getStrictErrorChecking() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setStrictErrorChecking(boolean strictErrorChecking) {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getDocumentURI() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setDocumentURI(String documentURI) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Node adoptNode(Node source) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public DOMConfiguration getDomConfig() {
+        throw new UnsupportedOperationException();
+    }
+
+    public void normalizeDocument() {
+        throw new UnsupportedOperationException();
+    }
+
+    public Node renameNode(Node n, String namespaceURI, String qualifiedName) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getBaseURI() {
+        throw new UnsupportedOperationException();
+    }
+
+    public short compareDocumentPosition(Node other) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getTextContent() throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setTextContent(String textContent) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isSameNode(Node other) {
+        throw new UnsupportedOperationException();
+    }
+
+    public String lookupPrefix(String namespaceURI) {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isDefaultNamespace(String namespaceURI) {
+        throw new UnsupportedOperationException();
+    }
+
+    public String lookupNamespaceURI(String prefix) {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isEqualNode(Node arg) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Object getFeature(String feature, String version) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Object getUserData(String key) {
+        throw new UnsupportedOperationException();
     }
 }
 

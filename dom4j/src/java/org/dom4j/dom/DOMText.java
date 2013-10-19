@@ -15,6 +15,8 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.UserDataHandler;
 
 /**
  * <p>
@@ -223,6 +225,67 @@ public class DOMText extends DefaultText implements org.w3c.dom.Text {
     // -------------------------------------------------------------------------
     protected Text createText(String text) {
         return new DOMText(text);
+    }
+
+    // JDK6 API methods
+    public boolean isElementContentWhitespace() {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getWholeText() {
+        throw new UnsupportedOperationException();
+    }
+
+    public org.w3c.dom.Text replaceWholeText(String content) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getBaseURI() {
+        throw new UnsupportedOperationException();
+    }
+
+    public short compareDocumentPosition(Node other) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public String getTextContent() throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public void setTextContent(String textContent) throws DOMException {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isSameNode(Node other) {
+        throw new UnsupportedOperationException();
+    }
+
+    public String lookupPrefix(String namespaceURI) {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isDefaultNamespace(String namespaceURI) {
+        throw new UnsupportedOperationException();
+    }
+
+    public String lookupNamespaceURI(String prefix) {
+        throw new UnsupportedOperationException();
+    }
+
+    public boolean isEqualNode(Node arg) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Object getFeature(String feature, String version) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Object setUserData(String key, Object data, UserDataHandler handler) {
+        throw new UnsupportedOperationException();
+    }
+
+    public Object getUserData(String key) {
+        throw new UnsupportedOperationException();
     }
 }
 
