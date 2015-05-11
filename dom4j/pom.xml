@@ -178,6 +178,7 @@
           </includes>
           <excludes>
             <exclude>org/dom4j/io/StaxTest.java</exclude>
+            <exclude>org/dom4j/rule/RuleTest.java</exclude>
             <exclude>org/dom4j/xpath/MatrixConcatTest.java</exclude>
           </excludes>
         </configuration>
