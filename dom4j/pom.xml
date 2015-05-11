@@ -132,7 +132,7 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:cvs:pserver:anonymous@dom4j.cvs.sourceforge.net:/cvsroot/dom4j:dom4j</connection>
+    <connection>scm:cvs:pserver:anonymous:@dom4j.cvs.sourceforge.net:/cvsroot/dom4j:dom4j</connection>
     <developerConnection>scm:cvs:ext:${maven.username}@dom4j.cvs.sourceforge.net:/cvsroot/dom4j:dom4j</developerConnection>
     <url>http://dom4j.cvs.sourceforge.net/dom4j/</url>
   </scm>
