@@ -132,9 +132,9 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:cvs:pserver:anonymous@cvs.sourceforge.net:/cvsroot/dom4j:dom4j</connection>
-    <developerConnection>scm:cvs:ext:${maven.username}@cvs.sourceforge.net:/cvsroot/dom4j:dom4j</developerConnection>
-    <url>http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/dom4j/dom4j/</url>
+    <connection>scm:cvs:pserver:anonymous@dom4j.cvs.sourceforge.net:/cvsroot/dom4j:dom4j</connection>
+    <developerConnection>scm:cvs:ext:${maven.username}@dom4j.cvs.sourceforge.net:/cvsroot/dom4j:dom4j</developerConnection>
+    <url>http://dom4j.cvs.sourceforge.net/dom4j/</url>
   </scm>
   <organization>
     <name>MetaStuff Ltd.</name>
