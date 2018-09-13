@@ -5,7 +5,7 @@ apply plugin: 'signing'
 
 group = 'org.dom4j'
 archivesBaseName = 'dom4j'
-version = '2.1.1'
+version = '2.1.1.redhat-00001'
 
 sourceCompatibility = 1.8
 
@@ -21,7 +21,7 @@ repositories {
 dependencies {
 
     implementation(
-            'jaxen:jaxen:1.1.6',
+            'jaxen:jaxen:1.1.6.redhat-2',
             'javax.xml.stream:stax-api:1.0-2',
             'net.java.dev.msv:xsdlib:2013.6.1',
             'javax.xml.bind:jaxb-api:2.2.12',
