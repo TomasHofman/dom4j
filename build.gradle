@@ -5,6 +5,7 @@ apply plugin: 'signing'
 
 group = 'org.dom4j'
 archivesBaseName = 'dom4j'
+version = '2.1.1'
 
 sourceCompatibility = 1.8
 
@@ -133,5 +134,23 @@ if (project.hasProperty('ossrhUsername') && project.hasProperty('ossrhPassword')
 if (project.hasProperty('signing.keyId')) {
     signing {
         sign configurations.archives
+    }
+}
+
+if (System.getProperty('AProxDeployUrl') != null) {
+    publishing {
+        repositories {
+            maven {
+                name = "PNC"
+                url = System.getProperty('AProxDeployUrl')
+                credentials(HttpHeaderCredentials) {
+                    name = "Authorization"
+                    value = "Bearer " + System.getProperty('accessToken')
+                }
+                authentication {
+                    header(HttpHeaderAuthentication)
+                }
+            }
+        }
     }
 }
