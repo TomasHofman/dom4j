@@ -12,10 +12,11 @@ initscript {
     }
 
     dependencies {
-        classpath "org.jboss.set.gradle:version-manipulation-plugin:1.0.0.beta-3-redhat-00001"
+        classpath "org.jboss.set.gradle:version-manipulation-plugin:1.0.0.beta-4-redhat-00001"
     }
 }
 
 allprojects {
     apply plugin: org.jboss.set.gradle.versionmanipulation.VersionManipulationPlugin
 }
+

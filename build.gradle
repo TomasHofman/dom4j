@@ -136,21 +136,3 @@ if (project.hasProperty('signing.keyId')) {
         sign configurations.archives
     }
 }
-
-if (System.getProperty('AProxDeployUrl') != null) {
-    publishing {
-        repositories {
-            maven {
-                name = "PNC"
-                url = System.getProperty('AProxDeployUrl')
-                credentials(HttpHeaderCredentials) {
-                    name = "Authorization"
-                    value = "Bearer " + System.getProperty('accessToken')
-                }
-                authentication {
-                    header(HttpHeaderAuthentication)
-                }
-            }
-        }
-    }
-}
